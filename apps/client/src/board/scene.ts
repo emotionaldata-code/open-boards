@@ -3,7 +3,7 @@ import type { GameView } from '@open-boards/protocol';
 import type { PresentationEvent } from '../animation/events';
 import { playPresentation } from '../animation/playback';
 import { sound } from '../audio/player';
-import { createTerrain, paintHighlights } from './terrain';
+import { paintHighlights } from './highlights';
 import { createFigure, playerColors } from './figures';
 import { spaces } from './layout';
 
@@ -20,8 +20,7 @@ export class ArenaScene {
     app: Application,
     private render: () => void,
   ) {
-    const terrain = createTerrain();
-    app.stage.addChild(terrain, this.highlights, this.people, this.effects);
+    app.stage.addChild(this.highlights, this.people, this.effects);
   }
   update(
     game: GameView | undefined,

@@ -1,61 +1,88 @@
 .hand-card {
   position: relative;
-  flex: 0 0 216px;
-  min-height: 100%;
+  flex: 0 0 300px;
   display: flex;
   scroll-snap-align: start;
 }
 .hand-card .game-card {
   width: 100%;
   min-width: 0;
-  padding: 10px;
-  gap: 6px;
-  border: 1px solid transparent;
+  padding: 8px;
+  gap: 4px;
+  border: 2px solid transparent;
   border-radius: 6px;
-  background: var(--surface);
+  background: color-mix(in srgb, var(--card-color) 22%, var(--surface));
   color: var(--text);
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  align-items: start;
 }
 .game-card:disabled {
   opacity: 1;
   cursor: default;
 }
+.game-card:disabled .card-top {
+  opacity: 0.65;
+}
+.game-card:disabled :is(.card-name, .card-art) {
+  opacity: 0.7;
+}
+:is(.game-card, .printed-card):has([data-kind='attack']),
+.compact-card[data-card='attack'] {
+  --card-color: #b6353e;
+}
+:is(.game-card, .printed-card):has([data-kind='defense']),
+.compact-card[data-card='defense'] {
+  --card-color: #2369ac;
+}
+:is(.game-card, .printed-card):has([data-kind='versatile']),
+.compact-card[data-card='versatile'] {
+  --card-color: #7843a8;
+}
+:is(.game-card, .printed-card):has([data-kind='action']),
+.compact-card[data-card='action'] {
+  --card-color: #e6b342;
+}
 .game-card.selected,
 .game-card[aria-pressed='true'] {
-  border-color: var(--accent);
-  background: var(--raised);
+  border-color: color-mix(in srgb, var(--card-color) 60%, white);
+  background: color-mix(in srgb, var(--card-color) 35%, var(--surface));
 }
 .game-card:hover:not(:disabled) {
-  background: var(--raised);
+  background: color-mix(in srgb, var(--card-color) 30%, var(--surface));
 }
 .card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  min-height: 30px;
+  min-height: 28px;
+  padding: 0 2px;
+  color: var(--text);
+  border-radius: 3px;
 }
 .card-top > span {
   font-size: 11px;
   line-height: 1.4;
-  color: var(--muted);
+  color: inherit;
 }
 .card-kind {
   text-transform: capitalize;
+  font-weight: 600;
 }
 .card-top .card-boost {
-  display: block;
-  color: var(--text);
+  margin-right: 6px;
+  color: inherit;
   font-size: 11px;
   font-weight: 600;
 }
 .card-top > strong {
   font-size: 28px;
   line-height: 1;
-  color: var(--accent);
+  color: inherit;
   font-weight: 600;
 }
 .card-art {
@@ -64,8 +91,23 @@
   overflow: hidden;
   margin: 0 -10px;
 }
+.hand-card .card-top {
+  grid-column: 1 / -1;
+}
 .hand-card .card-art {
-  flex: 1 0 64px;
+  grid-column: 1;
+  grid-row: 2;
+  height: 70px;
+  margin: 0;
+}
+.hand-card .card-name {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  font-size: 19px;
+}
+.hand-card .card-description {
+  grid-column: 1 / -1;
 }
 .card-art img {
   display: block;
@@ -97,7 +139,7 @@
   padding: 16px;
   border: 0;
   border-radius: 6px;
-  background: var(--raised);
+  background: color-mix(in srgb, var(--card-color) 22%, var(--raised));
   color: var(--text);
   text-align: left;
 }
@@ -161,19 +203,15 @@
     grid-column: 2;
   }
 }
-@media (max-height: 700px) and (orientation: landscape) {
+
+@media (max-width: 600px) and (orientation: portrait) {
   .hand-card {
-    flex-basis: 248px;
+    flex-basis: min(314px, calc(100vw - 40px));
   }
-  .hand-card .game-card {
-    padding: 8px;
-    gap: 5px;
-  }
+}
+
+@media (max-height: 380px) and (orientation: landscape) {
   .hand-card .card-art {
-    flex: 1 0 38px;
-    margin-inline: -8px;
-  }
-  .hand-card .card-name {
-    font-size: 18px;
+    height: 58px;
   }
 }

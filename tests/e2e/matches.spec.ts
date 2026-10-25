@@ -1,7 +1,10 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
   medusa: { name: 'Medusa', allies: 3 },
+  'bruce-lee': { name: 'Bruce Lee', allies: 0 },
   dracula: { name: 'Dracula', allies: 3 },
+  bigfoot: { name: 'Bigfoot', allies: 1 },
+  'robin-hood': { name: 'Robin Hood', allies: 4 },
   'sherlock-holmes': { name: 'Sherlock Holmes', allies: 1 },
   'king-arthur': { name: 'King Arthur', allies: 1 },
   achilles: { name: 'Achilles', allies: 1 },
@@ -568,6 +571,9 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
         ['Achilles', 12],
         ['Sherlock Holmes', 13],
         ['Dracula', 13],
+        ['Robin Hood', 11],
+        ['Bigfoot', 11],
+        ['Bruce Lee', 17],
       ]),
     );
     for (const [name, designs] of fighters) {
@@ -696,9 +702,7 @@ test('selecting Medusa preserves readiness and syncs the remaining roster', asyn
   }
 });
 
-test('shows full special effects on disabled hand cards without info buttons', async ({
-  browser,
-}) => {
+test('inspects compact waiting cards without playing them', async ({ browser }) => {
   const rivals = await createMatch(browser, 2, false, 'medusa');
   try {
     const page = rivals[1].page;
@@ -714,9 +718,14 @@ test('shows full special effects on disabled hand cards without info buttons', a
     ]) {
       await page.setViewportSize({ width, height });
       await fitsViewport(page);
-      for (const effect of await page.locator('.hand .card-description').all()) {
+      await expect(page.locator('.compact-card')).toHaveCount(5);
+      await page.locator('.compact-card').first().click();
+      const dialog = page.getByRole('dialog');
+      await expect(dialog.locator('.card-art')).toBeVisible();
+      const effect = dialog.locator('.card-description');
+      if (await effect.count())
         expect(await effect.evaluate((node) => node.scrollHeight <= node.clientHeight)).toBe(true);
-      }
+      await page.keyboard.press('Escape');
       expect(await revision(page)).toBe(before);
       await expect(page.locator('.game-card[aria-pressed="true"]')).toHaveCount(0);
     }
@@ -825,7 +834,7 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     }
     await page.getByRole('button', { name: `Boost movement +${amount}`, exact: true }).click();
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(0);
-    await expect(page.locator('.hand-card')).toHaveCount(5);
+    await expect(page.locator('.compact-card')).toHaveCount(5);
     await expect(page.locator('.action-count')).toContainText('1 actions');
     const committed = await revision(page);
     await page.reload();
@@ -1061,5 +1070,109 @@ test('selects four Draculas over sockets, deploys numbered Sisters and restores 
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('selects Bigfoot over sockets, deploys The Jackalope and restores his shared Maneuver on phone', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 2, false, 'bigfoot');
+  const page = rivals[0].page;
+  try {
+    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Bigfoot', 'The Jackalope 1']);
+    await page.screenshot({
+      path: test.info().outputPath('bigfoot-socket-desktop.png'),
+      animations: 'disabled',
+    });
+    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await picker.getByRole('button', { name: 'The Jackalope 1', exact: true }).click();
+    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.reload();
+    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await page.setViewportSize({ width: 844, height: 390 });
+    await fitsViewport(page);
+    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
+    await expect(picker.getByRole('button')).toHaveText(['Bigfoot', 'The Jackalope 1']);
+    await expect(
+      rivals[1].page.getByRole('complementary', { name: 'Players', exact: true }),
+    ).toContainText('The Jackalope 1');
+    await page.screenshot({
+      path: test.info().outputPath('bigfoot-socket-phone.png'),
+      animations: 'disabled',
+    });
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('selects Robin Hood over sockets, deploys all sixteen Outlaws and reconnects on phone', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'robin-hood');
+  const page = rivals[0].page;
+  try {
+    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    const labels = ['Robin Hood', 'Outlaw 1', 'Outlaw 2', 'Outlaw 3', 'Outlaw 4'];
+    await expect(picker.getByRole('button')).toHaveText(labels);
+    for (const rival of rivals) {
+      await expect(
+        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
+      ).toContainText('Outlaw 4');
+      await fitsViewport(rival.page);
+    }
+    await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Outlaw 4', exact: true }).tap();
+    await page.getByRole('button', { name: 'Stay here', exact: true }).tap();
+    await page.reload();
+    await expect(page.locator('.fighter-controls')).toContainText('4 fighters');
+    await expect(page.locator('.pixi-surface canvas')).toBeVisible();
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
+    await page.screenshot({
+      path: test.info().outputPath('robin-sixteen-outlaws-phone.png'),
+      animations: 'disabled',
+    });
+    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await expect(picker.getByRole('button')).toHaveText(labels);
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await fitsViewport(page);
+    await page.screenshot({
+      path: test.info().outputPath('robin-socket-desktop.png'),
+      animations: 'disabled',
+    });
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('Bruce Lee starts a solo four-seat match and resumes Maneuver after socket reconnect', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'bruce-lee');
+  try {
+    const host = rivals[0].page;
+    await host.getByRole('button', { name: /^Maneuver/ }).click();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await host.reload();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await finishManeuver(host);
+    for (const { page } of rivals) {
+      await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
+      await fitsViewport(page);
+    }
+    await host.screenshot({
+      path: test.info().outputPath('bruce-lee-four-seats-phone.png'),
+      animations: 'disabled',
+    });
+    for (const { errors } of rivals) expect(errors).toEqual([]);
+  } finally {
+    for (const rival of rivals) await rival.context.close();
   }
 });

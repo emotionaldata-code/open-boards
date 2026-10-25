@@ -72,7 +72,8 @@ export type Effect =
   | { type: 'replace-attack' }
   | { type: 'bonus-attack'; name: string; value: number }
   | { type: 'replace-defender'; target: PlayerRef }
-  | { type: 'recover-card' }
+  | { type: 'recover-card'; cards?: string[] }
+  | { type: 'return-played-card' }
   | { type: 'boost-attack'; grant?: string; cancelWithCard?: boolean }
   | { type: 'set-health'; target?: PlayerRef; value: number }
   | { type: 'prevent-damage'; target?: PlayerRef }
@@ -102,7 +103,7 @@ export type Effect =
       effects: Effect[];
     }
   | { type: 'draw'; target?: PlayerRef; count: Value }
-  | { type: 'damage'; target?: PlayerRef; amount: Value; onDamage?: Effect[] }
+  | { type: 'damage'; target?: PlayerRef; amount: Value; onDamage?: Effect[]; onDefeat?: Effect[] }
   | { type: 'heal'; target?: PlayerRef; amount: Value }
   | { type: 'move'; target?: PlayerRef; distance: number; throughEnemies?: boolean }
   | { type: 'push' | 'pull'; target?: PlayerRef; distance: number }
@@ -147,6 +148,7 @@ export type Effect =
     }
   | {
       type: 'choose-option';
+      chooser?: PlayerRef;
       prompt: string;
       options: { id: string; label: string; effects: Effect[] }[];
     };

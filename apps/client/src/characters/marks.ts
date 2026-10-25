@@ -15,6 +15,11 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  'bruce-lee': { mark: 'wave', tone: 'gold' },
+  'robin-hood': { mark: 'compass', tone: 'mint' },
+  'robin-hood-outlaw': { mark: 'compass', tone: 'mint' },
+  bigfoot: { mark: 'compass', tone: 'mint' },
+  'bigfoot-jackalope': { mark: 'bolt', tone: 'gold' },
   dracula: { mark: 'flame', tone: 'ember' },
   'dracula-sister': { mark: 'blade', tone: 'ember' },
   achilles: { mark: 'flame', tone: 'ember' },
@@ -30,6 +35,7 @@ export const abilityVisuals: Record<
 
 export const statusVisuals: Record<string, { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }> =
   {
+    'attack-up': { mark: 'blade', tone: 'gold' },
     'fixed-four': { mark: 'bolt', tone: 'gold' },
     burn: { mark: 'flame', tone: 'ember' },
   };

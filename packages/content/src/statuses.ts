@@ -1,6 +1,12 @@
 import type { StatusDefinition } from '@open-boards/game';
 
 export const statuses: Record<string, StatusDefinition> = {
+  'attack-up': {
+    id: 'attack-up',
+    name: 'Attack +1',
+    maxStacks: 100,
+    modifiers: { attack: 1 },
+  },
   'fixed-four': {
     id: 'fixed-four',
     name: 'Values fixed at 4',

@@ -1,0 +1,159 @@
+.match-hud {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.player-badges {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+.player-badge {
+  position: relative;
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) repeat(3, auto);
+  align-content: start;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px 7px;
+  text-align: left;
+  border: 0;
+  border-radius: 3px;
+  background: var(--surface);
+}
+.player-badge::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--health);
+  height: 3px;
+  background: #819a71;
+  transition: width 200ms ease-out;
+}
+.player-badge.active-player {
+  background: var(--raised);
+}
+.player-sigil {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 36px;
+  clip-path: polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%);
+  font:
+    20px Georgia,
+    serif;
+  color: #15221b;
+}
+.seat-0 {
+  background: #dcc58d;
+}
+.seat-1 {
+  background: #91d9c7;
+}
+.seat-2 {
+  background: #ef9c8f;
+}
+.seat-3 {
+  background: #c1c9ec;
+}
+.badge-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+}
+.badge-name small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.badge-health {
+  font:
+    22px Georgia,
+    serif;
+}
+.badge-health small,
+.badge-movement small,
+.badge-counts small {
+  display: block;
+  font:
+    11px 'Inter Variable',
+    system-ui,
+    sans-serif;
+  color: var(--muted);
+  text-align: center;
+}
+.badge-counts,
+.badge-movement {
+  flex-shrink: 0;
+  font:
+    20px Georgia,
+    serif;
+}
+.badge-allies {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.badge-ally {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.badge-ally > .character-portrait {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.badge-ally .character-portrait::before {
+  display: none;
+}
+.badge-ally .character-portrait img {
+  padding: 0;
+}
+.badge-ally strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.badge-ally small {
+  font-size: inherit;
+  font-weight: normal;
+  color: var(--muted);
+}
+.defeated-ally {
+  opacity: 0.6;
+}
+.defeated-ally > .character-portrait {
+  filter: grayscale(1);
+}
+@container (max-width: 400px) {
+  .badge-ally > .character-portrait {
+    display: none;
+  }
+}
+@container (max-width: 230px) {
+  .player-badge .badge-allies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 4px;
+  }
+  .badge-ally {
+    flex-direction: column;
+    align-items: start;
+    gap: 2px;
+  }
+}
+.eliminated {
+  opacity: 0.45;
+}

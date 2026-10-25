@@ -9,6 +9,7 @@ export type Operation =
       target: string;
       amount: number;
       reason: 'combat' | 'exhaustion' | 'ability';
+      defeated?: boolean;
       combat?: number;
       area?: number;
     }
@@ -54,7 +55,14 @@ export type Operation =
     }
   | { kind: 'area'; actor: string; defeats: number; amount: number }
   | { kind: 'maneuver-boost'; actor: string; amount: number }
-  | { kind: 'card'; actor: string; card: Card; discarded: boolean; suppressAbilities?: boolean }
+  | {
+      kind: 'card';
+      actor: string;
+      card: Card;
+      discarded: boolean;
+      suppressAbilities?: boolean;
+      returned?: boolean;
+    }
   | { kind: 'turn'; actor: string }
   | { kind: 'elimination'; actor: string; target: string; source: string };
 export interface CardProvenance {
@@ -77,12 +85,12 @@ export interface Binding {
 export type Task = (
   | ({ type: 'select-attack' } & Binding)
   | ({ type: 'replace-attack'; card: string } & Binding)
-  | ({ type: 'damage-result'; damage: number; effects: Effect[] } & Binding)
+  | ({ type: 'damage-result'; damage: number; effects: Effect[]; onDefeat?: Effect[] } & Binding)
   | ({ type: 'swap-apply'; frames: number[]; effects: Effect[] } & Binding)
   | ({ type: 'predict-value'; value: number } & Binding)
   | ({ type: 'named-value-discard'; target: string; value: number } & Binding)
   | { type: 'bonus-combat'; attacker: string; defender: string; card: Card; bonus: BonusAttack }
-  | ({ type: 'recover-card'; card: string } & Binding)
+  | ({ type: 'recover-card'; card: string; cards?: string[] } & Binding)
   | ({ type: 'search-card'; card: string; zones: ('deck' | 'discard')[] } & Binding)
   | ({ type: 'inspect-take'; cards: string[]; remaining: number; selected?: string } & Binding)
   | ({ type: 'inspect-order'; cards: string[]; ordered: string[] } & Binding)

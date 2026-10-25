@@ -18,7 +18,6 @@ import { Board, type BoardPlayback } from '../board/Board';
 import { usePresentation } from '../presentation/usePresentation';
 import { EventDialog } from '../presentation/EventDialog';
 import { Dialog } from '../ui/Dialog';
-import { Icon } from '../ui/Icon';
 import { Hand } from './Hand';
 import { AbilityChoice } from './AbilityChoice';
 import { MatchDetails } from './MatchDetails';
@@ -55,7 +54,7 @@ function instruction(game: GameView, user: User): string {
       ? `Choose ${game.hand.length - 7} cards to discard.`
       : 'Your rival is discarding to seven cards.';
   return game.players[game.turn].id === user.id
-    ? 'Choose a card or maneuver.'
+    ? ''
     : `${game.players[game.turn].name} is taking their turn.`;
 }
 export function Game({
@@ -86,18 +85,6 @@ export function Game({
     board.current!.present(event, active),
   );
   const [confirmLeave, setConfirmLeave] = useState(false);
-  const [mapExpanded, setMapExpanded] = useState(false);
-  const [mapFit, setMapFit] = useState(
-    () => !matchMedia('(max-width: 600px) and (orientation: portrait)').matches,
-  );
-  useEffect(() => {
-    if (!mapExpanded) return;
-    const close = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMapExpanded(false);
-    };
-    window.addEventListener('keydown', close);
-    return () => window.removeEventListener('keydown', close);
-  }, [mapExpanded]);
   useEffect(() => {
     setSelected([]);
     setTarget('');
@@ -190,32 +177,10 @@ export function Game({
         </div>
         <MatchDetails room={room} selfId={user.id} />
         <div className="play-surface">
-          <section
-            className={`board-panel ${mapExpanded ? 'map-expanded' : ''}`}
-            aria-label="Arena"
-          >
-            <div className="board-tools">
-              <button
-                className="icon-button"
-                aria-label={mapFit ? 'Enlarge map' : 'Fit entire map'}
-                aria-pressed={mapFit}
-                onClick={() => setMapFit(!mapFit)}
-              >
-                <Icon name={mapFit ? 'zoom-in' : 'zoom-out'} />
-              </button>
-              <button
-                className="icon-button"
-                aria-label={mapExpanded ? 'Close expanded map' : 'Expand map'}
-                aria-pressed={mapExpanded}
-                onClick={() => setMapExpanded(!mapExpanded)}
-              >
-                <Icon name={mapExpanded ? 'close' : 'fullscreen'} />
-              </button>
-            </div>
+          <section className="board-panel" aria-label="Arena">
             <ActionNotice event={presentation.event} />
             <Board
               ref={board}
-              fit={mapFit}
               game={game}
               selected={target || fighter.id}
               highlights={highlights}
@@ -223,26 +188,34 @@ export function Game({
               reset={reset}
               onNode={node}
             />
-            <div className="board-controls">
-              <FighterPicker
-                fighters={defending ? [fighter] : available}
-                selected={fighter.id}
-                disabled={defending || locked || phase.type === 'ability-choice'}
-                label={
-                  placing ? 'Deploy' : moving ? 'Move' : defending ? 'Defending' : 'Acting fighter'
-                }
-                hint={
-                  moving
-                    ? `${game.maneuver?.remaining.length} fighters left · move up to ${maneuverMovement(game, fighter, basic)}`
-                    : undefined
-                }
-                onSelect={(id) => {
-                  setSelectedFighter(id);
-                  setSelected([]);
-                  setTarget('');
-                }}
-              />
-            </div>
+            {(available.length > 1 || moving || placing || defending) && (
+              <div className="board-controls">
+                <FighterPicker
+                  fighters={defending ? [fighter] : available}
+                  selected={fighter.id}
+                  disabled={defending || locked || phase.type === 'ability-choice'}
+                  label={
+                    placing
+                      ? 'Deploy'
+                      : moving
+                        ? 'Move'
+                        : defending
+                          ? 'Defending'
+                          : 'Acting fighter'
+                  }
+                  hint={
+                    moving
+                      ? `${game.maneuver?.remaining.length} fighters left · move up to ${maneuverMovement(game, fighter, basic)}`
+                      : undefined
+                  }
+                  onSelect={(id) => {
+                    setSelectedFighter(id);
+                    setSelected([]);
+                    setTarget('');
+                  }}
+                />
+              </div>
+            )}
           </section>
           {game.observation && !choice ? (
             <section className="hand-panel" aria-label="Revealed cards">

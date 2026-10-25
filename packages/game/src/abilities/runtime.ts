@@ -58,7 +58,7 @@ export class Runtime {
       { kind: 'combat' | 'card' | 'turn' | 'elimination' | 'maneuver-boost' | 'area' }
     >,
     provenance?: CardProvenance,
-    onDamage?: { binding: Binding; effects: Effect[] },
+    onDamage?: { binding: Binding; effects: Effect[]; onDefeat?: Effect[] },
   ): void {
     const frame = this.frame(operation);
     this.data.frames[frame].provenance = provenance;
@@ -74,6 +74,7 @@ export class Runtime {
               type: 'damage-result' as const,
               damage: frame,
               effects: onDamage.effects,
+              onDefeat: onDamage.onDefeat,
             },
           ]
         : []),
@@ -104,6 +105,7 @@ export class Runtime {
   }
   dispatch(frameId: number, hook: Hook): void {
     const frame = this.data.frames[frameId];
+    if (frame.kind === 'card' && frame.returned && hook === 'card-discarded') return;
     frame.hook = hook;
     const passives: Task[] = [];
     const cards: Task[] = [];
@@ -353,7 +355,12 @@ export class Runtime {
         case 'damage-result': {
           const damage = this.data.frames[task.damage];
           if (damage?.kind === 'damage' && damage.amount > 0)
-            this.prepend(...this.effects(task.effects, { ...task, frame: task.damage }));
+            this.prepend(
+              ...this.effects(
+                [...task.effects, ...(damage.defeated ? (task.onDefeat ?? []) : [])],
+                { ...task, frame: task.damage },
+              ),
+            );
           break;
         }
         case 'swap-apply':

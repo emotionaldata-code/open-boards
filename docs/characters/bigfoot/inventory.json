@@ -1,0 +1,225 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/bigfoot",
+  "retrievedAt": "2026-10-25T21:22:17.024Z",
+  "heroes": [
+    {
+      "attack_type": "melee",
+      "hp": 16,
+      "name": "Bigfoot",
+      "quantity": 1,
+      "slug": "bigfoot"
+    }
+  ],
+  "sidekicks": [
+    {
+      "attack_type": "melee",
+      "hp": 6,
+      "name": "The Jackalope",
+      "quantity": 1,
+      "slug": "the-jackalope"
+    }
+  ],
+  "movement": 3,
+  "special": "LONER BY NATURE\r\nAt the end of your turn, if there are no opposing fighters in Bigfoot's zone, you may draw 1 card.",
+  "notes": null,
+  "designs": 11,
+  "totalCopies": 30,
+  "cards": [
+    {
+      "id": "bigfoot-skirmish",
+      "name": "Skirmish",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "boost": 1,
+      "sourceValue": 4,
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/skirmish.png"
+    },
+    {
+      "id": "bigfoot-larger-than-life",
+      "name": "Larger Than Life",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 6,
+      "boost": 3,
+      "sourceValue": 6,
+      "sourceRules": {},
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/larger-than-life.png"
+    },
+    {
+      "id": "bigfoot-crash-through-the-trees",
+      "name": "Crash Through the Trees",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "sourceValue": 2,
+      "sourceRules": {
+        "basicText": "Move Bigfoot up to 5 spaces. You may move Bigfoot through spaces containing opposing fighters."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/crash-through-the-trees.png"
+    },
+    {
+      "id": "bigfoot-it-s-just-your-imagination",
+      "name": "It's Just Your Imagination",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "defense",
+      "value": 3,
+      "boost": 3,
+      "sourceValue": 3,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/it-s-just-your-imagination.png"
+    },
+    {
+      "id": "bigfoot-savagery",
+      "name": "Savagery",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "boost": 3,
+      "sourceValue": 4,
+      "sourceRules": {
+        "afterText": "If you won the combat, deal 1 damage to each fighter adjacent to Bigfoot."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/savagery.png"
+    },
+    {
+      "id": "bigfoot-hoax",
+      "name": "Hoax",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "boost": 2,
+      "sourceValue": 4,
+      "sourceRules": {
+        "afterText": "Move your fighter up to 5 spaces. You may move that fighter through spaces containing opposing fighters."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/hoax.png"
+    },
+    {
+      "id": "bigfoot-jackalope-horns",
+      "name": "Jackalope Horns",
+      "count": 3,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "sourceValue": 2,
+      "sourceRules": {
+        "basicText": "Move the Jackalope up to 5 spaces. You may move the Jackalope through spaces containing opposing fighters. Then deal 2 damage to any one fighter adjacent to the Jackalope."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/jackalope-horns.png"
+    },
+    {
+      "id": "bigfoot-disengage",
+      "name": "Disengage",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 4,
+      "boost": 2,
+      "sourceValue": 4,
+      "sourceRules": {
+        "afterText": "Choose an empty space in this fighter's zone. Place this fighter in that space."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/disengage.png"
+    },
+    {
+      "id": "bigfoot-momentous-shift",
+      "name": "Momentous Shift",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "sourceValue": 3,
+      "sourceRules": {
+        "duringText": "If your fighter started this turn in a different space, this card's value is 5 instead."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/momentous-shift.png"
+    },
+    {
+      "id": "bigfoot-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 2,
+      "sourceValue": 2,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/feint.png"
+    },
+    {
+      "id": "bigfoot-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 1,
+      "boost": 2,
+      "sourceValue": 1,
+      "sourceRules": {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bigfoot/regroup.png"
+    }
+  ]
+}

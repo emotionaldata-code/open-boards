@@ -1,0 +1,316 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/bruce-lee",
+  "apiUrl": "https://unmatched.cards/api/db/decks/bruce-lee",
+  "retrievedAt": "2026-10-25T21:24:45.087Z",
+  "name": "Bruce Lee",
+  "slug": "bruce-lee",
+  "set": "Muhammad Ali vs Bruce Lee",
+  "setSlug": "ali-vs-lee",
+  "heroes": [
+    {
+      "attack_type": "melee",
+      "hp": 14,
+      "name": "Bruce Lee",
+      "quantity": 1,
+      "slug": "bruce-lee"
+    }
+  ],
+  "sidekicks": [],
+  "movement": 3,
+  "special": "At the end of your turn, you may move Bruce Lee 1 space.",
+  "notes": null,
+  "cards": [
+    {
+      "id": "bruce-lee-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "count": 3,
+      "sourceValue": 4,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/skirmish.png"
+    },
+    {
+      "id": "bruce-lee-little-dragon",
+      "name": "Little Dragon",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 3,
+      "count": 2,
+      "sourceValue": 2,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "duringText": "If your hand is empty, the value of this card is 6 instead.",
+        "afterText": "Draw 2 cards."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/little-dragon.png"
+    },
+    {
+      "id": "bruce-lee-taste-of-blood",
+      "name": "Taste of Blood",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "If Bruce Lee has 5 or less health, draw 3 cards."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/taste-of-blood.png"
+    },
+    {
+      "id": "bruce-lee-be-like-water",
+      "name": "Be Like Water",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 4,
+      "count": 4,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "Choose a JEET KUNE DO card in your discard pile and add it to your hand."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/be-like-water.png"
+    },
+    {
+      "id": "bruce-lee-hoo-whaaaaaa",
+      "name": "\"HOO! WHAAAAAA!\"",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 1,
+      "sourceValue": 2,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "basicText": "Choose a JEET KUNE DO card in your discard pile and add it to your hand. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/hoo-whaaaaaaa.png"
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-high-straight-lead",
+      "name": "Jeet Kune Do: High Straight Lead",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "duringText": "If either fighter started this turn in a different space, this card's value is 5 instead.",
+        "afterText": "Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/jeet-kune-do-high-straight-lead.png"
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-downward-side-kick",
+      "name": "Jeet Kune Do: Downward Side Kick",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "Your opponent discards 1 random card. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/jeet-kune-do-downward-side-kick.png"
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-wrist-lock",
+      "name": "Jeet Kune Do: Wrist Lock",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "Draw 1 card. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/jeet-kune-do-wrist-lock.png"
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-intercepting-fist",
+      "name": "Jeet Kune Do: Intercepting Fist",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card.",
+        "afterText": "Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/jeet-kune-do-intercepting-fist.png"
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+      "name": "Jeet Kune Do: Corkscrew Finger Jab",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "Deal 1 damage to the opposing fighter. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/jeet-kune-do-corkscrew-finger-jab.png"
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-short-lead-hook",
+      "name": "Jeet Kune Do: Short Lead Hook",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 1,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "Bruce Lee may swap spaces with the opposing fighter. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/jeet-kune-do-short-lead-hook.png"
+    },
+    {
+      "id": "bruce-lee-bring-it-on",
+      "name": "Bring It On",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 1,
+      "sourceValue": 2,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "basicText": "Choose an opposing fighter in Bruce Lee's zone. Place them in any space adjacent to Bruce Lee. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/bring-it-on.png"
+    },
+    {
+      "id": "bruce-lee-one-inch-punch",
+      "name": "One-Inch Punch",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 1,
+      "sourceValue": 2,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "basicText": "Deal 2 damage to an adjacent fighter. If this defeats that fighter, return this card to your hand instead of discarding it."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/one-inch-punch.png"
+    },
+    {
+      "id": "bruce-lee-nunchaku",
+      "name": "Nunchaku",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "sourceValue": 2,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "basicText": "All of Bruce Lee's attacks this turn are +1 value. Gain 1 action."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/nunchaku.png"
+    },
+    {
+      "id": "bruce-lee-momentous-shift",
+      "name": "Momentous Shift",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "sourceValue": 3,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "duringText": "If your fighter started this turn in a different space, this card's value is 5 instead."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/momentous-shift.png"
+    },
+    {
+      "id": "bruce-lee-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "sourceValue": 2,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/feint.png"
+    },
+    {
+      "id": "bruce-lee-regroup",
+      "name": "Regroup",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 1,
+      "boost": 2,
+      "count": 3,
+      "sourceValue": 1,
+      "sourceUser": "ANY",
+      "sourceRules": {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead."
+      },
+      "cardNotes": null,
+      "deckCardNotes": null,
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/bruce-lee/regroup.png"
+    }
+  ]
+}

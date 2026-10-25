@@ -60,7 +60,6 @@
 .event-participant .printed-card {
   border: 0;
   border-radius: 0;
-  background: var(--raised);
   animation: reveal-card 200ms ease-out;
 }
 .event-participant .card-description {

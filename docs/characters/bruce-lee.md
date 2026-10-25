@@ -1,0 +1,40 @@
+# Bruce Lee import
+
+Source: [UmDb Bruce Lee](https://unmatched.cards/umdb/decks/bruce-lee), public JSON [endpoint](https://unmatched.cards/api/db/decks/bruce-lee), retrieved **2026-10-25**. The endpoint identifies the current set as **Muhammad Ali vs Bruce Lee** (`ali-vs-lee`), and supplies no deck/card clarifications. The complete maintained [inventory](bruce-lee/inventory.json) records all source clauses, quantities, tags, explicit BOOSTs and original image URLs. The unmodified retrieval snapshot was audited in temporary storage.
+
+Bruce Lee has 14 HP, movement 3, melee attacks and no allies. All 30 copies across 17 designs retain their source `ANY` restriction as `BOTH`. Six individually named Jeet Kune Do attacks are one copy each. Source schemes carry an unused numeric value of 2; Open Boards action cards normalize this to 0, retaining their separate printed BOOST of 3. This follows existing action-card conventions, and the original source value remains in the inventory.
+
+| Source rule/design      | Declarative mapping                                                                                                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| End-of-turn special     | `turn-end` → `move` 1, with a destination or Stay before hand-limit/turn change.                                                                                                |
+| Skirmish ×3             | Value 4 / BOOST 1; winning `after-combat` choice of self/opponent, then movement up to 2.                                                                                       |
+| Little Dragon ×2        | Value 2 / BOOST 3; `before-combat` printed value 6 if the remaining hand is empty; draw 2 after combat.                                                                         |
+| Taste of Blood ×1       | Defense 3 / BOOST 3; after combat, draw 3 if Bruce Lee's current HP is at most 5.                                                                                               |
+| Be Like Water ×4        | Defense 3 / BOOST 4; privately recover a prior discarded instance from the six explicit Jeet Kune Do definitions.                                                               |
+| “HOO! WHAAAAAA!” ×1     | Same filtered recovery, then gain an action even if there is nothing eligible.                                                                                                  |
+| High Straight Lead ×1   | Attack 3 / BOOST 3; printed value 5 if either exact combatant differs from its turn-start space; after combat gain an action.                                                   |
+| Downward Side Kick ×1   | Attack 3 / BOOST 2; after combat, seeded random discard for the opposing fighter's owner, then gain an action.                                                                  |
+| Wrist Lock ×1           | Attack 3 / BOOST 2; after combat draw 1, then gain an action.                                                                                                                   |
+| Intercepting Fist ×1    | Attack 3 / BOOST 2; immediate opposing-card suppression, after combat gain an action. Defender-first Feint can cancel both clauses.                                             |
+| Corkscrew Finger Jab ×1 | Attack 3 / BOOST 2; after combat deal 1 to the exact opposing fighter, then gain an action.                                                                                     |
+| Short Lead Hook ×1      | Attack 3 / BOOST 3; optional atomic self/opponent exchange, then gain an action regardless of exchange.                                                                         |
+| Bring It On ×1          | Choose an enemy fighter in the main fighter's zone; mandatory placement on any free adjacent space, including its own current space when already adjacent; then gain an action. |
+| One-Inch Punch ×1       | Choose any adjacent fighter, including a friendly piece; deal 2. Direct `onDefeat` returns this exact resolving action instance instead of firing discard hooks.                |
+| Nunchaku ×2             | Add a stack of `attack-up` for one turn; gain an action. Both copies stack, affect only attack values and retain their bonus alongside printed-value replacement.               |
+| Momentous Shift ×3      | Value 3 / BOOST 1; own changed turn-start position replaces printed value with 5 in either combat role.                                                                         |
+| Feint ×3                | Value 2 / BOOST 2; immediate exact opposing-card suppression.                                                                                                                   |
+| Regroup ×3              | Value 1 / BOOST 2; draw 1 after combat, or 2 if the acting fighter won.                                                                                                         |
+
+All after-combat action grants occur even when the attack loses, unless the card was cancelled. Player-wide draw/discard/action changes resolve through the playing fighter's owner. Damage and movement retain exact fighter identity, including opposing allies. Source cancellation preserves printed combat values and already-resolved effects. Empty recovery/target selections resolve without inventing optional skips; mandatory action grants still run.
+
+No printed clause is unsupported or intentionally omitted. Shared Open Boards conventions still apply: five-card initial hands, two actions, seven-card end-of-turn hand limit, exhaustion without reshuffling, free defense, the current board's movement-only portals, and effectless bonus attacks where other imported characters grant them. These conventions are distinct from claiming full physical Unmatched rules compatibility. No balance adaptation was requested or applied.
+
+## Artwork provenance
+
+All delivered artwork is original code-authored vector art in the repository's cut-paper style. Seventeen distinct 320×200 compositions live at `apps/client/public/cards/bruce-lee/<source-slug>.svg`, with subjects including distinct strike stances, a dragon, flowing water, crossed wrists, a close-range punch and swinging nunchaku. The single Bruce Lee figure in `apps/client/src/characters/art.ts` uses a visible owner-colored sash in all four seat colors and renders as both portrait and board miniature. There are no allies to illustrate.
+
+Source card scans were inspected to establish subjects and rules, including One-Inch Punch and High Straight Lead. Published scans are not redistributed, traced or hotlinked. Assets contain no scripts, external references or embedded rule text. Bundle palettes, image references, presentation marks and roster flavor stay outside engine Definitions.
+
+## Verification
+
+Focused tests cover the complete source inventory, each Jeet Kune Do technique and cancellation, private filtered recovery, atomic choices without mutation, JSON/reconnect recovery, direct versus reaction defeats, prevention, exact source-card return without discard/draw hooks, stacking/expiry of Nunchaku, values, targets and the optional end step. The roster deployment test retains full ally counts in every supported two/four-seat combination containing Bruce Lee. Room tests exercise recovery, placement, punch selection, optional exchange and end-step reconnects. The complete unit/integration run passes **539 tests in 42 files**, including 43 Bruce Lee content cases, five room cases and six neutral engine cases. Typecheck, lint, repository-wide formatting and both production builds pass. All six focused browser scenarios pass (four deterministic flows, roster/gallery and a four-seat real-socket match), with desktop/phone, reduced/full motion, keyboard/touch and reload coverage. See [the verification record](../verification.md#bruce-lee-import-2026-10-25) for artifacts and wider-suite results.

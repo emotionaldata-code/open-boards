@@ -91,7 +91,7 @@ export function App() {
         </a>
         <div className="topbar-right">
           <SoundButton />
-          <FullscreenButton />
+          {!room?.game && <FullscreenButton />}
           {user && !room?.game ? (
             <>
               <span className="muted">{user.name}</span>

@@ -13,7 +13,7 @@ import { offerAttackBoost } from './attack-boost';
 import { setCombatValue, modifyCombatValue } from './combat-values';
 import { offerDiscard } from './discard';
 
-import { inspectDeck, searchCard, recoverCard } from './deck';
+import { inspectDeck, searchCard, recoverCard, returnPlayedCard } from './deck';
 import { inspectHand, nameValue, predictValue } from './hand';
 import { swapFighters } from './swap';
 import { chooseArea } from './area';
@@ -61,8 +61,11 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
     case 'replace-defender':
       replaceDefender(runtime, task);
       break;
+    case 'return-played-card':
+      returnPlayedCard(runtime, task);
+      break;
     case 'recover-card':
-      recoverCard(runtime, task);
+      recoverCard(runtime, task, e);
       break;
     case 'search-card':
       searchCard(runtime, task, e);
@@ -102,11 +105,13 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         ),
       );
       break;
-    case 'choose-option':
+    case 'choose-option': {
+      const chooser = reference(state, task, e.chooser);
+      if (!chooser) break;
       openChoice(
         runtime,
         task.frame,
-        owner.player,
+        chooser.player,
         e.prompt,
         e.options.map((o) => ({ ...o, tasks: runtime.effects(o.effects, task) })),
         1,
@@ -114,6 +119,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         task.provenance,
       );
       break;
+    }
     case 'choose-player':
     case 'choose-fighter': {
       const fighters = (
@@ -214,7 +220,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
               reason: 'ability',
             },
             task.provenance,
-            { binding: task, effects: e.onDamage ?? [] },
+            { binding: task, effects: e.onDamage ?? [], onDefeat: e.onDefeat },
           );
           break;
         case 'heal':

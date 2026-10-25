@@ -1,6 +1,17 @@
 /** Original, code-native cut-paper miniatures. The same SVG paths render in React and Pixi. */
 const gold = '#d8b77d';
 const artwork: Record<string, (seat: string) => string> = {
+  'bruce-lee': (seat) =>
+    `<path d="M-13-56 -24-21 -48-5 -44 3 -14-7 3-35 18-17 45-20 45-29 25-29 14-61Z" fill="#252d2b"/><path d="M-14-100 10-100 20-63 4-48 -19-62Z" fill="#c49b70"/><path d="M-13-96 -37-112 -56-104 -61-113 -36-125 -6-110 M9-99 32-113 55-111 55-101 36-102 18-84Z" fill="#c49b70"/><path d="M-9-125 6-127 15-114 4-99 -9-105 -15-116Z" fill="#c49b70"/><path d="M-17-119 -16-136 -3-146 13-140 18-123 7-131 -3-126 -12-115Z" fill="#252d2b"/><path d="M-20-64 18-67 21-57 -17-53Z" fill="${seat}"/><path d="M8-57 31-48 24-41 6-49Z" fill="${seat}"/><path d="M-5-116H1 M7-117H12 M-7-78 2-84 12-79" fill="none" stroke="#98614b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+  'robin-hood': (seat) =>
+    `<path d="M-23-93 14-89 28-26 7-19 -17-27 -43-11 -32-65Z" fill="#293c30"/><path d="M-20-85 13-85 21-42 -22-42Z" fill="${seat}"/><path d="M-19-43 -5-42 -10-8 -27 3 -34-2 -21-17 M4-42 18-42 25-14 39-5 36 2 15-4Z" fill="#684b35"/><path d="M-12-116 12-115 17-95 4-82 -12-92Z" fill="#c9a37a"/><path d="M-25-111 -14-134 8-145 23-112 2-119Z" fill="#4f6b48"/><path d="M-28-113 28-111 19-104 -20-105Z" fill="#293c30"/><path d="M5-134 22-153 30-149 16-130Z" fill="#d6ad68"/><path d="M-13-96 -4-89 8-91 2-80Z" fill="#684b35"/><path d="M-19-79 -42-58 -49-63 -27-93 M14-78 36-69 44-80" fill="none" stroke="#c9a37a" stroke-width="9"/><path d="M39-126Q74-76 40-24 M39-126 40-24" fill="none" stroke="#d6ad68" stroke-width="4"/><path d="M-10-72H66 M57-78 68-72 57-66" fill="none" stroke="#e6d8b4" stroke-width="3"/><path d="M-23-49 20-52 M-18-80 16-55" stroke="#684b35" stroke-width="5"/>`,
+  'robin-hood-outlaw': (seat) =>
+    `<path d="M-23-81 20-81 34-19 -32-19Z" fill="#4f6b48"/><path d="M-15-77 13-77 18-36 -20-36Z" fill="${seat}"/><path d="M-17-23 -4-23 -9-2 -30 2 -30-5 -20-10 M6-23 20-23 21-8 33-4 31 2 10 1Z" fill="#684b35"/><path d="M-14-111 13-111 18-91 4-78 -12-88Z" fill="#c9a37a"/><path d="M-25-106 -22-125 -4-142 17-134 27-105 12-115 -13-114Z" fill="#293c30"/><path d="M-10-104 10-104 M-10-93 4-89 14-95" fill="none" stroke="#684b35" stroke-width="4"/><path d="M-23-75 -39-51 -50-60 M22-76 39-53 49-63" fill="none" stroke="#c9a37a" stroke-width="10"/><path d="M-55-113 53-22" stroke="#d6ad68" stroke-width="7"/><path d="M39-120 39-75 59-85 63-107Z" fill="#b5bca0"/><path d="M39-120V-5" stroke="#684b35" stroke-width="6"/><path d="M-24-32H26" stroke="#684b35" stroke-width="6"/>`,
+
+  bigfoot: (seat) =>
+    `<path d="M-31-93 -47-72 -60-30 -47-21 -28-54 -26-27 -32-4 -5-2 0-28 8-4 36-2 27-34 29-56 48-24 63-33 47-77 27-95Z" fill="#685543"/><path d="M-24-88 -11-103 13-105 30-87 24-43 10-33 -14-36 -28-55Z" fill="#947758"/><path d="M-20-112 -23-132 -10-147 9-151 27-134 29-112 13-95 -9-96Z" fill="#685543"/><path d="M-14-124 14-126 20-112 9-101 -8-103 -20-113Z" fill="#b39a75"/><path d="M-11-121H-3 M7-122H14 M-3-110H8" stroke="#26382e" stroke-width="3"/><path d="M-31-82 24-65 29-76 -25-95Z" fill="${seat}"/><path d="M-47-24 -59-16 -48-11 -34-22 M46-27 59-18 47-13 35-24 M-31-4 -42 4 -3 4 -5-6 M8-5 8 4 47 4 34-6Z" fill="#b39a75"/><path d="M-24-68 -17-58 M-5-76 3-62 M15-58 21-48" stroke="#685543" stroke-width="4"/>`,
+  'bigfoot-jackalope': (seat) =>
+    `<path d="M-31-29Q-48-59-22-78L4-70 24-41 44-26 32-13 2-17 -17-11Z" fill="#9d8361"/><path d="M-23-72 -25-105 -15-120 -4-83 10-113 18-116 15-72Z" fill="#bfa780"/><path d="M-17-78 -33-102 -35-134 M-33-109 -50-119 -54-135 M-34-122 -21-137 M10-78 32-105 37-139 M32-111 50-123 53-139 M35-126 22-140" fill="none" stroke="#c6c6a1" stroke-width="5" stroke-linejoin="round"/><path d="M-22-77 9-80 23-63 12-49 -16-52 -29-64Z" fill="#c7af88"/><path d="M14-62 24-59 18-55Z" fill="#2c3c32"/><circle cx="3" cy="-68" r="3" fill="#2c3c32"/><path d="M-22-52 14-48 15-40 -24-44Z" fill="${seat}"/><path d="M-27-31 -45-7 -14-4 -5-13 M6-27 25-6 48-5 41-13 24-19Z" fill="#c7af88"/><path d="M-32-42 -48-48 -51-35 -36-27Z" fill="#e0d5b4"/>`,
   dracula: (seat) =>
     `<path d="M-20-86 -48-116 -34-65 -61-5 -12-15 0-5 15-16 62-5 35-65 49-116 19-86Z" fill="#302535"/><path d="M-22-82 22-82 29-17 -24-17Z" fill="${seat}"/><path d="M-12-78 12-78 5-24 -6-24Z" fill="#eee0c1"/><path d="M-13-18 -15 3 -33 3 -27-19 M10-18 14 3 33 3 26-19Z" fill="#171b24"/><path d="M-15-116 13-116 19-94 1-78 -16-94Z" fill="#d4bcb2"/><path d="M-20-112 -15-137 5-144 23-128 22-105 11-123 0-116 -10-125Z" fill="#171b24"/><path d="M-10-104H-3 M6-104H13" stroke="#ba716f" stroke-width="3"/><path d="M-4-91 2-87 7-93" fill="none" stroke="#ba716f" stroke-width="2"/><path d="M-24-76 -40-46 -49-59 -46-72 -36-80 M25-76 40-48 49-59 46-72 36-80Z" fill="#d4bcb2"/><path d="M-12-82 0-72 13-82 9-65 -8-65Z" fill="#ba716f"/>`,
   'dracula-sister': (seat) =>
@@ -28,6 +39,8 @@ const artwork: Record<string, (seat: string) => string> = {
 };
 export const illustratedCharacters = Object.keys(artwork).filter(
   (id) =>
+    id !== 'bigfoot-jackalope' &&
+    id !== 'robin-hood-outlaw' &&
     id !== 'dracula-sister' &&
     id !== 'medusa-harpy' &&
     id !== 'king-arthur-merlin' &&

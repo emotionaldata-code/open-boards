@@ -1,0 +1,443 @@
+{
+  "id": "robin-hood",
+  "name": "Robin Hood",
+  "hp": 13,
+  "movement": 2,
+  "attackType": "ranged",
+  "abilities": [
+    {
+      "id": "hit-and-run",
+      "name": "Hit and Run",
+      "description": "After you attack, you may move your attacking fighter up to 2 spaces.",
+      "trigger": "after-attack",
+      "effects": [
+        {
+          "type": "move",
+          "distance": 2
+        }
+      ]
+    }
+  ],
+  "ally": {
+    "id": "robin-hood-outlaw",
+    "name": "Outlaw",
+    "count": 4,
+    "hp": 1,
+    "attackType": "melee",
+    "abilities": [
+      {
+        "id": "hit-and-run",
+        "name": "Hit and Run",
+        "description": "After you attack, you may move your attacking fighter up to 2 spaces.",
+        "trigger": "after-attack",
+        "effects": [
+          {
+            "type": "move",
+            "distance": 2
+          }
+        ]
+      }
+    ]
+  },
+  "palette": {
+    "ground": "#293c30",
+    "ink": "#ced4ac",
+    "accent": "#d6ad68"
+  },
+  "cards": [
+    {
+      "id": "robin-hood-ambush",
+      "name": "Ambush",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 2,
+      "boost": 3,
+      "description": "During combat: Your opponent discards 1 random card. Add its BOOST value to this card's attack value.",
+      "abilities": [
+        {
+          "id": "ambush",
+          "name": "Ambush",
+          "description": "During combat: Your opponent discards 1 random card. Add its BOOST value to this card's attack value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "random": true,
+              "count": 1,
+              "combatBonus": {
+                "field": "attack",
+                "per": "boost"
+              }
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "trail",
+        "image": "/cards/robin-hood/ambush.svg"
+      },
+      "flavor": "The greenwood holds its breath."
+    },
+    {
+      "id": "robin-hood-a-hunter-s-eye",
+      "name": "A Hunter's Eye",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 5,
+      "boost": 4,
+      "description": "Attack with value 5.",
+      "art": {
+        "scene": "bolt",
+        "image": "/cards/robin-hood/a-hunter-s-eye.svg"
+      },
+      "flavor": "One feather. One opening."
+    },
+    {
+      "id": "robin-hood-steal-from-the-rich",
+      "name": "Steal From the Rich",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "description": "Draw 1 card, then choose an opponent. They may choose to discard 1 card. If they do not, draw 1 more card.",
+      "effects": [
+        {
+          "type": "draw",
+          "count": 1
+        },
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "hand",
+                  "of": "chosen"
+                },
+                "op": "gt",
+                "right": 0
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "chooser": "chosen",
+                  "prompt": "Steal From the Rich: discard a card or let Robin Hood draw?",
+                  "options": [
+                    {
+                      "id": "discard",
+                      "label": "Discard 1 card",
+                      "effects": [
+                        {
+                          "type": "discard",
+                          "target": "chosen",
+                          "count": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "draw",
+                      "label": "Let Robin Hood draw 1 card",
+                      "effects": [
+                        {
+                          "type": "draw",
+                          "count": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "map",
+        "image": "/cards/robin-hood/steal-from-the-rich.svg"
+      },
+      "flavor": "A lighter purse, a fuller table."
+    },
+    {
+      "id": "robin-hood-disarming-shot",
+      "name": "Disarming Shot",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "boost": 3,
+      "description": "After combat: Draw a number of cards equal to the amount of damage dealt to the opposing fighter.",
+      "abilities": [
+        {
+          "id": "disarming-shot",
+          "name": "Disarming Shot",
+          "description": "After combat: Draw a number of cards equal to the amount of damage dealt to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": {
+                "event": "amount"
+              }
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "bolt",
+        "image": "/cards/robin-hood/disarming-shot.svg"
+      },
+      "flavor": "The sword falls before its master."
+    },
+    {
+      "id": "robin-hood-piercing-shot",
+      "name": "Piercing Shot",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "boost": 3,
+      "description": "After combat: Draw 2 cards.",
+      "abilities": [
+        {
+          "id": "piercing-shot",
+          "name": "Piercing Shot",
+          "description": "After combat: Draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "bolt",
+        "image": "/cards/robin-hood/piercing-shot.svg"
+      },
+      "flavor": "An arrow finds the seam."
+    },
+    {
+      "id": "robin-hood-defenders-of-sherwood",
+      "name": "Defenders of Sherwood",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "defense",
+      "value": 3,
+      "boost": 2,
+      "description": "After combat: Draw 1 card. Return a defeated Outlaw (if any) to any space in Robin Hood's zone.",
+      "abilities": [
+        {
+          "id": "defenders-of-sherwood",
+          "name": "Defenders of Sherwood",
+          "description": "After combat: Draw 1 card. Return a defeated Outlaw (if any) to any space in Robin Hood's zone.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 1
+            },
+            {
+              "type": "revive-ally",
+              "anchor": "main"
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "shield",
+        "image": "/cards/robin-hood/defenders-of-sherwood.svg"
+      },
+      "flavor": "Sherwood never stands alone."
+    },
+    {
+      "id": "robin-hood-highway-robbery",
+      "name": "Highway Robbery",
+      "count": 4,
+      "usableBy": "ALLY",
+      "category": "attack",
+      "value": 2,
+      "boost": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card and ignore its defense value.",
+      "abilities": [
+        {
+          "id": "highway-robbery",
+          "name": "Highway Robbery",
+          "description": "Immediately: Cancel all effects on your opponent's card and ignore its defense value.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            },
+            {
+              "type": "ignore-combat-value",
+              "target": "opponent"
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "blade",
+        "image": "/cards/robin-hood/highway-robbery.svg"
+      },
+      "flavor": "The toll goes to the hungry."
+    },
+    {
+      "id": "robin-hood-snark",
+      "name": "Snark",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "After combat: If your fighter is adjacent to the opposing fighter, draw 1 card.",
+      "abilities": [
+        {
+          "id": "snark",
+          "name": "Snark",
+          "description": "After combat: If your fighter is adjacent to the opposing fighter, draw 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ],
+          "when": {
+            "type": "relation",
+            "relation": "adjacent",
+            "a": "self",
+            "b": "opponent"
+          }
+        }
+      ],
+      "art": {
+        "scene": "ward",
+        "image": "/cards/robin-hood/snark.svg"
+      },
+      "flavor": "A sharp tongue buys a heartbeat."
+    },
+    {
+      "id": "robin-hood-wily-fighting",
+      "name": "Wily Fighting",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "After combat: Deal 1 damage to each opposing fighter adjacent to your fighter.",
+      "abilities": [
+        {
+          "id": "wily-fighting",
+          "name": "Wily Fighting",
+          "description": "After combat: Deal 1 damage to each opposing fighter adjacent to your fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "for-each-fighter",
+              "relation": "enemy",
+              "range": "adjacent",
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "chosen",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "blade",
+        "image": "/cards/robin-hood/wily-fighting.svg"
+      },
+      "flavor": "Oak and shadow fight beside us."
+    },
+    {
+      "id": "robin-hood-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "ward",
+        "image": "/cards/robin-hood/feint.svg"
+      },
+      "flavor": "Watch the hand without the arrow."
+    },
+    {
+      "id": "robin-hood-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 1,
+      "boost": 2,
+      "description": "After combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "abilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "After combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "lantern",
+        "image": "/cards/robin-hood/regroup.svg"
+      },
+      "flavor": "Meet again beneath the great oak."
+    }
+  ]
+}

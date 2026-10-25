@@ -16,7 +16,9 @@ pnpm dev
 
 Open **http://localhost:5173**. Register an account, create a two- or four-seat room, and copy its invite link. Other players need separate browser profiles or private windows so each has their own account cookie. Everyone readies up; the creator starts the match. Reloading an active match restores the saved seat from that tab's session storage.
 
-Play in portrait or landscape. On portrait phones, swipe the map to pan; use the map controls to fit the whole board or expand it. Landscape keeps your hand beside the map, with cards below it on larger screens. Swipe your hand to browse cards; their special effects are printed in full. Use the fullscreen button when your browser supports it. Tap player badges for health, abilities, counters, statuses and discards. How to play is available on the login page.
+Play in portrait or landscape. The whole map fits on screen automatically, with no panning or zoom controls. Landscape keeps your hand beside the map, with cards below it on larger screens. Swipe your hand to browse cards; their special effects are printed in full. Outside a match, the fullscreen button is available when your browser supports it. Tap player badges for health, abilities, counters, statuses and discards. How to play is available on the login page.
+
+Cards use translucent red for attacks, blue for defenses, violet for both and yellow for actions. Playable cards expand for the acting fighter or defender; the others stay in compact stacks alongside them. Tap a compact card to read it. Boosting and discarding offer the full hand.
 
 Vite proxies HTTP and WebSockets to port 2567, preserving the browser's same origin. Keep `APP_ORIGIN` equal to the exact browser origin. LAN play needs this set to the LAN URL, then a server restart. Never commit `.env`.
 
@@ -75,7 +77,7 @@ Start with five cards and your character’s health; keep at most seven cards at
 
 King Solomon’s Mine, from Unmatched: Houdini vs. The Genie, has 29 spaces and seven colored zones: Gold, Yellow, Red, Blue, Brown, Gray and Green. Its paths, zones, secret passages and two-player starts follow the [printed board](https://www.the-unmatched.club/maps/king-solomons-mine). Four-player matches use two additional custom starting positions. Melee characters attack adjacent rivals. Ranged characters also attack rivals sharing any color with its space. Multicolor spaces belong to every shown color; sharing is direct, never chained through other spaces. Adjacent attacks work across zone boundaries. Occupied spaces block movement, but never ranged attacks.
 
-Six diamond-marked portals represent the board’s secret passages and connect to one another for movement only. Enter a portal normally, then spend one movement point to reach any other unoccupied portal; continue moving if points remain. Portals never extend attack range and cannot be used by pushes or pulls. Fit view shows the entire board; detail view allows panning for larger spaces on phones.
+Six diamond-marked portals represent the board’s secret passages and connect to one another for movement only. Enter a portal normally, then spend one movement point to reach any other unoccupied portal; continue moving if points remain. Portals never extend attack range and cannot be used by pushes or pulls. Desktop and phones show the whole board; legal spaces have touch targets at least 44 pixels across.
 
 Each turn has two actions. Maneuver spends one action, draws one card, then lets you move up to your character’s movement in unoccupied edges or stay. Attack with an attack or versatile card; the defender may use a defense or versatile card for free, or decline. The attack remains hidden until the defense decision. Reveal, deal `max(0, attack − defense)` damage, and discard the committed cards. Action cards spend one action and resolve their printed effects in order. You may end your turn early. Resolve movement, defense, abilities and required discards before anything else.
 

@@ -59,3 +59,15 @@ Achilles is playable with **30 cards across 12 designs**, 18 HP, movement 2 and 
 ## Dracula
 
 Dracula is playable with **30 cards across 13 designs**, 13 HP, movement 2 and **three 1-HP melee Sisters**. Bloodthirsty can feed on an adjacent friendly or enemy fighter before drawing. His deck preserves every printed BOOST, restriction and timed clause, including private attack replacement, Beastform’s hand payment, Sister-based bonuses, feeding, revival and exact fighter placement. The [source inventory](characters/dracula/inventory.json) and [import notes](characters/dracula.md) document reusable rules, shared game conventions and thirteen original illustrations plus distinct owner-colored figures.
+
+## Bigfoot
+
+Bigfoot is playable with **30 cards across 11 designs**, 16 HP, movement 3 and one **6-HP melee Jackalope**. Loner by Nature optionally draws at the end of his turn when his zone has no opposing fighters. The deck combines powerful attacks, cancellation, movement through enemies, placement and adjacent damage that can also hit friendly fighters. All printed BOOSTs, restrictions and timed rules are preserved using existing capabilities. The [source inventory](characters/bigfoot/inventory.json) and [import notes](characters/bigfoot.md) document every clause and eleven original illustrations plus distinct owner-colored figures.
+
+## Robin Hood
+
+Robin Hood is playable with **30 cards across 11 designs**, 13 HP, movement 2, ranged attacks and **four 1-HP melee Outlaws**. Each attacking fighter can retreat up to 2 spaces after its card effects finish. His deck includes delegated opponent discard decisions, damage-based draws, immediate defense ignoring and numbered Outlaw revival in Robin's zone. The [source inventory](characters/robin-hood/inventory.json) and [import notes](characters/robin-hood.md) record every printed clause, shared game conventions and original artwork.
+
+## Bruce Lee
+
+Bruce Lee is playable with **30 cards across 17 designs**, 14 HP, movement 3 and melee attacks, without allies. His optional end step moves him one space; six Jeet Kune Do techniques refund actions, and his recovery cards select only those techniques. Nunchaku bonuses stack for the current turn, and One-Inch Punch returns its exact played instance only when its own damage defeats a fighter. The [source inventory](characters/bruce-lee/inventory.json) and [import notes](characters/bruce-lee.md) record every printed clause, shared rule semantics and seventeen original illustrations plus the owner-colored figure.

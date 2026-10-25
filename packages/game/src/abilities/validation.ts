@@ -85,6 +85,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       target: ref.optional(),
       amount: z.union([count, expression]),
       onDamage: effects().optional(),
+      onDefeat: effects().optional(),
     }),
     z.strictObject({
       type: z.literal('heal'),
@@ -173,7 +174,11 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     }),
     z.strictObject({ type: z.literal('replace-defender'), target: ref }),
     z.strictObject({ type: z.literal('replace-attack') }),
-    z.strictObject({ type: z.literal('recover-card') }),
+    z.strictObject({
+      type: z.literal('recover-card'),
+      cards: z.array(id).min(1).max(100).optional(),
+    }),
+    z.strictObject({ type: z.literal('return-played-card') }),
     z.strictObject({ type: z.literal('suppress-card-effects') }),
     z.strictObject({ type: z.literal('predict-value') }),
     z.strictObject({ type: z.literal('ignore-combat-value'), target: ref.optional() }),
@@ -216,6 +221,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     }),
     z.strictObject({
       type: z.literal('choose-option'),
+      chooser: ref.optional(),
       prompt: z.string().min(1).max(200),
       options: z
         .array(z.strictObject({ id, label: z.string().min(1).max(100), effects: effects() }))
@@ -389,12 +395,23 @@ export function validateDefinitions(input: unknown): asserts input is Definition
       );
     if ('type' in node && node.type === 'search-card' && 'card' in node)
       assert(known(defs.cards, String(node.card)), `unknown search card ${String(node.card)}`);
+    if (
+      'type' in node &&
+      node.type === 'recover-card' &&
+      'cards' in node &&
+      Array.isArray(node.cards)
+    )
+      for (const card of node.cards)
+        assert(known(defs.cards, card), `unknown recovery card ${String(card)}`);
     if ('type' in node && node.type === 'prevent-damage')
       assert(trigger === 'before-combat', `${node.type} needs before-combat`);
     if ('type' in node && node.type === 'predict-value')
       assert(trigger === 'before-defense', 'predict-value needs before-defense');
     if ('type' in node && node.type === 'ignore-combat-value')
-      assert(trigger === 'before-combat', 'ignore-combat-value needs before-combat');
+      assert(
+        trigger === 'combat-reveal' || trigger === 'before-combat',
+        'ignore-combat-value needs combat-reveal/before-combat',
+      );
     if ('type' in node && node.type === 'set-combat-value')
       assert(trigger === 'before-combat', 'set-combat-value needs before-combat');
     if ('type' in node && node.type === 'boost-attack')

@@ -82,6 +82,7 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       }
       fighter.hp = Math.max(0, fighter.hp - frame.amount);
       emit({ type: 'damage', fighter: fighter.id, amount: frame.amount, reason: frame.reason });
+      frame.defeated = fighter.hp === 0 && frame.amount > 0;
       if (fighter.hp === 0) {
         const area = frame.area === undefined ? undefined : runtime.data.frames[frame.area];
         if (area?.kind === 'area') area.defeats++;

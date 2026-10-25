@@ -7,6 +7,30 @@ export interface CharacterProfile {
   ground: string;
 }
 export const profiles: Record<string, CharacterProfile> = {
+  'bruce-lee': {
+    role: 'The Little Dragon',
+    summary: 'Flow like water. Strike without pause.',
+    tactic:
+      'Chain Jeet Kune Do attacks into extra actions, recover your techniques, and take one final step at turn end.',
+    accent: '#d8af55',
+    ground: '#39372c',
+  },
+  'robin-hood': {
+    role: 'Outlaw of Sherwood',
+    summary: 'An arrow from the trees. A band at your side.',
+    tactic:
+      'Strike and retreat with Robin and his four Outlaws. Steal cards, deny defenses, and bring fallen friends back to Sherwood.',
+    accent: '#d6ad68',
+    ground: '#293c30',
+  },
+  bigfoot: {
+    role: 'Elusive forest giant',
+    summary: 'Heavy footsteps. A flicker of antlers.',
+    tactic:
+      'Hit hard, then disappear through the trees. Keep enemies outside Bigfoot’s zone to draw an extra card.',
+    accent: '#c59e66',
+    ground: '#2c3c32',
+  },
   dracula: {
     role: 'Lord of the night',
     summary: 'A patient hunger. Three faithful shadows.',

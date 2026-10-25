@@ -8,6 +8,8 @@ import {
 } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
 import { CardFace } from './CardFace';
+import { HandActions } from './HandActions';
+import { InactiveCards } from './InactiveCards';
 interface Props {
   game: GameView;
   fighter: Fighter;
@@ -44,140 +46,92 @@ export function Hand({
 }: Props) {
   const chosenDefinition = chosen ? basic.cards[chosen.definition] : null;
   const boosting = moving && game.maneuver?.boostable;
+  function usable(card: Card) {
+    const definition = basic.cards[card.definition];
+    return Boolean(
+      discarding ||
+      boosting ||
+      (myTurn && definition.category !== 'defense' && cardEligible(definition, fighter)) ||
+      (defending &&
+        ['defense', 'versatile'].includes(definition.category) &&
+        cardEligible(definition, fighter)),
+    );
+  }
+  const playable = game.hand.filter(usable);
+  const inactive = game.hand.filter((card) => !usable(card));
   return (
     <section className="hand-panel" aria-label="Your hand">
       <div className="section-heading">
-        <div>
-          <h2>
-            {eliminated ? 'You have been eliminated' : ended ? 'The battle is over' : 'Your hand'}{' '}
-            <span className="muted">{game.hand.length} cards</span>
-          </h2>
-          <p className="prompt" role="status">
-            {prompt}
-          </p>
-        </div>
+        <h2>
+          {eliminated ? 'You have been eliminated' : ended ? 'The battle is over' : 'Your hand'}{' '}
+          <span className="muted">{game.hand.length} cards</span>
+        </h2>
         <div className="button-row">
-          {myTurn && (
-            <>
-              <button className="primary" onClick={() => onCommand({ type: 'maneuver' })}>
-                Maneuver
-              </button>
-              <button onClick={() => onCommand({ type: 'end-turn' })}>End turn</button>
-            </>
-          )}
-          {moving && (
-            <button
-              className="primary"
-              onClick={() => onCommand({ type: 'move', fighter: fighter.id, path: [] })}
-            >
-              Stay here
-            </button>
-          )}
-          {moving && (
-            <button onClick={() => onCommand({ type: 'finish-maneuver' })}>Finish Maneuver</button>
-          )}
-          {defending && (
-            <button onClick={() => onCommand({ type: 'defend', card: null })}>Take the hit</button>
-          )}
+          <HandActions
+            fighter={fighter}
+            chosen={chosen}
+            target={target}
+            selected={selected}
+            discardCount={game.hand.length - 7}
+            myTurn={myTurn}
+            moving={moving}
+            boosting={Boolean(boosting)}
+            defending={defending}
+            discarding={discarding}
+            onCommand={onCommand}
+          />
         </div>
+        {(prompt ||
+          (chosen && myTurn && ['attack', 'versatile'].includes(chosenDefinition!.category))) && (
+          <p className="prompt" role="status">
+            {chosen && myTurn && ['attack', 'versatile'].includes(chosenDefinition!.category)
+              ? targets.length
+                ? target
+                  ? `Target: ${
+                      fighterDefinition(
+                        targets.find((f) => f.id === target)!,
+                        basic,
+                      ).name
+                    }`
+                  : 'Choose a highlighted rival.'
+                : 'No rivals in range. Maneuver to get closer.'
+              : prompt}
+          </p>
+        )}
       </div>
       <div className="hand">
-        {game.hand.map((card) => {
-          const definition = basic.cards[card.definition];
-          const usable =
-            discarding ||
-            boosting ||
-            (myTurn && definition.category !== 'defense' && cardEligible(definition, fighter)) ||
-            (defending &&
-              ['defense', 'versatile'].includes(definition.category) &&
-              cardEligible(definition, fighter));
-          return (
-            <CardFace
-              key={card.id}
-              card={card}
-              selected={selected.includes(card.id)}
-              disabled={!usable}
-              onClick={() =>
-                setSelected((old) =>
-                  discarding
-                    ? old.includes(card.id)
-                      ? old.filter((id) => id !== card.id)
-                      : [...old, card.id]
-                    : old.includes(card.id)
-                      ? []
-                      : [card.id],
-                )
-              }
-            />
-          );
-        })}
+        {playable.map((card) => (
+          <CardFace
+            key={card.id}
+            card={card}
+            selected={selected.includes(card.id)}
+            onClick={() =>
+              setSelected((old) =>
+                discarding
+                  ? old.includes(card.id)
+                    ? old.filter((id) => id !== card.id)
+                    : [...old, card.id]
+                  : old.includes(card.id)
+                    ? []
+                    : [card.id],
+              )
+            }
+          />
+        ))}
+        {playable.length === 0 && (myTurn || defending) && game.hand.length > 0 && (
+          <p className="empty">
+            {defending
+              ? 'No defense cards for this fighter.'
+              : 'No playable cards for this fighter.'}
+          </p>
+        )}
+        {inactive.length > 0 && (
+          <InactiveCards key={`${game.revision}:${fighter.id}`} cards={inactive} />
+        )}
         {game.hand.length === 0 && (
           <p className="empty">Your hand is empty. Maneuver to draw a card.</p>
         )}
       </div>
-      {(selected.length > 0 || defending || discarding) && (
-        <div className="selection-actions">
-          {discarding ? (
-            <button
-              className="primary"
-              disabled={selected.length !== game.hand.length - 7}
-              onClick={() => onCommand({ type: 'discard', cards: selected })}
-            >
-              Discard {selected.length} / {game.hand.length - 7}
-            </button>
-          ) : defending ? (
-            <button
-              className="primary"
-              disabled={!chosen}
-              onClick={() => onCommand({ type: 'defend', card: chosen!.id })}
-            >
-              Defend{chosenDefinition ? ` with ${chosenDefinition.name}` : ''}
-            </button>
-          ) : boosting && chosen ? (
-            <button
-              className="primary"
-              onClick={() => onCommand({ type: 'boost-maneuver', card: chosen.id })}
-            >
-              Boost movement +{chosenDefinition!.boost}
-            </button>
-          ) : chosenDefinition?.category === 'action' ? (
-            <button
-              className="primary"
-              onClick={() =>
-                onCommand({ type: 'play-action', fighter: fighter.id, card: chosen!.id })
-              }
-            >
-              Play {chosenDefinition.name}
-            </button>
-          ) : (
-            chosen && (
-              <>
-                <span className="muted">
-                  {targets.length
-                    ? target
-                      ? `Target: ${
-                          fighterDefinition(
-                            targets.find((f) => f.id === target)!,
-                            basic,
-                          ).name
-                        }`
-                      : 'Choose a highlighted rival on the board.'
-                    : 'No rivals in range. Maneuver to get closer.'}
-                </span>
-                <button
-                  className="primary"
-                  disabled={!target}
-                  onClick={() =>
-                    onCommand({ type: 'attack', fighter: fighter.id, card: chosen.id, target })
-                  }
-                >
-                  Commit attack
-                </button>
-              </>
-            )
-          )}
-        </div>
-      )}
     </section>
   );
 }

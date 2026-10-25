@@ -353,4 +353,4 @@ it('legally deploys every two/four-seat roster combination with Medusa and retai
       });
     }
   }
-});
+}, 60000);

@@ -1,0 +1,411 @@
+{
+  "id": "bigfoot",
+  "name": "Bigfoot",
+  "hp": 16,
+  "movement": 3,
+  "attackType": "melee",
+  "ally": {
+    "id": "bigfoot-jackalope",
+    "name": "The Jackalope",
+    "count": 1,
+    "hp": 6,
+    "attackType": "melee"
+  },
+  "palette": {
+    "ground": "#2c3c32",
+    "ink": "#c6c6a1",
+    "accent": "#c59e66"
+  },
+  "abilities": [
+    {
+      "id": "loner-by-nature",
+      "name": "Loner by Nature",
+      "description": "At the end of your turn, if there are no opposing fighters in Bigfoot's zone, you may draw 1 card.",
+      "trigger": "turn-end",
+      "optional": true,
+      "when": {
+        "type": "compare",
+        "left": {
+          "fighters": "enemy",
+          "range": "zone"
+        },
+        "op": "eq",
+        "right": 0
+      },
+      "effects": [
+        {
+          "type": "draw",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "bigfoot-skirmish",
+      "name": "Skirmish",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "boost": 1,
+      "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/cards/bigfoot/skirmish.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Choose a combat fighter to move",
+              "options": [
+                {
+                  "id": "self",
+                  "label": "Your fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "distance": 2
+                    }
+                  ]
+                },
+                {
+                  "id": "opponent",
+                  "label": "Opposing fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "target": "opponent",
+                      "distance": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-larger-than-life",
+      "name": "Larger Than Life",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 6,
+      "boost": 3,
+      "description": "Attack with value 6.",
+      "art": {
+        "scene": "bastion",
+        "variant": 1,
+        "image": "/cards/bigfoot/larger-than-life.svg"
+      },
+      "flavor": ""
+    },
+    {
+      "id": "bigfoot-crash-through-the-trees",
+      "name": "Crash Through the Trees",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "description": "Move Bigfoot up to 5 spaces. You may move Bigfoot through spaces containing opposing fighters.",
+      "art": {
+        "scene": "trail",
+        "variant": 2,
+        "image": "/cards/bigfoot/crash-through-the-trees.svg"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "move",
+          "distance": 5,
+          "throughEnemies": true
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-it-s-just-your-imagination",
+      "name": "It's Just Your Imagination",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "defense",
+      "value": 3,
+      "boost": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "variant": 3,
+        "image": "/cards/bigfoot/it-s-just-your-imagination.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "imagination",
+          "name": "It's Just Your Imagination",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-savagery",
+      "name": "Savagery",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "boost": 3,
+      "description": "After Combat: If you won the combat, deal 1 damage to each fighter adjacent to Bigfoot.",
+      "art": {
+        "scene": "embers",
+        "variant": 4,
+        "image": "/cards/bigfoot/savagery.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "savagery",
+          "name": "Savagery",
+          "description": "After Combat: If you won the combat, deal 1 damage to each fighter adjacent to Bigfoot.",
+          "trigger": "after-combat",
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          },
+          "effects": [
+            {
+              "type": "area-damage",
+              "range": "adjacent",
+              "relation": "any",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-hoax",
+      "name": "Hoax",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "boost": 2,
+      "description": "After Combat: Move your fighter up to 5 spaces. You may move that fighter through spaces containing opposing fighters.",
+      "art": {
+        "scene": "trail",
+        "variant": 5,
+        "image": "/cards/bigfoot/hoax.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "hoax",
+          "name": "Hoax",
+          "description": "After Combat: Move your fighter up to 5 spaces. You may move that fighter through spaces containing opposing fighters.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 5,
+              "throughEnemies": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-jackalope-horns",
+      "name": "Jackalope Horns",
+      "count": 3,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Move the Jackalope up to 5 spaces. You may move the Jackalope through spaces containing opposing fighters. Then deal 2 damage to any one fighter adjacent to the Jackalope.",
+      "art": {
+        "scene": "blade",
+        "variant": 6,
+        "image": "/cards/bigfoot/jackalope-horns.svg"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "move",
+          "distance": 5,
+          "throughEnemies": true
+        },
+        {
+          "type": "choose-fighter",
+          "relation": "any",
+          "range": "adjacent",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-disengage",
+      "name": "Disengage",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 4,
+      "boost": 2,
+      "description": "After Combat: Choose an empty space in this fighter's zone. Place this fighter in that space.",
+      "art": {
+        "scene": "trail",
+        "variant": 0,
+        "image": "/cards/bigfoot/disengage.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "disengage",
+          "name": "Disengage",
+          "description": "After Combat: Choose an empty space in this fighter's zone. Place this fighter in that space.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "teleport",
+              "zone": "shared",
+              "optional": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-momentous-shift",
+      "name": "Momentous Shift",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+      "art": {
+        "scene": "bolt",
+        "variant": 1,
+        "image": "/cards/bigfoot/momentous-shift.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "momentous-shift",
+          "name": "Momentous Shift",
+          "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 5
+            }
+          ],
+          "when": {
+            "type": "changed-position"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "variant": 2,
+        "image": "/cards/bigfoot/feint.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigfoot-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 1,
+      "boost": 2,
+      "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "art": {
+        "scene": "lantern",
+        "variant": 3,
+        "image": "/cards/bigfoot/regroup.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -163,7 +163,11 @@ export function randomIndex(runtime: Runtime, length: number): number {
 }
 
 /** Combat cards are committed until their combat finishes, even though discard is public. */
-export function recoverCard(runtime: Runtime, binding: Binding): void {
+export function recoverCard(
+  runtime: Runtime,
+  binding: Binding,
+  effect: Extract<Effect, { type: 'recover-card' }>,
+): void {
   const p = player(runtime, binding);
   const committed = new Set(
     Object.values(runtime.data.frames).flatMap((f) =>
@@ -176,12 +180,12 @@ export function recoverCard(runtime: Runtime, binding: Binding): void {
     p.id,
     'Return a discarded card to your hand',
     p.discard
-      .filter((c) => !committed.has(c.id))
+      .filter((c) => !committed.has(c.id) && (!effect.cards || effect.cards.includes(c.definition)))
       .map((card) => ({
         id: card.id,
         label: runtime.defs.cards[card.definition].name,
         card,
-        tasks: [{ ...binding, type: 'recover-card', card: card.id }],
+        tasks: [{ ...binding, type: 'recover-card', card: card.id, cards: effect.cards }],
       })),
     1,
     1,
@@ -195,9 +199,32 @@ export function resolveRecovery(
 ): void {
   const p = player(runtime, task);
   if (p.eliminated) return;
-  const index = p.discard.findIndex((c) => c.id === task.card);
+  const index = p.discard.findIndex(
+    (c) => c.id === task.card && (!task.cards || task.cards.includes(c.definition)),
+  );
   if (index < 0) return;
   const cards = p.discard.splice(index, 1);
   p.hand.push(...cards);
+  runtime.emit({ type: 'draw', player: p.id, cards }, p.id);
+}
+
+/** Return the exact resolving action, including from a nested damage continuation. */
+export function returnPlayedCard(runtime: Runtime, binding: Binding): void {
+  const p = player(runtime, binding);
+  if (p.eliminated || !binding.provenance) return;
+  const frame = Object.values(runtime.data.frames).find(
+    (f) => f.kind === 'card' && f.card.id === binding.provenance!.card && !f.discarded,
+  );
+  if (
+    frame?.kind !== 'card' ||
+    frame.returned ||
+    runtime.defs.cards[frame.card.definition].category !== 'action'
+  )
+    return;
+  const index = p.discard.findIndex((c) => c.id === frame.card.id);
+  if (index < 0) return;
+  const cards = p.discard.splice(index, 1);
+  p.hand.push(...cards);
+  frame.returned = true;
   runtime.emit({ type: 'draw', player: p.id, cards }, p.id);
 }

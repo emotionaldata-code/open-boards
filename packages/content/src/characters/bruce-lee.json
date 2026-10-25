@@ -1,0 +1,704 @@
+{
+  "id": "bruce-lee",
+  "name": "Bruce Lee",
+  "hp": 14,
+  "movement": 3,
+  "attackType": "melee",
+  "palette": {
+    "ground": "#39372c",
+    "ink": "#e8d6ad",
+    "accent": "#d8af55"
+  },
+  "abilities": [
+    {
+      "id": "end-step",
+      "name": "The Dragon\u2019s Step",
+      "description": "At the end of your turn, you may move Bruce Lee 1 space.",
+      "trigger": "turn-end",
+      "effects": [
+        {
+          "type": "move",
+          "distance": 1
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "bruce-lee-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "count": 3,
+      "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "trail",
+        "variant": 0,
+        "image": "/cards/bruce-lee/skirmish.svg"
+      },
+      "flavor": "Find the space between strikes.",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Choose a combat fighter to move",
+              "options": [
+                {
+                  "id": "self",
+                  "label": "Your fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "distance": 2
+                    }
+                  ]
+                },
+                {
+                  "id": "opponent",
+                  "label": "Opposing fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "target": "opponent",
+                      "distance": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-little-dragon",
+      "name": "Little Dragon",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 3,
+      "count": 2,
+      "description": "During Combat: If your hand is empty, the value of this card is 6 instead. After Combat: Draw 2 cards.",
+      "art": {
+        "scene": "fire",
+        "variant": 1,
+        "image": "/cards/bruce-lee/little-dragon.svg"
+      },
+      "flavor": "Empty the hand. Fill the moment.",
+      "abilities": [
+        {
+          "id": "little-dragon-empty",
+          "name": "Little Dragon",
+          "description": "During Combat: If your hand is empty, the value of this card is 6 instead. After Combat: Draw 2 cards.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 6
+            }
+          ],
+          "when": {
+            "type": "compare",
+            "left": {
+              "stat": "hand"
+            },
+            "op": "eq",
+            "right": 0
+          }
+        },
+        {
+          "id": "little-dragon-draw",
+          "name": "Little Dragon",
+          "description": "During Combat: If your hand is empty, the value of this card is 6 instead. After Combat: Draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-taste-of-blood",
+      "name": "Taste of Blood",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 1,
+      "description": "After Combat: If Bruce Lee has 5 or less health, draw 3 cards.",
+      "art": {
+        "scene": "embers",
+        "variant": 2,
+        "image": "/cards/bruce-lee/taste-of-blood.svg"
+      },
+      "flavor": "The last breath is still a weapon.",
+      "abilities": [
+        {
+          "id": "taste-of-blood",
+          "name": "Taste of Blood",
+          "description": "After Combat: If Bruce Lee has 5 or less health, draw 3 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 3
+            }
+          ],
+          "when": {
+            "type": "compare",
+            "left": {
+              "stat": "hp"
+            },
+            "op": "lte",
+            "right": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-be-like-water",
+      "name": "Be Like Water",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 4,
+      "count": 4,
+      "description": "After Combat: Choose a JEET KUNE DO card in your discard pile and add it to your hand.",
+      "art": {
+        "scene": "ward",
+        "variant": 3,
+        "image": "/cards/bruce-lee/be-like-water.svg"
+      },
+      "flavor": "No shape can hold running water.",
+      "abilities": [
+        {
+          "id": "be-like-water",
+          "name": "Be Like Water",
+          "description": "After Combat: Choose a JEET KUNE DO card in your discard pile and add it to your hand.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "recover-card",
+              "cards": [
+                "bruce-lee-jeet-kune-do-high-straight-lead",
+                "bruce-lee-jeet-kune-do-downward-side-kick",
+                "bruce-lee-jeet-kune-do-wrist-lock",
+                "bruce-lee-jeet-kune-do-intercepting-fist",
+                "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+                "bruce-lee-jeet-kune-do-short-lead-hook"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-hoo-whaaaaaa",
+      "name": "\"HOO! WHAAAAAA!\"",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 1,
+      "description": "Choose a JEET KUNE DO card in your discard pile and add it to your hand. Gain 1 action.",
+      "art": {
+        "scene": "bolt",
+        "variant": 4,
+        "image": "/cards/bruce-lee/hoo-whaaaaaa.svg"
+      },
+      "flavor": "The room answers the cry.",
+      "effects": [
+        {
+          "type": "recover-card",
+          "cards": [
+            "bruce-lee-jeet-kune-do-high-straight-lead",
+            "bruce-lee-jeet-kune-do-downward-side-kick",
+            "bruce-lee-jeet-kune-do-wrist-lock",
+            "bruce-lee-jeet-kune-do-intercepting-fist",
+            "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+            "bruce-lee-jeet-kune-do-short-lead-hook"
+          ]
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-high-straight-lead",
+      "name": "Jeet Kune Do: High Straight Lead",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 1,
+      "description": "During Combat: If either fighter started this turn in a different space, this card's value is 5 instead. After Combat: Gain 1 action.",
+      "art": {
+        "scene": "blade",
+        "variant": 5,
+        "image": "/cards/bruce-lee/jeet-kune-do-high-straight-lead.svg"
+      },
+      "flavor": "Arrive before the opening closes.",
+      "abilities": [
+        {
+          "id": "jeet-kune-do-high-straight-lead-value",
+          "name": "Jeet Kune Do: High Straight Lead",
+          "description": "During Combat: If either fighter started this turn in a different space, this card's value is 5 instead. After Combat: Gain 1 action.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 5
+            }
+          ],
+          "when": {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "changed-position",
+                "target": "self"
+              },
+              {
+                "type": "changed-position",
+                "target": "opponent"
+              }
+            ]
+          }
+        },
+        {
+          "id": "jeet-kune-do-high-straight-lead-action",
+          "name": "Jeet Kune Do: High Straight Lead",
+          "description": "During Combat: If either fighter started this turn in a different space, this card's value is 5 instead. After Combat: Gain 1 action.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-downward-side-kick",
+      "name": "Jeet Kune Do: Downward Side Kick",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "description": "After Combat: Your opponent discards 1 random card. Gain 1 action.",
+      "art": {
+        "scene": "bolt",
+        "variant": 6,
+        "image": "/cards/bruce-lee/jeet-kune-do-downward-side-kick.svg"
+      },
+      "flavor": "Let the heel finish the sentence.",
+      "abilities": [
+        {
+          "id": "jeet-kune-do-downward-side-kick",
+          "name": "Jeet Kune Do: Downward Side Kick",
+          "description": "After Combat: Your opponent discards 1 random card. Gain 1 action.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "random": true,
+              "count": 1
+            },
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-wrist-lock",
+      "name": "Jeet Kune Do: Wrist Lock",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "description": "After Combat: Draw 1 card. Gain 1 action.",
+      "art": {
+        "scene": "shield",
+        "variant": 0,
+        "image": "/cards/bruce-lee/jeet-kune-do-wrist-lock.svg"
+      },
+      "flavor": "A small turn changes everything.",
+      "abilities": [
+        {
+          "id": "jeet-kune-do-wrist-lock",
+          "name": "Jeet Kune Do: Wrist Lock",
+          "description": "After Combat: Draw 1 card. Gain 1 action.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 1
+            },
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-intercepting-fist",
+      "name": "Jeet Kune Do: Intercepting Fist",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "description": "Immediately: Cancel all effects on your opponent's card. After Combat: Gain 1 action.",
+      "art": {
+        "scene": "ward",
+        "variant": 1,
+        "image": "/cards/bruce-lee/jeet-kune-do-intercepting-fist.svg"
+      },
+      "flavor": "Meet intention at its source.",
+      "abilities": [
+        {
+          "id": "jeet-kune-do-intercepting-fist-cancel",
+          "name": "Jeet Kune Do: Intercepting Fist",
+          "description": "Immediately: Cancel all effects on your opponent's card. After Combat: Gain 1 action.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        },
+        {
+          "id": "jeet-kune-do-intercepting-fist-action",
+          "name": "Jeet Kune Do: Intercepting Fist",
+          "description": "Immediately: Cancel all effects on your opponent's card. After Combat: Gain 1 action.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+      "name": "Jeet Kune Do: Corkscrew Finger Jab",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 1,
+      "description": "After Combat: Deal 1 damage to the opposing fighter. Gain 1 action.",
+      "art": {
+        "scene": "blade",
+        "variant": 2,
+        "image": "/cards/bruce-lee/jeet-kune-do-corkscrew-finger-jab.svg"
+      },
+      "flavor": "A line too narrow to guard.",
+      "abilities": [
+        {
+          "id": "jeet-kune-do-corkscrew-finger-jab",
+          "name": "Jeet Kune Do: Corkscrew Finger Jab",
+          "description": "After Combat: Deal 1 damage to the opposing fighter. Gain 1 action.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "opponent",
+              "amount": 1
+            },
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-short-lead-hook",
+      "name": "Jeet Kune Do: Short Lead Hook",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 1,
+      "description": "After Combat: Bruce Lee may swap spaces with the opposing fighter. Gain 1 action.",
+      "art": {
+        "scene": "trail",
+        "variant": 3,
+        "image": "/cards/bruce-lee/jeet-kune-do-short-lead-hook.svg"
+      },
+      "flavor": "Give the circle back to its center.",
+      "abilities": [
+        {
+          "id": "jeet-kune-do-short-lead-hook",
+          "name": "Jeet Kune Do: Short Lead Hook",
+          "description": "After Combat: Bruce Lee may swap spaces with the opposing fighter. Gain 1 action.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Swap spaces with the opposing fighter?",
+              "options": [
+                {
+                  "id": "swap",
+                  "label": "Swap spaces",
+                  "effects": [
+                    {
+                      "type": "swap",
+                      "target": "opponent"
+                    }
+                  ]
+                },
+                {
+                  "id": "stay",
+                  "label": "Keep your space",
+                  "effects": []
+                }
+              ]
+            },
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-bring-it-on",
+      "name": "Bring It On",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 1,
+      "description": "Choose an opposing fighter in Bruce Lee's zone. Place them in any space adjacent to Bruce Lee. Gain 1 action.",
+      "art": {
+        "scene": "map",
+        "variant": 4,
+        "image": "/cards/bruce-lee/bring-it-on.svg"
+      },
+      "flavor": "The distance is an invitation.",
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "enemy",
+          "range": "zone",
+          "effects": [
+            {
+              "type": "teleport",
+              "target": "chosen",
+              "anchor": "main",
+              "range": "adjacent",
+              "optional": false,
+              "includeOrigin": true
+            }
+          ]
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-one-inch-punch",
+      "name": "One-Inch Punch",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 1,
+      "description": "Deal 2 damage to an adjacent fighter. If this defeats that fighter, return this card to your hand instead of discarding it.",
+      "art": {
+        "scene": "bolt",
+        "variant": 5,
+        "image": "/cards/bruce-lee/one-inch-punch.svg"
+      },
+      "flavor": "One inch is enough.",
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "any",
+          "range": "adjacent",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 2,
+              "onDefeat": [
+                {
+                  "type": "return-played-card"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-nunchaku",
+      "name": "Nunchaku",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "description": "All of Bruce Lee's attacks this turn are +1 value. Gain 1 action.",
+      "art": {
+        "scene": "blade",
+        "variant": 6,
+        "image": "/cards/bruce-lee/nunchaku.svg"
+      },
+      "flavor": "Two sticks. One continuous line.",
+      "effects": [
+        {
+          "type": "status",
+          "status": "attack-up",
+          "turns": 1
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-momentous-shift",
+      "name": "Momentous Shift",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+      "art": {
+        "scene": "trail",
+        "variant": 0,
+        "image": "/cards/bruce-lee/momentous-shift.svg"
+      },
+      "flavor": "The fight has already moved.",
+      "abilities": [
+        {
+          "id": "momentous-shift",
+          "name": "Momentous Shift",
+          "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 5
+            }
+          ],
+          "when": {
+            "type": "changed-position"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "shield",
+        "variant": 1,
+        "image": "/cards/bruce-lee/feint.svg"
+      },
+      "flavor": "An opening offered, then taken.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bruce-lee-regroup",
+      "name": "Regroup",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 1,
+      "boost": 2,
+      "count": 3,
+      "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "art": {
+        "scene": "lantern",
+        "variant": 2,
+        "image": "/cards/bruce-lee/regroup.svg"
+      },
+      "flavor": "Stillness gathers the next storm.",
+      "abilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -614,3 +614,69 @@ it('lets elimination choose the damage source, and skips a disconnected dead cho
   expect(skipped.phase.type).toBe('taking-actions');
   expect(skipped.resolution.frames).toEqual({});
 });
+
+it('delegates an option choice without rebinding its effect owner or selected fighter', () => {
+  const { state: initial, defs } = setup([
+    ability('turn-start', [
+      {
+        type: 'choose-player',
+        relation: 'opponent',
+        effects: [
+          {
+            type: 'choose-option',
+            chooser: 'chosen',
+            prompt: 'Select a gift',
+            options: [
+              {
+                id: 'gift',
+                label: 'Give and receive',
+                effects: [
+                  { type: 'counter', name: 'energy', amount: 1 },
+                  { type: 'draw', count: 1 },
+                  { type: 'draw', target: 'chosen', count: 2 },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ]),
+  ]);
+  let state = respond(initial, defs, ['p1']).state;
+  state = JSON.parse(JSON.stringify(state)) as GameState;
+  const c = state.resolution.choice!;
+  expect(c.player).toBe('p1');
+  const command: Command = { type: 'choose', choice: c.id, options: ['gift'] };
+  const before = structuredClone(state);
+  expect(run(state, defs, 'p0', command).ok).toBe(false);
+  expect(run(state, defs, 'p1', { ...command, options: ['forged'] }).ok).toBe(false);
+  expect(state).toEqual(before);
+  state = respond(state, defs, ['gift']).state;
+  expect(state.players.map((p) => p.hand.length)).toEqual([6, 7]);
+  expect(state.fighters[0].counters.energy).toBe(1);
+  expect(state.resolution.frames).toEqual({});
+});
+
+it('accepts immediate value ignoring and preserves it through later defense modifiers', () => {
+  const { state, defs } = setup();
+  defs.cards.strike.abilities = [
+    ability('combat-reveal', [{ type: 'ignore-combat-value', target: 'opponent' }]),
+  ];
+  defs.cards.guard.abilities = [
+    ability('before-combat', [{ type: 'modify', field: 'defense', amount: 7 }]),
+  ];
+  expect(() => validateDefinitions(defs)).not.toThrow();
+  state.fighters[1].position = 'n1';
+  const attacking = apply(state, defs, 'p0', {
+    type: 'attack',
+    fighter: 'p0:main',
+    card: state.players[0].hand[0].id,
+    target: 'p1:main',
+  }).state;
+  attacking.players[1].hand[0].definition = 'guard';
+  const result = apply(attacking, defs, 'p1', {
+    type: 'defend',
+    card: attacking.players[1].hand[0].id,
+  });
+  expect(result.state.revealed?.damage).toBe(defs.cards.strike.value);
+});

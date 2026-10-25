@@ -12,6 +12,7 @@ import { fighterLabel } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
 import type { PresentationEvent } from '../animation/events';
 import { ArenaScene } from './scene';
+import { Terrain } from './Terrain';
 import { arenaSize, spaces } from './layout';
 import type { Present } from '../presentation/sequence';
 export interface BoardPlayback {
@@ -19,7 +20,6 @@ export interface BoardPlayback {
 }
 interface Props {
   ref?: Ref<BoardPlayback>;
-  fit?: boolean;
   game?: GameView;
   selected?: string;
   highlights?: string[];
@@ -29,7 +29,6 @@ interface Props {
 }
 export function Board(props: Props) {
   const host = useRef<HTMLDivElement>(null);
-  const viewport = useRef<HTMLDivElement>(null);
   const scene = useRef<ArenaScene | null>(null);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState('');
@@ -101,39 +100,15 @@ export function Board(props: Props) {
       props.reset ?? 0,
     );
   }, [ready, props.game, props.selected, props.highlights, props.events, props.reset]);
-  const focusNode = props.game?.fighters.find((fighter) => fighter.id === props.selected)?.position;
-  useEffect(() => {
-    const view = viewport.current;
-    if (!view || !focusNode) return;
-    const center = () => {
-      const board = host.current?.parentElement;
-      if (!board) return;
-      const frame = view.getBoundingClientRect();
-      const bounds = board.getBoundingClientRect();
-      view.scrollLeft +=
-        bounds.left -
-        frame.left +
-        (spaces[focusNode].x / arenaSize.width) * bounds.width -
-        view.clientWidth / 2;
-    };
-    const resize = new ResizeObserver(center);
-    resize.observe(view);
-    center();
-    return () => resize.disconnect();
-  }, [focusNode, props.fit, ready]);
   return (
-    <div
-      ref={viewport}
-      className={`board-viewport ${props.fit ? 'fit-map' : ''}`}
-      tabIndex={0}
-      aria-label="Map. Scroll to pan."
-    >
+    <div className="board-viewport" role="region" aria-label="Map">
       <div
         className={`arena ${error ? 'board-fallback' : ''}`}
         style={{ '--board-aspect': arenaSize.width / arenaSize.height } as CSSProperties}
         role="group"
         aria-label={`${basic.map.name}: ${basic.map.nodes.length} connected spaces, ${Object.keys(zoneStyles).length} colored zones and ${basic.map.portals?.length ?? 0} portals.`}
       >
+        <Terrain />
         <div className="pixi-surface" ref={host} aria-hidden="true" />
         <div className="board-inputs">
           {(props.highlights ?? []).map((id) => (
