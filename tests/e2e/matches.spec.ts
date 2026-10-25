@@ -1,6 +1,7 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
   medusa: { name: 'Medusa', allies: 3 },
+  dracula: { name: 'Dracula', allies: 3 },
   'sherlock-holmes': { name: 'Sherlock Holmes', allies: 1 },
   'king-arthur': { name: 'King Arthur', allies: 1 },
   achilles: { name: 'Achilles', allies: 1 },
@@ -100,10 +101,7 @@ async function createMatch(
   const host = rivals[0].page;
   await host
     .getByRole('button', {
-      name:
-        count === 2
-          ? '02 Head to head A duel for two players'
-          : '04 Free-for-all Four seats. One survivor.',
+      name: count === 2 ? '2 Head to head' : '4 Free-for-all',
       exact: true,
     })
     .click();
@@ -135,7 +133,7 @@ async function createMatch(
     if (mobile) {
       await expect(
         rival.page.getByRole('heading', { name: 'Turn your phone to play' }),
-      ).toBeVisible();
+      ).toHaveCount(0);
       await fitsViewport(rival.page);
       await rival.page.setViewportSize({ width: 844, height: 390 });
       await expect(
@@ -155,7 +153,7 @@ async function createMatch(
           .first()
           .click();
     }
-    if (character === 'medusa') {
+    if (character === 'medusa' || character === 'dracula') {
       await expect(rivals[0].page.getByRole('region', { name: 'Ability choice' })).toBeVisible();
       await skipGaze(rivals[0].page);
     }
@@ -437,7 +435,7 @@ test('login rules, fullscreen, and compact phone pages fit without page scrollin
     await page.goto('/');
     await fitsViewport(page);
     await page.getByRole('button', { name: 'How to play', exact: true }).click();
-    await expect(page.getByRole('dialog')).toContainText('Draw. Move. Strike.');
+    await expect(page.getByRole('dialog')).toContainText('Each turn gives you two actions.');
     await page.getByRole('button', { name: 'Close dialog' }).click();
     await expect(page.getByRole('button', { name: 'How to play', exact: true })).toBeFocused();
     await page.getByRole('button', { name: 'Enter fullscreen' }).click();
@@ -463,9 +461,7 @@ test('populated room lists paginate and four waiting seats fit a portrait phone'
     for (let index = 0; index < 4; index++) {
       const rival = await register(browser, index + 10, true);
       hosts.push(rival);
-      await rival.page
-        .getByRole('button', { name: '04 Free-for-all Four seats. One survivor.', exact: true })
-        .click();
+      await rival.page.getByRole('button', { name: '4 Free-for-all', exact: true }).click();
       await expect(rival.page.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
       await fitsViewport(rival.page);
       if (index === 0)
@@ -539,7 +535,7 @@ test('Medusa selects and attacks a distant rival through a multicolor space', as
         .toEqual(expect.arrayContaining([expect.stringMatching(/Clash!|Blocked!/)]));
     }
     await attacker.reload();
-    await expect(attacker.locator('.arena-caption')).toContainText('Medusa');
+    await expect(attacker.getByRole('group', { name: 'Your fighters' })).toContainText('Medusa');
     await attacker.setViewportSize({ width: 768, height: 900 });
     await fitsViewport(attacker);
     await attacker.screenshot({ path: test.info().outputPath('medusa-range-tablet.png') });
@@ -571,6 +567,7 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
         ['King Arthur', 16],
         ['Achilles', 12],
         ['Sherlock Holmes', 13],
+        ['Dracula', 13],
       ]),
     );
     for (const [name, designs] of fighters) {
@@ -589,7 +586,8 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
       for (const card of await deck.locator('.deck-gallery > button').all()) {
         await card.click();
         const detail = page.getByRole('dialog').last();
-        await expect(detail).toContainText('How to play');
+        await expect(detail.locator('.printed-card')).toBeVisible();
+        await expect(detail).not.toContainText('How to play');
         await expect(detail.locator('img')).toHaveJSProperty('complete', true);
         await page.keyboard.press('Escape');
         await expect(card).toBeFocused();
@@ -679,9 +677,7 @@ test('selecting Medusa preserves readiness and syncs the remaining roster', asyn
   const host = rivals[0].page,
     guest = rivals[1].page;
   try {
-    await host
-      .getByRole('button', { name: '02 Head to head A duel for two players', exact: true })
-      .tap();
+    await host.getByRole('button', { name: '2 Head to head', exact: true }).tap();
     await expect(host.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
     const id = await host.getByLabel('Room ID').inputValue();
     await guest.getByLabel('Room ID').fill(id);
@@ -700,42 +696,30 @@ test('selecting Medusa preserves readiness and syncs the remaining roster', asyn
   }
 });
 
-test('inspects hand cards without selecting or playing, including disabled cards on phones', async ({
+test('shows full special effects on disabled hand cards without info buttons', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 2, false, 'medusa');
   try {
-    const page = rivals[1].page; // Rival is waiting: every play button is disabled.
+    const page = rivals[1].page;
     const before = await revision(page);
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(0);
-    const info = page.getByRole('button', { name: /^About / }).first();
-    const label = await info.getAttribute('aria-label');
-    for (const [width, height, name] of [
-      [1440, 1000, 'desktop'],
-      [768, 900, 'tablet'],
-      [844, 390, 'phone'],
-      [667, 375, 'small-phone'],
-    ] as const) {
+    await expect(page.locator('.card-info')).toHaveCount(0);
+    for (const [width, height] of [
+      [1440, 1000],
+      [768, 900],
+      [390, 667],
+      [844, 390],
+      [667, 375],
+    ]) {
       await page.setViewportSize({ width, height });
-      await info.click();
-      const dialog = page.getByRole('dialog');
-      await expect(
-        dialog.getByRole('heading', { name: label!.slice(6), exact: true }),
-      ).toBeVisible();
-      await expect(dialog).toContainText('How to play');
-      await expect(dialog).toContainText('Effect');
-      await expect(dialog.locator('img')).toHaveJSProperty('complete', true);
       await fitsViewport(page);
-      await page.screenshot({
-        path: test.info().outputPath(`card-inspector-${name}.png`),
-        animations: 'disabled',
-      });
-      await page.keyboard.press('Escape');
-      await expect(info).toBeFocused();
+      for (const effect of await page.locator('.hand .card-description').all()) {
+        expect(await effect.evaluate((node) => node.scrollHeight <= node.clientHeight)).toBe(true);
+      }
       expect(await revision(page)).toBe(before);
       await expect(page.locator('.game-card[aria-pressed="true"]')).toHaveCount(0);
     }
-    await expect(rivals[0].page.getByRole('dialog')).toHaveCount(0);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));
@@ -1033,6 +1017,47 @@ test('selects four Holmes over sockets, deploys numbered Watsons and restores a 
     });
     await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
     await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dr. Watson 1']);
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('selects four Draculas over sockets, deploys numbered Sisters and restores a phone Maneuver', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'dracula');
+  const page = rivals[0].page;
+  try {
+    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    await expect(picker.getByRole('button')).toHaveText([
+      'Dracula',
+      'Sister 1',
+      'Sister 2',
+      'Sister 3',
+    ]);
+    for (const rival of rivals) {
+      await expect(
+        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
+      ).toContainText('Sister 1');
+      await fitsViewport(rival.page);
+    }
+    await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Sister 1', exact: true }).tap();
+    await page.getByRole('button', { name: 'Stay here', exact: true }).tap();
+    await page.reload();
+    await expect(page.locator('.fighter-controls')).toContainText('3 fighters');
+    await page.screenshot({
+      path: test.info().outputPath('dracula-four-seats-phone.png'),
+      animations: 'disabled',
+    });
+    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await expect(picker.getByRole('button')).toHaveText([
+      'Dracula',
+      'Sister 1',
+      'Sister 2',
+      'Sister 3',
+    ]);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));

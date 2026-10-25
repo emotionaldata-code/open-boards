@@ -51,7 +51,7 @@ export function createTerrain(): Container {
       text: label,
       style: {
         fontFamily: 'Georgia',
-        fontSize: portal ? 16 : 25,
+        fontSize: portal ? 20 : 29,
         fill: 0xf0ead1,
         stroke: { color: 0x25362f, width: 3 },
       },
@@ -63,7 +63,7 @@ export function createTerrain(): Container {
       text: zones.map((zone) => zoneStyles[zone].symbol).join(' · '),
       style: {
         fontFamily: 'Inter Variable',
-        fontSize: 13,
+        fontSize: 17,
         fill: 0xd5dac3,
         stroke: { color: 0x25362f, width: 3 },
       },

@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { basic } from '@open-boards/content';
 import type { Card } from '@open-boards/game';
 import { CardPrint } from '../cards/CardPrint';
-import { CardDetails } from '../cards/CardDetails';
 
 export function CardFace({
   card,
@@ -17,7 +15,6 @@ export function CardFace({
   onClick?: () => void;
   label?: string;
 }) {
-  const [inspected, setInspected] = useState(false);
   const definition = basic.cards[card.definition];
   return (
     <div className={`hand-card ${selected ? 'selected' : ''}`}>
@@ -31,17 +28,6 @@ export function CardFace({
       >
         <CardPrint definition={card.definition} />
       </button>
-      <button
-        type="button"
-        className="card-info"
-        aria-label={label ? `Inspect ${label}` : `About ${definition.name}`}
-        onClick={() => setInspected(true)}
-      >
-        <span aria-hidden="true">i</span>
-      </button>
-      {inspected && (
-        <CardDetails definition={card.definition} onClose={() => setInspected(false)} />
-      )}
     </div>
   );
 }

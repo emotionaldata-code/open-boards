@@ -5,3 +5,4 @@ pnpm-lock.yaml
 .playwright-mcp
 playwright-report
 test-results
+**/.vite

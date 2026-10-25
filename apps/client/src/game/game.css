@@ -21,15 +21,12 @@
   gap: 10px;
   padding: 0;
 }
-.game-layout[inert] {
-  display: none;
-}
 .game-title {
   display: flex;
   align-items: center;
   gap: 18px;
   min-height: 44px;
-  padding-right: 120px;
+  padding-right: 104px;
   flex-shrink: 0;
 }
 .game-title h1 {
@@ -237,411 +234,6 @@
 .eliminated {
   opacity: 0.45;
 }
-.play-surface {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) 250px;
-  gap: 6px;
-}
-.board-panel {
-  position: relative;
-  min-height: 0;
-  min-width: 0;
-  display: grid;
-  place-items: center;
-  container-type: size;
-}
-.board-panel .arena {
-  width: min(100cqw, calc((100cqh - 20px) * var(--board-aspect)));
-  aspect-ratio: var(--board-aspect);
-  margin-bottom: 20px;
-}
-.arena-caption {
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  font:
-    13px Georgia,
-    serif;
-  color: var(--muted);
-  white-space: nowrap;
-  pointer-events: none;
-}
-.action-notice {
-  position: absolute;
-  z-index: 2;
-  top: 14px;
-  left: 50%;
-  width: max-content;
-  max-width: min(80%, 500px);
-  transform: translateX(-50%);
-  pointer-events: none;
-  text-align: center;
-  color: var(--accent);
-}
-.action-notice > div {
-  padding: 8px 20px 10px;
-  background: #17271ff2;
-  border-bottom: 2px solid currentColor;
-  animation: announce 180ms ease-out;
-}
-.action-notice[data-tone='mint'] {
-  color: #99e6d1;
-}
-.action-notice[data-tone='ember'] {
-  color: #ffae8c;
-}
-.action-notice strong {
-  display: block;
-  font:
-    28px Georgia,
-    serif;
-}
-.action-notice span {
-  display: block;
-  color: #ece9d6;
-  font-size: 13px;
-  margin-top: 4px;
-}
-@keyframes announce {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.hand-panel {
-  display: grid;
-  grid-template-rows: 48px minmax(0, 1fr) 44px;
-  gap: 4px;
-  min-height: 0;
-  min-width: 0;
-  max-width: 1320px;
-  width: 100%;
-  margin: auto;
-  height: 100%;
-}
-.hand-panel .section-heading {
-  gap: 20px;
-}
-.hand-panel h2 {
-  font-size: 17px;
-  margin: 0;
-}
-.hand-panel h2 span {
-  font:
-    12px 'Inter Variable',
-    system-ui,
-    sans-serif;
-  margin-left: 8px;
-}
-.prompt {
-  font-size: 13px;
-  line-height: 1.35;
-  margin: 4px 0 0;
-}
-.hand {
-  display: flex;
-  justify-content: safe center;
-  gap: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-height: 0;
-  padding: 7px 3px 3px;
-  scrollbar-width: thin;
-  scrollbar-color: #7a876a #122019;
-  overscroll-behavior-x: contain;
-}
-.game-card {
-  flex: 0 0 145px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-height: 0;
-  padding: 9px 11px;
-  text-align: left;
-  border-radius: 12px 12px 3px 3px;
-  border: 1px solid #7b7856;
-  background: #29392b;
-  color: var(--text);
-}
-.game-card:disabled {
-  opacity: 0.72;
-}
-.game-card.selected,
-.game-card[aria-pressed='true'] {
-  background: #445335;
-  border-color: #f1d79c;
-  transform: translateY(-5px);
-}
-.game-card:hover:not(:disabled) {
-  background: #3e4b33;
-  transform: translateY(-3px);
-}
-.game-card:active:not(:disabled) {
-  transform: translateY(-2px) scale(0.98);
-}
-.card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.card-top span {
-  font-size: 11px;
-  text-transform: capitalize;
-  color: #d3d7c4;
-}
-.card-top strong {
-  font:
-    27px Georgia,
-    serif;
-  color: var(--accent);
-  line-height: 1;
-}
-.card-art {
-  flex: 1;
-  min-height: 32px;
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-}
-.card-art .icon {
-  width: 38px;
-  height: 38px;
-}
-.game-card[data-card='defense'] .card-art {
-  color: #a0d3c6;
-}
-.game-card[data-card='versatile'] .card-art {
-  color: #e1b5a0;
-}
-.game-card[data-card='action'] .card-art {
-  color: #c4d3a8;
-}
-.card-name {
-  font:
-    19px Georgia,
-    serif;
-}
-.card-description {
-  font-size: 11px;
-  line-height: 1.3;
-  color: #d3d7c4;
-  margin-top: 3px;
-}
-.selection-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-}
-.selection-actions > .muted {
-  font-size: 12px;
-}
-.selection-actions > .primary {
-  margin-left: auto;
-}
-@media (max-width: 1100px) {
-  .player-badges {
-    gap: 8px;
-  }
-  .player-badge {
-    padding: 7px 10px 10px;
-    gap: 8px;
-  }
-}
-@media (max-height: 700px) and (orientation: landscape) {
-  .shell.in-match {
-    padding: max(4px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
-      max(4px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
-  }
-  .in-match .topbar {
-    top: max(4px, env(safe-area-inset-top));
-    right: max(12px, env(safe-area-inset-right));
-  }
-  .game-layout {
-    gap: 5px;
-  }
-  .game-title {
-    gap: 12px;
-  }
-  .game-title h1 {
-    font-size: 21px;
-  }
-  .turn-label {
-    font-size: 12px;
-  }
-  .action-count span {
-    display: none;
-  }
-  .player-badges {
-    gap: 7px;
-  }
-  .player-badge {
-    padding: 4px 8px 7px;
-    gap: 7px;
-    min-height: 44px;
-  }
-  .player-sigil {
-    width: 24px;
-    height: 28px;
-    font-size: 17px;
-  }
-  .badge-health {
-    font-size: 23px;
-  }
-  .badge-name {
-    font-size: 12px;
-  }
-  .badge-name small {
-    display: none;
-  }
-  .badge-counts,
-  .badge-movement {
-    font-size: 18px;
-  }
-  .play-surface {
-    grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
-    grid-template-rows: minmax(0, 1fr);
-    gap: 16px;
-  }
-  .arena-caption {
-    font-size: 11px;
-    bottom: 0;
-  }
-  .action-notice {
-    top: 18px;
-    max-width: 95%;
-  }
-  .action-notice strong {
-    font-size: 21px;
-  }
-  .action-notice span {
-    font-size: 11px;
-  }
-  .action-notice > div {
-    padding: 6px 12px;
-  }
-  .hand-panel {
-    grid-template-rows: auto minmax(0, 1fr) 44px;
-    gap: 3px;
-  }
-  .hand-panel .section-heading {
-    gap: 8px;
-    align-items: start;
-  }
-  .hand-panel h2 {
-    font-size: 15px;
-  }
-  .hand-panel h2 span {
-    display: none;
-  }
-  .prompt {
-    font-size: 12px;
-    margin-top: 3px;
-  }
-  .hand-panel .section-heading .button-row {
-    flex-direction: column;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    gap: 3px;
-  }
-  .hand-panel button:not(.game-card) {
-    min-height: 44px;
-    padding: 6px 9px;
-    font-size: 12px;
-  }
-  .hand {
-    gap: 7px;
-    justify-content: start;
-  }
-  .game-card {
-    flex-basis: 104px;
-    padding: 7px;
-  }
-  .card-top strong {
-    font-size: 24px;
-  }
-  .card-art .icon {
-    width: 32px;
-    height: 32px;
-  }
-  .card-name {
-    font-size: 18px;
-  }
-  .selection-actions {
-    gap: 6px;
-  }
-  .selection-actions > .muted {
-    font-size: 11px;
-  }
-}
-@media (max-width: 720px) and (orientation: landscape) {
-  .turn-label {
-    display: none;
-  }
-  .game-title h1 {
-    font-size: 20px;
-  }
-  .game-title {
-    gap: 8px;
-  }
-  .badge-counts {
-    display: none;
-  }
-  .player-sigil {
-    display: none;
-  }
-  .player-badge {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-  }
-  .badge-name {
-    font-size: 11px;
-  }
-  .play-surface {
-    grid-template-columns: minmax(0, 1.5fr) minmax(245px, 1fr);
-    gap: 8px;
-  }
-  .game-card {
-    padding: 6px;
-  }
-  .card-top strong {
-    font-size: 20px;
-  }
-  .card-art {
-    min-height: 28px;
-  }
-  .card-art .icon {
-    width: 28px;
-    height: 28px;
-  }
-  .card-name {
-    font-size: 17px;
-  }
-  .card-description {
-    line-height: 1.15;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .game-card.selected,
-  .game-card:hover:not(:disabled) {
-    transform: none;
-  }
-  .player-badge::after {
-    transition: none;
-  }
-}
-@media (prefers-reduced-transparency: reduce) {
-  .action-notice > div {
-    background: #17271f;
-  }
-}
-
 .ability-options {
   display: flex;
   flex-wrap: wrap;
@@ -740,5 +332,450 @@
 @media (prefers-reduced-motion: reduce) {
   .fighter-picker button:active:not(:disabled) {
     transform: none;
+  }
+}
+
+/* Board and hand share all available space; no reserved empty action row. */
+.play-surface {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) min(340px, 40dvh);
+  gap: 8px;
+}
+.board-panel {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  background: var(--ground);
+}
+.board-tools {
+  position: absolute;
+  z-index: 3;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  gap: 4px;
+}
+.board-tools button {
+  border: 0;
+  background: var(--surface);
+}
+.board-controls {
+  padding-top: 4px;
+}
+.board-controls .fighter-controls {
+  width: 100%;
+}
+.fighter-picker-label {
+  display: none;
+}
+.map-expanded {
+  position: fixed;
+  inset: 0;
+  padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right))
+    max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+  z-index: 5;
+}
+.hand-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 6px;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.hand-panel .section-heading {
+  gap: 12px;
+  align-items: center;
+}
+.hand-panel h2 {
+  margin: 0;
+  font:
+    600 14px / 1.3 'Inter Variable',
+    system-ui,
+    sans-serif;
+}
+.hand-panel h2 span {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.prompt {
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.hand {
+  display: flex;
+  gap: 8px;
+  min-height: 0;
+  padding: 2px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+  overscroll-behavior: contain;
+  scroll-snap-type: x proximity;
+  align-items: start;
+  justify-content: safe center;
+}
+.selection-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 12px;
+}
+.selection-actions > .primary {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.hand-panel:has(.selection-actions) {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.action-notice {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 70%;
+  pointer-events: none;
+  padding: 8px 16px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: center;
+}
+.action-notice:not(.is-visible) {
+  padding: 0;
+  background: transparent;
+}
+.action-notice strong {
+  display: block;
+  font-size: 18px;
+}
+.action-notice span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.action-notice[data-tone='mint'] strong {
+  color: #99e6d1;
+}
+.action-notice[data-tone='ember'] strong {
+  color: #ffae8c;
+}
+.in-match {
+  --text: #f2f0e9;
+  --surface: #1b211e;
+  --raised: #2b332d;
+}
+.in-match .game-title h1 {
+  font:
+    500 20px / 1.2 'Inter Variable',
+    system-ui,
+    sans-serif;
+  color: var(--text);
+}
+.in-match .game-title > button {
+  font-size: 12px;
+}
+.in-match button.primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--ground);
+}
+.player-badge {
+  background: var(--surface);
+}
+.player-badge.active-player {
+  background: var(--raised);
+}
+.player-badge.active-player::before {
+  display: none;
+}
+.game-title {
+  padding-right: 104px;
+}
+@media (max-width: 900px) {
+  .shell.in-match {
+    padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+  }
+  .player-badges {
+    gap: 6px;
+  }
+  .player-badge {
+    gap: 6px;
+    padding: 6px 8px 9px;
+  }
+  .badge-movement,
+  .badge-counts {
+    font-size: 17px;
+  }
+  .badge-health {
+    font:
+      600 22px / 1 'Inter Variable',
+      system-ui,
+      sans-serif;
+  }
+  .player-sigil {
+    width: 28px;
+    height: 32px;
+  }
+  .badge-allies {
+    gap: 4px 8px;
+  }
+  .badge-ally > .character-portrait {
+    display: none;
+  }
+  .badge-ally small {
+    display: none;
+  }
+  .badge-name small {
+    display: none;
+  }
+  .badge-name {
+    font-size: 12px;
+  }
+  .hand-panel .button-row {
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+  .hand-panel .button-row button {
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+}
+@media (max-height: 700px) and (orientation: landscape) {
+  .shell.in-match {
+    padding-block: max(3px, env(safe-area-inset-top)) max(3px, env(safe-area-inset-bottom));
+  }
+  .in-match .topbar {
+    top: max(3px, env(safe-area-inset-top));
+    right: max(8px, env(safe-area-inset-right));
+  }
+  .game-layout {
+    gap: 4px;
+  }
+  .game-title {
+    gap: 12px;
+  }
+  .in-match .game-title h1 {
+    font-size: 17px;
+  }
+  .turn-label {
+    font-size: 12px;
+  }
+  .action-count span {
+    display: none;
+  }
+  .player-badge {
+    min-height: 44px;
+    padding-block: 4px 7px;
+  }
+  .badge-allies {
+    grid-column: auto;
+  }
+  .player-badge:has(.badge-allies) {
+    grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+  }
+  .badge-allies {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .badge-ally {
+    font-size: 11px;
+    gap: 3px;
+  }
+  .play-surface {
+    /* At 844px: 16px gutters + 8px gap + 280px hand + 540px board. */
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 34%);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .hand-panel .section-heading {
+    gap: 6px;
+  }
+  .hand-panel h2 {
+    font-size: 12px;
+  }
+  .hand-panel h2 span {
+    display: none;
+  }
+  .hand-panel .section-heading .button-row {
+    flex-direction: row;
+  }
+  .hand-panel .section-heading .button-row button {
+    padding: 6px;
+  }
+  .hand-panel .prompt {
+    font-size: 12px;
+  }
+  .hand {
+    justify-content: start;
+  }
+  .fighter-picker .character-portrait {
+    display: none;
+  }
+  .fighter-picker button {
+    padding: 5px 8px;
+  }
+  .fighter-picker {
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .fighter-controls {
+    flex-wrap: nowrap;
+  }
+  .fighter-picker-hint {
+    display: none;
+  }
+}
+@media (max-width: 720px) and (orientation: landscape) {
+  .turn-label,
+  .badge-counts {
+    display: none;
+  }
+  .in-match .game-title h1 {
+    font-size: 16px;
+  }
+  .game-title {
+    gap: 8px;
+  }
+  .player-sigil {
+    display: none;
+  }
+  .player-badge,
+  .player-badge:has(.badge-allies) {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+  .badge-allies {
+    grid-column: 1;
+  }
+  .play-surface {
+    grid-template-columns: minmax(0, 1fr) 250px;
+  }
+  .hand-card {
+    flex-basis: 236px;
+  }
+  .hand-panel .section-heading {
+    flex-wrap: wrap;
+  }
+  .hand-panel .section-heading > div:first-child {
+    display: none;
+  }
+  .selection-actions {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .game-layout {
+    gap: 6px;
+  }
+  .game-title {
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    min-height: 44px;
+    padding-right: 96px;
+  }
+  .in-match .topbar {
+    top: max(10px, env(safe-area-inset-top));
+    right: max(8px, env(safe-area-inset-right));
+  }
+  .in-match .game-title h1 {
+    font-size: 16px;
+    flex-basis: 100%;
+  }
+  .game-title .turn-label {
+    max-width: 150px;
+    font-size: 11px;
+  }
+  .action-count {
+    margin-left: 0;
+  }
+  .action-count span {
+    font-size: 11px;
+  }
+  .game-title > button {
+    margin-left: auto;
+    padding: 0;
+    min-height: 24px;
+  }
+  .player-badge,
+  .player-badge:has(.badge-allies) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .player-sigil,
+  .badge-counts,
+  .badge-movement {
+    display: none;
+  }
+  .badge-allies {
+    grid-column: 1 / -1;
+  }
+  .play-surface {
+    grid-template-rows: minmax(0, 1fr) min(290px, 39dvh);
+    gap: 6px;
+  }
+  .fighter-picker-label,
+  .fighter-picker-hint {
+    display: none;
+  }
+  .fighter-controls,
+  .fighter-picker {
+    flex-wrap: nowrap;
+  }
+  .fighter-picker {
+    overflow-x: auto;
+    width: 100%;
+  }
+  .fighter-picker button {
+    flex: 1 0 auto;
+    padding-inline: 7px;
+  }
+  .fighter-picker .character-portrait {
+    display: none;
+  }
+  .hand-panel h2 span {
+    display: none;
+  }
+  .hand-panel .prompt {
+    max-width: 180px;
+  }
+  .hand-panel .button-row {
+    flex-shrink: 0;
+  }
+  .selection-actions {
+    font-size: 12px;
+  }
+  .hand-card {
+    flex-basis: 240px;
+  }
+  .hand-card .card-art {
+    flex-basis: 40px;
+  }
+  .hand-card .card-name {
+    font-size: 18px;
+  }
+  .hand {
+    justify-content: start;
+  }
+  .board-panel {
+    overflow: hidden;
+  }
+  .map-expanded {
+    overflow: visible;
+  }
+  .player-badges:has(> :nth-child(4)) .badge-allies {
+    display: none;
   }
 }

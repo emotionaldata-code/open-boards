@@ -51,24 +51,20 @@ export function Lobby({
       <div className="page-title">
         <div>
           <h1>Find your table</h1>
-          <p className="muted">Gather your friends. Outlast your rivals.</p>
         </div>
         <span className="muted">King Solomon’s Mine · Basic rules</span>
       </div>
       <div className="lobby-grid">
         <section className="panel">
           <h2>Open a table</h2>
-          <p className="muted">Pick your fighter. Bring your rivals.</p>
           <div className="create-options">
             <button onClick={() => onCreate(2)} disabled={busy}>
-              <strong>02</strong>
+              <strong>2</strong>
               <span>Head to head</span>
-              <small>A duel for two players</small>
             </button>
             <button onClick={() => onCreate(4)} disabled={busy}>
-              <strong>04</strong>
+              <strong>4</strong>
               <span>Free-for-all</span>
-              <small>Four seats. One survivor.</small>
             </button>
           </div>
           <h2>Join your friends</h2>

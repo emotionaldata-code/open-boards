@@ -11,7 +11,7 @@ export function HowToPlay() {
         <Dialog title="How to play" onClose={() => setOpen(false)}>
           <div className="rules-grid">
             <section>
-              <h3>Draw. Move. Strike.</h3>
+              <h3>Your turn</h3>
               <p>
                 Each turn gives you two actions. Choose Maneuver to draw one card, then move each
                 living fighter once in any order. Select a fighter and tap a highlighted space, or
@@ -30,11 +30,11 @@ export function HowToPlay() {
             <section>
               <h3>Play your hand</h3>
               <p>
-                Your hero and allies share one deck, hand and action budget. MAIN cards are for your
-                hero, ALLY for your allies, and BOTH for either. Select the acting fighter before a
-                card. Spend one action to play an action card, or select an attack or versatile
-                card, choose a rival in range, and commit your attack. Use the “i” button to inspect
-                a card without playing it. You may end your turn early.
+                Your hero and allies share one deck, hand and action budget. Each card names the
+                fighter who can use it. Select the acting fighter before a card. Spend one action to
+                play an action card, or select an attack or versatile card, choose a rival in range,
+                and commit your attack. Card effects are printed directly on each card. You may end
+                your turn early.
               </p>
             </section>
             <section>
@@ -79,7 +79,7 @@ export function HowToPlay() {
               </p>
             </section>
             <p className="muted">
-              Play with 2 or 4 players. On a phone, rotate to landscape during the match. An
+              Play with 2 or 4 players. On a phone, swipe to pan the map or browse your hand. An
               unexpected disconnect pauses play for up to 120 seconds; leaving forfeits your seat.
             </p>
           </div>

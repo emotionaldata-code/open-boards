@@ -36,6 +36,12 @@ export type PlayerRef =
   | 'ally';
 export type Value =
   | number
+  | {
+      fighters: 'friendly' | 'enemy' | 'any';
+      role?: 'main' | 'ally';
+      range?: 'adjacent' | 'zone';
+      anchor?: PlayerRef;
+    }
   | { stat: 'hp' | 'hand' | 'deck' | 'movement'; of?: PlayerRef }
   | { stat: 'counter'; name: string; of?: PlayerRef }
   | { stat: 'actions' }
@@ -63,6 +69,7 @@ export type Condition =
   | { type: 'changed-position'; target?: PlayerRef }
   | { type: 'has-status'; player?: PlayerRef; status: string };
 export type Effect =
+  | { type: 'replace-attack' }
   | { type: 'bonus-attack'; name: string; value: number }
   | { type: 'replace-defender'; target: PlayerRef }
   | { type: 'recover-card' }
@@ -73,11 +80,12 @@ export type Effect =
   | { type: 'inspect-deck'; count: number; take: number }
   | {
       type: 'area-damage';
-      range: 'zone' | 'any';
+      range: 'zone' | 'any' | 'adjacent';
       adjacent?: boolean;
       relation: 'friendly' | 'enemy' | 'any';
       amount: number;
       onDefeat?: Effect[];
+      onDamage?: Effect[];
     }
   | { type: 'suppress-card-effects' }
   | { type: 'predict-value' }
@@ -94,7 +102,8 @@ export type Effect =
       effects: Effect[];
     }
   | { type: 'draw'; target?: PlayerRef; count: Value }
-  | { type: 'damage' | 'heal'; target?: PlayerRef; amount: number }
+  | { type: 'damage'; target?: PlayerRef; amount: Value; onDamage?: Effect[] }
+  | { type: 'heal'; target?: PlayerRef; amount: Value }
   | { type: 'move'; target?: PlayerRef; distance: number; throughEnemies?: boolean }
   | { type: 'push' | 'pull'; target?: PlayerRef; distance: number }
   | {
@@ -104,13 +113,23 @@ export type Effect =
       anchor?: PlayerRef;
       range?: 'adjacent';
       optional?: boolean;
+      allowDefeatedAnchor?: boolean;
+      includeOrigin?: boolean;
     }
-  | { type: 'discard'; target?: PlayerRef; chooser?: PlayerRef; random?: boolean; count: number }
+  | {
+      type: 'discard';
+      target?: PlayerRef;
+      chooser?: PlayerRef;
+      random?: boolean;
+      count: number;
+      upTo?: boolean;
+      combatBonus?: { field: 'attack' | 'defense'; per: 'card' | 'boost' };
+    }
   | { type: 'actions'; target?: PlayerRef; amount: number }
   | { type: 'counter'; name: string; amount: number }
   | { type: 'status'; target?: PlayerRef; status: string; stacks?: number; turns?: number }
   | { type: 'remove-status'; target?: PlayerRef; status: string }
-  | { type: 'modify'; field: 'amount' | 'attack' | 'defense'; amount: number }
+  | { type: 'modify'; field: 'amount' | 'attack' | 'defense'; amount: Value }
   | { type: 'set-combat-value'; target?: PlayerRef; value: Value; mode?: 'printed' | 'total' }
   | { type: 'cancel' }
   | { type: 'if'; condition: Condition; then: Effect[]; else?: Effect[] }

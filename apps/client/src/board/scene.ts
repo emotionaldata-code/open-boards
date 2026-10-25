@@ -21,7 +21,6 @@ export class ArenaScene {
     private render: () => void,
   ) {
     const terrain = createTerrain();
-    terrain.cacheAsTexture({ resolution: Math.min(devicePixelRatio || 1, 2), antialias: true });
     app.stage.addChild(terrain, this.highlights, this.people, this.effects);
   }
   update(

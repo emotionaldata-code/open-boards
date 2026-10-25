@@ -76,6 +76,23 @@ export function movement(
 }
 export function value(state: GameState, defs: Definitions, binding: Binding, v: Value): number {
   if (typeof v === 'number') return v;
+  if ('fighters' in v) {
+    const owner = reference(state, binding);
+    const anchor = reference(state, binding, v.anchor);
+    return state.fighters.filter(
+      (f) =>
+        !f.defeated &&
+        f.position !== null &&
+        (v.fighters === 'any' ||
+          (v.fighters === 'friendly' ? f.player === owner?.player : f.player !== owner?.player)) &&
+        (!v.role || f.role === v.role) &&
+        (!v.range ||
+          (anchor &&
+            (v.range === 'adjacent'
+              ? adjacent(defs.map, anchor.position, f.position)
+              : sharesZone(defs.map, anchor.position, f.position)))),
+    ).length;
+  }
   if ('event' in v) {
     const frame = state.resolution.frames[binding.frame];
     return frame && v.event in frame ? Number(frame[v.event as keyof Frame]) : 0;

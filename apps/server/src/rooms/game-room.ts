@@ -93,6 +93,9 @@ export function gameRoom(
       }
       this.match.disconnect(client.auth!.id, Date.now(), reconnectSeconds * 1000);
       const reservation = this.allowReconnection(client, reconnectSeconds);
+      // Core runs onLeave for expired reservations and failed join handshakes.
+      // Observe the rejection here too: a pre-join drop returns an already-rejected promise.
+      void reservation.catch(() => this.reservations.delete(client.auth!.id));
       this.reservations.set(client.auth!.id, { reject: () => reservation.reject() });
       this.publish();
     }

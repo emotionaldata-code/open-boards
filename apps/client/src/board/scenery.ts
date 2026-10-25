@@ -1,4 +1,4 @@
-import { Container, Graphics, Text } from 'pixi.js';
+import { Container, Graphics } from 'pixi.js';
 import { bridge, cypress, observatory, pavilion, ship, tree } from './landmarks';
 
 /** Static cartography sits below routes and spaces, with no knowledge of legal moves. */
@@ -115,26 +115,5 @@ export function createScenery(): Container {
     [1740, 365],
   ])
     cypress(g, x, y);
-  for (const [text, x, y] of [
-    ['Hanging gardens', 430, 45],
-    ['West gate', 355, 448],
-    ['Drowned observatory', 1695, 220],
-    ['The old aqueduct', 1225, 490],
-    ['Smugglers’ landing', 365, 690],
-  ] as const) {
-    const label = new Text({
-      text,
-      style: {
-        fontFamily: 'Georgia',
-        fontSize: 18,
-        fontStyle: 'italic',
-        fill: 0xc3c3a0,
-        stroke: { color: 0x344438, width: 3 },
-      },
-    });
-    label.anchor.set(0.5);
-    label.position.set(x, y);
-    layer.addChild(label);
-  }
   return layer;
 }

@@ -16,7 +16,7 @@ pnpm dev
 
 Open **http://localhost:5173**. Register an account, create a two- or four-seat room, and copy its invite link. Other players need separate browser profiles or private windows so each has their own account cookie. Everyone readies up; the creator starts the match. Reloading an active match restores the saved seat from that tab's session storage.
 
-On phones, rotate to landscape when the match starts. Use the fullscreen button in the header when your browser supports it. Tap player badges for health, abilities, counters, statuses and discards. Your hand stays beside the map on landscape phones and below it on desktop; swipe long hands horizontally. How to play is available on the login page.
+Play in portrait or landscape. On portrait phones, swipe the map to pan; use the map controls to fit the whole board or expand it. Landscape keeps your hand beside the map, with cards below it on larger screens. Swipe your hand to browse cards; their special effects are printed in full. Use the fullscreen button when your browser supports it. Tap player badges for health, abilities, counters, statuses and discards. How to play is available on the login page.
 
 Vite proxies HTTP and WebSockets to port 2567, preserving the browser's same origin. Keep `APP_ORIGIN` equal to the exact browser origin. LAN play needs this set to the LAN URL, then a server restart. Never commit `.env`.
 
@@ -67,7 +67,7 @@ Push changes to `deploy/open-board`, then deploy that branch from Dokploy. Redep
 
 ## Rules
 
-Choose **Medusa** in the illustrated roster. She has thirty cards across eleven designs and three Harpies, with artwork, passive abilities and card effects. Browse every deck before signing in or in the waiting room. Tap a hand card’s **i** button for its full rules and timing, even when it cannot currently be played. [The character guide](docs/characters.md) explains the JSON bundles and artwork recipes. Changing character clears readiness.
+Choose **Medusa** in the illustrated roster. She has thirty cards across eleven designs and three Harpies, with artwork, passive abilities and card effects. Browse every deck before signing in or in the waiting room. Cards show their special effects and timing directly, including while waiting for your turn. Core gameplay rules are explained once in How to play. [The character guide](docs/characters.md) explains the JSON bundles and artwork recipes. Changing character clears readiness.
 
 The Genie is also playable: a solo ranged hero with all thirty printed cards across twelve designs. Trade cards for actions, choose among Three Wishes, inspect an opponent’s hand and place the Genie anywhere empty. [His import notes](docs/characters/the-genie.md) describe the reusable hooks and verification.
 
@@ -75,7 +75,7 @@ Start with five cards and your character’s health; keep at most seven cards at
 
 King Solomon’s Mine, from Unmatched: Houdini vs. The Genie, has 29 spaces and seven colored zones: Gold, Yellow, Red, Blue, Brown, Gray and Green. Its paths, zones, secret passages and two-player starts follow the [printed board](https://www.the-unmatched.club/maps/king-solomons-mine). Four-player matches use two additional custom starting positions. Melee characters attack adjacent rivals. Ranged characters also attack rivals sharing any color with its space. Multicolor spaces belong to every shown color; sharing is direct, never chained through other spaces. Adjacent attacks work across zone boundaries. Occupied spaces block movement, but never ranged attacks.
 
-Six diamond-marked portals represent the board’s secret passages and connect to one another for movement only. Enter a portal normally, then spend one movement point to reach any other unoccupied portal; continue moving if points remain. Portals never extend attack range and cannot be used by pushes or pulls. The entire board stays visible without zooming.
+Six diamond-marked portals represent the board’s secret passages and connect to one another for movement only. Enter a portal normally, then spend one movement point to reach any other unoccupied portal; continue moving if points remain. Portals never extend attack range and cannot be used by pushes or pulls. Fit view shows the entire board; detail view allows panning for larger spaces on phones.
 
 Each turn has two actions. Maneuver spends one action, draws one card, then lets you move up to your character’s movement in unoccupied edges or stay. Attack with an attack or versatile card; the defender may use a defense or versatile card for free, or decline. The attack remains hidden until the defense decision. Reveal, deal `max(0, attack − defense)` damage, and discard the committed cards. Action cards spend one action and resolve their printed effects in order. You may end your turn early. Resolve movement, defense, abilities and required discards before anything else.
 

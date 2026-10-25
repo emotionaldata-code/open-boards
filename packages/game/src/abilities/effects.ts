@@ -18,6 +18,7 @@ import { inspectHand, nameValue, predictValue } from './hand';
 import { swapFighters } from './swap';
 import { chooseArea } from './area';
 import { applyCombatEffect, setHealth, replaceDefender } from './combat-effects';
+import { offerAttackReplacement } from './attack-replacement';
 
 export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effect' }>): void {
   const { effect: e } = task,
@@ -28,6 +29,9 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
   if (ownerPlayer.departed) return;
   const target = reference(state, task, 'target' in e ? e.target : 'self');
   switch (e.type) {
+    case 'replace-attack':
+      offerAttackReplacement(runtime, task);
+      break;
     case 'inspect-hand':
       inspectHand(runtime, task, e);
       break;
@@ -172,11 +176,11 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       if (frame.hook?.startsWith('before-') && e.field in frame) {
         // The discriminated operation owns the field; validation limits which hook can modify it.
         if (e.field === 'attack' && frame.kind === 'combat')
-          modifyCombatValue(frame, 'attack', e.amount);
+          modifyCombatValue(frame, 'attack', value(state, defs, task, e.amount));
         else if (e.field === 'defense' && frame.kind === 'combat')
-          modifyCombatValue(frame, 'defense', e.amount);
+          modifyCombatValue(frame, 'defense', value(state, defs, task, e.amount));
         else if (e.field === 'amount' && 'amount' in frame)
-          frame.amount = Math.max(0, frame.amount + e.amount);
+          frame.amount = Math.max(0, frame.amount + value(state, defs, task, e.amount));
       }
       break;
     case 'cancel':
@@ -206,15 +210,21 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
               kind: 'damage',
               actor: owner.id,
               target: target.id,
-              amount: e.amount,
+              amount: Math.max(0, Math.min(1000, value(state, defs, task, e.amount))),
               reason: 'ability',
             },
             task.provenance,
+            { binding: task, effects: e.onDamage ?? [] },
           );
           break;
         case 'heal':
           runtime.operation(
-            { kind: 'heal', actor: owner.id, target: target.id, amount: e.amount },
+            {
+              kind: 'heal',
+              actor: owner.id,
+              target: target.id,
+              amount: Math.max(0, Math.min(1000, value(state, defs, task, e.amount))),
+            },
             task.provenance,
           );
           break;
@@ -245,14 +255,14 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
             e.type === 'teleport'
               ? Object.fromEntries(
                   defs.map.nodes
-                    .filter(
-                      (n) =>
-                        (n !== target.position || !!e.range) &&
-                        canPlace(state, target, defs, n, {
-                          zone: e.zone,
-                          range: e.range,
-                          anchor: e.range ? reference(state, task, e.anchor)?.id : undefined,
-                        }),
+                    .filter((n) =>
+                      canPlace(state, target, defs, n, {
+                        zone: e.zone,
+                        range: e.range,
+                        anchor: e.range ? reference(state, task, e.anchor)?.id : undefined,
+                        allowDefeatedAnchor: e.allowDefeatedAnchor,
+                        includeOrigin: e.includeOrigin,
+                      }),
                     )
                     .map((n) => [n, [n]]),
                 )
@@ -280,6 +290,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                         ? reference(state, task, e.anchor)?.id
                         : undefined,
                     range: e.type === 'teleport' ? e.range : undefined,
+                    allowDefeatedAnchor: e.type === 'teleport' ? e.allowDefeatedAnchor : undefined,
+                    includeOrigin: e.type === 'teleport' ? e.includeOrigin : undefined,
                     throughEnemies: e.type === 'move' ? e.throughEnemies : undefined,
                   },
                 },

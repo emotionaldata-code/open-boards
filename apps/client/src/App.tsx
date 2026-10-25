@@ -103,8 +103,6 @@ export function App() {
                 Sign out
               </button>
             </>
-          ) : !user ? (
-            <span className="muted">A table for good rivals.</span>
           ) : null}
         </div>
       </header>

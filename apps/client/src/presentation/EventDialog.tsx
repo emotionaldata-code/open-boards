@@ -56,7 +56,6 @@ export function EventDialog({
           {review.result && <p className="event-result">{review.result}</p>}
         </div>
         <footer className="event-acknowledgement">
-          <span>Read at your pace. Acknowledge to continue.</span>
           <button
             className="primary"
             ref={acknowledgement}

@@ -56,15 +56,26 @@ export function canPlace(
   target: Fighter,
   defs: Definitions,
   destination: string,
-  rule: { zone?: 'any' | 'shared'; anchor?: string; range?: 'adjacent' },
+  rule: {
+    zone?: 'any' | 'shared';
+    anchor?: string;
+    range?: 'adjacent';
+    allowDefeatedAnchor?: boolean;
+    includeOrigin?: boolean;
+  },
 ): boolean {
   if (
     !defs.map.nodes.includes(destination) ||
+    (destination === target.position && !rule.includeOrigin && !rule.range) ||
     state.fighters.some((f) => f.id !== target.id && !f.defeated && f.position === destination)
   )
     return false;
   if (rule.zone === 'shared' && !sharesZone(defs.map, target.position, destination)) return false;
   if (!rule.range) return true;
   const anchor = fighterById(state, rule.anchor!);
-  return !!anchor && !anchor.defeated && adjacent(defs.map, anchor.position, destination);
+  return (
+    !!anchor &&
+    (!anchor.defeated || !!rule.allowDefeatedAnchor) &&
+    adjacent(defs.map, anchor.position, destination)
+  );
 }

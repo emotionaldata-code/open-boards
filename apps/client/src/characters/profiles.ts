@@ -7,6 +7,14 @@ export interface CharacterProfile {
   ground: string;
 }
 export const profiles: Record<string, CharacterProfile> = {
+  dracula: {
+    role: 'Lord of the night',
+    summary: 'A patient hunger. Three faithful shadows.',
+    tactic:
+      'Surround your prey with Sisters. Feed to sustain Dracula, then spend your hand on a devastating Beastform.',
+    accent: '#ba716f',
+    ground: '#302535',
+  },
   achilles: {
     role: 'Hero of the Trojan War',
     summary: 'Brothers in battle. Fury in loss.',

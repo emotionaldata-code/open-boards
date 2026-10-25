@@ -11,6 +11,15 @@ type AreaEffect = Extract<Effect, { type: 'area-damage' }>;
 export function chooseArea(runtime: Runtime, binding: Binding, effect: AreaEffect): void {
   const owner = fighterById(runtime.state, binding.owner)!;
   if (owner.defeated || owner.position === null) return;
+  if (effect.range === 'adjacent') {
+    damageArea(runtime, {
+      ...binding,
+      type: 'area-apply',
+      effect,
+      spaces: runtime.defs.map.nodes.filter((n) => adjacent(runtime.defs.map, owner.position, n)),
+    });
+    return;
+  }
   openChoice(
     runtime,
     binding.frame,
@@ -60,7 +69,7 @@ export function chooseAdjacent(
 export function damageArea(runtime: Runtime, task: Extract<Task, { type: 'area-apply' }>): void {
   const owner = fighterById(runtime.state, task.owner)!;
   if (runtime.state.players.find((p) => p.id === owner.player)!.eliminated) return;
-  const area = runtime.frame({ kind: 'area', actor: owner.id, defeats: 0 });
+  const area = runtime.frame({ kind: 'area', actor: owner.id, defeats: 0, amount: 0 });
   const targets = runtime.state.fighters.filter(
     (f) =>
       !f.defeated &&
@@ -84,7 +93,13 @@ export function damageArea(runtime: Runtime, task: Extract<Task, { type: 'area-a
         area,
       },
     })),
-    { ...task, type: 'area-result', area, effects: task.effect.onDefeat ?? [] },
+    {
+      ...task,
+      type: 'area-result',
+      area,
+      effects: task.effect.onDefeat ?? [],
+      onDamage: task.effect.onDamage,
+    },
     { type: 'release', frame: area },
   );
 }
@@ -93,4 +108,6 @@ export function areaResult(runtime: Runtime, task: Extract<Task, { type: 'area-r
   const area = runtime.data.frames[task.area];
   if (area?.kind === 'area' && area.defeats > 0)
     runtime.prepend(...runtime.effects(task.effects, task));
+  if (area?.kind === 'area' && area.amount > 0)
+    runtime.prepend(...runtime.effects(task.onDamage ?? [], { ...task, frame: task.area }));
 }

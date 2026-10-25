@@ -41,35 +41,3 @@ export function FullscreenButton() {
     </div>
   );
 }
-const portraitQuery = '(max-width: 900px) and (orientation: portrait) and (pointer: coarse)';
-export function usePortraitPhone() {
-  const [portrait, setPortrait] = useState(() => matchMedia(portraitQuery).matches);
-  useEffect(() => {
-    const media = matchMedia(portraitQuery);
-    const update = () => setPortrait(media.matches);
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
-  return portrait;
-}
-export function RotatePrompt({
-  onLeave,
-  finished = false,
-}: {
-  onLeave: () => void;
-  finished?: boolean;
-}) {
-  return (
-    <section className="rotate-prompt" aria-label="Landscape required">
-      <Icon name="rotate" />
-      <h2>Turn your phone to play</h2>
-      <p>
-        The arena and your hand need a little room.
-        <br />
-        Rotate to landscape to continue.
-      </p>
-      <p className="muted">Your match stays connected.</p>
-      <button onClick={onLeave}>{finished ? 'Return to lobby' : 'Leave match'}</button>
-    </section>
-  );
-}

@@ -1,15 +1,17 @@
 import { basic, cardPresentation } from '@open-boards/content';
 import { cardSvg } from './art';
+import { cardFighter, cardText } from './text';
 
 export function CardPrint({ definition: id }: { definition: string }) {
   const card = basic.cards[id];
   const visual = cardPresentation[id];
+  const text = cardText(id);
   return (
     <>
       <span className="card-top">
         <span>
           <span className="card-boost">BOOST {card.boost}</span>
-          {card.category} · {card.usableBy}
+          <span className="card-kind">{card.category}</span> · {cardFighter(id)}
         </span>
         {card.category !== 'action' && <strong>{card.value}</strong>}
       </span>
@@ -20,7 +22,7 @@ export function CardPrint({ definition: id }: { definition: string }) {
         />
       </span>
       <strong className="card-name">{card.name}</strong>
-      <span className="card-description">{card.description}</span>
+      {text && <span className="card-description">{text}</span>}
     </>
   );
 }

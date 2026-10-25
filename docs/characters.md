@@ -55,3 +55,7 @@ Sherlock Holmes is playable with **30 cards across 13 designs** and one **8-HP r
 ## Achilles
 
 Achilles is playable with **30 cards across 12 designs**, 18 HP, movement 2 and one **6-HP melee Patroclus**. Patroclus's defeat forces two random discards, then fuels Achilles's attacks and victory draws. Test For Weakness resolves a separate Relentless Assault, while Under Achilles' Helm can exchange positions and transfer defense to Patroclus. All printed BOOST values, fighter restrictions and timed effects are preserved. The [source inventory](characters/achilles/inventory.json) and [import notes](characters/achilles.md) document the rule mapping, timing and twelve original card illustrations.
+
+## Dracula
+
+Dracula is playable with **30 cards across 13 designs**, 13 HP, movement 2 and **three 1-HP melee Sisters**. Bloodthirsty can feed on an adjacent friendly or enemy fighter before drawing. His deck preserves every printed BOOST, restriction and timed clause, including private attack replacement, Beastform’s hand payment, Sister-based bonuses, feeding, revival and exact fighter placement. The [source inventory](characters/dracula/inventory.json) and [import notes](characters/dracula.md) document reusable rules, shared game conventions and thirteen original illustrations plus distinct owner-colored figures.

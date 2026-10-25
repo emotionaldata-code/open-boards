@@ -71,6 +71,8 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
         combat?.kind === 'combat' && combat.protectedFighters?.includes(fighter.id);
       frame.amount =
         frame.cancelled || protectedFighter ? 0 : Math.max(0, Math.min(1000, frame.amount));
+      const area = frame.area === undefined ? undefined : runtime.data.frames[frame.area];
+      if (area?.kind === 'area') area.amount += frame.amount;
       if (frame.combat !== undefined) {
         const combat = runtime.data.frames[frame.combat];
         if (combat?.kind === 'combat') {

@@ -13,6 +13,7 @@ describe('complete character bundles', () => {
       'king-arthur',
       'achilles',
       'sherlock-holmes',
+      'dracula',
     ]);
     expect(JSON.parse(JSON.stringify(basic))).toEqual(basic);
     const owned = new Set<string>();
@@ -21,6 +22,7 @@ describe('complete character bundles', () => {
       expect(character.deck).toHaveLength(
         (
           {
+            dracula: 13,
             medusa: 11,
             'the-genie': 12,
             'king-arthur': 16,
@@ -38,7 +40,7 @@ describe('complete character bundles', () => {
         expect(basic.cards[card]).not.toHaveProperty('count');
       }
     }
-    expect(owned.size).toBe(64);
+    expect(owned.size).toBe(77);
     expect(() => deckDefinitions('ranger')).toThrow('supported character');
   });
   it('rejects duplicate definitions, invalid copies and unsafe artwork recipes', () => {

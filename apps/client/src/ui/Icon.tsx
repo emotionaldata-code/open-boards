@@ -7,8 +7,12 @@ export type SymbolName =
   | 'close'
   | 'rotate'
   | 'sound'
-  | 'muted';
+  | 'muted'
+  | 'zoom-in'
+  | 'zoom-out';
 const paths: Record<SymbolName, string> = {
+  'zoom-in': 'M10 5v10M5 10h10m2 7 5 5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z',
+  'zoom-out': 'M5 10h10m2 7 5 5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z',
   attack: 'M5 19 17 7m-9 9-3-3m3 3 3 3M14 4h6v6l-6-6Z',
   defense: 'M12 3 4 6v6c0 4 8 9 8 9s8-5 8-9V6l-8-3Zm0 4v10',
   versatile: 'm12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z',

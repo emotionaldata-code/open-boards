@@ -1,0 +1,459 @@
+{
+  "id": "dracula",
+  "name": "Dracula",
+  "hp": 13,
+  "movement": 2,
+  "attackType": "melee",
+  "ally": {
+    "id": "dracula-sister",
+    "name": "Sister",
+    "count": 3,
+    "hp": 1,
+    "attackType": "melee"
+  },
+  "abilities": [
+    {
+      "id": "bloodthirsty",
+      "name": "Bloodthirsty",
+      "description": "At the start of your turn, you may deal 1 damage to a fighter adjacent to Dracula. If you do, draw a card.",
+      "trigger": "turn-start",
+      "optional": true,
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "any",
+          "range": "adjacent",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 1,
+              "onDamage": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "ground": "#302535",
+    "ink": "#d4bcb2",
+    "accent": "#ba716f"
+  },
+  "cards": [
+    {
+      "id": "dracula-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "image": "/cards/dracula/feint.svg"
+      },
+      "flavor": "A polite bow hides a sharpened intention.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-dash",
+      "name": "Dash",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "After combat: Move your fighter up to 3 spaces.",
+      "art": {
+        "scene": "trail",
+        "image": "/cards/dracula/dash.svg"
+      },
+      "flavor": "The last footfall dissolves into fog.",
+      "abilities": [
+        {
+          "id": "dash",
+          "name": "Dash",
+          "description": "After combat: Move your fighter up to 3 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-exploit",
+      "name": "Exploit",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "count": 2,
+      "description": "After combat: Draw 1 card.",
+      "art": {
+        "scene": "blade",
+        "image": "/cards/dracula/exploit.svg"
+      },
+      "flavor": "A moment of weakness is an invitation.",
+      "abilities": [
+        {
+          "id": "exploit",
+          "name": "Exploit",
+          "description": "After combat: Draw 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-ambush",
+      "name": "Ambush",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 3,
+      "count": 2,
+      "description": "During combat: Your opponent discards 1 random card. Add its BOOST value to this card's attack value.",
+      "art": {
+        "scene": "blade",
+        "image": "/cards/dracula/ambush.svg"
+      },
+      "flavor": "Something waits beyond the carriage light.",
+      "abilities": [
+        {
+          "id": "ambush",
+          "name": "Ambush",
+          "description": "During combat: Your opponent discards 1 random card. Add its BOOST value to this card's attack value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1,
+              "random": true,
+              "combatBonus": {
+                "field": "attack",
+                "per": "boost"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-feeding-frenzy",
+      "name": "Feeding Frenzy",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "count": 2,
+      "description": "During combat: This card's value is +1 for each Sister in the same zone as the opposing fighter.",
+      "art": {
+        "scene": "embers",
+        "image": "/cards/dracula/feeding-frenzy.svg"
+      },
+      "flavor": "Three shadows gather at the threshold.",
+      "abilities": [
+        {
+          "id": "feeding-frenzy",
+          "name": "Feeding Frenzy",
+          "description": "During combat: This card's value is +1 for each Sister in the same zone as the opposing fighter.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "modify",
+              "field": "attack",
+              "amount": {
+                "fighters": "friendly",
+                "role": "ally",
+                "range": "zone",
+                "anchor": "opponent"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-beastform",
+      "name": "Beastform",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 6,
+      "boost": 4,
+      "count": 2,
+      "description": "During combat: You may discard any number of cards from your hand. This card's value is +1 for each card you discard.",
+      "art": {
+        "scene": "fire",
+        "image": "/cards/dracula/beastform.svg"
+      },
+      "flavor": "The velvet restraint gives way to claws.",
+      "abilities": [
+        {
+          "id": "beastform",
+          "name": "Beastform",
+          "description": "During combat: You may discard any number of cards from your hand. This card's value is +1 for each card you discard.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "count": 100,
+              "upTo": true,
+              "combatBonus": {
+                "field": "attack",
+                "per": "card"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-do-my-bidding",
+      "name": "Do My Bidding",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 3,
+      "count": 2,
+      "description": "Immediately: Return your opponent's attack card to their hand. Look at their hand and choose an attack or versatile card for them to play. (It may be the same card.)",
+      "art": {
+        "scene": "shield",
+        "image": "/cards/dracula/do-my-bidding.svg"
+      },
+      "flavor": "Your will is merely another door.",
+      "abilities": [
+        {
+          "id": "do-my-bidding",
+          "name": "Do My Bidding",
+          "description": "Immediately: Return your opponent's attack card to their hand. Look at their hand and choose an attack or versatile card for them to play. (It may be the same card.)",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "replace-attack"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-look-into-my-eyes",
+      "name": "Look Into My Eyes",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 1,
+      "boost": 2,
+      "count": 2,
+      "description": "During combat: Add the BOOST value from your opponent's attack card to the defense value of this card.",
+      "art": {
+        "scene": "ward",
+        "image": "/cards/dracula/look-into-my-eyes.svg"
+      },
+      "flavor": "The candle bends toward his gaze.",
+      "abilities": [
+        {
+          "id": "look-into-my-eyes",
+          "name": "Look Into My Eyes",
+          "description": "During combat: Add the BOOST value from your opponent's attack card to the defense value of this card.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "modify",
+              "field": "defense",
+              "amount": {
+                "card": "attack",
+                "field": "boost"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-mistform",
+      "name": "Mistform",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Place Dracula in any space.\nGain 1 action.",
+      "art": {
+        "scene": "trail",
+        "image": "/cards/dracula/mistform.svg"
+      },
+      "flavor": "No lock can hold the evening mist.",
+      "effects": [
+        {
+          "type": "teleport",
+          "zone": "any",
+          "includeOrigin": true,
+          "optional": false
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "dracula-prey-upon",
+      "name": "Prey Upon",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 4,
+      "count": 2,
+      "description": "Deal 1 damage to all opposing fighters adjacent to Dracula. Dracula recovers 1 health for each damage dealt.",
+      "art": {
+        "scene": "embers",
+        "image": "/cards/dracula/prey-upon.svg"
+      },
+      "flavor": "Every heartbeat draws the night closer.",
+      "effects": [
+        {
+          "type": "area-damage",
+          "range": "adjacent",
+          "relation": "enemy",
+          "amount": 1,
+          "onDamage": [
+            {
+              "type": "heal",
+              "amount": {
+                "event": "amount"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dracula-baptism-of-blood",
+      "name": "Baptism of Blood",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Recover 2 health. Return a defeated Sister (if any) to any space in Dracula's zone.",
+      "art": {
+        "scene": "lantern",
+        "image": "/cards/dracula/baptism-of-blood.svg"
+      },
+      "flavor": "A crimson vow outlasts the grave.",
+      "effects": [
+        {
+          "type": "heal",
+          "amount": 2
+        },
+        {
+          "type": "revive-ally",
+          "anchor": "main"
+        }
+      ]
+    },
+    {
+      "id": "dracula-thirst-for-sustenance",
+      "name": "Thirst for Sustenance",
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 3,
+      "count": 3,
+      "description": "After combat: If you won the combat, place Dracula in any space adjacent to the opposing fighter.",
+      "art": {
+        "scene": "blade",
+        "image": "/cards/dracula/thirst-for-sustenance.svg"
+      },
+      "flavor": "Her hunger calls the master home.",
+      "abilities": [
+        {
+          "id": "thirst-for-sustenance",
+          "name": "Thirst for Sustenance",
+          "description": "After combat: If you won the combat, place Dracula in any space adjacent to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "teleport",
+              "target": "main",
+              "anchor": "opponent",
+              "range": "adjacent",
+              "allowDefeatedAnchor": true,
+              "optional": false
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dracula-ravening-seduction",
+      "name": "Ravening Seduction",
+      "category": "action",
+      "usableBy": "ALLY",
+      "value": 0,
+      "boost": 2,
+      "count": 3,
+      "description": "Move any fighter up to 2 spaces. After moving, deal 1 damage to the moved fighter for each Sister adjacent to them.",
+      "art": {
+        "scene": "map",
+        "image": "/cards/dracula/ravening-seduction.svg"
+      },
+      "flavor": "A whispered invitation, a closing circle.",
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "any",
+          "effects": [
+            {
+              "type": "move",
+              "target": "chosen",
+              "distance": 2
+            },
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": {
+                "fighters": "friendly",
+                "role": "ally",
+                "range": "adjacent",
+                "anchor": "chosen"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

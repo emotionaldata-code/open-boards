@@ -16,6 +16,8 @@ import { applySwap } from './swap';
 import { commitPrediction, discardNamedValue } from './hand';
 import { orderInspected, resolveSearch, takeInspected, resolveRecovery } from './deck';
 import { offerPlacement, revive } from './revival';
+import { selectAttack, replaceAttack } from './attack-replacement';
+import { modifyCombatValue } from './combat-values';
 import type { Binding, CardProvenance, Operation, Task } from './state';
 import type { Ability, Effect, Hook } from './vocabulary';
 
@@ -56,6 +58,7 @@ export class Runtime {
       { kind: 'combat' | 'card' | 'turn' | 'elimination' | 'maneuver-boost' | 'area' }
     >,
     provenance?: CardProvenance,
+    onDamage?: { binding: Binding; effects: Effect[] },
   ): void {
     const frame = this.frame(operation);
     this.data.frames[frame].provenance = provenance;
@@ -64,6 +67,16 @@ export class Runtime {
       { type: 'event', frame, hook: `before-${kind}` },
       { type: 'apply', frame, provenance },
       { type: 'event', frame, hook: `after-${kind}` },
+      ...(onDamage
+        ? [
+            {
+              ...onDamage.binding,
+              type: 'damage-result' as const,
+              damage: frame,
+              effects: onDamage.effects,
+            },
+          ]
+        : []),
       { type: 'release', frame },
     );
   }
@@ -331,6 +344,18 @@ export class Runtime {
         else continue;
       }
       switch (task.type) {
+        case 'select-attack':
+          if (this.data.frames[task.frame]) selectAttack(this, task);
+          break;
+        case 'replace-attack':
+          if (this.data.frames[task.frame]) replaceAttack(this, task);
+          break;
+        case 'damage-result': {
+          const damage = this.data.frames[task.damage];
+          if (damage?.kind === 'damage' && damage.amount > 0)
+            this.prepend(...this.effects(task.effects, { ...task, frame: task.damage }));
+          break;
+        }
         case 'swap-apply':
           if (this.data.frames[task.frame]) applySwap(this, task);
           break;
@@ -393,8 +418,16 @@ export class Runtime {
         case 'discard-card': {
           const p = this.state.players.find((p) => p.id === task.player)!;
           const index = p.hand.findIndex((c) => c.id === task.card);
-          if (!p.eliminated && index >= 0)
+          if (!p.eliminated && index >= 0) {
+            const combat = task.combat === undefined ? undefined : this.data.frames[task.combat];
+            if (task.bonus && combat?.kind === 'combat')
+              modifyCombatValue(
+                combat,
+                task.bonus.field,
+                task.bonus.per === 'card' ? 1 : this.defs.cards[p.hand[index].definition].boost,
+              );
             this.card(mainFighter(this.state, p.id).id, p.hand.splice(index, 1)[0], true);
+          }
           break;
         }
         case 'event':

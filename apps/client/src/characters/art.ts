@@ -1,6 +1,11 @@
 /** Original, code-native cut-paper miniatures. The same SVG paths render in React and Pixi. */
 const gold = '#d8b77d';
 const artwork: Record<string, (seat: string) => string> = {
+  dracula: (seat) =>
+    `<path d="M-20-86 -48-116 -34-65 -61-5 -12-15 0-5 15-16 62-5 35-65 49-116 19-86Z" fill="#302535"/><path d="M-22-82 22-82 29-17 -24-17Z" fill="${seat}"/><path d="M-12-78 12-78 5-24 -6-24Z" fill="#eee0c1"/><path d="M-13-18 -15 3 -33 3 -27-19 M10-18 14 3 33 3 26-19Z" fill="#171b24"/><path d="M-15-116 13-116 19-94 1-78 -16-94Z" fill="#d4bcb2"/><path d="M-20-112 -15-137 5-144 23-128 22-105 11-123 0-116 -10-125Z" fill="#171b24"/><path d="M-10-104H-3 M6-104H13" stroke="#ba716f" stroke-width="3"/><path d="M-4-91 2-87 7-93" fill="none" stroke="#ba716f" stroke-width="2"/><path d="M-24-76 -40-46 -49-59 -46-72 -36-80 M25-76 40-48 49-59 46-72 36-80Z" fill="#d4bcb2"/><path d="M-12-82 0-72 13-82 9-65 -8-65Z" fill="#ba716f"/>`,
+  'dracula-sister': (seat) =>
+    `<path d="M-14-95Q-40-90-28-54L-48-5 -15-12 0-3 44-6 24-56Q38-91 12-96Z" fill="#302535"/><path d="M-14-86 13-86 22-45 35-13 0-20 -31-12 -20-44Z" fill="${seat}"/><path d="M-10-85 9-85 6-44 -8-44Z" fill="#ba716f"/><path d="M-13-117 11-117 15-98 0-84 -14-99Z" fill="#d4bcb2"/><path d="M-24-95 -19-135 0-149 18-136 25-91 11-108 6-129 -9-119 -13-96Z" fill="#171b24"/><path d="M-8-106H-2 M4-106H10" stroke="#ba716f" stroke-width="2"/><path d="M-19-78 -36-55 -44-72 -48-67 -41-43 -29-45 -10-65 M19-77 37-58 47-83 53-79 46-45 32-44 10-66Z" fill="#d4bcb2"/><path d="M-11-137 0-145 10-136" fill="none" stroke="${seat}" stroke-width="4"/>`,
+
   achilles: (seat) =>
     `<path d="M-22-90 17-91 37-19 14-29 -8-19 -34-26Z" fill="${seat}"/><path d="M-17-42 -4-42 -8-5 -25-3 -25-10 -17-14Z M5-42 17-41 21-12 32-5 29-1 8-3Z" fill="#c98958"/><path d="M-19-91 19-91 24-49 6-39 -22-48Z" fill="#d7b878"/><path d="M-14-85 13-85 17-61 -15-61Z" fill="#765441"/><path d="M-15-58 20-58 27-42 -24-42Z" fill="#3a2927"/><path d="M-12-112 14-111 18-96 7-84 -12-91Z" fill="#b88461"/><path d="M-21-111Q-19-140 9-136L23-118 17-103 12-116 -4-113 -8-97 -20-101Z" fill="#d7b878"/><path d="M-18-134Q-13-158 13-153L37-140 27-130 7-141Z" fill="#a4523b"/><path d="M-13-117 7-120 10-114 -10-111Z" fill="#241f23"/><path d="M39-125 45-153 51-129 47-116 44-4" fill="none" stroke="#d7b878" stroke-width="5" stroke-linejoin="round"/><path d="M17-83 35-68 46-84" fill="none" stroke="#b88461" stroke-width="10"/><circle cx="-31" cy="-64" r="29" fill="${seat}" stroke="#d7b878" stroke-width="5"/><circle cx="-31" cy="-64" r="20" fill="#44332f"/><path d="M-31-82 -22-64 -31-46 -40-64Z" fill="${seat}"/>`,
   'achilles-patroclus': (seat) =>
@@ -23,6 +28,7 @@ const artwork: Record<string, (seat: string) => string> = {
 };
 export const illustratedCharacters = Object.keys(artwork).filter(
   (id) =>
+    id !== 'dracula-sister' &&
     id !== 'medusa-harpy' &&
     id !== 'king-arthur-merlin' &&
     id !== 'achilles-patroclus' &&

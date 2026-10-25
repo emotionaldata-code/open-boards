@@ -11,7 +11,6 @@ export function DeckExplorer({ character, onClose }: { character: string; onClos
     <Dialog title={`${fighter.name}’s deck`} className="deck-dialog" onClose={onClose}>
       <p className="muted">
         {fighter.deck.reduce((n, c) => n + c.count, 0)} cards · {fighter.deck.length} designs.
-        Select a card to read its timing and effects.
       </p>
       <div className="deck-gallery">
         {fighter.deck.map(({ card, count }) => (

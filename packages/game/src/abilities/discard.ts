@@ -20,7 +20,13 @@ export function offerDiscard(
       () => remaining.splice(randomIndex(runtime, remaining.length), 1)[0],
     );
     runtime.prepend(
-      ...cards.map((card) => ({ type: 'discard-card' as const, player: playerId, card: card.id })),
+      ...cards.map((card) => ({
+        type: 'discard-card' as const,
+        player: playerId,
+        card: card.id,
+        combat: binding.frame,
+        bonus: effect.combatBonus,
+      })),
     );
     return;
   }
@@ -33,14 +39,22 @@ export function offerDiscard(
     runtime,
     binding.frame,
     chooser,
-    `Discard ${count} card${count === 1 ? '' : 's'}${chooser === playerId ? '' : ` from ${player.name}’s hand`}`,
+    `Discard ${effect.upTo ? 'up to ' : ''}${count} card${count === 1 ? '' : 's'}${chooser === playerId ? '' : ` from ${player.name}’s hand`}`,
     player.hand.map((card) => ({
       id: card.id,
       label: runtime.defs.cards[card.definition].name,
       ...(chooser !== playerId ? { card: { ...card } } : {}),
-      tasks: [{ type: 'discard-card', player: playerId, card: card.id }],
+      tasks: [
+        {
+          type: 'discard-card',
+          player: playerId,
+          card: card.id,
+          combat: binding.frame,
+          bonus: effect.combatBonus,
+        },
+      ],
     })),
-    count,
+    effect.upTo ? 0 : count,
     count,
     binding.provenance,
   );

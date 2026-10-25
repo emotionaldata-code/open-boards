@@ -21,6 +21,12 @@ const ref = z.enum([
   'ally',
 ]);
 const expression = z.union([
+  z.strictObject({
+    fighters: z.enum(['friendly', 'enemy', 'any']),
+    role: z.enum(['main', 'ally']).optional(),
+    range: z.enum(['adjacent', 'zone']).optional(),
+    anchor: ref.optional(),
+  }),
   z.strictObject({ stat: z.enum(['hp', 'hand', 'deck', 'movement']), of: ref.optional() }),
   z.strictObject({ stat: z.literal('counter'), name: id, of: ref.optional() }),
   z.strictObject({ stat: z.literal('actions') }),
@@ -74,7 +80,17 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       target: ref.optional(),
       count: z.union([count, expression]),
     }),
-    z.strictObject({ type: z.enum(['damage', 'heal']), target: ref.optional(), amount: count }),
+    z.strictObject({
+      type: z.literal('damage'),
+      target: ref.optional(),
+      amount: z.union([count, expression]),
+      onDamage: effects().optional(),
+    }),
+    z.strictObject({
+      type: z.literal('heal'),
+      target: ref.optional(),
+      amount: z.union([count, expression]),
+    }),
     z.strictObject({
       type: z.literal('move'),
       throughEnemies: z.boolean().optional(),
@@ -89,6 +105,8 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       anchor: ref.optional(),
       range: z.literal('adjacent').optional(),
       optional: z.boolean().optional(),
+      allowDefeatedAnchor: z.boolean().optional(),
+      includeOrigin: z.boolean().optional(),
     }),
     z.strictObject({
       type: z.literal('discard'),
@@ -96,6 +114,10 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       chooser: ref.optional(),
       random: z.boolean().optional(),
       count,
+      upTo: z.boolean().optional(),
+      combatBonus: z
+        .strictObject({ field: z.enum(['attack', 'defense']), per: z.enum(['card', 'boost']) })
+        .optional(),
     }),
     z.strictObject({ type: z.literal('actions'), target: ref.optional(), amount: signed }),
     z.strictObject({ type: z.literal('counter'), name: id, amount: signed }),
@@ -110,7 +132,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     z.strictObject({
       type: z.literal('modify'),
       field: z.enum(['amount', 'attack', 'defense']),
-      amount: signed,
+      amount: value,
     }),
     z.strictObject({
       type: z.literal('set-combat-value'),
@@ -137,11 +159,12 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     z.strictObject({ type: z.literal('inspect-deck'), count, take: count }),
     z.strictObject({
       type: z.literal('area-damage'),
-      range: z.enum(['zone', 'any']),
+      range: z.enum(['zone', 'any', 'adjacent']),
       adjacent: z.boolean().optional(),
       relation: z.enum(['friendly', 'enemy', 'any']),
       amount: count,
       onDefeat: effects().optional(),
+      onDamage: effects().optional(),
     }),
     z.strictObject({
       type: z.literal('bonus-attack'),
@@ -149,6 +172,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       value: count,
     }),
     z.strictObject({ type: z.literal('replace-defender'), target: ref }),
+    z.strictObject({ type: z.literal('replace-attack') }),
     z.strictObject({ type: z.literal('recover-card') }),
     z.strictObject({ type: z.literal('suppress-card-effects') }),
     z.strictObject({ type: z.literal('predict-value') }),
@@ -354,8 +378,15 @@ export function validateDefinitions(input: unknown): asserts input is Definition
       assert(trigger === 'after-combat', 'bonus-attack needs after-combat');
     if ('type' in node && node.type === 'replace-defender')
       assert(trigger === 'combat-reveal', 'replace-defender needs combat-reveal');
+    if ('type' in node && node.type === 'replace-attack')
+      assert(trigger === 'combat-reveal', 'replace-attack needs combat-reveal');
+    if ('type' in node && node.type === 'discard' && 'combatBonus' in node)
+      assert(trigger === 'before-combat', 'discard combatBonus needs before-combat');
     if ('type' in node && node.type === 'discard' && 'random' in node && node.random)
-      assert(!('chooser' in node), 'random discard cannot have a chooser');
+      assert(
+        !('chooser' in node) && !('upTo' in node),
+        'random discard cannot have a chooser or upTo',
+      );
     if ('type' in node && node.type === 'search-card' && 'card' in node)
       assert(known(defs.cards, String(node.card)), `unknown search card ${String(node.card)}`);
     if ('type' in node && node.type === 'prevent-damage')

@@ -34,7 +34,6 @@ export function CharacterRoster({
             {profile.role} · {character.attackType}
           </p>
           <h3>{character.name}</h3>
-          <p className="character-summary">{profile.summary}</p>
           <dl className="character-stats">
             <div>
               <dt>Health</dt>
@@ -69,11 +68,7 @@ export function CharacterRoster({
                 <strong>{ability.name}</strong> {ability.description}
               </p>
             ))
-          : !character.cardEffectProtection && (
-              <p>
-                <strong>Fundamentals</strong> No special rules. Learn positioning, cards and timing.
-              </p>
-            )}
+          : !character.cardEffectProtection && <p>No special abilities.</p>}
         {character.ally && (
           <div className="ally-rules">
             <p>

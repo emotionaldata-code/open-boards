@@ -78,8 +78,8 @@ export function WaitingRoom({
           </div>
         </section>
         <section className="panel invite">
-          <h2>Bring your rivals</h2>
-          <p className="muted">Share this link. Your friends will sign in and join this table.</p>
+          <h2>Invite players</h2>
+          <p className="muted">Share the invite link to join this table.</p>
           <label>
             Room ID
             <input readOnly value={room.id} onFocus={(e) => e.target.select()} />

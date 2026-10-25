@@ -29,12 +29,8 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
   return (
     <main className="entry-grid">
       <section className="entry-copy">
-        <p className="entry-intro">A tactical card arena</p>
-        <h1>Choose your ground.</h1>
-        <p>
-          Your deck. Two actions.
-          <br />A small arena with nowhere to hide.
-        </p>
+        <h1>Play Open Boards</h1>
+        <p>A tactical card game for 2 or 4 players.</p>
         <form onSubmit={(e) => void submit(e)}>
           <h2>{register ? 'Create your account' : 'Sign in to play'}</h2>
           <label>

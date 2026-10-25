@@ -15,6 +15,8 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  dracula: { mark: 'flame', tone: 'ember' },
+  'dracula-sister': { mark: 'blade', tone: 'ember' },
   achilles: { mark: 'flame', tone: 'ember' },
   'achilles-patroclus': { mark: 'shield', tone: 'gold' },
   'the-genie': { mark: 'flame', tone: 'gold' },

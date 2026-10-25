@@ -25,6 +25,8 @@ export type Operation =
       throughEnemies?: boolean;
       anchor?: string;
       range?: 'adjacent';
+      allowDefeatedAnchor?: boolean;
+      includeOrigin?: boolean;
     }
   | {
       kind: 'combat';
@@ -50,7 +52,7 @@ export type Operation =
       prediction?: number;
       ignoredValues?: ('attack' | 'defense')[];
     }
-  | { kind: 'area'; actor: string; defeats: number }
+  | { kind: 'area'; actor: string; defeats: number; amount: number }
   | { kind: 'maneuver-boost'; actor: string; amount: number }
   | { kind: 'card'; actor: string; card: Card; discarded: boolean; suppressAbilities?: boolean }
   | { kind: 'turn'; actor: string }
@@ -73,6 +75,9 @@ export interface Binding {
   chosen?: string;
 }
 export type Task = (
+  | ({ type: 'select-attack' } & Binding)
+  | ({ type: 'replace-attack'; card: string } & Binding)
+  | ({ type: 'damage-result'; damage: number; effects: Effect[] } & Binding)
   | ({ type: 'swap-apply'; frames: number[]; effects: Effect[] } & Binding)
   | ({ type: 'predict-value'; value: number } & Binding)
   | ({ type: 'named-value-discard'; target: string; value: number } & Binding)
@@ -91,7 +96,7 @@ export type Task = (
       effect: Extract<Effect, { type: 'area-damage' }>;
       spaces: string[];
     } & Binding)
-  | ({ type: 'area-result'; area: number; effects: Effect[] } & Binding)
+  | ({ type: 'area-result'; area: number; effects: Effect[]; onDamage?: Effect[] } & Binding)
   | ({
       type: 'fighter-group';
       effect: Extract<Effect, { type: 'for-each-fighter' }>;
@@ -115,7 +120,13 @@ export type Task = (
         { kind: 'combat' | 'card' | 'turn' | 'elimination' | 'maneuver-boost' | 'area' }
       >;
     }
-  | { type: 'discard-card'; player: string; card: string }
+  | {
+      type: 'discard-card';
+      player: string;
+      card: string;
+      combat?: number;
+      bonus?: { field: 'attack' | 'defense'; per: 'card' | 'boost' };
+    }
   | {
       type: 'boost-attack';
       frame: number;

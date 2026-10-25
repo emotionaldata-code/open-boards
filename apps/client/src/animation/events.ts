@@ -172,7 +172,7 @@ const recipes: Recipes = {
   turn: (o, c) =>
     cue(
       'Your move, ' + c.name(o.player),
-      'Two actions. Make them count.',
+      '2 actions',
       [{ type: 'ring', node: c.node(o.player) }],
       'gold',
       timing.brief,

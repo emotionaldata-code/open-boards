@@ -5,7 +5,6 @@ import {
   cardEligible,
   deploymentSpaces,
   fighterById,
-  fighterDefinition,
   mainFighter,
   maneuverMovement,
   ownedFighters,
@@ -19,7 +18,7 @@ import { Board, type BoardPlayback } from '../board/Board';
 import { usePresentation } from '../presentation/usePresentation';
 import { EventDialog } from '../presentation/EventDialog';
 import { Dialog } from '../ui/Dialog';
-import { RotatePrompt, usePortraitPhone } from '../ui/DisplayControls';
+import { Icon } from '../ui/Icon';
 import { Hand } from './Hand';
 import { AbilityChoice } from './AbilityChoice';
 import { MatchDetails } from './MatchDetails';
@@ -39,24 +38,24 @@ function instruction(game: GameView, user: User): string {
     return fighterById(game, game.phase.defender)?.player === user.id
       ? game.phase.bonus
         ? `${game.phase.bonus.name} · Attack ${game.phase.bonus.value}. Choose a defense card or take the hit.`
-        : 'An attack is coming. Choose a defense card or take the hit.'
+        : 'Choose a defense or take the hit.'
       : `${game.players.find((p) => p.id === fighterById(game, (game.phase as { defender: string }).defender)?.player)?.name} is choosing a defense.`;
   if (game.phase.type === 'placing-allies')
     return game.phase.player === user.id
-      ? 'Select an ally, then choose a starting space sharing a color with your hero.'
+      ? 'Place your allies in your hero’s zone.'
       : 'Your rival is deploying allies.';
   if (game.phase.type === 'choosing-movement')
     return game.phase.player === user.id
       ? game.maneuver?.boostable
-        ? 'Move, stay, or select a hand card to boost movement.'
-        : 'Choose a highlighted space, or stay where you are.'
+        ? 'Choose a space or a card to boost movement.'
+        : 'Choose a space or stay.'
       : 'Your rival is choosing a move.';
   if (game.phase.type === 'discarding')
     return game.phase.player === user.id
       ? `Choose ${game.hand.length - 7} cards to discard.`
       : 'Your rival is discarding to seven cards.';
   return game.players[game.turn].id === user.id
-    ? 'Your turn. Maneuver, or choose a card to play.'
+    ? 'Choose a card or maneuver.'
     : `${game.players[game.turn].name} is taking their turn.`;
 }
 export function Game({
@@ -87,7 +86,18 @@ export function Game({
     board.current!.present(event, active),
   );
   const [confirmLeave, setConfirmLeave] = useState(false);
-  const portrait = usePortraitPhone();
+  const [mapExpanded, setMapExpanded] = useState(false);
+  const [mapFit, setMapFit] = useState(
+    () => !matchMedia('(max-width: 600px) and (orientation: portrait)').matches,
+  );
+  useEffect(() => {
+    if (!mapExpanded) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMapExpanded(false);
+    };
+    window.addEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', close);
+  }, [mapExpanded]);
   useEffect(() => {
     setSelected([]);
     setTarget('');
@@ -159,7 +169,6 @@ export function Game({
         data-revision={game.revision}
         data-phase={phase.type}
         data-turn={game.players[game.turn].name}
-        inert={portrait}
       >
         <div className="game-title">
           <h1>{ended ? 'Match complete' : basic.map.name}</h1>
@@ -175,34 +184,38 @@ export function Game({
               </>
             )}
           </span>
-          {!portrait && (
-            <button onClick={() => (ended ? onLeave() : setConfirmLeave(true))}>
-              {ended ? 'Return to lobby' : 'Leave match'}
-            </button>
-          )}
+          <button onClick={() => (ended ? onLeave() : setConfirmLeave(true))}>
+            {ended ? 'Return to lobby' : 'Leave match'}
+          </button>
         </div>
         <MatchDetails room={room} selfId={user.id} />
-        <FighterPicker
-          fighters={defending ? [fighter] : available}
-          selected={fighter.id}
-          disabled={defending || locked || phase.type === 'ability-choice'}
-          label={placing ? 'Deploy' : moving ? 'Move' : defending ? 'Defending' : 'Acting fighter'}
-          hint={
-            moving
-              ? `${game.maneuver?.remaining.length} fighters left · move up to ${maneuverMovement(game, fighter, basic)}`
-              : undefined
-          }
-          onSelect={(id) => {
-            setSelectedFighter(id);
-            setSelected([]);
-            setTarget('');
-          }}
-        />
         <div className="play-surface">
-          <section className="board-panel" aria-label="Arena">
+          <section
+            className={`board-panel ${mapExpanded ? 'map-expanded' : ''}`}
+            aria-label="Arena"
+          >
+            <div className="board-tools">
+              <button
+                className="icon-button"
+                aria-label={mapFit ? 'Enlarge map' : 'Fit entire map'}
+                aria-pressed={mapFit}
+                onClick={() => setMapFit(!mapFit)}
+              >
+                <Icon name={mapFit ? 'zoom-in' : 'zoom-out'} />
+              </button>
+              <button
+                className="icon-button"
+                aria-label={mapExpanded ? 'Close expanded map' : 'Expand map'}
+                aria-pressed={mapExpanded}
+                onClick={() => setMapExpanded(!mapExpanded)}
+              >
+                <Icon name={mapExpanded ? 'close' : 'fullscreen'} />
+              </button>
+            </div>
             <ActionNotice event={presentation.event} />
             <Board
               ref={board}
+              fit={mapFit}
               game={game}
               selected={target || fighter.id}
               highlights={highlights}
@@ -210,13 +223,26 @@ export function Game({
               reset={reset}
               onNode={node}
             />
-            <span className="arena-caption">
-              {moving
-                ? 'Choose your path'
-                : targets.length
-                  ? 'Choose your rival'
-                  : `${fighterDefinition(fighter, basic).name} · ${fighterDefinition(fighter, basic).attackType === 'ranged' ? 'Adjacent or shared color' : 'Adjacent attacks'}`}
-            </span>
+            <div className="board-controls">
+              <FighterPicker
+                fighters={defending ? [fighter] : available}
+                selected={fighter.id}
+                disabled={defending || locked || phase.type === 'ability-choice'}
+                label={
+                  placing ? 'Deploy' : moving ? 'Move' : defending ? 'Defending' : 'Acting fighter'
+                }
+                hint={
+                  moving
+                    ? `${game.maneuver?.remaining.length} fighters left · move up to ${maneuverMovement(game, fighter, basic)}`
+                    : undefined
+                }
+                onSelect={(id) => {
+                  setSelectedFighter(id);
+                  setSelected([]);
+                  setTarget('');
+                }}
+              />
+            </div>
           </section>
           {game.observation && !choice ? (
             <section className="hand-panel" aria-label="Revealed cards">
@@ -262,12 +288,6 @@ export function Game({
           key={`${reset}:${presentation.event.id}`}
           event={presentation.event}
           onAcknowledge={() => presentation.acknowledge(presentation.event!.id)}
-        />
-      )}
-      {portrait && (
-        <RotatePrompt
-          finished={ended}
-          onLeave={() => (ended ? onLeave() : setConfirmLeave(true))}
         />
       )}
       {confirmLeave && (

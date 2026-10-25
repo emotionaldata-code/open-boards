@@ -234,9 +234,7 @@ test('selects The Genie over real sockets and restores Infinite Power after relo
       await expect(page.getByRole('heading', { name: 'Find your table' })).toBeVisible();
     }
     const [host, guest] = pages;
-    await host
-      .getByRole('button', { name: '02 Head to head A duel for two players', exact: true })
-      .click();
+    await host.getByRole('button', { name: '2 Head to head', exact: true }).click();
     await expect(host.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
     await guest.getByLabel('Room ID').fill(await host.getByLabel('Room ID').inputValue());
     await guest.getByRole('button', { name: 'Join table', exact: true }).click();
@@ -310,7 +308,8 @@ test('explores all twelve Genie illustrations and inspectors on desktop and land
     for (const card of await deck.locator('.deck-gallery > button').all()) {
       await card.click();
       const detail = page.getByRole('dialog').last();
-      await expect(detail).toContainText('How to play');
+      await expect(detail.locator('.printed-card')).toBeVisible();
+      await expect(detail).not.toContainText('How to play');
       await expect(detail.locator('img')).toHaveJSProperty('complete', true);
       await page.keyboard.press('Escape');
       await expect(card).toBeFocused();

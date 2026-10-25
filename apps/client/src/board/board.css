@@ -1,29 +1,41 @@
+.board-viewport {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  container-type: size;
+  position: relative;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
 .arena {
   position: relative;
+  width: min(100cqw, calc(100cqh * var(--board-aspect)));
+  aspect-ratio: var(--board-aspect);
+  margin: auto;
+  top: max(0px, calc((100cqh - 100cqw / var(--board-aspect)) / 2));
 }
 .arena canvas {
   display: block;
   width: 100% !important;
   height: 100% !important;
 }
-.pixi-surface {
+.pixi-surface,
+.board-inputs {
   position: absolute;
   inset: 0;
 }
 .board-inputs {
-  position: absolute;
-  inset: 0;
   pointer-events: none;
 }
 .node-hit {
   position: absolute;
   z-index: 1;
   pointer-events: auto;
-  width: 4.5%;
-  max-width: 44px;
+  width: max(44px, 4.5%);
   height: auto;
   aspect-ratio: 1;
-  min-height: 0;
+  min-height: 44px;
   padding: 0;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -39,6 +51,17 @@
 }
 .board-error {
   position: absolute;
-  inset: 0;
-  background: #132018;
+  top: 4px;
+  left: 8px;
+  margin: 0;
+  background: var(--surface);
+}
+.board-fallback .node-hit {
+  border: 1px solid var(--accent);
+  background: var(--surface);
+}
+/* Detail view is scrollable at every size; fit view always contains the whole board. */
+.board-viewport:not(.fit-map) .arena {
+  width: max(100cqw, calc(100cqh * var(--board-aspect)), 760px);
+  top: 0;
 }
