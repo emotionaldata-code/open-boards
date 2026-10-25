@@ -1,3 +1,4 @@
+import { fighterById } from '../fighters';
 import { publicBoosts } from './attack-boost';
 import { modifyCombatValue } from './combat-values';
 import type { Runtime } from './runtime';
@@ -30,6 +31,12 @@ export function suppressOpponent(runtime: Runtime, binding: Binding): void {
       : binding.owner === combat.defender
         ? combat.card
         : null;
+  const recipient = fighterById(
+    runtime.state,
+    binding.owner === combat.attacker ? combat.defender : combat.attacker,
+  );
+  const protection = recipient && runtime.defs.characters[recipient.character].cardEffectProtection;
+  if (card && protection?.tags.includes(runtime.defs.cards[card.definition].usableBy)) return;
   if (
     !card ||
     !pendingCardEffects(runtime, combat, card.id, card.definition) ||
@@ -53,6 +60,7 @@ function pendingCardEffects(
   card: string,
   definition: string,
 ): boolean {
+  if (combat.bonus && combat.card.id === card) return false;
   const abilities = runtime.defs.cards[definition].abilities ?? [];
   return runtime.data.queue.some((task) => {
     if (

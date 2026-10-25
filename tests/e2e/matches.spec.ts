@@ -1,8 +1,21 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
   medusa: { name: 'Medusa', allies: 3 },
+  'sherlock-holmes': { name: 'Sherlock Holmes', allies: 1 },
   'king-arthur': { name: 'King Arthur', allies: 1 },
+  achilles: { name: 'Achilles', allies: 1 },
 };
+
+async function rosterEntries(page: Page) {
+  return page.evaluate(async (rootPath) => {
+    const url = `/@fs${rootPath}/packages/content/src/index.ts`;
+    const { characters } = (await import(url)) as typeof import('../../packages/content/src');
+    return Object.values(characters).map((character): [string, number] => [
+      character.name,
+      character.deck.length,
+    ]);
+  }, process.cwd());
+}
 async function fitsViewport(page: Page) {
   const size = await page.evaluate(() => ({
     width: document.documentElement.scrollWidth,
@@ -106,6 +119,9 @@ async function createMatch(
     if (character !== 'medusa') {
       await rival.page.getByRole('button', { name: 'Choose character', exact: true }).click();
       await rival.page
+        .getByRole('button', { name: `Inspect ${characterSetup[character].name}`, exact: true })
+        .click();
+      await rival.page
         .getByRole('button', { name: `Choose ${characterSetup[character].name}`, exact: true })
         .click();
     }
@@ -139,7 +155,15 @@ async function createMatch(
           .first()
           .click();
     }
-    await skipGaze(rivals[0].page);
+    if (character === 'medusa') {
+      await expect(rivals[0].page.getByRole('region', { name: 'Ability choice' })).toBeVisible();
+      await skipGaze(rivals[0].page);
+    }
+    await Promise.all(
+      rivals.map(({ page }) =>
+        expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions'),
+      ),
+    );
   }
   return rivals;
 }
@@ -147,7 +171,11 @@ async function skipGaze(page: Page) {
   const skip = page
     .getByRole('region', { name: 'Ability choice' })
     .getByRole('button', { name: 'Skip', exact: true });
-  if (await skip.isVisible()) await skip.click();
+  if (await skip.isVisible()) {
+    const before = await revision(page);
+    await skip.click();
+    await changed(page, before);
+  }
 }
 async function finishManeuver(page: Page) {
   const finish = page.getByRole('button', { name: 'Finish Maneuver', exact: true });
@@ -535,11 +563,16 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
   try {
     await page.goto('/');
     const roster = page.getByRole('region', { name: 'Character roster' });
-    const fighters = [
-      ['Medusa', 11],
-      ['The Genie', 12],
-      ['King Arthur', 16],
-    ] as const;
+    const fighters = await rosterEntries(page);
+    expect(fighters).toEqual(
+      expect.arrayContaining([
+        ['Medusa', 11],
+        ['The Genie', 12],
+        ['King Arthur', 16],
+        ['Achilles', 12],
+        ['Sherlock Holmes', 13],
+      ]),
+    );
     for (const [name, designs] of fighters) {
       await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).click();
       await expect(roster.getByRole('heading', { name, exact: true })).toBeVisible();
@@ -655,7 +688,9 @@ test('selecting Medusa preserves readiness and syncs the remaining roster', asyn
     await guest.getByRole('button', { name: 'Join table', exact: true }).tap();
     await host.getByRole('button', { name: 'Ready up', exact: true }).tap();
     await host.getByRole('button', { name: 'Choose character', exact: true }).tap();
-    await expect(host.getByRole('button', { name: /^Inspect / })).toHaveCount(3);
+    await expect(host.getByRole('button', { name: /^Inspect / })).toHaveCount(
+      (await rosterEntries(host)).length,
+    );
     await host.getByRole('button', { name: 'Choose Medusa', exact: true }).tap();
     await expect(host.getByRole('button', { name: 'Not ready', exact: true })).toBeVisible();
     await expect(guest.locator('.seats')).toContainText('Medusa');
@@ -933,6 +968,71 @@ test('selects Arthur over sockets, deploys Merlin and reconnects on a landscape 
     await expect(
       rivals[1].page.getByRole('complementary', { name: 'Players', exact: true }),
     ).toContainText('Merlin 1');
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('selects Achilles over sockets, deploys Patroclus and restores his shared Maneuver on phone', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 2, false, 'achilles');
+  const page = rivals[0].page;
+  try {
+    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Achilles', 'Patroclus 1']);
+    await page.screenshot({
+      path: test.info().outputPath('achilles-socket-desktop.png'),
+      animations: 'disabled',
+    });
+    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await picker.getByRole('button', { name: 'Patroclus 1', exact: true }).click();
+    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.reload();
+    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await page.setViewportSize({ width: 844, height: 390 });
+    await fitsViewport(page);
+    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
+    await expect(picker.getByRole('button')).toHaveText(['Achilles', 'Patroclus 1']);
+    await expect(
+      rivals[1].page.getByRole('complementary', { name: 'Players', exact: true }),
+    ).toContainText('Patroclus 1');
+    await page.screenshot({
+      path: test.info().outputPath('achilles-socket-phone.png'),
+      animations: 'disabled',
+    });
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('selects four Holmes over sockets, deploys numbered Watsons and restores a phone Maneuver', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'sherlock-holmes');
+  const page = rivals[0].page;
+  try {
+    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dr. Watson 1']);
+    for (const rival of rivals) {
+      await expect(
+        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
+      ).toContainText('Dr. Watson 1');
+      await fitsViewport(rival.page);
+    }
+    await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Dr. Watson 1', exact: true }).tap();
+    await page.getByRole('button', { name: 'Stay here', exact: true }).tap();
+    await page.reload();
+    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await page.screenshot({
+      path: test.info().outputPath('holmes-four-seats-phone.png'),
+      animations: 'disabled',
+    });
+    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dr. Watson 1']);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));

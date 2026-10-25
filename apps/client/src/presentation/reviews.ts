@@ -15,6 +15,7 @@ export interface ReviewParticipant {
 }
 export interface EventReview {
   participants: ReviewParticipant[];
+  cards?: string[];
   explanation: string;
   result?: string;
 }
@@ -51,6 +52,12 @@ export function outcomeReview(
   previous: GameView | null,
 ): EventReview | undefined {
   switch (outcome.type) {
+    case 'hand-revealed':
+      return {
+        participants: [],
+        cards: outcome.cards.map((c) => c.definition),
+        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} reveals their hand because no combat card matches the named value.`,
+      };
     case 'played':
       if (!isActionPlay(outcome, previous)) return;
       return {
@@ -72,10 +79,16 @@ export function outcomeReview(
           : `The card is discarded to add ${outcome.amount} to ${outcome.purpose === 'maneuver' ? 'each owned fighter’s movement for this Maneuver' : 'this attack'}. Its own effects do not resolve.`,
       };
     case 'combat': {
-      const { attacker, defender, attack, defense, boosts, damage } = outcome.combat;
+      const { attacker, defender, attack, defense, boosts, damage, bonus, prediction } =
+        outcome.combat;
       return {
         participants: [
-          participant(game, attacker, 'Attack', attack.definition),
+          participant(
+            game,
+            attacker,
+            bonus ? `${bonus.name} · Attack ${bonus.value}` : 'Attack',
+            attack.definition,
+          ),
           participant(game, defender, defense ? 'Defense' : 'No defense', defense?.definition),
           ...boosts.map(({ card, amount, cancelled }) =>
             participant(
@@ -87,6 +100,10 @@ export function outcomeReview(
           ),
         ],
         explanation:
+          (prediction !== undefined ? `Predicted printed attack value: ${prediction}. ` : '') +
+          (bonus
+            ? `${bonus.name} is a separate attack with printed value ${bonus.value}. The original attack effects do not repeat. `
+            : '') +
           (defense
             ? 'Both cards are revealed. Card values are printed below; abilities can modify the result.'
             : 'The attack card is revealed. No defense card was played.') +

@@ -13,12 +13,7 @@ function player(runtime: Runtime, binding: Binding) {
 /** Seed lives in private resolution state: replay and reconnect consume the same stream. */
 function shuffle(runtime: Runtime, cards: { id: string; definition: string }[]): void {
   for (let i = cards.length - 1; i > 0; i--) {
-    let seed = runtime.data.random;
-    seed ^= seed << 13;
-    seed ^= seed >>> 17;
-    seed ^= seed << 5;
-    runtime.data.random = seed >>> 0;
-    const j = Math.floor((runtime.data.random / 0x100000000) * (i + 1));
+    const j = randomIndex(runtime, i + 1);
     [cards[i], cards[j]] = [cards[j], cards[i]];
   }
 }
@@ -156,4 +151,53 @@ export function orderInspected(
     1,
     task.provenance,
   );
+}
+
+export function randomIndex(runtime: Runtime, length: number): number {
+  let seed = runtime.data.random;
+  seed ^= seed << 13;
+  seed ^= seed >>> 17;
+  seed ^= seed << 5;
+  runtime.data.random = seed >>> 0;
+  return Math.floor((runtime.data.random / 0x100000000) * length);
+}
+
+/** Combat cards are committed until their combat finishes, even though discard is public. */
+export function recoverCard(runtime: Runtime, binding: Binding): void {
+  const p = player(runtime, binding);
+  const committed = new Set(
+    Object.values(runtime.data.frames).flatMap((f) =>
+      f.kind === 'combat' ? [f.card.id, ...(f.defenseCard ? [f.defenseCard.id] : [])] : [],
+    ),
+  );
+  openChoice(
+    runtime,
+    binding.frame,
+    p.id,
+    'Return a discarded card to your hand',
+    p.discard
+      .filter((c) => !committed.has(c.id))
+      .map((card) => ({
+        id: card.id,
+        label: runtime.defs.cards[card.definition].name,
+        card,
+        tasks: [{ ...binding, type: 'recover-card', card: card.id }],
+      })),
+    1,
+    1,
+    binding.provenance,
+  );
+}
+
+export function resolveRecovery(
+  runtime: Runtime,
+  task: Extract<Task, { type: 'recover-card' }>,
+): void {
+  const p = player(runtime, task);
+  if (p.eliminated) return;
+  const index = p.discard.findIndex((c) => c.id === task.card);
+  if (index < 0) return;
+  const cards = p.discard.splice(index, 1);
+  p.hand.push(...cards);
+  runtime.emit({ type: 'draw', player: p.id, cards }, p.id);
 }

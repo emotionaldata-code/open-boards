@@ -1,4 +1,6 @@
 import type { Definitions, GameState, Fighter } from '../types';
+import { fighterById } from '../fighters';
+import { sharesZone } from '../targeting';
 import { adjacent, reachablePaths } from '../movement';
 
 function distances(from: string, defs: Definitions): Record<string, number> {
@@ -46,4 +48,23 @@ export function forcedPaths(
       ([, path]) => validForcedPath(path, target, source, defs, mode),
     ),
   );
+}
+
+/** Placement uses physical adjacency and current occupancy, both at offer and application. */
+export function canPlace(
+  state: GameState,
+  target: Fighter,
+  defs: Definitions,
+  destination: string,
+  rule: { zone?: 'any' | 'shared'; anchor?: string; range?: 'adjacent' },
+): boolean {
+  if (
+    !defs.map.nodes.includes(destination) ||
+    state.fighters.some((f) => f.id !== target.id && !f.defeated && f.position === destination)
+  )
+    return false;
+  if (rule.zone === 'shared' && !sharesZone(defs.map, target.position, destination)) return false;
+  if (!rule.range) return true;
+  const anchor = fighterById(state, rule.anchor!);
+  return !!anchor && !anchor.defeated && adjacent(defs.map, anchor.position, destination);
 }

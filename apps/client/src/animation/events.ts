@@ -50,6 +50,15 @@ const cue = (
 
 // Recipes interpret confirmed, viewer-safe events. They never infer damage or legality.
 const recipes: Recipes = {
+  'hand-revealed': (o, c) =>
+    cue(
+      'Hand revealed',
+      `${c.name(o.player)} reveals ${o.cards.length} cards`,
+      [],
+      'gold',
+      timing.notice,
+      [{ name: 'cards' }],
+    ),
   boost: (o, c) =>
     cue(
       o.cancelled
@@ -87,11 +96,11 @@ const recipes: Recipes = {
     );
   },
   combat: (o, c) => {
-    const { attacker, defender, attack, defense, boosts, damage } = o.combat;
+    const { attacker, defender, attack, defense, boosts, damage, bonus } = o.combat;
     const ranged = fighterDefinition(fighterById(c.game, attacker)!, basic).attackType === 'ranged';
     return cue(
       damage === 0 ? 'Blocked!' : 'Clash!',
-      `${basic.cards[attack.definition].name} ${basic.cards[attack.definition].value}${boosts.map((b) => ` +${b.amount} BOOST`).join('')} · ${defense ? `${basic.cards[defense.definition].name} ${basic.cards[defense.definition].value}` : 'No defense'}`,
+      `${bonus?.name ?? basic.cards[attack.definition].name} ${bonus?.value ?? basic.cards[attack.definition].value}${boosts.map((b) => ` +${b.amount} BOOST`).join('')} · ${defense ? `${basic.cards[defense.definition].name} ${basic.cards[defense.definition].value}` : 'No defense'}`,
       [
         {
           type: 'attack',

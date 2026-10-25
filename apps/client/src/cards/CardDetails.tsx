@@ -35,9 +35,17 @@ export function CardDetails({
             {card.category === 'action'
               ? 'Spend one action to play this card. The card enters your discard pile and its effects resolve in order.'
               : card.category === 'defense'
-                ? 'Play when attacked. Defense costs no turn action. Both combat cards are revealed together, then discarded.'
+                ? card.faceUpDefense
+                  ? 'Play when attacked. Defense costs no turn action. This card is played face up; the attack stays hidden until your prediction.'
+                  : 'Play when attacked. Defense costs no turn action. Both combat cards are revealed together, then discarded.'
                 : `${card.category === 'versatile' ? 'Use to attack or defend. Attacking costs one action; defending is free.' : 'Spend one action to attack a rival in range.'} Both combat cards are revealed together, then discarded.`}
           </p>
+          {card.faceUpDefense && (
+            <p>
+              Play this defense face up and predict the attack’s printed value before revealing the
+              attack.
+            </p>
+          )}
           <h3>Effect</h3>
           <p>{card.description}</p>
           {!!card.abilities?.length && <h3>Timing</h3>}
@@ -52,6 +60,12 @@ export function CardDetails({
               ? 'Movement effects do not draw an extra maneuver card. Healing cannot exceed starting health.'
               : `Damage is attack minus defense, with a minimum of zero. ${card.usableBy === 'BOTH' ? 'Use the acting fighter’s reach: melee attacks require adjacency; ranged attacks also reach enemies sharing a color.' : (card.usableBy === 'ALLY' ? character.ally?.attackType : character.attackType) === 'melee' ? 'This fighter’s attacks require adjacency.' : 'This fighter’s attacks reach adjacent enemies or enemies sharing a color of its space.'}`}
           </p>
+          {character.cardEffectProtection && (
+            <p>
+              <strong>{character.cardEffectProtection.name}</strong> ·{' '}
+              {character.cardEffectProtection.description}
+            </p>
+          )}
           {(card.usableBy === 'ALLY' ? [] : character.abilities)?.map((ability) => (
             <p key={ability.id}>
               <strong>{ability.name}</strong> · {ability.description}

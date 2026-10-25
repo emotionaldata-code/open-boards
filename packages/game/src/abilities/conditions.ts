@@ -12,6 +12,11 @@ export function reference(
 ): Fighter | undefined {
   const frame = state.resolution.frames[binding.frame];
   if (!frame) return;
+  if (ref === 'ally') {
+    const owner = state.fighters.find((f) => f.id === binding.owner);
+    const allies = state.fighters.filter((f) => f.player === owner?.player && f.role === 'ally');
+    return allies.length === 1 ? allies[0] : undefined;
+  }
   const opponent =
     frame.kind === 'combat'
       ? frame.attacker === binding.owner
@@ -93,7 +98,11 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
                   ? frame.card
                   : null
           : null;
-    return card ? defs.cards[card.definition][v.field] : 0;
+    return card
+      ? v.field === 'value' && frame?.kind === 'combat' && card.id === frame.card.id && frame.bonus
+        ? frame.bonus.value
+        : defs.cards[card.definition][v.field]
+      : 0;
   }
   if (v.stat === 'actions') return state.actions;
   const p = reference(state, binding, v.of);
@@ -136,6 +145,8 @@ export function condition(
       const a = reference(state, binding, c.a),
         b = reference(state, binding, c.b);
       if (!a || !b) return false;
+      if (['adjacent', 'zone', 'attack-range'].includes(c.relation) && (a.defeated || b.defeated))
+        return false;
       return c.relation === 'friendly'
         ? a.player === b.player
         : c.relation === 'enemy'
@@ -148,6 +159,15 @@ export function condition(
                 ? sharesZone(defs.map, a.position, b.position)
                 : inAttackRange(a, b, defs);
     }
+    case 'prediction-matches':
+      return (
+        frame?.kind === 'combat' &&
+        frame.defender === binding.owner &&
+        frame.prediction !== undefined &&
+        frame.prediction === value(state, defs, binding, { card: 'attack', field: 'value' })
+      );
+    case 'defeated':
+      return reference(state, binding, c.target)?.defeated ?? false;
     case 'changed-position': {
       const fighter = reference(state, binding, c.target);
       const start = fighter && state.resolution.turnPositions[fighter.id];
@@ -166,7 +186,12 @@ export function condition(
               ? frame.defenseCard
               : frame.card
             : null;
-      return !!card && defs.cards[card.definition].category === c.category;
+      return (
+        !!card &&
+        (frame?.kind === 'combat' && frame.bonus && card.id === frame.card.id
+          ? c.category === 'attack'
+          : defs.cards[card.definition].category === c.category)
+      );
     }
     case 'combat-result': {
       if (frame?.kind !== 'combat') return false;

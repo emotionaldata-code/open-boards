@@ -1,9 +1,8 @@
 import { fighterById, fighterDefinition, mainFighter } from '../fighters';
 import { validPath } from '../movement';
-import { sharesZone } from '../targeting';
 import type { Runtime } from './runtime';
 import { cancelCombat, publishCombat } from './combat';
-import { validForcedPath } from './positions';
+import { canPlace, validForcedPath } from './positions';
 
 export function eliminate(runtime: Runtime, id: string, source: string): void {
   const fighter = fighterById(runtime.state, id)!;
@@ -102,11 +101,7 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       const valid =
         !frame.cancelled &&
         (frame.mode === 'teleport'
-          ? frame.path.length === 1 &&
-            runtime.defs.map.nodes.includes(frame.path[0]) &&
-            !state.fighters.some((p) => !p.defeated && p.position === frame.path[0]) &&
-            (frame.zone !== 'shared' ||
-              sharesZone(runtime.defs.map, fighter.position, frame.path[0]))
+          ? frame.path.length === 1 && canPlace(state, fighter, runtime.defs, frame.path[0], frame)
           : validPath(
               state,
               fighter,

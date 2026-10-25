@@ -51,6 +51,14 @@ The fixed-deck suite checks the complete source inventory and snapshot hash, eve
 
 Browser scenarios exercise the production engine and private projections on desktop and landscape phone with reduced and full motion: scheme choice, private hand artwork and inspector, keyboard activation, recovery at each prompt, mandatory placement and post-placement damage. The roster scenario checks every illustration and its inspector.
 
-Final repository and browser check results are recorded after verification below.
+Verification on 2026-10-25:
+
+- **35 Genie tests pass**: 33 source/rules cases and two real room-reconnect cases. Rechecked after the concurrent shared-engine changes.
+- Typecheck, ESLint and client/server production builds pass. The builds report upstream Zod annotation notices and a client chunk-size notice.
+- An earlier complete unit/integration run passed **283 tests**. A later run passed **284 of 285**; the sole failure was a missing `cards/achilles/battle-frenzy.svg` from another concurrent import. No Achilles files were changed by this task.
+- A full 29-scenario browser run was attempted on isolated ports. Live edits to shared engine files reloaded its sessions and temporarily imported `./hand` before that module existed. The run was stopped after 4 passes, 3 failures and 1 interrupted case; 21 did not run. This is **not** a clean full-suite result. Artifacts are in `/tmp/open-boards-genie-complete/`.
+- Prettier passed before further concurrent changes. The final global formatting check reports in-progress shared/import files; those unrelated edits were left untouched. Genie-specific files are formatted.
+
+**All four focused Genie browser scenarios pass** in one final run (23.7 seconds): both motion settings, real-socket selection/reload/payment, and all twelve gallery/inspector designs on desktop and landscape phone. No missing Genie assets, page errors or viewport overflow were detected. Reviewed final artifacts are in `/tmp/open-boards-genie-final/`; the standalone owner-color preview is in `drafts/the-genie/art/the-genie-owners.svg`. The isolated client disabled file watching for that final run to prevent other tasks’ live edits from reloading test sessions.
 
 The import retains the project’s opening hand, hand limit, exhaustion, elimination, reveal/discard timing, portals and free-for-all conventions. It does not claim complete Unmatched compatibility. No publishing or deployment was requested.

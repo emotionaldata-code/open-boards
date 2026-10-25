@@ -7,13 +7,40 @@ export function projectGame(state: GameState, viewer: string, paused: boolean): 
           type: 'awaiting-defense' as const,
           attacker: state.phase.attacker,
           defender: state.phase.defender,
+          ...(state.phase.bonus ? { bonus: state.phase.bonus } : {}),
           ...(fighterById(state, state.phase.attacker)?.player === viewer
             ? { committedCard: state.phase.card }
             : {}),
         }
       : state.phase;
   const choice = state.resolution.choice;
+  const combat =
+    state.resolution.combat === null ? undefined : state.resolution.frames[state.resolution.combat];
+  const publicDefense =
+    combat?.kind === 'combat' &&
+    !combat.revealed &&
+    combat.defenseCard &&
+    state.phase.type === 'ability-choice' &&
+    // The face-up property was copied into the combat frame when defense was committed.
+    combat.faceUpDefense
+      ? combat.defenseCard
+      : null;
   return {
+    ...(choice?.public
+      ? {
+          observation: {
+            prompt: choice.prompt,
+            cards: choice.options.flatMap((o) => (o.card ? [o.card] : [])),
+          },
+        }
+      : publicDefense
+        ? {
+            observation: {
+              prompt: 'Face-up defense · predicting the attack value',
+              cards: [publicDefense],
+            },
+          }
+        : {}),
     choice:
       choice?.player === viewer
         ? {

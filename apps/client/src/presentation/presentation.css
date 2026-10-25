@@ -140,3 +140,10 @@
     animation: none;
   }
 }
+
+@media (min-width: 601px) {
+  .event-participants:has(> :nth-child(3)) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

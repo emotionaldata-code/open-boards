@@ -160,7 +160,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await expect(choice()).toContainText('Choose a card for your hand (2 remaining)');
       for (const img of await choice().locator('img').all())
         await expect(img).toHaveJSProperty('complete', true);
-      await choice().getByRole('button', { name: 'About Feint', exact: true }).click();
+      await choice()
+        .getByRole('button', { name: /^(Inspect|About) Feint$/ })
+        .click();
       await expect(page.getByRole('dialog')).toContainText('Feint');
       await page.keyboard.press('Escape');
       await page.screenshot({

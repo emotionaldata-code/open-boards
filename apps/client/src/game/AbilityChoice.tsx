@@ -13,6 +13,9 @@ export function AbilityChoice({
   onCommand: (command: Command) => void;
 }) {
   const [selected, setSelected] = useState<string[]>([]);
+  const [number, setNumber] = useState('value-0');
+  const numeric =
+    choice.options.length > 16 && choice.options.every((o) => /^value-\d+$/.test(o.id));
   const single = choice.min === 1 && choice.max === 1;
   function submit(options: string[]) {
     onCommand({ type: 'choose', choice: choice.id, options });
@@ -37,26 +40,54 @@ export function AbilityChoice({
         </div>
       </div>
       <div className="ability-options">
-        {choice.options.map((option) =>
-          option.card ? (
-            <CardFace
-              key={option.id}
-              card={option.card}
-              label={option.label}
-              selected={selected.includes(option.id)}
-              disabled={disabled}
-              onClick={() => select(option.id)}
-            />
-          ) : (
-            <button
-              key={option.id}
-              disabled={disabled}
-              aria-pressed={selected.includes(option.id)}
-              onClick={() => select(option.id)}
-            >
-              {option.label}
+        {numeric ? (
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              submit([number]);
+            }}
+          >
+            <label>
+              Value{' '}
+              <select
+                aria-label="Value"
+                value={number}
+                disabled={disabled}
+                onChange={(event) => setNumber(event.target.value)}
+              >
+                {choice.options.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>{' '}
+            <button className="primary" disabled={disabled}>
+              Confirm value
             </button>
-          ),
+          </form>
+        ) : (
+          choice.options.map((option) =>
+            option.card ? (
+              <CardFace
+                key={option.id}
+                card={option.card}
+                label={option.label}
+                selected={selected.includes(option.id)}
+                disabled={disabled}
+                onClick={() => select(option.id)}
+              />
+            ) : (
+              <button
+                key={option.id}
+                disabled={disabled}
+                aria-pressed={selected.includes(option.id)}
+                onClick={() => select(option.id)}
+              >
+                {option.label}
+              </button>
+            ),
+          )
         )}
       </div>
       {!single && (

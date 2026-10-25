@@ -317,6 +317,9 @@ for (const viewport of [
       { card: { id: 'boost', definition: 'medusa-a-momentary-glance' }, amount: 4 },
     ];
     await present(page, [boosted]);
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+    });
     const dialog = page.getByRole('dialog');
     await expect(dialog).toContainText('BOOST +4');
     await expect(dialog).toContainText('A Momentary Glance');
@@ -334,3 +337,39 @@ for (const viewport of [
     await expect(dialog).toHaveCount(0);
   });
 }
+
+test('two attack BOOST payments remain readable on tablet and landscape phone', async ({
+  page,
+}) => {
+  for (const viewport of [
+    { width: 768, height: 900 },
+    { width: 844, height: 390 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await presentationHarness(page);
+    const boosted = structuredClone(combat);
+    if (boosted.type !== 'combat') throw new Error('Expected combat fixture');
+    boosted.combat.boosts = [
+      { card: { id: 'first-boost', definition: 'medusa-a-momentary-glance' }, amount: 4 },
+      { card: { id: 'second-boost', definition: boosted.combat.attack.definition }, amount: 3 },
+    ];
+    await present(page, [boosted]);
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+    });
+    const dialog = page.getByRole('dialog');
+    await expect(dialog.locator('.event-participant')).toHaveCount(4);
+    await expect(dialog).toContainText('BOOST +4');
+    await expect(dialog).toContainText('BOOST +3');
+    for (const card of await dialog.locator('.printed-card').all())
+      expect(await card.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
+    expect(await dialog.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
+    await page.screenshot({
+      path: test.info().outputPath(`two-boosts-${viewport.width}.png`),
+      animations: 'disabled',
+    });
+    await dialog.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+    await expect(dialog).toHaveCount(0);
+  }
+});

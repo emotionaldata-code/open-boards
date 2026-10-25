@@ -1,4 +1,4 @@
-import type { Card, Phase } from '../types';
+import type { BonusAttack, Card, Phase } from '../types';
 import type { Ability, Effect, Hook, PlayerRef } from './vocabulary';
 
 export type Operation =
@@ -23,6 +23,8 @@ export type Operation =
       origin: string;
       zone?: 'any' | 'shared';
       throughEnemies?: boolean;
+      anchor?: string;
+      range?: 'adjacent';
     }
   | {
       kind: 'combat';
@@ -33,6 +35,8 @@ export type Operation =
       card: Card;
       defenseCard: Card | null;
       boosts: { card: Card; grant: string; cancelWithCard: boolean; cancelled?: boolean }[];
+      bonus?: BonusAttack;
+      bonusAttack?: BonusAttack;
       protectedFighters?: string[];
       cardValues?: Record<string, number>;
       attack: number;
@@ -41,7 +45,10 @@ export type Operation =
       amount: number;
       revealed?: boolean;
       defenseCancelled?: boolean;
+      faceUpDefense?: boolean;
       suppressedCards?: string[];
+      prediction?: number;
+      ignoredValues?: ('attack' | 'defense')[];
     }
   | { kind: 'area'; actor: string; defeats: number }
   | { kind: 'maneuver-boost'; actor: string; amount: number }
@@ -66,6 +73,11 @@ export interface Binding {
   chosen?: string;
 }
 export type Task = (
+  | ({ type: 'swap-apply'; frames: number[]; effects: Effect[] } & Binding)
+  | ({ type: 'predict-value'; value: number } & Binding)
+  | ({ type: 'named-value-discard'; target: string; value: number } & Binding)
+  | { type: 'bonus-combat'; attacker: string; defender: string; card: Card; bonus: BonusAttack }
+  | ({ type: 'recover-card'; card: string } & Binding)
   | ({ type: 'search-card'; card: string; zones: ('deck' | 'discard')[] } & Binding)
   | ({ type: 'inspect-take'; cards: string[]; remaining: number; selected?: string } & Binding)
   | ({ type: 'inspect-order'; cards: string[]; ordered: string[] } & Binding)
@@ -139,6 +151,7 @@ export interface PendingChoice {
   id: string;
   player: string;
   prompt: string;
+  public?: boolean;
   options: ChoiceOption[];
   min: number;
   max: number;

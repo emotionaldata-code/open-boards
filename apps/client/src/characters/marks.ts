@@ -15,9 +15,13 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  achilles: { mark: 'flame', tone: 'ember' },
+  'achilles-patroclus': { mark: 'shield', tone: 'gold' },
   'the-genie': { mark: 'flame', tone: 'gold' },
   'king-arthur': { mark: 'blade', tone: 'gold' },
   'king-arthur-merlin': { mark: 'compass', tone: 'mint' },
+  'sherlock-holmes': { mark: 'compass', tone: 'gold' },
+  'sherlock-holmes-dr-watson': { mark: 'shield', tone: 'mint' },
   medusa: { mark: 'wave', tone: 'mint' },
   'medusa-harpy': { mark: 'blade', tone: 'gold' },
 };

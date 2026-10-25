@@ -1,3 +1,4 @@
+import { randomIndex } from './deck';
 import { openChoice } from './choices';
 import { reference } from './conditions';
 import type { Runtime } from './runtime';
@@ -12,6 +13,17 @@ export function offerDiscard(
   playerId: string,
 ): void {
   const player = runtime.state.players.find((p) => p.id === playerId)!;
+  if (effect.random) {
+    const remaining = [...player.hand];
+    const cards = Array.from(
+      { length: Math.min(effect.count, remaining.length) },
+      () => remaining.splice(randomIndex(runtime, remaining.length), 1)[0],
+    );
+    runtime.prepend(
+      ...cards.map((card) => ({ type: 'discard-card' as const, player: playerId, card: card.id })),
+    );
+    return;
+  }
   const chooser = effect.chooser
     ? reference(runtime.state, binding, effect.chooser)?.player
     : playerId;

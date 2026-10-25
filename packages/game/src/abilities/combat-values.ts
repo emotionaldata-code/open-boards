@@ -8,8 +8,12 @@ type Combat = Extract<Frame, { kind: 'combat' }>;
 type Field = 'attack' | 'defense';
 
 /** Status replacements follow base values/modifiers. A lock takes precedence over other setters. */
-export function applyCombatValues(runtime: Runtime, frame: Combat): void {
-  for (const field of ['attack', 'defense'] as const) {
+export function applyCombatValues(
+  runtime: Runtime,
+  frame: Combat,
+  fields: readonly Field[] = ['attack', 'defense'],
+): void {
+  for (const field of fields) {
     if (field === 'defense' && (!frame.defenseCard || frame.defenseCancelled)) continue;
     const fighter = fighterById(
       runtime.state,
@@ -25,7 +29,8 @@ export function applyCombatValues(runtime: Runtime, frame: Combat): void {
 }
 
 export function modifyCombatValue(frame: Combat, field: Field, amount: number): void {
-  if (!frame.lockedValues?.[field]) frame[field] = Math.max(0, frame[field] + amount);
+  if (!frame.ignoredValues?.includes(field) && !frame.lockedValues?.[field])
+    frame[field] = Math.max(0, frame[field] + amount);
 }
 
 export function setCombatValue(
@@ -42,14 +47,17 @@ export function setCombatValue(
       : target?.id === frame.defender && frame.defenseCard && !frame.defenseCancelled
         ? 'defense'
         : null;
-  if (!field || frame.lockedValues?.[field]) return;
+  if (!field || frame.ignoredValues?.includes(field) || frame.lockedValues?.[field]) return;
   const next = Math.max(
     0,
     Math.min(100, value(runtime.state, runtime.defs, binding, effect.value)),
   );
   if (effect.mode === 'printed') {
     const card = field === 'attack' ? frame.card : frame.defenseCard!;
-    const previous = frame.cardValues?.[card.id] ?? runtime.defs.cards[card.definition].value;
+    const previous =
+      frame.cardValues?.[card.id] ??
+      (field === 'attack' ? frame.bonus?.value : undefined) ??
+      runtime.defs.cards[card.definition].value;
     frame[field] = Math.max(0, frame[field] + next - previous);
     (frame.cardValues ??= {})[card.id] = next;
   } else frame[field] = next;

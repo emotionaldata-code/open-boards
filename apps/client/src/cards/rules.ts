@@ -22,5 +22,5 @@ export const hookDescriptions: Record<Hook, string> = {
   'after-heal': 'After healing is applied.',
   'card-played': 'When the card is played.',
   'card-discarded': 'When the card is discarded.',
-  eliminated: 'When you are eliminated.',
+  eliminated: 'When a fighter is defeated.',
 };

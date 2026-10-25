@@ -5,7 +5,7 @@ import { condition, reference, value } from './conditions';
 import { openChoice } from './choices';
 import type { Runtime } from './runtime';
 import type { Task } from './state';
-import { forcedPaths } from './positions';
+import { canPlace, forcedPaths } from './positions';
 import { startGroup } from './groups';
 import { offerRevival } from './revival';
 import { suppressOpponent } from './suppression';
@@ -13,9 +13,11 @@ import { offerAttackBoost } from './attack-boost';
 import { setCombatValue, modifyCombatValue } from './combat-values';
 import { offerDiscard } from './discard';
 
-import { inspectDeck, searchCard } from './deck';
+import { inspectDeck, searchCard, recoverCard } from './deck';
+import { inspectHand, nameValue, predictValue } from './hand';
+import { swapFighters } from './swap';
 import { chooseArea } from './area';
-import { applyCombatEffect, setHealth } from './combat-effects';
+import { applyCombatEffect, setHealth, replaceDefender } from './combat-effects';
 
 export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effect' }>): void {
   const { effect: e } = task,
@@ -26,6 +28,38 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
   if (ownerPlayer.departed) return;
   const target = reference(state, task, 'target' in e ? e.target : 'self');
   switch (e.type) {
+    case 'inspect-hand':
+      inspectHand(runtime, task, e);
+      break;
+    case 'named-value-discard':
+      nameValue(runtime, task, e);
+      break;
+    case 'predict-value':
+      predictValue(runtime, task);
+      break;
+    case 'ignore-combat-value': {
+      if (frame.kind !== 'combat' || !target) break;
+      const field =
+        target.id === frame.attacker ? 'attack' : target.id === frame.defender ? 'defense' : null;
+      if (field) {
+        (frame.ignoredValues ??= []).push(field);
+        frame[field] = 0;
+      }
+      break;
+    }
+    case 'swap':
+      swapFighters(runtime, task, e);
+      break;
+    case 'bonus-attack':
+      if (frame.kind === 'combat' && !frame.bonus)
+        frame.bonusAttack = { name: e.name, value: e.value };
+      break;
+    case 'replace-defender':
+      replaceDefender(runtime, task);
+      break;
+    case 'recover-card':
+      recoverCard(runtime, task);
+      break;
     case 'search-card':
       searchCard(runtime, task, e);
       break;
@@ -118,7 +152,11 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       break;
     }
     case 'actions':
-      if (state.players[state.turn].id === owner.player && !ownerPlayer.eliminated)
+      if (
+        target &&
+        state.players[state.turn].id === target.player &&
+        !state.players[state.turn].eliminated
+      )
         state.actions = Math.max(0, Math.min(100, state.actions + e.amount));
       break;
     case 'counter': {
@@ -209,9 +247,12 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                   defs.map.nodes
                     .filter(
                       (n) =>
-                        n !== target.position &&
-                        !state.fighters.some((p) => !p.defeated && p.position === n) &&
-                        (e.zone !== 'shared' || sharesZone(defs.map, target.position, n)),
+                        (n !== target.position || !!e.range) &&
+                        canPlace(state, target, defs, n, {
+                          zone: e.zone,
+                          range: e.range,
+                          anchor: e.range ? reference(state, task, e.anchor)?.id : undefined,
+                        }),
                     )
                     .map((n) => [n, [n]]),
                 )
@@ -234,6 +275,11 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                     distance: e.type === 'teleport' ? 1 : e.distance,
                     mode: e.type,
                     zone: e.type === 'teleport' ? e.zone : undefined,
+                    anchor:
+                      e.type === 'teleport' && e.range
+                        ? reference(state, task, e.anchor)?.id
+                        : undefined,
+                    range: e.type === 'teleport' ? e.range : undefined,
                     throughEnemies: e.type === 'move' ? e.throughEnemies : undefined,
                   },
                 },

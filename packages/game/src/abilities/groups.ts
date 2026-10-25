@@ -1,5 +1,7 @@
 import { fighterById, fighterLabel } from '../fighters';
 import type { Fighter } from '../types';
+import { adjacent } from '../movement';
+import { sharesZone } from '../targeting';
 import { openChoice } from './choices';
 import type { Runtime } from './runtime';
 import type { Binding, Task } from './state';
@@ -13,6 +15,10 @@ function eligible(runtime: Runtime, binding: Binding, effect: Group, fighter: Fi
     fighter.position !== null &&
     !runtime.state.players.find((p) => p.id === fighter.player)!.eliminated &&
     (!effect.role || effect.role === fighter.role) &&
+    (!effect.range ||
+      (effect.range === 'adjacent'
+        ? adjacent(runtime.defs.map, owner.position, fighter.position)
+        : sharesZone(runtime.defs.map, owner.position, fighter.position))) &&
     (effect.relation === 'any' ||
       (effect.relation === 'friendly'
         ? fighter.player === owner.player

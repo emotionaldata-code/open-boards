@@ -57,17 +57,23 @@ export function CharacterRoster({
             ? 'Reach: adjacent or any shared color.'
             : 'Reach: adjacent spaces only.'}
         </p>
-        {(character.abilities ?? []).length ? (
-          character.abilities!.map((ability) => (
-            <p key={ability.id}>
-              <strong>{ability.name}</strong> {ability.description}
-            </p>
-          ))
-        ) : (
+        {character.cardEffectProtection && (
           <p>
-            <strong>Fundamentals</strong> No special rules. Learn positioning, cards and timing.
+            <strong>{character.cardEffectProtection.name}</strong>{' '}
+            {character.cardEffectProtection.description}
           </p>
         )}
+        {(character.abilities ?? []).length
+          ? character.abilities!.map((ability) => (
+              <p key={ability.id}>
+                <strong>{ability.name}</strong> {ability.description}
+              </p>
+            ))
+          : !character.cardEffectProtection && (
+              <p>
+                <strong>Fundamentals</strong> No special rules. Learn positioning, cards and timing.
+              </p>
+            )}
         {character.ally && (
           <div className="ally-rules">
             <p>

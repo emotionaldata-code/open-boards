@@ -19,9 +19,11 @@ it('gives every playable fighter distinct original artwork, flavor and an abilit
 it('gives every main and repeated ally a visible owner-colored figure and a registered ability mark', () => {
   for (const character of Object.values(characters)) {
     for (const id of [character.id, ...(character.ally ? [character.ally.id] : [])]) {
-      const svg = figureSvg(id, '#123abc');
-      expect(svg).toContain('#123abc');
-      expect(svg).not.toMatch(/script|href|foreignObject|undefined/i);
+      for (const color of ['#dcc58d', '#91d9c7', '#ef9c8f', '#c1c9ec']) {
+        const svg = figureSvg(id, color);
+        expect(svg).toContain(color);
+        expect(svg).not.toMatch(/script|href|foreignObject|undefined/i);
+      }
       expect(abilityVisuals[id]).toBeDefined();
     }
   }

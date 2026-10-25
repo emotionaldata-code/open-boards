@@ -7,15 +7,27 @@ import medusa from './medusa.json';
 describe('complete character bundles', () => {
   it('compiles serializable decks without visual metadata in engine rules', () => {
     expect(() => validateDefinitions(basic)).not.toThrow();
-    expect(Object.keys(characters)).toEqual(['medusa', 'the-genie', 'king-arthur']);
+    expect(Object.keys(characters)).toEqual([
+      'medusa',
+      'the-genie',
+      'king-arthur',
+      'achilles',
+      'sherlock-holmes',
+    ]);
     expect(JSON.parse(JSON.stringify(basic))).toEqual(basic);
     const owned = new Set<string>();
     for (const character of Object.values(characters)) {
       expect(deckDefinitions(character.id)).toHaveLength(30);
       expect(character.deck).toHaveLength(
-        ({ medusa: 11, 'the-genie': 12, 'king-arthur': 16 } as Record<string, number>)[
-          character.id
-        ],
+        (
+          {
+            medusa: 11,
+            'the-genie': 12,
+            'king-arthur': 16,
+            'sherlock-holmes': 13,
+            achilles: 12,
+          } as Record<string, number>
+        )[character.id],
       );
       for (const { card, count } of character.deck) {
         expect(owned.has(card)).toBe(false);
@@ -26,7 +38,7 @@ describe('complete character bundles', () => {
         expect(basic.cards[card]).not.toHaveProperty('count');
       }
     }
-    expect(owned.size).toBe(39);
+    expect(owned.size).toBe(64);
     expect(() => deckDefinitions('ranger')).toThrow('supported character');
   });
   it('rejects duplicate definitions, invalid copies and unsafe artwork recipes', () => {

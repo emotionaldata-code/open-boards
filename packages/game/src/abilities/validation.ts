@@ -18,6 +18,7 @@ const ref = z.enum([
   'opponent',
   'chosen',
   'main',
+  'ally',
 ]);
 const expression = z.union([
   z.strictObject({ stat: z.enum(['hp', 'hand', 'deck', 'movement']), of: ref.optional() }),
@@ -59,6 +60,8 @@ const conditionSchema: z.ZodType<Condition> = z.lazy(() =>
       type: z.literal('combat-result'),
       result: z.enum(['won', 'lost', 'blocked']),
     }),
+    z.strictObject({ type: z.literal('prediction-matches') }),
+    z.strictObject({ type: z.literal('defeated'), target: ref.optional() }),
     z.strictObject({ type: z.literal('changed-position'), target: ref.optional() }),
     z.strictObject({ type: z.literal('has-status'), player: ref.optional(), status: id }),
   ]),
@@ -83,15 +86,18 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       type: z.literal('teleport'),
       target: ref.optional(),
       zone: z.enum(['any', 'shared']).optional(),
+      anchor: ref.optional(),
+      range: z.literal('adjacent').optional(),
       optional: z.boolean().optional(),
     }),
     z.strictObject({
       type: z.literal('discard'),
       target: ref.optional(),
       chooser: ref.optional(),
+      random: z.boolean().optional(),
       count,
     }),
-    z.strictObject({ type: z.literal('actions'), amount: signed }),
+    z.strictObject({ type: z.literal('actions'), target: ref.optional(), amount: signed }),
     z.strictObject({ type: z.literal('counter'), name: id, amount: signed }),
     z.strictObject({
       type: z.literal('status'),
@@ -137,7 +143,23 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       amount: count,
       onDefeat: effects().optional(),
     }),
+    z.strictObject({
+      type: z.literal('bonus-attack'),
+      name: z.string().min(1).max(100),
+      value: count,
+    }),
+    z.strictObject({ type: z.literal('replace-defender'), target: ref }),
+    z.strictObject({ type: z.literal('recover-card') }),
     z.strictObject({ type: z.literal('suppress-card-effects') }),
+    z.strictObject({ type: z.literal('predict-value') }),
+    z.strictObject({ type: z.literal('ignore-combat-value'), target: ref.optional() }),
+    z.strictObject({
+      type: z.literal('inspect-hand'),
+      target: ref.optional(),
+      public: z.boolean().optional(),
+    }),
+    z.strictObject({ type: z.literal('named-value-discard'), target: ref.optional() }),
+    z.strictObject({ type: z.literal('swap'), target: ref, onSuccess: effects().optional() }),
     z.strictObject({
       type: z.literal('revive-ally'),
       optional: z.boolean().optional(),
@@ -147,6 +169,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       type: z.literal('for-each-fighter'),
       relation: z.enum(['friendly', 'enemy', 'any']),
       role: z.enum(['main', 'ally']).optional(),
+      range: z.enum(['adjacent', 'zone']).optional(),
       effects: effects(),
     }),
     z.strictObject({
@@ -209,6 +232,16 @@ const definitionSchema = z.strictObject({
       id,
       ...fighterFields,
       movement: count,
+      cardEffectProtection: z
+        .strictObject({
+          name: z.string().min(1).max(100),
+          description: z.string().min(1).max(500),
+          tags: z
+            .array(z.enum(['MAIN', 'ALLY', 'BOTH']))
+            .min(1)
+            .max(3),
+        })
+        .optional(),
       ally: z.strictObject({ id, ...fighterFields, count: count.min(1) }).optional(),
       deck: z
         .array(z.strictObject({ card: id, count: count.min(1) }))
@@ -228,6 +261,7 @@ const definitionSchema = z.strictObject({
       value: count,
       boost: count,
       description: z.string().max(500).optional(),
+      faceUpDefense: z.boolean().optional(),
       effects: effects().optional(),
       abilities: abilities.optional(),
     }),
@@ -316,10 +350,20 @@ export function validateDefinitions(input: unknown): asserts input is Definition
         `modify ${String(node.field)} needs ${allowed.join('/')}`,
       );
     }
+    if ('type' in node && node.type === 'bonus-attack')
+      assert(trigger === 'after-combat', 'bonus-attack needs after-combat');
+    if ('type' in node && node.type === 'replace-defender')
+      assert(trigger === 'combat-reveal', 'replace-defender needs combat-reveal');
+    if ('type' in node && node.type === 'discard' && 'random' in node && node.random)
+      assert(!('chooser' in node), 'random discard cannot have a chooser');
     if ('type' in node && node.type === 'search-card' && 'card' in node)
       assert(known(defs.cards, String(node.card)), `unknown search card ${String(node.card)}`);
     if ('type' in node && node.type === 'prevent-damage')
       assert(trigger === 'before-combat', `${node.type} needs before-combat`);
+    if ('type' in node && node.type === 'predict-value')
+      assert(trigger === 'before-defense', 'predict-value needs before-defense');
+    if ('type' in node && node.type === 'ignore-combat-value')
+      assert(trigger === 'before-combat', 'ignore-combat-value needs before-combat');
     if ('type' in node && node.type === 'set-combat-value')
       assert(trigger === 'before-combat', 'set-combat-value needs before-combat');
     if ('type' in node && node.type === 'boost-attack')

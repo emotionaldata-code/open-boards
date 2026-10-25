@@ -24,7 +24,16 @@ export const hooks = [
 ] as const;
 export type Hook = (typeof hooks)[number];
 export type PlayerRef =
-  'self' | 'source' | 'actor' | 'target' | 'attacker' | 'defender' | 'opponent' | 'chosen' | 'main';
+  | 'self'
+  | 'source'
+  | 'actor'
+  | 'target'
+  | 'attacker'
+  | 'defender'
+  | 'opponent'
+  | 'chosen'
+  | 'main'
+  | 'ally';
 export type Value =
   | number
   | { stat: 'hp' | 'hand' | 'deck' | 'movement'; of?: PlayerRef }
@@ -49,9 +58,14 @@ export type Condition =
       category: 'attack' | 'defense' | 'versatile' | 'action';
     }
   | { type: 'combat-result'; result: 'won' | 'lost' | 'blocked' }
+  | { type: 'prediction-matches' }
+  | { type: 'defeated'; target?: PlayerRef }
   | { type: 'changed-position'; target?: PlayerRef }
   | { type: 'has-status'; player?: PlayerRef; status: string };
 export type Effect =
+  | { type: 'bonus-attack'; name: string; value: number }
+  | { type: 'replace-defender'; target: PlayerRef }
+  | { type: 'recover-card' }
   | { type: 'boost-attack'; grant?: string; cancelWithCard?: boolean }
   | { type: 'set-health'; target?: PlayerRef; value: number }
   | { type: 'prevent-damage'; target?: PlayerRef }
@@ -66,20 +80,33 @@ export type Effect =
       onDefeat?: Effect[];
     }
   | { type: 'suppress-card-effects' }
+  | { type: 'predict-value' }
+  | { type: 'ignore-combat-value'; target?: PlayerRef }
+  | { type: 'inspect-hand'; target?: PlayerRef; public?: boolean }
+  | { type: 'named-value-discard'; target?: PlayerRef }
+  | { type: 'swap'; target: PlayerRef; onSuccess?: Effect[] }
   | { type: 'revive-ally'; optional?: boolean; anchor?: PlayerRef }
   | {
       type: 'for-each-fighter';
       relation: 'friendly' | 'enemy' | 'any';
       role?: 'main' | 'ally';
+      range?: 'adjacent' | 'zone';
       effects: Effect[];
     }
   | { type: 'draw'; target?: PlayerRef; count: Value }
   | { type: 'damage' | 'heal'; target?: PlayerRef; amount: number }
   | { type: 'move'; target?: PlayerRef; distance: number; throughEnemies?: boolean }
   | { type: 'push' | 'pull'; target?: PlayerRef; distance: number }
-  | { type: 'teleport'; target?: PlayerRef; zone?: 'any' | 'shared'; optional?: boolean }
-  | { type: 'discard'; target?: PlayerRef; chooser?: PlayerRef; count: number }
-  | { type: 'actions'; amount: number }
+  | {
+      type: 'teleport';
+      target?: PlayerRef;
+      zone?: 'any' | 'shared';
+      anchor?: PlayerRef;
+      range?: 'adjacent';
+      optional?: boolean;
+    }
+  | { type: 'discard'; target?: PlayerRef; chooser?: PlayerRef; random?: boolean; count: number }
+  | { type: 'actions'; target?: PlayerRef; amount: number }
   | { type: 'counter'; name: string; amount: number }
   | { type: 'status'; target?: PlayerRef; status: string; stacks?: number; turns?: number }
   | { type: 'remove-status'; target?: PlayerRef; status: string }

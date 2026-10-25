@@ -1,5 +1,5 @@
 import { fighterById } from '../fighters';
-import type { Card, CombatReveal } from '../types';
+import type { BonusAttack, Card, CombatReveal } from '../types';
 import { modifier } from './conditions';
 import type { Runtime } from './runtime';
 import type { Frame, Task } from './state';
@@ -13,8 +13,10 @@ export function publishCombat(runtime: Runtime, frame: Extract<Frame, { kind: 'c
     defender: frame.defender,
     attack: frame.card,
     defense: frame.defenseCard,
+    ...(frame.bonus ? { bonus: frame.bonus } : {}),
     boosts: publicBoosts(runtime, frame),
     damage: frame.amount,
+    ...(frame.prediction !== undefined ? { prediction: frame.prediction } : {}),
   };
   runtime.state.revealed = combat;
   runtime.emit({ type: 'combat', combat });
@@ -31,7 +33,7 @@ export function cancelCombat(runtime: Runtime, hooks = true): void {
       [frame.attacker, frame.card],
       [frame.defender, frame.defenseCard],
     ] as const)
-      if (card) {
+      if (card && !(frame.bonus && card.id === frame.card.id)) {
         if (hooks) runtime.card(player, card, true);
         else {
           runtime.state.players
@@ -56,6 +58,7 @@ export function startCombat(
   attacker: string,
   defender: string,
   card: Card,
+  bonus?: BonusAttack,
 ): void {
   const frame = runtime.frame({
     kind: 'combat',
@@ -66,7 +69,8 @@ export function startCombat(
     card,
     defenseCard: null,
     boosts: [],
-    attack: runtime.defs.cards[card.definition].value,
+    ...(bonus ? { bonus } : {}),
+    attack: bonus?.value ?? runtime.defs.cards[card.definition].value,
     defense: 0,
     amount: 0,
   });
@@ -100,6 +104,7 @@ export function combatStep(
         attacker: attacker.id,
         defender: defender.id,
         card: frame.card,
+        ...(frame.bonus ? { bonus: frame.bonus } : {}),
       };
       break;
     case 'defend':
@@ -115,7 +120,8 @@ export function combatStep(
     case 'reveal':
       // Reveal only after both commitments. Hooks may now safely inspect both cards.
       frame.revealed = true;
-      runtime.state.players.find((p) => p.id === attacker.player)!.discard.push(frame.card);
+      if (!frame.bonus)
+        runtime.state.players.find((p) => p.id === attacker.player)!.discard.push(frame.card);
       if (frame.defenseCard)
         runtime.state.players
           .find((p) => p.id === defender.player)!
@@ -129,6 +135,7 @@ export function combatStep(
         defender: frame.defender,
         attack: frame.card,
         defense: frame.defenseCard,
+        ...(frame.bonus ? { bonus: frame.bonus } : {}),
         boosts: publicBoosts(runtime, frame),
         damage: 0,
       };
@@ -145,7 +152,7 @@ export function combatStep(
       );
       break;
     case 'lifecycle':
-      runtime.cardEvents(attacker.id, frame.card, false);
+      if (!frame.bonus) runtime.cardEvents(attacker.id, frame.card, false);
       if (frame.defenseCard)
         runtime.cardEvents(defender.id, frame.defenseCard, frame.defenseCancelled ?? false);
       for (const boost of frame.boosts)
@@ -169,6 +176,17 @@ export function combatStep(
       break;
     case 'finish':
       runtime.data.combat = null;
+      if (frame.bonusAttack)
+        runtime.prepend(
+          { type: 'release', frame: frameId },
+          {
+            type: 'bonus-combat',
+            attacker: frame.attacker,
+            defender: frame.defender,
+            card: frame.card,
+            bonus: frame.bonusAttack,
+          },
+        );
       break;
   }
 }

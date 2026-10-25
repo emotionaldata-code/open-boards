@@ -23,6 +23,7 @@ import { RotatePrompt, usePortraitPhone } from '../ui/DisplayControls';
 import { Hand } from './Hand';
 import { AbilityChoice } from './AbilityChoice';
 import { MatchDetails } from './MatchDetails';
+import { CardPrint } from '../cards/CardPrint';
 import { FighterPicker } from './FighterPicker';
 function instruction(game: GameView, user: User): string {
   if (game.phase.type === 'finished') {
@@ -36,7 +37,9 @@ function instruction(game: GameView, user: User): string {
     return game.choice?.prompt ?? 'A rival is resolving an ability.';
   if (game.phase.type === 'awaiting-defense')
     return fighterById(game, game.phase.defender)?.player === user.id
-      ? 'An attack is coming. Choose a defense card or take the hit.'
+      ? game.phase.bonus
+        ? `${game.phase.bonus.name} · Attack ${game.phase.bonus.value}. Choose a defense card or take the hit.`
+        : 'An attack is coming. Choose a defense card or take the hit.'
       : `${game.players.find((p) => p.id === fighterById(game, (game.phase as { defender: string }).defender)?.player)?.name} is choosing a defense.`;
   if (game.phase.type === 'placing-allies')
     return game.phase.player === user.id
@@ -215,7 +218,18 @@ export function Game({
                   : `${fighterDefinition(fighter, basic).name} · ${fighterDefinition(fighter, basic).attackType === 'ranged' ? 'Adjacent or shared color' : 'Adjacent attacks'}`}
             </span>
           </section>
-          {choice ? (
+          {game.observation && !choice ? (
+            <section className="hand-panel" aria-label="Revealed cards">
+              <h2>{game.observation.prompt}</h2>
+              <div className="ability-options">
+                {game.observation.cards.map((card) => (
+                  <div className="printed-card" key={card.id}>
+                    <CardPrint definition={card.definition} />
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : choice ? (
             <AbilityChoice
               key={choice.id}
               choice={choice}

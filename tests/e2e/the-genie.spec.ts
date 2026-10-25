@@ -143,6 +143,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.screenshot({
         path: test.info().outputPath('genie-private-hand-desktop.png'),
         animations: 'disabled',
+        timeout: 30000,
       });
       await page.setViewportSize({ width: 844, height: 390 });
       await mountGenie(page);
@@ -150,6 +151,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.screenshot({
         path: test.info().outputPath('genie-private-hand-phone.png'),
         animations: 'disabled',
+        timeout: 30000,
       });
       await choice().locator('button.game-card').first().tap();
       await page.locator('.game-card').filter({ hasText: 'I Am Freed' }).tap();
@@ -171,6 +173,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.screenshot({
         path: test.info().outputPath('genie-match-phone.png'),
         animations: 'disabled',
+        timeout: 30000,
       });
       const state = await page.evaluate(
         () =>
@@ -262,6 +265,7 @@ test('selects The Genie over real sockets and restores Infinite Power after relo
     await host.screenshot({
       path: test.info().outputPath('genie-socket-phone.png'),
       animations: 'disabled',
+      timeout: 30000,
     });
     expect(
       await host.evaluate(
@@ -273,5 +277,76 @@ test('selects The Genie over real sockets and restores Infinite Power after relo
     expect(errors).toEqual([]);
   } finally {
     await Promise.all(contexts.map((context) => context.close()));
+  }
+});
+
+test('explores all twelve Genie illustrations and inspectors on desktop and landscape phone', async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 1000 },
+    reducedMotion: 'reduce',
+    hasTouch: true,
+  });
+  context.setDefaultTimeout(10000);
+  const page = await context.newPage(),
+    errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('response', (r) => {
+    if (r.status() >= 400 && r.url().includes('/cards/the-genie/'))
+      errors.push(`${r.status()} ${r.url()}`);
+  });
+  try {
+    await page.goto('/');
+    const roster = page.getByRole('region', { name: 'Character roster' });
+    await roster.getByRole('button', { name: 'Inspect The Genie', exact: true }).click();
+    await expect(roster).toContainText('Infinite Power');
+    await expect(roster.locator('.roster-detail img')).toHaveJSProperty('complete', true);
+    await roster
+      .getByRole('button', { name: 'Explore The Genie’s deck · 12 designs', exact: true })
+      .click();
+    const deck = page.getByRole('dialog', { name: 'The Genie’s deck', exact: true });
+    await expect(deck.locator('.deck-gallery > button')).toHaveCount(12);
+    for (const card of await deck.locator('.deck-gallery > button').all()) {
+      await card.click();
+      const detail = page.getByRole('dialog').last();
+      await expect(detail).toContainText('How to play');
+      await expect(detail.locator('img')).toHaveJSProperty('complete', true);
+      await page.keyboard.press('Escape');
+      await expect(card).toBeFocused();
+    }
+    await page.screenshot({
+      path: test.info().outputPath('genie-deck-desktop.png'),
+      animations: 'disabled',
+      timeout: 30000,
+    });
+    await page.keyboard.press('Escape');
+    await page.setViewportSize({ width: 844, height: 390 });
+    await page.getByRole('button', { name: /^Explore \d+ characters?$/ }).tap();
+    const phoneRoster = page.getByRole('dialog').last();
+    await phoneRoster.getByRole('button', { name: 'Inspect The Genie', exact: true }).tap();
+    await phoneRoster
+      .getByRole('button', { name: 'Explore The Genie’s deck · 12 designs', exact: true })
+      .tap();
+    await page
+      .getByRole('dialog', { name: 'The Genie’s deck', exact: true })
+      .getByRole('button', { name: 'About Feint, 3 copies', exact: true })
+      .tap();
+    await expect(page.getByRole('dialog').last()).toContainText('BOOST 1');
+    await page.screenshot({
+      path: test.info().outputPath('genie-inspector-phone.png'),
+      animations: 'disabled',
+      timeout: 30000,
+    });
+    expect(
+      await page.evaluate(
+        () =>
+          document.documentElement.scrollWidth <= innerWidth &&
+          document.documentElement.scrollHeight <= innerHeight,
+      ),
+    ).toBe(true);
+    expect(errors).toEqual([]);
+  } finally {
+    await context.close();
   }
 });

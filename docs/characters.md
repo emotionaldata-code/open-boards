@@ -47,3 +47,11 @@ Feint suppresses the opposing card’s effects immediately. Second Shot uses the
 King Arthur is playable with **30 cards across 16 designs** and one **7-HP ranged Merlin**. Arthur has 18 HP, melee attacks and movement 2. His private attack BOOST can combine with Noble Sacrifice’s second payment; cancellation removes the special’s bonus only when an attack-card effect is cancelled, preserving Excalibur’s exception.
 
 Merlin provides private deck inspection, area damage, damage prevention and movement of every fighter. The complete [source inventory](characters/drafts/king-arthur/inventory.json) and [import notes](characters/king-arthur.md) record every printed clause, the reusable operations and original artwork.
+
+## Sherlock Holmes
+
+Sherlock Holmes is playable with **30 cards across 13 designs** and one **8-HP ranged Dr. Watson**. Holmes has 16 HP, movement 2 and melee attacks. Deductive Reasoning protects named-fighter card effects; Elementary predicts a hidden attack before reveal. His schemes inspect and dismantle opposing hands, swap heroes, and bring Watson beside Holmes for aid. The [source inventory](characters/drafts/sherlock-holmes/inventory.json) and [import notes](characters/sherlock-holmes.md) document all printed clauses, reusable rules and original artwork.
+
+## Achilles
+
+Achilles is playable with **30 cards across 12 designs**, 18 HP, movement 2 and one **6-HP melee Patroclus**. Patroclus's defeat forces two random discards, then fuels Achilles's attacks and victory draws. Test For Weakness resolves a separate Relentless Assault, while Under Achilles' Helm can exchange positions and transfer defense to Patroclus. All printed BOOST values, fighter restrictions and timed effects are preserved. The [source inventory](characters/achilles/inventory.json) and [import notes](characters/achilles.md) document the rule mapping, timing and twelve original card illustrations.

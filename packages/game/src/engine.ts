@@ -173,6 +173,7 @@ export function execute(
       const frame = runtime.data.frames[id];
       requireRule(frame?.kind === 'combat', 'No combat is pending.');
       frame.defenseCard = defense;
+      frame.faceUpDefense = !!defense && !!defs.cards[defense.definition].faceUpDefense;
       state.phase = { type: 'taking-actions' };
       runtime.prepend(
         { type: 'event', frame: id, hook: 'before-defense' },

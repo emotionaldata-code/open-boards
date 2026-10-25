@@ -1,0 +1,469 @@
+{
+  "id": "sherlock-holmes",
+  "name": "Sherlock Holmes",
+  "hp": 16,
+  "movement": 2,
+  "attackType": "melee",
+  "ally": {
+    "id": "sherlock-holmes-dr-watson",
+    "name": "Dr. Watson",
+    "hp": 8,
+    "count": 1,
+    "attackType": "ranged"
+  },
+  "cardEffectProtection": {
+    "name": "Deductive Reasoning",
+    "description": "Effects on HOLMES and DR. WATSON cards cannot be cancelled by an opponent.  (Effects on ANY cards can be cancelled.)",
+    "tags": ["MAIN", "ALLY"]
+  },
+  "palette": {
+    "ground": "#283a3b",
+    "ink": "#ded3b4",
+    "accent": "#b79c67"
+  },
+  "cards": [
+    {
+      "id": "sherlock-holmes-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 1,
+      "count": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/cards/sherlock-holmes/feint.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-education-never-ends",
+      "name": "Education Never Ends",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "description": "After Combat: If you won the combat, your opponent draws 1 card. If you lost the combat, you draw 2 cards.",
+      "art": {
+        "scene": "map",
+        "variant": 1,
+        "image": "/cards/sherlock-holmes/education-never-ends.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "education-never-ends",
+          "name": "Education Never Ends",
+          "description": "After Combat: If you won the combat, your opponent draws 1 card. If you lost the combat, you draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "target": "opponent",
+                  "count": 1
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-study-methods",
+      "name": "Study Methods",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: If you won the combat, look at your opponent's hand.",
+      "art": {
+        "scene": "map",
+        "variant": 2,
+        "image": "/cards/sherlock-holmes/study-methods.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "study-methods",
+          "name": "Study Methods",
+          "description": "After Combat: If you won the combat, look at your opponent's hand.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "inspect-hand",
+              "target": "opponent"
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-deduce-strategy",
+      "name": "Deduce Strategy",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "During Combat: You may change the printed value of the opponent's card to its BOOST value. (If a card does not have a BOOST value, it is treated as 0.)",
+      "art": {
+        "scene": "ward",
+        "variant": 3,
+        "image": "/cards/sherlock-holmes/deduce-strategy.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "deduce-strategy",
+          "name": "Deduce Strategy",
+          "description": "During Combat: You may change the printed value of the opponent's card to its BOOST value. (If a card does not have a BOOST value, it is treated as 0.)",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "target": "opponent",
+              "value": {
+                "card": "opposing",
+                "field": "boost"
+              },
+              "mode": "printed"
+            }
+          ],
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-counterpunch",
+      "name": "Counterpunch",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "After Combat: If Holmes is adjacent to the opposing fighter, deal 2 damage to that fighter.",
+      "art": {
+        "scene": "blade",
+        "variant": 4,
+        "image": "/cards/sherlock-holmes/counterpunch.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "counterpunch",
+          "name": "Counterpunch",
+          "description": "After Combat: If Holmes is adjacent to the opposing fighter, deal 2 damage to that fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "opponent",
+              "amount": 2
+            }
+          ],
+          "when": {
+            "type": "relation",
+            "relation": "adjacent",
+            "a": "self",
+            "b": "opponent"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-fixed-point-in-a-changing-age",
+      "name": "Fixed Point in a Changing Age",
+      "category": "versatile",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "description": "After Combat: If Dr. Watson is adjacent to Holmes, they each recover 1 health.",
+      "art": {
+        "scene": "lantern",
+        "variant": 5,
+        "image": "/cards/sherlock-holmes/fixed-point-in-a-changing-age.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "fixed-point-in-a-changing-age",
+          "name": "Fixed Point in a Changing Age",
+          "description": "After Combat: If Dr. Watson is adjacent to Holmes, they each recover 1 health.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "heal",
+              "amount": 1
+            },
+            {
+              "type": "heal",
+              "target": "main",
+              "amount": 1
+            }
+          ],
+          "when": {
+            "type": "relation",
+            "relation": "adjacent",
+            "a": "self",
+            "b": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-the-game-is-afoot",
+      "name": "The Game is Afoot",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 5,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: Move Holmes up to 3 spaces.",
+      "art": {
+        "scene": "trail",
+        "variant": 6,
+        "image": "/cards/sherlock-holmes/the-game-is-afoot.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "the-game-is-afoot",
+          "name": "The Game is Afoot",
+          "description": "After Combat: Move Holmes up to 3 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-service-revolver",
+      "name": "Service Revolver",
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 5,
+      "boost": 3,
+      "count": 2,
+      "description": "",
+      "art": {
+        "scene": "bolt",
+        "variant": 0,
+        "image": "/cards/sherlock-holmes/service-revolver.svg"
+      },
+      "flavor": ""
+    },
+    {
+      "id": "sherlock-holmes-elementary",
+      "name": "Elementary",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 3,
+      "count": 2,
+      "description": "Play this card face up. Predict the printed attack value of the opponent's card. During Combat: If you predicted the correct value, cancel all effects on your opponent's card and ignore its attack value.",
+      "art": {
+        "scene": "ward",
+        "variant": 1,
+        "image": "/cards/sherlock-holmes/elementary.svg"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "elementary-prediction",
+          "name": "Elementary",
+          "description": "Play this card face up. Predict the printed attack value of the opponent's card. During Combat: If you predicted the correct value, cancel all effects on your opponent's card and ignore its attack value.",
+          "trigger": "before-defense",
+          "effects": [
+            {
+              "type": "predict-value"
+            }
+          ]
+        },
+        {
+          "id": "elementary",
+          "name": "Elementary",
+          "description": "Play this card face up. Predict the printed attack value of the opponent's card. During Combat: If you predicted the correct value, cancel all effects on your opponent's card and ignore its attack value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            },
+            {
+              "type": "ignore-combat-value",
+              "target": "opponent"
+            }
+          ],
+          "when": {
+            "type": "prediction-matches"
+          }
+        }
+      ],
+      "faceUpDefense": true
+    },
+    {
+      "id": "sherlock-holmes-confirm-suspicion",
+      "name": "Confirm Suspicion",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 1,
+      "count": 3,
+      "description": "Choose an opponent and name a value. Your opponent must choose and discard one card matching that attack or defense value. Their hero takes damage equal to the BOOST value of the discarded card. If they do not have a card of the named value, they must reveal their hand instead.",
+      "art": {
+        "scene": "map",
+        "variant": 2,
+        "image": "/cards/sherlock-holmes/confirm-suspicion.svg"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "named-value-discard",
+              "target": "chosen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-eliminate-the-impossible",
+      "name": "Eliminate the Impossible",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Choose an opponent. Look at their hand and choose 1 card for them to discard.",
+      "art": {
+        "scene": "embers",
+        "variant": 3,
+        "image": "/cards/sherlock-holmes/eliminate-the-impossible.svg"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "chosen",
+              "chooser": "self",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-master-of-disguise",
+      "name": "Master of Disguise",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Choose an opponent. Holmes swaps spaces with their hero. Deal 1 damage to that hero.",
+      "art": {
+        "scene": "trail",
+        "variant": 4,
+        "image": "/cards/sherlock-holmes/master-of-disguise.svg"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "swap",
+              "target": "chosen",
+              "onSuccess": [
+                {
+                  "type": "damage",
+                  "target": "chosen",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sherlock-holmes-administer-aid",
+      "name": "Administer Aid",
+      "category": "action",
+      "usableBy": "ALLY",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Place Dr. Watson in a space adjacent to Holmes. Holmes recovers 1 health. Draw 1 card.",
+      "art": {
+        "scene": "lantern",
+        "variant": 5,
+        "image": "/cards/sherlock-holmes/administer-aid.svg"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "teleport",
+          "anchor": "main",
+          "range": "adjacent",
+          "optional": false
+        },
+        {
+          "type": "heal",
+          "target": "main",
+          "amount": 1
+        },
+        {
+          "type": "draw",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -44,6 +44,15 @@ export function EventDialog({
               </article>
             ))}
           </div>
+          {review.cards && (
+            <div className="event-participants">
+              {review.cards.map((card, index) => (
+                <div className="printed-card" key={index}>
+                  <CardPrint definition={card} />
+                </div>
+              ))}
+            </div>
+          )}
           {review.result && <p className="event-result">{review.result}</p>}
         </div>
         <footer className="event-acknowledgement">

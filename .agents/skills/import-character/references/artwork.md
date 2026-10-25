@@ -14,7 +14,7 @@ Preserve the parchment, muted fantasy palette and original cut-paper SVG style. 
 
 Add a recognizable silhouette keyed by the hero ID and another keyed by `ally.id`. The figure viewBox is `-78 -158 156 168`; feet sit near y=0 and the figure should fit within it. Use simple filled paths/strokes supported by Pixi's SVG renderer. Include the supplied seat color as a visible garment, shield or collar detail so repeated characters remain distinguishable by owner. Check all four owner colors. Reusing the Warden fallback is not completed artwork.
 
-`illustratedCharacters` currently derives from artwork keys while excluding Wolf. When adding another ally, update that derivation so it excludes **all** ally-only figures and still lists every playable hero. Add `profiles[heroId]` with `role`, `summary`, `tactic`, `accent`, `ground`; roster/picker code requires this entry. Add appropriate reusable marks for the hero and ally IDs. A new symbol is optional if an existing one communicates the ability clearly.
+`illustratedCharacters` derives from artwork keys while excluding ally-only figures. When adding another ally, update that derivation so it excludes **all** ally-only figures and still lists every playable hero. Add `profiles[heroId]` with `role`, `summary`, `tactic`, `accent`, `ground`; roster/picker code requires this entry. Add appropriate reusable marks for the hero and ally IDs. A new symbol is optional if an existing one communicates the ability clearly.
 
 ## Cards
 

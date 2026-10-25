@@ -1,5 +1,12 @@
 import { z } from 'zod';
-import type { Fighter, Card, CombatReveal, GameState, Outcome } from '@open-boards/game';
+import type {
+  Fighter,
+  Card,
+  CombatReveal,
+  BonusAttack,
+  GameState,
+  Outcome,
+} from '@open-boards/game';
 const cardId = z.string().min(1).max(100);
 export const commandSchema = z.object({
   id: z.string().uuid(),
@@ -52,7 +59,13 @@ export interface Seat extends User {
 }
 export type PublicPhase =
   | Exclude<GameState['phase'], { type: 'awaiting-defense' }>
-  | { type: 'awaiting-defense'; attacker: string; defender: string; committedCard?: Card };
+  | {
+      type: 'awaiting-defense';
+      attacker: string;
+      defender: string;
+      committedCard?: Card;
+      bonus?: BonusAttack;
+    };
 export interface PublicPlayer extends User {
   character: string;
   handCount: number;
@@ -81,6 +94,7 @@ export interface GameView {
   hand: Card[];
   paused: boolean;
   choice: ChoiceView | null;
+  observation?: { prompt: string; cards: Card[] };
 }
 export interface RoomView {
   id: string;

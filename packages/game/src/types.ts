@@ -15,6 +15,7 @@ export interface CardDefinition {
   value: number;
   boost: number;
   description?: string;
+  faceUpDefense?: boolean;
   effects?: Effect[];
   abilities?: Ability[];
 }
@@ -28,6 +29,7 @@ export interface FighterDefinition {
 export interface CharacterDefinition extends FighterDefinition {
   id: string;
   movement: number;
+  cardEffectProtection?: { name: string; description: string; tags: CardDefinition['usableBy'][] };
   deck: { card: string; count: number }[];
   ally?: FighterDefinition & { id: string; count: number };
 }
@@ -78,16 +80,28 @@ export type Phase =
   | { type: 'placing-allies'; player: string }
   | { type: 'choosing-movement'; player: string }
   | { type: 'ability-choice'; player: string }
-  | { type: 'awaiting-defense'; attacker: string; defender: string; card: Card }
+  | {
+      type: 'awaiting-defense';
+      attacker: string;
+      defender: string;
+      card: Card;
+      bonus?: BonusAttack;
+    }
   | { type: 'discarding'; player: string }
   | { type: 'finished'; winner: string | null };
+export interface BonusAttack {
+  name: string;
+  value: number;
+}
 export interface CombatReveal {
+  bonus?: BonusAttack;
   attacker: string;
   defender: string;
   attack: Card;
   defense: Card | null;
   boosts: { card: Card; amount: number; cancelled?: boolean }[];
   damage: number;
+  prediction?: number;
 }
 export interface GameState {
   revision: number;
@@ -126,6 +140,7 @@ export interface CommandEnvelope {
   command: Command;
 }
 export type OutcomeData =
+  | { type: 'hand-revealed'; player: string; cards: Card[] }
   | { type: 'draw'; player: string; cards: Card[] }
   | { type: 'damage'; fighter: string; amount: number; reason: 'combat' | 'exhaustion' | 'ability' }
   | { type: 'move'; fighter: string; path: string[] }

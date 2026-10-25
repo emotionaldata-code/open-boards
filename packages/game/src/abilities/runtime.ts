@@ -5,14 +5,16 @@ import { victory } from '../rules';
 import { requireRule } from '../errors';
 import { condition } from './conditions';
 import { applyOperation } from './operations';
-import { combatStep } from './combat';
+import { combatStep, startCombat } from './combat';
 import { commitAttackBoost } from './attack-boost';
 import { applyEffect } from './effects';
 import { openChoice } from './choices';
 import { cardProvenance, suppressed } from './suppression';
 import { nextFighter } from './groups';
 import { areaResult, chooseAdjacent, damageArea } from './area';
-import { orderInspected, resolveSearch, takeInspected } from './deck';
+import { applySwap } from './swap';
+import { commitPrediction, discardNamedValue } from './hand';
+import { orderInspected, resolveSearch, takeInspected, resolveRecovery } from './deck';
 import { offerPlacement, revive } from './revival';
 import type { Binding, CardProvenance, Operation, Task } from './state';
 import type { Ability, Effect, Hook } from './vocabulary';
@@ -137,7 +139,9 @@ export class Runtime {
       const card =
         frame.kind === 'combat'
           ? p.id === frame.attacker
-            ? frame.card
+            ? frame.bonus
+              ? null
+              : frame.card
             : p.id === frame.defender && !frame.defenseCancelled
               ? frame.defenseCard
               : null
@@ -319,11 +323,33 @@ export class Runtime {
       if (suppressed(this, task.provenance)) {
         // An operation already entered its before hooks: finish it as cancelled so
         // after hooks observe zero applied distance/amount, like ordinary cancellation.
-        if (task.type === 'apply' && this.data.frames[task.frame])
+        if (task.type === 'swap-apply') {
+          for (const id of task.frames)
+            if (this.data.frames[id]) this.data.frames[id].cancelled = true;
+        } else if (task.type === 'apply' && this.data.frames[task.frame])
           this.data.frames[task.frame].cancelled = true;
         else continue;
       }
       switch (task.type) {
+        case 'swap-apply':
+          if (this.data.frames[task.frame]) applySwap(this, task);
+          break;
+        case 'predict-value':
+          if (this.data.frames[task.frame]) commitPrediction(this, task);
+          break;
+        case 'named-value-discard':
+          if (this.data.frames[task.frame]) discardNamedValue(this, task);
+          break;
+        case 'bonus-combat': {
+          const attacker = fighterById(this.state, task.attacker),
+            defender = fighterById(this.state, task.defender);
+          if (attacker && defender && !attacker.defeated && !defender.defeated)
+            startCombat(this, attacker.id, defender.id, task.card, task.bonus);
+          break;
+        }
+        case 'recover-card':
+          if (this.data.frames[task.frame]) resolveRecovery(this, task);
+          break;
         case 'search-card':
           if (this.data.frames[task.frame]) resolveSearch(this, task);
           break;

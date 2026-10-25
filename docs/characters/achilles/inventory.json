@@ -1,0 +1,232 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/achilles",
+  "retrievedAt": "2026-10-25T11:55:33.867Z",
+  "edition": "Battle of Legends, Volume Two",
+  "special": "When Patroclus is defeated, discard 2 random cards.\r\nWhile Patroclus is defeated:\r\n> Add +2 to the value of all Achilles' attacks.\r\n> If Achilles wins combat, draw 1 card.",
+  "notes": "While Patroclus is defeated, if Achilles wins combat he draws 1 card after any AFTER COMBAT effects have resolved.",
+  "heroes": [
+    {
+      "attack_type": "melee",
+      "hp": 18,
+      "name": "Achilles",
+      "quantity": 1,
+      "slug": "achilles"
+    }
+  ],
+  "sidekicks": [
+    {
+      "attack_type": "melee",
+      "hp": 6,
+      "name": "Patroclus",
+      "quantity": 1,
+      "slug": "patroclus"
+    }
+  ],
+  "movement": 2,
+  "cards": [
+    {
+      "id": "achilles-battle-frenzy",
+      "name": "Battle Frenzy",
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Deal 2 damage to both fighters in the combat."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/battle-frenzy.png"
+    },
+    {
+      "id": "achilles-test-for-weakness",
+      "name": "Test For Weakness",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 1,
+      "boost": 3,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "RELENTLESS ASSAULT: 3 ATK"
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/test-for-weakness.png"
+    },
+    {
+      "id": "achilles-the-day-of-your-doom",
+      "name": "The Day of Your Doom",
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "You may deal 2 damage to Patroclus. If you do, the value of this attack is 5 instead."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/the-day-of-your-doom.png"
+    },
+    {
+      "id": "achilles-brothers-in-arms",
+      "name": "Brothers In Arms",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "If Patroclus is not defeated, gain 1 action."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/brothers-in-arms.png"
+    },
+    {
+      "id": "achilles-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 1,
+      "count": 3,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/feint.png"
+    },
+    {
+      "id": "achilles-battle-hardened",
+      "name": "Battle Hardened",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Choose a card in your discard pile and return it to your hand."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/battle-hardened.png"
+    },
+    {
+      "id": "achilles-wily-fighting",
+      "name": "Wily Fighting",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Deal 1 damage to each opposing fighter adjacent to your fighter."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/wily-fighting.png"
+    },
+    {
+      "id": "achilles-blessed-by-hermes",
+      "name": "Blessed By Hermes",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Move each of your fighters up to 3 spaces. They may move through opposing fighters."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/blessed-by-hermes.png"
+    },
+    {
+      "id": "achilles-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/skirmish.png"
+    },
+    {
+      "id": "achilles-under-achilles-helm",
+      "name": "Under Achilles' Helm",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 4,
+      "count": 3,
+      "sourceRules": {
+        "immediateText": "If Patroclus is not defeated, Achilles may swap spaces with him. If he does, Patroclus is now the defender."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/under-achilles-helm.png"
+    },
+    {
+      "id": "achilles-achilles-heel",
+      "name": "Achilles' Heel",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "If you lost the combat, your opponent gains 1 action."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/achilles-heel.png"
+    },
+    {
+      "id": "achilles-spear-throw",
+      "name": "Spear Throw",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 1,
+      "count": 2,
+      "sourceRules": {
+        "basicText": "Deal 2 damage to an opposing fighter in Achilles' zone."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/achilles/spear-throw.png"
+    }
+  ]
+}
