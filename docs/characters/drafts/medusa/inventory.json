@@ -1,0 +1,420 @@
+{
+  "status": "blocked-draft",
+  "playable": false,
+  "source": {
+    "sourceUrl": "https://unmatched.cards/umdb/decks/medusa",
+    "apiUrl": "https://unmatched.cards/api/db/decks/medusa",
+    "retrievedAt": "2026-10-25T10:31:37.429Z"
+  },
+  "sourceSnapshotSha256": "d68bc440a367ab684f72336dae68dd261243b85141f783543ca0249e76e9b738",
+  "edition": "Battle of Legends, Volume One",
+  "totals": {
+    "designs": 11,
+    "copies": 30
+  },
+  "fighter": {
+    "id": "medusa",
+    "name": "Medusa",
+    "hp": 16,
+    "movement": 3,
+    "attackType": "ranged",
+    "ally": {
+      "id": "medusa-harpy",
+      "name": "Harpy",
+      "count": 3,
+      "hp": 1,
+      "attackType": "melee"
+    }
+  },
+  "special": {
+    "sourceText": "At the start of your turn, you may deal 1 damage to an opposing fighter in Medusa's zone.",
+    "status": "supported-candidate",
+    "candidatePrintedAbility": {
+      "id": "petrifying-gaze",
+      "name": "Petrifying gaze",
+      "description": "At turn start, may deal 1 damage to an enemy fighter sharing Medusa's zone.",
+      "trigger": "turn-start",
+      "optional": true,
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "enemy",
+          "range": "zone",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "medusa-dash",
+      "name": "Dash",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "Move your fighter up to 3 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/dash.png",
+      "draftArtwork": "art/dash.svg",
+      "status": "supported-candidate",
+      "candidateAbilities": [
+        {
+          "id": "dash",
+          "name": "Dash",
+          "description": "Candidate mapping of the printed after-combat effect.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medusa-gaze-of-stone",
+      "name": "Gaze of Stone",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 4,
+      "sourceRules": {
+        "afterText": "If you won the combat, deal 8 damage to the opposing fighter."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/gaze-of-stone.png",
+      "draftArtwork": "art/gaze-of-stone.svg",
+      "status": "supported-candidate",
+      "candidateAbilities": [
+        {
+          "id": "gaze-of-stone",
+          "name": "Gaze of Stone",
+          "description": "Candidate mapping of the printed after-combat effect.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "opponent",
+              "amount": 8
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medusa-a-momentary-glance",
+      "name": "A Momentary Glance",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "sourceValue": 2,
+      "boost": 4,
+      "sourceRules": {
+        "basicText": "Deal 2 damage to any one fighter in Medusa's zone."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/a-momentary-glance.png",
+      "draftArtwork": "art/a-momentary-glance.svg",
+      "status": "supported-candidate",
+      "candidateEffects": [
+        {
+          "type": "choose-fighter",
+          "relation": "any",
+          "range": "zone",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medusa-hiss-and-slither",
+      "name": "Hiss and Slither",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 4,
+      "sourceValue": 4,
+      "boost": 3,
+      "sourceRules": {
+        "afterText": "Your opponent discards 1 card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/hiss-and-slither.png",
+      "draftArtwork": "art/hiss-and-slither.svg",
+      "status": "supported-candidate",
+      "candidateAbilities": [
+        {
+          "id": "hiss-and-slither",
+          "name": "Hiss and Slither",
+          "description": "Candidate mapping of the printed after-combat effect.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medusa-the-hounds-of-mighty-zeus",
+      "name": "The Hounds of Mighty Zeus",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "versatile",
+      "value": 4,
+      "sourceValue": 4,
+      "boost": 3,
+      "sourceRules": {
+        "afterText": "Move each Harpy up to 3 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/the-hounds-of-mighty-zeus.png",
+      "draftArtwork": "art/the-hounds-of-mighty-zeus.svg",
+      "status": "blocked",
+      "gaps": [
+        "No iteration over all living owned allies. Repeating choose-fighter can select the same piece and includes the hero; it is not equivalent."
+      ]
+    },
+    {
+      "id": "medusa-clutching-claws",
+      "name": "Clutching Claws",
+      "count": 3,
+      "usableBy": "ALLY",
+      "category": "versatile",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Your opponent discards 1 card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/clutching-claws.png",
+      "draftArtwork": "art/clutching-claws.svg",
+      "status": "supported-candidate",
+      "candidateAbilities": [
+        {
+          "id": "clutching-claws",
+          "name": "Clutching Claws",
+          "description": "Candidate mapping of the printed after-combat effect.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medusa-winged-frenzy",
+      "name": "Winged Frenzy",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "action",
+      "value": 0,
+      "sourceValue": 2,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Move each of your fighters up to 3 spaces. You may move them through spaces containing opposing fighters. Then, return a defeated Harpy (if any) to any space in Medusa's zone."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/winged-frenzy.png",
+      "draftArtwork": "art/winged-frenzy.svg",
+      "status": "blocked",
+      "gaps": [
+        "No iteration over all living owned fighters.",
+        "Movement cannot pass through enemies.",
+        "No resurrection or choice of an empty space in the main fighter's zone, anchored to Medusa even when a Harpy plays the card."
+      ]
+    },
+    {
+      "id": "medusa-second-shot-3",
+      "name": "Second Shot",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 3,
+      "sourceRules": {
+        "duringText": "You may BOOST this attack."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/second-shot-3.png",
+      "draftArtwork": "art/second-shot-3.svg",
+      "status": "blocked",
+      "gaps": [
+        "No per-card BOOST statistic, optional private hand-card payment, or attack modifier derived from that discarded card."
+      ]
+    },
+    {
+      "id": "medusa-snipe",
+      "name": "Snipe",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "Draw 1 card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/snipe.png",
+      "draftArtwork": "art/snipe.svg",
+      "status": "supported-candidate",
+      "candidateAbilities": [
+        {
+          "id": "snipe",
+          "name": "Snipe",
+          "description": "Candidate mapping of the printed after-combat effect.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medusa-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 2,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/feint.png",
+      "draftArtwork": "art/feint.svg",
+      "status": "blocked",
+      "gaps": [
+        "cancel cancels a before-event, not all opposing card effects. Needs combat-scoped suppression, correct defender-first immediate ordering, and cancellation of later BOOST payment."
+      ]
+    },
+    {
+      "id": "medusa-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 1,
+      "sourceValue": 1,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/medusa/regroup.png",
+      "draftArtwork": "art/regroup.svg",
+      "status": "supported-candidate",
+      "candidateAbilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "Candidate mapping of the printed after-combat effect.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceCorrections": {
+    "reason": "User requested removal of the API additions that conflict with the printed rules.",
+    "basis": "Printed Gaze of Stone and A Momentary Glance scans, and the publisher Volume One rulebook for the passive.",
+    "fields": [
+      "deck.special",
+      "deck.cards[gaze-of-stone].afterText",
+      "deck.cards[a-momentary-glance].basicText"
+    ],
+    "provenance": "sourceSnapshotSha256 identifies the unmodified upstream response; the three local text fields listed here are corrected."
+  }
+}

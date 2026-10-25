@@ -1,0 +1,400 @@
+/* Fighters share artwork with board miniatures; the roster reads its rules from content. */
+.character-portrait {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--character-ground);
+  color: var(--character-ink);
+  min-width: 0;
+  isolation: isolate;
+}
+.character-portrait::before {
+  content: '';
+  position: absolute;
+  width: 76%;
+  aspect-ratio: 1;
+  left: 12%;
+  top: 12%;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.22;
+}
+.character-portrait img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px 2px 0;
+}
+.entry-grid {
+  gap: 5vw;
+}
+.entry-roster {
+  min-width: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-height: 100%;
+  overflow: auto;
+}
+.entry-explore {
+  display: none;
+}
+.character-roster {
+  min-width: 0;
+}
+.roster-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.roster-heading h2 {
+  margin: 0;
+}
+.roster-heading > span {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.roster-detail {
+  display: grid;
+  grid-template-columns: 36% 1fr;
+  gap: 20px;
+}
+.roster-detail > .character-portrait {
+  min-height: 180px;
+  border-radius: 4px;
+}
+.roster-description {
+  align-self: center;
+  min-width: 0;
+}
+.character-role {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 6px;
+}
+.roster-description h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 32px;
+}
+.character-summary {
+  font-size: 14px;
+  margin: 8px 0 16px;
+}
+.character-stats {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+}
+.character-stats div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 3px;
+}
+.character-stats dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+.character-stats dd {
+  font:
+    24px Georgia,
+    serif;
+  margin: 0;
+  color: var(--accent);
+}
+.roster-rules {
+  margin: 16px 0;
+}
+.roster-rules p {
+  font-size: 13px;
+  margin: 0 0 9px;
+}
+.roster-rules strong {
+  color: var(--accent);
+  margin-right: 4px;
+}
+.roster-rules .character-range {
+  color: var(--muted);
+  font-size: 12px;
+}
+.roster-rules .character-tactic {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+.roster-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.roster-list button {
+  padding: 0;
+  overflow: hidden;
+  background: var(--ground);
+  border-color: transparent;
+  border-radius: 4px;
+}
+.roster-list button .character-portrait {
+  height: 76px;
+}
+.roster-list button img {
+  transition: transform 140ms ease-out;
+}
+.roster-list button:hover img {
+  transform: translateY(-3px);
+}
+.roster-list button > span:last-child {
+  display: block;
+  padding: 7px 2px;
+  font-size: 12px;
+}
+.roster-list button[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--raised);
+}
+.roster-dialog {
+  width: 760px;
+  max-width: min(800px, calc(100vw - 24px));
+}
+.roster-dialog .roster-heading {
+  display: none;
+}
+.roster-dialog .roster-detail > .character-portrait {
+  height: 200px;
+}
+.roster-dialog .roster-list button .character-portrait {
+  height: 86px;
+}
+.roster-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+.roster-confirm p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+.roster-confirm button {
+  flex-shrink: 0;
+}
+.character-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ground);
+  border-radius: 4px;
+  padding: 10px;
+  margin: 12px 0;
+}
+.character-picker > .character-portrait {
+  width: 62px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 3px;
+}
+.character-picker .grow {
+  display: grid;
+  gap: 5px;
+}
+.character-picker .grow strong {
+  font:
+    22px Georgia,
+    serif;
+  color: var(--accent);
+}
+.character-picker .grow > span {
+  font-size: 12px;
+}
+.character-picker > button {
+  padding: 8px 12px;
+}
+@media (max-width: 1000px) {
+  .entry-grid {
+    grid-template-columns: minmax(270px, 0.85fr) minmax(0, 1.15fr);
+    gap: 24px;
+  }
+  .entry-roster {
+    padding: 16px;
+  }
+  .roster-detail {
+    gap: 12px;
+  }
+  .roster-detail > .character-portrait {
+    min-height: 150px;
+  }
+  .roster-description h3 {
+    font-size: 27px;
+  }
+  .character-stats {
+    gap: 16px;
+  }
+  .roster-list button > span:last-child {
+    font-size: 11px;
+  }
+}
+@media (max-width: 680px) and (orientation: portrait),
+  (max-height: 600px) and (orientation: landscape) {
+  .entry-grid {
+    display: flex;
+  }
+  .entry-roster {
+    display: none;
+  }
+  .entry-explore {
+    display: block;
+  }
+  .roster-trigger {
+    width: 100%;
+    margin-top: 12px;
+  }
+  .roster-dialog .dialog-heading {
+    padding: 14px 16px 10px;
+  }
+  .roster-dialog .dialog-heading h2 {
+    font-size: 24px;
+  }
+  .roster-dialog .dialog-body {
+    padding: 0 16px 16px;
+  }
+  .roster-dialog .roster-detail > .character-portrait {
+    height: 150px;
+    min-height: 0;
+  }
+  .roster-dialog .roster-rules {
+    min-height: 0;
+  }
+  .roster-dialog .roster-list button .character-portrait {
+    height: 62px;
+  }
+  .roster-detail {
+    grid-template-columns: 34% 1fr;
+  }
+  .roster-description h3 {
+    font-size: 28px;
+  }
+  .character-summary {
+    font-size: 13px;
+    margin: 6px 0 12px;
+  }
+  .character-stats {
+    gap: 16px;
+  }
+  .roster-confirm {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .roster-confirm p {
+    text-align: center;
+  }
+  .character-picker {
+    gap: 8px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+  .character-picker > .character-portrait {
+    width: 40px;
+    height: 56px;
+  }
+  .character-picker .grow > span:first-child {
+    display: none;
+  }
+  .character-picker .grow strong {
+    font-size: 20px;
+  }
+  .character-picker > button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .entry-grid {
+    display: block;
+  }
+  .entry-explore {
+    grid-column: 1;
+  }
+  .roster-trigger {
+    margin: 0;
+    width: auto;
+  }
+  .roster-dialog .roster-detail {
+    grid-template-columns: 100px 1fr;
+  }
+  .roster-dialog .roster-detail > .character-portrait {
+    height: 130px;
+  }
+  .roster-dialog .roster-description {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 16px;
+  }
+  .roster-dialog .character-role,
+  .roster-dialog .character-summary {
+    grid-column: 1;
+  }
+  .roster-dialog .character-stats {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: center;
+  }
+  .roster-dialog .roster-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .roster-dialog .roster-list button .character-portrait {
+    height: 64px;
+  }
+  .roster-dialog .roster-list button > span:last-child {
+    font-size: 11px;
+  }
+}
+@media (max-width: 360px) {
+  .roster-detail {
+    gap: 10px;
+  }
+  .roster-description h3 {
+    font-size: 24px;
+  }
+  .character-stats {
+    gap: 10px;
+  }
+  .character-picker .grow > span:last-child {
+    font-size: 11px;
+  }
+}
+
+.player-sigil .character-portrait {
+  width: 36px;
+  height: 42px;
+  border-radius: 4px;
+}
+.player-sigil .character-portrait::before {
+  display: none;
+}
+.player-sigil .character-portrait img {
+  padding: 0;
+}
+
+@media (max-height: 600px) and (orientation: portrait) {
+  .entry-copy > p {
+    display: none;
+  }
+  .entry-copy form {
+    margin-top: 12px;
+    gap: 8px;
+  }
+  .entry-bottom {
+    margin-top: 8px;
+  }
+  .roster-trigger {
+    margin-top: 8px;
+  }
+}

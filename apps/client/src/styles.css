@@ -1,0 +1,12 @@
+@import './base.css';
+@import './board/board.css';
+@import './auth/auth.css';
+@import './lobby/lobby.css';
+@import './ui/ui.css';
+@import './responsive.css';
+@import './game/game.css';
+
+@import './characters/characters.css';
+
+@import './cards/cards.css';
+@import './presentation/presentation.css';

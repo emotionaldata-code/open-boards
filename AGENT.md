@@ -1,0 +1,3 @@
+Keep rules, content, networking, persistence, rendering, and animation separate. The server validates every action and controls private information. Prefer small explicit modules over speculative abstractions. Character definitions must remain serializable for a future visual creator and marketplace. Add reusable rule capabilities rather than character-specific branches in infrastructure. Implement only the current milestone.
+
+For adding or adapting a character from a deck URL, use the repository-local [import-character skill](.agents/skills/import-character/SKILL.md). It covers source retrieval, JSON rules, allies, artwork, registration and verification. It is maintained in this codebase, not installed globally.

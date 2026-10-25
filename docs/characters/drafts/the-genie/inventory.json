@@ -1,0 +1,743 @@
+{
+  "status": "implemented",
+  "playable": true,
+  "source": {
+    "sourceUrl": "https://unmatched.cards/umdb/decks/the-genie",
+    "apiUrl": "https://unmatched.cards/api/db/decks/the-genie",
+    "retrievedAt": "2026-10-25T11:25:34.423Z",
+    "revision": null
+  },
+  "sourceSnapshot": "source.json",
+  "sourceSnapshotSha256": "d39e254b956056b6fc9933425a6375b043756070aba0ce42ecc3c24a47aac473",
+  "edition": "Houdini vs. The Genie",
+  "sourceNotes": "One of the [design contest](https://restorationgames.com/unmatched-design-contest/) winners, by Adil M. Geresu.\r\n\r\nFrom the Restoration [Twitter](https://twitter.com/restorationgame/status/1369709951887814664):\r\n\r\n> When we saw a deck for the Genie of the Lamp, we were concerned about power level. I mean, the Genie can literally do anything. That's the genius of Adil's design. He didn't shy away from the power - he leaned into it. The power is the flaw. It's genie-ous.\r\n> As the Genie of the Lamp, you'll find yourself with a wealth of options: extra cards, extra actions, extra everything. You'll throw big attacks and put up big defenses. You'll wonder how you could possibly lose....\r\n> \r\n> Until you realize the price of power always catches up with you.",
+  "sourceQuote": "What wouldst thou have? - The Genie",
+  "totals": {
+    "designs": 12,
+    "copies": 30,
+    "implementedDesigns": 12,
+    "implementedCopies": 30
+  },
+  "fighter": {
+    "id": "the-genie",
+    "name": "The Genie",
+    "hp": 16,
+    "movement": 3,
+    "attackType": "ranged",
+    "allies": []
+  },
+  "palette": {
+    "ground": "#293b46",
+    "ink": "#c6d9cc",
+    "accent": "#d8b77d"
+  },
+  "special": {
+    "sourceText": "INFINITE POWER\r\nAt the start of your turn, you may discard 1 card to gain 1 action.",
+    "status": "implemented",
+    "mapping": "The main fighter owns the turn-start trigger; require a nonempty hand before offering the optional ability. The owning player privately pays exactly one card before gaining one action. No new payment primitive is required for this sequence.",
+    "ability": {
+      "id": "infinite-power",
+      "name": "Infinite Power",
+      "description": "At the start of your turn, you may discard 1 card to gain 1 action.",
+      "trigger": "turn-start",
+      "when": {
+        "type": "compare",
+        "left": {
+          "stat": "hand"
+        },
+        "op": "gte",
+        "right": 1
+      },
+      "optional": true,
+      "effects": [
+        {
+          "type": "discard",
+          "count": 1
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "the-genie-your-wish-is-my-command",
+      "name": "Your Wish is My Command",
+      "count": 2,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "If you won the combat, you may discard 2 cards to gain 1 action."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/your-wish-is-my-command.png",
+      "draftArtwork": "art/your-wish-is-my-command.svg",
+      "artScene": "ward",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "your-wish-is-my-command",
+            "name": "Your Wish is My Command",
+            "description": "If you won the combat, you may discard 2 cards to gain 1 action.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "discard",
+                "count": 2
+              },
+              {
+                "type": "actions",
+                "amount": 1
+              }
+            ],
+            "optional": true,
+            "when": {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "combat-result",
+                  "result": "won"
+                },
+                {
+                  "type": "compare",
+                  "left": {
+                    "stat": "hand"
+                  },
+                  "op": "gte",
+                  "right": 2
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/your-wish-is-my-command.svg"
+    },
+    {
+      "id": "the-genie-wishing-for-more-wishes",
+      "name": "Wishing For More Wishes",
+      "count": 3,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Your opponent draws 1 card. Draw 3 cards."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/wishing-for-more-wishes.png",
+      "draftArtwork": "art/wishing-for-more-wishes.svg",
+      "artScene": "lantern",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "wishing-for-more-wishes",
+            "name": "Wishing For More Wishes",
+            "description": "Your opponent draws 1 card. Draw 3 cards.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "draw",
+                "target": "opponent",
+                "count": 1
+              },
+              {
+                "type": "draw",
+                "count": 3
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/wishing-for-more-wishes.svg"
+    },
+    {
+      "id": "the-genie-three-wishes",
+      "name": "Three Wishes",
+      "count": 3,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "sourceValue": null,
+      "boost": 3,
+      "sourceRules": {
+        "basicText": "Gain 1 action and choose one effect:\r\n- draw 5 cards\r\n- for the rest of your turn, your cards' values are 4 and cannot be changed\r\n- each opponent discards 2 cards"
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/three-wishes.png",
+      "draftArtwork": "art/three-wishes.svg",
+      "artScene": "ward",
+      "status": "implemented",
+      "authoredRules": {
+        "effects": [
+          {
+            "type": "actions",
+            "amount": 1
+          },
+          {
+            "type": "choose-option",
+            "prompt": "Choose a wish",
+            "options": [
+              {
+                "id": "cards",
+                "label": "Draw 5 cards",
+                "effects": [
+                  {
+                    "type": "draw",
+                    "count": 5
+                  }
+                ]
+              },
+              {
+                "id": "power",
+                "label": "Your cards have value 4 for the rest of this turn",
+                "effects": [
+                  {
+                    "type": "status",
+                    "status": "fixed-four",
+                    "turns": 1
+                  }
+                ]
+              },
+              {
+                "id": "discard",
+                "label": "Each opponent discards 2 cards",
+                "effects": [
+                  {
+                    "type": "for-each-fighter",
+                    "relation": "enemy",
+                    "role": "main",
+                    "effects": [
+                      {
+                        "type": "discard",
+                        "target": "chosen",
+                        "count": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/three-wishes.svg"
+    },
+    {
+      "id": "the-genie-this-is-no-parlor-trick",
+      "name": "This is No Parlor Trick",
+      "count": 2,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 1,
+      "sourceValue": 1,
+      "boost": 2,
+      "sourceRules": {
+        "duringText": "The value of your opponent's card is equal to its BOOST value."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/this-is-no-parlor-trick.png",
+      "draftArtwork": "art/this-is-no-parlor-trick.svg",
+      "artScene": "bolt",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "this-is-no-parlor-trick",
+            "name": "This is No Parlor Trick",
+            "description": "The value of your opponent's card is equal to its BOOST value.",
+            "trigger": "before-combat",
+            "effects": [
+              {
+                "type": "set-combat-value",
+                "target": "opponent",
+                "value": {
+                  "card": "opposing",
+                  "field": "boost"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/this-is-no-parlor-trick.svg"
+    },
+    {
+      "id": "the-genie-prisoners-torment",
+      "name": "Prisoner's Torment",
+      "count": 2,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 1,
+      "sourceValue": 1,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Draw cards equal to the amount of combat damage you took."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/prisoners-torment.png",
+      "draftArtwork": "art/prisoners-torment.svg",
+      "artScene": "shield",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "prisoners-torment",
+            "name": "Prisoner's Torment",
+            "description": "Draw cards equal to the amount of combat damage you took.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "draw",
+                "count": {
+                  "event": "amount"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/prisoners-torment.svg"
+    },
+    {
+      "id": "the-genie-ive-made-sultans-out-of-less",
+      "name": "I've Made Sultans Out of Less",
+      "count": 2,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "Look at your opponent's hand and choose a card for them to discard."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/ive-made-sultans-out-of-less.png",
+      "draftArtwork": "art/ive-made-sultans-out-of-less.svg",
+      "artScene": "bastion",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "ive-made-sultans-out-of-less",
+            "name": "I've Made Sultans Out of Less",
+            "description": "Look at your opponent's hand and choose a card for them to discard.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "discard",
+                "target": "opponent",
+                "chooser": "self",
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/ive-made-sultans-out-of-less.svg"
+    },
+    {
+      "id": "the-genie-imprisoned-wrath",
+      "name": "Imprisoned Wrath",
+      "count": 2,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "You may discard 2 cards to deal 2 damage to an adjacent opposing fighter."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/imprisoned-wrath.png",
+      "draftArtwork": "art/imprisoned-wrath.svg",
+      "artScene": "fire",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "imprisoned-wrath",
+            "name": "Imprisoned Wrath",
+            "description": "You may discard 2 cards to deal 2 damage to an adjacent opposing fighter.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "discard",
+                "count": 2
+              },
+              {
+                "type": "choose-fighter",
+                "relation": "enemy",
+                "range": "adjacent",
+                "effects": [
+                  {
+                    "type": "damage",
+                    "target": "chosen",
+                    "amount": 2
+                  }
+                ]
+              }
+            ],
+            "optional": true,
+            "when": {
+              "type": "compare",
+              "left": {
+                "stat": "hand"
+              },
+              "op": "gte",
+              "right": 2
+            }
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/imprisoned-wrath.svg"
+    },
+    {
+      "id": "the-genie-i-grant-you-death",
+      "name": "I Grant You Death",
+      "count": 3,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "You may deal 1 damage to an adjacent fighter."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/i-grant-you-death.png",
+      "draftArtwork": "art/i-grant-you-death.svg",
+      "artScene": "blade",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "i-grant-you-death",
+            "name": "I Grant You Death",
+            "description": "You may deal 1 damage to an adjacent fighter.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "choose-fighter",
+                "relation": "any",
+                "range": "adjacent",
+                "effects": [
+                  {
+                    "type": "damage",
+                    "target": "chosen",
+                    "amount": 1
+                  }
+                ]
+              }
+            ],
+            "optional": true
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/i-grant-you-death.svg"
+    },
+    {
+      "id": "the-genie-i-am-freed",
+      "name": "I Am Freed",
+      "count": 2,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Place the Genie in any empty space. Then, deal 1 damage to each adjacent fighter."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/i-am-freed.png",
+      "draftArtwork": "art/i-am-freed.svg",
+      "artScene": "trail",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "i-am-freed",
+            "name": "I Am Freed",
+            "description": "Place the Genie in any empty space. Then, deal 1 damage to each adjacent fighter.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "teleport",
+                "optional": false
+              },
+              {
+                "type": "for-each-fighter",
+                "relation": "any",
+                "effects": [
+                  {
+                    "type": "if",
+                    "condition": {
+                      "type": "relation",
+                      "relation": "adjacent",
+                      "a": "self",
+                      "b": "chosen"
+                    },
+                    "then": [
+                      {
+                        "type": "damage",
+                        "target": "chosen",
+                        "amount": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/i-am-freed.svg"
+    },
+    {
+      "id": "the-genie-back-in-the-lamp",
+      "name": "Back In The Lamp",
+      "count": 3,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 0,
+      "sourceValue": 0,
+      "boost": 1,
+      "sourceRules": {
+        "immediateText": "The Genie recovers 4 health."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/back-in-the-lamp.png",
+      "draftArtwork": "art/back-in-the-lamp.svg",
+      "artScene": "lantern",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "back-in-the-lamp",
+            "name": "Back In The Lamp",
+            "description": "The Genie recovers 4 health.",
+            "trigger": "combat-reveal",
+            "effects": [
+              {
+                "type": "heal",
+                "amount": 4
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/back-in-the-lamp.svg"
+    },
+    {
+      "id": "the-genie-careful-what-you-wish-for",
+      "name": "Careful What You Wish For",
+      "count": 3,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "sourceValue": 4,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "If you lost the combat, deal 1 damage to an adjacent opposing fighter."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/careful-what-you-wish-for.png",
+      "draftArtwork": "art/careful-what-you-wish-for.svg",
+      "artScene": "embers",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "careful-what-you-wish-for",
+            "name": "Careful What You Wish For",
+            "description": "If you lost the combat, deal 1 damage to an adjacent opposing fighter.",
+            "trigger": "after-combat",
+            "effects": [
+              {
+                "type": "choose-fighter",
+                "relation": "enemy",
+                "range": "adjacent",
+                "effects": [
+                  {
+                    "type": "damage",
+                    "target": "chosen",
+                    "amount": 1
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "type": "combat-result",
+              "result": "lost"
+            }
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/careful-what-you-wish-for.svg"
+    },
+    {
+      "id": "the-genie-feint",
+      "name": "Feint",
+      "count": 3,
+      "sourceCharacterName": "THE GENIE",
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 1,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/genie/feint.png",
+      "draftArtwork": "art/feint.svg",
+      "artScene": "ward",
+      "status": "implemented",
+      "authoredRules": {
+        "abilities": [
+          {
+            "id": "feint",
+            "name": "Feint",
+            "description": "Cancel all effects on your opponent's card.",
+            "trigger": "combat-reveal",
+            "effects": [
+              {
+                "type": "suppress-card-effects"
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": "/cards/the-genie/feint.svg"
+    }
+  ],
+  "supportedCompositions": {
+    "threeWishesDraw": [
+      {
+        "type": "actions",
+        "amount": 1
+      },
+      {
+        "type": "draw",
+        "count": 5
+      }
+    ],
+    "threeWishesEachOpponentDiscard": [
+      {
+        "type": "for-each-fighter",
+        "relation": "enemy",
+        "role": "main",
+        "effects": [
+          {
+            "type": "discard",
+            "target": "chosen",
+            "count": 2
+          }
+        ]
+      }
+    ],
+    "iAmFreedAfterMandatoryPlacement": [
+      {
+        "type": "for-each-fighter",
+        "relation": "any",
+        "effects": [
+          {
+            "type": "if",
+            "condition": {
+              "type": "relation",
+              "relation": "adjacent",
+              "a": "self",
+              "b": "chosen"
+            },
+            "then": [
+              {
+                "type": "damage",
+                "target": "chosen",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "baseGameConventions": [
+    "Five-card opening hand; seven-card hand limit; two base actions per turn.",
+    "Shared project exhaustion, elimination, reveal/discard timing, map portals and free-for-all rules remain.",
+    "No source rules are adapted. All 30 cards are registered in the playable roster."
+  ],
+  "artwork": {
+    "kind": "original code-native SVG",
+    "date": "2026-10-25",
+    "hero": "art/the-genie.svg",
+    "ownerPreview": "art/the-genie-owners.svg",
+    "cardCount": 12,
+    "sourcePixelsIncluded": false,
+    "notes": "New cut-paper lamp, smoke, crown, chain and spell compositions; source scans used only for reference. Seat color is the hero sash; all four project owner colors appear in the preview.",
+    "productionCards": "apps/client/public/cards/the-genie/",
+    "productionFigure": "apps/client/src/characters/art.ts"
+  },
+  "engineHooks": [
+    "set-combat-value",
+    "Value.card/field",
+    "StatusDefinition.combatValue",
+    "draw.count: Value",
+    "discard.chooser",
+    "teleport.optional: false"
+  ]
+}

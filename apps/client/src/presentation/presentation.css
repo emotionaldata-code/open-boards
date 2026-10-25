@@ -1,0 +1,142 @@
+/* Reviews use the game's existing artwork and printed cards; only the reading surface scrolls. */
+.event-dialog {
+  width: 1000px;
+  max-width: calc(100vw - 24px);
+  background: var(--surface);
+}
+.event-dialog .dialog-body {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  min-height: 0;
+}
+.event-review {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+.event-content {
+  padding: 0 24px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.event-explanation {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.event-participants {
+  display: flex;
+  gap: 24px;
+}
+.event-participant {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(100px, 0.8fr) minmax(0, 1.4fr);
+  gap: 16px;
+  align-items: start;
+}
+.event-participant:not(:has(.printed-card)) {
+  display: block;
+}
+.event-fighter .character-portrait {
+  height: 180px;
+}
+.event-fighter h3 {
+  margin: 12px 0 4px;
+  font-size: 20px;
+}
+.event-fighter p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.event-fighter > div > strong {
+  color: var(--accent);
+  font-size: 14px;
+}
+.event-participant .printed-card {
+  border: 0;
+  border-radius: 0;
+  background: var(--raised);
+  animation: reveal-card 200ms ease-out;
+}
+.event-participant .card-description {
+  font-size: 15px;
+}
+.event-participant:only-child {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.event-participant:only-child .character-portrait {
+  height: 240px;
+}
+.event-result {
+  margin: 24px 0 0;
+  padding: 16px;
+  background: var(--raised);
+  font-size: 18px;
+  line-height: 1.5;
+}
+.event-acknowledgement {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  background: var(--raised);
+}
+.event-acknowledgement span {
+  color: var(--muted);
+}
+.event-acknowledgement button {
+  min-width: 150px;
+}
+@keyframes reveal-card {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .event-participants {
+    flex-direction: column;
+  }
+  .event-participant:only-child .character-portrait {
+    height: 180px;
+  }
+  .event-acknowledgement {
+    padding: 12px 16px;
+  }
+  .event-acknowledgement span {
+    font-size: 12px;
+  }
+  .event-content {
+    padding-inline: 16px;
+  }
+}
+@media (max-height: 500px) {
+  .event-dialog .dialog-heading {
+    padding-block: 12px;
+  }
+  .event-fighter .character-portrait,
+  .event-participant:only-child .character-portrait {
+    height: 140px;
+  }
+  .event-acknowledgement {
+    padding-block: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-participant .printed-card,
+  .event-dialog[open] {
+    animation: none;
+  }
+}

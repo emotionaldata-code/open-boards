@@ -1,0 +1,130 @@
+.lobby-page,
+.waiting-page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1180px;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+}
+.lobby-grid,
+.waiting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  min-height: 0;
+}
+.create-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0 28px;
+}
+.create-options button {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  padding: 18px;
+}
+.create-options strong {
+  font:
+    32px Georgia,
+    serif;
+  color: var(--accent);
+}
+.create-options small {
+  color: var(--muted);
+}
+.inline-form {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+}
+.room-list {
+  display: flex;
+  flex-direction: column;
+}
+.room-list ul {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+.room-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #343d32;
+}
+.room-list li > div {
+  flex: 1;
+  min-width: 0;
+}
+.room-list strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.room-list small {
+  display: block;
+  margin-top: 6px;
+}
+.room-list li > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.empty {
+  color: var(--muted);
+  margin: auto;
+  padding: 32px 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+.seats {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 20px;
+}
+.seats li {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #343d32;
+}
+.seats small {
+  display: block;
+  margin-top: 5px;
+}
+.seat-number {
+  font:
+    26px Georgia,
+    serif;
+  color: var(--accent);
+}
+.ready {
+  color: #b3d3ae;
+}
+.invite {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+}
+.invite label {
+  width: 100%;
+}
+.invite p {
+  margin: 0;
+}
+.invite p:last-child {
+  margin-top: auto;
+}

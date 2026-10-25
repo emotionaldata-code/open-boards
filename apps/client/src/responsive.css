@@ -1,0 +1,375 @@
+@media (max-width: 1100px) {
+  .shell {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .entry-grid {
+    gap: 32px;
+  }
+}
+@media (max-width: 680px) and (orientation: portrait) {
+  .topbar {
+    height: 60px;
+  }
+  .wordmark {
+    font-size: 17px;
+    gap: 7px;
+  }
+  .wordmark svg {
+    width: 24px;
+  }
+  .topbar-right {
+    gap: 12px;
+  }
+  .topbar-right > .muted,
+  .connection-status {
+    display: none;
+  }
+  main {
+    padding-top: 12px;
+    padding-bottom: 18px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  .entry-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .entry-copy {
+    max-width: 380px;
+  }
+  .entry-copy h1 {
+    font-size: 32px;
+  }
+  .entry-copy form {
+    margin-top: 24px;
+  }
+  .entry-bottom {
+    margin-top: 20px;
+  }
+  .page-title {
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+  .page-title > .muted {
+    display: none;
+  }
+  .page-title p {
+    font-size: 12px;
+  }
+  .lobby-grid,
+  .waiting-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .panel {
+    padding: 18px;
+  }
+  .create-options {
+    margin: 12px 0 18px;
+    gap: 8px;
+  }
+  .create-options button {
+    padding: 12px;
+    gap: 5px;
+  }
+  .create-options strong {
+    font-size: 26px;
+  }
+  .room-list {
+    min-height: 150px;
+  }
+  .room-list li {
+    padding: 8px 0;
+  }
+  .room-list li > span {
+    display: none;
+  }
+  .room-list .empty {
+    padding: 12px;
+    font-size: 13px;
+  }
+  .room-list .section-heading .muted {
+    font-size: 12px;
+  }
+  .seats {
+    margin-bottom: 14px;
+  }
+  .seats li {
+    padding: 10px 0;
+  }
+  .seats small {
+    margin-top: 3px;
+  }
+  .invite {
+    gap: 10px;
+  }
+  .invite p:last-child {
+    display: none;
+  }
+  .invite p {
+    font-size: 12px;
+  }
+  .lobby-page,
+  .waiting-page {
+    justify-content: center;
+  }
+}
+/* Landscape phones put cards beside the map, preserving both at playable sizes. */
+@media (max-height: 600px) and (orientation: landscape) {
+  .topbar {
+    height: 44px;
+  }
+  .wordmark {
+    font-size: 17px;
+    gap: 8px;
+  }
+  .wordmark svg {
+    width: 23px;
+    height: 23px;
+  }
+  .topbar-right {
+    gap: 14px;
+  }
+  .topbar-right > .muted {
+    display: none;
+  }
+  .topbar .icon-button {
+    min-height: 40px;
+    height: 40px;
+  }
+  main {
+    padding-top: 4px;
+    padding-bottom: 8px;
+  }
+  .entry-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+  }
+  .entry-copy {
+    max-width: none;
+  }
+  .entry-copy h1 {
+    font-size: 30px;
+  }
+  .entry-intro,
+  .entry-copy > p:not(.entry-intro) {
+    display: none;
+  }
+  .entry-grid {
+    display: block;
+  }
+  .entry-copy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 40px;
+    align-items: center;
+  }
+  .entry-copy h1 {
+    grid-column: 1;
+  }
+  .entry-copy form {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    gap: 8px;
+    margin: 0;
+  }
+  .entry-copy form h2 {
+    font-size: 20px;
+  }
+  .entry-copy label {
+    gap: 4px;
+  }
+  .entry-bottom {
+    grid-column: 1;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+  }
+  .entry-bottom .muted {
+    font-size: 12px;
+  }
+  .page-title {
+    margin-bottom: 10px;
+  }
+  .page-title h1 {
+    font-size: 25px;
+  }
+  .page-title p,
+  .page-title > .muted {
+    font-size: 12px;
+  }
+  .panel {
+    padding: 14px;
+  }
+  .panel > h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .panel > p {
+    font-size: 12px;
+    margin: 4px 0 8px;
+  }
+  .create-options {
+    margin: 10px 0 12px;
+    gap: 8px;
+  }
+  .create-options button {
+    padding: 9px 12px;
+    gap: 3px;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  .create-options strong {
+    grid-row: 1 / 3;
+    font-size: 28px;
+    margin-right: 8px;
+  }
+  .create-options small {
+    font-size: 11px;
+  }
+  .room-list li {
+    padding: 9px 0;
+  }
+  .room-list small {
+    margin-top: 3px;
+  }
+  .room-list li > span {
+    display: none;
+  }
+  .seats {
+    margin: 0 0 8px;
+  }
+  .seats li {
+    padding: 6px 0;
+    gap: 10px;
+  }
+  .seats small {
+    display: none;
+  }
+  .seat-number {
+    font-size: 22px;
+  }
+  .invite {
+    gap: 8px;
+  }
+  .invite p:last-child {
+    display: none;
+  }
+  .dialog-heading {
+    padding-top: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  button:active:not(:disabled) {
+    transform: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .arcane-dialog::backdrop {
+    background: #050a06;
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #e1e4d7;
+    --line: #a6b094;
+  }
+  .panel,
+  .board-panel,
+  .game-card,
+  .player-badge {
+    border-color: #a6b094;
+  }
+}
+
+@media (max-width: 680px) and (orientation: portrait) {
+  .panel > h2 {
+    margin-bottom: 6px;
+  }
+  .panel > p {
+    font-size: 13px;
+    margin: 4px 0 8px;
+  }
+  .create-options {
+    margin: 10px 0 14px;
+  }
+  .seats small {
+    display: none;
+  }
+  .seats li {
+    min-height: 44px;
+    padding: 6px 0;
+  }
+  .invite {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+  .invite h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+  .invite p {
+    display: none;
+  }
+  .invite button {
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (max-height: 700px) and (orientation: portrait) {
+  .entry-intro {
+    display: none;
+  }
+  .entry-copy form {
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .entry-bottom {
+    margin-top: 12px;
+  }
+  .waiting-page .page-title p {
+    display: none;
+  }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .create-options small {
+    display: none;
+  }
+  .create-options strong {
+    grid-row: auto;
+  }
+  .create-options button {
+    min-height: 54px;
+  }
+  .lobby-grid > .panel > p {
+    display: none;
+  }
+}
+@media (max-width: 680px) and (orientation: portrait) {
+  .room-list ul {
+    margin: 6px 0;
+  }
+}
+@media (max-width: 680px) and (orientation: portrait) {
+  .waiting-page .panel {
+    padding: 14px;
+  }
+  .waiting-page .seats {
+    margin-bottom: 8px;
+  }
+  .waiting-page .seats li {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}

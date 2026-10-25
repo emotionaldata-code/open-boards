@@ -1,0 +1,360 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/the-genie",
+  "apiUrl": "https://unmatched.cards/api/db/decks/the-genie",
+  "retrievedAt": "2026-10-25T11:25:34.423Z",
+  "deck": {
+    "cards": [
+      {
+        "afterText": "If you won the combat, you may discard 2 cards to gain 1 action.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/your-wish-is-my-command.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "your-wish-is-my-command",
+        "title": "Your Wish is My Command",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "Your opponent draws 1 card. Draw 3 cards.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/wishing-for-more-wishes.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "wishing-for-more-wishes",
+        "title": "Wishing For More Wishes",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": "Gain 1 action and choose one effect:\r\n- draw 5 cards\r\n- for the rest of your turn, your cards' values are 4 and cannot be changed\r\n- each opponent discards 2 cards",
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/three-wishes.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "three-wishes",
+        "title": "Three Wishes",
+        "type": "scheme",
+        "value": null
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": "The value of your opponent's card is equal to its BOOST value.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/this-is-no-parlor-trick.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "this-is-no-parlor-trick",
+        "title": "This is No Parlor Trick",
+        "type": "versatile",
+        "value": 1
+      },
+      {
+        "afterText": "Draw cards equal to the amount of combat damage you took.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/prisoners-torment.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "prisoners-torment",
+        "title": "Prisoner's Torment",
+        "type": "defense",
+        "value": 1
+      },
+      {
+        "afterText": "Look at your opponent's hand and choose a card for them to discard.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/ive-made-sultans-out-of-less.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "ive-made-sultans-out-of-less",
+        "title": "I've Made Sultans Out of Less",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "You may discard 2 cards to deal 2 damage to an adjacent opposing fighter.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/imprisoned-wrath.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "imprisoned-wrath",
+        "title": "Imprisoned Wrath",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "You may deal 1 damage to an adjacent fighter.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/i-grant-you-death.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "i-grant-you-death",
+        "title": "I Grant You Death",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "Place the Genie in any empty space. Then, deal 1 damage to each adjacent fighter.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/i-am-freed.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "i-am-freed",
+        "title": "I Am Freed",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/back-in-the-lamp.png",
+        "immediateText": "The Genie recovers 4 health.",
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "back-in-the-lamp",
+        "title": "Back In The Lamp",
+        "type": "defense",
+        "value": 0
+      },
+      {
+        "afterText": "If you lost the combat, deal 1 damage to an adjacent opposing fighter.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/careful-what-you-wish-for.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "careful-what-you-wish-for",
+        "title": "Careful What You Wish For",
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "THE GENIE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/genie/feint.png",
+        "immediateText": "Cancel all effects on your opponent's card.",
+        "other_decks": [
+          {
+            "name": "Alice",
+            "slug": "alice"
+          },
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Dracula",
+            "slug": "dracula"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "Jekyll & Hyde",
+            "slug": "jekyll-hyde"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Medusa",
+            "slug": "medusa"
+          },
+          {
+            "name": "Robin Hood",
+            "slug": "robin-hood"
+          },
+          {
+            "name": "Bloody Mary",
+            "slug": "bloody-mary"
+          },
+          {
+            "name": "Black Panther",
+            "slug": "black-panther"
+          },
+          {
+            "name": "Deadpool",
+            "slug": "deadpool"
+          },
+          {
+            "name": "Black Widow",
+            "slug": "black-widow"
+          },
+          {
+            "name": "Winter Soldier",
+            "slug": "winter-soldier"
+          },
+          {
+            "name": "Achilles",
+            "slug": "achilles"
+          },
+          {
+            "name": "Bullseye",
+            "slug": "bullseye"
+          },
+          {
+            "name": "Squirrel Girl",
+            "slug": "squirrel-girl"
+          },
+          {
+            "name": "Ms. Marvel",
+            "slug": "ms-marvel"
+          },
+          {
+            "name": "Cloak and Dagger",
+            "slug": "cloak-and-dagger"
+          },
+          {
+            "name": "Moon Knight",
+            "slug": "moon-knight"
+          },
+          {
+            "name": "Ghost Rider",
+            "slug": "ghost-rider"
+          },
+          {
+            "name": "Raptors",
+            "slug": "raptors"
+          },
+          {
+            "name": "Sherlock Holmes",
+            "slug": "sherlock-holmes"
+          },
+          {
+            "name": "Sinbad",
+            "slug": "sinbad"
+          },
+          {
+            "name": "InGen",
+            "slug": "ingen"
+          },
+          {
+            "name": "Willow",
+            "slug": "willow"
+          },
+          {
+            "name": "Angel",
+            "slug": "angel"
+          },
+          {
+            "name": "Spike",
+            "slug": "spike"
+          },
+          {
+            "name": "Buffy",
+            "slug": "buffy"
+          },
+          {
+            "name": "Beowulf",
+            "slug": "beowulf"
+          },
+          {
+            "name": "Dr. Ellie Sattler",
+            "slug": "dr-ellie-sattler"
+          },
+          {
+            "name": "Daredevil",
+            "slug": "daredevil"
+          },
+          {
+            "name": "Doctor Strange",
+            "slug": "doctor_strange"
+          }
+        ],
+        "quantity": 3,
+        "slug": "feint",
+        "title": "Feint",
+        "type": "versatile",
+        "value": 2
+      }
+    ],
+    "heroes": [
+      {
+        "attack_type": "ranged",
+        "hp": 16,
+        "name": "The Genie",
+        "quantity": 1,
+        "slug": "the-genie"
+      }
+    ],
+    "movement": 3,
+    "name": "The Genie",
+    "notes": "One of the [design contest](https://restorationgames.com/unmatched-design-contest/) winners, by Adil M. Geresu.\r\n\r\nFrom the Restoration [Twitter](https://twitter.com/restorationgame/status/1369709951887814664):\r\n\r\n> When we saw a deck for the Genie of the Lamp, we were concerned about power level. I mean, the Genie can literally do anything. That's the genius of Adil's design. He didn't shy away from the power - he leaned into it. The power is the flaw. It's genie-ous.\r\n> As the Genie of the Lamp, you'll find yourself with a wealth of options: extra cards, extra actions, extra everything. You'll throw big attacks and put up big defenses. You'll wonder how you could possibly lose....\r\n> \r\n> Until you realize the price of power always catches up with you.",
+    "quote": "What wouldst thou have? - The Genie",
+    "set": "Houdini vs. The Genie",
+    "setSlug": "houdini-vs-the-genie",
+    "sidekicks": [],
+    "slug": "the-genie",
+    "special": "INFINITE POWER\r\nAt the start of your turn, you may discard 1 card to gain 1 action."
+  }
+}

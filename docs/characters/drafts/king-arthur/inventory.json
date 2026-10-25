@@ -1,0 +1,745 @@
+{
+  "status": "imported",
+  "playable": true,
+  "source": {
+    "sourceUrl": "https://unmatched.cards/umdb/decks/king-arthur",
+    "apiUrl": "https://unmatched.cards/api/db/decks/king-arthur",
+    "retrievedAt": "2026-10-25T11:25:53.923Z"
+  },
+  "sourceSnapshotSha256": "5bb5aba65e791ae487fa8c7d35a473a29814aba25e6f06a4905b7dd29185338d",
+  "edition": "Battle of Legends, Volume One",
+  "sourceRevision": null,
+  "sourceNotes": "A ruling clarification has updated that a card is only \"cancelled\" if one of its effects was actually cancelled.\r\nExcalibur cannot be cancelled because it does not have any card effects. This means that if Arthur BOOSTs Excalibur with his ability, it cannot be discarded.",
+  "totals": {
+    "designs": 16,
+    "copies": 30
+  },
+  "fighter": {
+    "id": "king-arthur",
+    "name": "King Arthur",
+    "hp": 18,
+    "movement": 2,
+    "attackType": "melee",
+    "ally": {
+      "id": "king-arthur-merlin",
+      "name": "Merlin",
+      "count": 1,
+      "hp": 7,
+      "attackType": "ranged"
+    }
+  },
+  "palette": {
+    "ground": "#283746",
+    "ink": "#c4cfc5",
+    "accent": "#d6b775"
+  },
+  "special": {
+    "sourceText": "When King Arthur attacks, you may BOOST that attack. Play the BOOST card, face down, along with your attack card.\r\nIf your opponent cancels the effects on your attack card, the BOOST is discarded without effect.",
+    "status": "implemented",
+    "mapping": "before-attack boost-attack grant special with cancelWithCard; independent card grant on Noble Sacrifice. Effectless/already resolved cards cannot cancel a payment.",
+    "abilities": [
+      {
+        "id": "attack-boost",
+        "name": "King of Camelot",
+        "description": "When King Arthur attacks, you may BOOST that attack. Play the BOOST card, face down, along with your attack card. If your opponent cancels the effects on your attack card, the BOOST is discarded without effect.",
+        "trigger": "before-attack",
+        "effects": [
+          {
+            "type": "boost-attack",
+            "grant": "special",
+            "cancelWithCard": true
+          }
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "king-arthur-skirmish",
+      "name": "Skirmish",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "sourceValue": 4,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/skirmish.png",
+      "draftArtwork": "art/skirmish.svg",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/cards/king-arthur/skirmish.svg"
+      },
+      "status": "implemented",
+      "mapping": "After a win, choose-option binds movement to self or opponent only, never an unrelated fighter.",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Choose a combat fighter to move",
+              "options": [
+                {
+                  "id": "self",
+                  "label": "Your fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "distance": 2
+                    }
+                  ]
+                },
+                {
+                  "id": "opponent",
+                  "label": "Opposing fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "target": "opponent",
+                      "distance": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-noble-sacrifice",
+      "name": "Noble Sacrifice",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 3,
+      "sourceRules": {
+        "duringText": "You may BOOST this attack. (This is in addition to any boost from King Arthur's special ability.)"
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/noble-sacrifice.png",
+      "draftArtwork": "art/noble-sacrifice.svg",
+      "art": {
+        "scene": "shield",
+        "variant": 1,
+        "image": "/cards/king-arthur/noble-sacrifice.svg"
+      },
+      "status": "implemented",
+      "mapping": "before-combat boost-attack with independent card grant.",
+      "abilities": [
+        {
+          "id": "noble-sacrifice",
+          "name": "Noble Sacrifice",
+          "description": "During Combat: You may BOOST this attack. (This is in addition to any boost from King Arthur's special ability.)",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "boost-attack",
+              "grant": "card"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-excalibur",
+      "name": "Excalibur",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 6,
+      "sourceValue": 6,
+      "boost": 3,
+      "sourceRules": {},
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/excalibur.png",
+      "draftArtwork": "art/excalibur.svg",
+      "art": {
+        "scene": "blade",
+        "variant": 2,
+        "image": "/cards/king-arthur/excalibur.svg"
+      },
+      "status": "implemented",
+      "mapping": "Printed attack 6 with no effects. Arthur special cancellation must preserve its BOOST because no effect can be cancelled.",
+      "abilities": []
+    },
+    {
+      "id": "king-arthur-the-aid-of-morgana",
+      "name": "The Aid of Morgana",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "sourceValue": 4,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Draw 2 cards."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/the-aid-of-morgana.png",
+      "draftArtwork": "art/the-aid-of-morgana.svg",
+      "art": {
+        "scene": "ward",
+        "variant": 3,
+        "image": "/cards/king-arthur/the-aid-of-morgana.svg"
+      },
+      "status": "implemented",
+      "mapping": "After combat draw 2 for Arthur\u2019s owner.",
+      "abilities": [
+        {
+          "id": "aid-of-morgana",
+          "name": "The Aid of Morgana",
+          "description": "After Combat: Draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-divine-intervention",
+      "name": "Divine Intervention",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Move King Arthur up to 5 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/divine-intervention.png",
+      "draftArtwork": "art/divine-intervention.svg",
+      "art": {
+        "scene": "ward",
+        "variant": 4,
+        "image": "/cards/king-arthur/divine-intervention.svg"
+      },
+      "status": "implemented",
+      "mapping": "MAIN-only: after combat move self (King Arthur) up to 5.",
+      "abilities": [
+        {
+          "id": "divine-intervention",
+          "name": "Divine Intervention",
+          "description": "After Combat: Move King Arthur up to 5 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-the-holy-grail",
+      "name": "The Holy Grail",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 1,
+      "sourceValue": 1,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "If King Arthur has 4 or less health but is not defeated, set his health to 8."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/the-holy-grail.png",
+      "draftArtwork": "art/the-holy-grail.svg",
+      "art": {
+        "scene": "lantern",
+        "variant": 5,
+        "image": "/cards/king-arthur/the-holy-grail.svg"
+      },
+      "status": "implemented",
+      "mapping": "after-combat hp <= 4: set-health to 8; defeated fighters cannot activate or receive it.",
+      "abilities": [
+        {
+          "id": "holy-grail",
+          "name": "The Holy Grail",
+          "description": "After Combat: If King Arthur has 4 or less health but is not defeated, set his health to 8.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "set-health",
+              "value": 8
+            }
+          ],
+          "when": {
+            "type": "compare",
+            "left": {
+              "stat": "hp"
+            },
+            "op": "lte",
+            "right": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-the-lady-of-the-lake",
+      "name": "The Lady of the Lake",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "sourceValue": 2,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Search your deck and discard pile for the EXCALIBUR card. Add it to your hand. If you searched your deck, shuffle it."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/the-lady-of-the-lake.png",
+      "draftArtwork": "art/the-lady-of-the-lake.svg",
+      "art": {
+        "scene": "trail",
+        "variant": 6,
+        "image": "/cards/king-arthur/the-lady-of-the-lake.svg"
+      },
+      "status": "implemented",
+      "mapping": "search-card for exact Excalibur design in deck/discard; choose first pile, continue on miss, shuffle only when deck searched.",
+      "effects": [
+        {
+          "type": "search-card",
+          "card": "king-arthur-excalibur",
+          "zones": ["deck", "discard"]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-prophecy",
+      "name": "Prophecy",
+      "count": 1,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "sourceValue": 2,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Look at the top 4 cards of your deck. Add 2 of them to your hand and put the other 2 back on top of your deck, in any order."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/prophecy.png",
+      "draftArtwork": "art/prophecy.svg",
+      "art": {
+        "scene": "map",
+        "variant": 0,
+        "image": "/cards/king-arthur/prophecy.svg"
+      },
+      "status": "implemented",
+      "mapping": "inspect-deck count 4 take 2; private sequential selection, then order remaining cards from top down.",
+      "effects": [
+        {
+          "type": "inspect-deck",
+          "count": 4,
+          "take": 2
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-bewilderment",
+      "name": "Bewilderment",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "defense",
+      "value": 0,
+      "sourceValue": 0,
+      "boost": 2,
+      "sourceRules": {
+        "duringText": "Prevent all damage",
+        "afterText": "You may place your fighter in any space."
+      },
+      "sourceNotes": {
+        "card": "The Merlin version of this card says \"Merlin\" instead of \"your fighter\".",
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/bewilderment.png",
+      "draftArtwork": "art/bewilderment.svg",
+      "art": {
+        "scene": "ward",
+        "variant": 1,
+        "image": "/cards/king-arthur/bewilderment.svg"
+      },
+      "status": "implemented",
+      "mapping": "before-combat prevent-damage on acting ally through combat completion; after-combat optional teleport.",
+      "abilities": [
+        {
+          "id": "bewilderment",
+          "name": "Bewilderment",
+          "description": "During Combat: Prevent all damage After Combat: You may place your fighter in any space.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "prevent-damage"
+            }
+          ]
+        },
+        {
+          "id": "bewilderment-placement",
+          "name": "Bewilderment",
+          "description": "During Combat: Prevent all damage After Combat: You may place your fighter in any space.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "teleport"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-aid-the-chosen-one",
+      "name": "Aid the Chosen One",
+      "count": 1,
+      "usableBy": "ALLY",
+      "category": "attack",
+      "value": 4,
+      "sourceValue": 4,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "If you won the combat, draw 2 cards."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/aid-the-chosen-one.png",
+      "draftArtwork": "art/aid-the-chosen-one.svg",
+      "art": {
+        "scene": "bolt",
+        "variant": 2,
+        "image": "/cards/king-arthur/aid-the-chosen-one.svg"
+      },
+      "status": "implemented",
+      "mapping": "ALLY-only: after a win draw 2 for Merlin\u2019s owner.",
+      "abilities": [
+        {
+          "id": "aid-the-chosen-one",
+          "name": "Aid the Chosen One",
+          "description": "After Combat: If you won the combat, draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 2
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-restless-spirits",
+      "name": "Restless Spirits",
+      "count": 1,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "sourceValue": 2,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Choose any space in Merlin's zone. Deal 2 damage to each opposing fighter in that space and in one adjacent space. If at least one fighter is defeated this way, draw 1 card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/restless-spirits.png",
+      "draftArtwork": "art/restless-spirits.svg",
+      "art": {
+        "scene": "embers",
+        "variant": 3,
+        "image": "/cards/king-arthur/restless-spirits.svg"
+      },
+      "status": "implemented",
+      "mapping": "area-damage in acting ally zone plus one physical adjacent space; enemy-only 2 damage; draw once on direct defeat.",
+      "effects": [
+        {
+          "type": "area-damage",
+          "range": "zone",
+          "adjacent": true,
+          "relation": "enemy",
+          "amount": 2,
+          "onDefeat": [
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-command-the-storms",
+      "name": "Command the Storms",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "sourceValue": 2,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Move each fighter up to 3 spaces. (This includes opposing fighters.)"
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/command-the-storms.png",
+      "draftArtwork": "art/command-the-storms.svg",
+      "art": {
+        "scene": "fire",
+        "variant": 4,
+        "image": "/cards/king-arthur/command-the-storms.svg"
+      },
+      "status": "implemented",
+      "mapping": "ALLY-only: snapshot all living deployed fighters, including opponents; owner chooses order and moves each chosen fighter up to 3 with ordinary blockers.",
+      "effects": [
+        {
+          "type": "for-each-fighter",
+          "relation": "any",
+          "effects": [
+            {
+              "type": "move",
+              "target": "chosen",
+              "distance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-swift-strike",
+      "name": "Swift Strike",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Move your fighter up to 4 spaces."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/swift-strike.png",
+      "draftArtwork": "art/swift-strike.svg",
+      "art": {
+        "scene": "blade",
+        "variant": 5,
+        "image": "/cards/king-arthur/swift-strike.svg"
+      },
+      "status": "implemented",
+      "mapping": "After combat move the exact acting fighter up to 4.",
+      "abilities": [
+        {
+          "id": "swift-strike",
+          "name": "Swift Strike",
+          "description": "After Combat: Move your fighter up to 4 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-momentous-shift",
+      "name": "Momentous Shift",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "sourceValue": 3,
+      "boost": 1,
+      "sourceRules": {
+        "duringText": "If your fighter started this turn in a different space, this card's value is 5 instead."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/momentous-shift.png",
+      "draftArtwork": "art/momentous-shift.svg",
+      "art": {
+        "scene": "trail",
+        "variant": 6,
+        "image": "/cards/king-arthur/momentous-shift.svg"
+      },
+      "status": "implemented",
+      "mapping": "changed-position since current seat-turn start; set-combat-value mode printed to 5, preserving other modifiers.",
+      "abilities": [
+        {
+          "id": "momentous-shift",
+          "name": "Momentous Shift",
+          "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 5
+            }
+          ],
+          "when": {
+            "type": "changed-position"
+          }
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "sourceValue": 2,
+      "boost": 1,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/feint.png",
+      "draftArtwork": "art/feint.svg",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/cards/king-arthur/feint.svg"
+      },
+      "status": "implemented",
+      "mapping": "Defender-first combat-reveal suppress-card-effects cancels only the opposing card\u2019s effects; special BOOST rollback still requires extension.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "king-arthur-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 1,
+      "sourceValue": 1,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead."
+      },
+      "sourceNotes": {
+        "card": null,
+        "deckCard": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/king-arthur/regroup.png",
+      "draftArtwork": "art/regroup.svg",
+      "art": {
+        "scene": "bastion",
+        "variant": 1,
+        "image": "/cards/king-arthur/regroup.svg"
+      },
+      "status": "implemented",
+      "mapping": "After combat use exclusive branches: draw 2 on a win, otherwise 1.",
+      "abilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "artwork": {
+    "kind": "original code-native SVG",
+    "date": "2026-10-25",
+    "licenseNote": "New paths composed for this repository; source scans used only for text/reference and not redistributed.",
+    "hero": "art/king-arthur.svg",
+    "ally": "art/king-arthur-merlin.svg",
+    "ownerPreviews": ["art/king-arthur-owners.svg", "art/king-arthur-merlin-owners.svg"]
+  }
+}

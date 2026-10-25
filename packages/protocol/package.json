@@ -1,0 +1,10 @@
+{
+  "name": "@open-boards/protocol",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@open-boards/game": "workspace:*",
+    "zod": "^4.1.0"
+  }
+}

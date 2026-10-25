@@ -1,0 +1,38 @@
+{
+  "name": "@open-boards/server",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "drizzle"
+  ],
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=../../.env src/index.ts",
+    "build": "tsup",
+    "start": "node --env-file-if-exists=../../.env dist/index.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx --env-file-if-exists=../../.env src/migrate.ts"
+  },
+  "dependencies": {
+    "@open-boards/game": "workspace:*",
+    "@open-boards/content": "workspace:*",
+    "@open-boards/protocol": "workspace:*",
+    "@colyseus/core": "^0.18.23",
+    "@colyseus/ws-transport": "^0.18.4",
+    "argon2": "^0.44.0",
+    "cookie": "^1.0.2",
+    "drizzle-orm": "^0.44.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "jose": "^6.1.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.15.0",
+    "tsx": "^4.20.0",
+    "tsup": "^8.5.0",
+    "drizzle-kit": "^0.31.0",
+    "@colyseus/sdk": "^0.18.6"
+  }
+}

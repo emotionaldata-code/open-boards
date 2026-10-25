@@ -1,0 +1,44 @@
+.arena {
+  position: relative;
+}
+.arena canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.pixi-surface {
+  position: absolute;
+  inset: 0;
+}
+.board-inputs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.node-hit {
+  position: absolute;
+  z-index: 1;
+  pointer-events: auto;
+  width: 4.5%;
+  max-width: 44px;
+  height: auto;
+  aspect-ratio: 1;
+  min-height: 0;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: transparent;
+  border: 0;
+}
+.node-hit:hover:not(:disabled) {
+  background: #dbc07e22;
+  outline: 2px solid var(--accent);
+}
+.node-hit:active:not(:disabled) {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+.board-error {
+  position: absolute;
+  inset: 0;
+  background: #132018;
+}

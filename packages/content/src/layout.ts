@@ -1,0 +1,43 @@
+// Presentation data never determines movement, attack range, or spawn rules.
+export const boardSize = { width: 1900, height: 780 };
+export const zoneStyles: Record<string, { name: string; color: number; symbol: string }> = {
+  gold: { name: 'Gold', color: 0xd5a044, symbol: 'Au' },
+  yellow: { name: 'Yellow', color: 0xf1dc80, symbol: 'Y' },
+  red: { name: 'Red', color: 0xba4561, symbol: 'R' },
+  blue: { name: 'Blue', color: 0x779fbc, symbol: 'B' },
+  brown: { name: 'Brown', color: 0xa47856, symbol: 'Br' },
+  gray: { name: 'Gray', color: 0xa8a5a0, symbol: 'Gy' },
+  green: { name: 'Green', color: 0x93b79d, symbol: 'G' },
+};
+// Positions follow the printed board, fitted to the existing horizontal camera.
+export const boardLayout: Record<string, { x: number; y: number; label: string }> = {
+  n0: { x: 332, y: 526, label: '01' },
+  n1: { x: 219, y: 405, label: '02' },
+  n2: { x: 283, y: 268, label: '03' },
+  n3: { x: 507, y: 270, label: '04' },
+  n4: { x: 622, y: 116, label: '05' },
+  n5: { x: 174, y: 611, label: '06' },
+  n6: { x: 374, y: 103, label: '07' },
+  n7: { x: 170, y: 137, label: '08' },
+  n8: { x: 766, y: 225, label: '09' },
+  n9: { x: 483, y: 634, label: '10' },
+  n10: { x: 485, y: 435, label: '11' },
+  n11: { x: 738, y: 577, label: '12' },
+  n12: { x: 732, y: 408, label: '13' },
+  center: { x: 928, y: 464, label: '14' },
+  n13: { x: 1701, y: 120, label: '15' },
+  n14: { x: 966, y: 126, label: '16' },
+  n15: { x: 951, y: 285, label: '17' },
+  n16: { x: 1154, y: 283, label: '18' },
+  n17: { x: 1210, y: 136, label: '19' },
+  n18: { x: 1473, y: 116, label: '20' },
+  n19: { x: 1481, y: 278, label: '21' },
+  n20: { x: 1732, y: 292, label: '22' },
+  n21: { x: 1428, y: 480, label: '23' },
+  n22: { x: 1712, y: 483, label: '24' },
+  n23: { x: 1486, y: 639, label: '25' },
+  n24: { x: 1719, y: 652, label: '26' },
+  n25: { x: 1158, y: 488, label: '27' },
+  n26: { x: 1178, y: 645, label: '28' },
+  n27: { x: 923, y: 660, label: '29' },
+};

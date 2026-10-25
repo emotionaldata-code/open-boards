@@ -1,0 +1,159 @@
+import { fighterById } from '../fighters';
+import type { Runtime } from './runtime';
+import type { Binding, Task } from './state';
+import type { Effect } from './vocabulary';
+import { openChoice } from './choices';
+
+function player(runtime: Runtime, binding: Binding) {
+  return runtime.state.players.find(
+    (p) => p.id === fighterById(runtime.state, binding.owner)!.player,
+  )!;
+}
+
+/** Seed lives in private resolution state: replay and reconnect consume the same stream. */
+function shuffle(runtime: Runtime, cards: { id: string; definition: string }[]): void {
+  for (let i = cards.length - 1; i > 0; i--) {
+    let seed = runtime.data.random;
+    seed ^= seed << 13;
+    seed ^= seed >>> 17;
+    seed ^= seed << 5;
+    runtime.data.random = seed >>> 0;
+    const j = Math.floor((runtime.data.random / 0x100000000) * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+}
+
+export function searchCard(
+  runtime: Runtime,
+  binding: Binding,
+  effect: Extract<Effect, { type: 'search-card' }>,
+): void {
+  const p = player(runtime, binding);
+  // Choosing the searched pile determines whether a shuffle is required, even on a miss.
+  openChoice(
+    runtime,
+    binding.frame,
+    p.id,
+    'Choose a pile to search',
+    [...new Set(effect.zones)].map((zone) => ({
+      id: zone,
+      label: `Search ${zone} first`,
+      tasks: [
+        {
+          ...binding,
+          type: 'search-card',
+          zones: [zone, ...effect.zones.filter((z) => z !== zone)],
+          card: effect.card,
+        },
+      ],
+    })),
+    1,
+    1,
+    binding.provenance,
+  );
+}
+
+export function resolveSearch(
+  runtime: Runtime,
+  task: Extract<Task, { type: 'search-card' }>,
+): void {
+  const p = player(runtime, task);
+  if (p.eliminated) return;
+  for (const zone of task.zones) {
+    const index = p[zone].findIndex((c) => c.definition === task.card);
+    const cards = index >= 0 ? p[zone].splice(index, 1) : [];
+    if (zone === 'deck') shuffle(runtime, p.deck);
+    if (cards.length) {
+      p.hand.push(...cards);
+      runtime.emit({ type: 'draw', player: p.id, cards }, p.id);
+      break;
+    }
+  }
+}
+
+export function inspectDeck(runtime: Runtime, binding: Binding, count: number, take: number): void {
+  const cards = player(runtime, binding)
+    .deck.slice(0, count)
+    .map((c) => c.id);
+  runtime.prepend({
+    ...binding,
+    type: 'inspect-take',
+    cards,
+    remaining: Math.min(take, cards.length),
+  });
+}
+
+export function takeInspected(
+  runtime: Runtime,
+  task: Extract<Task, { type: 'inspect-take' }>,
+): void {
+  const p = player(runtime, task);
+  if (p.eliminated) return;
+  if (task.selected) {
+    const index = p.deck.findIndex((c) => c.id === task.selected);
+    if (index >= 0) {
+      const cards = p.deck.splice(index, 1);
+      p.hand.push(...cards);
+      runtime.emit({ type: 'draw', player: p.id, cards }, p.id);
+    }
+  }
+  const cards = task.cards.filter((id) => p.deck.some((c) => c.id === id));
+  if (!task.remaining || !cards.length) {
+    runtime.prepend({ ...task, type: 'inspect-order', cards, ordered: [] });
+    return;
+  }
+  openChoice(
+    runtime,
+    task.frame,
+    p.id,
+    `Choose a card for your hand (${task.remaining} remaining)`,
+    cards.map((id) => ({
+      id,
+      label: runtime.defs.cards[p.deck.find((c) => c.id === id)!.definition].name,
+      card: { ...p.deck.find((c) => c.id === id)! },
+      tasks: [
+        {
+          ...task,
+          type: 'inspect-take' as const,
+          cards: cards.filter((c) => c !== id),
+          remaining: task.remaining - 1,
+          selected: id,
+        },
+      ],
+    })),
+    1,
+    1,
+    task.provenance,
+  );
+}
+
+export function orderInspected(
+  runtime: Runtime,
+  task: Extract<Task, { type: 'inspect-order' }>,
+): void {
+  const p = player(runtime, task);
+  if (p.eliminated) return;
+  if (task.cards.length <= 1) {
+    const order = [...task.ordered, ...task.cards];
+    const cards = order.flatMap((id) => p.deck.filter((c) => c.id === id));
+    p.deck = [...cards, ...p.deck.filter((c) => !order.includes(c.id))];
+    return;
+  }
+  openChoice(
+    runtime,
+    task.frame,
+    p.id,
+    'Order the remaining cards: choose the next top card',
+    task.cards.map((id) => ({
+      id,
+      label: runtime.defs.cards[p.deck.find((c) => c.id === id)!.definition].name,
+      card: { ...p.deck.find((c) => c.id === id)! },
+      tasks: [
+        { ...task, cards: task.cards.filter((c) => c !== id), ordered: [...task.ordered, id] },
+      ],
+    })),
+    1,
+    1,
+    task.provenance,
+  );
+}

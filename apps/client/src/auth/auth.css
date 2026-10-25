@@ -1,0 +1,48 @@
+.entry-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) 1.15fr;
+  gap: 7vw;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+.entry-copy {
+  width: 100%;
+  max-width: 420px;
+}
+.entry-copy h1 {
+  font-size: clamp(30px, 3.5vw, 48px);
+  color: var(--accent);
+}
+.entry-intro {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.entry-copy > p:not(.entry-intro) {
+  font-size: 16px;
+}
+.entry-copy form {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+}
+.entry-copy form h2 {
+  margin: 0 0 2px;
+}
+.entry-copy form p {
+  margin: 0;
+}
+.entry-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  font-size: 12px;
+}
+.rules-trigger {
+  background: transparent;
+  color: var(--accent);
+  white-space: nowrap;
+}

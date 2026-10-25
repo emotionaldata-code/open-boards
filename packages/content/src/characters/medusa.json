@@ -1,0 +1,396 @@
+{
+  "id": "medusa",
+  "name": "Medusa",
+  "hp": 16,
+  "movement": 3,
+  "attackType": "ranged",
+  "ally": {
+    "id": "medusa-harpy",
+    "name": "Harpy",
+    "count": 3,
+    "hp": 1,
+    "attackType": "melee"
+  },
+  "abilities": [
+    {
+      "id": "petrifying-gaze",
+      "name": "Petrifying gaze",
+      "description": "At turn start, may deal 1 damage to an enemy fighter sharing Medusa's zone.",
+      "trigger": "turn-start",
+      "optional": true,
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "enemy",
+          "range": "zone",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "ground": "#253d39",
+    "ink": "#d7dfb4",
+    "accent": "#d7bb75"
+  },
+  "cards": [
+    {
+      "id": "medusa-dash",
+      "name": "Dash",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "After combat: Move your fighter up to 3 spaces.",
+      "abilities": [
+        {
+          "id": "dash",
+          "name": "Dash",
+          "description": "After combat: Move your fighter up to 3 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 3
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "trail",
+        "image": "/cards/medusa/dash.svg"
+      },
+      "flavor": "A shadow slips between the pillars."
+    },
+    {
+      "id": "medusa-gaze-of-stone",
+      "name": "Gaze of Stone",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "boost": 4,
+      "description": "After combat: If you won the combat, deal 8 damage to the opposing fighter.",
+      "abilities": [
+        {
+          "id": "gaze-of-stone",
+          "name": "Gaze of Stone",
+          "description": "After combat: If you won the combat, deal 8 damage to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "opponent",
+              "amount": 8
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ],
+      "art": {
+        "scene": "ward",
+        "image": "/cards/medusa/gaze-of-stone.svg"
+      },
+      "flavor": "One glance outlasts a lifetime."
+    },
+    {
+      "id": "medusa-a-momentary-glance",
+      "name": "A Momentary Glance",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 4,
+      "description": "Deal 2 damage to any one fighter in Medusa's zone.",
+      "effects": [
+        {
+          "type": "choose-fighter",
+          "relation": "any",
+          "range": "zone",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 2
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "bolt",
+        "image": "/cards/medusa/a-momentary-glance.svg"
+      },
+      "flavor": "Stone remembers the shape of fear."
+    },
+    {
+      "id": "medusa-hiss-and-slither",
+      "name": "Hiss and Slither",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 4,
+      "boost": 3,
+      "description": "After combat: Your opponent discards 1 card.",
+      "abilities": [
+        {
+          "id": "hiss-and-slither",
+          "name": "Hiss and Slither",
+          "description": "After combat: Your opponent discards 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "shield",
+        "image": "/cards/medusa/hiss-and-slither.svg"
+      },
+      "flavor": "The warning comes too late."
+    },
+    {
+      "id": "medusa-the-hounds-of-mighty-zeus",
+      "name": "The Hounds of Mighty Zeus",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "versatile",
+      "value": 4,
+      "boost": 3,
+      "description": "After combat: Move each Harpy up to 3 spaces.",
+      "abilities": [
+        {
+          "id": "the-hounds-of-mighty-zeus",
+          "name": "The Hounds of Mighty Zeus",
+          "description": "After combat: Move each Harpy up to 3 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "for-each-fighter",
+              "relation": "friendly",
+              "role": "ally",
+              "effects": [
+                {
+                  "type": "move",
+                  "target": "chosen",
+                  "distance": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "blade",
+        "image": "/cards/medusa/the-hounds-of-mighty-zeus.svg"
+      },
+      "flavor": "The sky answers the hunt."
+    },
+    {
+      "id": "medusa-clutching-claws",
+      "name": "Clutching Claws",
+      "count": 3,
+      "usableBy": "ALLY",
+      "category": "versatile",
+      "value": 3,
+      "boost": 2,
+      "description": "After combat: Your opponent discards 1 card.",
+      "abilities": [
+        {
+          "id": "clutching-claws",
+          "name": "Clutching Claws",
+          "description": "After combat: Your opponent discards 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "blade",
+        "image": "/cards/medusa/clutching-claws.svg"
+      },
+      "flavor": "Nothing escapes an empty sky."
+    },
+    {
+      "id": "medusa-winged-frenzy",
+      "name": "Winged Frenzy",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Move each of your fighters up to 3 spaces. You may move them through spaces containing opposing fighters. Then, return a defeated Harpy (if any) to any space in Medusa's zone.",
+      "effects": [
+        {
+          "type": "for-each-fighter",
+          "relation": "friendly",
+          "effects": [
+            {
+              "type": "move",
+              "target": "chosen",
+              "distance": 3,
+              "throughEnemies": true
+            }
+          ]
+        },
+        {
+          "type": "revive-ally",
+          "optional": true,
+          "anchor": "main"
+        }
+      ],
+      "art": {
+        "scene": "trail",
+        "image": "/cards/medusa/winged-frenzy.svg"
+      },
+      "flavor": "Wings return to the ancient stones."
+    },
+    {
+      "id": "medusa-second-shot-3",
+      "name": "Second Shot",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "boost": 3,
+      "description": "During combat: You may BOOST this attack.",
+      "abilities": [
+        {
+          "id": "second-shot-3",
+          "name": "Second Shot",
+          "description": "During combat: You may BOOST this attack.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "boost-attack"
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "bolt",
+        "image": "/cards/medusa/second-shot-3.svg"
+      },
+      "flavor": "The first arrow was only a question."
+    },
+    {
+      "id": "medusa-snipe",
+      "name": "Snipe",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "After combat: Draw 1 card.",
+      "abilities": [
+        {
+          "id": "snipe",
+          "name": "Snipe",
+          "description": "After combat: Draw 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "bolt",
+        "image": "/cards/medusa/snipe.svg"
+      },
+      "flavor": "Distance is no refuge."
+    },
+    {
+      "id": "medusa-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "ward",
+        "image": "/cards/medusa/feint.svg"
+      },
+      "flavor": "Even a statue can mislead."
+    },
+    {
+      "id": "medusa-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 1,
+      "boost": 2,
+      "description": "After combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "abilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "After combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "art": {
+        "scene": "lantern",
+        "image": "/cards/medusa/regroup.svg"
+      },
+      "flavor": "Gather beneath the serpent crown."
+    }
+  ]
+}

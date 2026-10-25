@@ -1,0 +1,35 @@
+{
+  "name": "open-boards",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.14.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "db:up": "docker compose -f compose.yaml up -d --wait",
+    "db:down": "docker compose -f compose.yaml down",
+    "db:generate": "pnpm --filter @open-boards/server db:generate",
+    "db:migrate": "pnpm --filter @open-boards/server db:migrate",
+    "dev": "pnpm -r --parallel --filter './apps/*' dev",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "build": "pnpm --filter @open-boards/client build && pnpm --filter @open-boards/server build",
+    "start": "pnpm --filter @open-boards/server start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.39.0",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^3.2.0"
+  }
+}

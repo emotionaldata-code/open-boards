@@ -1,0 +1,25 @@
+{
+  "name": "@open-boards/client",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@open-boards/content": "workspace:*",
+    "@open-boards/game": "workspace:*",
+    "@open-boards/protocol": "workspace:*",
+    "@colyseus/sdk": "^0.18.6",
+    "pixi.js": "^8.14.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "@fontsource-variable/inter": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.1.0"
+  }
+}
