@@ -33,6 +33,11 @@ export function offerDiscardProtection(
     [
       {
         id: 'ignore',
+        card: {
+          ...p.ongoing!.find(
+            (c) => runtime.defs.cards[c.definition].ongoing?.optionalDiscardProtection,
+          )!,
+        },
         label: 'Ignore the effect',
         tasks: runtime.effects(
           task.type === 'effect' && task.effect.type === 'discard'
@@ -41,11 +46,24 @@ export function offerDiscardProtection(
           task,
         ),
       },
-      { id: 'allow', label: 'Resolve the effect', tasks: [{ ...task, discardAllowed: true }] },
+      {
+        id: 'allow',
+        decline: true,
+        label: 'Resolve the effect',
+        tasks: [{ ...task, discardAllowed: true }],
+      },
     ],
     1,
     1,
     task.provenance,
+    {
+      fighter: mainFighter(runtime.state, player).id,
+      card: {
+        ...p.ongoing!.find(
+          (c) => runtime.defs.cards[c.definition].ongoing?.optionalDiscardProtection,
+        )!,
+      },
+    },
   );
   return true;
 }

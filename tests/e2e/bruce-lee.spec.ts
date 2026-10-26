@@ -162,8 +162,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountBruceLee(page, 'recovery');
       await page.locator('.game-card').filter({ hasText: 'HOO!' }).click();
-      await page.getByRole('button', { name: /Play.*HOO!/ }).click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Return a discarded card');
       await expect(choice().getByRole('button', { name: 'Feint', exact: true })).toHaveCount(0);
       await page.screenshot({
@@ -182,9 +181,8 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       );
       expect((await currentState(page)).actions).toBe(2);
       await page.locator('.game-card').filter({ hasText: 'Bring It On' }).tap();
-      await page.getByRole('button', { name: 'Play Bring It On', exact: true }).tap();
       await expect(choice()).toContainText('Choose a fighter');
-      await choice().getByRole('button', { name: 'Medusa · Hector', exact: true }).tap();
+      await page.getByRole('button', { name: 'Medusa · Hector', exact: true }).tap();
       await page.reload();
       await mountBruceLee(page, 'recovery');
       await expect(choice()).toContainText('Choose where to teleport');
@@ -192,7 +190,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         path: test.info().outputPath('bruce-lee-placement-phone.png'),
         animations: 'disabled',
       });
-      await choice().getByRole('button', { name: 'Space 2', exact: true }).tap();
+      await page.getByRole('button', { name: 'Choose space 02', exact: true }).tap();
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       expect((await currentState(page)).fighters.find((f) => f.id === 'p1:main')?.position).toBe(
@@ -231,12 +229,11 @@ test('Bruce Lee returns One-Inch Punch after defeating the exact numbered ally o
   try {
     await mountBruceLee(page, 'punch');
     await page.locator('.game-card').filter({ hasText: 'One-Inch Punch' }).tap();
-    await page.getByRole('button', { name: 'Play One-Inch Punch', exact: true }).tap();
-    const choice = () => page.getByRole('region', { name: 'Ability choice' });
-    await expect(choice()).toContainText('Harpy 2');
+    const choice = () => page.locator('.hand-panel:has(.ability-options)');
+    await expect(page.getByRole('button', { name: 'Harpy 2 · Hector', exact: true })).toBeVisible();
     await page.reload();
     await mountBruceLee(page, 'punch');
-    await choice().getByRole('button', { name: 'Harpy 2 · Hector', exact: true }).tap();
+    await page.getByRole('button', { name: 'Harpy 2 · Hector', exact: true }).tap();
     await expect(choice()).toHaveCount(0);
     await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
     const state = await currentState(page);
@@ -260,12 +257,12 @@ test('Bruce Lee returns One-Inch Punch after defeating the exact numbered ally o
 test('Bruce Lee restores the optional end step before ending his turn', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await mountBruceLee(page, 'end-step');
-  const choice = () => page.getByRole('region', { name: 'Ability choice' });
+  const choice = () => page.locator('.hand-panel:has(.ability-options)');
   await expect(choice()).toContainText('Choose a destination');
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();
   await mountBruceLee(page, 'end-step');
-  await choice().getByRole('button', { name: 'Space 2', exact: true }).focus();
+  await page.getByRole('button', { name: 'Choose space 02', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect(choice()).toHaveCount(0);
   expect((await currentState(page)).fighters.find((f) => f.id === 'p0:main')?.position).toBe('n1');

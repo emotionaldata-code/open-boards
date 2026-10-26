@@ -4,7 +4,7 @@ import { sharesZone } from '../targeting';
 import { openChoice } from './choices';
 import { reference } from './conditions';
 import type { Runtime } from './runtime';
-import type { Binding, Task } from './state';
+import type { Binding, Task, ChoiceOption } from './state';
 import type { Effect, PlayerRef } from './vocabulary';
 
 function candidates(runtime: Runtime, binding: Binding) {
@@ -28,13 +28,14 @@ export function offerRevival(
 ): void {
   const anchor = effect.anchor ?? 'main';
   if (!destinations(runtime, binding, anchor).length) return;
-  const options = candidates(runtime, binding).map((f) => ({
+  const options: (ChoiceOption & { tasks: Task[] })[] = candidates(runtime, binding).map((f) => ({
     id: f.id,
+    object: { type: 'fighter', id: f.id },
     label: fighterLabel(f, runtime.defs),
     tasks: [{ ...binding, type: 'revive-placement' as const, fighter: f.id, anchor }],
   }));
   if (!options.length) return;
-  if (effect.optional) options.push({ id: '$skip', label: 'Skip', tasks: [] });
+  if (effect.optional) options.push({ id: '$skip', decline: true, label: 'Skip', tasks: [] });
   openChoice(
     runtime,
     binding.frame,
@@ -44,6 +45,7 @@ export function offerRevival(
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 export function offerPlacement(
@@ -58,12 +60,14 @@ export function offerPlacement(
     'Choose where to return the ally',
     destinations(runtime, task, task.anchor).map((position) => ({
       id: position,
+      object: { type: 'space' as const, id: position },
       label: `Space ${runtime.defs.map.nodes.indexOf(position) + 1}`,
       tasks: [{ ...task, type: 'revive', position }],
     })),
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }
 export function revive(runtime: Runtime, task: Extract<Task, { type: 'revive' }>): void {

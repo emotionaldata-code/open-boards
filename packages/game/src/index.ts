@@ -9,3 +9,5 @@ export { movement } from './abilities/conditions';
 export * from './fighters';
 export * from './deployment';
 export { maneuverMovement } from './boost';
+
+export type { ChoiceOption, ChoiceObject, ChoiceSource } from './abilities/state';

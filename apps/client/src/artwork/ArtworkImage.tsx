@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { RasterAsset } from './types';
 
-/** Responsive raster selection and a local fallback shared by cards and portraits. */
+/** Responsive raster selection; an omitted fallback reveals the layer underneath on failure. */
 export function ArtworkImage({
   asset,
   fallback,
@@ -9,12 +9,13 @@ export function ArtworkImage({
   priority = false,
 }: {
   asset?: RasterAsset;
-  fallback: string;
+  fallback?: string;
   sizes: string;
   priority?: boolean;
 }) {
   const [failed, setFailed] = useState<string>();
   const raster = asset && failed !== asset.url ? asset : undefined;
+  if (!raster && !fallback) return null;
   return (
     <img
       alt=""
@@ -25,6 +26,7 @@ export function ArtworkImage({
       width={raster?.width}
       height={raster?.height}
       loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : 'auto'}
       decoding="async"
       data-raster={raster ? '' : undefined}
       style={

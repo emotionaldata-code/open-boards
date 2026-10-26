@@ -75,8 +75,7 @@ for (const viewport of [
         expect(await effect.evaluate((node) => node.scrollHeight <= node.clientHeight)).toBe(true);
       }
       const firstCard = page.locator('.game-card').first();
-      await firstCard.click();
-      await expect(firstCard).toHaveAttribute('aria-pressed', 'true');
+      await expect(firstCard).toHaveAccessibleName('Play Winged Frenzy');
       await expect(
         page.getByRole('button', { name: 'Play Winged Frenzy', exact: true }),
       ).toBeInViewport();
@@ -109,13 +108,10 @@ for (const viewport of [
         }
         const nextCard = page.locator('.game-card').nth(1);
         await nextCard.scrollIntoViewIfNeeded();
-        await nextCard.tap();
-        await expect(nextCard).toHaveAttribute('aria-pressed', 'true');
-        await expect(
-          page.getByRole('button', { name: 'Play Confirm Suspicion', exact: true }),
-        ).toBeInViewport();
-        await nextCard.tap();
-        await expect(page.getByRole('button', { name: 'Maneuver', exact: true })).toBeInViewport();
+        await expect(nextCard).toHaveAccessibleName('Play Confirm Suspicion');
+        await page
+          .getByRole('button', { name: 'Maneuver · draw a card', exact: true })
+          .scrollIntoViewIfNeeded();
       }
 
       await page.screenshot({ path: test.info().outputPath('game.png') });
@@ -165,7 +161,11 @@ for (const start of ['n0', 'n13']) {
       ]) {
         await page.setViewportSize(size);
         await expectWholeMap(page);
-        for (const target of await page.getByRole('button', { name: /^Move to/ }).all()) {
+        const labels = await page
+          .getByRole('button', { name: /^Move to/ })
+          .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label')!));
+        for (const name of labels) {
+          const target = page.getByRole('button', { name, exact: true });
           const bounds = (await target.boundingBox())!;
           expect(bounds.width).toBeGreaterThanOrEqual(44);
           expect(bounds.height).toBeGreaterThanOrEqual(44);
@@ -180,8 +180,21 @@ for (const start of ['n0', 'n13']) {
             ).presentationCommands.at(-1),
           );
           expect(command?.type).toBe('move');
-          expect(command?.path.at(-1)).toBe(
-            Object.keys(boardLayout).find((id) => boardLayout[id].label === label),
+          if (command?.path.length)
+            expect(command.path.at(-1)).toBe(
+              Object.keys(boardLayout).find((id) => boardLayout[id].label === label),
+            );
+          const revision = Number(
+            await page.locator('main.game-layout').getAttribute('data-revision'),
+          );
+          await page.evaluate(() =>
+            (
+              window as unknown as { updatePresentationGame: (g: object) => void }
+            ).updatePresentationGame({}),
+          );
+          await expect(page.locator('main.game-layout')).toHaveAttribute(
+            'data-revision',
+            String(revision + 1),
           );
         }
       }
@@ -238,7 +251,6 @@ for (const viewport of [
     await expect(page.getByRole('button', { name: 'All cards', exact: true })).toHaveCount(0);
     await expect(page.getByRole('button', { name: 'Take the hit', exact: true })).toBeInViewport();
     await page.locator('.game-card[data-card="defense"]').click();
-    await page.getByRole('button', { name: 'Defend with Hiss and Slither', exact: true }).click();
     expect(
       await page.evaluate(() =>
         (window as unknown as { presentationCommands: unknown[] }).presentationCommands.at(-1),
@@ -372,7 +384,6 @@ for (const mode of ['boost', 'discard'] as const) {
       await expect(
         page.getByRole('button', { name: 'Finish Maneuver', exact: true }),
       ).toBeVisible();
-      await page.getByRole('button', { name: 'Boost movement +3', exact: true }).click();
     } else {
       await page.locator('.game-card').nth(0).click();
       await page.locator('.game-card').nth(2).click();
@@ -506,10 +517,7 @@ for (const width of [390, 1440]) {
       .locator('.game-card')
       .filter({ has: page.locator('.card-name', { hasText: /^Excalibur$/ }) })
       .click();
-    await page
-      .locator('.fighter-picker')
-      .getByRole('button', { name: 'Merlin 1', exact: true })
-      .click();
+    await page.getByRole('button', { name: 'Merlin 1', exact: true }).click();
     await expect(page.locator('.game-card')).toHaveCount(3);
     await expect(
       page
@@ -524,7 +532,6 @@ for (const width of [390, 1440]) {
     await expect(page.locator('.game-card').filter({ hasText: 'Skirmish' })).toHaveCount(1);
     await expect(page.locator('.game-card[aria-pressed="true"]')).toHaveCount(0);
     await page.locator('.game-card').filter({ hasText: 'Prophecy' }).click();
-    await page.getByRole('button', { name: 'Play Prophecy', exact: true }).click();
     expect(
       await page.evaluate(() =>
         (window as unknown as { presentationCommands: unknown[] }).presentationCommands.at(-1),

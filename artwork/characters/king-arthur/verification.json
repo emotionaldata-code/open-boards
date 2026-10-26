@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-26",
+  "assets": {
+    "originals": 20,
+    "cardDesigns": 16,
+    "portraits": 2,
+    "transparentFigures": 2,
+    "derivatives": 56,
+    "derivativeBytes": 6911288,
+    "tokenApparentHeight": 129.6
+  },
+  "rules": "In the isolated refresh-only checkout at 23c7994, King Arthur was identical to that baseline after excluding card art.image paths. Concurrent main-workspace rule edits were preserved.",
+  "integrity": "Selected master files match generator outputs and provenance SHA-256 hashes; derivatives pass dimensions, byte counts, hashes, alpha and canonical-path tests.",
+  "preparation": "Two consecutive runs in an isolated checkout preserved both manifests byte-for-byte and all hashed filenames; shared-workspace Arthur entries match that checkout exactly.",
+  "checks": {
+    "typecheck": "passed in isolated checkout",
+    "lint": "passed in isolated checkout",
+    "format": "passed in isolated checkout and for scoped shared-workspace files",
+    "build": "passed in isolated checkout",
+    "unitSuite": "710 passed in 53 files in the shared workspace",
+    "focusedArtworkUnitTests": "8 passed in isolated checkout",
+    "browser": {
+      "scope": "Isolated HEAD plus Arthur refresh, using a separate Vite port; passing gallery/mixed/fallback checks plus passing final Arthur lifecycle/private-choice checks.",
+      "passed": [
+        "Arthur and Merlin recover private choices on desktop and landscape phone (no-preference)",
+        "Arthur and Merlin recover private choices on desktop and landscape phone (reduce)",
+        "Arthur and numbered Merlin figures share textures across four owner colors (no-preference)",
+        "Arthur and numbered Merlin figures share textures across four owner colors (reduce)",
+        "King Arthur raster gallery selects small variants and larger inspector images on desktop and phone",
+        "Medusa raster gallery selects small variants and larger inspector images on desktop and phone",
+        "React artwork falls back to local SVG when raster requests fail",
+        "mixed SVG/raster scene shares two textures across four owner colors (no-preference)",
+        "mixed SVG/raster scene shares two textures across four owner colors (reduce)"
+      ],
+      "kingArthurGalleryTransfers": {
+        "requests": 33,
+        "encodedBytes": 1823640,
+        "requestedWidths": [256, 320, 640]
+      },
+      "sharedFigureTextures": {
+        "distinctRequests": 2,
+        "bytes": 144816,
+        "fighters": 8
+      }
+    }
+  },
+  "sharedBrowserSuite": {
+    "status": "Stopped after concurrent source edits caused repeated shared-server restarts and disrupted transport tests. Not a clean full-suite result.",
+    "passed": 77,
+    "failed": 20,
+    "interrupted": 1,
+    "notRun": 22,
+    "details": "Includes a strict map viewport assertion, existing Medusa discard-dialog expectations and disrupted socket/private-choice tests. The two initial Arthur lifecycle failures were corrected by acknowledging the existing revival review and passed on rerun."
+  },
+  "visualReview": [
+    "All 20 selected originals",
+    "All 16 card inspectors at 1440×1000 and 844×390",
+    "Four owner colors and numbered Merlin figures",
+    "Selection, movement, defeat and return",
+    "Reduced and full motion",
+    "Portrait focal points adjusted for narrow review crops"
+  ],
+  "concurrentNonArtworkBundlePaths": [
+    "/cards/0/abilities/0/effects/0/options/0/target",
+    "/cards/0/abilities/0/effects/0/options/1/target"
+  ]
+}

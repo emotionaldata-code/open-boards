@@ -68,6 +68,8 @@ export async function presentationHarness(
     game = { ...game, ...overrides };
     let events: import('../../../apps/client/src/animation/events').PresentationEvent[] = [];
     let reset = 0;
+    let commandReset = 0;
+    let connected = true;
     const commands: import('../../../packages/game/src/index').Command[] = [];
     const render = () =>
       root.render(
@@ -76,7 +78,8 @@ export async function presentationHarness(
           user: { id: 'a', name: 'Arden' },
           events,
           reset,
-          connected: true,
+          connected,
+          commandReset,
           onCommand: (command: import('../../../packages/game/src/index').Command) =>
             commands.push(command),
           onLeave: () => {},
@@ -95,6 +98,14 @@ export async function presentationHarness(
       },
       updatePresentationGame: (overrides: Partial<typeof game>) => {
         game = { ...game, ...overrides, revision: game.revision + 1 };
+        render();
+      },
+      releasePresentationCommand: () => {
+        commandReset++;
+        render();
+      },
+      setPresentationConnected: (value: boolean) => {
+        connected = value;
         render();
       },
       presentationCommands: commands,

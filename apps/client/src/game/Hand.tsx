@@ -1,15 +1,9 @@
 import { basic } from '@open-boards/content';
-import {
-  cardEligible,
-  fighterDefinition,
-  type Fighter,
-  type Card,
-  type Command,
-} from '@open-boards/game';
+import { cardEligible, type Fighter, type Card, type Command } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
 import { CardFace } from './CardFace';
-import { HandActions } from './HandActions';
 import { InactiveCards } from './InactiveCards';
+import { AbilityChoice } from './AbilityChoice';
 interface Props {
   game: GameView;
   fighter: Fighter;
@@ -20,11 +14,10 @@ interface Props {
   moving: boolean;
   defending: boolean;
   discarding: boolean;
+  disabled: boolean;
   selected: string[];
-  setSelected: React.Dispatch<React.SetStateAction<string[]>>;
-  target: string;
-  targets: Fighter[];
-  chosen: Card | undefined;
+  onSelect: (id: string) => void;
+  onChoose: (ids: string[]) => void;
   onCommand: (command: Command) => void;
 }
 export function Hand({
@@ -37,17 +30,17 @@ export function Hand({
   moving,
   defending,
   discarding,
+  disabled,
   selected,
-  setSelected,
-  target,
-  targets,
-  chosen,
+  onSelect,
+  onChoose,
   onCommand,
 }: Props) {
-  const chosenDefinition = chosen ? basic.cards[chosen.definition] : null;
+  const choice = game.choice;
   const boosting = moving && game.maneuver?.boostable;
   function usable(card: Card) {
     const definition = basic.cards[card.definition];
+    if (choice) return choice.options.some((o) => o.card?.id === card.id);
     return Boolean(
       discarding ||
       boosting ||
@@ -57,68 +50,113 @@ export function Hand({
         cardEligible(definition, fighter)),
     );
   }
+  function label(card: Card) {
+    const name = basic.cards[card.definition].name;
+    if (choice) return choice.options.find((o) => o.card?.id === card.id)!.label;
+    if (discarding) return `Discard ${name}`;
+    if (boosting) return `Boost movement +${basic.cards[card.definition].boost} · ${name}`;
+    if (defending) return `Defend with ${name}`;
+    return basic.cards[card.definition].category === 'action'
+      ? `Play ${name}`
+      : `Prepare attack · ${name}`;
+  }
   const playable = game.hand.filter(usable);
   const inactive = game.hand.filter((card) => !usable(card));
   return (
     <section className="hand-panel" aria-label="Your hand">
       <div className="section-heading">
         <h2>
-          {eliminated ? 'You have been eliminated' : ended ? 'The battle is over' : 'Your hand'}{' '}
+          {choice?.prompt ??
+            (eliminated
+              ? 'You have been eliminated'
+              : ended
+                ? 'The battle is over'
+                : 'Your hand')}{' '}
           <span className="muted">{game.hand.length} cards</span>
         </h2>
         <div className="button-row">
-          <HandActions
-            fighter={fighter}
-            chosen={chosen}
-            target={target}
-            selected={selected}
-            discardCount={game.hand.length - 7}
-            myTurn={myTurn}
-            moving={moving}
-            boosting={Boolean(boosting)}
-            defending={defending}
-            discarding={discarding}
-            onCommand={onCommand}
-          />
+          {discarding && game.hand.length - 7 > 1 && (
+            <button
+              className="primary"
+              disabled={disabled || selected.length !== game.hand.length - 7}
+              onClick={() => onCommand({ type: 'discard', cards: selected })}
+            >
+              Discard {selected.length} / {game.hand.length - 7}
+            </button>
+          )}
+          {choice && (choice.min !== 1 || choice.max !== 1) && (
+            <button
+              className="primary"
+              disabled={disabled || selected.length < choice.min || selected.length > choice.max}
+              onClick={() => onChoose(selected)}
+            >
+              {choice.min === 0 && !selected.length
+                ? 'Pass'
+                : `Confirm choice · ${selected.length} / ${choice.max}`}
+            </button>
+          )}
+          {defending && (
+            <button disabled={disabled} onClick={() => onCommand({ type: 'defend', card: null })}>
+              Take the hit
+            </button>
+          )}
+          {moving && (
+            <button disabled={disabled} onClick={() => onCommand({ type: 'finish-maneuver' })}>
+              Finish Maneuver
+            </button>
+          )}
         </div>
-        {(prompt ||
-          (chosen && myTurn && ['attack', 'versatile'].includes(chosenDefinition!.category))) && (
-          <p className="prompt" role="status">
-            {chosen && myTurn && ['attack', 'versatile'].includes(chosenDefinition!.category)
-              ? targets.length
-                ? target
-                  ? `Target: ${
-                      fighterDefinition(
-                        targets.find((f) => f.id === target)!,
-                        basic,
-                      ).name
-                    }`
-                  : 'Choose a highlighted rival.'
-                : 'No rivals in range. Maneuver to get closer.'
-              : prompt}
+        <p className="prompt" role="status">
+          {prompt}
+        </p>
+        {choice?.source?.name && (
+          <p className="prompt choice-source">
+            <strong>{choice.source.name}</strong>
+            {' · '}
+            {choice.source.description}
           </p>
         )}
       </div>
       <div className="hand">
+        {myTurn && (
+          <button
+            className="draw-pile"
+            aria-label="Maneuver · draw a card"
+            disabled={disabled}
+            onClick={() => onCommand({ type: 'maneuver' })}
+          >
+            <span className="pile-back" aria-hidden="true">
+              Open Boards
+            </span>
+            <span>Draw & maneuver</span>
+          </button>
+        )}
         {playable.map((card) => (
           <CardFace
             key={card.id}
             card={card}
-            selected={selected.includes(card.id)}
+            label={label(card)}
+            selected={selected.includes(
+              choice?.options.find((o) => o.card?.id === card.id)?.id ?? card.id,
+            )}
+            disabled={disabled}
             onClick={() =>
-              setSelected((old) =>
-                discarding
-                  ? old.includes(card.id)
-                    ? old.filter((id) => id !== card.id)
-                    : [...old, card.id]
-                  : old.includes(card.id)
-                    ? []
-                    : [card.id],
-              )
+              onSelect(choice?.options.find((o) => o.card?.id === card.id)?.id ?? card.id)
             }
           />
         ))}
-        {playable.length === 0 && (myTurn || defending) && game.hand.length > 0 && (
+        {choice && (
+          <AbilityChoice
+            choice={choice}
+            fighters={game.fighters}
+            handIds={game.hand.map((c) => c.id)}
+            disabled={disabled}
+            selected={selected}
+            onSelect={onSelect}
+            onSubmit={onChoose}
+          />
+        )}
+        {!playable.length && (myTurn || defending) && game.hand.length > 0 && (
           <p className="empty">
             {defending
               ? 'No defense cards for this fighter.'
@@ -128,7 +166,7 @@ export function Hand({
         {inactive.length > 0 && (
           <InactiveCards key={`${game.revision}:${fighter.id}`} cards={inactive} />
         )}
-        {game.hand.length === 0 && (
+        {!game.hand.length && !choice && (
           <p className="empty">Your hand is empty. Maneuver to draw a card.</p>
         )}
       </div>

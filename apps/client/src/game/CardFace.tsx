@@ -21,6 +21,7 @@ export function CardFace({
       <button
         className={`game-card ${selected ? 'selected' : ''}`}
         aria-label={label}
+        title={label}
         aria-pressed={selected}
         disabled={disabled}
         onClick={onClick}

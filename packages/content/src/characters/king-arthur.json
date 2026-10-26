@@ -44,7 +44,7 @@
       "art": {
         "scene": "blade",
         "variant": 0,
-        "image": "/cards/king-arthur/skirmish.svg"
+        "image": "/artwork/king-arthur/king-arthur-skirmish-1280-3eb222d522a6.webp"
       },
       "flavor": "",
       "abilities": [
@@ -66,7 +66,8 @@
                       "type": "move",
                       "distance": 2
                     }
-                  ]
+                  ],
+                  "target": "self"
                 },
                 {
                   "id": "opponent",
@@ -77,7 +78,8 @@
                       "target": "opponent",
                       "distance": 2
                     }
-                  ]
+                  ],
+                  "target": "opponent"
                 }
               ]
             }
@@ -101,7 +103,7 @@
       "art": {
         "scene": "shield",
         "variant": 1,
-        "image": "/cards/king-arthur/noble-sacrifice.svg"
+        "image": "/artwork/king-arthur/king-arthur-noble-sacrifice-1280-7cf2a416f9f6.webp"
       },
       "flavor": "",
       "abilities": [
@@ -131,7 +133,7 @@
       "art": {
         "scene": "blade",
         "variant": 2,
-        "image": "/cards/king-arthur/excalibur.svg"
+        "image": "/artwork/king-arthur/king-arthur-excalibur-1280-b20931322cf3.webp"
       },
       "flavor": "",
       "abilities": []
@@ -148,7 +150,7 @@
       "art": {
         "scene": "ward",
         "variant": 3,
-        "image": "/cards/king-arthur/the-aid-of-morgana.svg"
+        "image": "/artwork/king-arthur/king-arthur-the-aid-of-morgana-1280-0d66418a3b72.webp"
       },
       "flavor": "",
       "abilities": [
@@ -178,7 +180,7 @@
       "art": {
         "scene": "ward",
         "variant": 4,
-        "image": "/cards/king-arthur/divine-intervention.svg"
+        "image": "/artwork/king-arthur/king-arthur-divine-intervention-1280-df1d50d0bbeb.webp"
       },
       "flavor": "",
       "abilities": [
@@ -208,7 +210,7 @@
       "art": {
         "scene": "lantern",
         "variant": 5,
-        "image": "/cards/king-arthur/the-holy-grail.svg"
+        "image": "/artwork/king-arthur/king-arthur-the-holy-grail-1280-bb5a2b212a22.webp"
       },
       "flavor": "",
       "abilities": [
@@ -246,7 +248,7 @@
       "art": {
         "scene": "trail",
         "variant": 6,
-        "image": "/cards/king-arthur/the-lady-of-the-lake.svg"
+        "image": "/artwork/king-arthur/king-arthur-the-lady-of-the-lake-1280-16a0a6fe235b.webp"
       },
       "flavor": "",
       "effects": [
@@ -269,7 +271,7 @@
       "art": {
         "scene": "map",
         "variant": 0,
-        "image": "/cards/king-arthur/prophecy.svg"
+        "image": "/artwork/king-arthur/king-arthur-prophecy-1280-abbd6edaf15a.webp"
       },
       "flavor": "",
       "effects": [
@@ -292,7 +294,7 @@
       "art": {
         "scene": "ward",
         "variant": 1,
-        "image": "/cards/king-arthur/bewilderment.svg"
+        "image": "/artwork/king-arthur/king-arthur-bewilderment-1280-f000f0ab24fe.webp"
       },
       "flavor": "",
       "abilities": [
@@ -332,7 +334,7 @@
       "art": {
         "scene": "bolt",
         "variant": 2,
-        "image": "/cards/king-arthur/aid-the-chosen-one.svg"
+        "image": "/artwork/king-arthur/king-arthur-aid-the-chosen-one-1280-a6fb82c67ddc.webp"
       },
       "flavor": "",
       "abilities": [
@@ -366,7 +368,7 @@
       "art": {
         "scene": "embers",
         "variant": 3,
-        "image": "/cards/king-arthur/restless-spirits.svg"
+        "image": "/artwork/king-arthur/king-arthur-restless-spirits-1280-ce97e5ee2b89.webp"
       },
       "flavor": "",
       "effects": [
@@ -397,7 +399,7 @@
       "art": {
         "scene": "fire",
         "variant": 4,
-        "image": "/cards/king-arthur/command-the-storms.svg"
+        "image": "/artwork/king-arthur/king-arthur-command-the-storms-1280-bfb97002c2ba.webp"
       },
       "flavor": "",
       "effects": [
@@ -426,7 +428,7 @@
       "art": {
         "scene": "blade",
         "variant": 5,
-        "image": "/cards/king-arthur/swift-strike.svg"
+        "image": "/artwork/king-arthur/king-arthur-swift-strike-1280-6e87a305c859.webp"
       },
       "flavor": "",
       "abilities": [
@@ -456,7 +458,7 @@
       "art": {
         "scene": "trail",
         "variant": 6,
-        "image": "/cards/king-arthur/momentous-shift.svg"
+        "image": "/artwork/king-arthur/king-arthur-momentous-shift-1280-02f92d081d9c.webp"
       },
       "flavor": "",
       "abilities": [
@@ -490,7 +492,7 @@
       "art": {
         "scene": "blade",
         "variant": 0,
-        "image": "/cards/king-arthur/feint.svg"
+        "image": "/artwork/king-arthur/king-arthur-feint-1280-9220e47d896e.webp"
       },
       "flavor": "",
       "abilities": [
@@ -519,7 +521,7 @@
       "art": {
         "scene": "bastion",
         "variant": 1,
-        "image": "/cards/king-arthur/regroup.svg"
+        "image": "/artwork/king-arthur/king-arthur-regroup-1280-09c803e40c6b.webp"
       },
       "flavor": "",
       "abilities": [

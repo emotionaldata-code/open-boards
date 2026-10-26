@@ -23,6 +23,22 @@
   font-size: 12px;
   white-space: nowrap;
 }
+@media (max-width: 999px) {
+  .discard-trigger {
+    display: grid;
+    align-content: center;
+    gap: 2px;
+    width: 56px;
+    padding: 4px;
+    font-size: 11px;
+  }
+  .discard-separator {
+    display: none;
+  }
+  .discard-count {
+    font-size: 13px;
+  }
+}
 .player-badge {
   position: relative;
   container-type: inline-size;
@@ -46,7 +62,7 @@
   left: 0;
   width: var(--health);
   height: 3px;
-  background: #819a71;
+  background: var(--accent);
   transition: width 200ms ease-out;
 }
 .player-badge.active-player {
@@ -56,12 +72,11 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 32px;
-  height: 36px;
-  clip-path: polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%);
+  width: 48px;
+  height: 44px;
   font:
-    20px Georgia,
-    serif;
+    20px 'Inter Variable',
+    sans-serif;
   color: #15221b;
 }
 .seat-0 {
@@ -92,8 +107,8 @@
 }
 .badge-health {
   font:
-    22px Georgia,
-    serif;
+    600 22px 'Inter Variable',
+    sans-serif;
 }
 .badge-health small,
 .badge-movement small,
@@ -110,8 +125,8 @@
 .badge-movement {
   flex-shrink: 0;
   font:
-    20px Georgia,
-    serif;
+    20px 'Inter Variable',
+    sans-serif;
 }
 .badge-allies {
   grid-column: 1 / -1;

@@ -30,9 +30,14 @@ export function selectDeck(runtime: Runtime, task: Extract<Task, { type: 'select
     `${selection.name} · Choose ${group.name}`,
     group.cards.map((card) => ({
       id: card,
+      card: { id: card, definition: card },
       label: runtime.defs.cards[card].name,
       tasks: [{ type: 'select-deck', player: player.id, group: task.group + 1, selected: card }],
     })),
+    1,
+    1,
+    undefined,
+    { fighter: mainFighter(runtime.state, player.id).id },
   );
 }
 

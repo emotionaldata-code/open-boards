@@ -1,48 +1,98 @@
+/* At 1328px: a 400px access column + 96px gutter + 832px gallery. */
 .entry-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 0.85fr) 1.15fr;
-  gap: 7vw;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.4fr);
+  gap: clamp(32px, 6vw, 96px);
   align-items: center;
-  max-width: 1200px;
   width: 100%;
   margin: auto;
+  padding-block: 32px 48px;
+  flex: 1 0 auto;
 }
 .entry-copy {
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
 }
 .entry-copy h1 {
-  font-size: clamp(30px, 3.5vw, 48px);
-  color: var(--accent);
+  font-size: clamp(32px, 3.3vw, 46px);
+  color: var(--text);
 }
-.entry-intro {
-  color: var(--muted);
-  margin: 0 0 12px;
-}
-.entry-copy > p:not(.entry-intro) {
+.entry-copy > p {
   font-size: 16px;
+  color: var(--muted);
+  margin: 16px 0 0;
 }
 .entry-copy form {
   display: grid;
-  gap: 14px;
-  margin-top: 26px;
+  gap: 18px;
+  margin-top: 36px;
 }
 .entry-copy form h2 {
   margin: 0 0 2px;
+  font-size: 24px;
 }
 .entry-copy form p {
   margin: 0;
+}
+.entry-copy form > .primary {
+  margin-top: 6px;
+  min-height: 48px;
+}
+.entry-copy form > .text-button {
+  font-size: 13px;
+  text-align: left;
+  color: var(--muted);
 }
 .entry-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: var(--space-3);
   font-size: 12px;
 }
 .rules-trigger {
   background: transparent;
-  color: var(--accent);
+  color: var(--text);
   white-space: nowrap;
+}
+.entry-roster {
+  min-width: 0;
+}
+@media (max-width: 760px) {
+  .entry-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    padding-block: 24px 32px;
+  }
+  .entry-copy {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  .entry-copy h1 {
+    font-size: 36px;
+  }
+  .entry-copy form {
+    margin-top: 28px;
+    gap: var(--space-2);
+  }
+  .entry-copy > p {
+    margin-top: 12px;
+  }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .entry-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .entry-copy h1 {
+    font-size: 30px;
+  }
+  .entry-copy form {
+    margin-top: var(--space-3);
+  }
+  .entry-bottom {
+    flex-wrap: wrap;
+  }
 }

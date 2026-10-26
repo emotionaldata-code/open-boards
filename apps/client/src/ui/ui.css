@@ -4,15 +4,15 @@
   max-width: min(620px, calc(100vw - 32px));
   max-height: calc(100dvh - 32px);
   width: 580px;
-  border: 1px solid #b79d66;
-  border-radius: 8px;
-  background: #1c271f;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
   color: var(--text);
   box-shadow: 0 24px 100px #0009;
   overflow: hidden;
 }
 .arcane-dialog::backdrop {
-  background: #020805c9;
+  background: #050605d9;
 }
 .arcane-dialog[open] {
   animation: materialize 160ms ease-out;
@@ -74,7 +74,7 @@
   min-height: 56px;
   padding: 12px 8px;
   border: 0;
-  border-bottom: 1px solid #3c4838;
+  border-bottom: 1px solid var(--line);
   border-radius: 0;
   background: transparent;
   text-align: left;

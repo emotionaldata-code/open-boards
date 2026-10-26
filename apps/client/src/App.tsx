@@ -18,11 +18,13 @@ export function App() {
   const previousGame = useRef<GameView | null>(null);
   const [reset, setReset] = useState(0);
   const [error, setError] = useState('');
+  const [commandReset, setCommandReset] = useState(0);
   const [status, setStatus] = useState('Connected');
   const [busy, setBusy] = useState(false);
   const connection = useRef<Connection | null>(null);
   const receipt = useRef(0);
   function install(snapshot: Snapshot) {
+    setCommandReset((x) => x + 1);
     setRoom(snapshot.room);
     const next = snapshot.room.game;
     const incoming =
@@ -35,7 +37,14 @@ export function App() {
     setBusy(false);
   }
   useEffect(() => {
-    connection.current = new Connection(install, setError, setStatus);
+    connection.current = new Connection(
+      install,
+      (message) => {
+        setError(message);
+        setCommandReset((x) => x + 1);
+      },
+      setStatus,
+    );
     void http<User>('/auth/me')
       .then(async (user) => {
         setUser(user);
@@ -138,6 +147,7 @@ export function App() {
           onCommand={command}
           onLeave={() => void leave()}
           connected={status === 'Connected'}
+          commandReset={commandReset}
         />
       ) : (
         <WaitingRoom

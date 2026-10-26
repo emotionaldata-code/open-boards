@@ -186,10 +186,20 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         task.frame,
         chooser.player,
         e.prompt,
-        e.options.map((o) => ({ ...o, tasks: runtime.effects(o.effects, task) })),
+        e.options.map((o) => {
+          const target = o.target ? reference(state, task, o.target) : undefined;
+          return {
+            id: o.id,
+            label: o.label,
+            decline: o.decline,
+            ...(target ? { object: { type: 'fighter' as const, id: target.id } } : {}),
+            tasks: runtime.effects(o.effects, task),
+          };
+        }),
         1,
         1,
         task.provenance,
+        { fighter: task.owner },
       );
       break;
     }
@@ -222,6 +232,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         e.type === 'choose-player' ? 'Choose a player' : 'Choose a fighter',
         fighters.map((f) => ({
           id: e.type === 'choose-player' ? f.player : f.id,
+          object: { type: 'fighter' as const, id: f.id },
           label:
             e.type === 'choose-player'
               ? state.players.find((p) => p.id === f.player)!.name
@@ -231,6 +242,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         1,
         1,
         task.provenance,
+        { fighter: task.owner },
       );
       break;
     }
@@ -360,6 +372,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
           const options = Object.entries(paths).map(([node, path]) => {
             return {
               id: node,
+              object: { type: 'space' as const, id: node },
               label: `Space ${defs.map.nodes.indexOf(node) + 1}`,
               tasks: [
                 {
@@ -403,6 +416,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                   : [
                       {
                         id: '$stay',
+                        decline: true,
                         label: 'Stay in place',
                         tasks: [
                           {
@@ -424,6 +438,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
               1,
               1,
               task.provenance,
+              { fighter: task.owner },
             );
           break;
         }

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { characters, defaultCharacter } from '@open-boards/content';
 import { CharacterPicker } from '../characters/CharacterPicker';
+import { CharacterPortrait } from '../characters/CharacterPortrait';
+import { MapPreview } from './MapPreview';
 import type { RoomView, User } from '@open-boards/protocol';
 export function WaitingRoom({
   room,
@@ -18,9 +20,20 @@ export function WaitingRoom({
   onLeave: () => void;
 }) {
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState(false);
   const own = room.seats.find((s) => s.id === user.id);
   const character = characters[own?.character ?? defaultCharacter];
   const canStart = room.seats.length === room.capacity && room.seats.every((s) => s.ready);
+  async function copyInvite() {
+    setCopyError(false);
+    try {
+      await navigator.clipboard.writeText(`${location.origin}/?room=${room.id}`);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+      setCopyError(true);
+    }
+  }
   return (
     <main className="waiting-page">
       <div className="page-title">
@@ -46,7 +59,13 @@ export function WaitingRoom({
               const seat = room.seats[i];
               return (
                 <li key={i}>
-                  <span className="seat-number">0{i + 1}</span>
+                  {seat ? (
+                    <CharacterPortrait character={seat.character} />
+                  ) : (
+                    <span className="open-seat" aria-label={`Seat ${i + 1}`}>
+                      +
+                    </span>
+                  )}
                   <div className="grow">
                     <strong>
                       {seat?.name ?? 'Open seat'}
@@ -66,33 +85,42 @@ export function WaitingRoom({
             })}
           </ol>
           <CharacterPicker selected={own?.character ?? defaultCharacter} onChoose={onCharacter} />
-          <div className="button-row">
-            <button className="primary" onClick={onReady}>
-              {own?.ready ? 'Not ready' : 'Ready up'}
-            </button>
-            {room.host === user.id && (
-              <button onClick={onStart} disabled={!canStart}>
-                Start match
-              </button>
-            )}
-          </div>
         </section>
         <section className="panel invite">
+          <MapPreview />
           <h2>Invite players</h2>
           <p className="muted">Share the invite link to join this table.</p>
           <label>
             Room ID
             <input readOnly value={room.id} onFocus={(e) => e.target.select()} />
           </label>
-          <button
-            onClick={() => {
-              void navigator.clipboard
-                .writeText(`${location.origin}/?room=${room.id}`)
-                .then(() => setCopied(true));
-            }}
-          >
+          <button onClick={() => void copyInvite()}>
             {copied ? 'Link copied' : 'Copy invite link'}
           </button>
+          <span className={copyError ? 'error' : 'muted'} role="status">
+            {copyError
+              ? 'Could not copy. Share the Room ID above.'
+              : copied
+                ? 'Invite link copied to clipboard.'
+                : `${room.seats.filter((seat) => seat.ready).length} / ${room.capacity} players ready`}
+          </span>
+          <div className="match-controls">
+            <div className="button-row">
+              <button className="primary" onClick={onReady}>
+                {own?.ready ? 'Not ready' : 'Ready up'}
+              </button>
+              {room.host === user.id && (
+                <button onClick={onStart} disabled={!canStart}>
+                  Start match
+                </button>
+              )}
+            </div>
+            <p className="muted">
+              {canStart
+                ? 'Everyone is ready. The host can start the match.'
+                : 'Fill every seat and ready up to begin.'}
+            </p>
+          </div>
           <p className="muted">
             {character.hp} health · movement {character.movement} ·{' '}
             {character.deck.reduce((sum, entry) => sum + entry.count, 0)} cards.{' '}

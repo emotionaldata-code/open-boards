@@ -6,20 +6,15 @@ export function FighterPicker({
   fighters,
   selected,
   disabled,
-  label,
-  hint,
   onSelect,
 }: {
   fighters: Fighter[];
   selected: string;
   disabled: boolean;
-  label: string;
-  hint?: string;
   onSelect: (id: string) => void;
 }) {
   return (
     <div className="fighter-controls" role="group" aria-label="Your fighters">
-      <span className="fighter-picker-label">{label}</span>
       <div className="fighter-picker">
         {fighters.map((fighter) => (
           <button
@@ -36,7 +31,6 @@ export function FighterPicker({
           </button>
         ))}
       </div>
-      {hint && <span className="fighter-picker-hint">{hint}</span>}
     </div>
   );
 }

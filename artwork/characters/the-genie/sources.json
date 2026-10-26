@@ -1,0 +1,100 @@
+[
+  {
+    "id": "the-genie-portrait",
+    "kind": "portrait",
+    "source": "masters/the-genie-portrait.png",
+    "focal": [0.53, 0.12]
+  },
+  {
+    "id": "the-genie-token",
+    "kind": "token",
+    "source": "masters/the-genie-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "the-genie-your-wish-is-my-command",
+    "kind": "card",
+    "card": "the-genie-your-wish-is-my-command",
+    "source": "masters/your-wish-is-my-command.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-wishing-for-more-wishes",
+    "kind": "card",
+    "card": "the-genie-wishing-for-more-wishes",
+    "source": "masters/wishing-for-more-wishes.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-three-wishes",
+    "kind": "card",
+    "card": "the-genie-three-wishes",
+    "source": "masters/three-wishes.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-this-is-no-parlor-trick",
+    "kind": "card",
+    "card": "the-genie-this-is-no-parlor-trick",
+    "source": "masters/this-is-no-parlor-trick.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-prisoners-torment",
+    "kind": "card",
+    "card": "the-genie-prisoners-torment",
+    "source": "masters/prisoners-torment.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-ive-made-sultans-out-of-less",
+    "kind": "card",
+    "card": "the-genie-ive-made-sultans-out-of-less",
+    "source": "masters/ive-made-sultans-out-of-less.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-imprisoned-wrath",
+    "kind": "card",
+    "card": "the-genie-imprisoned-wrath",
+    "source": "masters/imprisoned-wrath.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-i-grant-you-death",
+    "kind": "card",
+    "card": "the-genie-i-grant-you-death",
+    "source": "masters/i-grant-you-death.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-i-am-freed",
+    "kind": "card",
+    "card": "the-genie-i-am-freed",
+    "source": "masters/i-am-freed.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-back-in-the-lamp",
+    "kind": "card",
+    "card": "the-genie-back-in-the-lamp",
+    "source": "masters/back-in-the-lamp.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-careful-what-you-wish-for",
+    "kind": "card",
+    "card": "the-genie-careful-what-you-wish-for",
+    "source": "masters/careful-what-you-wish-for.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "the-genie-feint",
+    "kind": "card",
+    "card": "the-genie-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  }
+]

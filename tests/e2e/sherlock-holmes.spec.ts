@@ -174,11 +174,8 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await mountHolmes(page);
       await expect(page.getByRole('button', { name: 'Dr. Watson 1', exact: true })).toBeVisible();
       await page.locator('.game-card').filter({ hasText: 'Eliminate the Impossible' }).click();
-      await page
-        .getByRole('button', { name: 'Play Eliminate the Impossible', exact: true })
-        .click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
-      await choice().getByRole('button', { name: 'Briar', exact: true }).click();
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
+      await page.getByRole('button', { name: 'Briar', exact: true }).click();
       await expect(choice()).toContainText('Discard 1 card from Briar');
       await mountHolmes(page);
       await expect(
@@ -194,8 +191,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       await page.locator('.game-card').filter({ hasText: 'Confirm Suspicion' }).click();
-      await page.getByRole('button', { name: 'Play Confirm Suspicion', exact: true }).click();
-      await choice().getByRole('button', { name: 'Briar', exact: true }).click();
+      await page.getByRole('button', { name: 'Briar', exact: true }).click();
       await choice()
         .getByRole('combobox', { name: 'Value', exact: true })
         .selectOption('value-100');
@@ -216,7 +212,6 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.setViewportSize({ width: 1440, height: 1000 });
       await mountHolmes(page, 'defense');
       await page.locator('.game-card').filter({ hasText: 'Elementary' }).click();
-      await page.getByRole('button', { name: 'Defend with Elementary', exact: true }).click();
       await expect(choice()).toContainText('Predict the printed attack value');
       const observation = await page.evaluate(async (rootPath) => {
         const url = `/@fs${rootPath}/apps/server/src/transport/projection.ts`;

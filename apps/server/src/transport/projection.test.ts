@@ -74,3 +74,50 @@ it('keeps hidden card hook names, hand choice identities and continuations priva
   apply('b', { type: 'defend', card: null });
   expect(projectGame(state, 'c', false).revealed?.attack.id).toBe(secretCard.id);
 });
+
+it('projects typed choice objects and source only to the chooser after serialized recovery', () => {
+  const state = createGame(
+    ['a', 'b'].map((id) => ({
+      id,
+      name: id,
+      character: 'vanguard',
+      deck: deckDefinitions().map((definition, i) => ({ id: `${id}-${i}`, definition })),
+    })),
+    basic,
+  );
+  const secret = state.players[0].hand[0];
+  state.phase = { type: 'ability-choice', player: 'a' };
+  state.resolution.choice = {
+    frame: 0,
+    id: 'choice',
+    player: 'a',
+    prompt: 'Private ability',
+    source: {
+      fighter: 'a:main',
+      card: secret,
+      name: 'Private source',
+      description: 'Private description',
+    },
+    options: [
+      { id: 'opaque-fighter', label: 'Player', object: { type: 'fighter', id: 'b:main' } },
+      { id: 'opaque-pile', label: 'Pile', object: { type: 'pile', player: 'a', zone: 'deck' } },
+      { id: 'opaque-number', label: 'Zero', value: 0 },
+      { id: 'opaque-pass', label: 'Pass', decline: true },
+    ],
+    min: 1,
+    max: 1,
+    continuations: {
+      'opaque-pass': [
+        { type: 'select-deck', player: 'a', group: 0, selected: 'private-definition' },
+      ],
+    },
+  };
+  const restored = JSON.parse(JSON.stringify(state)) as GameState;
+  const own = projectGame(restored, 'a', false).choice!;
+  expect(own.source?.card).toEqual(secret);
+  expect(own.options).toEqual(state.resolution.choice.options);
+  expect(own).not.toHaveProperty('continuations');
+  const other = projectGame(restored, 'b', false);
+  expect(other.choice).toBeNull();
+  expect(JSON.stringify(other)).not.toMatch(/Private|opaque|private-definition|continuations/);
+});

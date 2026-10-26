@@ -1,0 +1,216 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-26",
+  "authorship": "Original generated illustrations; no third-party card artwork reused.",
+  "references": ["references/king-arthur.png", "references/merlin.png"],
+  "prompts": "prompts.json",
+  "revisions": "revisions.json",
+  "generationLog": "generation-log.json",
+  "notes": [
+    "The first Bewilderment and Swift Strike generations were 1983×793 and were superseded by fresh 1586×992 generations to provide every requested card size without enlargement.",
+    "Two revision requests were rejected before generation because an unsupported id field was passed; both were retried with valid arguments."
+  ],
+  "assets": [
+    {
+      "id": "king-arthur-portrait",
+      "master": "masters/king-arthur-portrait.png",
+      "sha256": "39b737e9243b7ca7ecd780327893253c223ce7ad35d40f0c4d5f0f4bb877e557",
+      "prompt": "prompts.json#king-arthur-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-b315f97c-891e-4678-826a-9b7006aa879f.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-token",
+      "master": "masters/king-arthur-token.png",
+      "sha256": "e8792696ed0d408abdd557e08e36cf95b99a774a4de4b276650a5fcf3490b12c",
+      "prompt": "prompts.json#king-arthur-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-a4e7d652-6298-4ec9-97eb-e4030df15ac8.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "king-arthur-merlin-portrait",
+      "master": "masters/merlin-portrait.png",
+      "sha256": "a79386f1530b238851f7a85fc0cb09330a9e1a0da8ff20f755fd43cbce557c9c",
+      "prompt": "prompts.json#merlin-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-bf374bce-4070-4f6c-85f6-6da24073444d.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-merlin-token",
+      "master": "masters/merlin-token.png",
+      "sha256": "daa8b7f1150184976788c905dc4dfc839a4cd608c522ef4e40868cc73038277d",
+      "prompt": "prompts.json#merlin-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-b7e9fffe-4593-4836-ae9e-1d4873726869.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "king-arthur-skirmish",
+      "master": "masters/skirmish.png",
+      "sha256": "c76139834014ed149a83ca49513adcc36371a5cb39f7db1bf128eb27af6fdac4",
+      "prompt": "prompts.json#skirmish",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-00f3b676-b00a-4b49-aecb-b5380090834b.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-noble-sacrifice",
+      "master": "masters/noble-sacrifice.png",
+      "sha256": "21531093264e303612565e7f99e5d17ef1ee102bf7564d83bc35aa0034561701",
+      "prompt": "prompts.json#noble-sacrifice",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-d9059049-ac14-4918-b99e-96632b356630.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-excalibur",
+      "master": "masters/excalibur.png",
+      "sha256": "90ea3b90cf40585fbd2d24aeea469d422b16b8ad9b9713b125e5843f74dee968",
+      "prompt": "prompts.json#excalibur",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-9031ef28-8ebf-4a50-8f1a-9f746024e9a4.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-the-aid-of-morgana",
+      "master": "masters/the-aid-of-morgana.png",
+      "sha256": "ae3852a2fedb8c46be8cb2a7f8503a4fbba5a5d6428849334d3f6cbd0c71af10",
+      "prompt": "prompts.json#the-aid-of-morgana",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-5f9d662b-a8f1-47be-9c77-3ecc20790ad3.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-divine-intervention",
+      "master": "masters/divine-intervention.png",
+      "sha256": "0692b54fbd4b128192ced2bf7919547e116dc492a2d0e8a9ad353bb4668294af",
+      "prompt": "prompts.json#divine-intervention",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-9afe6b49-0914-4b95-a774-305185fd499d.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-the-holy-grail",
+      "master": "masters/the-holy-grail.png",
+      "sha256": "88c543bb4d88f82a8dc4d3799ad807ee254c54afae21a5af821b9422ce36fceb",
+      "prompt": "prompts.json#the-holy-grail",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-c48c9c53-2794-48ee-8a7b-7aa7eaca65ab.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-the-lady-of-the-lake",
+      "master": "masters/the-lady-of-the-lake.png",
+      "sha256": "5955d4af4ae383128e1e869ab82d4445d7211f2c9c2551387ea2b8f79d426895",
+      "prompt": "prompts.json#the-lady-of-the-lake",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-855305fb-f266-40fb-97ba-c4bf6fd23302.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-prophecy",
+      "master": "masters/prophecy.png",
+      "sha256": "bc12f7bd9a4d016d7f155e49f0048dccb0aa1e19bc8cebbba8455c8aa37c1929",
+      "prompt": "prompts.json#prophecy",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-9f21e610-6545-4e8e-aa0b-06669c296a8a.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-bewilderment",
+      "master": "masters/bewilderment.png",
+      "sha256": "56ccc09c402305b0f0c4d6e8af865e7a1e274726cf4d958d7e2ad21294174b5b",
+      "prompt": "revisions.json#bewilderment",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-8dacb16c-3b18-4292-adcd-d923b7ef0a4f.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-aid-the-chosen-one",
+      "master": "masters/aid-the-chosen-one.png",
+      "sha256": "95ab8cc73b4fcbf114c2f88da8db0f019b2ef3989d1c32284d553e38287d0beb",
+      "prompt": "prompts.json#aid-the-chosen-one",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-42391cac-bdff-4167-befe-2f042f76f5c2.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-restless-spirits",
+      "master": "masters/restless-spirits.png",
+      "sha256": "9a410473b13ea9a1efbd2c585cfd5e1bbe840e1a9b356d33bd45854738e33fa6",
+      "prompt": "prompts.json#restless-spirits",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-4cd02017-8bbd-4e87-afd2-3369418cf4ac.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-command-the-storms",
+      "master": "masters/command-the-storms.png",
+      "sha256": "6c39030657077b1688d85877fd9d2cea74abeffa39f5d2513fd3742e85a32108",
+      "prompt": "prompts.json#command-the-storms",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-114154c0-a0fd-4689-bc9f-b36866d9470f.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-swift-strike",
+      "master": "masters/swift-strike.png",
+      "sha256": "5dbc4460985978c7f3c0a35ac371262b5ca001db48ef48050c700208e3d5435e",
+      "prompt": "revisions.json#swift-strike",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-cfd4fb02-77de-447b-9173-9a3efaaed299.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-momentous-shift",
+      "master": "masters/momentous-shift.png",
+      "sha256": "0fba66d980cd687677314cc5f5510072e1293adb57f834d06e6c729ba5b06a04",
+      "prompt": "prompts.json#momentous-shift",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-b6a50ec7-5d9a-4e15-bf5e-467c1362b9bc.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-feint",
+      "master": "masters/feint.png",
+      "sha256": "db0fec7c5f40f30fe944792b3801c7ca8d9288bd680a33fc46ec378f20cdba02",
+      "prompt": "prompts.json#feint",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-28211bf7-3756-4d8d-b892-c729194050bd.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "king-arthur-regroup",
+      "master": "masters/regroup.png",
+      "sha256": "eb90c1858d05f9f5e7120493778ef9e56f012d8d786766b220438323464be3bf",
+      "prompt": "prompts.json#regroup",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17956-872a-7210-b19c-7103c6e37fa9/exec-0dde75e0-c9ae-4d6b-a7d5-022ecb315a7c.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

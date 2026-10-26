@@ -52,6 +52,7 @@ export function nextFighter(
     'Choose the next fighter',
     remaining.map((id) => ({
       id,
+      object: { type: 'fighter' as const, id },
       label: fighterLabel(fighterById(runtime.state, id)!, runtime.defs),
       tasks: [
         ...runtime.effects(task.effect.effects, { ...task, chosen: id }),
@@ -61,5 +62,6 @@ export function nextFighter(
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }

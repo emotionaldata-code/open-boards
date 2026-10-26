@@ -155,8 +155,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await expect(page.getByRole('button', { name: 'Merlin 1', exact: true })).toBeVisible();
       await page.getByRole('button', { name: 'Merlin 1', exact: true }).click();
       await page.locator('.game-card').filter({ hasText: 'Prophecy' }).click();
-      await page.getByRole('button', { name: 'Play Prophecy', exact: true }).click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Choose a card for your hand (2 remaining)');
       for (const img of await choice().locator('img').all())
         await expect(img).toHaveJSProperty('complete', true);
@@ -185,14 +184,13 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       });
       await page.getByRole('button', { name: 'King Arthur', exact: true }).tap();
       await page.locator('.game-card').filter({ hasText: 'Noble Sacrifice' }).click();
-      await page.getByRole('button', { name: 'Target Briar', exact: true }).click();
-      await page.getByRole('button', { name: 'Commit attack', exact: true }).click();
+      await page.getByRole('button', { name: /^Target .*\(Briar\)$/ }).click();
       await expect(choice()).toContainText('Boost attack');
       await mountArthur(page);
-      await choice().getByRole('button', { name: 'Excalibur · BOOST +3', exact: true }).tap();
+      await page.getByRole('button', { name: 'Excalibur · BOOST +3', exact: true }).tap();
       await expect(choice()).toContainText('Boost attack');
       await mountArthur(page);
-      await choice().getByRole('button', { name: 'The Holy Grail · BOOST +2', exact: true }).tap();
+      await page.getByRole('button', { name: 'The Holy Grail · BOOST +2', exact: true }).tap();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       const state = await page.evaluate(
         () =>

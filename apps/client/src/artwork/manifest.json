@@ -398,5 +398,1405 @@
         "bytes": 295374
       }
     ]
+  },
+  "king-arthur-portrait": {
+    "url": "/artwork/king-arthur/king-arthur-portrait-1024-447a33fcea70.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 214726,
+    "kind": "portrait",
+    "focal": [0.5, 0.2],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-portrait-256-cf452dd09117.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 19678
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-portrait-512-d7facede123c.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 68646
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-portrait-1024-447a33fcea70.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 214726
+      }
+    ]
+  },
+  "king-arthur-token": {
+    "url": "/artwork/king-arthur/king-arthur-token-512-c64c8eccba7c.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 69138,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-token-512-c64c8eccba7c.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 69138
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "king-arthur-merlin-portrait": {
+    "url": "/artwork/king-arthur/king-arthur-merlin-portrait-1024-591a58ba629e.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 238278,
+    "kind": "portrait",
+    "focal": [0.5, 0.27],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-merlin-portrait-256-93360969b503.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 21346
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-merlin-portrait-512-29b9859aa838.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 75128
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-merlin-portrait-1024-591a58ba629e.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 238278
+      }
+    ]
+  },
+  "king-arthur-merlin-token": {
+    "url": "/artwork/king-arthur/king-arthur-merlin-token-512-2d090526bb19.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 75678,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-merlin-token-512-2d090526bb19.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 75678
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "king-arthur-skirmish": {
+    "url": "/artwork/king-arthur/king-arthur-skirmish-1280-3eb222d522a6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 255662,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-skirmish-320-ee386fde4c35.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26598
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-skirmish-640-66826c216447.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 88554
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-skirmish-1280-3eb222d522a6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 255662
+      }
+    ]
+  },
+  "king-arthur-noble-sacrifice": {
+    "url": "/artwork/king-arthur/king-arthur-noble-sacrifice-1280-7cf2a416f9f6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 289862,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-noble-sacrifice-320-a936ebbae402.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26952
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-noble-sacrifice-640-98a3079966aa.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 94206
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-noble-sacrifice-1280-7cf2a416f9f6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 289862
+      }
+    ]
+  },
+  "king-arthur-excalibur": {
+    "url": "/artwork/king-arthur/king-arthur-excalibur-1280-b20931322cf3.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 250326,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-excalibur-320-2bbb01ff2be2.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24786
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-excalibur-640-b589c7c4621b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 81232
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-excalibur-1280-b20931322cf3.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 250326
+      }
+    ]
+  },
+  "king-arthur-the-aid-of-morgana": {
+    "url": "/artwork/king-arthur/king-arthur-the-aid-of-morgana-1280-0d66418a3b72.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 261736,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-aid-of-morgana-320-abe386bb31f0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24566
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-aid-of-morgana-640-c927caa61a30.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 85950
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-aid-of-morgana-1280-0d66418a3b72.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 261736
+      }
+    ]
+  },
+  "king-arthur-divine-intervention": {
+    "url": "/artwork/king-arthur/king-arthur-divine-intervention-1280-df1d50d0bbeb.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 277004,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-divine-intervention-320-19b5f6711502.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25958
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-divine-intervention-640-1d16490db107.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 89558
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-divine-intervention-1280-df1d50d0bbeb.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 277004
+      }
+    ]
+  },
+  "king-arthur-the-holy-grail": {
+    "url": "/artwork/king-arthur/king-arthur-the-holy-grail-1280-bb5a2b212a22.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 265690,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-holy-grail-320-1bc91ca24f21.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25354
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-holy-grail-640-8326cda63198.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 87576
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-holy-grail-1280-bb5a2b212a22.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 265690
+      }
+    ]
+  },
+  "king-arthur-the-lady-of-the-lake": {
+    "url": "/artwork/king-arthur/king-arthur-the-lady-of-the-lake-1280-16a0a6fe235b.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 223068,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-lady-of-the-lake-320-2fe62e710d1f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21782
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-lady-of-the-lake-640-a66336eeac94.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 73744
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-the-lady-of-the-lake-1280-16a0a6fe235b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 223068
+      }
+    ]
+  },
+  "king-arthur-prophecy": {
+    "url": "/artwork/king-arthur/king-arthur-prophecy-1280-abbd6edaf15a.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 213222,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-prophecy-320-64cdd9b6107c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22802
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-prophecy-640-06d731f8cbfa.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 72960
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-prophecy-1280-abbd6edaf15a.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 213222
+      }
+    ]
+  },
+  "king-arthur-bewilderment": {
+    "url": "/artwork/king-arthur/king-arthur-bewilderment-1280-f000f0ab24fe.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 325540,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-bewilderment-320-dea34c369548.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29064
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-bewilderment-640-0bd2145b9184.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 104962
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-bewilderment-1280-f000f0ab24fe.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 325540
+      }
+    ]
+  },
+  "king-arthur-aid-the-chosen-one": {
+    "url": "/artwork/king-arthur/king-arthur-aid-the-chosen-one-1280-a6fb82c67ddc.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 260230,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-aid-the-chosen-one-320-1c85799be725.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23252
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-aid-the-chosen-one-640-c1c65f69bee3.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 81438
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-aid-the-chosen-one-1280-a6fb82c67ddc.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 260230
+      }
+    ]
+  },
+  "king-arthur-restless-spirits": {
+    "url": "/artwork/king-arthur/king-arthur-restless-spirits-1280-ce97e5ee2b89.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 275372,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-restless-spirits-320-b4c301bbee24.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24078
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-restless-spirits-640-18b7d21d96a8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 85530
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-restless-spirits-1280-ce97e5ee2b89.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 275372
+      }
+    ]
+  },
+  "king-arthur-command-the-storms": {
+    "url": "/artwork/king-arthur/king-arthur-command-the-storms-1280-bfb97002c2ba.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 247770,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-command-the-storms-320-6225b5e086ce.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23958
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-command-the-storms-640-85666fb73117.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 80576
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-command-the-storms-1280-bfb97002c2ba.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 247770
+      }
+    ]
+  },
+  "king-arthur-swift-strike": {
+    "url": "/artwork/king-arthur/king-arthur-swift-strike-1280-6e87a305c859.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 348372,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-swift-strike-320-16ed5a9d0b76.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28880
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-swift-strike-640-0fab5a4aa748.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 107266
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-swift-strike-1280-6e87a305c859.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 348372
+      }
+    ]
+  },
+  "king-arthur-momentous-shift": {
+    "url": "/artwork/king-arthur/king-arthur-momentous-shift-1280-02f92d081d9c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 269120,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-momentous-shift-320-022acf93e1b6.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26770
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-momentous-shift-640-d199b4804567.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 89484
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-momentous-shift-1280-02f92d081d9c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 269120
+      }
+    ]
+  },
+  "king-arthur-feint": {
+    "url": "/artwork/king-arthur/king-arthur-feint-1280-9220e47d896e.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 283886,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-feint-320-16bcb151b11a.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25094
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-feint-640-8c1d86ab14c7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 91130
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-feint-1280-9220e47d896e.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 283886
+      }
+    ]
+  },
+  "king-arthur-regroup": {
+    "url": "/artwork/king-arthur/king-arthur-regroup-1280-09c803e40c6b.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 277848,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/king-arthur/king-arthur-regroup-320-e0fb60c50ebd.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23964
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-regroup-640-d88138a20cb0.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 85938
+      },
+      {
+        "url": "/artwork/king-arthur/king-arthur-regroup-1280-09c803e40c6b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 277848
+      }
+    ]
+  },
+  "king-solomons-mine-scenery": {
+    "url": "/artwork/maps/king-solomons-mine/king-solomons-mine-scenery-1900-747d2f62fbfe.webp",
+    "width": 1900,
+    "height": 780,
+    "bytes": 499090,
+    "kind": "map",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/maps/king-solomons-mine/king-solomons-mine-scenery-950-5914aecde711.webp",
+        "width": 950,
+        "height": 390,
+        "bytes": 142598
+      },
+      {
+        "url": "/artwork/maps/king-solomons-mine/king-solomons-mine-scenery-1900-747d2f62fbfe.webp",
+        "width": 1900,
+        "height": 780,
+        "bytes": 499090
+      }
+    ]
+  },
+  "sherlock-holmes-portrait": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-portrait-1024-8048c50d8423.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 150680,
+    "kind": "portrait",
+    "focal": [0.5, 0.38],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-portrait-256-b782f1a95267.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 15934
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-portrait-512-4794a1b0c7e0.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 51214
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-portrait-1024-8048c50d8423.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 150680
+      }
+    ]
+  },
+  "sherlock-holmes-token": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-token-512-7a033a3b0813.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 35738,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-token-512-7a033a3b0813.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 35738
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "sherlock-holmes-dr-watson-portrait": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-dr-watson-portrait-1024-ff31d081dac5.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 150524,
+    "kind": "portrait",
+    "focal": [0.5, 0.38],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-dr-watson-portrait-256-27b237122401.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 15068
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-dr-watson-portrait-512-b7b058e7b180.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 48096
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-dr-watson-portrait-1024-ff31d081dac5.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 150524
+      }
+    ]
+  },
+  "sherlock-holmes-dr-watson-token": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-dr-watson-token-512-79ee09817d62.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 42392,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-dr-watson-token-512-79ee09817d62.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 42392
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "sherlock-holmes-feint": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-feint-1280-4a4d38d1a8d9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 170528,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-feint-320-c8949164272e.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19604
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-feint-640-d9787759323f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 60968
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-feint-1280-4a4d38d1a8d9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 170528
+      }
+    ]
+  },
+  "sherlock-holmes-education-never-ends": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-education-never-ends-1280-a51267ffed4f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 190502,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-education-never-ends-320-345069c725ae.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20572
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-education-never-ends-640-ac1f6004e639.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 64840
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-education-never-ends-1280-a51267ffed4f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 190502
+      }
+    ]
+  },
+  "sherlock-holmes-study-methods": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-study-methods-1280-c37fadd70a82.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 233000,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-study-methods-320-12c35f46d1c4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21856
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-study-methods-640-7bea622ebe2c.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75812
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-study-methods-1280-c37fadd70a82.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 233000
+      }
+    ]
+  },
+  "sherlock-holmes-deduce-strategy": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-deduce-strategy-1280-165c69e550cd.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 137460,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-deduce-strategy-320-a2886b3e9596.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17586
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-deduce-strategy-640-b12a4b093ba9.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 50516
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-deduce-strategy-1280-165c69e550cd.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 137460
+      }
+    ]
+  },
+  "sherlock-holmes-counterpunch": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-counterpunch-1280-6aae4b96ffea.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 182392,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-counterpunch-320-497a8df8b799.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18118
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-counterpunch-640-1e19e87bc68b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 58846
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-counterpunch-1280-6aae4b96ffea.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 182392
+      }
+    ]
+  },
+  "sherlock-holmes-fixed-point-in-a-changing-age": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-fixed-point-in-a-changing-age-1280-058fcd165b9c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 231544,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-fixed-point-in-a-changing-age-320-19f276afe4a6.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19584
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-fixed-point-in-a-changing-age-640-560a9de38aff.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 71020
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-fixed-point-in-a-changing-age-1280-058fcd165b9c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 231544
+      }
+    ]
+  },
+  "sherlock-holmes-the-game-is-afoot": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-the-game-is-afoot-1280-d723fb0befb9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 230136,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-the-game-is-afoot-320-34773da063ff.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22908
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-the-game-is-afoot-640-845a65547940.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75732
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-the-game-is-afoot-1280-d723fb0befb9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 230136
+      }
+    ]
+  },
+  "sherlock-holmes-service-revolver": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-service-revolver-1280-6f70e2e39311.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 155898,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-service-revolver-320-903304498aa2.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17376
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-service-revolver-640-30f73c6cc454.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 52846
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-service-revolver-1280-6f70e2e39311.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 155898
+      }
+    ]
+  },
+  "sherlock-holmes-elementary": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-elementary-1280-d3b536e47b59.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 170866,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-elementary-320-23cbb13acbae.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17448
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-elementary-640-bf7074f8603a.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 56602
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-elementary-1280-d3b536e47b59.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 170866
+      }
+    ]
+  },
+  "sherlock-holmes-confirm-suspicion": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-confirm-suspicion-1280-6fb18c3244c6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 178068,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-confirm-suspicion-320-5565fa930d5f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18430
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-confirm-suspicion-640-e0120f9b19f7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 59734
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-confirm-suspicion-1280-6fb18c3244c6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 178068
+      }
+    ]
+  },
+  "sherlock-holmes-eliminate-the-impossible": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-eliminate-the-impossible-1280-73050f737f29.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 187378,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-eliminate-the-impossible-320-adf6c401416e.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19876
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-eliminate-the-impossible-640-ca428f3a3e5f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 64148
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-eliminate-the-impossible-1280-73050f737f29.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 187378
+      }
+    ]
+  },
+  "sherlock-holmes-master-of-disguise": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-master-of-disguise-1280-bf6f2e12b98a.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 199424,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-master-of-disguise-320-df0d8f1d6614.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20464
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-master-of-disguise-640-67ada6eaeede.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 66562
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-master-of-disguise-1280-bf6f2e12b98a.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 199424
+      }
+    ]
+  },
+  "sherlock-holmes-administer-aid": {
+    "url": "/artwork/sherlock-holmes/sherlock-holmes-administer-aid-1280-494c4081ade4.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 192786,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-administer-aid-320-da7644f3c4f4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20568
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-administer-aid-640-8efcc5f01b0f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 65830
+      },
+      {
+        "url": "/artwork/sherlock-holmes/sherlock-holmes-administer-aid-1280-494c4081ade4.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 192786
+      }
+    ]
+  },
+  "the-genie-portrait": {
+    "url": "/artwork/the-genie/the-genie-portrait-1024-777217af0715.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 148218,
+    "kind": "portrait",
+    "focal": [0.53, 0.12],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-portrait-256-178b94d8cc42.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 17164
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-portrait-512-428d7980bf7a.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 52470
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-portrait-1024-777217af0715.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 148218
+      }
+    ]
+  },
+  "the-genie-token": {
+    "url": "/artwork/the-genie/the-genie-token-512-d07d79de0758.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 74246,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-token-512-d07d79de0758.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 74246
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "the-genie-your-wish-is-my-command": {
+    "url": "/artwork/the-genie/the-genie-your-wish-is-my-command-1280-e3cbaf989ac5.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 175800,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-your-wish-is-my-command-320-b821e679bf17.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21608
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-your-wish-is-my-command-640-8777d2450b3f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 66642
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-your-wish-is-my-command-1280-e3cbaf989ac5.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 175800
+      }
+    ]
+  },
+  "the-genie-wishing-for-more-wishes": {
+    "url": "/artwork/the-genie/the-genie-wishing-for-more-wishes-1280-9e334eaeab97.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 259786,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-wishing-for-more-wishes-320-48b8f7f690c9.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26360
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-wishing-for-more-wishes-640-6419dfeb4ca7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 87754
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-wishing-for-more-wishes-1280-9e334eaeab97.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 259786
+      }
+    ]
+  },
+  "the-genie-three-wishes": {
+    "url": "/artwork/the-genie/the-genie-three-wishes-1280-083e9e521562.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 160944,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-three-wishes-320-243d52e67662.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19504
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-three-wishes-640-f65cf1d798b8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 59600
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-three-wishes-1280-083e9e521562.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 160944
+      }
+    ]
+  },
+  "the-genie-this-is-no-parlor-trick": {
+    "url": "/artwork/the-genie/the-genie-this-is-no-parlor-trick-1280-ea520f7ad6f8.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 281768,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-this-is-no-parlor-trick-320-66e10dd7b2c3.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27262
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-this-is-no-parlor-trick-640-9903771a4a82.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 93938
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-this-is-no-parlor-trick-1280-ea520f7ad6f8.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 281768
+      }
+    ]
+  },
+  "the-genie-prisoners-torment": {
+    "url": "/artwork/the-genie/the-genie-prisoners-torment-1280-7d344e12c907.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 184690,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-prisoners-torment-320-5cdc9ea8c61f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22282
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-prisoners-torment-640-1ba1ded170f9.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 68824
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-prisoners-torment-1280-7d344e12c907.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 184690
+      }
+    ]
+  },
+  "the-genie-ive-made-sultans-out-of-less": {
+    "url": "/artwork/the-genie/the-genie-ive-made-sultans-out-of-less-1280-9bdee917124f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 221102,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-ive-made-sultans-out-of-less-320-1c70de2296db.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24326
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-ive-made-sultans-out-of-less-640-d6e9cc7fadbc.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 77870
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-ive-made-sultans-out-of-less-1280-9bdee917124f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 221102
+      }
+    ]
+  },
+  "the-genie-imprisoned-wrath": {
+    "url": "/artwork/the-genie/the-genie-imprisoned-wrath-1280-f85535dd1cf0.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 206940,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-imprisoned-wrath-320-2ebbbdd6d882.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23854
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-imprisoned-wrath-640-e85abb3440db.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75738
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-imprisoned-wrath-1280-f85535dd1cf0.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 206940
+      }
+    ]
+  },
+  "the-genie-i-grant-you-death": {
+    "url": "/artwork/the-genie/the-genie-i-grant-you-death-1280-ea1863515134.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 190086,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-i-grant-you-death-320-d4b869107605.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20778
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-i-grant-you-death-640-48a4500fa97e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 67516
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-i-grant-you-death-1280-ea1863515134.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 190086
+      }
+    ]
+  },
+  "the-genie-i-am-freed": {
+    "url": "/artwork/the-genie/the-genie-i-am-freed-1280-919778ba7a38.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 245766,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-i-am-freed-320-38b6ea855eb3.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26388
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-i-am-freed-640-51b8cd64f5cb.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 87542
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-i-am-freed-1280-919778ba7a38.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 245766
+      }
+    ]
+  },
+  "the-genie-back-in-the-lamp": {
+    "url": "/artwork/the-genie/the-genie-back-in-the-lamp-1280-b7a41b2dae54.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 165124,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-back-in-the-lamp-320-caff31d7df6b.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20112
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-back-in-the-lamp-640-7f8665e4dee4.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 59154
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-back-in-the-lamp-1280-b7a41b2dae54.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 165124
+      }
+    ]
+  },
+  "the-genie-careful-what-you-wish-for": {
+    "url": "/artwork/the-genie/the-genie-careful-what-you-wish-for-1280-0c7f88f1db93.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 244572,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-careful-what-you-wish-for-320-9602c7bb956d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26336
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-careful-what-you-wish-for-640-05146bd284ae.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 86428
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-careful-what-you-wish-for-1280-0c7f88f1db93.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 244572
+      }
+    ]
+  },
+  "the-genie-feint": {
+    "url": "/artwork/the-genie/the-genie-feint-1280-fcf42f70f989.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 192352,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/the-genie/the-genie-feint-320-c54904a08d4d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23594
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-feint-640-4e432356ad4c.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 71876
+      },
+      {
+        "url": "/artwork/the-genie/the-genie-feint-1280-fcf42f70f989.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 192352
+      }
+    ]
   }
 }

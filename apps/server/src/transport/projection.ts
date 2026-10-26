@@ -48,6 +48,7 @@ export function projectGame(state: GameState, viewer: string, paused: boolean): 
             player: choice.player,
             prompt: choice.prompt,
             options: choice.options,
+            ...(choice.source ? { source: choice.source } : {}),
             min: choice.min,
             max: choice.max,
           }

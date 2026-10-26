@@ -34,7 +34,7 @@
       "art": {
         "scene": "blade",
         "variant": 0,
-        "image": "/cards/sherlock-holmes/feint.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-feint-1280-4a4d38d1a8d9.webp"
       },
       "flavor": "",
       "abilities": [
@@ -63,7 +63,7 @@
       "art": {
         "scene": "map",
         "variant": 1,
-        "image": "/cards/sherlock-holmes/education-never-ends.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-education-never-ends-1280-a51267ffed4f.webp"
       },
       "flavor": "",
       "abilities": [
@@ -109,7 +109,7 @@
       "art": {
         "scene": "map",
         "variant": 2,
-        "image": "/cards/sherlock-holmes/study-methods.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-study-methods-1280-c37fadd70a82.webp"
       },
       "flavor": "",
       "abilities": [
@@ -143,7 +143,7 @@
       "art": {
         "scene": "ward",
         "variant": 3,
-        "image": "/cards/sherlock-holmes/deduce-strategy.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-deduce-strategy-1280-165c69e550cd.webp"
       },
       "flavor": "",
       "abilities": [
@@ -179,7 +179,7 @@
       "art": {
         "scene": "blade",
         "variant": 4,
-        "image": "/cards/sherlock-holmes/counterpunch.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-counterpunch-1280-6aae4b96ffea.webp"
       },
       "flavor": "",
       "abilities": [
@@ -216,7 +216,7 @@
       "art": {
         "scene": "lantern",
         "variant": 5,
-        "image": "/cards/sherlock-holmes/fixed-point-in-a-changing-age.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-fixed-point-in-a-changing-age-1280-058fcd165b9c.webp"
       },
       "flavor": "",
       "abilities": [
@@ -257,7 +257,7 @@
       "art": {
         "scene": "trail",
         "variant": 6,
-        "image": "/cards/sherlock-holmes/the-game-is-afoot.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-the-game-is-afoot-1280-d723fb0befb9.webp"
       },
       "flavor": "",
       "abilities": [
@@ -287,7 +287,7 @@
       "art": {
         "scene": "bolt",
         "variant": 0,
-        "image": "/cards/sherlock-holmes/service-revolver.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-service-revolver-1280-6f70e2e39311.webp"
       },
       "flavor": ""
     },
@@ -303,7 +303,7 @@
       "art": {
         "scene": "ward",
         "variant": 1,
-        "image": "/cards/sherlock-holmes/elementary.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-elementary-1280-d3b536e47b59.webp"
       },
       "flavor": "",
       "abilities": [
@@ -351,7 +351,7 @@
       "art": {
         "scene": "map",
         "variant": 2,
-        "image": "/cards/sherlock-holmes/confirm-suspicion.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-confirm-suspicion-1280-6fb18c3244c6.webp"
       },
       "flavor": "",
       "effects": [
@@ -379,7 +379,7 @@
       "art": {
         "scene": "embers",
         "variant": 3,
-        "image": "/cards/sherlock-holmes/eliminate-the-impossible.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-eliminate-the-impossible-1280-73050f737f29.webp"
       },
       "flavor": "",
       "effects": [
@@ -409,7 +409,7 @@
       "art": {
         "scene": "trail",
         "variant": 4,
-        "image": "/cards/sherlock-holmes/master-of-disguise.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-master-of-disguise-1280-bf6f2e12b98a.webp"
       },
       "flavor": "",
       "effects": [
@@ -444,7 +444,7 @@
       "art": {
         "scene": "lantern",
         "variant": 5,
-        "image": "/cards/sherlock-holmes/administer-aid.svg"
+        "image": "/artwork/sherlock-holmes/sherlock-holmes-administer-aid-1280-494c4081ade4.webp"
       },
       "flavor": "",
       "effects": [

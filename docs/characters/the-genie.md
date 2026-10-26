@@ -41,7 +41,9 @@ The shared engine still controls private information and validates commands. Con
 
 ## Original artwork and registration
 
-Twelve distinct original cut-paper SVG illustrations are installed under `apps/client/public/cards/the-genie/`. They use lamp, smoke, crown, chain and spell compositions in the existing muted palette. The hero figure in `apps/client/src/characters/art.ts` uses the standard miniature viewBox and an owner-colored sash. Original source drawings and the four-color preview remain in [the audit art directory](drafts/the-genie/art/). No ally art is required. There are no copied source pixels, traced paths, external fonts, scripts or remote references.
+The 2026-10-26 refresh installs fourteen original cinematic illustrations: a hero portrait, a genuinely transparent board figure and one scene for each of the twelve designs. The Genie retains blue-green skin, an ivory turban, gold ornaments and a smoke lower body. Identity references, untouched PNG masters, [exact prompts](../../artwork/characters/the-genie/prompts.json), [crop and board placement settings](../../artwork/characters/the-genie/sources.json), and [generation provenance with master hashes](../../artwork/characters/the-genie/provenance.json) are retained under `artwork/characters/the-genie/`. Codex integrated Imagegen generated each asset separately using the portrait as the identity reference; no source scan pixels were reused. No ally art is required.
+
+`pnpm artwork:prepare the-genie` produces forty hashed WebP files under `apps/client/public/artwork/the-genie/`: 320/640/1280 card widths, 256/512/1024 square portraits and one transparent 512-pixel figure. All variants total 4,006,314 bytes. The figure uses a 0.27 scale and bottom anchor, preserving the existing approximately 128-pixel apparent height; the shared renderer supplies pedestals, owner colors, selection and animation. The existing original SVG illustrations and miniature remain available as fallbacks. Repeated preparation preserves the manifest and filenames. Only card `art.image` paths changed in the canonical bundle; rules, quantities and values are unchanged.
 
 The full bundle is registered in `packages/content/src/characters.ts`; profile, miniature, ability mark and value-lock status visual are registered in the client. Cards share the existing hand, gallery and inspector. Cross-owner private choices reuse those same card components, including keyboard-accessible inspection.
 
@@ -62,3 +64,18 @@ Verification on 2026-10-25:
 **All four focused Genie browser scenarios pass** in one final run (23.7 seconds): both motion settings, real-socket selection/reload/payment, and all twelve gallery/inspector designs on desktop and landscape phone. No missing Genie assets, page errors or viewport overflow were detected. Reviewed final artifacts are in `/tmp/open-boards-genie-final/`; the standalone owner-color preview is in `drafts/the-genie/art/the-genie-owners.svg`. The isolated client disabled file watching for that final run to prevent other tasks’ live edits from reloading test sessions.
 
 The import retains the project’s opening hand, hand limit, exhaustion, elimination, reveal/discard timing, portals and free-for-all conventions. It does not claim complete Unmatched compatibility. No publishing or deployment was requested.
+
+## Artwork refresh verification — 2026-10-26
+
+All fourteen untouched masters and their prompt references were checked against provenance hashes. Derivative checks cover full design coverage, canonical paths, encoded byte counts, SHA-256 filename hashes, WebP dimensions and real token alpha (0–255). Preparation is repeatable with the final focal settings. The board figure is 129.6 pixels tall before board scaling and transfers 74,246 bytes once across four owners.
+
+Desktop (1440×1000) and landscape-phone (844×390) screenshots were reviewed for every card scene, the portrait and the figure. The raster-gallery review requested twelve 320-pixel card previews and twelve 640-pixel inspectors, plus portrait variants: 26 Genie image requests and 1,350,668 encoded bytes. Both motion modes cover selection, movement, defeat and revival across all four owner colors. Shared checks retain numbered allies, mixed SVG/raster rendering, failed-load fallbacks, shared pending/resolved textures and destruction during loading. The Genie has no allies; revival is exercised as a renderer lifecycle check, not an additional Genie rule.
+
+Verification results:
+
+- Full unit/integration suite: **715 tests pass across 54 files**. The focused Genie/artwork/texture/figure subset also passes all **46 tests**.
+- **15 distinct focused browser scenarios pass**, verified through the combined artwork/gameplay run and a focused rerun of the final inspector scenario. This covers all four Genie gameplay/gallery scenarios, the Genie raster gallery and both figure lifecycle motion settings, plus the shared artwork checks. Test selectors follow the current board-based choices and inline phone roster. The inspector test checks its actual viewport bounds while allowing the landing page to scroll vertically.
+- Final typecheck, ESLint, formatting and client/server builds pass. A transient typecheck failure in concurrently edited engine files was resolved by that work; no engine files were changed for the artwork refresh. Builds retain upstream Zod annotation and client bundle-size notices.
+- No missing Genie images or browser errors were detected. Final browser artifacts are under `/tmp/open-boards-genie-art-complete/` and `/tmp/open-boards-genie-inspector-final/`; crop-review artifacts are under `/tmp/open-boards-genie-art-final/`.
+
+The refresh changes presentation assets, their registration and artwork verification only. No deployment was performed.

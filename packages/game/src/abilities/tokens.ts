@@ -34,12 +34,17 @@ export function setupTokens(runtime: Runtime, task: Extract<Task, { type: 'token
       )
       .map((position) => ({
         id: position,
+        object: { type: 'space' as const, id: position },
         label: `Space ${runtime.defs.map.nodes.indexOf(position) + 1}`,
         tasks: [
           { ...task, type: 'token-place' as const, token: id, position, setup: true },
           { ...task, remaining },
         ],
       })),
+    1,
+    1,
+    task.provenance,
+    { fighter: task.owner },
   );
 }
 
@@ -67,6 +72,7 @@ export function chooseToken(
       )
       .map((t) => ({
         id: t.id,
+        object: { type: 'token' as const, id: t.id },
         label: `${t.name} · Space ${runtime.defs.map.nodes.indexOf(t.position!) + 1}`,
         tasks: runtime.effects(effect.effects, {
           ...binding,
@@ -77,6 +83,7 @@ export function chooseToken(
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 
@@ -125,6 +132,7 @@ export function moveToken(
         )
         .map((position) => ({
           id: position,
+          object: { type: 'space' as const, id: position },
           label: `Space ${runtime.defs.map.nodes.indexOf(position) + 1}`,
           tasks: [
             {
@@ -137,12 +145,13 @@ export function moveToken(
           ],
         })),
       ...(effect.distance !== undefined || effect.optional
-        ? [{ id: '$stay', label: 'Leave token in place', tasks: [] }]
+        ? [{ id: '$stay', decline: true, label: 'Leave token in place', tasks: [] }]
         : []),
     ],
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 
@@ -200,6 +209,7 @@ export function nextToken(runtime: Runtime, task: Extract<Task, { type: 'token-g
     'Choose the next token',
     remaining.map((id) => ({
       id,
+      object: { type: 'token' as const, id },
       label: runtime.state.boardTokens!.find((t) => t.id === id)!.name,
       tasks: [
         ...runtime.effects(task.effects, { ...task, chosenToken: id, tokenChooser: owner.player }),
@@ -209,5 +219,6 @@ export function nextToken(runtime: Runtime, task: Extract<Task, { type: 'token-g
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }

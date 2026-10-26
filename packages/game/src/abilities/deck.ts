@@ -33,6 +33,7 @@ export function searchCard(
     'Choose a pile to search',
     [...new Set(effect.zones)].map((zone) => ({
       id: zone,
+      object: { type: 'pile' as const, player: p.id, zone },
       label: `Search ${zone} first`,
       tasks: [
         {
@@ -46,6 +47,7 @@ export function searchCard(
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 
@@ -120,6 +122,7 @@ export function takeInspected(
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }
 
@@ -151,6 +154,7 @@ export function orderInspected(
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }
 
@@ -201,6 +205,7 @@ export function recoverCard(
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 
@@ -283,6 +288,7 @@ export function searchCards(
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 export function takeSearched(
@@ -344,6 +350,7 @@ export function returnToDeck(
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }
 

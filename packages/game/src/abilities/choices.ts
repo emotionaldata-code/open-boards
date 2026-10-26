@@ -1,6 +1,6 @@
 import { requireRule } from '../errors';
 import type { Runtime } from './runtime';
-import type { CardProvenance, ChoiceOption, Task } from './state';
+import type { CardProvenance, ChoiceOption, ChoiceSource, Task } from './state';
 
 export function openChoice(
   runtime: Runtime,
@@ -11,14 +11,32 @@ export function openChoice(
   min = 1,
   max = 1,
   provenance?: CardProvenance,
+  source?: ChoiceSource,
 ): void {
   if (!options.length || max === 0) return;
+  if (!source?.card && provenance) {
+    const owner = runtime.state.players.find((p) => p.id === player);
+    const card =
+      owner &&
+      [...owner.hand, ...owner.discard, ...(owner.ongoing ?? [])].find(
+        (c) => c.id === provenance.card,
+      );
+    if (card) source = { ...source, card: { ...card } };
+  }
   runtime.data.choice = {
     frame,
     id: `choice-${++runtime.data.next}`,
     player,
     prompt,
-    options: options.map(({ id, label, card }) => ({ id, label, ...(card ? { card } : {}) })),
+    options: options.map(({ id, label, card, object, value, decline }) => ({
+      id,
+      label,
+      ...(card ? { card } : {}),
+      ...(object ? { object } : {}),
+      ...(value !== undefined ? { value } : {}),
+      ...(decline ? { decline } : {}),
+    })),
+    ...(source ? { source } : {}),
     min,
     max,
     continuations: Object.fromEntries(

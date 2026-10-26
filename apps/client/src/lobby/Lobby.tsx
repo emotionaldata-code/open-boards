@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { RoomListing } from '@open-boards/protocol';
 import { http } from '../network/http';
+import { MapPreview } from './MapPreview';
 export function Lobby({
   onCreate,
   onJoin,
@@ -13,6 +14,7 @@ export function Lobby({
   const [rooms, setRooms] = useState<RoomListing[]>([]);
   const [id, setId] = useState(new URLSearchParams(location.search).get('room') ?? '');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const compactQuery = '(max-width: 680px) and (orientation: portrait), (max-height: 600px)';
   const [compact, setCompact] = useState(() => matchMedia(compactQuery).matches);
@@ -37,6 +39,9 @@ export function Lobby({
         })
         .catch((error) => {
           if (active) setError(error.message);
+        })
+        .finally(() => {
+          if (active) setLoading(false);
         });
     };
     load();
@@ -52,8 +57,9 @@ export function Lobby({
         <div>
           <h1>Find your table</h1>
         </div>
-        <span className="muted">King Solomon’s Mine · Basic rules</span>
+        <span className="muted">2 or 4 players · Basic rules</span>
       </div>
+      <MapPreview />
       <div className="lobby-grid">
         <section className="panel">
           <h2>Open a table</h2>
@@ -97,34 +103,40 @@ export function Lobby({
               {rooms.length} open {rooms.length === 1 ? 'table' : 'tables'}
             </span>
           </div>
-          {error ? (
-            <p className="error" role="alert">
-              {error}
-            </p>
-          ) : rooms.length === 0 ? (
-            <p className="empty">No open tables yet. Create one and invite a friend.</p>
-          ) : (
-            <ul>
-              {rooms
-                .slice(currentPage * pageSize, currentPage * pageSize + pageSize)
-                .map((room) => (
-                  <li key={room.id}>
-                    <div>
-                      <strong>{room.host}’s table</strong>
-                      <small className="muted">
-                        {room.id} · {room.capacity === 2 ? 'Duel' : 'Free-for-all'}
-                      </small>
-                    </div>
-                    <span>
-                      {room.seats} / {room.capacity} seated
-                    </span>
-                    <button disabled={busy} onClick={() => onJoin(room.id)}>
-                      Join
-                    </button>
-                  </li>
-                ))}
-            </ul>
-          )}
+          <div className="room-list-content" aria-busy={loading}>
+            {loading ? (
+              <p className="empty" role="status">
+                Finding open tables…
+              </p>
+            ) : error ? (
+              <p className="error" role="alert">
+                {error}
+              </p>
+            ) : rooms.length === 0 ? (
+              <p className="empty">No open tables yet. Create one and invite a friend.</p>
+            ) : (
+              <ul>
+                {rooms
+                  .slice(currentPage * pageSize, currentPage * pageSize + pageSize)
+                  .map((room) => (
+                    <li key={room.id}>
+                      <div>
+                        <strong>{room.host}’s table</strong>
+                        <small className="muted">
+                          {room.id} · {room.capacity === 2 ? 'Duel' : 'Free-for-all'}
+                        </small>
+                      </div>
+                      <span>
+                        {room.seats} / {room.capacity} seated
+                      </span>
+                      <button disabled={busy} onClick={() => onJoin(room.id)}>
+                        Join
+                      </button>
+                    </li>
+                  ))}
+              </ul>
+            )}
+          </div>
           {pages > 1 && (
             <nav className="pagination" aria-label="Room pages">
               <button disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)}>

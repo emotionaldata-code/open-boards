@@ -50,6 +50,7 @@ export function selectAttack(runtime: Runtime, binding: Binding): void {
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 

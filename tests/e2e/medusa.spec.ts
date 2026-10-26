@@ -134,34 +134,35 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       const card = page.locator('.game-card').filter({ hasText: 'Winged Frenzy' });
       await expect(card.locator('img')).toHaveJSProperty('complete', true);
       await card.click();
-      await page.getByRole('button', { name: 'Play Winged Frenzy', exact: true }).click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Choose the next fighter');
       await mountMedusa(page);
-      await choice().getByRole('button', { name: 'Medusa', exact: true }).focus();
+      await page.getByRole('button', { name: 'Medusa', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toContainText('Choose a destination');
-      await expect(choice().getByRole('button', { name: 'Space 2', exact: true })).toHaveCount(0); // Enemy occupies n1.
+      await expect(page.getByRole('button', { name: 'Choose space 02', exact: true })).toHaveCount(
+        0,
+      ); // Enemy occupies n1.
       await mountMedusa(page);
-      await choice().getByRole('button', { name: 'Space 3', exact: true }).click(); // Cross enemy n1 to n2.
+      await page.getByRole('button', { name: 'Choose space 03', exact: true }).click(); // Cross enemy n1 to n2.
       await expect(choice()).toContainText('Choose the next fighter');
-      await choice().getByRole('button', { name: 'Harpy 2', exact: true }).click();
+      await page.getByRole('button', { name: 'Harpy 2', exact: true }).click();
       await choice().getByRole('button', { name: 'Stay in place', exact: true }).click();
-      await expect(choice().getByRole('button', { name: 'Harpy 2', exact: true })).toHaveCount(0);
+      await expect(page.getByRole('button', { name: 'Harpy 2', exact: true })).toHaveCount(0);
       await expect(page.locator('.action-notice.is-visible')).toHaveCount(0, { timeout: 30000 });
       await page.screenshot({
         path: test.info().outputPath('medusa-desktop.png'),
         animations: 'disabled',
       });
       await page.setViewportSize({ width: 844, height: 390 });
-      await choice().getByRole('button', { name: 'Harpy 1', exact: true }).tap();
+      await page.getByRole('button', { name: 'Harpy 1', exact: true }).tap();
       await choice().getByRole('button', { name: 'Stay in place', exact: true }).tap();
       await expect(choice()).toContainText('Return a defeated ally');
       await mountMedusa(page);
-      await choice().getByRole('button', { name: 'Harpy 3', exact: true }).tap();
+      await page.getByRole('button', { name: 'Harpy 3', exact: true }).tap();
       await expect(choice()).toContainText('Choose where to return the ally');
       await mountMedusa(page);
-      await choice().getByRole('button', { name: 'Space 4', exact: true }).focus();
+      await page.getByRole('button', { name: 'Choose space 04', exact: true }).focus();
       await page.keyboard.press('Enter'); // n3 shares moved Medusa's gold zone.
       await expect(
         page.locator('.player-badge').first().locator('.badge-ally').filter({ hasText: 'Harpy 3' }),

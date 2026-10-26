@@ -184,7 +184,14 @@ it.each([false, true])(
     r.prepend(...r.effects(h.defs.cards.prepare.effects!, { frame, owner: 'p0:main' }));
     r.run();
     expect(h.state.resolution.choice?.player).toBe('p1');
-    expect(h.state.resolution.choice?.options.every((o) => !o.card)).toBe(true);
+    expect(h.state.resolution.choice?.options.flatMap((o) => (o.card ? [o.card] : []))).toEqual(
+      h.state.players[1].ongoing,
+    );
+    expect(
+      h.state.resolution.choice?.options.some((o) =>
+        h.state.players[1].hand.some((c) => c.id === o.card?.id),
+      ),
+    ).toBe(false);
     const before = h.state.players[1].hand.length;
     h.choose('ignore');
     expect(h.state.players[1].hand).toHaveLength(before);

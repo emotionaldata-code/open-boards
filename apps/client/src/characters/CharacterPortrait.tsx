@@ -4,7 +4,15 @@ import { profiles } from './profiles';
 import { ArtworkImage } from '../artwork/ArtworkImage';
 import { fighterArtwork, rasterAssets } from '../artwork/assets';
 
-export function CharacterPortrait({ character }: { character: string }) {
+export function CharacterPortrait({
+  character,
+  sizes = '(max-width: 600px) 80px, 160px',
+  priority = false,
+}: {
+  character: string;
+  sizes?: string;
+  priority?: boolean;
+}) {
   const profile = profiles[character] ?? profiles.medusa;
   return (
     <span
@@ -16,7 +24,8 @@ export function CharacterPortrait({ character }: { character: string }) {
       <ArtworkImage
         asset={rasterAssets[fighterArtwork[character]?.portrait]}
         fallback={`data:image/svg+xml,${encodeURIComponent(figureSvg(character, profile.accent))}`}
-        sizes="(max-width: 600px) 128px, 256px"
+        sizes={sizes}
+        priority={priority}
       />
     </span>
   );

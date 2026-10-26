@@ -1,0 +1,121 @@
+[
+  {
+    "id": "sherlock-holmes-portrait",
+    "kind": "portrait",
+    "source": "masters/sherlock-holmes-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "sherlock-holmes-token",
+    "kind": "token",
+    "source": "masters/sherlock-holmes-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "sherlock-holmes-dr-watson-portrait",
+    "kind": "portrait",
+    "source": "masters/dr-watson-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "sherlock-holmes-dr-watson-token",
+    "kind": "token",
+    "source": "masters/dr-watson-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "sherlock-holmes-feint",
+    "kind": "card",
+    "card": "sherlock-holmes-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-education-never-ends",
+    "kind": "card",
+    "card": "sherlock-holmes-education-never-ends",
+    "source": "masters/education-never-ends.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-study-methods",
+    "kind": "card",
+    "card": "sherlock-holmes-study-methods",
+    "source": "masters/study-methods.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-deduce-strategy",
+    "kind": "card",
+    "card": "sherlock-holmes-deduce-strategy",
+    "source": "masters/deduce-strategy.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-counterpunch",
+    "kind": "card",
+    "card": "sherlock-holmes-counterpunch",
+    "source": "masters/counterpunch.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-fixed-point-in-a-changing-age",
+    "kind": "card",
+    "card": "sherlock-holmes-fixed-point-in-a-changing-age",
+    "source": "masters/fixed-point-in-a-changing-age.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-the-game-is-afoot",
+    "kind": "card",
+    "card": "sherlock-holmes-the-game-is-afoot",
+    "source": "masters/the-game-is-afoot.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-service-revolver",
+    "kind": "card",
+    "card": "sherlock-holmes-service-revolver",
+    "source": "masters/service-revolver.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-elementary",
+    "kind": "card",
+    "card": "sherlock-holmes-elementary",
+    "source": "masters/elementary.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-confirm-suspicion",
+    "kind": "card",
+    "card": "sherlock-holmes-confirm-suspicion",
+    "source": "masters/confirm-suspicion.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-eliminate-the-impossible",
+    "kind": "card",
+    "card": "sherlock-holmes-eliminate-the-impossible",
+    "source": "masters/eliminate-the-impossible.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-master-of-disguise",
+    "kind": "card",
+    "card": "sherlock-holmes-master-of-disguise",
+    "source": "masters/master-of-disguise.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "sherlock-holmes-administer-aid",
+    "kind": "card",
+    "card": "sherlock-holmes-administer-aid",
+    "source": "masters/administer-aid.png",
+    "focal": [0.5, 0.5]
+  }
+]

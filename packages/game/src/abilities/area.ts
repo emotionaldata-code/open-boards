@@ -29,12 +29,14 @@ export function chooseArea(runtime: Runtime, binding: Binding, effect: AreaEffec
       .filter((n) => effect.range === 'any' || sharesZone(runtime.defs.map, owner.position, n))
       .map((space) => ({
         id: space,
+        object: { type: 'space' as const, id: space },
         label: `Space ${runtime.defs.map.nodes.indexOf(space) + 1}`,
         tasks: [{ ...binding, type: 'area-adjacent', effect, space }],
       })),
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 
@@ -57,12 +59,14 @@ export function chooseAdjacent(
     'Choose an adjacent space',
     neighbors.map((space) => ({
       id: space,
+      object: { type: 'space' as const, id: space },
       label: `Space ${runtime.defs.map.nodes.indexOf(space) + 1}`,
       tasks: [{ ...task, type: 'area-apply', spaces: [task.space, space] }],
     })),
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }
 

@@ -19,7 +19,6 @@ import { usePresentation } from '../presentation/usePresentation';
 import { EventDialog } from '../presentation/EventDialog';
 import { Dialog } from '../ui/Dialog';
 import { Hand } from './Hand';
-import { AbilityChoice } from './AbilityChoice';
 import { MatchDetails } from './MatchDetails';
 import { CardPrint } from '../cards/CardPrint';
 import { FighterPicker } from './FighterPicker';
@@ -46,15 +45,15 @@ function instruction(game: GameView, user: User): string {
   if (game.phase.type === 'choosing-movement')
     return game.phase.player === user.id
       ? game.maneuver?.boostable
-        ? 'Choose a space or a card to boost movement.'
-        : 'Choose a space or stay.'
+        ? 'Choose a fighter, then a space. Click a card to boost movement.'
+        : 'Choose a fighter, then a space or its current space to stay.'
       : 'Your rival is choosing a move.';
   if (game.phase.type === 'discarding')
     return game.phase.player === user.id
       ? `Choose ${game.hand.length - 7} cards to discard.`
       : 'Your rival is discarding to seven cards.';
   return game.players[game.turn].id === user.id
-    ? ''
+    ? 'Click a card to play it, or prepare an attack and choose a rival.'
     : `${game.players[game.turn].name} is taking their turn.`;
 }
 export function Game({
@@ -65,6 +64,7 @@ export function Game({
   onCommand,
   onLeave,
   connected,
+  commandReset = 0,
 }: {
   room: RoomView;
   user: User;
@@ -73,36 +73,59 @@ export function Game({
   onCommand: (command: Command) => void;
   onLeave: () => void;
   connected: boolean;
+  commandReset?: number;
 }) {
   const game = room.game!;
   const self = game.players.find((p) => p.id === user.id)!;
   const phase = game.phase;
-  const [selected, setSelected] = useState<string[]>([]);
-  const [target, setTarget] = useState('');
-  const [selectedFighter, setSelectedFighter] = useState('');
+  const [selection, setSelection] = useState<{ cards: string[]; fighter: string }>({
+    cards: [],
+    fighter: '',
+  });
+  const selected = selection.cards;
+  const selectedFighter = selection.fighter;
+  const pending = useRef(false);
+  const [sending, setSending] = useState(false);
   const board = useRef<BoardPlayback>(null);
   const presentation = usePresentation(events, reset, (event, active) =>
     board.current!.present(event, active),
   );
   const [confirmLeave, setConfirmLeave] = useState(false);
   useEffect(() => {
-    setSelected([]);
-    setTarget('');
-  }, [game.revision]);
+    setSelection({ cards: [], fighter: '' });
+    pending.current = false;
+    setSending(false);
+  }, [game.revision, reset]);
+  useEffect(() => {
+    pending.current = false;
+    setSending(false);
+  }, [commandReset, connected]);
+  useEffect(() => {
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelection((old) => ({ ...old, cards: [] }));
+    };
+    window.addEventListener('keydown', escape);
+    return () => window.removeEventListener('keydown', escape);
+  }, []);
   const locked =
+    sending ||
     presentation.reviewing ||
     game.paused ||
     !connected ||
     (self.eliminated && !game.choice) ||
     phase.type === 'finished';
   const myTurn =
-    game.players[game.turn].id === user.id && phase.type === 'taking-actions' && !locked;
+    game.players[game.turn].id === user.id &&
+    phase.type === 'taking-actions' &&
+    (!locked || sending);
   const defending =
     phase.type === 'awaiting-defense' &&
     fighterById(game, phase.defender)?.player === user.id &&
-    !locked;
-  const moving = phase.type === 'choosing-movement' && phase.player === user.id && !locked;
-  const placing = phase.type === 'placing-allies' && phase.player === user.id && !locked;
+    (!locked || sending);
+  const moving =
+    phase.type === 'choosing-movement' && phase.player === user.id && (!locked || sending);
+  const placing =
+    phase.type === 'placing-allies' && phase.player === user.id && (!locked || sending);
   const available = ownedFighters(game, user.id).filter((f) =>
     placing
       ? f.position === null
@@ -116,7 +139,8 @@ export function Game({
       : (available.find((f) => f.id === selectedFighter) ??
         available[0] ??
         mainFighter(game, user.id));
-  const discarding = phase.type === 'discarding' && phase.player === user.id && !locked;
+  const discarding =
+    phase.type === 'discarding' && phase.player === user.id && (!locked || sending);
   const chosen = game.hand.find((c) => c.id === selected[0]);
   const chosenDefinition = chosen ? basic.cards[chosen.definition] : null;
   const paths = moving
@@ -130,24 +154,103 @@ export function Game({
       ? game.fighters.filter((f) => canAttack(fighter, f, basic))
       : [];
   const choice = game.choice;
-  const highlights = choice
-    ? choice.options.map((o) => o.id).filter((id) => basic.map.nodes.includes(id))
-    : placing
-      ? deploymentSpaces(game, fighter.id, basic.map)
-      : moving
-        ? Object.keys(paths)
-        : targets.map((p) => p.position!);
-  function node(id: string) {
-    if (choice && highlights.includes(id) && !locked)
-      onCommand({ type: 'choose', choice: choice.id, options: [id] });
-    else if (placing && highlights.includes(id))
-      onCommand({ type: 'place-ally', fighter: fighter.id, position: id });
-    else if (moving && paths[id]) onCommand({ type: 'move', fighter: fighter.id, path: paths[id] });
-    else {
-      const player = targets.find((p) => p.position === id);
-      if (player) setTarget(player.id);
+  const highlights = locked
+    ? []
+    : choice
+      ? choice.options.flatMap((o) => (o.object?.type === 'space' ? [o.object.id] : []))
+      : placing
+        ? deploymentSpaces(game, fighter.id, basic.map)
+        : moving
+          ? Object.keys(paths)
+          : [];
+  function send(command: Command) {
+    if (locked || pending.current) return;
+    pending.current = true;
+    setSending(true);
+    try {
+      onCommand(command);
+    } catch (error) {
+      pending.current = false;
+      setSending(false);
+      throw error;
     }
   }
+  function choose(ids: string[]) {
+    if (choice) send({ type: 'choose', choice: choice.id, options: ids });
+  }
+  function select(id: string) {
+    if (locked) return;
+    if (choice) {
+      const option = choice.options.find((o) => o.id === id);
+      if (!option) return;
+      if (option.value !== undefined) setSelection((old) => ({ ...old, cards: [id] }));
+      else if (choice.min === 1 && choice.max === 1) choose([id]);
+      else
+        setSelection((old) => ({
+          ...old,
+          cards: old.cards.includes(id)
+            ? old.cards.filter((c) => c !== id)
+            : old.cards.length < choice.max
+              ? [...old.cards, id]
+              : old.cards,
+        }));
+      return;
+    }
+    const card = game.hand.find((c) => c.id === id);
+    if (!card) return;
+    if (discarding) {
+      if (game.hand.length - 7 === 1) send({ type: 'discard', cards: [id] });
+      else
+        setSelection((old) => ({
+          ...old,
+          cards: old.cards.includes(id)
+            ? old.cards.filter((c) => c !== id)
+            : old.cards.length < game.hand.length - 7
+              ? [...old.cards, id]
+              : old.cards,
+        }));
+    } else if (defending) send({ type: 'defend', card: id });
+    else if (moving && game.maneuver?.boostable) send({ type: 'boost-maneuver', card: id });
+    else if (myTurn && basic.cards[card.definition].category === 'action')
+      send({ type: 'play-action', fighter: fighter.id, card: id });
+    else if (myTurn) setSelection((old) => ({ ...old, cards: old.cards.includes(id) ? [] : [id] }));
+  }
+  function selectFighter(id: string) {
+    if (locked) return;
+    const option = choice?.options.find((o) => o.object?.type === 'fighter' && o.object.id === id);
+    if (option) select(option.id);
+    else if (targets.some((f) => f.id === id) && chosen)
+      send({ type: 'attack', fighter: fighter.id, card: chosen.id, target: id });
+    else if (moving && fighter.id === id) send({ type: 'move', fighter: id, path: [] });
+    else if (available.some((f) => f.id === id)) setSelection({ fighter: id, cards: [] });
+  }
+  function node(id: string) {
+    if (locked) return;
+    const option = choice?.options.find((o) => o.object?.type === 'space' && o.object.id === id);
+    if (option) select(option.id);
+    else if (placing && highlights.includes(id))
+      send({ type: 'place-ally', fighter: fighter.id, position: id });
+    else if (moving && paths[id]) send({ type: 'move', fighter: fighter.id, path: paths[id] });
+  }
+  const interactiveFighters = locked
+    ? []
+    : choice
+      ? choice.options.flatMap((o) => (o.object?.type === 'fighter' ? [o.object.id] : []))
+      : [
+          ...(myTurn || moving
+            ? available.filter((f) => f.position !== null).map((f) => f.id)
+            : []),
+          ...targets.map((f) => f.id),
+        ];
+  const prompt = choice
+    ? choice.prompt
+    : chosen && myTurn
+      ? targets.length
+        ? 'Click a highlighted rival to attack. Click the card again or press Esc to cancel.'
+        : 'No rivals in range. Maneuver to get closer.'
+      : moving
+        ? `${game.maneuver?.remaining.length} left · Move ${maneuverMovement(game, fighter, basic)}${game.maneuver?.boostable ? ' · Click card to boost' : ' · Choose a space'}`
+        : instruction(game, user);
   const ended = phase.type === 'finished';
   return (
     <>
@@ -162,11 +265,14 @@ export function Game({
           <span className="turn-label">
             {ended ? 'Final board' : `${game.players[game.turn].name}’s turn`}
           </span>
-          <span className="action-count">
+          <span
+            className="action-count"
+            aria-label={ended ? undefined : `${game.actions} actions remaining`}
+          >
             {!ended && (
               <>
-                <i className={game.actions > 0 ? 'filled' : ''} />
-                <i className={game.actions > 1 ? 'filled' : ''} />
+                <i aria-hidden="true" className={game.actions > 0 ? 'filled' : ''} />
+                <i aria-hidden="true" className={game.actions > 1 ? 'filled' : ''} />
                 <span>{game.actions} actions</span>
               </>
             )}
@@ -182,37 +288,40 @@ export function Game({
             <Board
               ref={board}
               game={game}
-              selected={target || fighter.id}
+              selected={choice?.source?.fighter ?? fighter.id}
               highlights={highlights}
               events={events}
               reset={reset}
               onNode={node}
+              interactiveFighters={interactiveFighters}
+              fighterLabels={Object.fromEntries(
+                choice?.options.flatMap((o) =>
+                  o.object?.type === 'fighter' ? [[o.object.id, o.label]] : [],
+                ) ?? [],
+              )}
+              targetFighters={targets.map((f) => f.id)}
+              onFighter={selectFighter}
+              interactiveTokens={
+                locked
+                  ? []
+                  : choice?.options.flatMap((o) =>
+                      o.object?.type === 'token' ? [o.object.id] : [],
+                    )
+              }
+              onToken={(id) => {
+                const option = choice?.options.find(
+                  (o) => o.object?.type === 'token' && o.object.id === id,
+                );
+                if (option) select(option.id);
+              }}
             />
-            {(available.length > 1 || moving || placing || defending) && (
+            {placing && (
               <div className="board-controls">
                 <FighterPicker
-                  fighters={defending ? [fighter] : available}
+                  fighters={available}
                   selected={fighter.id}
-                  disabled={defending || locked || phase.type === 'ability-choice'}
-                  label={
-                    placing
-                      ? 'Deploy'
-                      : moving
-                        ? 'Move'
-                        : defending
-                          ? 'Defending'
-                          : 'Acting fighter'
-                  }
-                  hint={
-                    moving
-                      ? `${game.maneuver?.remaining.length} fighters left · move up to ${maneuverMovement(game, fighter, basic)}`
-                      : undefined
-                  }
-                  onSelect={(id) => {
-                    setSelectedFighter(id);
-                    setSelected([]);
-                    setTarget('');
-                  }}
+                  disabled={locked}
+                  onSelect={(id) => setSelection({ fighter: id, cards: [] })}
                 />
               </div>
             )}
@@ -228,30 +337,22 @@ export function Game({
                 ))}
               </div>
             </section>
-          ) : choice ? (
-            <AbilityChoice
-              key={choice.id}
-              choice={choice}
-              disabled={locked}
-              onCommand={onCommand}
-            />
           ) : (
             <Hand
               game={game}
               fighter={fighter}
               eliminated={self.eliminated}
               ended={ended}
-              prompt={`${instruction(game, user)}${presentation.reviewing ? ' Review recent events to continue.' : ''}`}
+              prompt={`${prompt}${presentation.reviewing ? ' Review recent events to continue.' : ''}`}
               myTurn={myTurn}
               moving={moving}
               defending={defending}
               discarding={discarding}
               selected={selected}
-              setSelected={setSelected}
-              target={target}
-              targets={targets}
-              chosen={chosen}
-              onCommand={onCommand}
+              disabled={locked}
+              onSelect={select}
+              onChoose={choose}
+              onCommand={send}
             />
           )}
         </div>

@@ -6,6 +6,8 @@ import type {
   BonusAttack,
   GameState,
   Outcome,
+  ChoiceOption,
+  ChoiceSource,
 } from '@open-boards/game';
 const cardId = z.string().min(1).max(100);
 export const commandSchema = z.object({
@@ -77,7 +79,8 @@ export interface ChoiceView {
   id: string;
   player: string;
   prompt: string;
-  options: { id: string; label: string; card?: Card }[];
+  source?: ChoiceSource;
+  options: ChoiceOption[];
   min: number;
   max: number;
 }

@@ -133,3 +133,56 @@
     flex-basis: 100%;
   }
 }
+
+.draw-pile,
+.choice-pile {
+  flex: 0 0 100px;
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 12px;
+}
+.pile-back {
+  display: grid;
+  place-content: center;
+  min-height: 90px;
+  padding: 8px;
+  border: 3px double var(--muted);
+  background: var(--raised);
+  font-family: Georgia, serif;
+}
+.choice-tile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 240px;
+  min-width: 100px;
+  min-height: 44px;
+  white-space: normal;
+}
+.choice-tile .character-portrait {
+  width: 44px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.hand > .ability-options {
+  display: contents;
+}
+.choice-source {
+  max-width: 280px;
+  font-size: 12px;
+  align-self: center;
+}
+.hand select {
+  min-height: 44px;
+}
+.draw-pile {
+  scroll-snap-align: start;
+}
+.hand .ability-options > :is(button, form) {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}

@@ -2,38 +2,73 @@
 .waiting-page {
   display: flex;
   flex-direction: column;
-  max-width: 1180px;
+  max-width: 1200px;
   width: 100%;
   margin: auto;
-  justify-content: center;
+  padding-block: 32px 48px;
+  flex: 1 0 auto;
 }
 .lobby-grid,
 .waiting-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  min-height: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+.map-preview {
+  margin: 0 0 24px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.map-preview-art {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--ground);
+}
+.map-preview-art > img,
+.map-preview-art > svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.map-preview figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+}
+.map-preview figcaption strong {
+  font:
+    22px Georgia,
+    serif;
+}
+.map-preview figcaption span {
+  color: var(--muted);
+  font-size: 13px;
 }
 .create-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin: 20px 0 28px;
+  margin: 20px 0 32px;
 }
 .create-options button {
   display: grid;
-  gap: 8px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-2);
   text-align: left;
-  padding: 18px;
+  padding: 20px;
 }
 .create-options strong {
-  font:
-    32px Georgia,
-    serif;
-  color: var(--accent);
-}
-.create-options small {
-  color: var(--muted);
+  font-size: 30px;
+  font-weight: 400;
 }
 .inline-form {
   display: flex;
@@ -43,6 +78,18 @@
 .room-list {
   display: flex;
   flex-direction: column;
+  min-height: 302px;
+}
+.room-list .section-heading {
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+.room-list .section-heading > span {
+  font-size: 12px;
+}
+.room-list-content {
+  min-height: 186px;
 }
 .room-list ul {
   list-style: none;
@@ -50,34 +97,34 @@
   padding: 0;
 }
 .room-list li {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-2);
   padding: 16px 0;
-  border-bottom: 1px solid #343d32;
+  border-bottom: 1px solid var(--line);
 }
 .room-list li > div {
-  flex: 1;
   min-width: 0;
 }
 .room-list strong {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .room-list small {
   display: block;
   margin-top: 6px;
+  overflow-wrap: anywhere;
 }
 .room-list li > span {
   font-size: 12px;
   color: var(--muted);
+  white-space: nowrap;
 }
 .empty {
   color: var(--muted);
-  margin: auto;
-  padding: 32px 16px;
+  margin: 0;
+  padding: 48px 16px;
   text-align: center;
   line-height: 1.6;
 }
@@ -91,40 +138,159 @@
 .seats {
   list-style: none;
   padding: 0;
-  margin: 12px 0 20px;
+  margin: 8px 0 0;
 }
 .seats li {
   display: flex;
-  gap: 14px;
+  gap: var(--space-2);
   align-items: center;
+  min-height: 96px;
   padding: 16px 0;
-  border-bottom: 1px solid #343d32;
+  border-bottom: 1px solid var(--line);
+}
+.seats li > .character-portrait,
+.open-seat {
+  width: 56px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+}
+.open-seat {
+  display: grid;
+  place-items: center;
+  background: var(--raised);
+  color: var(--muted);
+  font-size: 24px;
+  font-weight: 300;
+}
+.seats strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-weight: 500;
 }
 .seats small {
   display: block;
-  margin-top: 5px;
+  margin-top: 6px;
+  line-height: 1.4;
 }
-.seat-number {
-  font:
-    26px Georgia,
-    serif;
-  color: var(--accent);
+.seats li > span:last-child {
+  font-size: 12px;
+  flex-shrink: 0;
 }
 .ready {
-  color: #b3d3ae;
+  color: var(--success);
 }
 .invite {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 12px;
+  align-items: stretch;
+  gap: var(--space-2);
 }
-.invite label {
-  width: 100%;
-}
-.invite p {
+.invite > h2,
+.invite > p {
   margin: 0;
 }
-.invite p:last-child {
-  margin-top: auto;
+.invite .map-preview {
+  margin: -24px -24px 8px;
+  border-radius: 0;
+}
+.invite .map-preview-art {
+  height: 160px;
+}
+.invite .map-preview figcaption {
+  padding: 16px 24px;
+}
+.invite .map-preview figcaption strong {
+  font-size: 20px;
+}
+.invite .map-preview figcaption span {
+  display: none;
+}
+.invite > button {
+  align-self: start;
+}
+.invite > [role='status'] {
+  font-size: 13px;
+}
+.invite > p.muted {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.match-controls {
+  padding-block: 8px 0;
+}
+.match-controls .button-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.match-controls p {
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+@media (max-width: 760px) {
+  .lobby-page,
+  .waiting-page {
+    padding-block: 24px 32px;
+  }
+  .lobby-grid,
+  .waiting-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .map-preview-art {
+    height: 150px;
+  }
+  .map-preview figcaption {
+    align-items: start;
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 6px;
+  }
+  .map-preview figcaption strong {
+    font-size: 22px;
+  }
+  .create-options {
+    margin-bottom: 28px;
+  }
+  .create-options button {
+    padding: 16px 12px;
+    gap: 12px;
+  }
+  .inline-form {
+    gap: var(--space-1);
+  }
+  .inline-form button {
+    padding-inline: 12px;
+  }
+  .room-list li {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 16px;
+  }
+  .room-list li > div {
+    grid-column: 1;
+  }
+  .room-list li > span {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .room-list li > button {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+  .seats li {
+    gap: 12px;
+  }
+  .invite .map-preview {
+    margin: -20px -20px 8px;
+  }
+}
+@media (min-width: 761px) and (max-height: 600px) {
+  .lobby-page,
+  .waiting-page {
+    padding-top: 16px;
+  }
+  .map-preview-art {
+    height: 140px;
+  }
 }

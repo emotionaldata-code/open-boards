@@ -48,7 +48,7 @@
       "description": "If you won the combat, you may discard 2 cards to gain 1 action.",
       "art": {
         "scene": "ward",
-        "image": "/cards/the-genie/your-wish-is-my-command.svg"
+        "image": "/artwork/the-genie/the-genie-your-wish-is-my-command-1280-e3cbaf989ac5.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -99,7 +99,7 @@
       "description": "Your opponent draws 1 card. Draw 3 cards.",
       "art": {
         "scene": "lantern",
-        "image": "/cards/the-genie/wishing-for-more-wishes.svg"
+        "image": "/artwork/the-genie/the-genie-wishing-for-more-wishes-1280-9e334eaeab97.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -133,7 +133,7 @@
       "description": "Gain 1 action and choose one effect:\n- draw 5 cards\n- for the rest of your turn, your cards' values are 4 and cannot be changed\n- each opponent discards 2 cards",
       "art": {
         "scene": "ward",
-        "image": "/cards/the-genie/three-wishes.svg"
+        "image": "/artwork/the-genie/the-genie-three-wishes-1280-083e9e521562.webp"
       },
       "flavor": "What wouldst thou have?",
       "effects": [
@@ -199,7 +199,7 @@
       "description": "The value of your opponent's card is equal to its BOOST value.",
       "art": {
         "scene": "bolt",
-        "image": "/cards/the-genie/this-is-no-parlor-trick.svg"
+        "image": "/artwork/the-genie/the-genie-this-is-no-parlor-trick-1280-ea520f7ad6f8.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -232,7 +232,7 @@
       "description": "Draw cards equal to the amount of combat damage you took.",
       "art": {
         "scene": "shield",
-        "image": "/cards/the-genie/prisoners-torment.svg"
+        "image": "/artwork/the-genie/the-genie-prisoners-torment-1280-7d344e12c907.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -263,7 +263,7 @@
       "description": "Look at your opponent's hand and choose a card for them to discard.",
       "art": {
         "scene": "bastion",
-        "image": "/cards/the-genie/ive-made-sultans-out-of-less.svg"
+        "image": "/artwork/the-genie/the-genie-ive-made-sultans-out-of-less-1280-9bdee917124f.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -294,7 +294,7 @@
       "description": "You may discard 2 cards to deal 2 damage to an adjacent opposing fighter.",
       "art": {
         "scene": "fire",
-        "image": "/cards/the-genie/imprisoned-wrath.svg"
+        "image": "/artwork/the-genie/the-genie-imprisoned-wrath-1280-f85535dd1cf0.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -344,7 +344,7 @@
       "description": "You may deal 1 damage to an adjacent fighter.",
       "art": {
         "scene": "blade",
-        "image": "/cards/the-genie/i-grant-you-death.svg"
+        "image": "/artwork/the-genie/the-genie-i-grant-you-death-1280-ea1863515134.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -382,7 +382,7 @@
       "description": "Place the Genie in any empty space. Then, deal 1 damage to each adjacent fighter.",
       "art": {
         "scene": "trail",
-        "image": "/cards/the-genie/i-am-freed.svg"
+        "image": "/artwork/the-genie/the-genie-i-am-freed-1280-919778ba7a38.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -433,7 +433,7 @@
       "description": "The Genie recovers 4 health.",
       "art": {
         "scene": "lantern",
-        "image": "/cards/the-genie/back-in-the-lamp.svg"
+        "image": "/artwork/the-genie/the-genie-back-in-the-lamp-1280-b7a41b2dae54.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -462,7 +462,7 @@
       "description": "If you lost the combat, deal 1 damage to an adjacent opposing fighter.",
       "art": {
         "scene": "embers",
-        "image": "/cards/the-genie/careful-what-you-wish-for.svg"
+        "image": "/artwork/the-genie/the-genie-careful-what-you-wish-for-1280-0c7f88f1db93.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [
@@ -503,7 +503,7 @@
       "description": "Cancel all effects on your opponent's card.",
       "art": {
         "scene": "ward",
-        "image": "/cards/the-genie/feint.svg"
+        "image": "/artwork/the-genie/the-genie-feint-1280-fcf42f70f989.webp"
       },
       "flavor": "What wouldst thou have?",
       "abilities": [

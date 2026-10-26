@@ -1,0 +1,186 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-26",
+  "authorship": "Original generated illustrations; no third-party card artwork reused.",
+  "references": ["references/sherlock-holmes.png", "references/dr-watson.png"],
+  "prompts": "prompts.json",
+  "generationLog": "generation-log.json",
+  "notes": [
+    "All 17 generation requests succeeded. Selected generator originals are preserved unchanged and matched to the generator output by SHA-256.",
+    "Portraits were generated first and inspected, then reused as identity references for figures and scenes.",
+    "The literary characters and repository identity notes informed subject matter; no source-deck images were copied."
+  ],
+  "assets": [
+    {
+      "id": "sherlock-holmes-portrait",
+      "master": "masters/sherlock-holmes-portrait.png",
+      "sha256": "945508fc612536f82d1a4a10a49060ea1bbbdea155d22eb96829b6d9e9fbad4c",
+      "prompt": "prompts.json#sherlock-holmes-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-dd1f7999-e29e-4e19-9821-2302839c25f3.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-token",
+      "master": "masters/sherlock-holmes-token.png",
+      "sha256": "d7fb66bebd0e7481aebc561115372f7b3fd2318d571221abb8a726a0fdab2ffc",
+      "prompt": "prompts.json#sherlock-holmes-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-41fbc8c6-8909-4f42-8135-311aa1b3f21c.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "sherlock-holmes-dr-watson-portrait",
+      "master": "masters/dr-watson-portrait.png",
+      "sha256": "1edf8e5d763b0b5673e17f0046f3c1e77083349339296f2f42a33926c576d9a7",
+      "prompt": "prompts.json#sherlock-holmes-dr-watson-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-9cc96356-91da-45b4-9a20-73a8a0763c04.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-dr-watson-token",
+      "master": "masters/dr-watson-token.png",
+      "sha256": "196e4eaba7c53e580ffb5299efd5d4eb154679c433aaf07ab750fbe9057bdf9e",
+      "prompt": "prompts.json#sherlock-holmes-dr-watson-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-ab445d3a-bbd9-47b8-9946-83cb29934b95.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "sherlock-holmes-feint",
+      "master": "masters/feint.png",
+      "sha256": "c50d25a4924af20d7d8e565b00657aa09802fb9a61db6ee79b575a9af17551e4",
+      "prompt": "prompts.json#sherlock-holmes-feint",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-5a5f7c70-efc3-401b-b47e-31f9ebcbf82e.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-education-never-ends",
+      "master": "masters/education-never-ends.png",
+      "sha256": "6e0a6bcca05d40ccb4ae39f35bc9699d6e7daa1655e1172426012eab240d8cf2",
+      "prompt": "prompts.json#sherlock-holmes-education-never-ends",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-8a225023-3a5c-496e-b5e3-faa4874407f5.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-study-methods",
+      "master": "masters/study-methods.png",
+      "sha256": "b06839aa707ae67ca5b931435d5f6a93f4c96e2502ea02a9035e715ed3fe5df5",
+      "prompt": "prompts.json#sherlock-holmes-study-methods",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-8fc2e4da-d967-4c60-89e6-3c65aa99e57c.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-deduce-strategy",
+      "master": "masters/deduce-strategy.png",
+      "sha256": "921a010a376fcc12dcded32c84e90c0a0a5e809708a61c3f8de24fae7f11edaf",
+      "prompt": "prompts.json#sherlock-holmes-deduce-strategy",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-661229f9-d077-4e5a-b3c5-2a342d2074c3.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-counterpunch",
+      "master": "masters/counterpunch.png",
+      "sha256": "a3c21ffa70f9e4961d96a2f39b5d775aae49a78877b38da4f27fa5f6d5fc84c4",
+      "prompt": "prompts.json#sherlock-holmes-counterpunch",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-70da7ea2-6b6a-49d2-bcc3-4a0779bb823e.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-fixed-point-in-a-changing-age",
+      "master": "masters/fixed-point-in-a-changing-age.png",
+      "sha256": "097cb18c50ef23dcbcdce89b8a5093d2d6e0be828a3b26a37c98ddd29e77ddce",
+      "prompt": "prompts.json#sherlock-holmes-fixed-point-in-a-changing-age",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-5adf57f1-b493-43ef-9618-b396bd830dc7.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-the-game-is-afoot",
+      "master": "masters/the-game-is-afoot.png",
+      "sha256": "86e14eb81e0b5c459d061bf0ad4867f863b2e78db055d4a2945a8dceca17313b",
+      "prompt": "prompts.json#sherlock-holmes-the-game-is-afoot",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-e4a4a2dd-2609-43e3-90cb-d937217c2df0.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-service-revolver",
+      "master": "masters/service-revolver.png",
+      "sha256": "ed5bd4ba27effc5f43b486b9902d09d6087241417fb01df3c40d9f46b75f44ec",
+      "prompt": "prompts.json#sherlock-holmes-service-revolver",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-c401f1be-9270-41a2-9883-7925c8298334.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-elementary",
+      "master": "masters/elementary.png",
+      "sha256": "bb85dae80f4935664839801f4a3b2e25b827723b88adc119377090e7bb2bad20",
+      "prompt": "prompts.json#sherlock-holmes-elementary",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-609559c0-fb7c-4a7c-8e0e-c4099b538032.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-confirm-suspicion",
+      "master": "masters/confirm-suspicion.png",
+      "sha256": "8db68a6fe590913fc1ea401fddec39b2099de27add6de4530710e3ad45acebff",
+      "prompt": "prompts.json#sherlock-holmes-confirm-suspicion",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-3b3988f0-9d9c-40e6-ac50-e6ed3c638856.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-eliminate-the-impossible",
+      "master": "masters/eliminate-the-impossible.png",
+      "sha256": "b21e8f135dd7fd9d860258023bb0419cb1b590ccbfa360feb16fd00fa1de060d",
+      "prompt": "prompts.json#sherlock-holmes-eliminate-the-impossible",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-d0ae8bf2-a9c8-427b-a0cb-4534c324fc6b.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-master-of-disguise",
+      "master": "masters/master-of-disguise.png",
+      "sha256": "4db4fa1f9221850296bf5b308efa9286a0d92d49d0b70f7842ea37a204df283d",
+      "prompt": "prompts.json#sherlock-holmes-master-of-disguise",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-457a1cfe-7ad4-4872-b517-545752c71303.png",
+      "width": 1585,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sherlock-holmes-administer-aid",
+      "master": "masters/administer-aid.png",
+      "sha256": "c5d445233158b241203509f09f2ce6d8cb223ad33060ade81c4b1366c8b5d96f",
+      "prompt": "prompts.json#sherlock-holmes-administer-aid",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-8ae5e8f9-e75b-4f7a-a009-762d7446d578.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

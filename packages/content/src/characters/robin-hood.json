@@ -143,6 +143,7 @@
                     },
                     {
                       "id": "draw",
+                      "decline": true,
                       "label": "Let Robin Hood draw 1 card",
                       "effects": [
                         {

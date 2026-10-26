@@ -31,12 +31,15 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                     } as React.CSSProperties
                   }
                   className={`player-badge ${p.eliminated ? 'eliminated' : ''} ${game.turn === i && game.phase.type !== 'finished' ? 'active-player' : ''}`}
+                  aria-current={
+                    game.turn === i && game.phase.type !== 'finished' ? 'step' : undefined
+                  }
                   onClick={() => setDetail(p.id)}
                   aria-label={`${p.name}${p.id === selfId ? ' (you)' : ''}: ${f.hp} health, ${movement(f, basic)} movement, ${p.handCount} cards. Player details`}
                   aria-describedby={allies.length ? `allies-${p.id}` : undefined}
                 >
                   <span className={`player-sigil seat-${i}`}>
-                    <CharacterPortrait character={p.character} />
+                    <CharacterPortrait character={p.character} sizes="64px" />
                   </span>
                   <span className="badge-name">
                     {p.name}
@@ -89,7 +92,10 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                   aria-label={`${p.name}: Discards · ${p.discard.length}`}
                   onClick={() => setDiscardId(p.id)}
                 >
-                  Discards · {p.discard.length}
+                  <span>
+                    Discards<span className="discard-separator"> · </span>
+                  </span>
+                  <span className="discard-count">{p.discard.length}</span>
                 </button>
               </div>
             );

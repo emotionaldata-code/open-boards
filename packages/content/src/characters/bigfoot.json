@@ -75,7 +75,8 @@
                       "type": "move",
                       "distance": 2
                     }
-                  ]
+                  ],
+                  "target": "self"
                 },
                 {
                   "id": "opponent",
@@ -86,7 +87,8 @@
                       "target": "opponent",
                       "distance": 2
                     }
-                  ]
+                  ],
+                  "target": "opponent"
                 }
               ]
             }

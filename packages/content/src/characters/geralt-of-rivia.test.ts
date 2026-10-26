@@ -411,7 +411,14 @@ it.each(['ignore', 'allow'])(
     h.defend(null, 'p0');
     privateChoice(h);
     expect(h.state.resolution.choice?.player).toBe('p0');
-    expect(h.state.resolution.choice?.options.every((o) => !o.card)).toBe(true);
+    expect(
+      h.state.resolution.choice?.options.flatMap((o) => (o.card ? [o.card.definition] : [])),
+    ).toEqual([card('gear-tawny-owl')]);
+    expect(
+      h.state.resolution.choice?.options.some((o) =>
+        h.state.players[0].hand.some((c) => c.id === o.card?.id),
+      ),
+    ).toBe(false);
     h.choose(option);
     if (option === 'allow') {
       privateChoice(h);

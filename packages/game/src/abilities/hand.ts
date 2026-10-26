@@ -11,6 +11,7 @@ function values(tasks: (value: number) => Task[]) {
   return Array.from({ length: 101 }, (_, value) => ({
     id: `value-${value}`,
     label: String(value),
+    value,
     tasks: tasks(value),
   }));
 }
@@ -26,6 +27,7 @@ export function predictValue(runtime: Runtime, binding: Binding): void {
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 export function commitPrediction(
@@ -59,13 +61,14 @@ export function inspectHand(
     `${effect.public ? 'Revealed' : 'Look at'} ${player.name}’s hand`,
     player.hand.map((card) => ({
       id: card.id,
-      label: runtime.defs.cards[card.definition].name,
       card: { ...card },
+      label: runtime.defs.cards[card.definition].name,
       tasks: [],
     })),
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
   if (effect.public && runtime.data.choice) runtime.data.choice.public = true;
 }
@@ -85,6 +88,7 @@ export function nameValue(
     1,
     1,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }
 export function discardNamedValue(
@@ -117,6 +121,7 @@ export function discardNamedValue(
     `Discard a card with printed value ${task.value}`,
     matches.map((card) => ({
       id: card.id,
+      card: { ...card },
       label: runtime.defs.cards[card.definition].name,
       tasks: [
         { type: 'discard-card', player: player.id, card: card.id },
@@ -135,5 +140,6 @@ export function discardNamedValue(
     1,
     1,
     task.provenance,
+    { fighter: task.owner },
   );
 }

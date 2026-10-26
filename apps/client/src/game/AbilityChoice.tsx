@@ -1,63 +1,49 @@
-import { useState } from 'react';
-import type { Command } from '@open-boards/game';
+import { basic } from '@open-boards/content';
+import type { Fighter } from '@open-boards/game';
 import type { ChoiceView } from '@open-boards/protocol';
 import { CardFace } from './CardFace';
+import { CharacterPortrait } from '../characters/CharacterPortrait';
 
+/** Only objects outside the visible hand/map need a representation in the dock. */
 export function AbilityChoice({
   choice,
+  fighters,
+  handIds,
   disabled,
-  onCommand,
+  selected,
+  onSelect,
+  onSubmit,
 }: {
   choice: ChoiceView;
+  fighters: Fighter[];
+  handIds: string[];
   disabled: boolean;
-  onCommand: (command: Command) => void;
+  selected: string[];
+  onSelect: (id: string) => void;
+  onSubmit: (ids: string[]) => void;
 }) {
-  const [selected, setSelected] = useState<string[]>([]);
-  const [number, setNumber] = useState('value-0');
-  const numeric =
-    choice.options.length > 16 && choice.options.every((o) => /^value-\d+$/.test(o.id));
-  const single = choice.min === 1 && choice.max === 1;
-  function submit(options: string[]) {
-    onCommand({ type: 'choose', choice: choice.id, options });
-  }
-  function select(id: string) {
-    if (single) submit([id]);
-    else
-      setSelected((old) => (old.includes(id) ? old.filter((value) => value !== id) : [...old, id]));
-  }
+  const numeric = choice.options.length > 0 && choice.options.every((o) => o.value !== undefined);
   return (
-    <section className="hand-panel" aria-label="Ability choice">
-      <div className="section-heading">
-        <div>
-          <h2>{choice.prompt}</h2>
-          <p className="prompt" role="status">
-            {single
-              ? 'Choose an option to continue.'
-              : choice.min === choice.max
-                ? `Choose ${choice.min} cards.`
-                : `Choose ${choice.min}–${choice.max} cards.`}
-          </p>
-        </div>
-      </div>
+    <>
       <div className="ability-options">
         {numeric ? (
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              submit([number]);
+              onSubmit([selected[0] ?? choice.options[0].id]);
             }}
           >
             <label>
               Value{' '}
               <select
                 aria-label="Value"
-                value={number}
                 disabled={disabled}
-                onChange={(event) => setNumber(event.target.value)}
+                value={selected[0] ?? choice.options[0].id}
+                onChange={(e) => onSelect(e.target.value)}
               >
-                {choice.options.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
+                {choice.options.map((o) => (
+                  <option key={o.id} value={o.id}>
+                    {o.value}
                   </option>
                 ))}
               </select>
@@ -67,38 +53,62 @@ export function AbilityChoice({
             </button>
           </form>
         ) : (
-          choice.options.map((option) =>
-            option.card ? (
-              <CardFace
-                key={option.id}
-                card={option.card}
-                label={option.label}
-                selected={selected.includes(option.id)}
-                disabled={disabled}
-                onClick={() => select(option.id)}
-              />
-            ) : (
+          choice.options.map((option) => {
+            if (option.card && handIds.includes(option.card.id)) return null;
+            const object = option.object;
+            const fighter =
+              object?.type === 'fighter' ? fighters.find((f) => f.id === object.id) : undefined;
+            if (
+              object?.type === 'space' ||
+              object?.type === 'token' ||
+              (fighter && fighter.position !== null && !fighter.defeated)
+            )
+              return null;
+            if (option.card)
+              return (
+                <CardFace
+                  key={option.id}
+                  card={option.card}
+                  label={option.label}
+                  selected={selected.includes(option.id)}
+                  disabled={disabled}
+                  onClick={() => onSelect(option.id)}
+                />
+              );
+            return (
               <button
                 key={option.id}
+                className={
+                  option.decline
+                    ? 'text-button'
+                    : object?.type === 'pile'
+                      ? 'choice-pile'
+                      : 'choice-tile'
+                }
                 disabled={disabled}
                 aria-pressed={selected.includes(option.id)}
-                onClick={() => select(option.id)}
+                onClick={() => onSelect(option.id)}
               >
-                {option.label}
+                {fighter && (
+                  <CharacterPortrait
+                    character={fighter.role === 'ally' ? fighter.definition : fighter.character}
+                  />
+                )}
+                {object?.type === 'pile' && (
+                  <span className="pile-back" aria-hidden="true">
+                    {
+                      basic.characters[
+                        fighters.find((f) => f.player === object.player)?.character ?? 'medusa'
+                      ]?.name
+                    }
+                  </span>
+                )}
+                <span>{option.label}</span>
               </button>
-            ),
-          )
+            );
+          })
         )}
       </div>
-      {!single && (
-        <button
-          className="primary"
-          disabled={disabled || selected.length < choice.min || selected.length > choice.max}
-          onClick={() => submit(selected)}
-        >
-          Confirm choice
-        </button>
-      )}
-    </section>
+    </>
   );
 }

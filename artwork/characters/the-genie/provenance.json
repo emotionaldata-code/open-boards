@@ -1,0 +1,138 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-26",
+  "authorship": "Original generated illustrations; no third-party card artwork reused.",
+  "references": ["references/the-genie.png"],
+  "identity": "Existing repository Genie identity: blue-green djinn, ivory turban, gold ornaments and smoke lower body.",
+  "prompts": "prompts.json",
+  "generationFailures": [],
+  "assets": [
+    {
+      "id": "the-genie-portrait",
+      "master": "masters/the-genie-portrait.png",
+      "sha256": "a25f8eb501fdfc9eaf64f7b6ba76f21568710b612557ccc11cb6a864d03de6a7",
+      "prompt": "prompts.json#the-genie-portrait",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-token",
+      "master": "masters/the-genie-token.png",
+      "sha256": "e1e7dd9b646e1654aeafd8c18202f681a484672386dcbb14257be0a64c788169",
+      "prompt": "prompts.json#the-genie-token",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "the-genie-your-wish-is-my-command",
+      "master": "masters/your-wish-is-my-command.png",
+      "sha256": "74f99eb7ea0fccd6cf5fb2e41180ee613215b5115eff77194e0ca2783a62ffcb",
+      "prompt": "prompts.json#your-wish-is-my-command",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-wishing-for-more-wishes",
+      "master": "masters/wishing-for-more-wishes.png",
+      "sha256": "08e49c5fcfafa1a0595daa7af52038472b8c3d865def15232c701e958eb08267",
+      "prompt": "prompts.json#wishing-for-more-wishes",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-three-wishes",
+      "master": "masters/three-wishes.png",
+      "sha256": "4cbe414c9c1064ecc26913d46122d3b798a00a2d4e256eb37ec803f9e643f9ef",
+      "prompt": "prompts.json#three-wishes",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-this-is-no-parlor-trick",
+      "master": "masters/this-is-no-parlor-trick.png",
+      "sha256": "6fa797cf74fc16149c84920d7d78be029461b20b118c60c7aa148574ebe68090",
+      "prompt": "prompts.json#this-is-no-parlor-trick",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-prisoners-torment",
+      "master": "masters/prisoners-torment.png",
+      "sha256": "418a1b00b807d9faecedde70488ec4dbf78dd852415110162782c9f4c13f3576",
+      "prompt": "prompts.json#prisoners-torment",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-ive-made-sultans-out-of-less",
+      "master": "masters/ive-made-sultans-out-of-less.png",
+      "sha256": "b89268ea10c9eb4953158be53b7c05ff7b827b7ccc2be76cfeb1b606dea4a0f7",
+      "prompt": "prompts.json#ive-made-sultans-out-of-less",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-imprisoned-wrath",
+      "master": "masters/imprisoned-wrath.png",
+      "sha256": "e2b5814b58960e17025f9e99a0c04cc7ae59897927508ce02604579331bc5b74",
+      "prompt": "prompts.json#imprisoned-wrath",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-i-grant-you-death",
+      "master": "masters/i-grant-you-death.png",
+      "sha256": "84ecce82883ce20bc3e2bec59a56d5c6786ca3e4949861df2b8bcfeaa50acc10",
+      "prompt": "prompts.json#i-grant-you-death",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-i-am-freed",
+      "master": "masters/i-am-freed.png",
+      "sha256": "deb633e5d4b7cd1a69593490411844ebbd4f8a6edb1a56a983ff59be0aba4bef",
+      "prompt": "prompts.json#i-am-freed",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-back-in-the-lamp",
+      "master": "masters/back-in-the-lamp.png",
+      "sha256": "b0d700563a1c53306e60c773d4ff2bb7f925ca679c88322ddcbc318aed98ebce",
+      "prompt": "prompts.json#back-in-the-lamp",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-careful-what-you-wish-for",
+      "master": "masters/careful-what-you-wish-for.png",
+      "sha256": "89fa685ecd80fbe84cd662f5b25bf8a6f3384228a20482550acfba88395a3902",
+      "prompt": "prompts.json#careful-what-you-wish-for",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "the-genie-feint",
+      "master": "masters/feint.png",
+      "sha256": "dff58489d2c801830ad34c1caa73388619cf5442396eec5fc0bd3a488981ba55",
+      "prompt": "prompts.json#feint",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

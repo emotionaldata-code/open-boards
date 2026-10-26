@@ -178,11 +178,10 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('pageerror', (e) => errors.push(e.message));
     try {
       await mountAchilles(page, 'recovery');
-      await expect(page.getByRole('button', { name: 'Patroclus 1', exact: true })).toBeVisible();
+      await expect(page.locator('.fighter-hit[data-fighter="p0:ally-1"]')).toBeVisible();
       await page.locator('.game-card').filter({ hasText: 'Battle Hardened' }).click();
-      await page.getByRole('button', { name: 'Target Hector', exact: true }).click();
-      await page.getByRole('button', { name: 'Commit attack', exact: true }).click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      await page.getByRole('button', { name: /^Target .*\(Hector\)$/ }).click();
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Return a discarded card to your hand');
       await expect(choice().getByRole('button', { name: 'Feint', exact: true })).toContainText(
         'Cancel all effects',
@@ -199,8 +198,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       expect((await currentState(page)).players[0].hand.some((c) => c.id === 'prior')).toBe(true);
       await page.setViewportSize({ width: 844, height: 390 });
       await page.locator('.game-card').filter({ hasText: 'Test For Weakness' }).click();
-      await page.getByRole('button', { name: 'Target Hector', exact: true }).click();
-      await page.getByRole('button', { name: 'Commit attack', exact: true }).click();
+      await page.getByRole('button', { name: /^Target .*\(Hector\)$/ }).click();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       await mountAchilles(page, 'recovery', 'p1');
       await expect(page.getByRole('status')).toContainText('Relentless Assault · Attack 3');
@@ -244,10 +242,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountAchilles(page, 'helm');
       await page.locator('.game-card').filter({ hasText: "Under Achilles' Helm" }).click();
-      await page
-        .getByRole('button', { name: "Defend with Under Achilles' Helm", exact: true })
-        .click();
-      await expect(page.getByRole('region', { name: 'Ability choice' })).toContainText(
+      await expect(page.locator('.hand-panel:has(.ability-options)')).toContainText(
         "Under Achilles' Helm",
       );
       await page.screenshot({
@@ -256,11 +251,11 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       });
       await page.setViewportSize({ width: 844, height: 390 });
       await mountAchilles(page, 'helm');
-      await page.getByRole('button', { name: 'Use ability', exact: true }).focus();
+      await page.getByRole('button', { name: /^Use / }).focus();
       await page.keyboard.press('Enter');
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       await expect(page.getByRole('status')).toContainText('Relentless Assault · Attack 3');
-      await expect(page.getByRole('button', { name: 'Patroclus 1', exact: true })).toBeVisible();
+      await expect(page.locator('.fighter-hit[data-fighter="p0:ally-1"]')).toBeVisible();
       let state = await currentState(page);
       expect(state.phase).toMatchObject({ type: 'awaiting-defense', defender: 'p0:ally-1' });
       expect(state.fighters.find((f) => f.id === 'p0:main')?.position).toBe('n5');

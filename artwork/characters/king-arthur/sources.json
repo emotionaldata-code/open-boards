@@ -1,0 +1,142 @@
+[
+  {
+    "id": "king-arthur-portrait",
+    "kind": "portrait",
+    "source": "masters/king-arthur-portrait.png",
+    "focal": [0.5, 0.2]
+  },
+  {
+    "id": "king-arthur-token",
+    "kind": "token",
+    "source": "masters/king-arthur-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "king-arthur-merlin-portrait",
+    "kind": "portrait",
+    "source": "masters/merlin-portrait.png",
+    "focal": [0.5, 0.27]
+  },
+  {
+    "id": "king-arthur-merlin-token",
+    "kind": "token",
+    "source": "masters/merlin-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "king-arthur-skirmish",
+    "kind": "card",
+    "card": "king-arthur-skirmish",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-noble-sacrifice",
+    "kind": "card",
+    "card": "king-arthur-noble-sacrifice",
+    "source": "masters/noble-sacrifice.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-excalibur",
+    "kind": "card",
+    "card": "king-arthur-excalibur",
+    "source": "masters/excalibur.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-the-aid-of-morgana",
+    "kind": "card",
+    "card": "king-arthur-the-aid-of-morgana",
+    "source": "masters/the-aid-of-morgana.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-divine-intervention",
+    "kind": "card",
+    "card": "king-arthur-divine-intervention",
+    "source": "masters/divine-intervention.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-the-holy-grail",
+    "kind": "card",
+    "card": "king-arthur-the-holy-grail",
+    "source": "masters/the-holy-grail.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-the-lady-of-the-lake",
+    "kind": "card",
+    "card": "king-arthur-the-lady-of-the-lake",
+    "source": "masters/the-lady-of-the-lake.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-prophecy",
+    "kind": "card",
+    "card": "king-arthur-prophecy",
+    "source": "masters/prophecy.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-bewilderment",
+    "kind": "card",
+    "card": "king-arthur-bewilderment",
+    "source": "masters/bewilderment.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-aid-the-chosen-one",
+    "kind": "card",
+    "card": "king-arthur-aid-the-chosen-one",
+    "source": "masters/aid-the-chosen-one.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-restless-spirits",
+    "kind": "card",
+    "card": "king-arthur-restless-spirits",
+    "source": "masters/restless-spirits.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-command-the-storms",
+    "kind": "card",
+    "card": "king-arthur-command-the-storms",
+    "source": "masters/command-the-storms.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-swift-strike",
+    "kind": "card",
+    "card": "king-arthur-swift-strike",
+    "source": "masters/swift-strike.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-momentous-shift",
+    "kind": "card",
+    "card": "king-arthur-momentous-shift",
+    "source": "masters/momentous-shift.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-feint",
+    "kind": "card",
+    "card": "king-arthur-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "king-arthur-regroup",
+    "kind": "card",
+    "card": "king-arthur-regroup",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5]
+  }
+]

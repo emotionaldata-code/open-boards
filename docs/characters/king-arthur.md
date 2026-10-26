@@ -40,9 +40,11 @@ Turn positions are captured for every fighter before turn-start reactions. Movin
 
 ## Original artwork
 
-All 16 card illustrations under `apps/client/public/cards/king-arthur/` and both figures in `apps/client/src/characters/art.ts` are original code-native SVG artwork authored on 2026-10-25. The [source artwork gallery](drafts/king-arthur/art/preview.html) retains the original draft assets and four-owner-color previews. No published scans, traced paths, external fonts or network assets are redistributed.
+The 2026-10-26 refresh supplies 20 original cinematic illustrations generated with integrated Codex Imagegen: portraits and transparent full-body board figures for Arthur and Merlin, plus one scene for each of the 16 card designs. Selected masters, identity references, exact prompts, source mappings and provenance live in [`artwork/characters/king-arthur/`](../../artwork/characters/king-arthur/). No published card scans are redistributed.
 
-Arthur’s silhouette has a crown, sword, armor and owner-colored mantle/shield. Merlin has a pointed hat, beard, staff and owner-colored sash. Both use the established cut-paper style and figure viewBox, support all four owner colors, and have registered ability marks. Merlin remains an ally-only figure; only Arthur appears in the playable roster.
+Arthur retains his crown, straight Excalibur, steel armor and burgundy mantle; Merlin retains his pointed indigo hat, silver beard and crystal-tipped oak staff. Card compositions range from close duels and relic studies to supernatural landscapes. Owner-colored pedestals, ally numbers, selection and animation remain separate from the pixels. Merlin remains an ally-only figure; only Arthur appears in the playable roster.
+
+Run `pnpm artwork:prepare king-arthur` to regenerate hashed WebP derivatives and canonical card image paths. Cards have 320/640/1280px variants, portraits 256/512/1024px variants, and board figures transparent 512px variants. The shared raster renderer retains the original SVG figures as load-failure fallbacks. The [original SVG gallery](drafts/king-arthur/art/preview.html) remains available for historical reference.
 
 ## Compatibility and verification
 

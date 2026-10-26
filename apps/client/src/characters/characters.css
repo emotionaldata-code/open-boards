@@ -1,4 +1,4 @@
-/* Fighters share artwork with board miniatures; the roster reads its rules from content. */
+/* Registered raster portraits and local SVG figures use the same frame. */
 .character-portrait {
   position: relative;
   display: block;
@@ -8,39 +8,12 @@
   min-width: 0;
   isolation: isolate;
 }
-.character-portrait::before {
-  content: '';
-  position: absolute;
-  width: 76%;
-  aspect-ratio: 1;
-  left: 12%;
-  top: 12%;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  opacity: 0.22;
-}
 .character-portrait img {
-  position: relative;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 8px 2px 0;
-}
-.entry-grid {
-  gap: 5vw;
-}
-.entry-roster {
-  min-width: 0;
-  padding: 22px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  max-height: 100%;
-  overflow: auto;
-}
-.entry-explore {
-  display: none;
 }
 .character-roster {
   min-width: 0;
@@ -50,7 +23,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-2);
 }
 .roster-heading h2 {
   margin: 0;
@@ -62,12 +35,13 @@
 }
 .roster-detail {
   display: grid;
-  grid-template-columns: 36% 1fr;
-  gap: 20px;
+  grid-template-columns: 36% minmax(0, 1fr);
+  gap: var(--space-3);
+  scroll-margin-block: 20px;
 }
 .roster-detail > .character-portrait {
-  min-height: 180px;
-  border-radius: 4px;
+  height: 220px;
+  border-radius: var(--radius);
 }
 .roster-description {
   align-self: center;
@@ -75,106 +49,105 @@
 }
 .character-role {
   color: var(--muted);
-  font-size: 12px;
-  margin: 0 0 6px;
+  font-size: 13px;
+  margin: 0 0 8px;
 }
 .roster-description h3 {
-  margin: 0;
+  margin: 0 0 16px;
   color: var(--text);
   font-size: 32px;
-}
-.character-summary {
-  font-size: 14px;
-  margin: 8px 0 16px;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 .character-stats {
   display: flex;
-  gap: 24px;
+  gap: var(--space-3);
   margin: 0;
 }
 .character-stats div {
   display: flex;
   flex-direction: column-reverse;
-  gap: 3px;
+  gap: 4px;
 }
 .character-stats dt {
   color: var(--muted);
   font-size: 12px;
 }
 .character-stats dd {
-  font:
-    24px Georgia,
-    serif;
+  font-size: 24px;
+  line-height: 1.2;
   margin: 0;
-  color: var(--accent);
 }
-.roster-rules {
+.roster-more {
   margin: 16px 0;
 }
+.roster-more summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding-block: 12px;
+  color: var(--text);
+  font-weight: 500;
+}
+.roster-more summary:hover {
+  color: var(--accent);
+}
+.roster-more[open] > summary {
+  margin-bottom: var(--space-1);
+}
 .roster-rules p {
-  font-size: 13px;
-  margin: 0 0 9px;
+  font-size: 14px;
+  margin: 0 0 12px;
 }
 .roster-rules strong {
   color: var(--accent);
   margin-right: 4px;
 }
-.roster-rules .character-range {
-  color: var(--muted);
-  font-size: 12px;
-}
+.roster-rules .character-range,
 .roster-rules .character-tactic {
   color: var(--muted);
-  margin-bottom: 0;
+  font-size: 13px;
 }
 .roster-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: var(--space-1);
+  padding: 3px;
 }
 .roster-list button {
   padding: 0;
-  overflow: hidden;
-  background: var(--ground);
-  border-color: transparent;
-  border-radius: 4px;
+  background: var(--surface);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  min-width: 0;
 }
 .roster-list button .character-portrait {
-  height: 76px;
-}
-.roster-list button img {
-  transition: transform 140ms ease-out;
-}
-.roster-list button:hover img {
-  transform: translateY(-3px);
+  height: 80px;
 }
 .roster-list button > span:last-child {
   display: block;
-  padding: 7px 2px;
+  padding: 8px 4px;
   font-size: 12px;
+  line-height: 1.3;
 }
 .roster-list button[aria-pressed='true'] {
   border-color: var(--accent);
   background: var(--raised);
 }
+.roster-list button:hover:not(:disabled) {
+  border-color: var(--muted);
+}
 .roster-dialog {
-  width: 760px;
+  width: 800px;
   max-width: min(800px, calc(100vw - 24px));
 }
 .roster-dialog .roster-heading {
   display: none;
 }
-.roster-dialog .roster-detail > .character-portrait {
-  height: 200px;
-}
-.roster-dialog .roster-list button .character-portrait {
-  height: 86px;
-}
 .roster-confirm {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-2);
   margin-top: 18px;
 }
 .roster-confirm p {
@@ -188,27 +161,26 @@
 .character-picker {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-2);
   background: var(--ground);
-  border-radius: 4px;
-  padding: 10px;
-  margin: 12px 0;
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  margin-top: var(--space-3);
 }
 .character-picker > .character-portrait {
-  width: 62px;
-  height: 80px;
+  width: 72px;
+  height: 92px;
   flex-shrink: 0;
-  border-radius: 3px;
+  border-radius: var(--radius);
 }
 .character-picker .grow {
   display: grid;
-  gap: 5px;
+  gap: 6px;
 }
 .character-picker .grow strong {
   font:
-    22px Georgia,
+    24px Georgia,
     serif;
-  color: var(--accent);
 }
 .character-picker .grow > span {
   font-size: 12px;
@@ -216,185 +188,170 @@
 .character-picker > button {
   padding: 8px 12px;
 }
-@media (max-width: 1000px) {
-  .entry-grid {
-    grid-template-columns: minmax(270px, 0.85fr) minmax(0, 1.15fr);
-    gap: 24px;
+.player-sigil .character-portrait {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+}
+.player-sigil .character-portrait img {
+  padding: 0;
+}
+/* The portrait leads; details and controls stay on opaque surfaces below it. */
+.roster-featured {
+  display: flex;
+  flex-direction: column;
+}
+.roster-featured .roster-heading {
+  margin-bottom: var(--space-2);
+}
+.roster-featured .roster-detail {
+  order: 1;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.roster-featured .roster-detail > .character-portrait {
+  height: clamp(300px, 28vw, 380px);
+  border-radius: 0;
+}
+.roster-featured .roster-description {
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 16px;
+}
+.roster-featured .character-role {
+  grid-column: 1;
+}
+.roster-featured .roster-description h3 {
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 0;
+  grid-column: 1;
+}
+.roster-featured .character-stats {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+.roster-featured .roster-list {
+  order: 2;
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+  scroll-snap-type: x proximity;
+}
+.roster-featured .roster-list button {
+  flex: 0 0 90px;
+  scroll-snap-align: start;
+}
+.roster-featured .roster-list button .character-portrait {
+  height: 66px;
+}
+.roster-featured .roster-list button > span:last-child {
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+}
+.roster-featured .roster-more {
+  order: 3;
+  margin: 12px 0 0;
+}
+.roster-featured .roster-deck {
+  order: 4;
+  margin: 8px 0 0;
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .character-picker {
+    flex-wrap: wrap;
   }
-  .entry-roster {
-    padding: 16px;
+  .character-picker > button {
+    width: 100%;
   }
-  .roster-detail {
-    gap: 12px;
+  .roster-featured .roster-description {
+    grid-template-columns: 1fr;
+    padding: 20px;
   }
-  .roster-detail > .character-portrait {
-    min-height: 150px;
-  }
-  .roster-description h3 {
-    font-size: 27px;
-  }
-  .character-stats {
-    gap: 16px;
-  }
-  .roster-list button > span:last-child {
-    font-size: 11px;
+  .roster-featured .character-stats {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: var(--space-2);
   }
 }
-@media (max-width: 680px) and (orientation: portrait),
-  (max-height: 600px) and (orientation: landscape) {
-  .entry-grid {
-    display: flex;
+@media (max-width: 760px) {
+  .roster-featured .roster-detail > .character-portrait {
+    height: auto;
+    aspect-ratio: 1.15;
   }
-  .entry-roster {
-    display: none;
+  .roster-featured .roster-description {
+    padding: 20px;
+    gap: var(--space-2);
   }
-  .entry-explore {
-    display: block;
+  .roster-featured .character-role {
+    margin-bottom: -8px;
+    grid-column: 1 / -1;
   }
-  .roster-trigger {
-    width: 100%;
-    margin-top: 12px;
+  .roster-featured .roster-description h3 {
+    grid-column: 1 / -1;
+    font-size: 32px;
   }
-  .roster-dialog .dialog-heading {
-    padding: 14px 16px 10px;
-  }
-  .roster-dialog .dialog-heading h2 {
-    font-size: 24px;
-  }
-  .roster-dialog .dialog-body {
-    padding: 0 16px 16px;
-  }
-  .roster-dialog .roster-detail > .character-portrait {
-    height: 150px;
-    min-height: 0;
-  }
-  .roster-dialog .roster-rules {
-    min-height: 0;
-  }
-  .roster-dialog .roster-list button .character-portrait {
-    height: 62px;
+  .roster-featured .character-stats {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    gap: var(--space-4);
   }
   .roster-detail {
-    grid-template-columns: 34% 1fr;
+    grid-template-columns: 34% minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+  .roster-detail > .character-portrait {
+    height: 170px;
   }
   .roster-description h3 {
     font-size: 28px;
   }
-  .character-summary {
-    font-size: 13px;
-    margin: 6px 0 12px;
-  }
   .character-stats {
-    gap: 16px;
+    gap: var(--space-2);
+  }
+  .roster-list button .character-portrait {
+    height: 64px;
   }
   .roster-confirm {
     flex-direction: column-reverse;
     align-items: stretch;
     gap: 10px;
   }
-  .roster-confirm p {
-    text-align: center;
-  }
   .character-picker {
-    gap: 8px;
-    padding: 8px;
-    margin: 8px 0;
-  }
-  .character-picker > .character-portrait {
-    width: 40px;
-    height: 56px;
-  }
-  .character-picker .grow > span:first-child {
-    display: none;
-  }
-  .character-picker .grow strong {
-    font-size: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
   }
   .character-picker > button {
-    font-size: 12px;
-    padding: 8px;
+    width: 100%;
   }
-}
-@media (max-height: 600px) and (orientation: landscape) {
-  .entry-grid {
-    display: block;
-  }
-  .entry-explore {
-    grid-column: 1;
-  }
-  .roster-trigger {
-    margin: 0;
-    width: auto;
-  }
-  .roster-dialog .roster-detail {
-    grid-template-columns: 100px 1fr;
-  }
-  .roster-dialog .roster-detail > .character-portrait {
-    height: 130px;
-  }
-  .roster-dialog .roster-description {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: 16px;
-  }
-  .roster-dialog .character-role,
-  .roster-dialog .character-summary {
-    grid-column: 1;
-  }
-  .roster-dialog .character-stats {
-    grid-column: 2;
-    grid-row: 1 / 4;
-    align-self: center;
-  }
-  .roster-dialog .roster-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  .roster-dialog .roster-list button .character-portrait {
-    height: 64px;
-  }
-  .roster-dialog .roster-list button > span:last-child {
-    font-size: 11px;
+  .character-picker .grow strong {
+    font-size: 22px;
   }
 }
 @media (max-width: 360px) {
-  .roster-detail {
-    gap: 10px;
+  .roster-dialog .roster-detail {
+    grid-template-columns: 1fr;
   }
-  .roster-description h3 {
-    font-size: 24px;
+  .roster-dialog .roster-detail > .character-portrait {
+    height: 200px;
   }
-  .character-stats {
-    gap: 10px;
-  }
-  .character-picker .grow > span:last-child {
-    font-size: 11px;
+  .roster-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.player-sigil .character-portrait {
-  width: 36px;
-  height: 42px;
-  border-radius: 4px;
-}
-.player-sigil .character-portrait::before {
-  display: none;
-}
-.player-sigil .character-portrait img {
-  padding: 0;
-}
-
-@media (max-height: 600px) and (orientation: portrait) {
-  .entry-copy > p {
-    display: none;
-  }
-  .entry-copy form {
-    margin-top: 12px;
-    gap: 8px;
-  }
-  .entry-bottom {
-    margin-top: 8px;
-  }
-  .roster-trigger {
-    margin-top: 8px;
+@media (max-width: 760px) {
+  .roster-featured .roster-list button {
+    flex-basis: calc((100% - 26px) / 3);
   }
 }

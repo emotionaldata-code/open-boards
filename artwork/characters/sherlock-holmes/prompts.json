@@ -1,0 +1,133 @@
+[
+  {
+    "id": "sherlock-holmes-portrait",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: square 1254x1254 hero portrait. Sherlock Holmes, original interpretation of the literary detective, lean adult man around forty with angular pale face, sharp gray eyes, prominent straight nose, clean-shaven jaw, dark brown hair. Brown tweed deerstalker, charcoal Inverness cape over dark teal Victorian waistcoat and white high collar. Holds a brass magnifying glass below his face. Clear expressive face and upper silhouette, head and shoulders within central 75%, three-quarter turn, watchful intelligence. Soft foggy Baker Street background, warm gaslight against cool evening mist. Consistent memorable identity, no resemblance to any screen actor."
+  },
+  {
+    "id": "sherlock-holmes-dr-watson-portrait",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: square 1254x1254 ally portrait. Dr. John Watson, original interpretation of the literary army doctor, broad-shouldered sturdy middle-aged man with warm weathered face, neat sandy-brown moustache, brown eyes, short sandy hair. Black bowler hat, dark brown wool overcoat over olive waistcoat, white shirt and burgundy tie. A worn leather medical bag and period service revolver in its leather holster are partially visible below his chest. Clear friendly determined face and upper silhouette within central 75%, three-quarter turn. Baker Street consulting room background, warm lamplight and cool window light. Distinct from the lean clean-shaven Holmes. No resemblance to any screen actor."
+  },
+  {
+    "id": "sherlock-holmes-token",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: transparent full-body board figure, square 1254x1254 canvas. Input image is identity reference only. Show exactly the same Sherlock Holmes face, deerstalker, charcoal cape, dark teal waistcoat. Complete head-to-toe figure, black trousers and both leather boots fully visible, centered with breathing room, standing in alert three-quarter pose, one hand holding the brass magnifier at waist level and the other relaxed. Clear lean silhouette. Realistic painted illustration, stronger painterly treatment than reference. Actual alpha transparency, no environment, floor, shadow, pedestal or colored outline, no owner color baked in. All extremities complete.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "sherlock-holmes-dr-watson-token",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: transparent full-body board figure, square 1254x1254 canvas. Input image is identity reference only. Show exactly the same sturdy moustached Dr Watson, bowler hat, brown overcoat, olive waistcoat and burgundy tie. Full head-to-toe body with both leather boots, centered with breathing room. Alert three-quarter stance, right hand holding a small period service revolver pointed safely down, left hand carrying worn leather medical bag. Natural readable hands and complete limbs. Realistic painted illustration, stronger painterly treatment than reference. Actual alpha transparency, no environment, floor, shadow, pedestal or colored outline, no owner color baked in.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/dr-watson.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "sherlock-holmes-feint",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone card illustration, landscape 8:5, 1586x992 or larger. Reference image supplies Holmes identity and clothes. In a gaslit London alley Holmes uses his empty raised left hand as a distraction while his other hand redirects an anonymous assailant's wrist and knife away from his body. Medium action shot, diagonal cape and arm movement, readable correct hands, restrained non-graphic combat. Wet bricks and mist, amber backlight. Crucial action inside central 80%. More painterly than reference, no typography.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-education-never-ends",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone card illustration, landscape 8:5, 1586x992 or larger. Both images are identity references, Holmes then Watson. In Baker Street Holmes and Watson sit across a cluttered oak desk, Holmes pointing out a small detail on a specimen under a magnifier while Watson leans forward to learn. Medium wide intimate scene of knowledge shared, stacks of worn unlettered books, oil lamp, cool rainy window. Faces and two-person interaction inside central 80%. Realistic painted illustration with visible brush texture, no readable writing or typography.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/dr-watson.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-study-methods",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Overhead close view of Holmes's bare hands examining a muddy boot, loose tobacco and a pocket watch on his desk, brass magnifier enlarging a distinct boot tread. His deerstalker and angular profile enter at upper left. A practical forensic investigation, warm desk lamp with deep teal shadows. No readable notes. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-deduce-strategy",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Holmes calmly studies a tense opponent across a chess table in a Victorian club, his sharp eyes in three-quarter profile, two fingers poised over a single dark chess piece. Low eye-level composition through blurred foreground pieces, a strategic mind anticipating the opponent. Moody green felt, warm brass lamps. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-counterpunch",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Dynamic medium action view of Holmes delivering a precise bare-fisted boxing counter to a burly anonymous attacker in a foggy London courtyard. Holmes's charcoal cape swings, left arm guarding and right fist extended naturally, no blood. Keep both faces and the punch visible inside central frame. Strong diagonal composition, amber side light. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-fixed-point-in-a-changing-age",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Watson and Holmes stand shoulder to shoulder on a stone bridge at dawn, Watson the sturdy moustached doctor in bowler and brown coat rests a supportive hand on his lean friend's shoulder. Wide atmospheric two-person composition, river mist and distant Victorian London changing under construction. Warm sunrise on their familiar faces, quiet enduring friendship. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/dr-watson.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-the-game-is-afoot",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Wide low-angle action shot of Holmes sprinting along rain-slick London cobblestones, charcoal cape billowing behind his body, deerstalker firmly on head, sharp face focused ahead. A fleeing anonymous suspect is small in the foggy distance, gas lamps form strong perspective. Complete believable running anatomy, suspense, central action clearly readable. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-service-revolver",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Medium close action portrait of Watson in black bowler and brown wool coat aiming a small late-Victorian British service revolver with a controlled two-handed grip toward an unseen threat off-frame. Side three-quarter angle with face and revolver both clear, natural hands and plausible weapon, no muzzle flash. Warm gaslight through blue London fog, resolute former army doctor. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/dr-watson.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-elementary",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Close cinematic view of Holmes's calm angular face and open hand effortlessly stopping an assailant's raised wrist before a strike, reading the attack in advance. Deerstalker, charcoal cape and dark teal waistcoat match reference. Attacker mostly cropped to a sleeve and hand, threat clear but non-graphic. Deliberate stillness, crisp eyes and hands, softly blurred gaslit street. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-confirm-suspicion",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Holmes confronts a nervous well-dressed anonymous suspect in a railway waiting room, showing a small distinctive pocket watch whose broken chain matches the suspect's waistcoat. Holmes on left in three-quarter view, suspect on right recoiling, evidence central and readable. Medium two-person shot, slatted window light, tense revelation, no writing. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-eliminate-the-impossible",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Holmes alone at an oak desk deliberately moves several misleading small evidence objects aside, isolating a single muddy cufflink under a pool of warm lamplight. Three-quarter overhead composition with his focused face and hands visible, magnifier and blank-backed papers, strong negative space around the decisive clue. Analytical, painterly, no readable text. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-master-of-disguise",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: In a backstage dressing room Holmes removes a gray false beard from beneath his chin with one hand, revealing exactly the lean clean-shaven reference face, while a shabby workman's coat lies over his recognizable dark teal waistcoat. His brown deerstalker rests on the dressing table. A mirror shows his single consistent reflection, warm bare lamps, medium waist-up transformation scene. No extra faces or text. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "sherlock-holmes-administer-aid",
+    "prompt": "Use case: historical-scene. Original cinematic illustrated realism for a Victorian detective board game, credible anatomy, painterly yet finely resolved wool, skin and metal, dramatic motivated gaslight, restrained charcoal, dark teal and antique brass palette. Not a photo or plastic miniature. No text, lettering, numbers, borders, logos or watermarks. Asset type: standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images are character identity and costume references only, in order Holmes then Watson when two are supplied. Stronger painted brush texture than portraits. Scene: Watson the moustached doctor, hat set beside his open worn leather medical bag, carefully bandages seated Holmes's forearm in their Baker Street sitting room. Holmes wears his charcoal cape draped over chair and dark teal waistcoat, deerstalker on the table. Medium intimate two-person composition, gentle warm oil lamp, cool window glow, clean white bandage, correct hands and no blood. Theme of trusted practical medical support. Keep crucial action and faces in central 80% for responsive cropping. No embedded lettering, card frame or graphic symbols.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/sherlock-holmes.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/sherlock-holmes/references/dr-watson.png"
+    ],
+    "transparent_background": false
+  }
+]

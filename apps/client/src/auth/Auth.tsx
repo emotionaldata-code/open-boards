@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react';
 import type { User } from '@open-boards/protocol';
 import { http } from '../network/http';
 import { CharacterRoster } from '../characters/CharacterRoster';
-import { CharacterExplorer } from '../characters/CharacterExplorer';
 import { HowToPlay } from './HowToPlay';
 export function Auth({ onUser }: { onUser: (user: User) => void }) {
   const [register, setRegister] = useState(false);
@@ -31,7 +30,7 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
       <section className="entry-copy">
         <h1>Play Open Boards</h1>
         <p>A tactical card game for 2 or 4 players.</p>
-        <form onSubmit={(e) => void submit(e)}>
+        <form aria-busy={busy} onSubmit={(e) => void submit(e)}>
           <h2>{register ? 'Create your account' : 'Sign in to play'}</h2>
           <label>
             Username
@@ -68,6 +67,7 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
           <button
             type="button"
             className="text-button"
+            disabled={busy}
             onClick={() => {
               setRegister(!register);
               setError('');
@@ -76,16 +76,13 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
             {register ? 'Already have an account? Sign in' : 'New to the table? Create an account'}
           </button>
         </form>
-        <div className="entry-explore">
-          <CharacterExplorer />
-        </div>
         <div className="entry-bottom">
           <span className="muted">2 or 4 players · One survivor</span>
           <HowToPlay />
         </div>
       </section>
       <section className="entry-roster" aria-label="Meet the fighters">
-        <CharacterRoster />
+        <CharacterRoster featured selected="medusa" />
       </section>
     </main>
   );

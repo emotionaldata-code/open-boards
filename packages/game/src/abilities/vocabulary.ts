@@ -179,7 +179,13 @@ export type Effect =
       type: 'choose-option';
       chooser?: PlayerRef;
       prompt: string;
-      options: { id: string; label: string; effects: Effect[] }[];
+      options: {
+        id: string;
+        label: string;
+        target?: PlayerRef;
+        decline?: boolean;
+        effects: Effect[];
+      }[];
     };
 export interface Ability {
   id: string;

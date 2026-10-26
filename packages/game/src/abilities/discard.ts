@@ -31,7 +31,7 @@ export function offerDiscard(
         ...player.hand.map((card) => ({
           id: card.id,
           label: runtime.defs.cards[card.definition].name,
-          ...(chooser !== playerId ? { card: { ...card } } : {}),
+          card: { ...card },
           tasks: [
             {
               type: 'discard-card' as const,
@@ -46,6 +46,7 @@ export function offerDiscard(
         })),
         {
           id: '$decline',
+          decline: true,
           label: 'Decline discard',
           tasks: runtime.effects(effect.onDecline, binding),
         },
@@ -53,6 +54,7 @@ export function offerDiscard(
       1,
       1,
       binding.provenance,
+      { fighter: binding.owner },
     );
     return;
   }
@@ -84,7 +86,7 @@ export function offerDiscard(
     player.hand.map((card) => ({
       id: card.id,
       label: runtime.defs.cards[card.definition].name,
-      ...(chooser !== playerId ? { card: { ...card } } : {}),
+      card: { ...card },
       tasks: [
         {
           type: 'discard-card',
@@ -100,5 +102,6 @@ export function offerDiscard(
     effect.upTo ? 0 : count,
     count,
     binding.provenance,
+    { fighter: binding.owner },
   );
 }

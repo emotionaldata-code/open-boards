@@ -6,91 +6,96 @@ test.beforeEach(async ({ page }) => {
   await page.route('**/api/auth/me', (route) => route.fulfill({ json: null }));
 });
 
-test('Medusa raster gallery selects small variants and larger inspector images on desktop and phone', async ({
-  page,
-}) => {
-  const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  page.on('console', (message) => {
-    if (message.type() === 'error') errors.push(message.text());
-  });
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto('/');
-  const roster = page.getByRole('region', { name: 'Character roster' });
-  await roster.getByRole('button', { name: 'Inspect Medusa', exact: true }).click();
-  await expect(roster.locator('.roster-detail img[data-raster]')).toBeVisible();
-  await roster
-    .getByRole('button', { name: 'Explore Medusa’s deck · 11 designs', exact: true })
-    .click();
-  for (const viewport of [
-    { width: 1440, height: 1000 },
-    { width: 844, height: 390 },
-  ]) {
-    if (viewport.width === 844) {
-      await page.keyboard.press('Escape');
-      await page.setViewportSize(viewport);
-      await page.getByRole('button', { name: /^Explore \d+ characters$/ }).click();
-      const picker = page.getByRole('dialog').last();
-      await picker.getByRole('button', { name: 'Inspect Medusa', exact: true }).click();
-      await picker
-        .getByRole('button', { name: 'Explore Medusa’s deck · 11 designs', exact: true })
-        .click();
-    }
-    const deck = page.getByRole('dialog', { name: 'Medusa’s deck', exact: true });
-    const cards = deck.locator('.deck-gallery > button');
-    await expect(cards).toHaveCount(11);
-    for (const card of await cards.all()) {
-      await card.scrollIntoViewIfNeeded();
-      const image = card.locator('img');
-      await expect(image).toHaveAttribute('loading', 'lazy');
-      await expect
-        .poll(() =>
-          image.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
-        )
-        .toBe(true);
-      await card.click();
-      const inspector = page.getByRole('dialog').last();
-      const large = inspector.locator('img[data-raster]');
-      await expect(large).toHaveAttribute('loading', 'eager');
-      await expect
-        .poll(() =>
-          large.evaluate(
-            (image: HTMLImageElement) => image.complete && /-(640|1280)-/.test(image.currentSrc),
-          ),
-        )
-        .toBe(true);
+for (const { name, designs } of [
+  { name: 'The Genie', designs: 12 },
+  { name: 'Medusa', designs: 11 },
+  { name: 'King Arthur', designs: 16 },
+  { name: 'Sherlock Holmes', designs: 13 },
+]) {
+  test(`${name} raster gallery selects small variants and larger inspector images on desktop and phone`, async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text());
+    });
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto('/');
+    const roster = page.getByRole('region', { name: 'Character roster' });
+    await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).click();
+    await expect(roster.locator('.roster-detail img[data-raster]')).toBeVisible();
+    await roster
+      .getByRole('button', { name: `Explore ${name}’s deck · ${designs} designs`, exact: true })
+      .click();
+    for (const viewport of [
+      { width: 1440, height: 1000 },
+      { width: 844, height: 390 },
+    ]) {
+      if (viewport.width === 844) {
+        await page.keyboard.press('Escape');
+        await page.setViewportSize(viewport);
+        await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).click();
+        await roster
+          .getByRole('button', { name: `Explore ${name}’s deck · ${designs} designs`, exact: true })
+          .click();
+      }
+      const deck = page.getByRole('dialog', { name: `${name}’s deck`, exact: true });
+      const cards = deck.locator('.deck-gallery > button');
+      await expect(cards).toHaveCount(designs);
+      for (const card of await cards.all()) {
+        await card.scrollIntoViewIfNeeded();
+        const image = card.locator('img');
+        await expect(image).toHaveAttribute('loading', 'lazy');
+        await expect
+          .poll(() =>
+            image.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+          )
+          .toBe(true);
+        await card.click();
+        const inspector = page.getByRole('dialog').last();
+        const large = inspector.locator('img[data-raster]');
+        await expect(large).toHaveAttribute('loading', 'eager');
+        await expect
+          .poll(() =>
+            large.evaluate(
+              (image: HTMLImageElement) => image.complete && /-(640|1280)-/.test(image.currentSrc),
+            ),
+          )
+          .toBe(true);
+        await page.screenshot({
+          animations: 'disabled',
+          path: test
+            .info()
+            .outputPath(`card-${viewport.width}-${await card.getAttribute('aria-label')}.png`),
+        });
+        await page.keyboard.press('Escape');
+      }
+      await deck.locator('.dialog-body').evaluate((body) => {
+        body.scrollTop = 0;
+      });
       await page.screenshot({
         animations: 'disabled',
-        path: test
-          .info()
-          .outputPath(`card-${viewport.width}-${await card.getAttribute('aria-label')}.png`),
+        path: test.info().outputPath(`gallery-${viewport.width}.png`),
       });
-      await page.keyboard.press('Escape');
     }
-    await deck.locator('.dialog-body').evaluate((body) => {
-      body.scrollTop = 0;
+    const resources = await page.evaluate(() =>
+      performance
+        .getEntriesByType('resource')
+        .filter((entry) => entry.name.includes('/artwork/'))
+        .map((entry) => ({
+          url: entry.name,
+          bytes: (entry as PerformanceResourceTiming).encodedBodySize,
+        })),
+    );
+    await test.info().attach('artwork-transfers', {
+      body: JSON.stringify(resources, null, 2),
+      contentType: 'application/json',
     });
-    await page.screenshot({
-      animations: 'disabled',
-      path: test.info().outputPath(`gallery-${viewport.width}.png`),
-    });
-  }
-  const resources = await page.evaluate(() =>
-    performance
-      .getEntriesByType('resource')
-      .filter((entry) => entry.name.includes('/artwork/'))
-      .map((entry) => ({
-        url: entry.name,
-        bytes: (entry as PerformanceResourceTiming).encodedBodySize,
-      })),
-  );
-  await test.info().attach('artwork-transfers', {
-    body: JSON.stringify(resources, null, 2),
-    contentType: 'application/json',
+    expect(resources.filter((entry) => /-320-/.test(entry.url)).length).toBeGreaterThan(0);
+    expect(errors).toEqual([]);
   });
-  expect(resources.filter((entry) => /-320-/.test(entry.url)).length).toBeGreaterThan(0);
-  expect(errors).toEqual([]);
-});
+}
 
 for (const reducedMotion of ['reduce', 'no-preference'] as const) {
   test(`mixed SVG/raster scene shares two textures across four owner colors (${reducedMotion})`, async ({
@@ -106,7 +111,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('request', (request) => {
       if (/\/(medusa|harpy)-token-/.test(request.url())) textures.push(request.url());
     });
-    const players: GameView['players'] = ['medusa', 'medusa', 'medusa', 'king-arthur'].map(
+    const players: GameView['players'] = ['medusa', 'medusa', 'medusa', 'bigfoot'].map(
       (character, i) => ({
         id: ['a', 'b', 'c', 'd'][i],
         name: `Owner ${i + 1}`,
@@ -198,3 +203,164 @@ test('React artwork falls back to local SVG when raster requests fail', async ({
     /^data:image\/svg\+xml/,
   );
 });
+
+for (const reducedMotion of ['reduce', 'no-preference'] as const) {
+  test(`Arthur and numbered Merlin figures share textures across four owner colors (${reducedMotion})`, async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion });
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    const errors: string[] = [];
+    const textures: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text());
+    });
+    page.on('request', (request) => {
+      if (/\/king-arthur-(merlin-)?token-/.test(request.url())) textures.push(request.url());
+    });
+    const players: GameView['players'] = ['a', 'b', 'c', 'd'].map((id, i) => ({
+      id,
+      name: `Owner ${i + 1}`,
+      character: 'king-arthur',
+      handCount: 0,
+      deckCount: 10,
+      discard: [],
+      eliminated: false,
+    }));
+    let fighters: GameView['fighters'] = players.flatMap((player, i) => [
+      {
+        id: `${player.id}:main`,
+        player: player.id,
+        character: 'king-arthur',
+        definition: 'king-arthur',
+        role: 'main' as const,
+        hp: 18,
+        position: ['n0', 'n7', 'n13', 'n20'][i],
+        defeated: false,
+        counters: {},
+        statuses: [],
+      },
+      {
+        id: `${player.id}:ally-1`,
+        player: player.id,
+        character: 'king-arthur',
+        definition: 'king-arthur-merlin',
+        role: 'ally' as const,
+        hp: 7,
+        position: ['n1', 'n8', 'n14', 'n21'][i],
+        defeated: false,
+        counters: {},
+        statuses: [],
+      },
+    ]);
+    await presentationHarness(page, true, { players, fighters });
+    await expect(page.locator('.pixi-surface canvas')).toBeVisible();
+    await expect.poll(() => textures.length).toBe(2);
+    await page.evaluate(async () => {
+      const assetsUrl = '/src/artwork/assets.ts';
+      const texturesUrl = '/src/artwork/textures.ts';
+      const { rasterAssets } = (await import(
+        assetsUrl
+      )) as typeof import('../../apps/client/src/artwork/assets');
+      const { loadFigureTexture } = (await import(
+        texturesUrl
+      )) as typeof import('../../apps/client/src/artwork/textures');
+      await Promise.all(
+        ['king-arthur-token', 'king-arthur-merlin-token'].map((id) =>
+          loadFigureTexture(rasterAssets[id].url),
+        ),
+      );
+    });
+    const merlin = page.getByRole('button', { name: 'Merlin 1', exact: true });
+    await merlin.click();
+    await expect(merlin).toHaveAttribute('aria-pressed', 'true');
+    await page.screenshot({
+      animations: 'disabled',
+      path: test.info().outputPath('arthur-four-colors-desktop.png'),
+    });
+    await page.setViewportSize({ width: 844, height: 390 });
+    await page.screenshot({
+      animations: 'disabled',
+      path: test.info().outputPath('arthur-four-colors-phone.png'),
+    });
+    const transition = async (
+      fighter: Partial<GameView['fighters'][number]>,
+      outcome: import('../../packages/game/src/index').Outcome,
+    ) => {
+      fighters = fighters.map((f) => (f.id === 'a:ally-1' ? { ...f, ...fighter } : f));
+      await page.evaluate(
+        ({ fighters, outcome }) => {
+          const harness = window as unknown as {
+            updatePresentationGame: (game: Partial<GameView>) => void;
+            presentOutcomes: (outcomes: import('../../packages/game/src/index').Outcome[]) => void;
+          };
+          harness.updatePresentationGame({ fighters });
+          harness.presentOutcomes([outcome]);
+        },
+        { fighters, outcome },
+      );
+      const notice = page.locator('.action-notice');
+      await expect(notice).toHaveAttribute('data-event-revision', String(outcome.revision));
+      if (outcome.type === 'revived') {
+        await expect(page.getByRole('dialog').locator('img[data-raster]')).toHaveJSProperty(
+          'complete',
+          true,
+        );
+        await page.screenshot({
+          animations: 'disabled',
+          path: test.info().outputPath('arthur-merlin-revival-review.png'),
+        });
+        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+      }
+      await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
+    };
+    await transition(
+      { position: 'n2' },
+      {
+        type: 'move',
+        fighter: 'a:ally-1',
+        path: ['n1', 'n2'],
+        sequence: 1,
+        revision: 1,
+        audience: 'all',
+      },
+    );
+    await page.screenshot({
+      animations: 'disabled',
+      path: test.info().outputPath('arthur-merlin-moved.png'),
+    });
+    await transition(
+      { defeated: true, hp: 0, position: null },
+      { type: 'defeated', fighter: 'a:ally-1', sequence: 2, revision: 2, audience: 'all' },
+    );
+    await expect(merlin).toHaveCount(0);
+    await page.screenshot({
+      animations: 'disabled',
+      path: test.info().outputPath('arthur-merlin-defeated.png'),
+    });
+    await transition(
+      { defeated: false, hp: 7, position: 'n2' },
+      {
+        type: 'revived',
+        fighter: 'a:ally-1',
+        position: 'n2',
+        sequence: 3,
+        revision: 3,
+        audience: 'all',
+      },
+    );
+    await expect(merlin).toBeVisible();
+    await page.screenshot({
+      animations: 'disabled',
+      path: test.info().outputPath('arthur-merlin-returned.png'),
+    });
+    expect(new Set(textures).size).toBe(2);
+    expect(textures).toHaveLength(2);
+    await test.info().attach('arthur-token-requests', {
+      body: JSON.stringify(textures, null, 2),
+      contentType: 'application/json',
+    });
+    expect(errors).toEqual([]);
+  });
+}

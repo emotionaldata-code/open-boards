@@ -248,21 +248,44 @@ export class Runtime {
     uses.total++;
     this.data.uses[key] = uses;
     const effects = this.effects(ability.effects, task);
-    if (ability.optional)
+    if (ability.optional) {
       openChoice(
         this,
         frame,
         p.player,
         ability.name,
         [
-          { id: 'use', label: 'Use ability', tasks: effects },
-          { id: 'skip', label: 'Skip', tasks: [] },
+          {
+            id: 'use',
+            label: `Use ${ability.name}`,
+            object: { type: 'fighter', id: owner },
+            tasks: effects,
+          },
+          { id: 'skip', decline: true, label: 'Skip', tasks: [] },
         ],
         1,
         1,
         task.provenance,
+        {
+          fighter: owner,
+          name: ability.name,
+          description: ability.description,
+          ...(task.provenance
+            ? (() => {
+                const card = [...player.hand, ...player.discard, ...(player.ongoing ?? [])].find(
+                  (c) => c.id === task.provenance!.card,
+                );
+                return card ? { card: { ...card } } : {};
+              })()
+            : {}),
+        },
       );
-    else this.prepend(...effects);
+      const choice = this.data.choice;
+      if (choice?.source?.card) {
+        choice.options[0].card = choice.source.card;
+        delete choice.options[0].object;
+      }
+    } else this.prepend(...effects);
     this.emit(
       { type: 'ability', fighter: owner, name: ability.name },
       task.private ? p.player : 'all',

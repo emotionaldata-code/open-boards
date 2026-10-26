@@ -1,13 +1,25 @@
 :root {
   font-family: 'Inter Variable', system-ui, sans-serif;
   color-scheme: dark;
-  --ground: #0c100f;
-  --surface: #171e1b;
-  --raised: #242e28;
-  --text: #f1ebda;
-  --muted: #b8bcad;
-  --accent: #d9bc7e;
-  --line: #475044;
+  --ground: #111210;
+  --surface: #1c1d1a;
+  --raised: #2b2c27;
+  --text: #f2eee5;
+  --muted: #bcb9ae;
+  --accent: #d0ae78;
+  --line: #45463e;
+  --control: #252620;
+  --control-line: #797a6e;
+  --control-hover: #34362e;
+  --accent-hover: #e4c494;
+  --accent-ink: #211c14;
+  --error: #ffb4a6;
+  --success: #b6d2ac;
+  --radius: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
   color: var(--text);
   background: var(--ground);
   font-size: 14px;
@@ -35,35 +47,35 @@ button {
   min-height: 44px;
   padding: 9px 16px;
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: var(--radius);
   color: var(--text);
-  background: #1b241f;
+  background: var(--control);
   cursor: pointer;
   font-weight: 500;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
 }
 button:hover:not(:disabled) {
-  background: #303b30;
-  border-color: #a09168;
+  background: var(--control-hover);
+  border-color: var(--muted);
 }
 button:active:not(:disabled) {
   transform: scale(0.97);
 }
-button:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
 button.primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #1c231b;
+  color: var(--accent-ink);
   font-weight: 650;
 }
 button.primary:hover:not(:disabled) {
-  background: #edcf91;
+  background: var(--accent-hover);
 }
 button[aria-pressed='true'] {
   border-color: var(--accent);
-  background: #364333;
+  background: var(--raised);
 }
 a {
   color: inherit;
@@ -82,12 +94,12 @@ a {
   display: grid;
   place-items: center;
   width: 44px;
-  padding: 8px;
+  padding: var(--space-1);
   flex-shrink: 0;
 }
 .shell {
-  height: 100dvh;
-  max-width: 1600px;
+  min-height: 100dvh;
+  max-width: 1376px;
   padding: env(safe-area-inset-top, 0px) max(24px, env(safe-area-inset-right))
     env(safe-area-inset-bottom, 0px) max(24px, env(safe-area-inset-left));
   margin: auto;
@@ -95,7 +107,7 @@ a {
   flex-direction: column;
 }
 .topbar {
-  height: 62px;
+  height: 68px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -171,7 +183,7 @@ small {
   color: var(--muted);
 }
 .error {
-  color: #ffb2a8;
+  color: var(--error);
 }
 .grow {
   flex: 1;
@@ -187,7 +199,7 @@ small {
   gap: 12px;
 }
 .page-title {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-3);
 }
 .page-title p {
   margin: 0;
@@ -201,9 +213,9 @@ small {
 }
 .panel {
   background: var(--surface);
-  border: 1px solid #343d32;
-  border-radius: 8px;
-  padding: 24px;
+  border: 0;
+  border-radius: var(--radius);
+  padding: var(--space-3);
   min-width: 0;
 }
 label {
@@ -216,15 +228,15 @@ label {
 input {
   min-height: 44px;
   width: 100%;
-  border: 1px solid #56604e;
+  border: 1px solid var(--control-line);
   border-radius: 4px;
   padding: 10px 12px;
   color: var(--text);
-  background: #0c130f;
+  background: var(--ground);
   font-size: 16px;
 }
 input::placeholder {
-  color: #9fa696;
+  color: var(--muted);
 }
 .notice {
   position: fixed;
@@ -234,7 +246,7 @@ input::placeholder {
   z-index: 6;
   max-width: calc(100vw - 24px);
   width: max-content;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--error);
   background: var(--raised);
   padding: 12px 18px;
   display: flex;
@@ -258,4 +270,32 @@ input::placeholder {
 }
 .display-message button {
   margin-top: 12px;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 1;
+  color: var(--muted);
+  background: var(--surface);
+  border-color: var(--line);
+}
+button.primary:disabled {
+  color: var(--muted);
+  background: var(--raised);
+  border-color: var(--raised);
+}
+button[aria-busy='true'] {
+  cursor: progress;
+}
+select {
+  min-height: 44px;
+  border: 1px solid var(--control-line);
+  border-radius: var(--radius);
+  padding: var(--space-1);
+  color: var(--text);
+  background: var(--control);
+}
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
 }

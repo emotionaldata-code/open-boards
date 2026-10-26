@@ -105,14 +105,13 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('response', (r) => {
-      if (r.status() >= 400 && r.url().includes('/cards/the-genie/'))
+      if (r.status() >= 400 && /\/(cards|artwork)\/the-genie\//.test(r.url()))
         errors.push(`${r.status()} ${r.url()}`);
     });
     try {
       await mountGenie(page);
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await page.locator('.game-card').filter({ hasText: 'Three Wishes' }).click();
-      await page.getByRole('button', { name: 'Play Three Wishes', exact: true }).click();
       await expect(choice()).toContainText('Choose a wish');
       await mountGenie(page);
       await choice()
@@ -123,8 +122,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         .focus();
       await page.keyboard.press('Enter');
       await page.locator('.game-card').filter({ hasText: "I've Made Sultans Out of Less" }).click();
-      await page.getByRole('button', { name: 'Target Rival', exact: true }).click();
-      await page.getByRole('button', { name: 'Commit attack', exact: true }).click();
+      await page.getByRole('button', { name: /^Target .*\(Rival\)$/ }).click();
       await expect(choice()).toContainText('from Rival’s hand');
       await mountGenie(page);
       const option = choice().locator('button.game-card').first();
@@ -146,21 +144,19 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       });
       await choice().locator('button.game-card').first().tap();
       await page.locator('.game-card').filter({ hasText: 'I Am Freed' }).tap();
-      await page.getByRole('button', { name: 'Target Rival', exact: true }).tap();
-      await page.getByRole('button', { name: 'Commit attack', exact: true }).tap();
+      await page.getByRole('button', { name: /^Target .*\(Rival\)$/ }).tap();
       await expect(choice()).toContainText('Choose where to teleport');
       await expect(
         choice().getByRole('button', { name: 'Stay in place', exact: true }),
       ).toHaveCount(0);
-      await expect(choice().getByRole('button', { name: 'Space 2', exact: true })).toHaveCount(0);
+      await expect(page.getByRole('button', { name: 'Choose space 02', exact: true })).toHaveCount(
+        0,
+      );
       await mountGenie(page);
-      await choice().getByRole('button', { name: 'Space 3', exact: true }).focus();
+      await page.getByRole('button', { name: 'Choose space 03', exact: true }).focus();
       await page.keyboard.press('Enter');
       while (await choice().count())
-        await choice()
-          .getByRole('button', { name: /The Genie/ })
-          .first()
-          .tap();
+        await page.getByRole('button', { name: 'The Genie', exact: true }).first().tap();
       await page.screenshot({
         path: test.info().outputPath('genie-match-phone.png'),
         animations: 'disabled',
@@ -236,12 +232,12 @@ test('selects The Genie over real sockets and restores Infinite Power after relo
       await page.getByRole('button', { name: 'Ready up', exact: true }).click();
     }
     await host.getByRole('button', { name: 'Start match', exact: true }).click();
-    const choice = () => host.getByRole('region', { name: 'Ability choice' });
+    const choice = () => host.locator('.hand-panel:has(.ability-options)');
     await expect(choice()).toContainText('Infinite Power');
-    await expect(guest.getByRole('region', { name: 'Ability choice' })).toHaveCount(0);
+    await expect(guest.locator('.hand-panel:has(.ability-options)')).toHaveCount(0);
     await host.reload();
     await expect(choice()).toContainText('Infinite Power');
-    await choice().getByRole('button', { name: 'Use ability', exact: true }).click();
+    await host.getByRole('button', { name: /^Use / }).click();
     await expect(choice()).toContainText('Discard 1 card');
     await host.setViewportSize({ width: 844, height: 390 });
     await host.reload();
@@ -282,7 +278,7 @@ test('explores all twelve Genie illustrations and inspectors on desktop and land
     errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('response', (r) => {
-    if (r.status() >= 400 && r.url().includes('/cards/the-genie/'))
+    if (r.status() >= 400 && /\/(cards|artwork)\/the-genie\//.test(r.url()))
       errors.push(`${r.status()} ${r.url()}`);
   });
   try {
@@ -312,10 +308,8 @@ test('explores all twelve Genie illustrations and inspectors on desktop and land
     });
     await page.keyboard.press('Escape');
     await page.setViewportSize({ width: 844, height: 390 });
-    await page.getByRole('button', { name: /^Explore \d+ characters?$/ }).tap();
-    const phoneRoster = page.getByRole('dialog').last();
-    await phoneRoster.getByRole('button', { name: 'Inspect The Genie', exact: true }).tap();
-    await phoneRoster
+    await roster.getByRole('button', { name: 'Inspect The Genie', exact: true }).tap();
+    await roster
       .getByRole('button', { name: 'Explore The Genie’s deck · 12 designs', exact: true })
       .tap();
     await page
@@ -328,13 +322,13 @@ test('explores all twelve Genie illustrations and inspectors on desktop and land
       animations: 'disabled',
       timeout: 30000,
     });
-    expect(
-      await page.evaluate(
-        () =>
-          document.documentElement.scrollWidth <= innerWidth &&
-          document.documentElement.scrollHeight <= innerHeight,
-      ),
-    ).toBe(true);
+    const bounds = await page.getByRole('dialog').last().boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(bounds!.y).toBeGreaterThanOrEqual(0);
+    expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(390);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
     expect(errors).toEqual([]);
   } finally {
     await context.close();

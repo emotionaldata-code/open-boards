@@ -58,7 +58,8 @@
                       "type": "move",
                       "distance": 2
                     }
-                  ]
+                  ],
+                  "target": "self"
                 },
                 {
                   "id": "opponent",
@@ -69,7 +70,8 @@
                       "target": "opponent",
                       "distance": 2
                     }
-                  ]
+                  ],
+                  "target": "opponent"
                 }
               ]
             }
@@ -480,6 +482,7 @@
                 },
                 {
                   "id": "stay",
+                  "decline": true,
                   "label": "Keep your space",
                   "effects": []
                 }

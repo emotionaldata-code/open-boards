@@ -12,11 +12,27 @@
   margin: auto;
   top: max(0px, calc((100cqh - 100cqw / var(--board-aspect)) / 2));
 }
-.map-terrain {
+.map-terrain,
+.map-scenery,
+.map-scenery > svg,
+.map-scenery > img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+.map-scenery {
+  pointer-events: none;
+}
+.map-scenery > img {
+  display: block;
+  object-fit: fill;
+}
+.map-terrain [data-space] > text:last-of-type {
+  paint-order: stroke;
+  stroke: #13221b;
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 .arena canvas {
   display: block;
@@ -97,5 +113,94 @@
   }
   .board-panel:has(.board-error) .board-controls {
     bottom: 32px;
+  }
+}
+
+/* HTML targets distinguish figures, spaces and tokens, including without WebGL. */
+.fighter-hit {
+  overflow: hidden;
+  position: absolute;
+  z-index: 2;
+  width: max(44px, 4.5%);
+  min-height: 44px;
+  aspect-ratio: 1;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+}
+.fighter-hit.is-interactive {
+  pointer-events: auto;
+}
+.fighter-hit .character-portrait {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.native-figures .fighter-hit .character-portrait {
+  opacity: 1;
+}
+.fighter-hit.is-target {
+  outline: 3px solid var(--accent);
+}
+.fighter-hit[aria-pressed='true'] {
+  background: transparent;
+  border-color: transparent;
+  outline: 2px solid var(--text);
+  background: transparent;
+}
+.fighter-hit:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.fighter-hit:focus-visible,
+.token-choice:focus-visible,
+.node-hit:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+.board-token.token-choice {
+  z-index: 3;
+  pointer-events: auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 2px solid var(--accent);
+  background: var(--surface);
+  transform: translate(-50%, -50%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .node-hit:active:not(:disabled) {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.board-fighters {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.fighter-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.fighter-hit:active:not(:disabled) {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+.token-choice:active:not(:disabled) {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fighter-hit:active:not(:disabled) {
+    transform: translate(-50%, -50%);
+  }
+  .token-choice:active:not(:disabled) {
+    transform: translate(-50%, -50%);
   }
 }

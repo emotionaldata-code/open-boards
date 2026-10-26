@@ -165,7 +165,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     });
     try {
       await mountGeralt(page, 'gear');
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Choose a sword');
       await page.screenshot({
         path: test.info().outputPath('geralt-gear-desktop.png'),
@@ -224,8 +224,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await mountGeralt(page, 'potion');
       await expect(page.locator('.badge-ally').filter({ hasText: 'Dandelion' })).toBeVisible();
       await page.locator('.game-card').filter({ hasText: 'GEAR: Blizzard' }).click();
-      await page.getByRole('button', { name: 'Play GEAR: Blizzard', exact: true }).click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Choose a destination');
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
@@ -275,7 +274,7 @@ test('Geralt restores a private Rend BOOST and pays the exact hand instance on p
   });
   try {
     await mountGeralt(page, 'rend');
-    const choice = () => page.getByRole('region', { name: 'Ability choice' });
+    const choice = () => page.locator('.hand-panel:has(.ability-options)');
     await expect(choice()).toContainText('Boost attack');
     await page.reload();
     await mountGeralt(page, 'rend');
@@ -283,9 +282,7 @@ test('Geralt restores a private Rend BOOST and pays the exact hand instance on p
     const payment = before.players[0].hand.find(
       (c) => c.definition === 'geralt-of-rivia-damn-youre-ugly',
     )!;
-    await choice()
-      .getByRole('button', { name: /Damn, You're Ugly · BOOST \+4/ })
-      .tap();
+    await page.getByRole('button', { name: /Damn, You're Ugly · BOOST \+4/ }).tap();
     await expect(choice()).toHaveCount(0);
     expect((await currentState(page)).players[0].discard.some((c) => c.id === payment.id)).toBe(
       true,

@@ -31,7 +31,8 @@ async function fitsViewport(page: Page) {
     viewportHeight: innerHeight,
   }));
   expect(size.width).toBeLessThanOrEqual(size.viewportWidth);
-  expect(size.height).toBeLessThanOrEqual(size.viewportHeight);
+  if (await page.locator('.shell.in-match').count())
+    expect(size.height).toBeLessThanOrEqual(size.viewportHeight);
 }
 async function seenEvents(page: Page): Promise<string[]> {
   return page.evaluate(
@@ -160,7 +161,7 @@ async function createMatch(
           .click();
     }
     if (character === 'medusa' || character === 'dracula') {
-      await expect(rivals[0].page.getByRole('region', { name: 'Ability choice' })).toBeVisible();
+      await expect(rivals[0].page.locator('.hand-panel:has(.ability-options)')).toBeVisible();
       await skipGaze(rivals[0].page);
     }
     await Promise.all(
@@ -173,7 +174,7 @@ async function createMatch(
 }
 async function skipGaze(page: Page) {
   const skip = page
-    .getByRole('region', { name: 'Ability choice' })
+    .locator('.hand-panel:has(.ability-options)')
     .getByRole('button', { name: 'Skip', exact: true });
   if (await skip.isVisible()) {
     const before = await revision(page);
@@ -194,7 +195,7 @@ async function discardToLimit(page: Page) {
   const before = await revision(page);
   const count = await page.locator('.game-card').count();
   for (let i = 0; i < count - 7; i++) await page.locator('.game-card').nth(i).click();
-  await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
+  if (count - 7 > 1) await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
   await changed(page, before);
 }
 async function endTurn(page: Page, next: Page) {
@@ -204,7 +205,7 @@ async function endTurn(page: Page, next: Page) {
       await discardToLimit(page);
     else await maneuver(page);
   }
-  await expect(next.getByRole('region', { name: 'Ability choice' })).toBeVisible();
+  await expect(next.locator('.hand-panel:has(.ability-options)')).toBeVisible();
   await skipGaze(next);
 }
 async function revision(page: Page) {
@@ -215,13 +216,13 @@ async function changed(page: Page, before: number) {
 }
 async function maneuver(page: Page, destination?: string) {
   let before = await revision(page);
-  await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+  await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
   await changed(page, before);
-  if (await page.getByRole('button', { name: 'Stay here', exact: true }).isVisible()) {
+  if (await page.locator('button.fighter-hit[aria-pressed="true"]').isVisible()) {
     before = await revision(page);
     if (destination)
       await page.getByRole('button', { name: `Move to ${destination}`, exact: true }).click();
-    else await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    else await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await changed(page, before);
     await finishManeuver(page);
   }
@@ -249,14 +250,16 @@ async function finishByExhaustion(rivals: Rival[]) {
       await expect(page.locator('main')).toHaveAttribute('data-phase', 'discarding');
       const count = await page.locator('.game-card').count();
       for (let i = 0; i < count - 7; i++) await page.locator('.game-card').nth(i).click();
-      await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
+      if (count - 7 > 1) await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
     } else if (phase === 'taking-actions') {
-      await expect(page.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
-      await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+      await expect(
+        page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+      ).toBeVisible();
+      await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     } else if (phase === 'ability-choice') {
       await skipGaze(page);
     } else if (phase === 'choosing-movement') {
-      await expect(page.getByRole('button', { name: 'Stay here', exact: true })).toBeVisible();
+      await expect(page.locator('button.fighter-hit[aria-pressed="true"]')).toBeVisible();
       await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
     } else throw new Error(`Unexpected phase ${phase}`);
     await changed(observer, before);
@@ -298,11 +301,13 @@ for (const count of [2, 4] as const)
       });
       const firstBadge = rivals[0].page.getByRole('button', { name: /Player details/ }).first();
       await firstBadge.click();
-      await expect(rivals[0].page.getByRole('dialog')).toContainText('Discard pile');
+      await expect(rivals[0].page.getByRole('dialog')).toContainText('Discards');
       await rivals[0].page.keyboard.press('Escape');
       await expect(firstBadge).toBeFocused();
       if (count === 2) {
-        await rivals[0].page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+        await rivals[0].page
+          .getByRole('button', { name: 'Maneuver · draw a card', exact: true })
+          .click();
         await expect(rivals[0].page.locator('main')).toHaveAttribute(
           'data-phase',
           'choosing-movement',
@@ -391,11 +396,15 @@ test('plays a hidden attack and free defense through the interface', async ({ br
     await attacker.getByRole('button', { name: 'Enable sound', exact: true }).click();
     await maneuver(attacker, '18');
     await endTurn(attacker, defender);
-    await expect(defender.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
+    await expect(
+      defender.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+    ).toBeVisible();
     await endTurn(defender, attacker);
     await maneuver(attacker, '19');
     await expect(attacker.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
-    await expect(attacker.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
+    await expect(
+      attacker.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+    ).toBeVisible();
     // A shuffled opening may contain no attack card; draw on subsequent turns until one is available.
     for (let i = 0; i < 12; i++) {
       const usable = attacker
@@ -408,12 +417,16 @@ test('plays a hidden attack and free defense through the interface', async ({ br
         break;
       }
       await endTurn(attacker, defender);
-      await expect(defender.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
+      await expect(
+        defender.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+      ).toBeVisible();
       await endTurn(defender, attacker);
       await maneuver(attacker);
     }
-    await attacker.getByRole('button', { name: `Target ${rivals[1].name}`, exact: true }).click();
-    await attacker.getByRole('button', { name: 'Commit attack', exact: true }).click();
+    await attacker
+      .getByRole('button', { name: new RegExp(`^Target .*\\(${rivals[1].name}\\)$`) })
+      .first()
+      .click();
     await expect(defender.getByRole('button', { name: 'Take the hit', exact: true })).toBeVisible();
     for (const { page } of rivals) {
       await expect
@@ -429,7 +442,6 @@ test('plays a hidden attack and free defense through the interface', async ({ br
       .filter({ hasText: /Snipe|Regroup|Feint/ });
     if (await defense.count()) {
       await defense.first().click();
-      await defender.getByRole('button', { name: /^Defend with/ }).click();
     } else await defender.getByRole('button', { name: 'Take the hit', exact: true }).click();
     await changed(defender, beforeDefense);
     if ((await defender.locator('main').getAttribute('data-phase')) === 'ability-choice')
@@ -453,7 +465,7 @@ test('plays a hidden attack and free defense through the interface', async ({ br
   }
 });
 
-test('login rules, fullscreen, and compact phone pages fit without page scrolling', async ({
+test('login prioritizes access, supports fullscreen and scrolls outside matches', async ({
   browser,
 }) => {
   const context = await browser.newContext({
@@ -479,6 +491,7 @@ test('login rules, fullscreen, and compact phone pages fit without page scrollin
     await fitsViewport(page);
     await page.setViewportSize({ width: 667, height: 375 });
     await fitsViewport(page);
+    await page.getByRole('button', { name: 'Sign in', exact: true }).scrollIntoViewIfNeeded();
     await expect(page.getByRole('button', { name: 'Sign in', exact: true })).toBeInViewport();
     await page.screenshot({ path: test.info().outputPath('login-landscape.png') });
   } finally {
@@ -486,7 +499,7 @@ test('login rules, fullscreen, and compact phone pages fit without page scrollin
   }
 });
 
-test('populated room lists paginate and four waiting seats fit a portrait phone', async ({
+test('populated room lists paginate and four waiting seats remain accessible on phone', async ({
   browser,
 }) => {
   const hosts: Rival[] = [];
@@ -545,16 +558,22 @@ test('Medusa selects and attacks a distant rival through a multicolor space', as
         break;
       }
       await endTurn(attacker, defender);
-      await expect(defender.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
+      await expect(
+        defender.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+      ).toBeVisible();
       await endTurn(defender, attacker);
       await maneuver(attacker);
     }
     await expect(
-      attacker.getByRole('button', { name: `Target ${rivals[1].name}`, exact: true }),
+      attacker
+        .getByRole('button', { name: new RegExp(`^Target .*\\(${rivals[1].name}\\)$`) })
+        .first(),
     ).toHaveAttribute('aria-description', 'Zones: Gray, Green');
     await attacker.screenshot({ path: test.info().outputPath('medusa-range-desktop.png') });
-    await attacker.getByRole('button', { name: `Target ${rivals[1].name}`, exact: true }).click();
-    await attacker.getByRole('button', { name: 'Commit attack', exact: true }).click();
+    await attacker
+      .getByRole('button', { name: new RegExp(`^Target .*\\(${rivals[1].name}\\)$`) })
+      .first()
+      .click();
     await expect(defender.getByRole('button', { name: 'Take the hit', exact: true })).toBeVisible();
     await defender.getByRole('button', { name: 'Take the hit', exact: true }).click();
     await expect(attacker.locator('.action-notice')).toContainText(/Clash!|Blocked!/, {
@@ -655,56 +674,42 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
     });
     await page.setViewportSize({ width: 390, height: 667 });
     await fitsViewport(page);
-    const explore = page.getByRole('button', {
-      name: `Explore ${fighters.length} ${Number(fighters.length) === 1 ? 'character' : 'characters'}`,
-      exact: true,
-    });
-    await explore.tap();
-    const dialog = page.getByRole('dialog');
-    for (const [name] of fighters) {
-      await dialog.getByRole('button', { name: `Inspect ${name}`, exact: true }).tap();
-      await expect(dialog.getByRole('heading', { name, exact: true })).toBeInViewport();
+    for (const viewport of [
+      { width: 390, height: 667 },
+      { width: 320, height: 568 },
+      { width: 667, height: 375 },
+    ]) {
+      await page.setViewportSize(viewport);
+      await page.evaluate(() => scrollTo(0, 0));
+      if (viewport.height > 600)
+        await expect(page.getByRole('button', { name: 'Sign in', exact: true })).toBeInViewport();
+      for (const [name] of fighters) {
+        await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).tap();
+        await expect(roster.getByRole('heading', { name, exact: true })).toBeInViewport();
+      }
+      await roster.getByRole('button', { name: 'Inspect Medusa', exact: true }).tap();
+      await roster.locator('summary').click();
+      await expect(roster).toContainText('Petrifying gaze');
+      await roster
+        .getByRole('button', { name: 'Explore Medusa’s deck · 11 designs', exact: true })
+        .tap();
+      const deck = page.getByRole('dialog', { name: 'Medusa’s deck', exact: true });
+      await deck.getByRole('button', { name: 'About Dash, 3 copies', exact: true }).tap();
+      await expect(page.getByRole('dialog').last()).toContainText('After combat');
+      await page.screenshot({
+        path: test.info().outputPath(`card-inspector-${viewport.width}.png`),
+        animations: 'disabled',
+      });
+      await page.keyboard.press('Escape');
+      await page.keyboard.press('Escape');
+      await fitsViewport(page);
+      await page.evaluate(() => scrollTo(0, 0));
+      await page.screenshot({
+        path: test.info().outputPath(`roster-${viewport.width}.png`),
+        fullPage: true,
+        animations: 'disabled',
+      });
     }
-    await dialog.getByRole('button', { name: 'Inspect Medusa', exact: true }).tap();
-    await expect(dialog).toContainText('Petrifying gaze');
-    await dialog
-      .getByRole('button', { name: 'Explore Medusa’s deck · 11 designs', exact: true })
-      .tap();
-    const deck = page.getByRole('dialog', { name: 'Medusa’s deck', exact: true });
-    await deck.getByRole('button', { name: 'About Dash, 3 copies', exact: true }).tap();
-    await expect(page.getByRole('dialog').last()).toContainText('After combat');
-    await page.screenshot({
-      path: test.info().outputPath('card-inspector-portrait.png'),
-      animations: 'disabled',
-    });
-    await page.keyboard.press('Escape');
-    await page.keyboard.press('Escape');
-
-    await page.screenshot({
-      path: test.info().outputPath('roster-phone.png'),
-      animations: 'disabled',
-    });
-    await page.keyboard.press('Escape');
-    await expect(explore).toBeFocused();
-    await page.setViewportSize({ width: 320, height: 568 });
-    await fitsViewport(page);
-    await explore.tap();
-    await expect(dialog.getByRole('button', { name: 'Inspect Medusa', exact: true })).toBeVisible();
-    await fitsViewport(page);
-    await page.screenshot({
-      path: test.info().outputPath('roster-small-phone.png'),
-      animations: 'disabled',
-    });
-    await page.keyboard.press('Escape');
-    await page.setViewportSize({ width: 667, height: 375 });
-    await fitsViewport(page);
-    await explore.tap();
-    await dialog.getByRole('button', { name: 'Inspect Medusa', exact: true }).tap();
-    await expect(dialog).toContainText('Petrifying gaze');
-    await page.screenshot({
-      path: test.info().outputPath('roster-landscape.png'),
-      animations: 'disabled',
-    });
     expect(errors).toEqual([]);
   } finally {
     await context.close();
@@ -783,7 +788,7 @@ test('crosses a portal, preserves its destination on reconnect and explores the 
     await page.screenshot({ path: test.info().outputPath('map-desktop.png') });
     await maneuver(page, '11');
     await expect(page.locator('.action-notice')).toContainText('On the move', { timeout: 30_000 });
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     const portal = page.getByRole('button', { name: 'Move to 18', exact: true });
     await expect(portal).toHaveAttribute('aria-description', /Portal: move to any other portal/);
     await portal.click();
@@ -796,9 +801,9 @@ test('crosses a portal, preserves its destination on reconnect and explores the 
     await page.reload();
     await skipGaze(rivals[1].page);
     await endTurn(rivals[1].page, page);
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Move to 20', exact: true })).toBeVisible();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await finishManeuver(page);
     for (const [width, height, label] of [
       [768, 900, 'tablet'],
@@ -826,7 +831,7 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
   const rivals = await createMatch(browser, 2, false, 'medusa');
   const page = rivals[0].page;
   try {
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(6);
     const picker = page.getByRole('group', { name: 'Your fighters' });
     await expect(picker.getByRole('button')).toHaveCount(4);
@@ -834,16 +839,20 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     expect(fighters).toHaveLength(4);
     const before: Record<string, string[]> = {};
     for (const fighter of fighters) {
-      await picker.getByRole('button', { name: fighter, exact: true }).click();
+      if (
+        (await picker
+          .getByRole('button', { name: fighter, exact: true })
+          .getAttribute('aria-pressed')) !== 'true'
+      )
+        await picker.getByRole('button', { name: fighter, exact: true }).click();
       before[fighter] = await page
         .getByRole('button', { name: /^Move to / })
         .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label')!));
     }
     const card = page.locator('.game-card').first();
     const amount = Number((await card.locator('.card-boost').innerText()).replace('BOOST ', ''));
-    await card.click();
     await expect(
-      page.getByRole('button', { name: `Boost movement +${amount}`, exact: true }),
+      page.getByRole('button', { name: new RegExp(`^Boost movement \\+${amount} ·`) }).first(),
     ).toBeVisible();
     for (const [width, height, label] of [
       [1440, 1000, 'desktop'],
@@ -852,7 +861,7 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     ] as const) {
       await page.setViewportSize({ width, height });
       await expect(
-        page.getByRole('button', { name: `Boost movement +${amount}`, exact: true }),
+        page.getByRole('button', { name: new RegExp(`^Boost movement \\+${amount} ·`) }).first(),
       ).toBeInViewport();
       const value = await card.locator('.card-boost').boundingBox();
       const bounds = await card.boundingBox();
@@ -867,7 +876,7 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
         animations: 'disabled',
       });
     }
-    await page.getByRole('button', { name: `Boost movement +${amount}`, exact: true }).click();
+    await card.click();
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(0);
     await expect(page.locator('.compact-card')).toHaveCount(5);
     await expect(page.locator('.action-count')).toContainText('1 actions');
@@ -875,8 +884,13 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     await page.reload();
     await expect(page.locator('main')).toHaveAttribute('data-revision', String(committed));
     for (const fighter of fighters) {
-      await picker.getByRole('button', { name: fighter, exact: true }).click();
-      await expect(page.locator('.fighter-controls')).toContainText(`move up to ${3 + amount}`);
+      if (
+        (await picker
+          .getByRole('button', { name: fighter, exact: true })
+          .getAttribute('aria-pressed')) !== 'true'
+      )
+        await picker.getByRole('button', { name: fighter, exact: true }).click();
+      await expect(page.locator('.hand-panel .prompt').first()).toContainText(`Move ${3 + amount}`);
       const after = await page
         .getByRole('button', { name: /^Move to / })
         .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label')!));
@@ -901,13 +915,13 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     const newSpace = expanded.find((label) => !before[fighter].includes(label))!;
     expect(newSpace).toBeTruthy();
     await page.getByRole('button', { name: newSpace, exact: true }).click();
-    await expect(page.locator('.fighter-controls')).toContainText('3 fighters left');
-    await expect(page.locator('.fighter-controls')).toContainText(`move up to ${3 + amount}`);
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('3 left');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText(`Move ${3 + amount}`);
     await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
-    await expect(page.locator('.fighter-controls')).toContainText('move up to 3');
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('Move 3');
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(6);
-    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(0);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
@@ -942,16 +956,16 @@ test('selects Medusa over real sockets, deploys three Harpies and reconnects sha
         .getByRole('button', { name: /^Place ally at/ })
         .first()
         .click();
-    const choice = page.getByRole('region', { name: 'Ability choice' });
+    const choice = page.locator('.hand-panel:has(.ability-options)');
     await expect(choice).toContainText('Petrifying gaze');
-    await expect(opponent.getByRole('region', { name: 'Ability choice' })).toHaveCount(0);
+    await expect(opponent.locator('.hand-panel:has(.ability-options)')).toHaveCount(0);
     await page.reload();
     await choice.getByRole('button', { name: 'Skip', exact: true }).click();
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await picker.getByRole('button', { name: 'Harpy 3', exact: true }).click();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('3 fighters left');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('3 left');
     await expect(picker.getByRole('button', { name: 'Harpy 3', exact: true })).toHaveCount(0);
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
@@ -980,11 +994,11 @@ test('selects Arthur over sockets, deploys Merlin and reconnects on a landscape 
   try {
     const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
     await expect(picker.getByRole('button')).toHaveText(['King Arthur', 'Merlin 1']);
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await picker.getByRole('button', { name: 'Merlin 1', exact: true }).click();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
     await page.screenshot({
@@ -1014,11 +1028,11 @@ test('selects Achilles over sockets, deploys Patroclus and restores his shared M
       path: test.info().outputPath('achilles-socket-desktop.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await picker.getByRole('button', { name: 'Patroclus 1', exact: true }).click();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
     await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
@@ -1050,11 +1064,11 @@ test('selects four Holmes over sockets, deploys numbered Watsons and restores a 
       ).toContainText('Dr. Watson 1');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
     await picker.getByRole('button', { name: 'Dr. Watson 1', exact: true }).tap();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).tap();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
     await page.screenshot({
       path: test.info().outputPath('holmes-four-seats-phone.png'),
       animations: 'disabled',
@@ -1086,11 +1100,11 @@ test('selects four Draculas over sockets, deploys numbered Sisters and restores 
       ).toContainText('Sister 1');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
     await picker.getByRole('button', { name: 'Sister 1', exact: true }).tap();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).tap();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('3 fighters');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('3 left');
     await page.screenshot({
       path: test.info().outputPath('dracula-four-seats-phone.png'),
       animations: 'disabled',
@@ -1120,11 +1134,11 @@ test('selects Bigfoot over sockets, deploys The Jackalope and restores his share
       path: test.info().outputPath('bigfoot-socket-desktop.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await picker.getByRole('button', { name: 'The Jackalope 1', exact: true }).click();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).click();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('1 fighter');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
     await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
@@ -1157,11 +1171,11 @@ test('selects Robin Hood over sockets, deploys all sixteen Outlaws and reconnect
       ).toContainText('Outlaw 4');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
     await picker.getByRole('button', { name: 'Outlaw 4', exact: true }).tap();
-    await page.getByRole('button', { name: 'Stay here', exact: true }).tap();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
-    await expect(page.locator('.fighter-controls')).toContainText('4 fighters');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('4 left');
     await expect(page.locator('.pixi-surface canvas')).toBeVisible();
     await page.evaluate(
       () =>
@@ -1218,7 +1232,7 @@ test('Invisible Man deploys twelve fog tokens over real sockets and reconnects m
   const rivals = await createMatch(browser, 4, true, 'invisible-man', false, false);
   try {
     for (const [seat, { page }] of rivals.entries()) {
-      const choice = page.getByRole('region', { name: 'Ability choice' });
+      const choice = page.locator('.hand-panel:has(.ability-options)');
       for (let i = 1; i <= 3; i++) {
         await expect(choice).toContainText(`Place Fog ${i}`);
         if (i === 2) await page.reload();
@@ -1229,7 +1243,7 @@ test('Invisible Man deploys twelve fog tokens over real sockets and reconnects m
       }
       if (seat < 3)
         await expect(
-          rivals[seat + 1].page.getByRole('region', { name: 'Ability choice' }),
+          rivals[seat + 1].page.locator('.hand-panel:has(.ability-options)'),
         ).toBeVisible();
     }
     for (const { page } of rivals) {
@@ -1240,7 +1254,7 @@ test('Invisible Man deploys twelve fog tokens over real sockets and reconnects m
       await expect(page.locator('.board-token')).toHaveCount(12);
     }
     const host = rivals[0].page;
-    await host.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await host.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
     await expect(host.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
     await host.reload();
     await expect(host.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
@@ -1262,9 +1276,9 @@ test('Darth Vader selects without allies and reconnects during Maneuver', async 
   try {
     const page = rivals[0].page;
     await page.setViewportSize({ width: 844, height: 390 });
-    const choice = page.getByRole('region', { name: 'Ability choice' });
+    const choice = page.locator('.hand-panel:has(.ability-options)');
     if (await choice.isVisible()) await choice.getByRole('button', { name: /Confirm/ }).click();
-    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
     await page.reload();
     await expect(page.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
     await expect(page.locator('.arena canvas')).toBeVisible();
@@ -1284,14 +1298,14 @@ test('Geralt selects gear before Dandelion deployment and resumes a four-seat Ma
   const rivals = await createMatch(browser, 4, true, 'geralt-of-rivia', false, false);
   try {
     for (const [i, { page }] of rivals.entries()) {
-      const choice = page.getByRole('region', { name: 'Ability choice' });
+      const choice = page.locator('.hand-panel:has(.ability-options)');
       await expect(choice).toContainText('Choose a sword');
       await choice.getByRole('button', { name: 'Gear: Sword of Silver', exact: true }).tap();
       await expect(choice).toContainText('Choose armor');
       await page.reload();
       await expect(choice).toContainText('Choose armor');
       for (const rival of rivals.filter((_, j) => j !== i))
-        await expect(rival.page.getByRole('region', { name: 'Ability choice' })).toHaveCount(0);
+        await expect(rival.page.locator('.hand-panel:has(.ability-options)')).toHaveCount(0);
       await choice.getByRole('button', { name: 'GEAR: Wolf Medallion', exact: true }).tap();
       await choice.getByRole('button', { name: 'GEAR: Tawny Owl', exact: true }).tap();
     }
@@ -1303,7 +1317,7 @@ test('Geralt selects gear before Dandelion deployment and resumes a four-seat Ma
       await expect(page.locator('.badge-ally').filter({ hasText: 'Dandelion' })).toHaveCount(4);
     }
     const host = rivals[0].page;
-    await host.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await host.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
     await host.reload();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');

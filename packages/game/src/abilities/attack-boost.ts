@@ -58,11 +58,12 @@ export function offerAttackBoost(
           },
         ],
       })),
-      { id: '$skip', label: 'Skip', tasks: [] },
+      { id: '$skip', decline: true, label: 'Skip', tasks: [] },
     ],
     1,
     1,
     provenance,
+    { fighter: owner },
   );
 }
 

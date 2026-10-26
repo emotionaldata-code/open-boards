@@ -13,7 +13,9 @@ import type { GameView } from '@open-boards/protocol';
 import type { PresentationEvent } from '../animation/events';
 import { ArenaScene } from './scene';
 import { Terrain } from './Terrain';
+import { MapScenery } from './MapScenery';
 import { playerColors } from './figures';
+import { CharacterPortrait } from '../characters/CharacterPortrait';
 import { arenaSize, spaces } from './layout';
 import type { Present } from '../presentation/sequence';
 export interface BoardPlayback {
@@ -27,6 +29,12 @@ interface Props {
   events?: PresentationEvent[];
   reset?: number;
   onNode?: (id: string) => void;
+  interactiveFighters?: string[];
+  fighterLabels?: Record<string, string>;
+  targetFighters?: string[];
+  onFighter?: (id: string) => void;
+  interactiveTokens?: string[];
+  onToken?: (id: string) => void;
 }
 export function Board(props: Props) {
   const host = useRef<HTMLDivElement>(null);
@@ -98,11 +106,12 @@ export function Board(props: Props) {
   return (
     <div className="board-viewport" role="region" aria-label="Map">
       <div
-        className="arena"
+        className={`arena ${!ready || error ? 'native-figures' : ''}`}
         style={{ '--board-aspect': arenaSize.width / arenaSize.height } as CSSProperties}
         role="group"
         aria-label={`${basic.map.name}: ${basic.map.nodes.length} connected spaces, ${Object.keys(zoneStyles).length} colored zones and ${basic.map.portals?.length ?? 0} portals.`}
       >
+        <MapScenery id={basic.map.id} />
         <Terrain
           highlights={props.highlights}
           selected={
@@ -118,22 +127,32 @@ export function Board(props: Props) {
               const player = props.game!.players.findIndex(
                 (p) => p.id === props.game!.fighters.find((f) => f.id === token.owner)?.player,
               );
+              const interactive = props.interactiveTokens?.includes(token.id);
               const stacked = tokens
                 .slice(0, index)
-                .filter((t) => t.position === token.position).length;
+                .filter(
+                  (t) =>
+                    t.position === token.position &&
+                    (!interactive || props.interactiveTokens?.includes(t.id)),
+                ).length;
               const label = `${token.name} · ${props.game!.players[player]?.name} · Space ${point.label}`;
+              const Token = interactive ? 'button' : 'span';
               return (
-                <span
+                <Token
                   key={token.id}
-                  className="board-token"
-                  role="img"
+                  className={`board-token ${interactive ? 'token-choice' : ''}`}
+                  role={interactive ? undefined : 'img'}
+                  onClick={interactive ? () => props.onToken?.(token.id) : undefined}
                   aria-label={label}
                   title={label}
                   style={{
                     left: `${(point.x / arenaSize.width) * 100}%`,
                     top: `${(point.y / arenaSize.height) * 100}%`,
                     color: `#${playerColors[player].toString(16)}`,
-                    marginLeft: `${stacked * 8}px`,
+                    marginLeft: `${interactive ? stacked * 46 * (point.x > arenaSize.width / 2 ? -1 : 1) : stacked * 8}px`,
+                    marginTop: interactive
+                      ? `${point.y > arenaSize.height / 2 ? -30 : 30}px`
+                      : undefined,
                   }}
                 >
                   <svg viewBox="0 0 90 60" aria-hidden="true">
@@ -151,12 +170,64 @@ export function Board(props: Props) {
                     />
                   </svg>
                   <b>{token.name.split(' ').at(-1)}</b>
-                </span>
+                </Token>
               );
             })}
         </div>
         <div className="pixi-surface" ref={host} aria-hidden="true" />
         <div className="board-inputs">
+          <div
+            className="board-fighters"
+            role={props.interactiveFighters?.length ? 'group' : undefined}
+            aria-label={props.interactiveFighters?.length ? 'Your fighters' : undefined}
+          >
+            {(props.game?.fighters ?? [])
+              .filter((f) => f.position !== null && !f.defeated)
+              .map((fighter) => {
+                const point = spaces[fighter.position!];
+                const interactive = props.interactiveFighters?.includes(fighter.id);
+                const target = props.targetFighters?.includes(fighter.id);
+                const label = `${fighterLabel(fighter, basic)} (${props.game?.players.find((p) => p.id === fighter.player)?.name})`;
+                const Figure = interactive ? 'button' : 'span';
+                return (
+                  <Figure
+                    key={fighter.id}
+                    className={`fighter-hit ${interactive ? 'is-interactive' : ''} ${target ? 'is-target' : ''}`}
+                    aria-label={
+                      props.fighterLabels?.[fighter.id] ??
+                      (target ? `Target ${label}` : fighterLabel(fighter, basic))
+                    }
+                    role={interactive ? undefined : 'img'}
+                    aria-pressed={interactive ? props.selected === fighter.id : undefined}
+                    aria-description={
+                      target
+                        ? `Zones: ${basic.map.zones[fighter.position!].map((zone) => zoneStyles[zone].name).join(', ')}`
+                        : props.game?.phase.type === 'choosing-movement' &&
+                            props.selected === fighter.id
+                          ? 'Click this fighter’s current space to stay.'
+                          : 'Choose this fighter.'
+                    }
+                    title={
+                      props.game?.phase.type === 'choosing-movement' &&
+                      props.selected === fighter.id
+                        ? `${label} · Stay here`
+                        : label
+                    }
+                    data-fighter={fighter.id}
+                    style={{
+                      left: `${(point.x / arenaSize.width) * 100}%`,
+                      top: `${(point.y / arenaSize.height) * 100}%`,
+                    }}
+                    onClick={interactive ? () => props.onFighter?.(fighter.id) : undefined}
+                  >
+                    <CharacterPortrait
+                      character={fighter.role === 'ally' ? fighter.definition : fighter.character}
+                    />
+                    <span className="fighter-label">{fighterLabel(fighter, basic)}</span>
+                  </Figure>
+                );
+              })}
+          </div>
           {(props.highlights ?? []).map((id) => (
             <button
               key={id}
@@ -170,16 +241,7 @@ export function Board(props: Props) {
                   ? `Place ally at ${spaces[id].label}`
                   : props.game?.phase.type === 'choosing-movement'
                     ? `Move to ${spaces[id].label}`
-                    : props.game?.phase.type === 'ability-choice'
-                      ? `Choose space ${spaces[id].label}`
-                      : `Target ${(() => {
-                          const f = props.game?.fighters.find(
-                            (f) => f.position === id && !f.defeated,
-                          );
-                          return f?.role === 'ally'
-                            ? `${fighterLabel(f, basic)} (${props.game?.players.find((p) => p.id === f.player)?.name})`
-                            : props.game?.players.find((p) => p.id === f?.player)?.name;
-                        })()}`
+                    : `Choose space ${spaces[id].label}`
               }
               aria-description={`Zones: ${basic.map.zones[id].map((zone) => zoneStyles[zone].name).join(', ')}${basic.map.portals?.includes(id) ? '. Portal (passage arrows below the space): move to any other unoccupied portal for one movement point.' : ''}`}
               title={`Space ${spaces[id].label}${basic.map.portals?.includes(id) ? ' · Portal (passage arrows) · One movement point to another unoccupied portal' : ''}`}

@@ -207,10 +207,24 @@ export type Task = (
       step: 'commit' | 'defend' | 'reveal' | 'lifecycle' | 'damage' | 'finish';
     }
 ) & { provenance?: CardProvenance };
+export type ChoiceObject =
+  | { type: 'fighter'; id: string }
+  | { type: 'space'; id: string }
+  | { type: 'token'; id: string }
+  | { type: 'pile'; player: string; zone: 'deck' | 'discard' };
+export interface ChoiceSource {
+  fighter?: string;
+  card?: Card;
+  name?: string;
+  description?: string;
+}
 export interface ChoiceOption {
   id: string;
   label: string;
   card?: Card;
+  object?: ChoiceObject;
+  value?: number;
+  decline?: boolean;
 }
 export interface PendingChoice {
   frame: number;
@@ -218,6 +232,7 @@ export interface PendingChoice {
   player: string;
   prompt: string;
   public?: boolean;
+  source?: ChoiceSource;
   options: ChoiceOption[];
   min: number;
   max: number;

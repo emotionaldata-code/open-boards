@@ -5,42 +5,53 @@ import sharp from 'sharp';
 import { cardPresentation } from '@open-boards/content';
 import { fighterArtwork, rasterAssets, rasterForUrl } from './assets';
 
-it('ships the complete pilot with correctly sized, hashed derivatives and transparent tokens', async () => {
-  const cards = Object.values(cardPresentation).filter((card) => card.character === 'medusa');
-  expect(cards).toHaveLength(11);
-  for (const card of cards) expect(rasterForUrl(card.art.image)?.kind).toBe('card');
-  const pilot = new Set(cards.map((card) => rasterForUrl(card.art.image)!));
-  for (const character of ['medusa', 'medusa-harpy']) {
-    expect(rasterAssets[fighterArtwork[character].portrait].kind).toBe('portrait');
-    expect(rasterAssets[fighterArtwork[character].token].kind).toBe('token');
-    pilot.add(rasterAssets[fighterArtwork[character].portrait]);
-    pilot.add(rasterAssets[fighterArtwork[character].token]);
-  }
-  expect(pilot.size).toBe(15);
-  for (const asset of pilot) {
-    const widths =
-      asset.kind === 'card'
-        ? [320, 640, 1280]
-        : asset.kind === 'portrait'
-          ? [256, 512, 1024]
-          : [512];
-    expect(asset.variants.map((variant) => variant.width)).toEqual(widths);
-    expect(asset.url).toBe(asset.variants.at(-1)!.url);
-    for (const variant of asset.variants) {
-      const bytes = await readFile(new URL(`../../public${variant.url}`, import.meta.url));
-      expect(bytes.length).toBe(variant.bytes);
-      expect(variant.url).toContain(createHash('sha256').update(bytes).digest('hex').slice(0, 12));
-      const metadata = await sharp(bytes).metadata();
-      expect(metadata).toMatchObject({
-        format: 'webp',
-        width: variant.width,
-        height: variant.height,
-      });
-      if (asset.kind === 'token') {
-        expect(metadata.hasAlpha).toBe(true);
-        expect((await sharp(bytes).stats()).isOpaque).toBe(false);
-        expect(asset.anchor).toEqual([0.5, 0.96875]);
+it.each([
+  { character: 'the-genie', ally: null, designs: 12 },
+  { character: 'medusa', ally: 'medusa-harpy', designs: 11 },
+  { character: 'king-arthur', ally: 'king-arthur-merlin', designs: 16 },
+  { character: 'sherlock-holmes', ally: 'sherlock-holmes-dr-watson', designs: 13 },
+])(
+  'ships $character with correctly sized, hashed derivatives and transparent tokens',
+  async ({ character, ally, designs }) => {
+    const cards = Object.values(cardPresentation).filter((card) => card.character === character);
+    expect(cards).toHaveLength(designs);
+    for (const card of cards) expect(rasterForUrl(card.art.image)?.kind).toBe('card');
+    const pilot = new Set(cards.map((card) => rasterForUrl(card.art.image)!));
+    const fighters = ally ? [character, ally] : [character];
+    for (const fighter of fighters) {
+      expect(rasterAssets[fighterArtwork[fighter].portrait].kind).toBe('portrait');
+      expect(rasterAssets[fighterArtwork[fighter].token].kind).toBe('token');
+      pilot.add(rasterAssets[fighterArtwork[fighter].portrait]);
+      pilot.add(rasterAssets[fighterArtwork[fighter].token]);
+    }
+    expect(pilot.size).toBe(designs + fighters.length * 2);
+    for (const asset of pilot) {
+      const widths =
+        asset.kind === 'card'
+          ? [320, 640, 1280]
+          : asset.kind === 'portrait'
+            ? [256, 512, 1024]
+            : [512];
+      expect(asset.variants.map((variant) => variant.width)).toEqual(widths);
+      expect(asset.url).toBe(asset.variants.at(-1)!.url);
+      for (const variant of asset.variants) {
+        const bytes = await readFile(new URL(`../../public${variant.url}`, import.meta.url));
+        expect(bytes.length).toBe(variant.bytes);
+        expect(variant.url).toContain(
+          createHash('sha256').update(bytes).digest('hex').slice(0, 12),
+        );
+        const metadata = await sharp(bytes).metadata();
+        expect(metadata).toMatchObject({
+          format: 'webp',
+          width: variant.width,
+          height: variant.height,
+        });
+        if (asset.kind === 'token') {
+          expect(metadata.hasAlpha).toBe(true);
+          expect((await sharp(bytes).stats()).isOpaque).toBe(false);
+          expect(asset.anchor).toEqual([0.5, 0.96875]);
+        }
       }
     }
-  }
-});
+  },
+);

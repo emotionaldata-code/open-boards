@@ -6,7 +6,7 @@ export interface RasterVariant {
 }
 
 export interface RasterAsset extends RasterVariant {
-  kind: 'card' | 'portrait' | 'token';
+  kind: 'card' | 'portrait' | 'token' | 'map';
   focal: [number, number];
   variants: RasterVariant[];
   anchor?: [number, number];

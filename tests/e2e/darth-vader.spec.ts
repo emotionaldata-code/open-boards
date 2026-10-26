@@ -194,7 +194,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     });
     try {
       await mountVader(page, 'force');
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Discard up to 1');
       await choice()
         .getByRole('button', { name: /I Have You Now/ })
@@ -210,7 +210,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountVader(page, 'force');
-      await choice().getByRole('button', { name: 'Medusa · Hector', exact: true }).focus();
+      await page.getByRole('button', { name: 'Medusa · Hector', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       expect((await currentState(page)).fighters.find((f) => f.id === 'p1:main')?.hp).toBe(13);
@@ -223,7 +223,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.evaluate(() => sessionStorage.clear());
       await page.reload();
       await mountVader(page, 'recovery');
-      await choice().getByRole('button', { name: /Use/ }).tap();
+      await page.getByRole('button', { name: /Use/ }).tap();
       await expect(choice()).toContainText('Shuffle a discarded card');
       await page.reload();
       await mountVader(page, 'recovery');
@@ -260,12 +260,11 @@ test('Darth Vader chooses a starting space and defends with Form V Mastery on ph
   });
   await mountVader(page, 'meditation');
   await page.locator('.game-card').filter({ hasText: 'Meditation Chamber' }).click();
-  await page.getByRole('button', { name: 'Play Meditation Chamber', exact: true }).click();
-  const choice = () => page.getByRole('region', { name: 'Ability choice' });
+  const choice = () => page.locator('.hand-panel:has(.ability-options)');
   await expect(choice()).toContainText('Choose where to teleport');
   await page.reload();
   await mountVader(page, 'meditation');
-  await choice().getByRole('button', { name: 'Space 15', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose space 15', exact: true }).click();
   expect((await currentState(page)).fighters.find((f) => f.id === 'p0:main')?.position).toBe('n13');
   await page.screenshot({
     path: test.info().outputPath('meditation-phone.png'),
@@ -275,7 +274,6 @@ test('Darth Vader chooses a starting space and defends with Form V Mastery on ph
   await page.reload();
   await mountVader(page, 'mastery');
   await page.locator('.game-card').filter({ hasText: 'Form V Mastery' }).click();
-  await page.getByRole('button', { name: /Defend.*Form V Mastery/ }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
   const state = await currentState(page);
   expect(state.players[1].discard.some((c) => c.definition === 'medusa-second-shot-3')).toBe(true);

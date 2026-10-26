@@ -210,13 +210,14 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       hasTouch: true,
       reducedMotion,
     });
+    context.setDefaultTimeout(10000);
     const page = await context.newPage();
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     try {
       await observe(page);
       await mountInvisible(page, 'setup');
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       for (let i = 1; i <= 3; i++) {
         await expect(choice()).toContainText(`Place Fog ${i}`);
         await page
@@ -234,8 +235,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.reload();
       await mountInvisible(page, 'rolling');
       await page.locator('.game-card').filter({ hasText: 'Rolling Fog' }).click();
-      await page.getByRole('button', { name: 'Play Rolling Fog', exact: true }).click();
-      await choice().getByRole('button', { name: /Fog 2/ }).click();
+      await page.getByRole('button', { name: /Fog 2/ }).click();
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountInvisible(page, 'rolling');
@@ -245,7 +245,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await expect(choice()).toHaveCount(0);
       expect((await state(page)).boardTokens?.[1].position).toBe('n27');
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
-      await page.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+      await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
       await expect(page.getByRole('button', { name: 'Move to 26', exact: true })).toBeVisible();
       await page.getByRole('button', { name: 'Move to 26', exact: true }).focus();
       await page.keyboard.press('Enter');
@@ -276,7 +276,6 @@ test('Invisible Man restores Vanish from an empty board position across a phone 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await mountInvisible(page, 'vanish');
   await page.locator('.game-card').filter({ hasText: 'Vanish' }).click();
-  await page.getByRole('button', { name: 'Play Vanish', exact: true }).click();
   await expect.poll(async () => (await state(page)).fighters[0].position).toBeNull();
   await page.evaluate(() => {
     const apply = (
@@ -295,7 +294,7 @@ test('Invisible Man restores Vanish from an empty board position across a phone 
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();
   await mountInvisible(page, 'vanish');
-  const choice = page.getByRole('region', { name: 'Ability choice' });
+  const choice = page.locator('.hand-panel:has(.ability-options)');
   await expect(choice).toContainText('teleport Invisible Man');
   await page.getByRole('button', { name: 'Choose space 26', exact: true }).focus();
   await page.keyboard.press('Enter');
@@ -313,14 +312,14 @@ test('Invisible Man keeps opponent fog control private and resumes it after reco
 }) => {
   await observe(page);
   await mountInvisible(page, 'covert');
-  const choice = () => page.getByRole('region', { name: 'Ability choice' });
-  await choice().getByRole('button', { name: /Fog 1/ }).click();
+  const choice = () => page.locator('.hand-panel:has(.ability-options)');
+  await page.getByRole('button', { name: /Fog 1/ }).click();
   await choice().getByRole('button', { name: 'Leave token in place', exact: true }).click();
   await expect(choice()).toHaveCount(0);
   await page.reload();
   await mountInvisible(page, 'covert', 'p1');
-  await expect(choice().getByRole('button', { name: /Fog 1/ })).toHaveCount(0);
-  await choice().getByRole('button', { name: /Fog 2/ }).click();
+  await expect(page.getByRole('button', { name: /Fog 1/ })).toHaveCount(0);
+  await page.getByRole('button', { name: /Fog 2/ }).click();
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();
   await mountInvisible(page, 'covert', 'p1');
@@ -332,7 +331,7 @@ test('Invisible Man keeps opponent fog control private and resumes it after reco
 test('Invisible Man orders Coded Notes privately across reconnect', async ({ page }) => {
   await observe(page);
   await mountInvisible(page, 'notes');
-  const choice = () => page.getByRole('region', { name: 'Ability choice' });
+  const choice = () => page.locator('.hand-panel:has(.ability-options)');
   await expect(choice()).toContainText('top of your deck');
   const first = (await state(page)).resolution.choice!.options[0].id;
   await choice().locator('button.game-card').first().click();

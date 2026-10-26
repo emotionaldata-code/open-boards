@@ -180,7 +180,9 @@ test('action and special effects append in order, block commands, and reset clea
     },
   ]);
   await expect(dialog).toContainText('Winged Frenzy');
-  await expect(page.getByRole('button', { name: 'Maneuver', exact: true })).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+  ).toHaveCount(0);
   await page.screenshot({
     path: test.info().outputPath('action-review.png'),
     animations: 'disabled',
@@ -197,7 +199,9 @@ test('action and special effects append in order, block commands, and reset clea
   await expect(dialog).toContainText('take 1 damage');
   await present(page, [], true);
   await expect(dialog).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+  ).toBeVisible();
   expect(
     await page.evaluate(
       () => (window as unknown as { presentationCommands: unknown[] }).presentationCommands,

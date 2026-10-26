@@ -7,15 +7,17 @@ import sharp from 'sharp';
 import { format } from 'prettier';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const character = process.argv[2] ?? 'medusa';
-if (!/^[a-z0-9-]+$/.test(character)) throw new Error('Invalid character ID');
-const directory = path.join(root, 'artwork/characters', character);
+const map = process.argv[2] === '--map';
+const id = (map ? process.argv[3] : process.argv[2]) ?? (map ? '' : 'medusa');
+if (!/^[a-z0-9-]+$/.test(id)) throw new Error('Invalid artwork ID');
+const directory = path.join(root, map ? 'artwork/maps' : 'artwork/characters', id);
 const sources = JSON.parse(await readFile(path.join(directory, 'sources.json'), 'utf8'));
 const manifestPath = path.join(root, 'apps/client/src/artwork/manifest.json');
 const previous = JSON.parse(await readFile(manifestPath, 'utf8'));
 const manifest = { ...previous };
 const publicRoot = path.join(root, 'apps/client/public');
-const output = path.join(publicRoot, 'artwork', character);
+const urlRoot = map ? `/artwork/maps/${id}` : `/artwork/${id}`;
+const output = path.join(publicRoot, urlRoot);
 await mkdir(output, { recursive: true });
 
 for (const source of sources) {
@@ -23,19 +25,29 @@ for (const source of sources) {
   const metadata = await sharp(input).metadata();
   if (!metadata.width || !metadata.height) throw new Error(`Missing dimensions: ${input}`);
   const token = source.kind === 'token';
+  if (map !== (source.kind === 'map')) throw new Error(`Wrong artwork kind: ${input}`);
   if (token) {
     const stats = await sharp(input).stats();
     if (!metadata.hasAlpha || stats.isOpaque) throw new Error(`Token needs transparency: ${input}`);
     if (Math.min(metadata.width, metadata.height) < 512)
       throw new Error(`Token too small: ${input}`);
   }
-  const ratio = source.kind === 'card' ? 8 / 5 : 1;
+  const ratio = map ? source.canvas[0] / source.canvas[1] : source.kind === 'card' ? 8 / 5 : 1;
+  // A map cannot be cropped: its landmarks must stay registered with the live overlay.
+  if (
+    map &&
+    (!Number.isFinite(ratio) || Math.abs(metadata.width / metadata.height / ratio - 1) > 0.005)
+  )
+    throw new Error(`Map aspect ratio differs from its canvas: ${input}`);
   const available = Math.min(metadata.width, Math.floor(metadata.height * ratio));
   const widths = token
     ? [512]
-    : (source.kind === 'card' ? [320, 640, 1280] : [256, 512, 1024]).filter(
-        (width) => width <= available,
-      );
+    : (map
+        ? [0.5, 1, 1.5].map((scale) => Math.round(source.canvas[0] * scale))
+        : source.kind === 'card'
+          ? [320, 640, 1280]
+          : [256, 512, 1024]
+      ).filter((width) => width <= available);
   if (!widths.length) throw new Error(`Master too small: ${input}`);
   const variants = [];
   for (const width of widths) {
@@ -60,14 +72,14 @@ for (const source of sources) {
       });
     } else {
       pipeline = pipeline.resize(width, height, {
-        fit: 'cover',
+        fit: map ? 'fill' : 'cover',
         position: 'centre',
         withoutEnlargement: true,
       });
     }
     const buffer = await pipeline.webp({ quality: token ? 90 : 84, alphaQuality: 100 }).toBuffer();
     const hash = createHash('sha256').update(buffer).digest('hex').slice(0, 12);
-    const url = `/artwork/${character}/${source.id}-${width}-${hash}.webp`;
+    const url = `${urlRoot}/${source.id}-${width}-${hash}.webp`;
     await writeFile(path.join(publicRoot, url), buffer);
     variants.push({ url, width, height, bytes: buffer.length });
   }
@@ -81,14 +93,16 @@ for (const source of sources) {
 }
 
 // Change presentation references only after every requested source has been processed.
-const bundlePath = path.join(root, 'packages/content/src/characters', `${character}.json`);
-const bundle = JSON.parse(await readFile(bundlePath, 'utf8'));
-for (const source of sources.filter((source) => source.kind === 'card')) {
-  const card = bundle.cards.find((card) => card.id === source.card);
-  if (!card) throw new Error(`Unknown card ${source.card}`);
-  card.art.image = manifest[source.id].url;
+if (!map) {
+  const bundlePath = path.join(root, 'packages/content/src/characters', `${id}.json`);
+  const bundle = JSON.parse(await readFile(bundlePath, 'utf8'));
+  for (const source of sources.filter((source) => source.kind === 'card')) {
+    const card = bundle.cards.find((card) => card.id === source.card);
+    if (!card) throw new Error(`Unknown card ${source.card}`);
+    card.art.image = manifest[source.id].url;
+  }
+  await writeFile(bundlePath, `${JSON.stringify(bundle, null, 2)}\n`);
 }
-await writeFile(bundlePath, `${JSON.stringify(bundle, null, 2)}\n`);
 await writeFile(
   manifestPath,
   await format(JSON.stringify(manifest), { parser: 'json', printWidth: 100 }),

@@ -143,8 +143,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await mountBigfoot(page, 'horns');
       await page.getByRole('button', { name: 'The Jackalope 1', exact: true }).click();
       await page.locator('.game-card').filter({ hasText: 'Jackalope Horns' }).click();
-      await page.getByRole('button', { name: 'Play Jackalope Horns', exact: true }).click();
-      const choice = () => page.getByRole('region', { name: 'Ability choice' });
+      const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await expect(choice()).toContainText('Choose a destination');
       await page.screenshot({
         path: test.info().outputPath('bigfoot-horns-desktop.png'),
@@ -153,14 +152,12 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountBigfoot(page, 'horns');
-      await choice().getByRole('button', { name: 'Space 2', exact: true }).focus();
+      await page.getByRole('button', { name: 'Choose space 02', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toContainText('Choose a fighter');
       await page.reload();
       await mountBigfoot(page, 'horns');
-      await choice()
-        .getByRole('button', { name: /Bigfoot · Hector/ })
-        .tap();
+      await page.getByRole('button', { name: /Bigfoot · Hector/ }).tap();
       await expect(choice()).toHaveCount(0);
       await expect
         .poll(async () =>
@@ -203,11 +200,11 @@ test('Bigfoot offers Loner by Nature only to its owner and restores the draw on 
   const page = await context.newPage();
   try {
     await mountBigfoot(page, 'loner');
-    const choice = () => page.getByRole('region', { name: 'Ability choice' });
+    const choice = () => page.locator('.hand-panel:has(.ability-options)');
     await expect(choice()).toContainText('Loner by Nature');
     await page.reload();
     await mountBigfoot(page, 'loner');
-    await choice().getByRole('button', { name: 'Use ability', exact: true }).tap();
+    await page.getByRole('button', { name: /^Use / }).tap();
     await expect(choice()).toHaveCount(0);
     expect(
       await page.evaluate(

@@ -268,7 +268,15 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       chooser: ref.optional(),
       prompt: z.string().min(1).max(200),
       options: z
-        .array(z.strictObject({ id, label: z.string().min(1).max(100), effects: effects() }))
+        .array(
+          z.strictObject({
+            id,
+            label: z.string().min(1).max(100),
+            target: ref.optional(),
+            decline: z.boolean().optional(),
+            effects: effects(),
+          }),
+        )
         .min(1)
         .max(16),
     }),

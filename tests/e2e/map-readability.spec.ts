@@ -1,7 +1,11 @@
 import { expect, test } from '@playwright/test';
 import { kingSolomonsMine as map } from '../../packages/content/src/map';
-import { zoneStyles } from '../../packages/content/src/layout';
+import { boardLayout, zoneStyles } from '../../packages/content/src/layout';
 import { presentationHarness } from './fixtures/game';
+
+test.beforeEach(async ({ page }) => {
+  await page.route('**/api/auth/me', (route) => route.fulfill({ json: null }));
+});
 
 for (const viewport of [
   { width: 1440, height: 900 },
@@ -12,6 +16,8 @@ for (const viewport of [
     test(`zones and occupied portals remain distinct at ${viewport.width}px with WebGL ${webgl}`, async ({
       page,
     }) => {
+      const errors: string[] = [];
+      page.on('pageerror', (error) => errors.push(error.message));
       await page.setViewportSize(viewport);
       await presentationHarness(page, webgl, {
         phase: { type: 'choosing-movement', player: 'a' },
@@ -40,12 +46,51 @@ for (const viewport of [
         const alert = (await page.locator('.board-error').boundingBox())!;
         const arena = (await page.locator('.arena').boundingBox())!;
         expect(alert.y).toBeGreaterThanOrEqual(arena.y + arena.height);
-        const controls = (await page.locator('.board-controls').boundingBox())!;
+        const controls = (await page
+          .getByRole('button', { name: 'Finish Maneuver', exact: true })
+          .boundingBox())!;
         expect(
           controls.y >= alert.y + alert.height || controls.y + controls.height <= alert.y,
         ).toBe(true);
       }
       const terrain = page.locator('.map-terrain');
+      const scenery = page.locator('.map-scenery img[data-raster]');
+      await expect(scenery).toHaveAttribute('loading', 'eager');
+      await expect
+        .poll(() =>
+          scenery.evaluate(
+            (image: HTMLImageElement) =>
+              image.complete && image.naturalWidth > 0 && image.currentSrc,
+          ),
+        )
+        .toContain(`-${viewport.width > 950 ? 1900 : 950}-`);
+      expect(await scenery.boundingBox()).toEqual(await terrain.boundingBox());
+      const transfers = await page.evaluate(() =>
+        performance
+          .getEntriesByType('resource')
+          .filter((entry) => entry.name.includes('/artwork/maps/'))
+          .map((entry) => ({
+            url: entry.name,
+            bytes: (entry as PerformanceResourceTiming).encodedBodySize,
+          })),
+      );
+      expect(transfers).toHaveLength(1);
+      expect(transfers[0].bytes).toBe(viewport.width > 950 ? 499090 : 142598);
+      await test.info().attach('map-transfers', {
+        body: JSON.stringify(transfers),
+        contentType: 'application/json',
+      });
+      await expect(terrain.locator('[data-space]')).toHaveCount(map.nodes.length);
+      await expect(terrain.locator(':scope > g[fill="none"] > g > path')).toHaveCount(
+        map.edges.length * 2,
+      );
+      for (const [id, { x, y, label }] of Object.entries(boardLayout)) {
+        await expect(terrain.locator(`[data-space="${id}"]`)).toHaveAttribute(
+          'transform',
+          `translate(${x} ${y})`,
+        );
+        await expect(terrain.locator(`[data-space="${id}"] > text`).first()).toHaveText(label);
+      }
       await expect(terrain.locator('.portal-mark')).toHaveCount(map.portals!.length);
       const symbolPaths = await terrain
         .locator('.portal-mark path')
@@ -99,9 +144,10 @@ for (const viewport of [
       );
       await expect(portalTarget).toHaveAttribute('title', /One movement point/);
       for (const mark of await terrain.locator('[data-space]').all()) {
-        await expect(mark).toBeInViewport({ ratio: 1 });
+        // Fractional fitted SVG bounds can produce an intersection ratio just below one.
+        await expect(mark).toBeInViewport({ ratio: 0.9999 });
       }
-      await page.screenshot({ path: test.info().outputPath('map.png') });
+      await page.screenshot({ animations: 'disabled', path: test.info().outputPath('map.png') });
       await portalTarget.click();
       expect(
         await page.evaluate(() =>
@@ -116,6 +162,30 @@ for (const viewport of [
           height: document.documentElement.scrollHeight,
         })),
       ).toEqual(viewport);
+      expect(errors).toEqual([]);
     });
   }
 }
+
+test('failed map artwork reveals vector scenery while spaces remain playable', async ({ page }) => {
+  await page.route('**/artwork/maps/**', (route) => route.abort());
+  await page.setViewportSize({ width: 844, height: 390 });
+  await presentationHarness(page, true, {
+    phase: { type: 'choosing-movement', player: 'a' },
+    maneuver: { player: 'a', remaining: ['a:main'], finishing: false, boost: 0, boostable: false },
+  });
+  await expect(page.locator('.map-scenery img')).toHaveCount(0);
+  await expect(page.locator('.map-scenery > svg')).toBeVisible();
+  await expect(page.locator('.map-scenery > svg path').first()).toHaveAttribute('fill', '#344438');
+  await expect(page.locator('.map-terrain [data-space]')).toHaveCount(map.nodes.length);
+  await page.getByRole('button', { name: 'Move to 02', exact: true }).click();
+  expect(
+    await page.evaluate(() =>
+      (window as unknown as { presentationCommands: unknown[] }).presentationCommands.at(-1),
+    ),
+  ).toMatchObject({ type: 'move', path: ['n1'] });
+  await page.screenshot({
+    animations: 'disabled',
+    path: test.info().outputPath('map-fallback.png'),
+  });
+});

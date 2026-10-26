@@ -1,0 +1,24 @@
+{
+  "tool": "Codex integrated Imagegen",
+  "generated": "2026-10-26",
+  "asset": "king-solomons-mine-scenery",
+  "master": "masters/scenery.png",
+  "sha256": "478653c8cf108365f4d65b8ac809632f4d9553a9586a05ab1a2ec0fc682f9157",
+  "width": 1956,
+  "height": 804,
+  "prompts": "prompts.json",
+  "references": [
+    {
+      "file": "references/scenery-layout.png",
+      "source": "Rendered from the repository Scenery.tsx at the existing 1900x780 board canvas",
+      "role": "Layout edit target"
+    },
+    {
+      "file": "references/playable-layout.png",
+      "source": "Rendered from the repository Terrain.tsx before raster integration",
+      "role": "Alignment guide only; no markings included in final artwork"
+    }
+  ],
+  "source": "Original generated pixels using repository-authored layout guides; no external image sources.",
+  "processing": "No crop; full-frame normalization from 1956x804 to the exact board aspect ratio, then downsampling and WebP conversion. No enlargement."
+}

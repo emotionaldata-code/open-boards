@@ -8,9 +8,11 @@ import { DeckExplorer } from '../cards/DeckExplorer';
 export function CharacterRoster({
   selected = defaultCharacter,
   onChoose,
+  featured = false,
 }: {
   selected?: string;
   onChoose?: (character: string) => void;
+  featured?: boolean;
 }) {
   const [inspected, setInspected] = useState(selected);
   const id = useId();
@@ -19,7 +21,10 @@ export function CharacterRoster({
   const character = characters[inspected];
   const profile = profiles[inspected];
   return (
-    <section className="character-roster" aria-label="Character roster">
+    <section
+      className={`character-roster ${featured ? 'roster-featured' : ''}`}
+      aria-label="Character roster"
+    >
       <div className="roster-heading">
         <h2>Find your fighter</h2>
         <span>
@@ -28,8 +33,16 @@ export function CharacterRoster({
         </span>
       </div>
       <div className="roster-detail" id={id} ref={detail}>
-        <CharacterPortrait character={inspected} />
-        <div className="roster-description">
+        <CharacterPortrait
+          character={inspected}
+          sizes={
+            featured
+              ? '(max-width: 760px) calc(100vw - 32px), (max-width: 1100px) 55vw, 720px'
+              : '(max-width: 600px) 140px, 280px'
+          }
+          priority={featured}
+        />
+        <div className="roster-description" aria-live="polite" aria-atomic="true">
           <p className="character-role">
             {profile.role} · {character.attackType}
           </p>
@@ -50,52 +63,6 @@ export function CharacterRoster({
           </dl>
         </div>
       </div>
-      <div className="roster-rules" aria-live="polite" aria-atomic="true">
-        <p className="character-range">
-          {character.attackType === 'ranged'
-            ? 'Reach: adjacent or any shared color.'
-            : 'Reach: adjacent spaces only.'}
-        </p>
-        {character.cardEffectProtection && (
-          <p>
-            <strong>{character.cardEffectProtection.name}</strong>{' '}
-            {character.cardEffectProtection.description}
-          </p>
-        )}
-        {character.deckSelection && (
-          <p>
-            <strong>{character.deckSelection.name}</strong> · {character.deckSelection.description}
-          </p>
-        )}
-        {(character.abilities ?? []).length
-          ? character.abilities!.map((ability) => (
-              <p key={ability.id}>
-                <strong>{ability.name}</strong> {ability.description}
-              </p>
-            ))
-          : !character.cardEffectProtection &&
-            !character.deckSelection && <p>No special abilities.</p>}
-        {character.ally && (
-          <div className="ally-rules">
-            <p>
-              <strong>
-                {character.ally.count} × {character.ally.name}
-              </strong>{' '}
-              · {character.ally.hp} HP each · {character.ally.attackType} · use the hero’s movement.
-            </p>
-            {character.ally.abilities?.map((ability) => (
-              <p key={ability.id}>
-                <strong>{ability.name}</strong> {ability.description}
-              </p>
-            ))}
-          </div>
-        )}
-        <p className="character-tactic">{profile.tactic}</p>
-      </div>
-      <button type="button" className="roster-deck" onClick={() => setDeckOpen(true)}>
-        Explore {character.name}’s deck · {character.deck.length} designs
-      </button>
-      {deckOpen && <DeckExplorer character={inspected} onClose={() => setDeckOpen(false)} />}
       <div className="roster-list" role="group" aria-label="Explore characters">
         {Object.values(characters).map((candidate) => (
           <button
@@ -114,6 +81,57 @@ export function CharacterRoster({
           </button>
         ))}
       </div>
+      <details className="roster-more" open={featured ? undefined : true} key={inspected}>
+        <summary>Abilities & tactics</summary>
+        <div className="roster-rules">
+          <p className="character-range">
+            {character.attackType === 'ranged'
+              ? 'Reach: adjacent or any shared color.'
+              : 'Reach: adjacent spaces only.'}
+          </p>
+          {character.cardEffectProtection && (
+            <p>
+              <strong>{character.cardEffectProtection.name}</strong>{' '}
+              {character.cardEffectProtection.description}
+            </p>
+          )}
+          {character.deckSelection && (
+            <p>
+              <strong>{character.deckSelection.name}</strong> ·{' '}
+              {character.deckSelection.description}
+            </p>
+          )}
+          {(character.abilities ?? []).length
+            ? character.abilities!.map((ability) => (
+                <p key={ability.id}>
+                  <strong>{ability.name}</strong> {ability.description}
+                </p>
+              ))
+            : !character.cardEffectProtection &&
+              !character.deckSelection && <p>No special abilities.</p>}
+          {character.ally && (
+            <div className="ally-rules">
+              <p>
+                <strong>
+                  {character.ally.count} × {character.ally.name}
+                </strong>{' '}
+                · {character.ally.hp} HP each · {character.ally.attackType} · use the hero’s
+                movement.
+              </p>
+              {character.ally.abilities?.map((ability) => (
+                <p key={ability.id}>
+                  <strong>{ability.name}</strong> {ability.description}
+                </p>
+              ))}
+            </div>
+          )}
+          <p className="character-tactic">{profile.tactic}</p>
+        </div>
+      </details>
+      <button type="button" className="roster-deck" onClick={() => setDeckOpen(true)}>
+        Explore {character.name}’s deck · {character.deck.length} designs
+      </button>
+      {deckOpen && <DeckExplorer character={inspected} onClose={() => setDeckOpen(false)} />}
       {onChoose && (
         <div className="roster-confirm">
           <p>Changing character clears your ready status.</p>

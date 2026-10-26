@@ -1,0 +1,9 @@
+[
+  {
+    "id": "king-solomons-mine-scenery",
+    "kind": "map",
+    "source": "masters/scenery.png",
+    "focal": [0.5, 0.5],
+    "canvas": [1900, 780]
+  }
+]

@@ -1,6 +1,5 @@
 import { basic, zoneStyles } from '@open-boards/content';
 import { arenaSize, spaces } from './layout';
-import { Scenery } from './Scenery';
 
 const color = (value: number) => `#${value.toString(16).padStart(6, '0')}`;
 
@@ -18,7 +17,6 @@ export function Terrain({
       viewBox={`0 0 ${arenaSize.width} ${arenaSize.height}`}
       aria-hidden="true"
     >
-      <Scenery />
       <g fill="none" strokeLinecap="round">
         {[
           [13, '#17271f'],
