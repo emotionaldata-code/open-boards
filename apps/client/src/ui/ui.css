@@ -66,15 +66,31 @@
   padding: 0;
   margin: 0;
 }
-.discard-list li {
+.discard-list li button {
   display: flex;
   gap: 12px;
   align-items: center;
-  padding: 12px 0;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 8px;
+  border: 0;
   border-bottom: 1px solid #3c4838;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
 }
 .discard-list li span {
   flex: 1;
+  min-width: 0;
+}
+.discard-list small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+.discard-list strong {
+  white-space: nowrap;
 }
 .discard-list .icon {
   color: var(--accent);

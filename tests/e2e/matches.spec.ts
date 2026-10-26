@@ -177,16 +177,33 @@ async function skipGaze(page: Page) {
     .getByRole('button', { name: 'Skip', exact: true });
   if (await skip.isVisible()) {
     const before = await revision(page);
-    await skip.click();
+    await skip.click({ timeout: 30_000 });
     await changed(page, before);
   }
 }
 async function finishManeuver(page: Page) {
   const finish = page.getByRole('button', { name: 'Finish Maneuver', exact: true });
-  if (await finish.isVisible()) await finish.click();
+  if (await finish.isVisible()) {
+    const before = await revision(page);
+    await finish.click();
+    await changed(page, before);
+  }
+}
+async function discardToLimit(page: Page) {
+  if ((await page.locator('main').getAttribute('data-phase')) !== 'discarding') return;
+  const before = await revision(page);
+  const count = await page.locator('.game-card').count();
+  for (let i = 0; i < count - 7; i++) await page.locator('.game-card').nth(i).click();
+  await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
+  await changed(page, before);
 }
 async function endTurn(page: Page, next: Page) {
-  await page.getByRole('button', { name: 'End turn', exact: true }).click();
+  const actor = await page.locator('main').getAttribute('data-turn');
+  while ((await page.locator('main').getAttribute('data-turn')) === actor) {
+    if ((await page.locator('main').getAttribute('data-phase')) === 'discarding')
+      await discardToLimit(page);
+    else await maneuver(page);
+  }
   await expect(next.getByRole('region', { name: 'Ability choice' })).toBeVisible();
   await skipGaze(next);
 }
@@ -251,6 +268,7 @@ for (const count of [2, 4] as const)
   test(`completes a ${count}-player match in separate authenticated contexts${count === 4 ? ' on phones' : ''}`, async ({
     browser,
   }) => {
+    test.setTimeout(count === 4 ? 600_000 : 180_000);
     const rivals = await createMatch(browser, count, count === 4, 'medusa');
     try {
       for (const { page } of rivals) {
@@ -258,6 +276,7 @@ for (const count of [2, 4] as const)
           true,
         );
         await expect(page.locator('canvas')).toBeVisible();
+        await expect(page.getByRole('button', { name: 'End turn', exact: true })).toHaveCount(0);
         await expect
           .poll(() =>
             page
@@ -302,6 +321,8 @@ for (const count of [2, 4] as const)
         );
         await rivals[0].page.getByRole('button', { name: 'Move to 11', exact: true }).click();
         await finishManeuver(rivals[0].page);
+        await expect(rivals[0].page.locator('main')).toHaveAttribute('data-turn', rivals[0].name);
+        await expect(rivals[0].page.locator('.action-count')).toHaveText('1 actions');
       }
       if (count === 4) {
         await maneuver(rivals[0].page, '11');
@@ -335,7 +356,8 @@ for (const count of [2, 4] as const)
         await expect(rivals[0].page.locator('canvas')).toBeVisible();
         await rivals[0].page.setViewportSize({ width: 390, height: 667 });
         await fitsViewport(rivals[0].page);
-        await expect(rivals[0].page.getByLabel('Landscape required')).toBeVisible();
+        await expect(rivals[0].page.getByLabel('Landscape required')).toHaveCount(0);
+        await expect(rivals[0].page.locator('canvas')).toBeVisible();
       }
       await rivals[0].page.getByRole('button', { name: 'Return to lobby', exact: true }).click();
       await expect(rivals[0].page.getByRole('heading', { name: 'Find your table' })).toBeVisible();
@@ -369,11 +391,11 @@ test('plays a hidden attack and free defense through the interface', async ({ br
     await attacker.getByRole('button', { name: 'Enable sound', exact: true }).click();
     await maneuver(attacker, '18');
     await endTurn(attacker, defender);
-    await expect(defender.getByRole('button', { name: 'End turn', exact: true })).toBeVisible();
+    await expect(defender.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
     await endTurn(defender, attacker);
     await maneuver(attacker, '19');
     await expect(attacker.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
-    await expect(attacker.getByRole('button', { name: 'End turn', exact: true })).toBeVisible();
+    await expect(attacker.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
     // A shuffled opening may contain no attack card; draw on subsequent turns until one is available.
     for (let i = 0; i < 12; i++) {
       const usable = attacker
@@ -386,7 +408,7 @@ test('plays a hidden attack and free defense through the interface', async ({ br
         break;
       }
       await endTurn(attacker, defender);
-      await expect(defender.getByRole('button', { name: 'End turn', exact: true })).toBeVisible();
+      await expect(defender.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
       await endTurn(defender, attacker);
       await maneuver(attacker);
     }
@@ -411,7 +433,7 @@ test('plays a hidden attack and free defense through the interface', async ({ br
     } else await defender.getByRole('button', { name: 'Take the hit', exact: true }).click();
     await changed(defender, beforeDefense);
     if ((await defender.locator('main').getAttribute('data-phase')) === 'ability-choice')
-      await defender.getByRole('button', { name: 'Skip', exact: true }).click();
+      await skipGaze(defender);
     await expect
       .poll(() => seenEvents(attacker), { timeout: 30_000 })
       .toEqual(expect.arrayContaining([expect.stringMatching(/Clash!|Blocked!/)]));
@@ -421,7 +443,10 @@ test('plays a hidden attack and free defense through the interface', async ({ br
         .poll(() => seenEvents(page))
         .toEqual(expect.arrayContaining([expect.stringMatching(/Clash!|Blocked!/)]));
     }
-    await expect(attacker.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
+    await discardToLimit(attacker);
+    await skipGaze(defender);
+    await expect(defender.locator('main')).toHaveAttribute('data-turn', rivals[1].name);
+    await expect(defender.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));
     for (const rival of rivals) expect(rival.errors).toEqual([]);
@@ -441,7 +466,9 @@ test('login rules, fullscreen, and compact phone pages fit without page scrollin
     await page.goto('/');
     await fitsViewport(page);
     await page.getByRole('button', { name: 'How to play', exact: true }).click();
-    await expect(page.getByRole('dialog')).toContainText('Each turn gives you two actions.');
+    await expect(page.getByRole('dialog')).toContainText(
+      'Each turn requires two actions; you cannot pass or end it early.',
+    );
     await page.getByRole('button', { name: 'Close dialog' }).click();
     await expect(page.getByRole('button', { name: 'How to play', exact: true })).toBeFocused();
     await page.getByRole('button', { name: 'Enter fullscreen' }).click();
@@ -518,7 +545,7 @@ test('Medusa selects and attacks a distant rival through a multicolor space', as
         break;
       }
       await endTurn(attacker, defender);
-      await expect(defender.getByRole('button', { name: 'End turn', exact: true })).toBeVisible();
+      await expect(defender.getByRole('button', { name: 'Maneuver', exact: true })).toBeVisible();
       await endTurn(defender, attacker);
       await maneuver(attacker);
     }
@@ -781,8 +808,10 @@ test('crosses a portal, preserves its destination on reconnect and explores the 
       await page.setViewportSize({ width, height });
       await fitsViewport(page);
       await expect(page.locator('.arena')).toHaveCSS('transform', 'none');
-      for (const badge of await page.locator('.badge-movement').all())
+      for (const badge of await page.locator('.player-badge').all()) {
         await expect(badge).toBeInViewport();
+        await expect(badge).toHaveAccessibleName(/3 movement/);
+      }
       await page.screenshot({ path: test.info().outputPath(`map-${label}.png`) });
     }
     expect(rivals.flatMap((rival) => rival.errors)).toEqual([]);

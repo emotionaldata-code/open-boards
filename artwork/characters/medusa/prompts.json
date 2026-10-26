@@ -1,0 +1,75 @@
+[
+  {
+    "id": "medusa-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: square 1024px character portrait AND identity reference for a tabletop game. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Medusa: adult female Greek gorgon, olive skin with fine green scales at temples, angular dignified face, amber eyes, a crown of living dark green snakes, ancient bronze cuirass and dark teal drapery, carries a recurved bronze bow. Chest-up three-quarter portrait, eyes and snake crown fully in frame, misty ruined temple background. Serious, formidable, not sexualized. Render one image."
+  },
+  {
+    "id": "harpy-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: square 1024px portrait and identity reference. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. One Greek myth Harpy, adult female avian creature: fierce angular pale olive face, swept black feather crest instead of hair, amber eyes, charcoal raven wings, bronze shoulder clasp, rough feather mantle, lean birdlike body and talons. Chest-up three-quarter portrait with wing shoulders, ruined limestone cliff background, storm light. Coherent companion to the referenced Medusa, match realism/materials/lighting but distinct species. No snakes on Harpy."
+  },
+  {
+    "id": "medusa-token",
+    "prompt": "Use case: stylized-concept. Asset type: transparent board figure. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Full-body Medusa board miniature, complete silhouette including snake crown, recurved bronze bow, teal drapery and coiled green snake lower body, three-quarter front. Match Image 1 face, snake crown, armor and bow precisely. Upright alert readable pose, narrow upright silhouette. Actual transparent background, no environment, pedestal, text, shadow or floor. Entire figure fits inside square 1024 canvas with 8% margins; coiled tail bottom centered. ",
+    "transparent": true
+  },
+  {
+    "id": "harpy-token",
+    "prompt": "Use case: stylized-concept. Asset type: transparent board figure. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Full-body Harpy board miniature. Match Image 2 face, black feather crest, bronze clasp, charcoal feather plumage. Powerful feather wings spread partially upward in a narrow V, lean body, two avian legs and talons centered beneath torso. Upright three-quarter front pose. Entire silhouette visible inside square 1024 canvas with 8% margins. Actual transparent background, no environment, pedestal, text, shadow or floor. No snakes. ",
+    "transparent": true
+  },
+  {
+    "id": "dash",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Medusa moving swiftly through a ruined limestone colonnade, teal cloth streaming and coiled serpent body curving dynamically past shattered pillars, bronze bow in hand. Sideways tracking composition and shafts of warm dust light convey speed. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "gaze-of-stone",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Medusa stands left foreground with amber eyes fixed on a bronze-armored Greek warrior at right, whose raised arm and face turn to cracked pale stone. Snakes poised in her crown, eerie jade light, temple at dusk. Clear visual narrative of petrification, non-graphic. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "a-momentary-glance",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Intimate profile of Medusa glancing over a bronze armored shoulder, a single amber eye catches cold light, snakes arch around her face. In shallow-focus background a stone human hand reaches into mist. A brief dangerous glance, distinctive close composition. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "hiss-and-slither",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Low close view of multiple living green snakes sweeping defensively from Medusa's crown around her bronze bow arm, mouths open, wet scales and fine teeth in rim light. Medusa remains calm behind them. Ancient stone corridor, no gore. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "the-hounds-of-mighty-zeus",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Three Harpies of the referenced design flying as a hunting pack over storm-lashed ancient Greek cliffs, charcoal wings, fierce feather crests, bronze clasps, talons ready. Dramatic lightning far behind. They are avian women, not literal dogs. Wide panoramic aerial composition. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "clutching-claws",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. One referenced Harpy swoops toward camera with two formidable avian talons opening to clutch a bronze shield below. Detailed black feather wings curve around the composition, furious face visible behind claws. Ruined courtyard, dust and golden side light. No gore. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "winged-frenzy",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Medusa stands centered among weathered temple stones while three referenced Harpies whirl around her in a powerful ascending spiral. One Harpy rises from pale ground mist beside her, suggesting return. Full scene, wings, teal cloth, bronze and scales, dramatic dusk. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "second-shot-3",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Medusa releases a second arrow from her recurved bronze bow; one arrow already streaks into the distant temple corridor while a newly released arrow and taut hand dominate foreground. Three-quarter action composition, living snake crown, intense focused face, amber rim light. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "snipe",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Medusa concealed behind a chipped limestone column aiming her bronze bow through a narrow opening across a vast ruined sanctuary. Long sight line toward a distant bronze shield, layered depth, cool shadow against thin golden sunlight. Intent patient precision. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "feint",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. A bronze warrior strikes at a draped stone statue in foreground while the real Medusa slips behind an adjacent column in shadow, her amber eye and snake crown revealing the deception. Dynamic diagonal sword, fine stone dust, no injury. Cinematic temple lighting. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  },
+  {
+    "id": "regroup",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card illustration, landscape 8:5 composition at least 1280px wide. Cinematic illustrated realism, original dramatic Greek myth concept painting with believable anatomy, weathered bronze, green-black scales, limestone, individual feathers, volumetric chiaroscuro, muted jade and antique gold, threatening solemn atmosphere, crisp readable silhouette. No lettering, numbers, frames, logos or watermarks. Reference Image 1 defines Medusa; Image 2 defines Harpy. Preserve their identities and materials. Medusa and three referenced Harpies gather close in shelter beneath a broken temple arch, Medusa with grounded bronze bow, wings folded around the group. Recovering composure after battle, quiet threatening solidarity, dawn light over weathered limestone. Fill the entire image with a single dedicated scene, no split panels; keep important action inside central 80% for card crops.",
+    "transparent": false
+  }
+]

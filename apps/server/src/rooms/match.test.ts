@@ -120,7 +120,7 @@ describe('room lifecycle', () => {
     expect(m.paused).toBe(true);
     expect(m.seats[0].expiresAt).toBe(121000);
     expect(
-      m.command('p1', { id: 'blocked', revision: 1, command: { type: 'end-turn' } }).error?.code,
+      m.command('p1', { id: 'blocked', revision: 1, command: { type: 'maneuver' } }).error?.code,
     ).toBe('PAUSED');
     m.reconnect('p0');
     expect(m.game).toEqual(game);

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "medusa-portrait",
+    "kind": "portrait",
+    "source": "masters/medusa-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "medusa-token",
+    "kind": "token",
+    "source": "masters/medusa-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "harpy-portrait",
+    "kind": "portrait",
+    "source": "masters/harpy-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "harpy-token",
+    "kind": "token",
+    "source": "masters/harpy-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "medusa-dash",
+    "kind": "card",
+    "card": "medusa-dash",
+    "source": "masters/dash.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-gaze-of-stone",
+    "kind": "card",
+    "card": "medusa-gaze-of-stone",
+    "source": "masters/gaze-of-stone.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-a-momentary-glance",
+    "kind": "card",
+    "card": "medusa-a-momentary-glance",
+    "source": "masters/a-momentary-glance.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-hiss-and-slither",
+    "kind": "card",
+    "card": "medusa-hiss-and-slither",
+    "source": "masters/hiss-and-slither.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-the-hounds-of-mighty-zeus",
+    "kind": "card",
+    "card": "medusa-the-hounds-of-mighty-zeus",
+    "source": "masters/the-hounds-of-mighty-zeus.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-clutching-claws",
+    "kind": "card",
+    "card": "medusa-clutching-claws",
+    "source": "masters/clutching-claws.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-winged-frenzy",
+    "kind": "card",
+    "card": "medusa-winged-frenzy",
+    "source": "masters/winged-frenzy.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-second-shot-3",
+    "kind": "card",
+    "card": "medusa-second-shot-3",
+    "source": "masters/second-shot-3.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-snipe",
+    "kind": "card",
+    "card": "medusa-snipe",
+    "source": "masters/snipe.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-feint",
+    "kind": "card",
+    "card": "medusa-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "medusa-regroup",
+    "kind": "card",
+    "card": "medusa-regroup",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5]
+  }
+]

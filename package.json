@@ -20,7 +20,8 @@
     "build": "pnpm --filter @open-boards/client build && pnpm --filter @open-boards/server build",
     "start": "pnpm --filter @open-boards/server start",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "artwork:prepare": "node scripts/prepare-artwork.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",
@@ -28,6 +29,7 @@
     "@types/node": "^24.0.0",
     "eslint": "^9.39.0",
     "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
     "typescript": "^5.9.0",
     "typescript-eslint": "^8.46.0",
     "vitest": "^3.2.0"

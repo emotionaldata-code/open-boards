@@ -1,4 +1,4 @@
-import { fighterById, fighterDefinition, mainFighter } from '../fighters';
+import { fighterById, fighterDefinition, ownedFighters } from '../fighters';
 import { validPath } from '../movement';
 import type { Runtime } from './runtime';
 import { cancelCombat, publishCombat } from './combat';
@@ -61,14 +61,16 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       if (cards.length) emit({ type: 'draw', player: owner.id, cards }, owner.id);
       const missing = frame.amount - cards.length;
       frame.amount = cards.length;
+      // Operations prepend their tasks; reverse to resolve in fighter order.
       if (missing)
-        runtime.operation({
-          kind: 'damage',
-          actor: mainFighter(state, owner.id).id,
-          target: mainFighter(state, owner.id).id,
-          amount: missing * 2,
-          reason: 'exhaustion',
-        });
+        for (const fighter of ownedFighters(state, owner.id).reverse())
+          runtime.operation({
+            kind: 'damage',
+            actor: fighter.id,
+            target: fighter.id,
+            amount: missing * 2,
+            reason: 'exhaustion',
+          });
       break;
     }
     case 'damage': {

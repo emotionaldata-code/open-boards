@@ -2,7 +2,13 @@ import { basic } from '@open-boards/content';
 import { CardArtwork } from './CardArtwork';
 import { cardFighter, cardText } from './text';
 
-export function CardPrint({ definition: id }: { definition: string }) {
+export function CardPrint({
+  definition: id,
+  inspector = false,
+}: {
+  definition: string;
+  inspector?: boolean;
+}) {
   const card = basic.cards[id];
   const text = cardText(id);
   return (
@@ -17,7 +23,7 @@ export function CardPrint({ definition: id }: { definition: string }) {
         </span>
         {card.category !== 'action' && <strong>{card.value}</strong>}
       </span>
-      <CardArtwork definition={id} />
+      <CardArtwork definition={id} inspector={inspector} />
       <strong className="card-name">{card.name}</strong>
       {text && <span className="card-description">{text}</span>}
     </>

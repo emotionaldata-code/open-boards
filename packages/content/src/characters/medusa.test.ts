@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
@@ -44,6 +45,11 @@ function setup(roster = ['medusa', 'vanguard']) {
     },
     reconnect() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, basic, actor);
+      state = result.state;
+      return result;
     },
     apply(command: Command, actor = 'p0') {
       const envelope = { id: `c-${state.revision}`, revision: state.revision, command };
@@ -134,9 +140,9 @@ describe('complete printed Medusa deck', () => {
     const h = setup(['medusa', 'medusa']);
     h.fighter('p1:main').position = 'n1';
     h.fighter('p1:ally-2').position = 'n9';
-    h.apply({ type: 'end-turn' });
+    h.finishTurn();
     h.choose('skip');
-    h.apply({ type: 'end-turn' }, 'p1');
+    h.finishTurn('p1');
     expect(h.state.resolution.choice?.prompt).toBe('Petrifying gaze');
     h.choose('use');
     const ids = h.state.resolution.choice!.options.map((o) => o.id);

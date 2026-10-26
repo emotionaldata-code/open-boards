@@ -1,3 +1,4 @@
+import { finishActions } from '../../../tests/finish-actions';
 import { describe, expect, it } from 'vitest';
 import { basic as content, deckDefinitions } from '../../../tests/fighters-fixture';
 import {
@@ -236,8 +237,14 @@ describe('shared Maneuver and exact movement', () => {
     s = apply(s, defs, 'p0', { type: 'finish-maneuver' });
     expect(s.maneuver).toBeNull();
     // In a new turn, finish-maneuver itself suspends on the ally and resumes automatically.
-    s = apply(s, defs, 'p0', { type: 'end-turn' });
-    s = apply(s, defs, 'p1', { type: 'end-turn' });
+    s = finishActions(s, defs, 'p0').state;
+    s = finishActions(s, defs, 'p1').state;
+    s = apply(s, defs, 'p1', {
+      type: 'choose',
+      choice: s.resolution.choice!.id,
+      options: ['skip'],
+    });
+    s = finishActions(s, defs, 'p1').state;
     s = apply(s, defs, 'p0', { type: 'maneuver' });
     s = apply(s, defs, 'p0', { type: 'finish-maneuver' });
     expect(s.maneuver!.finishing).toBe(true);
@@ -259,7 +266,7 @@ describe('shared Maneuver and exact movement', () => {
     fighterById(s, 'p1:ally-1')!.statuses.push({ id: 'slow', stacks: 2, turns: 1 });
     expect(movement(companion, defs)).toBe(1);
     expect(movement(mainFighter(s, 'p0'), defs)).toBe(2);
-    s = apply(s, defs, 'p0', { type: 'end-turn' });
+    s = finishActions(s, defs, 'p0').state;
     expect(fighterById(s, companion.id)!.statuses).toEqual([]);
     expect(fighterById(s, 'p1:ally-1')!.statuses).toHaveLength(1);
   });
@@ -522,7 +529,7 @@ describe('fighter effects, defeat and lifecycle', () => {
     expect(s.fighters.every((f) => f.defeated)).toBe(true);
     expect(s.players[1].hand).toHaveLength(5);
   });
-  it('exhaustion hurts only main and forfeits bypass every death reaction and clean up Maneuver', () => {
+  it('lethal hero exhaustion and forfeits clean up Maneuver without ally death reactions', () => {
     const { state, defs } = setup(1, 4, (d) => {
       d.characters.leader.ally!.abilities = [
         passive('retaliate', 'eliminated', [{ type: 'damage', target: 'source', amount: 100 }]),
@@ -602,7 +609,7 @@ it('lets a declared observer react to friendly damage and select friendly pieces
   s = apply(s, defs, 'p0', { type: 'defend', card: null });
   expect(mainFighter(s, 'p0').counters.seen).toBe(1);
   expect(mainFighter(s, 'p1').counters.seen).toBe(0);
-  s = apply(s, defs, 'p1', { type: 'end-turn' });
+  s = finishActions(s, defs, 'p1').state;
   hand(s, 'p0', 'heal');
   fighterById(s, 'p0:ally-1')!.hp = 1;
   s = apply(s, defs, 'p0', {
@@ -635,7 +642,7 @@ it('draws for a living owner from an ally death reaction, while rejecting furthe
   s = apply(s, defs, 'p1', { type: 'defend', card: null });
   expect(s.players[1].hand).toHaveLength(6);
   expect(fighterById(s, 'p1:ally-1')!.hp).toBe(0);
-  s = apply(s, defs, 'p0', { type: 'end-turn' });
+  s = finishActions(s, defs, 'p0').state;
   hand(s, 'p1', 'heal');
   reject(s, defs, 'p1', {
     type: 'play-action',
@@ -670,20 +677,8 @@ it('discards cards regardless of their fighter tag and uses main as actor for pl
     ];
   });
   let s = deploy(state, defs);
-  hand(
-    s,
-    'p0',
-    'ally-strike',
-    'strike',
-    'guard',
-    'guard',
-    'guard',
-    'guard',
-    'guard',
-    'guard',
-    'guard',
-  );
-  s = apply(s, defs, 'p0', { type: 'end-turn' });
+  hand(s, 'p0', 'ally-strike', 'strike', 'guard', 'guard', 'guard', 'guard', 'guard');
+  s = finishActions(s, defs, 'p0').state;
   s = apply(s, defs, 'p0', {
     type: 'discard',
     cards: s.players[0].hand.slice(0, 2).map((c) => c.id),
@@ -691,4 +686,131 @@ it('discards cards regardless of their fighter tag and uses main as actor for pl
   expect(s.players[0].hand).toHaveLength(7);
   expect(mainFighter(s, 'p0').counters.actor).toBe(2);
   expect(fighterById(s, 'p0:ally-1')!.counters.actor).toBe(2);
+});
+
+it.each([0, 1, 3])(
+  'empty-deck Maneuvers damage the hero and all %i allies on each draw',
+  (count) => {
+    const { state, defs } = setup(count, 2, (d) => {
+      if (d.characters.leader.ally) d.characters.leader.ally.hp = 6;
+    });
+    let s = deploy(state, defs);
+    s.players[0].deck = [];
+    const enemies = structuredClone(ownedFighters(s, 'p1'));
+    for (const hp of [12, 10]) {
+      const result = run(s, defs, 'p0', { type: 'maneuver' });
+      if (!result.ok) throw new Error(result.message);
+      s = result.state;
+      expect(mainFighter(s, 'p0').hp).toBe(hp);
+      expect(
+        ownedFighters(s, 'p0')
+          .filter((f) => f.role === 'ally')
+          .map((f) => f.hp),
+      ).toEqual(Array(count).fill(hp - 8));
+      expect(result.outcomes.filter((o) => o.type === 'damage')).toEqual(
+        ownedFighters(s, 'p0').map((f) =>
+          expect.objectContaining({
+            type: 'damage',
+            fighter: f.id,
+            amount: 2,
+            reason: 'exhaustion',
+          }),
+        ),
+      );
+      expect(ownedFighters(s, 'p1')).toEqual(enemies);
+      s = apply(s, defs, 'p0', { type: 'finish-maneuver' });
+    }
+    expect(s.turn).toBe(1);
+  },
+);
+
+it.each([0, 1, 2])(
+  'card draws with %i cards available exhaust the hero and allies only for the shortfall',
+  (available) => {
+    const { state, defs } = setup(3, 2, (d) => {
+      d.characters.leader.ally!.hp = 6;
+    });
+    let s = deploy(state, defs);
+    s.players[0].deck = s.players[0].deck.slice(0, available);
+    hand(s, 'p0', 'prepare');
+    s = apply(s, defs, 'p0', {
+      type: 'play-action',
+      fighter: 'p0:main',
+      card: s.players[0].hand[0].id,
+    });
+    expect(ownedFighters(s, 'p0').map((f) => f.hp)).toEqual(
+      [14, 6, 6, 6].map((hp) => hp - (2 - available) * 2),
+    );
+    expect(s.players[0].hand).toHaveLength(available);
+    expect(s.players[0].deck).toEqual([]);
+  },
+);
+
+it('ally exhaustion uses ordinary death reactions with the exact ally as source and removes it from Maneuver', () => {
+  const { state, defs } = setup(1, 4, (d) => {
+    d.characters.leader.ally!.abilities = [
+      passive('retaliate', 'eliminated', [{ type: 'damage', target: 'source', amount: 100 }]),
+    ];
+  });
+  let s = deploy(state, defs);
+  s.players[0].deck = [];
+  const result = run(s, defs, 'p0', { type: 'maneuver' });
+  if (!result.ok) throw new Error(result.message);
+  s = result.state;
+  expect(result.outcomes).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: 'damage',
+        fighter: 'p0:ally-1',
+        amount: 2,
+        reason: 'exhaustion',
+      }),
+      expect.objectContaining({ type: 'ability', fighter: 'p0:ally-1', name: 'retaliate' }),
+    ]),
+  );
+  expect(fighterById(s, 'p0:ally-1')!.defeated).toBe(true);
+  expect(mainFighter(s, 'p0').hp).toBe(12);
+  expect(s.maneuver!.remaining).toEqual(['p0:main']);
+  s = apply(s, defs, 'p0', { type: 'finish-maneuver' });
+  s = finishActions(s, defs, 'p0').state;
+  expect(s.turn).toBe(1);
+});
+
+it('exhaustion preserves the ordinary off-board damage exemption', () => {
+  const { state, defs } = setup(1);
+  let s = deploy(state, defs);
+  s.players[0].deck = [];
+  fighterById(s, 'p0:ally-1')!.position = null;
+  s = apply(s, defs, 'p0', { type: 'maneuver' });
+  expect(mainFighter(s, 'p0').hp).toBe(12);
+  expect(fighterById(s, 'p0:ally-1')).toMatchObject({ hp: 2, defeated: false, position: null });
+  expect(s.maneuver!.remaining).toEqual(['p0:main']);
+});
+
+it('queued ally exhaustion reactions survive reconnect and can prevent individual damage before movement resumes', () => {
+  const { state, defs } = setup(2, 2, (d) => {
+    d.characters.leader.ally!.abilities = [
+      { ...passive('prevent', 'before-damage', [{ type: 'cancel' }]), optional: true },
+    ];
+  });
+  let s = deploy(state, defs);
+  s.players[0].deck = [];
+  s = apply(s, defs, 'p0', { type: 'maneuver' });
+  expect(mainFighter(s, 'p0').hp).toBe(12);
+  expect(s.phase.type).toBe('ability-choice');
+  for (const option of ['use', 'skip']) {
+    s = JSON.parse(JSON.stringify(s)) as GameState;
+    s = apply(s, defs, 'p0', {
+      type: 'choose',
+      choice: s.resolution.choice!.id,
+      options: [option],
+    });
+  }
+  expect(fighterById(s, 'p0:ally-1')).toMatchObject({ hp: 2, defeated: false });
+  expect(fighterById(s, 'p0:ally-2')).toMatchObject({ hp: 0, defeated: true });
+  expect(s.maneuver!.remaining).toEqual(['p0:main', 'p0:ally-1']);
+  expect(s.phase.type).toBe('choosing-movement');
+  s = apply(s, defs, 'p0', { type: 'finish-maneuver' });
+  expect(s.turn).toBe(0);
+  expect(s.actions).toBe(1);
 });

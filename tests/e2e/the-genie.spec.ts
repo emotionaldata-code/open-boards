@@ -128,18 +128,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await expect(choice()).toContainText('from Rival’s hand');
       await mountGenie(page);
       const option = choice().locator('button.game-card').first();
-      const name = await option.getAttribute('aria-label');
-      await choice()
-        .getByRole('button', { name: `Inspect ${name}`, exact: true })
-        .first()
-        .click();
-      await expect(page.getByRole('dialog', { name: name!, exact: true })).toContainText('BOOST');
-      await page.keyboard.press('Escape');
-      await expect(
-        choice()
-          .getByRole('button', { name: `Inspect ${name}`, exact: true })
-          .first(),
-      ).toBeFocused();
+      await expect(option).toContainText('BOOST');
+      await option.focus();
+      await expect(option).toBeFocused();
       await page.screenshot({
         path: test.info().outputPath('genie-private-hand-desktop.png'),
         animations: 'disabled',

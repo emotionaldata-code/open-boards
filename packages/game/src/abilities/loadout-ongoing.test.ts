@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { expect, it } from 'vitest';
 import { basic, deckDefinitions } from '../../../../tests/rules-fixture';
 import { validateDefinitions } from './validation';
@@ -23,6 +24,11 @@ function setup(edit: (defs: Definitions) => void = () => {}, seats = 2) {
       defs,
       713,
     ),
+    finishTurn(actor = 'p0') {
+      const result = finishActions(h.state, defs, actor);
+      h.state = result.state;
+      return result.outcomes;
+    },
     run(command: Command, actor = 'p0') {
       return execute(
         h.state,
@@ -191,7 +197,7 @@ it('hand-limit discards bypass effect protection', () => {
   });
   h.play();
   h.state.players[0].hand.push(...h.state.players[0].deck.splice(0, 5));
-  h.apply({ type: 'end-turn' });
+  h.finishTurn();
   expect(h.state.phase.type).toBe('discarding');
   expect(h.state.resolution.choice).toBeNull();
   h.apply({

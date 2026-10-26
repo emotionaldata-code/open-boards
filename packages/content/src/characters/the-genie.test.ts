@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
@@ -50,6 +51,11 @@ function setup(roster = ['the-genie', 'vanguard'], edit: (defs: Definitions) => 
     },
     recover() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -151,19 +157,21 @@ describe('complete printed Genie deck', () => {
     const h = setup();
     expect(h.state.actions).toBe(2);
     expect(h.state.players[0].hand).toHaveLength(5);
-    h.apply({ type: 'end-turn' });
-    h.apply({ type: 'end-turn' }, 'p1');
+    h.finishTurn();
+    h.finishTurn('p1');
     expect(h.state.resolution.choice?.prompt).toBe('Infinite Power');
     h.choose('use');
     expect(h.state.actions).toBe(2);
     expect(h.state.resolution.choice?.min).toBe(1);
     h.choose();
     expect(h.state.actions).toBe(3);
-    expect(h.state.players[0].hand).toHaveLength(4);
+    expect(h.state.players[0].hand).toHaveLength(6);
     expect(h.state.players[0].discard).toHaveLength(1);
     h.state.players[0].hand = [];
-    h.apply({ type: 'end-turn' });
-    h.apply({ type: 'end-turn' }, 'p1');
+    h.state.players[0].deck = [];
+    h.finishTurn();
+    h.finishTurn('p1');
+    h.apply({ type: 'discard', cards: h.state.players[1].hand.slice(0, 2).map((c) => c.id) }, 'p1');
     expect(h.state.resolution.choice).toBeNull();
     expect(h.state.actions).toBe(2);
   });
@@ -271,7 +279,7 @@ describe('complete printed Genie deck', () => {
     const h = setup();
     h.action('three-wishes');
     h.choose('power');
-    h.apply({ type: 'end-turn' });
+    h.finishTurn();
     expect(h.fighter().statuses).toEqual([]);
     expect(h.defs.cards[card('three-wishes')].boost).toBe(3);
     h.fight('heavy', card('back-in-the-lamp'), true);

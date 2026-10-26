@@ -1,6 +1,8 @@
 import type { CSSProperties } from 'react';
 import { figureSvg } from './art';
 import { profiles } from './profiles';
+import { ArtworkImage } from '../artwork/ArtworkImage';
+import { fighterArtwork, rasterAssets } from '../artwork/assets';
 
 export function CharacterPortrait({ character }: { character: string }) {
   const profile = profiles[character] ?? profiles.medusa;
@@ -11,10 +13,10 @@ export function CharacterPortrait({ character }: { character: string }) {
         { '--character-ink': profile.accent, '--character-ground': profile.ground } as CSSProperties
       }
     >
-      <img
-        src={`data:image/svg+xml,${encodeURIComponent(figureSvg(character, profile.accent))}`}
-        alt=""
-        draggable={false}
+      <ArtworkImage
+        asset={rasterAssets[fighterArtwork[character]?.portrait]}
+        fallback={`data:image/svg+xml,${encodeURIComponent(figureSvg(character, profile.accent))}`}
+        sizes="(max-width: 600px) 128px, 256px"
       />
     </span>
   );

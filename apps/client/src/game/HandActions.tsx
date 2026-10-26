@@ -86,12 +86,9 @@ export function HandActions({
   return (
     <>
       {myTurn && (
-        <>
-          <button className="primary" onClick={() => onCommand({ type: 'maneuver' })}>
-            Maneuver
-          </button>
-          <button onClick={() => onCommand({ type: 'end-turn' })}>End turn</button>
-        </>
+        <button className="primary" onClick={() => onCommand({ type: 'maneuver' })}>
+          Maneuver
+        </button>
       )}
       {moving && (
         <>

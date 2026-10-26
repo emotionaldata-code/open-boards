@@ -4,10 +4,12 @@ import { mainFighter, fighterDefinition, fighterLabel, movement } from '@open-bo
 import type { RoomView } from '@open-boards/protocol';
 import { Dialog } from '../ui/Dialog';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
-import { Icon } from '../ui/Icon';
+import { DiscardPile } from './DiscardPile';
 export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string }) {
   const game = room.game!;
   const [detail, setDetail] = useState<string | null>(null);
+  const [discardId, setDiscardId] = useState<string | null>(null);
+  const discards = game.players.find((p) => p.id === discardId);
   const player = game.players.find((p) => p.id === detail);
   const main = player ? mainFighter(game, player.id) : null;
   const seat = room.seats.find((s) => s.id === detail);
@@ -21,67 +23,75 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
               (ally) => ally.player === p.id && ally.role === 'ally',
             );
             return (
-              <button
-                key={p.id}
-                style={
-                  {
-                    '--health': `${(f.hp / basic.characters[p.character].hp) * 100}%`,
-                  } as React.CSSProperties
-                }
-                className={`player-badge ${p.eliminated ? 'eliminated' : ''} ${game.turn === i && game.phase.type !== 'finished' ? 'active-player' : ''}`}
-                onClick={() => setDetail(p.id)}
-                aria-label={`${p.name}${p.id === selfId ? ' (you)' : ''}: ${f.hp} health, ${movement(f, basic)} movement, ${p.handCount} cards. Player details`}
-                aria-describedby={allies.length ? `allies-${p.id}` : undefined}
-              >
-                <span className={`player-sigil seat-${i}`}>
-                  <CharacterPortrait character={p.character} />
-                </span>
-                <span className="badge-name">
-                  {p.name}
-                  <small>
-                    {p.id === selfId ? 'You · ' : ''}
-                    {basic.characters[p.character].name} ·{' '}
-                    {f.position === null && !f.defeated
-                      ? 'away'
-                      : basic.characters[p.character].attackType}
-                  </small>
-                </span>
-                <span className="badge-movement">
-                  {movement(f, basic)}
-                  <small>Move</small>
-                </span>
-                <span className="badge-counts">
-                  {p.handCount}
-                  <small>cards</small>
-                </span>
-                <strong className="badge-health">
-                  {f.hp}
-                  <small>HP</small>
-                </strong>
-                {allies.length > 0 && (
-                  <span className="badge-allies" id={`allies-${p.id}`}>
-                    {allies.map((ally) => {
-                      const definition = fighterDefinition(ally, basic);
-                      const label = fighterLabel(ally, basic);
-                      return (
-                        <span
-                          key={ally.id}
-                          className={`badge-ally ${ally.defeated ? 'defeated-ally' : ''}`}
-                          aria-label={`${label}: ${ally.defeated ? 'Defeated' : `${ally.hp} / ${definition.hp} HP · ${definition.attackType}`}`}
-                          title={`${label} · ${definition.attackType}`}
-                        >
-                          <CharacterPortrait character={ally.definition} />
-                          <span>{label}</span>
-                          <strong>
-                            {ally.defeated ? 'Out' : `${ally.hp}/${definition.hp}`}
-                            {!ally.defeated && <small> HP</small>}
-                          </strong>
-                        </span>
-                      );
-                    })}
+              <div className="player-summary" key={p.id}>
+                <button
+                  style={
+                    {
+                      '--health': `${(f.hp / basic.characters[p.character].hp) * 100}%`,
+                    } as React.CSSProperties
+                  }
+                  className={`player-badge ${p.eliminated ? 'eliminated' : ''} ${game.turn === i && game.phase.type !== 'finished' ? 'active-player' : ''}`}
+                  onClick={() => setDetail(p.id)}
+                  aria-label={`${p.name}${p.id === selfId ? ' (you)' : ''}: ${f.hp} health, ${movement(f, basic)} movement, ${p.handCount} cards. Player details`}
+                  aria-describedby={allies.length ? `allies-${p.id}` : undefined}
+                >
+                  <span className={`player-sigil seat-${i}`}>
+                    <CharacterPortrait character={p.character} />
                   </span>
-                )}
-              </button>
+                  <span className="badge-name">
+                    {p.name}
+                    <small>
+                      {p.id === selfId ? 'You · ' : ''}
+                      {basic.characters[p.character].name} ·{' '}
+                      {f.position === null && !f.defeated
+                        ? 'away'
+                        : basic.characters[p.character].attackType}
+                    </small>
+                  </span>
+                  <span className="badge-movement">
+                    {movement(f, basic)}
+                    <small>Move</small>
+                  </span>
+                  <span className="badge-counts">
+                    {p.handCount}
+                    <small>cards</small>
+                  </span>
+                  <strong className="badge-health">
+                    {f.hp}
+                    <small>HP</small>
+                  </strong>
+                  {allies.length > 0 && (
+                    <span className="badge-allies" id={`allies-${p.id}`}>
+                      {allies.map((ally) => {
+                        const definition = fighterDefinition(ally, basic);
+                        const label = fighterLabel(ally, basic);
+                        return (
+                          <span
+                            key={ally.id}
+                            className={`badge-ally ${ally.defeated ? 'defeated-ally' : ''}`}
+                            aria-label={`${label}: ${ally.defeated ? 'Defeated' : `${ally.hp} / ${definition.hp} HP · ${definition.attackType}`}`}
+                            title={`${label} · ${definition.attackType}`}
+                          >
+                            <CharacterPortrait character={ally.definition} />
+                            <span>{label}</span>
+                            <strong>
+                              {ally.defeated ? 'Out' : `${ally.hp}/${definition.hp}`}
+                              {!ally.defeated && <small> HP</small>}
+                            </strong>
+                          </span>
+                        );
+                      })}
+                    </span>
+                  )}
+                </button>
+                <button
+                  className="discard-trigger"
+                  aria-label={`${p.name}: Discards · ${p.discard.length}`}
+                  onClick={() => setDiscardId(p.id)}
+                >
+                  Discards · {p.discard.length}
+                </button>
+              </div>
             );
           })}
         </div>
@@ -179,22 +189,12 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                 ))}
               </div>
             ))}
-          <h3>Discard pile · {player.discard.length}</h3>
-          {player.discard.length ? (
-            <ul className="discard-list">
-              {player.discard.map((card) => (
-                <li key={card.id}>
-                  <Icon name={basic.cards[card.definition].category} />
-                  <span>{basic.cards[card.definition].name}</span>
-                  <strong>{basic.cards[card.definition].value || 'Action'}</strong>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="muted">No cards discarded yet.</p>
-          )}
+          <button onClick={() => setDiscardId(player.id)}>
+            Discards · {player.discard.length}
+          </button>
         </Dialog>
       )}
+      {discards && <DiscardPile player={discards} onClose={() => setDiscardId(null)} />}
     </>
   );
 }

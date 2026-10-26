@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { movement } from './conditions';
 import { describe, expect, it } from 'vitest';
 import { basic, deckDefinitions } from '../../../../tests/rules-fixture';
@@ -68,7 +69,7 @@ describe('declarative abilities', () => {
       ability('turn-end', [{ type: 'counter', name: 'energy', amount: 1 }]),
     ]);
     expect(state.fighters[0].counters.energy).toBe(1);
-    const next = apply(state, defs, 'p0', { type: 'end-turn' }).state;
+    const next = finishActions(state, defs, 'p0').state;
     expect(next.fighters[0].counters.energy).toBe(3);
     expect(next.turn).toBe(1);
     expect(next.resolution.frames).toEqual({});
@@ -154,7 +155,7 @@ describe('declarative abilities', () => {
     s = apply(s, defs, 'p0', { type: 'move', fighter: 'p0:main', path: [] }).state;
     expect(s.fighters[0].hp).toBe(11);
     s = apply(s, defs, 'p0', { type: 'discard', cards: [s.players[0].hand[0].id] }).state;
-    s = apply(s, defs, 'p1', { type: 'end-turn' }).state;
+    s = finishActions(s, defs, 'p1').state;
     s = apply(s, defs, 'p0', { type: 'maneuver' }).state;
     expect(s.players[0].hand).toHaveLength(9);
   });
@@ -483,7 +484,7 @@ it('executes every documented hook in its real rule flow and keeps combat timing
     fighter: 'p0:main',
     card: s.players[0].hand[4].id,
   }).state;
-  for (const actor of ['p1', 'p2', 'p3']) s = apply(s, defs, actor, { type: 'end-turn' }).state;
+  for (const actor of ['p1', 'p2', 'p3']) s = finishActions(s, defs, actor).state;
   s.fighters[1].position = 'n1';
   s.fighters[1].hp = 1;
   s.players[1].hand[0].definition = 'guard';

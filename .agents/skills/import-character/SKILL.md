@@ -44,14 +44,15 @@ For unsupported rules, identify the precise gap and affected cards, then impleme
 
 Read [JSON authoring](references/json-authoring.md) for the bundle shape, effect timing and existing examples. Use `packages/game/src/abilities/vocabulary.ts` and `validation.ts` as the authoritative schema; `packages/content/src/bundle.ts` supplies bundle-specific constraints. Reuse capabilities; never branch on a character or card ID in infrastructure.
 
-Follow [artwork](references/artwork.md) for portraits, miniatures and every card illustration. Supply original artwork by default and retain source/asset attribution. Finish these integration points:
+Follow [artwork](references/artwork.md) and the repository-local [refresh-character-art](../refresh-character-art/SKILL.md) workflow for portraits, miniatures and every card illustration. Its shared direction uses cinematic illustrated realism and integrated Imagegen. Supply original artwork by default and retain source/asset attribution. Finish these integration points:
 
 | File                                        | Required change                                                                                                |
 | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `packages/content/src/characters/<id>.json` | Stats, passive rules, optional ally, palette and all cards with counts/artwork                                 |
 | `packages/content/src/characters.ts`        | Import the bundle and append it to `bundles`                                                                   |
 | `apps/client/src/characters/profiles.ts`    | Role, summary, tactic, accent and ground for the hero ID                                                       |
-| `apps/client/src/characters/art.ts`         | Distinct hero and ally figures; keep `illustratedCharacters` limited to playable heroes                        |
+| `apps/client/src/artwork/assets.ts`         | Register dedicated hero/ally portraits and transparent figures from the generated manifest                     |
+| `apps/client/src/characters/art.ts`         | Keep SVG fallback coverage and `illustratedCharacters` limited to playable heroes                              |
 | `apps/client/src/characters/marks.ts`       | Reuse an appropriate ability mark/tone for hero and ally IDs                                                   |
 | `docs/characters.md`                        | Character/deck summary and link to its import notes                                                            |
 | `docs/characters/<id>.md`                   | Source URL, retrieval date/version, rule mapping, clarifications, intentional differences and asset provenance |

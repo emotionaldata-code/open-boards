@@ -34,7 +34,7 @@ export function InactiveCards({ cards }: { cards: Card[] }) {
           onClose={() => setInspected(undefined)}
         >
           <div className="printed-card">
-            <CardPrint definition={inspected.definition} />
+            <CardPrint definition={inspected.definition} inspector />
           </div>
         </Dialog>
       )}

@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
@@ -48,6 +49,11 @@ function setup(
     },
     reconnect() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -287,7 +293,7 @@ describe('complete Darth Vader source deck', () => {
       h.choose();
     }
     expect(h.fighter('p1:main').position).toBe('n1');
-    h.apply({ type: 'end-turn' });
+    h.finishTurn();
     expect(h.state.resolution.movementLocks).not.toContain('p1:main');
   });
   it('does not lock a ranged opponent outside adjacency, and Feint cancels the lock', () => {

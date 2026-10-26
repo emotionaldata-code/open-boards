@@ -28,6 +28,9 @@
   position: absolute;
   inset: 0;
 }
+.pixi-surface {
+  pointer-events: none;
+}
 .board-inputs {
   pointer-events: none;
 }
@@ -46,22 +49,22 @@
   border: 0;
 }
 .node-hit:hover:not(:disabled) {
-  background: #dbc07e22;
-  outline: 2px solid var(--accent);
+  background: transparent;
 }
 .node-hit:active:not(:disabled) {
   transform: translate(-50%, -50%) scale(0.96);
 }
+.board-viewport:has(.board-error) {
+  padding-bottom: 32px;
+}
 .board-error {
   position: absolute;
-  top: 4px;
+  bottom: 0;
   left: 8px;
+  right: 8px;
   margin: 0;
-  background: var(--surface);
-}
-.board-fallback .node-hit {
-  border: 1px solid var(--accent);
-  background: var(--surface);
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .board-tokens {
@@ -86,4 +89,13 @@
     bold clamp(9px, 1.4cqw, 16px) Georgia,
     serif;
   text-shadow: 0 1px 2px #17272e;
+}
+
+@media (min-width: 1000px) and (min-height: 701px) {
+  .board-viewport:has(.board-error) {
+    padding-bottom: 80px;
+  }
+  .board-panel:has(.board-error) .board-controls {
+    bottom: 32px;
+  }
 }

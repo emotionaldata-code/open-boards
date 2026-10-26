@@ -1,0 +1,8 @@
+.character-portrait img[data-raster] {
+  object-fit: cover;
+  padding: 0;
+}
+
+.card-art img[data-raster] {
+  object-fit: cover;
+}

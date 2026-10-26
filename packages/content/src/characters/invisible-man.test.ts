@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { describe, expect, it } from 'vitest';
 import {
   createGame,
@@ -54,6 +55,11 @@ function setup(
     },
     reconnect() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -383,8 +389,8 @@ describe('printed combat cards', () => {
       const h = setup();
       h.tokens().forEach((t) => (t.position = started ? 'n0' : 'n24'));
       h.fighter().position = 'n0';
-      h.apply({ type: 'end-turn' });
-      h.apply({ type: 'end-turn' }, 'p1');
+      h.finishTurn();
+      h.finishTurn('p1');
       h.tokens().forEach((t) => (t.position = started ? 'n24' : 'n0'));
       h.attack('invisible-man-emerge-from-mist');
       h.defend();
@@ -458,7 +464,7 @@ describe('printed schemes', () => {
       expect(h.state.turn).toBe(1);
       expect(h.state.players[0].eliminated).toBe(false);
       expect(canAttack(h.fighter('p1:main'), h.fighter(), h.defs)).toBe(false);
-      h.apply({ type: 'end-turn' }, 'p1');
+      h.finishTurn('p1');
       privacy(h);
       expect(h.state.resolution.choice?.options.map((o) => o.id)).not.toContain(
         h.fighter('p1:main').position,
@@ -556,7 +562,7 @@ it.each([true, false])(
 it('returning with Vanish onto fog does not enable Emerge From Mist that turn', () => {
   const h = setup();
   h.action('vanish');
-  h.apply({ type: 'end-turn' }, 'p1');
+  h.finishTurn('p1');
   h.choose(h.tokens()[0].position!);
   expect(h.state.resolution.turnPositions['p0:main']).toBeNull();
   h.attack('invisible-man-emerge-from-mist');

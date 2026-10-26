@@ -15,7 +15,7 @@ export function CardDetails({
   return (
     <Dialog title={card.name} className="card-dialog" onClose={onClose}>
       <div className="printed-card">
-        <CardPrint definition={id} />
+        <CardPrint definition={id} inspector />
       </div>
       <p className="card-copies">
         {character.name} · {copies} {copies === 1 ? 'copy' : 'copies'}

@@ -181,11 +181,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await choice().getByRole('button', { name: 'Briar', exact: true }).click();
       await expect(choice()).toContainText('Discard 1 card from Briar');
       await mountHolmes(page);
-      await choice()
-        .getByRole('button', { name: /^(Inspect|About) Service Revolver$/ })
-        .click();
-      await expect(page.getByRole('dialog')).toContainText('Service Revolver');
-      await page.keyboard.press('Escape');
+      await expect(
+        choice().getByRole('button', { name: 'Service Revolver', exact: true }),
+      ).toContainText('Service Revolver');
       await page.screenshot({
         path: test.info().outputPath('holmes-private-hand-desktop.png'),
         animations: 'disabled',

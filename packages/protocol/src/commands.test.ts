@@ -8,6 +8,8 @@ it('requires exact fighter IDs on physical commands without legacy command adapt
     command,
   });
   for (const command of [
+    { type: 'end-turn' },
+    { type: 'unknown-command' },
     { type: 'move', path: [] },
     { type: 'boost-maneuver' },
     { type: 'boost-maneuver', card: '' },

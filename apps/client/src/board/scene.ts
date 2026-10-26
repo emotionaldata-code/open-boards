@@ -1,16 +1,14 @@
-import { Application, Container, Graphics, Text } from 'pixi.js';
+import { Application, Container, Text } from 'pixi.js';
 import type { GameView } from '@open-boards/protocol';
 import type { PresentationEvent } from '../animation/events';
 import { playPresentation } from '../animation/playback';
 import { sound } from '../audio/player';
-import { paintHighlights } from './highlights';
 import { createFigure, playerColors } from './figures';
 import { spaces } from './layout';
 
 export class ArenaScene {
   private actors = new Map<string, Container>();
   private people = new Container({ sortableChildren: true });
-  private highlights = new Graphics();
   private effects = new Container();
   private seen = new Set<string>();
   private moving = new Map<string, number>();
@@ -20,17 +18,13 @@ export class ArenaScene {
     app: Application,
     private render: () => void,
   ) {
-    app.stage.addChild(this.highlights, this.people, this.effects);
+    app.stage.addChild(this.people, this.effects);
   }
-  update(
-    game: GameView | undefined,
-    selected: string | undefined,
-    highlights: string[],
-    events: PresentationEvent[],
-    reset: number,
-  ) {
+  update(game: GameView | undefined, events: PresentationEvent[], reset: number) {
     const resetting = this.resetId !== reset;
     if (resetting) {
+      this.people.removeChildren().forEach((actor) => actor.destroy({ children: true }));
+      this.actors.clear();
       this.seen.clear();
       this.moving.clear();
       this.effects.removeChildren().forEach((c) => c.destroy());
@@ -82,7 +76,7 @@ export class ArenaScene {
     players.forEach((player) => {
       let actor = this.actors.get(player.id);
       if (!actor) {
-        actor = createFigure(player.artwork, player.color);
+        actor = createFigure(player.artwork, player.color, this.render, () => !this.disposed);
         const label = new Text({
           text:
             'role' in player && player.role === 'ally'
@@ -106,11 +100,6 @@ export class ArenaScene {
       if (!this.moving.has(player.id)) actor.position.set(point.x, point.y);
       actor.zIndex = actor.y;
     });
-    paintHighlights(
-      this.highlights,
-      highlights,
-      players.find((p) => p.id === selected)?.position ?? undefined,
-    );
     this.render();
   }
   async present(event: PresentationEvent, active: () => boolean): Promise<void> {

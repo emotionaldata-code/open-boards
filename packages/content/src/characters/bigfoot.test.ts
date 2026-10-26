@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
@@ -44,6 +45,11 @@ function setup(edit: (defs: Definitions) => void = () => {}, roster = ['bigfoot'
     },
     reconnect() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -208,8 +214,7 @@ describe('complete printed Bigfoot deck', () => {
     h.fighter('p1:ally-1').position = 'n1';
     h.fighter('p1:ally-1').hp = 0;
     h.fighter('p1:ally-1').defeated = true;
-    h.state.players[0].hand.push(...h.state.players[0].deck.splice(0, 2));
-    h.apply({ type: 'end-turn' });
+    h.finishTurn();
     privateChoice(h);
     expect(h.state.phase.type).not.toBe('discarding');
     h.choose('use');
@@ -226,7 +231,7 @@ describe('complete printed Bigfoot deck', () => {
       const h = setup();
       h.fighter().position = 'n1';
       h.fighter('p1:main').position = space;
-      h.apply({ type: 'end-turn' });
+      h.finishTurn();
       expect(h.state.resolution.choice).toBeNull();
       expect(h.state.turn).toBe(1);
     },

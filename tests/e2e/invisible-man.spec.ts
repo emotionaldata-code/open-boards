@@ -161,7 +161,7 @@ async function mountInvisible(
           actor: string,
         ) => {
           if (
-            command.type === 'end-turn' &&
+            command.type === 'maneuver' &&
             state.resolution.choice?.player === actor &&
             state.resolution.choice.options.some((o) => o.id === 'skip')
           )
@@ -279,11 +279,18 @@ test('Invisible Man restores Vanish from an empty board position across a phone 
   await page.getByRole('button', { name: 'Play Vanish', exact: true }).click();
   await expect.poll(async () => (await state(page)).fighters[0].position).toBeNull();
   await page.evaluate(() => {
-    (
+    const apply = (
       window as unknown as {
-        invisibleTestApply: (command: { type: 'end-turn' }, actor: string) => void;
+        invisibleTestApply: (
+          command: import('../../packages/game/src').Command,
+          actor: string,
+        ) => void;
       }
-    ).invisibleTestApply({ type: 'end-turn' }, 'p1');
+    ).invisibleTestApply;
+    for (let i = 0; i < 2; i++) {
+      apply({ type: 'maneuver' }, 'p1');
+      apply({ type: 'finish-maneuver' }, 'p1');
+    }
   });
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();

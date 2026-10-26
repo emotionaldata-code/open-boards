@@ -184,11 +184,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.getByRole('button', { name: 'Commit attack', exact: true }).click();
       const choice = () => page.getByRole('region', { name: 'Ability choice' });
       await expect(choice()).toContainText('Return a discarded card to your hand');
-      await choice()
-        .getByRole('button', { name: /^(Inspect|About) Feint$/ })
-        .click();
-      await expect(page.getByRole('dialog')).toContainText('Feint');
-      await page.keyboard.press('Escape');
+      await expect(choice().getByRole('button', { name: 'Feint', exact: true })).toContainText(
+        'Cancel all effects',
+      );
       await page.screenshot({
         path: test.info().outputPath('achilles-recovery-desktop.png'),
         animations: 'disabled',

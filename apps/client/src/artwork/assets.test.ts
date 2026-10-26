@@ -1,0 +1,46 @@
+import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
+import { expect, it } from 'vitest';
+import sharp from 'sharp';
+import { cardPresentation } from '@open-boards/content';
+import { fighterArtwork, rasterAssets, rasterForUrl } from './assets';
+
+it('ships the complete pilot with correctly sized, hashed derivatives and transparent tokens', async () => {
+  const cards = Object.values(cardPresentation).filter((card) => card.character === 'medusa');
+  expect(cards).toHaveLength(11);
+  for (const card of cards) expect(rasterForUrl(card.art.image)?.kind).toBe('card');
+  const pilot = new Set(cards.map((card) => rasterForUrl(card.art.image)!));
+  for (const character of ['medusa', 'medusa-harpy']) {
+    expect(rasterAssets[fighterArtwork[character].portrait].kind).toBe('portrait');
+    expect(rasterAssets[fighterArtwork[character].token].kind).toBe('token');
+    pilot.add(rasterAssets[fighterArtwork[character].portrait]);
+    pilot.add(rasterAssets[fighterArtwork[character].token]);
+  }
+  expect(pilot.size).toBe(15);
+  for (const asset of pilot) {
+    const widths =
+      asset.kind === 'card'
+        ? [320, 640, 1280]
+        : asset.kind === 'portrait'
+          ? [256, 512, 1024]
+          : [512];
+    expect(asset.variants.map((variant) => variant.width)).toEqual(widths);
+    expect(asset.url).toBe(asset.variants.at(-1)!.url);
+    for (const variant of asset.variants) {
+      const bytes = await readFile(new URL(`../../public${variant.url}`, import.meta.url));
+      expect(bytes.length).toBe(variant.bytes);
+      expect(variant.url).toContain(createHash('sha256').update(bytes).digest('hex').slice(0, 12));
+      const metadata = await sharp(bytes).metadata();
+      expect(metadata).toMatchObject({
+        format: 'webp',
+        width: variant.width,
+        height: variant.height,
+      });
+      if (asset.kind === 'token') {
+        expect(metadata.hasAlpha).toBe(true);
+        expect((await sharp(bytes).stats()).isOpaque).toBe(false);
+        expect(asset.anchor).toEqual([0.5, 0.96875]);
+      }
+    }
+  }
+});

@@ -65,7 +65,7 @@
       ],
       "art": {
         "scene": "trail",
-        "image": "/cards/medusa/dash.svg"
+        "image": "/artwork/medusa/medusa-dash-1280-916aa557ad7c.webp"
       },
       "flavor": "A shadow slips between the pillars."
     },
@@ -99,7 +99,7 @@
       ],
       "art": {
         "scene": "ward",
-        "image": "/cards/medusa/gaze-of-stone.svg"
+        "image": "/artwork/medusa/medusa-gaze-of-stone-1280-940ae693b4d3.webp"
       },
       "flavor": "One glance outlasts a lifetime."
     },
@@ -128,7 +128,7 @@
       ],
       "art": {
         "scene": "bolt",
-        "image": "/cards/medusa/a-momentary-glance.svg"
+        "image": "/artwork/medusa/medusa-a-momentary-glance-1280-13cebc28544c.webp"
       },
       "flavor": "Stone remembers the shape of fear."
     },
@@ -158,7 +158,7 @@
       ],
       "art": {
         "scene": "shield",
-        "image": "/cards/medusa/hiss-and-slither.svg"
+        "image": "/artwork/medusa/medusa-hiss-and-slither-1280-38161f11dfe6.webp"
       },
       "flavor": "The warning comes too late."
     },
@@ -195,7 +195,7 @@
       ],
       "art": {
         "scene": "blade",
-        "image": "/cards/medusa/the-hounds-of-mighty-zeus.svg"
+        "image": "/artwork/medusa/medusa-the-hounds-of-mighty-zeus-1280-a6b63a2e06f0.webp"
       },
       "flavor": "The sky answers the hunt."
     },
@@ -225,7 +225,7 @@
       ],
       "art": {
         "scene": "blade",
-        "image": "/cards/medusa/clutching-claws.svg"
+        "image": "/artwork/medusa/medusa-clutching-claws-1280-ceebd6196610.webp"
       },
       "flavor": "Nothing escapes an empty sky."
     },
@@ -259,7 +259,7 @@
       ],
       "art": {
         "scene": "trail",
-        "image": "/cards/medusa/winged-frenzy.svg"
+        "image": "/artwork/medusa/medusa-winged-frenzy-1280-72f3ae5e57c4.webp"
       },
       "flavor": "Wings return to the ancient stones."
     },
@@ -287,7 +287,7 @@
       ],
       "art": {
         "scene": "bolt",
-        "image": "/cards/medusa/second-shot-3.svg"
+        "image": "/artwork/medusa/medusa-second-shot-3-1280-fc78208a602f.webp"
       },
       "flavor": "The first arrow was only a question."
     },
@@ -316,7 +316,7 @@
       ],
       "art": {
         "scene": "bolt",
-        "image": "/cards/medusa/snipe.svg"
+        "image": "/artwork/medusa/medusa-snipe-1280-79f3ac740271.webp"
       },
       "flavor": "Distance is no refuge."
     },
@@ -344,7 +344,7 @@
       ],
       "art": {
         "scene": "ward",
-        "image": "/cards/medusa/feint.svg"
+        "image": "/artwork/medusa/medusa-feint-1280-99dcd92a9655.webp"
       },
       "flavor": "Even a statue can mislead."
     },
@@ -388,7 +388,7 @@
       ],
       "art": {
         "scene": "lantern",
-        "image": "/cards/medusa/regroup.svg"
+        "image": "/artwork/medusa/medusa-regroup-1280-c74cd2644a29.webp"
       },
       "flavor": "Gather beneath the serpent crown."
     }

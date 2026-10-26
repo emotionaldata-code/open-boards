@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { condition } from './conditions';
 import { describe, expect, it } from 'vitest';
 import { basic } from '../../../../tests/rules-fixture';
@@ -35,6 +36,11 @@ function setup(effects: Effect[] = [], edit: (defs: Definitions) => void = () =>
     defs,
     get state() {
       return state;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -193,7 +199,7 @@ describe('reusable board tokens and card operations', () => {
     const h = setup([{ type: 'remove-until-next-turn' }, { type: 'end-turn' }]);
     h.action();
     expect(h.state.fighters[0]).toMatchObject({ position: null, defeated: false, hp: 15 });
-    h.apply({ type: 'end-turn' }, 'p1');
+    h.finishTurn('p1');
     expect(h.choose('n24').outcomes).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ type: 'placed', fighter: 'p0:main', position: 'n24' }),

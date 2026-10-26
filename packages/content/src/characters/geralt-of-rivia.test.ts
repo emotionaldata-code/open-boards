@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { expect, it } from 'vitest';
 import {
@@ -48,6 +49,11 @@ function setup(
     },
     reconnect() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -385,8 +391,8 @@ it('Blizzard persists after an allied attack, blocks enemy action gains, and exp
   h.attack('bruce-lee-jeet-kune-do-wrist-lock', 'p1:main', 'p0:main');
   h.defend('guard', 'p0');
   expect(h.state.actions).toBe(1);
-  h.apply({ type: 'end-turn' }, 'p1');
-  h.apply({ type: 'end-turn' });
+  h.finishTurn('p1');
+  h.finishTurn();
   expect(h.state.players[0].ongoing).toEqual([]);
   expect(h.state.players[0].discard.some((c) => c.definition === card('gear-blizzard'))).toBe(true);
 });
@@ -400,7 +406,7 @@ it.each(['ignore', 'allow'])(
     expect(h.state.players[0].hand).toHaveLength(6);
     h.attack(card('damn-youre-ugly'));
     h.defend('guard');
-    h.apply({ type: 'end-turn' });
+    h.finishTurn();
     h.attack(card('plot-twist'), 'p1:ally-1', 'p0:main');
     h.defend(null, 'p0');
     privateChoice(h);
@@ -412,7 +418,7 @@ it.each(['ignore', 'allow'])(
       expect(h.state.resolution.choice?.player).toBe('p1');
       h.choose();
     }
-    expect(h.state.players[0].hand).toHaveLength(option === 'ignore' ? 5 : 4);
+    expect(h.state.players[0].hand).toHaveLength(option === 'ignore' ? 6 : 5);
   },
 );
 

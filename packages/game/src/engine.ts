@@ -277,9 +277,6 @@ export function execute(
       requireRule(state.actions > 0, 'No actions remain.');
       runtime.prepend({ type: 'flow', action: 'settle' });
       switch (command.type) {
-        case 'end-turn':
-          runtime.prepend({ type: 'flow', action: 'end-turn' });
-          break;
         case 'maneuver':
           state.actions--;
           state.maneuver = {
@@ -341,6 +338,8 @@ export function execute(
           );
           break;
         }
+        default:
+          requireRule(false, 'Unknown command.');
       }
     }
     runtime.run();

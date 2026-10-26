@@ -160,7 +160,6 @@ export type Command =
   | { type: 'defend'; card: string | null }
   | { type: 'play-action'; fighter: string; card: string }
   | { type: 'discard'; cards: string[] }
-  | { type: 'end-turn' }
   | { type: 'choose'; choice: string; options: string[] };
 export interface CommandEnvelope {
   id: string;

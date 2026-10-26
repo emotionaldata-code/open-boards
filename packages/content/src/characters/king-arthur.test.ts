@@ -1,3 +1,4 @@
+import { finishActions } from '../../../../tests/finish-actions';
 import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
@@ -45,6 +46,11 @@ function setup(edit: (defs: Definitions) => void = () => {}, roster = ['king-art
     },
     reconnect() {
       state = JSON.parse(JSON.stringify(state)) as GameState;
+    },
+    finishTurn(actor = 'p0') {
+      const result = finishActions(state, defs, actor);
+      state = result.state;
+      return result.outcomes;
     },
     run(command: Command, actor = 'p0') {
       return execute(
@@ -502,7 +508,7 @@ describe('complete printed King Arthur deck', () => {
     h.attack('strike', 'p1:main', 'p0:main');
     h.defend('king-arthur-momentous-shift', 'p0');
     expect(h.state.revealed?.damage).toBe(1);
-    h.apply({ type: 'end-turn' }, 'p1');
+    h.finishTurn('p1');
     expect(h.state.resolution.turnPositions).toEqual(
       Object.fromEntries(h.state.fighters.map((f) => [f.id, f.position])),
     );

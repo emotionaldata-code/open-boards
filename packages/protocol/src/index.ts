@@ -34,7 +34,6 @@ export const commandSchema = z.object({
     z.object({ type: z.literal('defend'), card: cardId.nullable() }),
     z.object({ type: z.literal('play-action'), fighter: cardId, card: cardId }),
     z.object({ type: z.literal('discard'), cards: z.array(cardId).max(100) }),
-    z.object({ type: z.literal('end-turn') }),
     z.object({ type: z.literal('choose'), choice: cardId, options: z.array(cardId).max(100) }),
   ]),
 });

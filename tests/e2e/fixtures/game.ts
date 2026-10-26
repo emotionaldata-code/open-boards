@@ -93,6 +93,10 @@ export async function presentationHarness(
         game = next;
         render();
       },
+      updatePresentationGame: (overrides: Partial<typeof game>) => {
+        game = { ...game, ...overrides, revision: game.revision + 1 };
+        render();
+      },
       presentationCommands: commands,
     });
     render();

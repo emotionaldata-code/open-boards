@@ -1,3 +1,4 @@
+import { finishActions } from '../../../tests/finish-actions';
 import { describe, it, expect } from 'vitest';
 import { basic, deckDefinitions } from '../../../tests/rules-fixture';
 import { createGame, execute, forfeit } from './engine';
@@ -57,7 +58,7 @@ describe('authoritative rules', () => {
     s = apply(s, 'p0', { type: 'maneuver' });
     expect(s.actions).toBe(1);
     expect(s.players[0].hand).toHaveLength(6);
-    invalid(s, 'p0', { type: 'end-turn' });
+    invalid(s, 'p0', { type: 'maneuver' });
     s = apply(s, 'p0', { type: 'move', fighter: 'p0:main', path: [] });
     s = apply(s, 'p0', { type: 'maneuver' });
     expect(s.actions).toBe(0);
@@ -65,6 +66,49 @@ describe('authoritative rules', () => {
     expect(s.turn).toBe(1);
     expect(s.players[1].hand).toHaveLength(5);
     expect(s.actions).toBe(2);
+  });
+  it.each(['end-turn', 'unknown-command'])(
+    'rejects the public %s command without mutation',
+    (type) => {
+      const state = setup();
+      invalid(state, 'p0', { type } as Command);
+    },
+  );
+  it('cannot skip its remaining action after finishing a Maneuver', () => {
+    let s = setup();
+    s = apply(s, 'p0', { type: 'maneuver' });
+    s = apply(s, 'p0', { type: 'finish-maneuver' });
+    expect(s.turn).toBe(0);
+    expect(s.actions).toBe(1);
+    invalid(s, 'p0', { type: 'end-turn' } as unknown as Command);
+    s = apply(s, 'p0', { type: 'maneuver' });
+    expect(s.turn).toBe(0);
+    expect(s.actions).toBe(0);
+    expect(s.phase.type).toBe('choosing-movement');
+    s = apply(s, 'p0', { type: 'finish-maneuver' });
+    expect(s.turn).toBe(1);
+  });
+  it.each([0, 1, 2])('draw-two damages only for missing cards with %i available', (available) => {
+    let s = setup();
+    s.players[0].deck = s.players[0].deck.slice(0, available);
+    hand(s, 0, ['prepare']);
+    s = apply(s, 'p0', { type: 'play-action', fighter: 'p0:main', card: s.players[0].hand[0].id });
+    expect(s.fighters[0].hp).toBe(15 - (2 - available) * 2);
+    expect(s.players[0].hand).toHaveLength(available);
+    expect(s.players[0].deck).toEqual([]);
+  });
+  it('drawing the final card is safe and both later empty-deck Maneuvers cause damage', () => {
+    let s = setup();
+    s.players[0].deck = s.players[0].deck.slice(0, 1);
+    s = apply(s, 'p0', { type: 'maneuver' });
+    expect(s.fighters[0].hp).toBe(15);
+    s = apply(s, 'p0', { type: 'finish-maneuver' });
+    s = apply(s, 'p0', { type: 'maneuver' });
+    expect(s.fighters[0].hp).toBe(13);
+    s = apply(s, 'p0', { type: 'finish-maneuver' });
+    s = finishActions(s, basic, 'p1').state;
+    s = finishActions(s, basic, 'p0').state;
+    expect(s.fighters[0].hp).toBe(9);
   });
   it('validates graph edges, distance, occupied destinations and occupied traversal', () => {
     let s = setup();
@@ -138,7 +182,8 @@ describe('authoritative rules', () => {
     s = apply(s, 'p0', { type: 'play-action', fighter: 'p0:main', card: s.players[0].hand[0].id });
     expect(s.players[0].hand).toHaveLength(8);
     expect(s.players[0].discard[0].definition).toBe('prepare');
-    s = apply(s, 'p0', { type: 'end-turn' });
+    s = apply(s, 'p0', { type: 'maneuver' });
+    s = apply(s, 'p0', { type: 'finish-maneuver' });
     expect(s.phase.type).toBe('discarding');
     invalid(s, 'p0', { type: 'maneuver' });
     invalid(s, 'p0', { type: 'discard', cards: [] });
@@ -146,7 +191,7 @@ describe('authoritative rules', () => {
       type: 'discard',
       cards: [s.players[0].hand[0].id, s.players[0].hand[0].id],
     });
-    s = apply(s, 'p0', { type: 'discard', cards: [s.players[0].hand[0].id] });
+    s = apply(s, 'p0', { type: 'discard', cards: s.players[0].hand.slice(0, 2).map((c) => c.id) });
     expect(s.players[0].hand).toHaveLength(7);
     expect(s.turn).toBe(1);
   });
@@ -169,9 +214,9 @@ describe('authoritative rules', () => {
     expect(s.players[0].eliminated).toBe(true);
     expect(s.turn).toBe(1);
     expect(s.phase.type).toBe('taking-actions');
-    s = apply(s, 'p1', { type: 'end-turn' });
-    s = apply(s, 'p2', { type: 'end-turn' });
-    s = apply(s, 'p3', { type: 'end-turn' });
+    s = finishActions(s, basic, 'p1').state;
+    s = finishActions(s, basic, 'p2').state;
+    s = finishActions(s, basic, 'p3').state;
     expect(s.turn).toBe(1);
   });
   it('finishes on lethal combat or exhaustion and supports zero-survivor draws', () => {
@@ -186,7 +231,7 @@ describe('authoritative rules', () => {
     });
     s = apply(s, 'p1', { type: 'defend', card: null });
     expect(s.phase).toEqual({ type: 'finished', winner: 'p0' });
-    invalid(s, 'p0', { type: 'end-turn' });
+    invalid(s, 'p0', { type: 'maneuver' });
     s = setup();
     s.fighters[0].hp = 2;
     s.players[0].deck = [];
@@ -202,7 +247,7 @@ describe('authoritative rules', () => {
     hand(s, 0, ['guard', 'prepare', 'strike']);
     for (const [actor, command] of [
       ['intruder', { type: 'maneuver' }],
-      ['p1', { type: 'end-turn' }],
+      ['p1', { type: 'maneuver' }],
       [
         'p0',
         { type: 'attack', fighter: 'p0:main', card: s.players[0].hand[0].id, target: 'p0:main' },

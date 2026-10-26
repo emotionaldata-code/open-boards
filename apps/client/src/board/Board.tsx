@@ -93,23 +93,23 @@ export function Board(props: Props) {
     };
   }, []);
   useEffect(() => {
-    scene.current?.update(
-      props.game,
-      props.selected,
-      props.highlights ?? [],
-      props.events ?? [],
-      props.reset ?? 0,
-    );
-  }, [ready, props.game, props.selected, props.highlights, props.events, props.reset]);
+    scene.current?.update(props.game, props.events ?? [], props.reset ?? 0);
+  }, [ready, props.game, props.events, props.reset]);
   return (
     <div className="board-viewport" role="region" aria-label="Map">
       <div
-        className={`arena ${error ? 'board-fallback' : ''}`}
+        className="arena"
         style={{ '--board-aspect': arenaSize.width / arenaSize.height } as CSSProperties}
         role="group"
         aria-label={`${basic.map.name}: ${basic.map.nodes.length} connected spaces, ${Object.keys(zoneStyles).length} colored zones and ${basic.map.portals?.length ?? 0} portals.`}
       >
-        <Terrain />
+        <Terrain
+          highlights={props.highlights}
+          selected={
+            props.game?.fighters.find((fighter) => fighter.id === props.selected)?.position ??
+            undefined
+          }
+        />
         <div className="board-tokens" aria-label="Board tokens">
           {(props.game?.boardTokens ?? [])
             .filter((t) => t.position !== null)
@@ -181,8 +181,8 @@ export function Board(props: Props) {
                             : props.game?.players.find((p) => p.id === f?.player)?.name;
                         })()}`
               }
-              aria-description={`Zones: ${basic.map.zones[id].map((zone) => zoneStyles[zone].name).join(', ')}${basic.map.portals?.includes(id) ? '. Portal: move to any other portal for one movement point.' : ''}`}
-              title={`Space ${spaces[id].label}${basic.map.portals?.includes(id) ? ' · Portal' : ''}`}
+              aria-description={`Zones: ${basic.map.zones[id].map((zone) => zoneStyles[zone].name).join(', ')}${basic.map.portals?.includes(id) ? '. Portal (passage arrows below the space): move to any other unoccupied portal for one movement point.' : ''}`}
+              title={`Space ${spaces[id].label}${basic.map.portals?.includes(id) ? ' · Portal (passage arrows) · One movement point to another unoccupied portal' : ''}`}
               onClick={(event) => {
                 if (!event.detail) {
                   props.onNode?.(id);
@@ -203,17 +203,15 @@ export function Board(props: Props) {
                 );
                 props.onNode?.(nearest);
               }}
-            >
-              {error && spaces[id].label}
-            </button>
+            />
           ))}
         </div>
-        {error && (
-          <p className="board-error" role="alert">
-            {error}
-          </p>
-        )}
       </div>
+      {error && (
+        <p className="board-error" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

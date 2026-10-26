@@ -35,7 +35,9 @@ The import retains the project’s five-card opening hand, seven-card hand limit
 
 ## Original artwork and presentation
 
-All illustrations are original code-native SVGs authored for this import on 2026-10-25. No source pixels, traced paths, external assets, fonts, scripts or remote references are used. The eleven production card illustrations are in `apps/client/public/cards/medusa/`; original figure paths from [the draft artwork](drafts/medusa/art/) are registered in `apps/client/src/characters/art.ts`. Both Medusa’s sash and each Harpy’s chest wrap use the actual owner color. Harpy numbering comes from the stable fighter identity. Profile and ability marks are registered independently of engine rules. Revival has a public arrival cue at its destination.
+The cinematic raster pilot (2026-10-26) supplies fifteen original images generated with Codex’s integrated Imagegen: Medusa/Harpy portraits, two transparent full-body figures and eleven dedicated card scenes. Selected masters, identity references, exact prompts and SHA-256 provenance are retained under [`artwork/characters/medusa/`](../../artwork/characters/medusa/). No published card pixels are redistributed. Run `pnpm artwork:prepare medusa` to reproduce hashed WebP derivatives and the presentation manifest; only derivatives are served from `apps/client/public/artwork/medusa/`. Cards retain canonical `art.image` references.
+
+The original 2026-10-25 SVGs in `apps/client/public/cards/medusa/` and figure paths in `apps/client/src/characters/art.ts` remain available. Unmigrated figures and failed raster loads use the SVG path. Owner color is rendered on a separate base; stable Harpy numbering, selection and movement/revival effects remain independent of image pixels. Profile and ability marks stay separate from engine rules. Artwork production and future migrations use the repository-local [refresh-character-art skill](../../.agents/skills/refresh-character-art/SKILL.md).
 
 ## Verification
 

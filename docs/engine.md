@@ -18,6 +18,10 @@ Commands identify exact pieces:
 - `{ type: 'play-action', fighter, card }`
 - `{ type: 'defend', card }` (owner responds for the fixed attacked fighter; `null` declines)
 
+Each turn requires two actions, plus any actions granted by effects. There is no public `end-turn` command: the turn settles automatically after the action budget is spent and pending resolutions finish. Card effects may still request `end-turn`. Finish Maneuver completes movement for that action and preserves remaining actions.
+
+Every missing card in an ordinary draw queues two exhaustion damage per living owned fighter, including allies, using that fighter as its own source. Partial draws deal damage only for the shortfall; drawing the last available card is safe. Damage uses the ordinary reactions, off-board exemption, defeat and elimination rules. Discards never reshuffle automatically.
+
 There are no legacy command adapters. Physical outcomes, combat participants and animations identify fighters. Played-card outcomes also carry the owning player. Snapshot projections expose every fighter and pending Maneuver, while retaining hand, choice and committed-card privacy.
 
 ## Deployment and Maneuver

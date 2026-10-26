@@ -1,13 +1,13 @@
 // Presentation data never determines movement, attack range, or spawn rules.
 export const boardSize = { width: 1900, height: 780 };
 export const zoneStyles: Record<string, { name: string; color: number; symbol: string }> = {
-  gold: { name: 'Gold', color: 0xd5a044, symbol: 'Au' },
-  yellow: { name: 'Yellow', color: 0xf1dc80, symbol: 'Y' },
+  gold: { name: 'Gold', color: 0xf0a020, symbol: 'Au' },
+  yellow: { name: 'Yellow', color: 0xffed55, symbol: 'Y' },
   red: { name: 'Red', color: 0xba4561, symbol: 'R' },
   blue: { name: 'Blue', color: 0x779fbc, symbol: 'B' },
-  brown: { name: 'Brown', color: 0xa47856, symbol: 'Br' },
-  gray: { name: 'Gray', color: 0xa8a5a0, symbol: 'Gy' },
-  green: { name: 'Green', color: 0x93b79d, symbol: 'G' },
+  brown: { name: 'Brown', color: 0x986044, symbol: 'Br' },
+  gray: { name: 'Gray', color: 0xc0c9d1, symbol: 'Gy' },
+  green: { name: 'Green', color: 0x49b779, symbol: 'G' },
 };
 // Positions follow the printed board, fitted to the existing horizontal camera.
 export const boardLayout: Record<string, { x: number; y: number; label: string }> = {

@@ -1,0 +1,146 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-26",
+  "authorship": "Original generated illustrations; no third-party card artwork reused.",
+  "references": ["references/medusa.png", "references/harpy.png"],
+  "prompts": "prompts.json",
+  "selectedDashRevision": "dash-revision.json",
+  "assets": [
+    {
+      "id": "medusa-portrait",
+      "master": "masters/medusa-portrait.png",
+      "sha256": "580b724502237eb5978a23ff0e0f0cccc019103d7b90495b10c34bb69d096d8b",
+      "prompt": "prompts.json#medusa-portrait",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-token",
+      "master": "masters/medusa-token.png",
+      "sha256": "e3121079c864dbeba6b3c7009929c43e657f34958a29a4ff57c398453af18345",
+      "prompt": "prompts.json#medusa-token",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "harpy-portrait",
+      "master": "masters/harpy-portrait.png",
+      "sha256": "db45df4b2f4b68b880624b2c7f4bf18bce629c9b558a8877a82e23b444c44be8",
+      "prompt": "prompts.json#harpy-portrait",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "harpy-token",
+      "master": "masters/harpy-token.png",
+      "sha256": "6c5b050e2a857a7db93c57c5145aa45999b8baa24cf394ec2cab7db3f4fb7acc",
+      "prompt": "prompts.json#harpy-token",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "medusa-dash",
+      "master": "masters/dash.png",
+      "sha256": "0b91a5ad46a7077f138882272362ef7525f8d251cabcebb20f9c6d75a2873260",
+      "prompt": "dash-revision.json",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-gaze-of-stone",
+      "master": "masters/gaze-of-stone.png",
+      "sha256": "45e93868709083206584c8145ff29957e4640a5093297172402f53735964e7ae",
+      "prompt": "prompts.json#gaze-of-stone",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-a-momentary-glance",
+      "master": "masters/a-momentary-glance.png",
+      "sha256": "f4fd7a75a133cef197aae7783369687465dd0ea4ae29df8de371192f32be4d09",
+      "prompt": "prompts.json#a-momentary-glance",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-hiss-and-slither",
+      "master": "masters/hiss-and-slither.png",
+      "sha256": "8d7a61b0950f0539ed811e7ed7a70f48b9c7bf325d0b80de7e7e81bca01b4c3c",
+      "prompt": "prompts.json#hiss-and-slither",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-the-hounds-of-mighty-zeus",
+      "master": "masters/the-hounds-of-mighty-zeus.png",
+      "sha256": "165633f222611b0088971cb7e4094029393e8bcac039c5e1f636600685465047",
+      "prompt": "prompts.json#the-hounds-of-mighty-zeus",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-clutching-claws",
+      "master": "masters/clutching-claws.png",
+      "sha256": "c14f935e0b7a253edf8fa2cd3d3c84354b06269bfa2a548477e4dcf2dfcf5822",
+      "prompt": "prompts.json#clutching-claws",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-winged-frenzy",
+      "master": "masters/winged-frenzy.png",
+      "sha256": "e36ae1c4b196a604960584eceb28f461d6a956f5b5b8c8bd75fc041ccab398f9",
+      "prompt": "prompts.json#winged-frenzy",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-second-shot-3",
+      "master": "masters/second-shot-3.png",
+      "sha256": "ba6c8da6e60fda6b183670a6e49d2576c10076d3ff6a7515c7c51837f0527941",
+      "prompt": "prompts.json#second-shot-3",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-snipe",
+      "master": "masters/snipe.png",
+      "sha256": "0ef3d567d1e4ae269e3374f57e9efef61ea00abc1c149b8d8fe4d5ff08e35025",
+      "prompt": "prompts.json#snipe",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-feint",
+      "master": "masters/feint.png",
+      "sha256": "0a562adfc5bd614887daea920dadbef88b68d66acc121f3727beee362af04f1a",
+      "prompt": "prompts.json#feint",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "medusa-regroup",
+      "master": "masters/regroup.png",
+      "sha256": "b80c715ea5b02ebc1a7269e02f745ded7f34ede8a23ed2ffb8b3b8757f5c0b07",
+      "prompt": "prompts.json#regroup",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}
