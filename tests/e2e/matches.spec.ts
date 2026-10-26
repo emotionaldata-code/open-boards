@@ -1,7 +1,10 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
+  'geralt-of-rivia': { name: 'Geralt of Rivia', allies: 1 },
   medusa: { name: 'Medusa', allies: 3 },
+  'darth-vader': { name: 'Darth Vader', allies: 0 },
   'bruce-lee': { name: 'Bruce Lee', allies: 0 },
+  'invisible-man': { name: 'Invisible Man', allies: 0 },
   dracula: { name: 'Dracula', allies: 3 },
   bigfoot: { name: 'Bigfoot', allies: 1 },
   'robin-hood': { name: 'Robin Hood', allies: 4 },
@@ -574,6 +577,9 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
         ['Robin Hood', 11],
         ['Bigfoot', 11],
         ['Bruce Lee', 17],
+        ['Invisible Man', 14],
+        ['Geralt of Rivia', 15],
+        ['Darth Vader', 12],
       ]),
     );
     for (const [name, designs] of fighters) {
@@ -1174,5 +1180,115 @@ test('Bruce Lee starts a solo four-seat match and resumes Maneuver after socket 
     for (const { errors } of rivals) expect(errors).toEqual([]);
   } finally {
     for (const rival of rivals) await rival.context.close();
+  }
+});
+
+test('Invisible Man deploys twelve fog tokens over real sockets and reconnects movement on phone', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'invisible-man', false, false);
+  try {
+    for (const [seat, { page }] of rivals.entries()) {
+      const choice = page.getByRole('region', { name: 'Ability choice' });
+      for (let i = 1; i <= 3; i++) {
+        await expect(choice).toContainText(`Place Fog ${i}`);
+        if (i === 2) await page.reload();
+        await page
+          .getByRole('button', { name: /^Choose space/ })
+          .first()
+          .tap();
+      }
+      if (seat < 3)
+        await expect(
+          rivals[seat + 1].page.getByRole('region', { name: 'Ability choice' }),
+        ).toBeVisible();
+    }
+    for (const { page } of rivals) {
+      await expect(page.locator('main.game-layout')).toHaveAttribute(
+        'data-phase',
+        'taking-actions',
+      );
+      await expect(page.locator('.board-token')).toHaveCount(12);
+    }
+    const host = rivals[0].page;
+    await host.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await expect(host.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
+    await host.reload();
+    await expect(host.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
+    await expect(host.locator('.board-token')).toHaveCount(12);
+    await expect(host.locator('.arena canvas')).toBeVisible();
+    await host.screenshot({
+      path: test.info().outputPath('invisible-four-seats-phone.png'),
+      animations: 'disabled',
+    });
+    await host.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    for (const rival of rivals) expect(rival.errors).toEqual([]);
+  } finally {
+    for (const rival of rivals) await rival.context.close();
+  }
+});
+
+test('Darth Vader selects without allies and reconnects during Maneuver', async ({ browser }) => {
+  const rivals = await createMatch(browser, 2, true, 'darth-vader', false, false);
+  try {
+    const page = rivals[0].page;
+    await page.setViewportSize({ width: 844, height: 390 });
+    const choice = page.getByRole('region', { name: 'Ability choice' });
+    if (await choice.isVisible()) await choice.getByRole('button', { name: /Confirm/ }).click();
+    await page.getByRole('button', { name: 'Maneuver', exact: true }).click();
+    await page.reload();
+    await expect(page.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
+    await expect(page.locator('.arena canvas')).toBeVisible();
+    await page.screenshot({
+      path: test.info().outputPath('darth-vader-socket-phone.png'),
+      animations: 'disabled',
+    });
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    for (const rival of rivals) await rival.context.close();
+  }
+});
+
+test('Geralt selects gear before Dandelion deployment and resumes a four-seat Maneuver over real sockets', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'geralt-of-rivia', false, false);
+  try {
+    for (const [i, { page }] of rivals.entries()) {
+      const choice = page.getByRole('region', { name: 'Ability choice' });
+      await expect(choice).toContainText('Choose a sword');
+      await choice.getByRole('button', { name: 'Gear: Sword of Silver', exact: true }).tap();
+      await expect(choice).toContainText('Choose armor');
+      await page.reload();
+      await expect(choice).toContainText('Choose armor');
+      for (const rival of rivals.filter((_, j) => j !== i))
+        await expect(rival.page.getByRole('region', { name: 'Ability choice' })).toHaveCount(0);
+      await choice.getByRole('button', { name: 'GEAR: Wolf Medallion', exact: true }).tap();
+      await choice.getByRole('button', { name: 'GEAR: Tawny Owl', exact: true }).tap();
+    }
+    for (const { page } of rivals) {
+      await page
+        .getByRole('button', { name: /^Place ally at/ })
+        .first()
+        .tap();
+      await expect(page.locator('.badge-ally').filter({ hasText: 'Dandelion' })).toHaveCount(4);
+    }
+    const host = rivals[0].page;
+    await host.getByRole('button', { name: 'Maneuver', exact: true }).tap();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await host.reload();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await finishManeuver(host);
+    for (const { page, errors } of rivals) {
+      await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
+      await fitsViewport(page);
+      expect(errors).toEqual([]);
+    }
+    await host.screenshot({
+      path: test.info().outputPath('geralt-four-seats-phone.png'),
+      animations: 'disabled',
+    });
+  } finally {
+    await Promise.allSettled(rivals.map((r) => r.context.close()));
   }
 });

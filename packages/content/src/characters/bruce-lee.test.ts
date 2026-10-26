@@ -1,3 +1,4 @@
+import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
   createGame,
@@ -93,6 +94,7 @@ function setup(edit: (defs: Definitions) => void = () => {}, roster = ['bruce-le
       return h.apply({ type: 'defend', card: slug ? p.hand[0].id : null }, actor);
     },
   };
+  state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
     const f = state.fighters.find((f) => f.position === null)!;
     h.apply(
@@ -445,46 +447,51 @@ describe('complete printed Bruce Lee deck', () => {
   );
 });
 
-it('deploys every two/four-seat roster containing Bruce Lee at full ally counts', () => {
-  const ids = Object.keys(content.characters);
-  for (const count of [2, 4])
-    for (let n = 0; n < ids.length ** count; n++) {
-      let code = n;
-      const roster = Array.from({ length: count }, () => {
-        const id = ids[code % ids.length];
-        code = Math.floor(code / ids.length);
-        return id;
-      });
-      if (!roster.includes('bruce-lee')) continue;
-      let state = createGame(
-        roster.map((character, i) => ({
-          id: `p${i}`,
-          name: `Seat ${i}`,
-          character,
-          deck: deckDefinitions(character).map((definition, j) => ({
-            id: `p${i}-${j}`,
-            definition,
+it(
+  'deploys every two/four-seat roster containing Bruce Lee at full ally counts',
+  { timeout: 120_000 },
+  () => {
+    const ids = Object.keys(content.characters);
+    for (const count of [2, 4])
+      for (let n = 0; n < ids.length ** count; n++) {
+        let code = n;
+        const roster = Array.from({ length: count }, () => {
+          const id = ids[code % ids.length];
+          code = Math.floor(code / ids.length);
+          return id;
+        });
+        if (!roster.includes('bruce-lee')) continue;
+        let state = createGame(
+          roster.map((character, i) => ({
+            id: `p${i}`,
+            name: `Seat ${i}`,
+            character,
+            deck: deckDefinitions(character).map((definition, j) => ({
+              id: `p${i}-${j}`,
+              definition,
+            })),
           })),
-        })),
-        content,
-      );
-      while (state.phase.type === 'placing-allies') {
-        const f = state.fighters.find((f) => f.position === null)!;
-        const position = deploymentSpaces(state, f.id, content.map)[0];
-        expect(position).toBeDefined();
-        const r = execute(
-          state,
-          f.player,
-          {
-            id: `d-${state.revision}`,
-            revision: state.revision,
-            command: { type: 'place-ally', fighter: f.id, position },
-          },
           content,
         );
-        if (!r.ok) throw new Error(r.message);
-        state = r.state;
+        state = completeDeckSelection(state, content);
+        while (state.phase.type === 'placing-allies') {
+          const f = state.fighters.find((f) => f.position === null)!;
+          const position = deploymentSpaces(state, f.id, content.map)[0];
+          expect(position).toBeDefined();
+          const r = execute(
+            state,
+            f.player,
+            {
+              id: `d-${state.revision}`,
+              revision: state.revision,
+              command: { type: 'place-ally', fighter: f.id, position },
+            },
+            content,
+          );
+          if (!r.ok) throw new Error(r.message);
+          state = r.state;
+        }
+        expect(state.fighters.every((f) => f.position !== null)).toBe(true);
       }
-      expect(state.fighters.every((f) => f.position !== null)).toBe(true);
-    }
-});
+  },
+);

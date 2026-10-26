@@ -100,21 +100,23 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
   if ('card' in v) {
     const frame = state.resolution.frames[binding.frame];
     const card =
-      v.card === 'played'
-        ? frame?.kind === 'card'
-          ? frame.card
-          : null
-        : frame?.kind === 'combat'
-          ? v.card === 'attack'
+      v.card === 'selected'
+        ? binding.selectedCard
+        : v.card === 'played'
+          ? frame?.kind === 'card'
             ? frame.card
-            : v.card === 'defense'
-              ? frame.defenseCard
-              : frame.attacker === binding.owner
+            : null
+          : frame?.kind === 'combat'
+            ? v.card === 'attack'
+              ? frame.card
+              : v.card === 'defense'
                 ? frame.defenseCard
-                : frame.defender === binding.owner
-                  ? frame.card
-                  : null
-          : null;
+                : frame.attacker === binding.owner
+                  ? frame.defenseCard
+                  : frame.defender === binding.owner
+                    ? frame.card
+                    : null
+            : null;
     return card
       ? v.field === 'value' && frame?.kind === 'combat' && card.id === frame.card.id && frame.bonus
         ? frame.bonus.value
@@ -185,6 +187,20 @@ export function condition(
       );
     case 'defeated':
       return reference(state, binding, c.target)?.defeated ?? false;
+    case 'on-token': {
+      const fighter = reference(state, binding, c.target);
+      const position =
+        fighter && (c.atTurnStart ? state.resolution.turnPositions[fighter.id] : fighter.position);
+      const tokens = c.atTurnStart ? state.resolution.turnTokens : state.boardTokens;
+      return (
+        !!fighter &&
+        !fighter.defeated &&
+        position != null &&
+        !!tokens?.some(
+          (t) => t.owner === binding.owner && t.kind === c.token && t.position === position,
+        )
+      );
+    }
     case 'changed-position': {
       const fighter = reference(state, binding, c.target);
       const start = fighter && state.resolution.turnPositions[fighter.id];

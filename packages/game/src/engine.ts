@@ -40,6 +40,19 @@ export function createGame(
     )
   )
     throw new Error('Supply unique cards and a valid opening deck.');
+  for (const seat of seats) {
+    const character = defs.characters[seat.character];
+    if (
+      character.deckSelection &&
+      (seat.deck.length !== character.deck.reduce((sum, entry) => sum + entry.count, 0) ||
+        character.deck.some(
+          (entry) =>
+            seat.deck.filter((card) => card.definition === entry.card).length !== entry.count,
+        ))
+    )
+      throw new Error('Supply the complete selectable card pool.');
+  }
+
   const state: GameState = {
     revision: 0,
     sequence: 0,
@@ -51,12 +64,13 @@ export function createGame(
     resolution: { ...emptyResolution(), random: seed >>> 0 || 1 },
     maneuver: null,
     fighters: [],
+    boardTokens: [],
     players: seats.map((p) => ({
       id: p.id,
       name: p.name,
       character: p.character,
-      hand: structuredClone(p.deck.slice(0, 5)),
-      deck: structuredClone(p.deck.slice(5)),
+      hand: defs.characters[p.character].deckSelection ? [] : structuredClone(p.deck.slice(0, 5)),
+      deck: structuredClone(defs.characters[p.character].deckSelection ? p.deck : p.deck.slice(5)),
       discard: [],
       eliminated: false,
       departed: false,
@@ -82,17 +96,27 @@ export function createGame(
       });
     };
     add('main', 0);
+    if (character.boardTokens)
+      for (let i = 0; i < character.boardTokens.count; i++)
+        state.boardTokens!.push({
+          id: `${player.id}:token-${i + 1}`,
+          owner: `${player.id}:main`,
+          kind: character.boardTokens.id,
+          name: `${character.boardTokens.name} ${i + 1}`,
+          position: null,
+          linksMovement: character.boardTokens.linksMovement,
+          exclusive: character.boardTokens.exclusive,
+        });
     for (let i = 0; i < (character.ally?.count ?? 0); i++) add('ally', i);
   }
   if (!canDeploy(state, defs.map)) throw new Error('Selected fighters cannot deploy on this map.');
-  const pending = state.fighters.find((f) => f.position === null);
-  if (pending) {
-    state.phase = { type: 'placing-allies', player: pending.player };
-    return state;
-  }
   const runtime = new Runtime(state, defs, emitter(state, []));
-  runtime.prepend({ type: 'flow', action: 'settle' });
-  runtime.event('turn-start', { kind: 'turn', actor: mainFighter(state, state.players[0].id).id });
+  runtime.prepend(
+    ...state.players
+      .filter((p) => defs.characters[p.character].deckSelection)
+      .map((p) => ({ type: 'select-deck' as const, player: p.id, group: 0 })),
+    { type: 'begin-play' },
+  );
   runtime.run();
   return state;
 }
@@ -149,11 +173,7 @@ export function execute(
       if (pending) state.phase = { type: 'placing-allies', player: pending.player };
       else {
         state.phase = { type: 'taking-actions' };
-        runtime.prepend({ type: 'flow', action: 'settle' });
-        runtime.event('turn-start', {
-          kind: 'turn',
-          actor: mainFighter(state, state.players[0].id).id,
-        });
+        runtime.prepend({ type: 'flow', action: 'start-game' });
       }
     } else if (command.type === 'choose') choose(runtime, actor, command.choice, command.options);
     else if (command.type === 'defend') {
@@ -264,7 +284,9 @@ export function execute(
           state.actions--;
           state.maneuver = {
             player: actor,
-            remaining: ownedFighters(state, actor).map((f) => f.id),
+            remaining: ownedFighters(state, actor)
+              .filter((f) => f.position !== null)
+              .map((f) => f.id),
             finishing: false,
             boost: 0,
             boostable: true,
@@ -285,13 +307,14 @@ export function execute(
             'That card cannot attack.',
           );
           state.actions--;
+          (runtime.data.attacked ??= []).push(actor);
           startCombat(runtime, fighter.id, target.id, card);
           break;
         }
         case 'play-action': {
           const fighter = fighterById(state, command.fighter);
           requireRule(
-            fighter && fighter.player === actor && !fighter.defeated,
+            fighter && fighter.player === actor && !fighter.defeated && fighter.position !== null,
             'Choose a living owned fighter.',
           );
           const card = take(player, command.card),
@@ -302,7 +325,7 @@ export function execute(
           );
           state.actions--;
           const frame = runtime.frame({ kind: 'card', actor: fighter.id, card, discarded: false });
-          player.discard.push(card);
+          if (!definition.ongoing) player.discard.push(card);
           runtime.emit({ type: 'played', player: actor, fighter: fighter.id, card });
           runtime.prepend(
             { type: 'event', frame, hook: 'card-played' },
@@ -311,7 +334,9 @@ export function execute(
               owner: fighter.id,
               provenance: { kind: 'card', card: card.id },
             }),
-            { type: 'event', frame, hook: 'card-discarded' },
+            ...(definition.ongoing
+              ? [{ type: 'activate-ongoing' as const, frame, owner: fighter.id, card }]
+              : [{ type: 'event' as const, frame, hook: 'card-discarded' as const }]),
             { type: 'release', frame },
           );
           break;
@@ -348,6 +373,7 @@ export function forfeit(
     fighter.position = null;
   }
   if (state.maneuver?.player === id) state.maneuver = null;
+  state.boardTokens = state.boardTokens?.filter((t) => fighterById(state, t.owner)?.player !== id);
   player.eliminated = true;
   player.departed = true;
   const combat = runtime.data.combat === null ? null : runtime.data.frames[runtime.data.combat];
@@ -380,10 +406,7 @@ export function forfeit(
     if (pending) state.phase = { type: 'placing-allies', player: pending.player };
     else {
       state.phase = { type: 'taking-actions' };
-      runtime.event('turn-start', {
-        kind: 'turn',
-        actor: mainFighter(state, state.players[state.turn].id).id,
-      });
+      runtime.prepend({ type: 'flow', action: 'start-game' });
     }
   }
   if (victory(state, runtime.emit)) runtime.clear();

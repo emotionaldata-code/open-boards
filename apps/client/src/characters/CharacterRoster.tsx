@@ -44,7 +44,7 @@ export function CharacterRoster({
               <dd>{character.movement}</dd>
             </div>
             <div>
-              <dt>Deck</dt>
+              <dt>{character.deckSelection ? 'Card pool' : 'Deck'}</dt>
               <dd>{character.deck.reduce((sum, entry) => sum + entry.count, 0)}</dd>
             </div>
           </dl>
@@ -62,13 +62,19 @@ export function CharacterRoster({
             {character.cardEffectProtection.description}
           </p>
         )}
+        {character.deckSelection && (
+          <p>
+            <strong>{character.deckSelection.name}</strong> · {character.deckSelection.description}
+          </p>
+        )}
         {(character.abilities ?? []).length
           ? character.abilities!.map((ability) => (
               <p key={ability.id}>
                 <strong>{ability.name}</strong> {ability.description}
               </p>
             ))
-          : !character.cardEffectProtection && <p>No special abilities.</p>}
+          : !character.cardEffectProtection &&
+            !character.deckSelection && <p>No special abilities.</p>}
         {character.ally && (
           <div className="ally-rules">
             <p>

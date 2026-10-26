@@ -1,3 +1,4 @@
+import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
   createGame,
@@ -93,6 +94,7 @@ function setup(edit: (defs: Definitions) => void = () => {}, roster = ['robin-ho
       return h.apply({ type: 'defend', card: slug ? p.hand[0].id : null }, actor);
     },
   };
+  state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
     const f = state.fighters.find((f) => f.position === null)!;
     h.apply(
@@ -425,49 +427,54 @@ describe('printed Robin Hood deck', () => {
   });
 });
 describe('Robin Hood roster deployment', () => {
-  it('retains full ally counts across every supported two/four-seat deployment', () => {
-    const ids = Object.keys(content.characters);
-    for (const count of [2, 4])
-      for (let n = 0; n < ids.length ** count; n++) {
-        let code = n;
-        const roster = Array.from({ length: count }, () => {
-          const id = ids[code % ids.length];
-          code = Math.floor(code / ids.length);
-          return id;
-        });
-        if (!roster.includes('robin-hood')) continue;
-        let state = createGame(
-          roster.map((character, i) => ({
-            id: `p${i}`,
-            name: `Seat ${i}`,
-            character,
-            deck: deckDefinitions(character).map((definition, j) => ({
-              id: `p${i}-${j}`,
-              definition,
+  it(
+    'retains full ally counts across every supported two/four-seat deployment',
+    { timeout: 120_000 },
+    () => {
+      const ids = Object.keys(content.characters);
+      for (const count of [2, 4])
+        for (let n = 0; n < ids.length ** count; n++) {
+          let code = n;
+          const roster = Array.from({ length: count }, () => {
+            const id = ids[code % ids.length];
+            code = Math.floor(code / ids.length);
+            return id;
+          });
+          if (!roster.includes('robin-hood')) continue;
+          let state = createGame(
+            roster.map((character, i) => ({
+              id: `p${i}`,
+              name: `Seat ${i}`,
+              character,
+              deck: deckDefinitions(character).map((definition, j) => ({
+                id: `p${i}-${j}`,
+                definition,
+              })),
             })),
-          })),
-          content,
-        );
-        while (state.phase.type === 'placing-allies') {
-          const f = state.fighters.find((f) => f.position === null)!;
-          const position = deploymentSpaces(state, f.id, content.map)[0];
-          expect(position).toBeDefined();
-          const result = execute(
-            state,
-            f.player,
-            {
-              id: `deploy-${state.revision}`,
-              revision: state.revision,
-              command: { type: 'place-ally', fighter: f.id, position },
-            },
             content,
           );
-          if (!result.ok) throw new Error(result.message);
-          state = result.state;
+          state = completeDeckSelection(state, content);
+          while (state.phase.type === 'placing-allies') {
+            const f = state.fighters.find((f) => f.position === null)!;
+            const position = deploymentSpaces(state, f.id, content.map)[0];
+            expect(position).toBeDefined();
+            const result = execute(
+              state,
+              f.player,
+              {
+                id: `deploy-${state.revision}`,
+                revision: state.revision,
+                command: { type: 'place-ally', fighter: f.id, position },
+              },
+              content,
+            );
+            if (!result.ok) throw new Error(result.message);
+            state = result.state;
+          }
+          expect(state.fighters.every((f) => f.position !== null)).toBe(true);
         }
-        expect(state.fighters.every((f) => f.position !== null)).toBe(true);
-      }
-  });
+    },
+  );
 });
 
 it('Hit and Run stays within two steps, permits passages and rejects occupied or distant spaces', () => {

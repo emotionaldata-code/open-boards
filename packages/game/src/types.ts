@@ -16,6 +16,11 @@ export interface CardDefinition {
   boost: number;
   description?: string;
   faceUpDefense?: boolean;
+  ongoing?: {
+    preventEnemyActionGain?: boolean;
+    optionalDiscardProtection?: boolean;
+    discardUnlessAttacked?: boolean;
+  };
   effects?: Effect[];
   abilities?: Ability[];
 }
@@ -29,8 +34,20 @@ export interface FighterDefinition {
 export interface CharacterDefinition extends FighterDefinition {
   id: string;
   movement: number;
+  boardTokens?: {
+    id: string;
+    name: string;
+    count: number;
+    exclusive?: boolean;
+    linksMovement?: boolean;
+  };
   cardEffectProtection?: { name: string; description: string; tags: CardDefinition['usableBy'][] };
   deck: { card: string; count: number }[];
+  deckSelection?: {
+    name: string;
+    description: string;
+    groups: { name: string; cards: string[] }[];
+  };
   ally?: FighterDefinition & { id: string; count: number };
 }
 export interface Fighter {
@@ -72,6 +89,7 @@ export interface Player {
   hand: Card[];
   deck: Card[];
   discard: Card[];
+  ongoing?: Card[];
   eliminated: boolean;
   departed: boolean;
 }
@@ -99,11 +117,21 @@ export interface CombatReveal {
   defender: string;
   attack: Card;
   defense: Card | null;
-  boosts: { card: Card; amount: number; cancelled?: boolean }[];
+  boosts: { card: Card; amount: number; cancelled?: boolean; field?: 'attack' | 'defense' }[];
   damage: number;
   prediction?: number;
 }
+export interface BoardToken {
+  id: string;
+  owner: string;
+  kind: string;
+  name: string;
+  position: string | null;
+  linksMovement?: boolean;
+  exclusive?: boolean;
+}
 export interface GameState {
+  boardTokens?: BoardToken[];
   revision: number;
   sequence: number;
   players: Player[];
@@ -151,11 +179,12 @@ export type OutcomeData =
       fighter: string;
       card: Card;
       amount: number;
-      purpose: 'maneuver' | 'attack';
+      purpose: 'maneuver' | 'attack' | 'defense';
       cancelled?: boolean;
     }
   | { type: 'defeated'; fighter: string }
   | { type: 'revived'; fighter: string; position: string }
+  | { type: 'placed'; fighter: string; position: string }
   | { type: 'eliminated'; player: string }
   | { type: 'turn'; player: string }
   | { type: 'finished'; winner: string | null }

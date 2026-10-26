@@ -44,9 +44,9 @@ export function forcedPaths(
 ): Record<string, string[]> {
   return Object.fromEntries(
     // Forced movement follows physical paths, without taking a portal shortcut.
-    Object.entries(reachablePaths(state, target, { ...defs.map, portals: [] }, distance)).filter(
-      ([, path]) => validForcedPath(path, target, source, defs, mode),
-    ),
+    Object.entries(
+      reachablePaths({ ...state, boardTokens: [] }, target, { ...defs.map, portals: [] }, distance),
+    ).filter(([, path]) => validForcedPath(path, target, source, defs, mode)),
   );
 }
 
@@ -62,13 +62,25 @@ export function canPlace(
     range?: 'adjacent';
     allowDefeatedAnchor?: boolean;
     includeOrigin?: boolean;
+    token?: string;
+    starting?: boolean;
   },
 ): boolean {
   if (
+    (destination !== target.position && !!state.resolution.movementLocks?.includes(target.id)) ||
     !defs.map.nodes.includes(destination) ||
     (destination === target.position && !rule.includeOrigin && !rule.range) ||
     state.fighters.some((f) => f.id !== target.id && !f.defeated && f.position === destination)
   )
+    return false;
+  if (
+    rule.token &&
+    !state.boardTokens?.some(
+      (t) => t.owner === target.id && t.kind === rule.token && t.position === destination,
+    )
+  )
+    return false;
+  if (rule.starting && !defs.map.spawns[state.players.length as 2 | 4].includes(destination))
     return false;
   if (rule.zone === 'shared' && !sharesZone(defs.map, target.position, destination)) return false;
   if (!rule.range) return true;

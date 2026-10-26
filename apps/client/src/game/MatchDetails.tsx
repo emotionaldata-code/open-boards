@@ -41,7 +41,9 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                   <small>
                     {p.id === selfId ? 'You · ' : ''}
                     {basic.characters[p.character].name} ·{' '}
-                    {basic.characters[p.character].attackType}
+                    {f.position === null && !f.defeated
+                      ? 'away'
+                      : basic.characters[p.character].attackType}
                   </small>
                 </span>
                 <span className="badge-movement">
@@ -96,6 +98,9 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                 ? 'Disconnected · seat reserved for up to 120 seconds'
                 : `${basic.characters[player.character].name} · ${basic.characters[player.character].attackType} · Connected`}
           </p>
+          {main!.position === null && !main!.defeated && (
+            <p>Off the board · returns at the start of the next turn.</p>
+          )}
           <div className="player-stats">
             <div>
               <strong>{movement(main!, basic)}</strong>
@@ -117,6 +122,19 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
               <span>In deck</span>
             </div>
           </div>
+          {basic.characters[player.character].deckSelection && (
+            <p>
+              <strong>{basic.characters[player.character].deckSelection!.name}</strong> ·{' '}
+              {basic.characters[player.character].deckSelection!.description}
+            </p>
+          )}
+          {(player.ongoing ?? []).map((card) => (
+            <p key={card.id}>
+              <strong>{basic.cards[card.definition].name} · Active</strong>
+              <br />
+              {basic.cards[card.definition].description}
+            </p>
+          ))}
           {(basic.characters[player.character].abilities ?? []).map((ability) => (
             <p key={ability.id}>
               <strong>{ability.name}</strong> · {ability.description}

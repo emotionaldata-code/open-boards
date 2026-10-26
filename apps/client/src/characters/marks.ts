@@ -15,6 +15,10 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  'darth-vader': { mark: 'bolt', tone: 'ember' },
+  'geralt-of-rivia': { mark: 'blade', tone: 'gold' },
+  'geralt-of-rivia-dandelion': { mark: 'wave', tone: 'mint' },
+  'invisible-man': { mark: 'wave', tone: 'mint' },
   'bruce-lee': { mark: 'wave', tone: 'gold' },
   'robin-hood': { mark: 'compass', tone: 'mint' },
   'robin-hood-outlaw': { mark: 'compass', tone: 'mint' },

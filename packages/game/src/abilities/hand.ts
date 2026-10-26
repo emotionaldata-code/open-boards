@@ -1,4 +1,5 @@
 import { fighterById, mainFighter } from '../fighters';
+import { offerDiscardProtection } from './ongoing';
 import { openChoice } from './choices';
 import { reference } from './conditions';
 import type { Runtime } from './runtime';
@@ -108,6 +109,7 @@ export function discardNamedValue(
     );
     return;
   }
+  if (offerDiscardProtection(runtime, task, player.id)) return;
   openChoice(
     runtime,
     task.frame,

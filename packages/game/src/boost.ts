@@ -16,7 +16,7 @@ export function revealBoost(
   runtime: Runtime,
   fighter: string,
   card: Card,
-  purpose: 'maneuver' | 'attack',
+  purpose: 'maneuver' | 'attack' | 'defense',
   hooks = true,
   cancelled = false,
 ): void {

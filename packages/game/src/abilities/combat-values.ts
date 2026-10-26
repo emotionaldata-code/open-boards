@@ -28,7 +28,13 @@ export function applyCombatValues(
   }
 }
 
-export function modifyCombatValue(frame: Combat, field: Field, amount: number): void {
+export function modifyCombatValue(
+  frame: Combat,
+  field: Field,
+  amount: number,
+  cardEffect = false,
+): void {
+  if (cardEffect && frame.cardLockedValues?.includes(field)) return;
   if (!frame.ignoredValues?.includes(field) && !frame.lockedValues?.[field])
     frame[field] = Math.max(0, frame[field] + amount);
 }
@@ -47,7 +53,13 @@ export function setCombatValue(
       : target?.id === frame.defender && frame.defenseCard && !frame.defenseCancelled
         ? 'defense'
         : null;
-  if (!field || frame.ignoredValues?.includes(field) || frame.lockedValues?.[field]) return;
+  if (
+    !field ||
+    frame.ignoredValues?.includes(field) ||
+    frame.lockedValues?.[field] ||
+    (binding.provenance && frame.cardLockedValues?.includes(field))
+  )
+    return;
   const next = Math.max(
     0,
     Math.min(100, value(runtime.state, runtime.defs, binding, effect.value)),
@@ -61,4 +73,34 @@ export function setCombatValue(
     frame[field] = Math.max(0, frame[field] + next - previous);
     (frame.cardValues ??= {})[card.id] = next;
   } else frame[field] = next;
+}
+
+/** Lock card-driven changes while preserving subsequent fighter/status abilities. */
+export function lockCardValue(
+  runtime: Runtime,
+  binding: Binding,
+  effect: Extract<Effect, { type: 'lock-card-value' }>,
+): void {
+  const frame = runtime.data.frames[binding.frame];
+  const target = reference(runtime.state, binding, effect.target);
+  if (frame.kind !== 'combat' || !target) return;
+  const field =
+    target.id === frame.attacker
+      ? 'attack'
+      : target.id === frame.defender && frame.defenseCard
+        ? 'defense'
+        : null;
+  if (
+    !field ||
+    frame.ignoredValues?.includes(field) ||
+    frame.lockedValues?.[field] ||
+    (binding.provenance && frame.cardLockedValues?.includes(field))
+  )
+    return;
+  frame[field] =
+    effect.value +
+    frame.boosts
+      .filter((b) => (b.field ?? 'attack') === field && !b.cancelled && !b.cardEffect)
+      .reduce((sum, b) => sum + runtime.defs.cards[b.card.definition].boost, 0);
+  (frame.cardLockedValues ??= []).push(field);
 }

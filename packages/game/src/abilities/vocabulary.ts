@@ -46,7 +46,7 @@ export type Value =
   | { stat: 'counter'; name: string; of?: PlayerRef }
   | { stat: 'actions' }
   | { event: 'amount' | 'attack' | 'defense' | 'distance' }
-  | { card: 'played' | 'attack' | 'defense' | 'opposing'; field: 'value' | 'boost' };
+  | { card: 'played' | 'attack' | 'defense' | 'opposing' | 'selected'; field: 'value' | 'boost' };
 export type Condition =
   | { type: 'all' | 'any'; conditions: Condition[] }
   | { type: 'not'; condition: Condition }
@@ -66,13 +66,38 @@ export type Condition =
   | { type: 'combat-result'; result: 'won' | 'lost' | 'blocked' }
   | { type: 'prediction-matches' }
   | { type: 'defeated'; target?: PlayerRef }
+  | { type: 'on-token'; token: string; target?: PlayerRef; atTurnStart?: boolean }
   | { type: 'changed-position'; target?: PlayerRef }
   | { type: 'has-status'; player?: PlayerRef; status: string };
 export type Effect =
+  | { type: 'discard-deck'; target?: PlayerRef; count: number; onDiscard?: Effect[] }
+  | {
+      type: 'choose-token';
+      token: string;
+      at?: PlayerRef;
+      excludeChosen?: boolean;
+      chooser?: PlayerRef;
+      effects: Effect[];
+    }
+  | { type: 'for-each-token'; token: string; effects: Effect[] }
+  | {
+      type: 'move-token';
+      distance?: number;
+      empty?: boolean;
+      optional?: boolean;
+      placeSelf?: boolean;
+    }
+  | { type: 'return-to-deck'; count: number }
+  | { type: 'remove-until-next-turn'; target?: PlayerRef }
+  | { type: 'lock-card-value'; target?: PlayerRef; value: number }
+  | { type: 'end-turn' }
+  | { type: 'boost-combat' }
+  | { type: 'lock-movement'; target?: PlayerRef }
+  | { type: 'search-cards'; cards: string[]; recycleOnDeck?: boolean }
   | { type: 'replace-attack' }
   | { type: 'bonus-attack'; name: string; value: number }
   | { type: 'replace-defender'; target: PlayerRef }
-  | { type: 'recover-card'; cards?: string[] }
+  | { type: 'recover-card'; cards?: string[]; destination?: 'hand' | 'deck' }
   | { type: 'return-played-card' }
   | { type: 'boost-attack'; grant?: string; cancelWithCard?: boolean }
   | { type: 'set-health'; target?: PlayerRef; value: number }
@@ -116,6 +141,8 @@ export type Effect =
       optional?: boolean;
       allowDefeatedAnchor?: boolean;
       includeOrigin?: boolean;
+      token?: string;
+      starting?: boolean;
     }
   | {
       type: 'discard';
@@ -124,7 +151,9 @@ export type Effect =
       random?: boolean;
       count: number;
       upTo?: boolean;
+      onDiscard?: Effect[];
       combatBonus?: { field: 'attack' | 'defense'; per: 'card' | 'boost' };
+      onDecline?: Effect[];
     }
   | { type: 'actions'; target?: PlayerRef; amount: number }
   | { type: 'counter'; name: string; amount: number }

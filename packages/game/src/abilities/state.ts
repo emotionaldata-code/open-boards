@@ -1,4 +1,4 @@
-import type { BonusAttack, Card, Phase } from '../types';
+import type { BoardToken, BonusAttack, Card, Phase } from '../types';
 import type { Ability, Effect, Hook, PlayerRef } from './vocabulary';
 
 export type Operation =
@@ -23,6 +23,8 @@ export type Operation =
       mode: 'move' | 'push' | 'pull' | 'teleport';
       origin: string;
       zone?: 'any' | 'shared';
+      token?: string;
+      starting?: boolean;
       throughEnemies?: boolean;
       anchor?: string;
       range?: 'adjacent';
@@ -37,7 +39,15 @@ export type Operation =
       defender: string;
       card: Card;
       defenseCard: Card | null;
-      boosts: { card: Card; grant: string; cancelWithCard: boolean; cancelled?: boolean }[];
+      boosts: {
+        card: Card;
+        grant: string;
+        cancelWithCard: boolean;
+        cancelled?: boolean;
+        fighter?: string;
+        cardEffect?: boolean;
+        field?: 'attack' | 'defense';
+      }[];
       bonus?: BonusAttack;
       bonusAttack?: BonusAttack;
       protectedFighters?: string[];
@@ -52,6 +62,7 @@ export type Operation =
       suppressedCards?: string[];
       prediction?: number;
       ignoredValues?: ('attack' | 'defense')[];
+      cardLockedValues?: ('attack' | 'defense')[];
     }
   | { kind: 'area'; actor: string; defeats: number; amount: number }
   | { kind: 'maneuver-boost'; actor: string; amount: number }
@@ -73,6 +84,7 @@ export interface CardProvenance {
 export type Frame = Operation & {
   cancelled?: boolean;
   hook?: Hook;
+  turnStartRecorded?: boolean;
   combatRoot?: number;
   provenance?: CardProvenance;
 };
@@ -81,16 +93,48 @@ export interface Binding {
   frame: number;
   owner: string;
   chosen?: string;
+  selectedCard?: Card;
+  chosenToken?: string;
+  tokenChooser?: string;
 }
 export type Task = (
+  | { type: 'select-deck'; player: string; group: number; selected?: string }
+  | { type: 'begin-play' }
+  | ({ type: 'activate-ongoing'; card: Card } & Binding)
+  | ({
+      type: 'search-selected';
+      card: string;
+      zone: 'deck' | 'discard';
+      recycleOnDeck?: boolean;
+    } & Binding)
+  | ({
+      type: 'token-place';
+      token: string;
+      position: string;
+      setup?: boolean;
+      placeSelf?: boolean;
+    } & Binding)
+  | ({ type: 'token-group'; remaining: string[]; effects: Effect[] } & Binding)
+  | ({ type: 'token-setup'; remaining: string[] } & Binding)
+  | ({ type: 'return-to-deck'; remaining: number; selected?: string; ordered: string[] } & Binding)
   | ({ type: 'select-attack' } & Binding)
   | ({ type: 'replace-attack'; card: string } & Binding)
   | ({ type: 'damage-result'; damage: number; effects: Effect[]; onDefeat?: Effect[] } & Binding)
   | ({ type: 'swap-apply'; frames: number[]; effects: Effect[] } & Binding)
   | ({ type: 'predict-value'; value: number } & Binding)
-  | ({ type: 'named-value-discard'; target: string; value: number } & Binding)
+  | ({
+      type: 'named-value-discard';
+      target: string;
+      value: number;
+      discardAllowed?: boolean;
+    } & Binding)
   | { type: 'bonus-combat'; attacker: string; defender: string; card: Card; bonus: BonusAttack }
-  | ({ type: 'recover-card'; card: string; cards?: string[] } & Binding)
+  | ({
+      type: 'recover-card';
+      card: string;
+      cards?: string[];
+      destination?: 'hand' | 'deck';
+    } & Binding)
   | ({ type: 'search-card'; card: string; zones: ('deck' | 'discard')[] } & Binding)
   | ({ type: 'inspect-take'; cards: string[]; remaining: number; selected?: string } & Binding)
   | ({ type: 'inspect-order'; cards: string[]; ordered: string[] } & Binding)
@@ -133,6 +177,7 @@ export type Task = (
       player: string;
       card: string;
       combat?: number;
+      continuation?: { binding: Binding; effects: Effect[] };
       bonus?: { field: 'attack' | 'defense'; per: 'card' | 'boost' };
     }
   | {
@@ -142,15 +187,17 @@ export type Task = (
       card: string;
       grant: string;
       cancelWithCard: boolean;
+      field?: 'attack' | 'defense';
     }
   | { type: 'event'; frame: number; hook: Hook }
   | ({ type: 'ability'; ability: Ability; key: string; private?: boolean } & Binding)
-  | ({ type: 'effect'; effect: Effect } & Binding)
+  | ({ type: 'effect'; effect: Effect; discardAllowed?: boolean } & Binding)
   | { type: 'apply'; frame: number }
   | { type: 'release'; frame: number }
   | {
       type: 'flow';
-      action: 'settle' | 'end-turn' | 'hand-limit' | 'advance-turn' | 'expire-statuses';
+      action:
+        'start-game' | 'settle' | 'end-turn' | 'hand-limit' | 'advance-turn' | 'expire-statuses';
       player?: string;
     }
   | { type: 'wait'; phase: Exclude<Phase, { type: 'ability-choice' | 'finished' }> }
@@ -186,6 +233,12 @@ export interface ResolutionState {
   choice: PendingChoice | null;
   turn: number;
   turnPositions: Record<string, string | null>;
+  turnTokens?: BoardToken[];
+  removedUntilTurn?: string[];
+  dormant?: string[];
+  movementLocks?: string[];
+  attacked?: string[];
+  endTurnRequested?: boolean;
   random: number;
   uses: Record<string, { turn: number; count: number; total: number }>;
 }

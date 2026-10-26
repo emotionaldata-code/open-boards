@@ -71,3 +71,15 @@ Robin Hood is playable with **30 cards across 11 designs**, 13 HP, movement 2, r
 ## Bruce Lee
 
 Bruce Lee is playable with **30 cards across 17 designs**, 14 HP, movement 3 and melee attacks, without allies. His optional end step moves him one space; six Jeet Kune Do techniques refund actions, and his recovery cards select only those techniques. Nunchaku bonuses stack for the current turn, and One-Inch Punch returns its exact played instance only when its own damage defeats a fighter. The [source inventory](characters/bruce-lee/inventory.json) and [import notes](characters/bruce-lee.md) record every printed clause, shared rule semantics and seventeen original illustrations plus the owner-colored figure.
+
+## Invisible Man
+
+Invisible Man is playable with **30 cards across 14 designs**, 15 HP, movement 2, melee attacks, no allies and **three numbered fog tokens**. Fog grants defense cover and movement links exclusively to its owner. Cards move and delegate fog, manipulate the top of the deck, and temporarily remove the living hero before his next-turn return. Every printed timing, BOOST and restriction is preserved. The [source inventory](characters/invisible-man/inventory.json) and [import notes](characters/invisible-man.md) document the reusable operations, multiplayer conventions and fourteen original illustrations plus the owner-colored hero and fog markers.
+
+## Geralt of Rivia
+
+Geralt is playable with a **36-card pool across 15 designs**, selecting a **30-card deck across 12 designs** before each match. He has 16 HP, movement 2, melee attacks, and one **5-HP ranged Dandelion**. Eight loadouts combine swords, armor and ongoing potions. Signs control movement, Rend can BOOST attacks or defenses, and Witcher Senses recovers selected gear. The [source inventory](characters/geralt-of-rivia/inventory.json) and [import notes](characters/geralt-of-rivia.md) record every printed clause, publisher setup/ongoing clarifications and fifteen original illustrations plus distinct owner-colored figures.
+
+## Darth Vader
+
+Darth Vader preserves **30 cards across 12 designs**, 20 HP, movement 2, melee attacks and no allies from TedWatson’s linked Star Wars reskin. Force Grip trades a card for its BOOST in damage to any fighter in Vader’s zone. His deck adds delegated draw/discard decisions, turn-long movement locks, action-paid attacks, top-deck BOOST defense and starting-space recovery. The [exact source inventory](characters/darth-vader/inventory.json) and [import notes](characters/darth-vader.md) document every printed clause, reusable rule extensions, shared game conventions and twelve original illustrations plus an owner-colored figure.

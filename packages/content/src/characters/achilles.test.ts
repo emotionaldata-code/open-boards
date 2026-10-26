@@ -1,3 +1,4 @@
+import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
   createGame,
@@ -90,6 +91,7 @@ function setup(edit: (defs: Definitions) => void = () => {}, roster = ['achilles
       return h.apply({ type: 'defend', card: slug ? p.hand[0].id : null }, actor);
     },
   };
+  state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
     const f = state.fighters.find((f) => f.position === null)!;
     h.apply(

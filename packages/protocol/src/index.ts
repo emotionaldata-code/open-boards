@@ -71,6 +71,7 @@ export interface PublicPlayer extends User {
   handCount: number;
   deckCount: number;
   discard: Card[];
+  ongoing?: Card[];
   eliminated: boolean;
 }
 export interface ChoiceView {
@@ -82,10 +83,12 @@ export interface ChoiceView {
   max: number;
 }
 export interface GameView {
+  movementLocks?: string[];
   revision: number;
   sequence: number;
   players: PublicPlayer[];
   fighters: Fighter[];
+  boardTokens?: GameState['boardTokens'];
   maneuver: GameState['maneuver'];
   turn: number;
   actions: number;

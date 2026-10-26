@@ -32,7 +32,7 @@ const expression = z.union([
   z.strictObject({ stat: z.literal('actions') }),
   z.strictObject({ event: z.enum(['amount', 'attack', 'defense', 'distance']) }),
   z.strictObject({
-    card: z.enum(['played', 'attack', 'defense', 'opposing']),
+    card: z.enum(['played', 'attack', 'defense', 'opposing', 'selected']),
     field: z.enum(['value', 'boost']),
   }),
 ]);
@@ -68,6 +68,12 @@ const conditionSchema: z.ZodType<Condition> = z.lazy(() =>
     }),
     z.strictObject({ type: z.literal('prediction-matches') }),
     z.strictObject({ type: z.literal('defeated'), target: ref.optional() }),
+    z.strictObject({
+      type: z.literal('on-token'),
+      token: id,
+      target: ref.optional(),
+      atTurnStart: z.boolean().optional(),
+    }),
     z.strictObject({ type: z.literal('changed-position'), target: ref.optional() }),
     z.strictObject({ type: z.literal('has-status'), player: ref.optional(), status: id }),
   ]),
@@ -75,6 +81,31 @@ const conditionSchema: z.ZodType<Condition> = z.lazy(() =>
 const effects = (): z.ZodType<Effect[]> => z.array(effectSchema).max(32);
 export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
   z.discriminatedUnion('type', [
+    z.strictObject({
+      type: z.literal('choose-token'),
+      token: id,
+      at: ref.optional(),
+      excludeChosen: z.boolean().optional(),
+      chooser: ref.optional(),
+      effects: effects(),
+    }),
+    z.strictObject({ type: z.literal('for-each-token'), token: id, effects: effects() }),
+    z.strictObject({
+      type: z.literal('move-token'),
+      distance: count.optional(),
+      empty: z.boolean().optional(),
+      optional: z.boolean().optional(),
+      placeSelf: z.boolean().optional(),
+    }),
+    z.strictObject({ type: z.literal('return-to-deck'), count }),
+    z.strictObject({
+      type: z.literal('discard-deck'),
+      target: ref.optional(),
+      count,
+      onDiscard: effects().optional(),
+    }),
+    z.strictObject({ type: z.literal('remove-until-next-turn'), target: ref.optional() }),
+    z.strictObject({ type: z.literal('lock-card-value'), target: ref.optional(), value: count }),
     z.strictObject({
       type: z.literal('draw'),
       target: ref.optional(),
@@ -108,6 +139,8 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       optional: z.boolean().optional(),
       allowDefeatedAnchor: z.boolean().optional(),
       includeOrigin: z.boolean().optional(),
+      token: id.optional(),
+      starting: z.boolean().optional(),
     }),
     z.strictObject({
       type: z.literal('discard'),
@@ -116,6 +149,8 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       random: z.boolean().optional(),
       count,
       upTo: z.boolean().optional(),
+      onDiscard: effects().optional(),
+      onDecline: effects().optional(),
       combatBonus: z
         .strictObject({ field: z.enum(['attack', 'defense']), per: z.enum(['card', 'boost']) })
         .optional(),
@@ -142,6 +177,14 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       value,
     }),
     z.strictObject({ type: z.literal('cancel') }),
+    z.strictObject({ type: z.literal('end-turn') }),
+    z.strictObject({ type: z.literal('boost-combat') }),
+    z.strictObject({ type: z.literal('lock-movement'), target: ref.optional() }),
+    z.strictObject({
+      type: z.literal('search-cards'),
+      cards: z.array(id).min(1).max(100),
+      recycleOnDeck: z.boolean().optional(),
+    }),
     z.strictObject({
       type: z.literal('boost-attack'),
       grant: id.optional(),
@@ -176,6 +219,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     z.strictObject({ type: z.literal('replace-attack') }),
     z.strictObject({
       type: z.literal('recover-card'),
+      destination: z.enum(['hand', 'deck']).optional(),
       cards: z.array(id).min(1).max(100).optional(),
     }),
     z.strictObject({ type: z.literal('return-played-card') }),
@@ -262,6 +306,30 @@ const definitionSchema = z.strictObject({
       id,
       ...fighterFields,
       movement: count,
+      boardTokens: z
+        .strictObject({
+          id,
+          name: z.string().min(1).max(100),
+          count: count.min(1),
+          linksMovement: z.boolean().optional(),
+          exclusive: z.boolean().optional(),
+        })
+        .optional(),
+      deckSelection: z
+        .strictObject({
+          name: z.string().min(1).max(100),
+          description: z.string().min(1).max(500),
+          groups: z
+            .array(
+              z.strictObject({
+                name: z.string().min(1).max(100),
+                cards: z.array(id).min(1).max(100),
+              }),
+            )
+            .min(1)
+            .max(16),
+        })
+        .optional(),
       cardEffectProtection: z
         .strictObject({
           name: z.string().min(1).max(100),
@@ -292,6 +360,13 @@ const definitionSchema = z.strictObject({
       boost: count,
       description: z.string().max(500).optional(),
       faceUpDefense: z.boolean().optional(),
+      ongoing: z
+        .strictObject({
+          preventEnemyActionGain: z.boolean().optional(),
+          optionalDiscardProtection: z.boolean().optional(),
+          discardUnlessAttacked: z.boolean().optional(),
+        })
+        .optional(),
       effects: effects().optional(),
       abilities: abilities.optional(),
     }),
@@ -386,6 +461,11 @@ export function validateDefinitions(input: unknown): asserts input is Definition
       assert(trigger === 'combat-reveal', 'replace-defender needs combat-reveal');
     if ('type' in node && node.type === 'replace-attack')
       assert(trigger === 'combat-reveal', 'replace-attack needs combat-reveal');
+    if ('type' in node && node.type === 'discard' && 'onDecline' in node)
+      assert(
+        'count' in node && node.count === 1 && !('random' in node) && !('upTo' in node),
+        'onDecline is a single optional discard',
+      );
     if ('type' in node && node.type === 'discard' && 'combatBonus' in node)
       assert(trigger === 'before-combat', 'discard combatBonus needs before-combat');
     if ('type' in node && node.type === 'discard' && 'random' in node && node.random)
@@ -412,8 +492,30 @@ export function validateDefinitions(input: unknown): asserts input is Definition
         trigger === 'combat-reveal' || trigger === 'before-combat',
         'ignore-combat-value needs combat-reveal/before-combat',
       );
+    if ('token' in node && typeof node.token === 'string')
+      assert(
+        Object.values(defs.characters).some((c) => c.boardTokens?.id === node.token),
+        `unknown token ${node.token}`,
+      );
+    if ('type' in node && node.type === 'lock-card-value')
+      assert(trigger === 'combat-reveal', 'lock-card-value needs combat-reveal');
     if ('type' in node && node.type === 'set-combat-value')
       assert(trigger === 'before-combat', 'set-combat-value needs before-combat');
+    if ('type' in node && node.type === 'boost-combat')
+      assert(trigger === 'before-combat', 'boost-combat needs before-combat');
+    if ('type' in node && node.type === 'end-turn')
+      assert(
+        trigger === undefined || trigger === 'after-combat',
+        'end-turn needs an action or after-combat',
+      );
+    if (
+      'type' in node &&
+      node.type === 'search-cards' &&
+      'cards' in node &&
+      Array.isArray(node.cards)
+    )
+      for (const card of node.cards)
+        assert(known(defs.cards, card), `unknown search card ${String(card)}`);
     if ('type' in node && node.type === 'boost-attack')
       assert(
         trigger === 'before-attack' || trigger === 'before-combat',
@@ -436,6 +538,28 @@ export function validateDefinitions(input: unknown): asserts input is Definition
     const size = c.deck.reduce((sum, e) => sum + e.count, 0);
     assert(size >= 5 && size <= 100, 'decks need 5–100 cards');
     if (c.ally) assert(c.ally.id !== c.id, 'ally and character IDs must differ');
+    if (c.deckSelection) {
+      const pool = c.deckSelection.groups.flatMap((g) => g.cards);
+      assert(new Set(pool).size === pool.length, 'deck selection groups must be disjoint');
+      for (const card of pool)
+        assert(
+          c.deck.some((e) => e.card === card),
+          `selection card ${card} must belong to the deck`,
+        );
+      const baseSize = c.deck
+        .filter((e) => !pool.includes(e.card))
+        .reduce((n, e) => n + e.count, 0);
+      assert(
+        baseSize +
+          c.deckSelection.groups.reduce(
+            (n, g) =>
+              n + Math.min(...g.cards.map((card) => c.deck.find((e) => e.card === card)!.count)),
+            0,
+          ) >=
+          5,
+        'selected decks need at least five cards',
+      );
+    }
     for (const counter of [
       ...Object.values(c.counters ?? {}),
       ...Object.values(c.ally?.counters ?? {}),
@@ -462,6 +586,8 @@ export function validateDefinitions(input: unknown): asserts input is Definition
   for (const record of [defs.cards, defs.statuses ?? {}])
     for (const [key, d] of Object.entries(record)) {
       assert(key === d.id, 'definition key must equal its id');
+      if ('category' in d && d.ongoing)
+        assert(d.category === 'action', 'ongoing cards must be actions');
       if ('category' in d)
         assert(
           d.category === 'action' || !d.effects?.length,

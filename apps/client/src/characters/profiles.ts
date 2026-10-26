@@ -7,6 +7,30 @@ export interface CharacterProfile {
   ground: string;
 }
 export const profiles: Record<string, CharacterProfile> = {
+  'darth-vader': {
+    role: 'Dark Lord of the Sith',
+    summary: 'An iron will. A galaxy held in his grip.',
+    tactic:
+      'Trade a card for Force Grip damage. Corner your rival, turn their strength aside, and spend an extra action on a decisive strike.',
+    accent: '#c47c73',
+    ground: '#302c35',
+  },
+  'geralt-of-rivia': {
+    role: 'Witcher of the Wolf School',
+    summary: 'Two swords. A sign in the dark.',
+    tactic:
+      'Choose your gear before the hunt. Control the fight with signs and potions while Dandelion disrupts your rival’s hand.',
+    accent: '#bba469',
+    ground: '#303b3b',
+  },
+  'invisible-man': {
+    role: 'Terror in the fog',
+    summary: 'An empty coat. A street full of secrets.',
+    tactic:
+      'Slip between fog tokens and defend from their cover. Move the mist, strike unexpectedly, then vanish until your next turn.',
+    accent: '#b8a47c',
+    ground: '#293b41',
+  },
   'bruce-lee': {
     role: 'The Little Dragon',
     summary: 'Flow like water. Strike without pause.',

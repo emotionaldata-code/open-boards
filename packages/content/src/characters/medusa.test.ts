@@ -1,3 +1,4 @@
+import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import {
   createGame,
@@ -92,6 +93,7 @@ function setup(roster = ['medusa', 'vanguard']) {
       }
     },
   };
+  state = completeDeckSelection(state, basic);
   while (state.phase.type === 'placing-allies') {
     const f = state.fighters.find((f) => f.position === null)!;
     h.apply(
@@ -331,10 +333,11 @@ describe('complete printed Medusa deck', () => {
   });
 });
 
-it('legally deploys every two/four-seat roster combination with Medusa and retains all three numbered Harpies', () => {
+it('legally deploys every two/four-seat roster combination with Medusa and retains all three numbered Harpies', async () => {
   const ids = Object.keys(characters);
   for (const seats of [2, 4]) {
     for (let index = 0; index < ids.length ** seats; index++) {
+      if (index % 256 === 0) await new Promise<void>((resolve) => setTimeout(resolve, 0));
       const roster = Array.from(
         { length: seats },
         (_, seat) => ids[Math.floor(index / ids.length ** seat) % ids.length],
@@ -353,4 +356,4 @@ it('legally deploys every two/four-seat roster combination with Medusa and retai
       });
     }
   }
-}, 60000);
+}, 300000);

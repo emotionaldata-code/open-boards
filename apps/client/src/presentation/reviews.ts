@@ -76,7 +76,7 @@ export function outcomeReview(
         ],
         explanation: outcome.cancelled
           ? 'The BOOST is discarded without effect because the attack card’s effects were cancelled.'
-          : `The card is discarded to add ${outcome.amount} to ${outcome.purpose === 'maneuver' ? 'each owned fighter’s movement for this Maneuver' : 'this attack'}. Its own effects do not resolve.`,
+          : `The card is discarded to add ${outcome.amount} to ${outcome.purpose === 'maneuver' ? 'each owned fighter’s movement for this Maneuver' : outcome.purpose === 'defense' ? 'this defense' : 'this attack'}. Its own effects do not resolve.`,
       };
     case 'combat': {
       const { attacker, defender, attack, defense, boosts, damage, bonus, prediction } =
@@ -90,10 +90,10 @@ export function outcomeReview(
             attack.definition,
           ),
           participant(game, defender, defense ? 'Defense' : 'No defense', defense?.definition),
-          ...boosts.map(({ card, amount, cancelled }) =>
+          ...boosts.map(({ card, amount, cancelled, field }) =>
             participant(
               game,
-              attacker,
+              field === 'defense' ? defender : attacker,
               cancelled ? 'BOOST cancelled' : `BOOST +${amount}`,
               card.definition,
             ),
@@ -108,9 +108,9 @@ export function outcomeReview(
             ? 'Both cards are revealed. Card values are printed below; abilities can modify the result.'
             : 'The attack card is revealed. No defense card was played.') +
           boosts
-            .map(({ amount, cancelled }) =>
+            .map(({ amount, cancelled, field }) =>
               !cancelled
-                ? ` BOOST adds ${amount} to the attack. The boosting card’s effects are ignored.`
+                ? ` BOOST adds ${amount} to the ${field === 'defense' ? 'defense' : 'attack'}. The boosting card’s effects are ignored.`
                 : ' The BOOST was discarded without effect.',
             )
             .join(''),

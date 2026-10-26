@@ -52,6 +52,7 @@ export function projectGame(state: GameState, viewer: string, paused: boolean): 
             max: choice.max,
           }
         : null,
+    movementLocks: [...(state.resolution.movementLocks ?? [])],
     revision: state.revision,
     sequence: state.sequence,
     players: state.players.map((p) => ({
@@ -61,9 +62,11 @@ export function projectGame(state: GameState, viewer: string, paused: boolean): 
       handCount: p.hand.length,
       deckCount: p.deck.length,
       discard: p.discard,
+      ongoing: p.ongoing ?? [],
       eliminated: p.eliminated,
     })),
     fighters: structuredClone(state.fighters),
+    boardTokens: structuredClone(state.boardTokens ?? []),
     maneuver: structuredClone(state.maneuver),
     turn: state.turn,
     actions: state.actions,

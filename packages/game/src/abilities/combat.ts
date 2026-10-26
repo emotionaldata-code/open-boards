@@ -28,7 +28,14 @@ export function cancelCombat(runtime: Runtime, hooks = true): void {
   runtime.data.combat = null;
   if (frame?.kind === 'combat' && !frame.revealed) {
     for (const boost of frame.boosts)
-      revealBoost(runtime, frame.attacker, boost.card, 'attack', hooks, boost.cancelled);
+      revealBoost(
+        runtime,
+        boost.fighter ?? frame.attacker,
+        boost.card,
+        boost.field ?? 'attack',
+        hooks,
+        boost.cancelled,
+      );
     for (const [player, card] of [
       [frame.attacker, frame.card],
       [frame.defender, frame.defenseCard],
@@ -156,7 +163,14 @@ export function combatStep(
       if (frame.defenseCard)
         runtime.cardEvents(defender.id, frame.defenseCard, frame.defenseCancelled ?? false);
       for (const boost of frame.boosts)
-        revealBoost(runtime, attacker.id, boost.card, 'attack', true, boost.cancelled);
+        revealBoost(
+          runtime,
+          boost.fighter ?? attacker.id,
+          boost.card,
+          boost.field ?? 'attack',
+          true,
+          boost.cancelled,
+        );
       break;
     case 'damage':
       frame.amount =

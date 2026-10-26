@@ -38,6 +38,8 @@ export function applySwap(runtime: Runtime, task: Extract<Task, { type: 'swap-ap
   const first = fighterById(runtime.state, a.target),
     second = fighterById(runtime.state, b.target);
   if (
+    runtime.data.movementLocks?.includes(a.target) ||
+    runtime.data.movementLocks?.includes(b.target) ||
     a.cancelled ||
     b.cancelled ||
     !first ||

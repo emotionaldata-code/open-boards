@@ -13,6 +13,7 @@ import type { GameView } from '@open-boards/protocol';
 import type { PresentationEvent } from '../animation/events';
 import { ArenaScene } from './scene';
 import { Terrain } from './Terrain';
+import { playerColors } from './figures';
 import { arenaSize, spaces } from './layout';
 import type { Present } from '../presentation/sequence';
 export interface BoardPlayback {
@@ -109,6 +110,51 @@ export function Board(props: Props) {
         aria-label={`${basic.map.name}: ${basic.map.nodes.length} connected spaces, ${Object.keys(zoneStyles).length} colored zones and ${basic.map.portals?.length ?? 0} portals.`}
       >
         <Terrain />
+        <div className="board-tokens" aria-label="Board tokens">
+          {(props.game?.boardTokens ?? [])
+            .filter((t) => t.position !== null)
+            .map((token, index, tokens) => {
+              const point = spaces[token.position!];
+              const player = props.game!.players.findIndex(
+                (p) => p.id === props.game!.fighters.find((f) => f.id === token.owner)?.player,
+              );
+              const stacked = tokens
+                .slice(0, index)
+                .filter((t) => t.position === token.position).length;
+              const label = `${token.name} · ${props.game!.players[player]?.name} · Space ${point.label}`;
+              return (
+                <span
+                  key={token.id}
+                  className="board-token"
+                  role="img"
+                  aria-label={label}
+                  title={label}
+                  style={{
+                    left: `${(point.x / arenaSize.width) * 100}%`,
+                    top: `${(point.y / arenaSize.height) * 100}%`,
+                    color: `#${playerColors[player].toString(16)}`,
+                    marginLeft: `${stacked * 8}px`,
+                  }}
+                >
+                  <svg viewBox="0 0 90 60" aria-hidden="true">
+                    <path
+                      d="M5 38Q-3 22 15 20Q18 2 37 13Q51-5 66 17Q88 10 86 33Q99 52 72 53H24Q2 54 5 38Z"
+                      fill="#293b41"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    />
+                    <path
+                      d="M18 33Q33 22 48 31T76 29 M12 42Q29 35 43 42T78 40"
+                      fill="none"
+                      stroke="#cfdbd5"
+                      strokeWidth="3"
+                    />
+                  </svg>
+                  <b>{token.name.split(' ').at(-1)}</b>
+                </span>
+              );
+            })}
+        </div>
         <div className="pixi-surface" ref={host} aria-hidden="true" />
         <div className="board-inputs">
           {(props.highlights ?? []).map((id) => (

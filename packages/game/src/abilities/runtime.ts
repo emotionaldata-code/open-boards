@@ -3,6 +3,9 @@ import type { Card, Definitions, GameState } from '../types';
 import type { Emit } from '../rules';
 import { victory } from '../rules';
 import { requireRule } from '../errors';
+import { selectDeck, beginPlay } from './setup';
+import { expireOngoing, activateOngoing } from './ongoing';
+import { takeSearched } from './deck';
 import { condition } from './conditions';
 import { applyOperation } from './operations';
 import { combatStep, startCombat } from './combat';
@@ -10,6 +13,8 @@ import { commitAttackBoost } from './attack-boost';
 import { applyEffect } from './effects';
 import { openChoice } from './choices';
 import { cardProvenance, suppressed } from './suppression';
+import { setupTokens, placeToken, nextToken } from './tokens';
+import { returnToDeck } from './deck';
 import { nextFighter } from './groups';
 import { areaResult, chooseAdjacent, damageArea } from './area';
 import { applySwap } from './swap';
@@ -49,6 +54,9 @@ export class Runtime {
       frame: binding.frame,
       owner: binding.owner,
       chosen: binding.chosen,
+      selectedCard: binding.selectedCard,
+      chosenToken: binding.chosenToken,
+      tokenChooser: binding.tokenChooser,
       provenance: binding.provenance,
     }));
   }
@@ -83,10 +91,6 @@ export class Runtime {
   }
   event(hook: Hook, operation: Operation): void {
     const frame = this.frame(operation);
-    if (hook === 'turn-start')
-      this.data.turnPositions = Object.fromEntries(
-        this.state.fighters.map((f) => [f.id, f.position]),
-      );
     this.prepend({ type: 'event', frame, hook }, { type: 'release', frame });
   }
   card(player: string, card: Card, discarded: boolean): void {
@@ -105,6 +109,33 @@ export class Runtime {
   }
   dispatch(frameId: number, hook: Hook): void {
     const frame = this.data.frames[frameId];
+    if (hook === 'turn-start') {
+      if (!frame.turnStartRecorded) {
+        this.data.turnPositions = Object.fromEntries(
+          this.state.fighters.map((f) => [f.id, f.position]),
+        );
+        this.data.turnTokens = structuredClone(this.state.boardTokens ?? []);
+        frame.turnStartRecorded = true;
+      }
+      const actor = fighterById(this.state, frame.actor)!;
+      const removed = (this.data.removedUntilTurn ?? []).filter((id) => {
+        const fighter = fighterById(this.state, id);
+        return fighter?.player === actor.player && !fighter.defeated;
+      });
+      if (removed.length) {
+        this.data.dormant = this.data.dormant?.filter((id) => id !== actor.player);
+        this.data.removedUntilTurn = this.data.removedUntilTurn!.filter(
+          (id) => !removed.includes(id),
+        );
+        this.prepend(
+          ...removed.flatMap((owner) =>
+            this.effects([{ type: 'teleport', optional: false }], { frame: frameId, owner }),
+          ),
+          { type: 'event', frame: frameId, hook },
+        );
+        return;
+      }
+    }
     if (frame.kind === 'card' && frame.returned && hook === 'card-discarded') return;
     frame.hook = hook;
     const passives: Task[] = [];
@@ -191,6 +222,7 @@ export class Runtime {
     const event = this.data.frames[frame];
     if (
       player.departed ||
+      this.data.dormant?.includes(player.id) ||
       (p.defeated &&
         !(event.hook === 'eliminated' && event.actor === p.id) &&
         !(
@@ -242,7 +274,32 @@ export class Runtime {
       (p) => p.id === (task.player ?? state.players[state.turn].id),
     )!;
     switch (task.action) {
+      case 'start-game': {
+        const actor = mainFighter(state, state.players[state.turn].id).id;
+        const frame = this.frame({ kind: 'turn', actor });
+        this.prepend(
+          {
+            type: 'token-setup',
+            frame,
+            owner: actor,
+            remaining: (state.boardTokens ?? [])
+              .filter((t) => t.position === null)
+              .map((t) => t.id),
+          },
+          { type: 'event', frame, hook: 'turn-start' },
+          { type: 'release', frame },
+          { type: 'flow', action: 'settle' },
+        );
+        break;
+      }
       case 'settle':
+        this.data.dormant = state.players
+          .filter(
+            (p) =>
+              !p.eliminated &&
+              !state.fighters.some((f) => f.player === p.id && !f.defeated && f.position !== null),
+          )
+          .map((p) => p.id);
         if (victory(state, this.emit)) {
           this.clear();
           return;
@@ -269,6 +326,8 @@ export class Runtime {
         break;
       }
       case 'expire-statuses':
+        expireOngoing(this, player.id);
+        this.data.movementLocks = [];
         for (const fighter of ownedFighters(state, player.id))
           for (const s of [...fighter.statuses])
             if (s.turns !== undefined && --s.turns <= 0) {
@@ -277,7 +336,11 @@ export class Runtime {
             }
         break;
       case 'hand-limit':
-        if (!player.eliminated && player.hand.length > 7) {
+        if (
+          !player.eliminated &&
+          !this.data.dormant?.includes(player.id) &&
+          player.hand.length > 7
+        ) {
           this.prepend({ type: 'flow', action: 'hand-limit', player: player.id });
           state.phase = { type: 'discarding', player: player.id };
         }
@@ -291,6 +354,9 @@ export class Runtime {
           state.turn = (state.turn + 1) % state.players.length;
         } while (state.players[state.turn].eliminated);
         this.data.turn++;
+        this.data.attacked = [];
+        this.data.movementLocks = [];
+        this.data.endTurnRequested = false;
         state.actions = 2;
         state.phase = { type: 'taking-actions' };
         this.emit({ type: 'turn', player: state.players[state.turn].id });
@@ -346,6 +412,30 @@ export class Runtime {
         else continue;
       }
       switch (task.type) {
+        case 'select-deck':
+          selectDeck(this, task);
+          break;
+        case 'activate-ongoing':
+          if (this.data.frames[task.frame]) activateOngoing(this, task);
+          break;
+        case 'begin-play':
+          beginPlay(this);
+          break;
+        case 'search-selected':
+          if (this.data.frames[task.frame]) takeSearched(this, task);
+          break;
+        case 'token-setup':
+          setupTokens(this, task);
+          break;
+        case 'token-place':
+          placeToken(this, task);
+          break;
+        case 'token-group':
+          nextToken(this, task);
+          break;
+        case 'return-to-deck':
+          returnToDeck(this, task);
+          break;
         case 'select-attack':
           if (this.data.frames[task.frame]) selectAttack(this, task);
           break;
@@ -420,6 +510,8 @@ export class Runtime {
             task.card,
             task.grant,
             task.cancelWithCard,
+            task.field,
+            task.provenance,
           );
           break;
         case 'discard-card': {
@@ -432,8 +524,17 @@ export class Runtime {
                 combat,
                 task.bonus.field,
                 task.bonus.per === 'card' ? 1 : this.defs.cards[p.hand[index].definition].boost,
+                !!task.provenance,
               );
-            this.card(mainFighter(this.state, p.id).id, p.hand.splice(index, 1)[0], true);
+            const card = p.hand.splice(index, 1)[0];
+            if (task.continuation)
+              this.prepend(
+                ...this.effects(task.continuation.effects, {
+                  ...task.continuation.binding,
+                  selectedCard: card,
+                }),
+              );
+            this.card(mainFighter(this.state, p.id).id, card, true);
           }
           break;
         }

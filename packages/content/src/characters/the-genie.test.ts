@@ -1,3 +1,4 @@
+import { completeDeckSelection } from '../../../../tests/complete-deck-selection';
 import { describe, expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -101,6 +102,7 @@ function setup(roster = ['the-genie', 'vanguard'], edit: (defs: Definitions) => 
       while (state.resolution.choice?.prompt === 'Choose the next fighter') h.choose();
     },
   };
+  state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
     const f = state.fighters.find((f) => f.position === null)!;
     h.apply(

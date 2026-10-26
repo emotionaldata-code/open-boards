@@ -9,7 +9,16 @@ export function adjacent(map: MapDefinition, a: string | null, b: string | null)
 export function portalStep(map: MapDefinition, from: string, to: string): boolean {
   return from !== to && !!map.portals?.includes(from) && map.portals.includes(to);
 }
-type BoardState = Pick<GameState, 'fighters'>;
+type BoardState = Pick<GameState, 'fighters' | 'boardTokens'> & {
+  resolution?: Pick<GameState['resolution'], 'movementLocks'>;
+  movementLocks?: string[];
+};
+export function tokenStep(state: BoardState, fighter: Fighter, from: string, to: string): boolean {
+  const tokens = state.boardTokens?.filter((t) => t.owner === fighter.id && t.linksMovement) ?? [];
+  return (
+    from !== to && tokens.some((t) => t.position === from) && tokens.some((t) => t.position === to)
+  );
+}
 export function emptyEndpoint(state: BoardState, node: string): boolean {
   return !state.fighters.some((f) => !f.defeated && f.position === node);
 }
@@ -26,6 +35,8 @@ export function traversablePath(
     fighter.defeated ||
     fighter.position === null ||
     path.length > distance ||
+    (path.length > 0 &&
+      !!(state.movementLocks ?? state.resolution?.movementLocks)?.includes(fighter.id)) ||
     new Set(path).size !== path.length ||
     path.includes(fighter.position)
   )
@@ -34,7 +45,11 @@ export function traversablePath(
   for (const node of path) {
     if (
       !map.nodes.includes(node) ||
-      !(adjacent(map, previous, node) || portalStep(map, previous, node)) ||
+      !(
+        adjacent(map, previous, node) ||
+        portalStep(map, previous, node) ||
+        tokenStep(state, fighter, previous, node)
+      ) ||
       (!throughEnemies &&
         state.fighters.some(
           (f) => !f.defeated && f.player !== fighter.player && f.position === node,

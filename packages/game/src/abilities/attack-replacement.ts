@@ -76,15 +76,17 @@ export function replaceAttack(
   );
   if (frame.cardValues) delete frame.cardValues[previous.id];
   if (frame.lockedValues) delete frame.lockedValues.attack;
-  frame.attack = Math.max(
-    0,
-    definition.value +
-      modifier(attacker, 'attack', runtime.defs) +
-      frame.boosts.reduce(
-        (sum, b) => sum + (b.cancelled ? 0 : runtime.defs.cards[b.card.definition].boost),
-        0,
-      ),
-  );
+  if (!frame.cardLockedValues?.includes('attack')) {
+    frame.attack = Math.max(
+      0,
+      definition.value +
+        modifier(attacker, 'attack', runtime.defs) +
+        frame.boosts.reduce(
+          (sum, b) => sum + (b.cancelled ? 0 : runtime.defs.cards[b.card.definition].boost),
+          0,
+        ),
+    );
+  }
   applyCombatValues(runtime, frame, ['attack']);
   if (runtime.state.revealed) runtime.state.revealed.attack = { ...frame.card };
   // Only the new attacking card's immediate effects run; defense/passives do not repeat.

@@ -523,3 +523,39 @@ it('keeps an explicit public hand reveal readable after subsequent snapshots wit
   game.hand = [];
   expect(events[0].review?.cards).toEqual(['sherlock-holmes-elementary']);
 });
+
+it('attributes a defense BOOST to the defender in the notice, combat values and review', () => {
+  const payment = { id: 'payment', definition: 'geralt-of-rivia-damn-youre-ugly' };
+  const events = presentationEvents(null, initial(), [
+    {
+      type: 'boost',
+      player: 'b',
+      fighter: 'b:main',
+      card: payment,
+      purpose: 'defense',
+      amount: 4,
+      sequence: 1,
+      revision: 1,
+      audience: 'all',
+    },
+    {
+      type: 'combat',
+      combat: {
+        attacker: 'a:main',
+        defender: 'b:main',
+        attack: { id: 'a', definition: 'medusa-snipe' },
+        defense: { id: 'b', definition: 'geralt-of-rivia-rend' },
+        boosts: [{ card: payment, amount: 4, field: 'defense' }],
+        damage: 0,
+      },
+      sequence: 2,
+      revision: 1,
+      audience: 'all',
+    },
+  ]);
+  expect(events[0].title).toBe('Defense boosted');
+  expect(events[0].review?.explanation).toContain('this defense');
+  expect(events[1].detail).toContain('· Rend 3 +4 BOOST');
+  expect(events[1].review?.participants.at(-1)?.fighter.player).toBe('Briar');
+  expect(events[1].review?.explanation).toContain('adds 4 to the defense');
+});

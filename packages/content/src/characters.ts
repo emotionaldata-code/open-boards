@@ -1,3 +1,6 @@
+import darthVader from './characters/darth-vader.json';
+import invisibleMan from './characters/invisible-man.json';
+import geraltOfRivia from './characters/geralt-of-rivia.json';
 import { compileRoster, type CharacterBundle } from './bundle';
 import sherlockHolmes from './characters/sherlock-holmes.json';
 import medusa from './characters/medusa.json';
@@ -20,6 +23,9 @@ const bundles = [
   bigfoot,
   robinHood,
   bruceLee,
+  invisibleMan,
+  geraltOfRivia,
+  darthVader,
 ] as CharacterBundle[];
 export const { characters, cards, cardPresentation } = compileRoster(bundles);
 export const defaultCharacter = 'medusa';

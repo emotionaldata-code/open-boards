@@ -65,7 +65,9 @@ const recipes: Recipes = {
         ? 'BOOST cancelled'
         : o.purpose === 'maneuver'
           ? 'Movement boosted'
-          : 'Attack boosted',
+          : o.purpose === 'defense'
+            ? 'Defense boosted'
+            : 'Attack boosted',
       `${c.name(o.fighter)} · ${basic.cards[o.card.definition].name} · +${o.amount}`,
       [{ type: 'text', node: c.node(o.fighter), text: `+${o.amount}` }],
       'mint',
@@ -100,7 +102,17 @@ const recipes: Recipes = {
     const ranged = fighterDefinition(fighterById(c.game, attacker)!, basic).attackType === 'ranged';
     return cue(
       damage === 0 ? 'Blocked!' : 'Clash!',
-      `${bonus?.name ?? basic.cards[attack.definition].name} ${bonus?.value ?? basic.cards[attack.definition].value}${boosts.map((b) => ` +${b.amount} BOOST`).join('')} · ${defense ? `${basic.cards[defense.definition].name} ${basic.cards[defense.definition].value}` : 'No defense'}`,
+      `${bonus?.name ?? basic.cards[attack.definition].name} ${bonus?.value ?? basic.cards[attack.definition].value}${boosts
+        .filter((b) => b.field !== 'defense')
+        .map((b) => ` +${b.amount} BOOST`)
+        .join('')} · ${
+        defense
+          ? `${basic.cards[defense.definition].name} ${basic.cards[defense.definition].value}${boosts
+              .filter((b) => b.field === 'defense')
+              .map((b) => ` +${b.amount} BOOST`)
+              .join('')}`
+          : 'No defense'
+      }`,
       [
         {
           type: 'attack',
@@ -135,6 +147,18 @@ const recipes: Recipes = {
       o.amount ? 'ember' : 'mint',
       timing.notice,
       o.reason === 'combat' ? [] : [{ name: o.amount ? 'impact' : 'shield' }],
+    ),
+  placed: (o, c) =>
+    cue(
+      'Back on the board',
+      c.name(o.fighter),
+      [
+        { type: 'ring', node: o.position },
+        { type: 'text', node: o.position, text: 'Returned' },
+      ],
+      'mint',
+      timing.notice,
+      [{ name: 'ability' }],
     ),
   revived: (o, c) =>
     cue(
@@ -279,7 +303,10 @@ export function presentationEvents(
         : (game.players.find((p) => p.id === id)?.name ?? 'A rival');
     },
     node: (id) =>
-      fighterById(game, id)?.position ?? mainFighter(game, id)?.position ?? basic.map.nodes[0],
+      fighterById(game, id)?.position ??
+      mainFighter(game, id)?.position ??
+      (previous && (fighterById(previous, id)?.position ?? mainFighter(previous, id)?.position)) ??
+      basic.map.nodes[0],
   };
   const events: PresentationEvent[] = [];
   const add = (id: string, data: Cue) => events.push({ ...data, id, revision: game.revision });

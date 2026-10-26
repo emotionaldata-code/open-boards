@@ -13,6 +13,9 @@ export function eliminate(runtime: Runtime, id: string, source: string): void {
   runtime.emit({ type: 'defeated', fighter: id });
   if (fighter.role === 'main') {
     owner.eliminated = true;
+    runtime.state.boardTokens = runtime.state.boardTokens?.filter(
+      (t) => fighterById(runtime.state, t.owner)?.player !== owner.id,
+    );
     for (const ally of runtime.state.fighters.filter(
       (f) => f.player === owner.id && f.role === 'ally' && !f.defeated,
     )) {
@@ -48,6 +51,10 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
   const owner = state.players.find((p) => p.id === fighter.player)!;
   switch (frame.kind) {
     case 'draw': {
+      if (runtime.data.dormant?.includes(owner.id)) {
+        frame.amount = 0;
+        break;
+      }
       frame.amount = frame.cancelled ? 0 : Math.max(0, Math.min(100, frame.amount));
       const cards = owner.deck.splice(0, frame.amount);
       owner.hand.push(...cards);
@@ -70,7 +77,9 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       const protectedFighter =
         combat?.kind === 'combat' && combat.protectedFighters?.includes(fighter.id);
       frame.amount =
-        frame.cancelled || protectedFighter ? 0 : Math.max(0, Math.min(1000, frame.amount));
+        frame.cancelled || protectedFighter || fighter.position === null
+          ? 0
+          : Math.max(0, Math.min(1000, frame.amount));
       const area = frame.area === undefined ? undefined : runtime.data.frames[frame.area];
       if (area?.kind === 'area') area.amount += frame.amount;
       if (frame.combat !== undefined) {
@@ -129,7 +138,9 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       const origin = fighter.position!;
       fighter.position = frame.path.at(-1) ?? origin;
       frame.distance = frame.path.length;
-      emit({ type: 'move', fighter: fighter.id, path: [origin, ...frame.path] });
+      if (origin === null)
+        emit({ type: 'placed', fighter: fighter.id, position: fighter.position! });
+      else emit({ type: 'move', fighter: fighter.id, path: [origin, ...frame.path] });
       break;
     }
   }

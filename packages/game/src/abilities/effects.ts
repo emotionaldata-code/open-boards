@@ -1,3 +1,4 @@
+import { chooseToken, moveToken } from './tokens';
 import { fighterById, fighterDefinition, fighterLabel, mainFighter } from '../fighters';
 import { adjacent, reachablePaths } from '../movement';
 import { inAttackRange, sharesZone } from '../targeting';
@@ -10,7 +11,9 @@ import { startGroup } from './groups';
 import { offerRevival } from './revival';
 import { suppressOpponent } from './suppression';
 import { offerAttackBoost } from './attack-boost';
-import { setCombatValue, modifyCombatValue } from './combat-values';
+import { setCombatValue, modifyCombatValue, lockCardValue } from './combat-values';
+import { actionGainPrevented, offerDiscardProtection } from './ongoing';
+import { discardDeck, searchCards } from './deck';
 import { offerDiscard } from './discard';
 
 import { inspectDeck, searchCard, recoverCard, returnPlayedCard } from './deck';
@@ -26,9 +29,79 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
   const frame = runtime.data.frames[task.frame];
   const owner = fighterById(state, task.owner)!;
   const ownerPlayer = state.players.find((p) => p.id === owner.player)!;
-  if (ownerPlayer.departed) return;
+  if (ownerPlayer.departed || runtime.data.dormant?.includes(ownerPlayer.id)) return;
   const target = reference(state, task, 'target' in e ? e.target : 'self');
+  if (
+    target &&
+    runtime.data.dormant?.includes(target.player) &&
+    (e.type === 'discard' ||
+      e.type === 'draw' ||
+      e.type === 'inspect-hand' ||
+      e.type === 'named-value-discard')
+  )
+    return;
+  if (
+    e.type === 'discard' &&
+    e.count > 0 &&
+    target &&
+    offerDiscardProtection(runtime, task, target.player)
+  )
+    return;
   switch (e.type) {
+    case 'discard-deck':
+      discardDeck(runtime, task, e);
+      break;
+    case 'choose-token':
+      chooseToken(runtime, task, e);
+      break;
+    case 'move-token':
+      moveToken(runtime, task, e);
+      break;
+    case 'for-each-token':
+      runtime.prepend({
+        ...task,
+        type: 'token-group',
+        remaining: (state.boardTokens ?? [])
+          .filter((t) => t.owner === owner.id && t.kind === e.token && t.position !== null)
+          .map((t) => t.id),
+        effects: e.effects,
+      });
+      break;
+    case 'return-to-deck':
+      runtime.prepend({ ...task, type: 'return-to-deck', remaining: e.count, ordered: [] });
+      break;
+    case 'remove-until-next-turn':
+      if (target && !target.defeated && !runtime.data.movementLocks?.includes(target.id)) {
+        target.position = null;
+        if (!runtime.data.removedUntilTurn?.includes(target.id))
+          (runtime.data.removedUntilTurn ??= []).push(target.id);
+      }
+      break;
+    case 'lock-card-value':
+      lockCardValue(runtime, task, e);
+      break;
+    case 'end-turn':
+      runtime.data.endTurnRequested = true;
+      state.actions = 0;
+      break;
+    case 'lock-movement':
+      if (target && !target.defeated) (runtime.data.movementLocks ??= []).push(target.id);
+      break;
+    case 'search-cards':
+      searchCards(runtime, task, e);
+      break;
+    case 'boost-combat':
+      if (frame.kind === 'combat')
+        offerAttackBoost(
+          runtime,
+          task.frame,
+          task.owner,
+          task.provenance,
+          'combat',
+          false,
+          frame.attacker === task.owner ? 'attack' : 'defense',
+        );
+      break;
     case 'replace-attack':
       offerAttackReplacement(runtime, task);
       break;
@@ -165,7 +238,9 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       if (
         target &&
         state.players[state.turn].id === target.player &&
-        !state.players[state.turn].eliminated
+        !state.players[state.turn].eliminated &&
+        (e.amount <= 0 ||
+          (!runtime.data.endTurnRequested && !actionGainPrevented(runtime, target.player)))
       )
         state.actions = Math.max(0, Math.min(100, state.actions + e.amount));
       break;
@@ -182,9 +257,14 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       if (frame.hook?.startsWith('before-') && e.field in frame) {
         // The discriminated operation owns the field; validation limits which hook can modify it.
         if (e.field === 'attack' && frame.kind === 'combat')
-          modifyCombatValue(frame, 'attack', value(state, defs, task, e.amount));
+          modifyCombatValue(frame, 'attack', value(state, defs, task, e.amount), !!task.provenance);
         else if (e.field === 'defense' && frame.kind === 'combat')
-          modifyCombatValue(frame, 'defense', value(state, defs, task, e.amount));
+          modifyCombatValue(
+            frame,
+            'defense',
+            value(state, defs, task, e.amount),
+            !!task.provenance,
+          );
         else if (e.field === 'amount' && 'amount' in frame)
           frame.amount = Math.max(0, frame.amount + value(state, defs, task, e.amount));
       }
@@ -263,6 +343,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                   defs.map.nodes
                     .filter((n) =>
                       canPlace(state, target, defs, n, {
+                        token: e.token,
+                        starting: e.starting,
                         zone: e.zone,
                         range: e.range,
                         anchor: e.range ? reference(state, task, e.anchor)?.id : undefined,
@@ -291,6 +373,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                     distance: e.type === 'teleport' ? 1 : e.distance,
                     mode: e.type,
                     zone: e.type === 'teleport' ? e.zone : undefined,
+                    token: e.type === 'teleport' ? e.token : undefined,
+                    starting: e.type === 'teleport' ? e.starting : undefined,
                     anchor:
                       e.type === 'teleport' && e.range
                         ? reference(state, task, e.anchor)?.id

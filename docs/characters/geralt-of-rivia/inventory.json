@@ -1,0 +1,304 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/geralt-of-rivia",
+  "apiUrl": "https://unmatched.cards/api/db/decks/geralt-of-rivia",
+  "retrievedAt": "2026-10-26T09:54:01.029Z",
+  "edition": "Steel and Silver",
+  "special": "Always Prepared\r\nAt the start of the game, choose your gear. Select a POTION, ARMOR, and SWORD, and shuffle 2 copies of each into your deck.",
+  "heroes": [
+    {
+      "attack_type": "melee",
+      "hp": 16,
+      "name": "Geralt of Rivia",
+      "quantity": 1,
+      "slug": "geralt-of-rivia"
+    }
+  ],
+  "sidekicks": [
+    {
+      "attack_type": "ranged",
+      "hp": 5,
+      "name": "Dandelion",
+      "quantity": 1,
+      "slug": "dandelion"
+    }
+  ],
+  "poolCopies": 36,
+  "selectedCopies": 30,
+  "cards": [
+    {
+      "id": "geralt-of-rivia-igni",
+      "name": "Igni",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Deal 2 damage to the opposing fighter and 1 damage to each other fighter adjacent to Geralt."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/igni.png"
+    },
+    {
+      "id": "geralt-of-rivia-riposte",
+      "name": "Riposte",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Choose One: - deal 1 damage to an adjacent fighter - Geralt swaps spaces with an adjacent fighter."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/riposte.png"
+    },
+    {
+      "id": "geralt-of-rivia-yrden",
+      "name": "Yrden",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "immediateText": "The opposing fighter cannot leave their space this turn.",
+        "afterText": "Move Geralt up to 2 spaces."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/yrden.png"
+    },
+    {
+      "id": "geralt-of-rivia-rend",
+      "name": "Rend",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "duringText": "You may BOOST this card."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/rend.png"
+    },
+    {
+      "id": "geralt-of-rivia-disciplined-duelist",
+      "name": "Disciplined Duelist",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "If the printed value of your opponent's card is... 2: you may draw a card 3: deal 1 damage to the opposing fighter 4: your opponent discards a card"
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/disciplined-duelist.png"
+    },
+    {
+      "id": "geralt-of-rivia-damn-youre-ugly",
+      "name": "Damn, You're Ugly",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 5,
+      "boost": 4,
+      "count": 3,
+      "sourceRules": {},
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/damn-youre-ugly.png"
+    },
+    {
+      "id": "geralt-of-rivia-annoying-tune",
+      "name": "Annoying Tune",
+      "category": "versatile",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 3,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "Move the opposing fighter up to 4 spaces."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/annoying-tune.png"
+    },
+    {
+      "id": "geralt-of-rivia-plot-twist",
+      "name": "Plot Twist",
+      "category": "versatile",
+      "usableBy": "ALLY",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "Look at your opponent's hand and choose 1 card for them to discard. Draw 1 card."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/plot-twist.png"
+    },
+    {
+      "id": "geralt-of-rivia-witcher-senses",
+      "name": "Witcher Senses",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "basicText": "Search your deck or discard pile for a GEAR card and add it to your hand. If you took it from your deck, shuffle this card back into your deck."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/witcher-senses.png"
+    },
+    {
+      "id": "geralt-of-rivia-gear-sword-of-steel",
+      "name": "GEAR: Sword of Steel",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Gain 1 action. If the opposing fighter has 8 or more health, gain 2 actions instead."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/gear-sword-of-steel.png"
+    },
+    {
+      "id": "geralt-of-rivia-gear-sword-of-silver",
+      "name": "Gear: Sword of Silver",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "immediateText": "If the opposing fighter's card has a printed value of 4 or more, ignore its value."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/gear-sword-of-silver.png"
+    },
+    {
+      "id": "geralt-of-rivia-gear-wolf-medallion",
+      "name": "GEAR: Wolf Medallion",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card.",
+        "duringText": "If the opposing fighter is not adjacent to Geralt, ignore the value of your opponent's card."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/gear-wolf-medallion.png"
+    },
+    {
+      "id": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+      "name": "GEAR: Armor Of The Forgotten Wolf",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "Add +1 to this card's value for each fighter adjacent to Geralt.",
+        "afterText": "End the turn."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/gear-armor-of-the-forgotten-wolf.png"
+    },
+    {
+      "id": "geralt-of-rivia-gear-blizzard",
+      "name": "GEAR: Blizzard",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "basicText": "Draw 1 card. Move your fighter up to 3 spaces. ONGOING: Your opponent can't gain actions. Discard this card at the end of your turn if you didn't attack."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/gear-blizzard.png"
+    },
+    {
+      "id": "geralt-of-rivia-gear-tawny-owl",
+      "name": "GEAR: Tawny Owl",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "basicText": "Draw 2 cards. Gain 1 action. ONGOING: If an effect would cause you to discard a card from your hand, you may choose to ignore it. Discard this card at the end of your turn if you didn't attack."
+      },
+      "notes": {
+        "card": null,
+        "deck": null
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/geralt-of-rivia/gear-tawny-owl.png"
+    }
+  ],
+  "movement": 2,
+  "publisherRulesUrl": "https://restorationgames.com/wp-content/uploads/2024/10/UM-W-SaS-Set-Rules.pdf",
+  "gearGroups": [
+    {
+      "name": "a sword",
+      "cards": ["geralt-of-rivia-gear-sword-of-steel", "geralt-of-rivia-gear-sword-of-silver"]
+    },
+    {
+      "name": "armor",
+      "cards": [
+        "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+        "geralt-of-rivia-gear-wolf-medallion"
+      ]
+    },
+    {
+      "name": "a potion",
+      "cards": ["geralt-of-rivia-gear-blizzard", "geralt-of-rivia-gear-tawny-owl"]
+    }
+  ]
+}

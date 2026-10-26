@@ -1,0 +1,601 @@
+{
+  "id": "darth-vader",
+  "name": "Darth Vader",
+  "hp": 20,
+  "movement": 2,
+  "attackType": "melee",
+  "abilities": [
+    {
+      "id": "force-grip-turn-start",
+      "name": "Force Grip",
+      "description": "At the start of your turn, you may discard a card to deal damage equal to its BOOST value to a fighter in Darth Vader's zone.",
+      "trigger": "turn-start",
+      "effects": [
+        {
+          "type": "discard",
+          "count": 1,
+          "upTo": true,
+          "onDiscard": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "zone",
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "chosen",
+                  "amount": {
+                    "card": "selected",
+                    "field": "boost"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "when": {
+        "type": "compare",
+        "left": {
+          "stat": "hand"
+        },
+        "op": "gt",
+        "right": 0
+      }
+    }
+  ],
+  "palette": {
+    "ground": "#302c35",
+    "ink": "#ddd4c3",
+    "accent": "#c47c73"
+  },
+  "cards": [
+    {
+      "id": "darth-vader-dark-lords-presence",
+      "name": "Dark Lord's Presence",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 1,
+      "boost": 2,
+      "count": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card. During combat: If you are attacking, the value of this card is 4 instead.",
+      "art": {
+        "scene": "ward",
+        "variant": 0,
+        "image": "/cards/darth-vader/dark-lords-presence.svg"
+      },
+      "flavor": "A shadow fills the doorway.",
+      "abilities": [
+        {
+          "id": "dark-lords-presence-combat-reveal",
+          "name": "Dark Lord's Presence",
+          "description": "Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        },
+        {
+          "id": "dark-lords-presence-before-combat",
+          "name": "Dark Lord's Presence",
+          "description": "If you are attacking, the value of this card is 4 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "value": 4
+            }
+          ],
+          "when": {
+            "type": "role",
+            "role": "attacker"
+          }
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-inner-conflict",
+      "name": "Inner Conflict",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 1,
+      "count": 3,
+      "description": "After combat: If you won the combat, your opponent chooses whether you both draw a card or both discard a card.\nIf you lost the combat, you make that choice instead.",
+      "art": {
+        "scene": "embers",
+        "variant": 1,
+        "image": "/cards/darth-vader/inner-conflict.svg"
+      },
+      "flavor": "One name remains beneath the armor.",
+      "abilities": [
+        {
+          "id": "inner-conflict-after-combat",
+          "name": "Inner Conflict",
+          "description": "If you won the combat, your opponent chooses whether you both draw a card or both discard a card.\nIf you lost the combat, you make that choice instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "chooser": "opponent",
+                  "prompt": "Inner Conflict \u00b7 choose for both players",
+                  "options": [
+                    {
+                      "id": "draw",
+                      "label": "Both draw 1 card",
+                      "effects": [
+                        {
+                          "type": "draw",
+                          "count": 1
+                        },
+                        {
+                          "type": "draw",
+                          "target": "opponent",
+                          "count": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "discard",
+                      "label": "Both discard 1 card",
+                      "effects": [
+                        {
+                          "type": "discard",
+                          "count": 1
+                        },
+                        {
+                          "type": "discard",
+                          "target": "opponent",
+                          "count": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Inner Conflict \u00b7 choose for both players",
+                  "options": [
+                    {
+                      "id": "draw",
+                      "label": "Both draw 1 card",
+                      "effects": [
+                        {
+                          "type": "draw",
+                          "count": 1
+                        },
+                        {
+                          "type": "draw",
+                          "target": "opponent",
+                          "count": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "discard",
+                      "label": "Both discard 1 card",
+                      "effects": [
+                        {
+                          "type": "discard",
+                          "count": 1
+                        },
+                        {
+                          "type": "discard",
+                          "target": "opponent",
+                          "count": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-surrounded-by-fear",
+      "name": "Surrounded by Fear",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 1,
+      "count": 3,
+      "description": "After combat: If you won the combat, deal 1 damage to each fighter adjacent to Darth Vader.",
+      "art": {
+        "scene": "blade",
+        "variant": 2,
+        "image": "/cards/darth-vader/surrounded-by-fear.svg"
+      },
+      "flavor": "The circle tightens. The blade answers.",
+      "abilities": [
+        {
+          "id": "surrounded-by-fear-after-combat",
+          "name": "Surrounded by Fear",
+          "description": "If you won the combat, deal 1 damage to each fighter adjacent to Darth Vader.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "for-each-fighter",
+              "relation": "any",
+              "range": "adjacent",
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "chosen",
+                  "amount": 1
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-there-is-no-escape",
+      "name": "There is No Escape",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "Immediately: If Darth Vader is adjacent to the opposing fighter, the opposing fighter may not leave their space this turn.",
+      "art": {
+        "scene": "bastion",
+        "variant": 3,
+        "image": "/cards/darth-vader/there-is-no-escape.svg"
+      },
+      "flavor": "Every exit falls silent.",
+      "abilities": [
+        {
+          "id": "there-is-no-escape-combat-reveal",
+          "name": "There is No Escape",
+          "description": "If Darth Vader is adjacent to the opposing fighter, the opposing fighter may not leave their space this turn.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "lock-movement",
+              "target": "opponent"
+            }
+          ],
+          "when": {
+            "type": "relation",
+            "relation": "adjacent",
+            "a": "self",
+            "b": "opponent"
+          }
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-all-too-easy",
+      "name": "All Too Easy",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 5,
+      "boost": 2,
+      "count": 2,
+      "description": "After combat: If you dealt 2 or more combat damage, your opponent discards 2 random cards.",
+      "art": {
+        "scene": "bolt",
+        "variant": 4,
+        "image": "/cards/darth-vader/all-too-easy.svg"
+      },
+      "flavor": "A closed fist. An empty hand.",
+      "abilities": [
+        {
+          "id": "all-too-easy-after-combat",
+          "name": "All Too Easy",
+          "description": "If you dealt 2 or more combat damage, your opponent discards 2 random cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 2,
+              "random": true
+            }
+          ],
+          "when": {
+            "type": "compare",
+            "left": {
+              "event": "amount"
+            },
+            "op": "gte",
+            "right": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-by-the-emperors-will",
+      "name": "By the Emperor's Will",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 2,
+      "count": 3,
+      "description": "After combat: If you won the combat, you may choose a card in your discard pile and shuffle it into your deck.",
+      "art": {
+        "scene": "map",
+        "variant": 5,
+        "image": "/cards/darth-vader/by-the-emperors-will.svg"
+      },
+      "flavor": "The Emperor's word crosses the stars.",
+      "abilities": [
+        {
+          "id": "by-the-emperors-will-after-combat",
+          "name": "By the Emperor's Will",
+          "description": "If you won the combat, you may choose a card in your discard pile and shuffle it into your deck.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "recover-card",
+              "destination": "deck"
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          },
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-i-have-you-now",
+      "name": "I Have You Now",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 3,
+      "count": 2,
+      "description": "During combat: You may spend an additional action to make this card's value 9 instead.",
+      "art": {
+        "scene": "blade",
+        "variant": 6,
+        "image": "/cards/darth-vader/i-have-you-now.svg"
+      },
+      "flavor": "The final stroke demands everything.",
+      "abilities": [
+        {
+          "id": "i-have-you-now-before-combat",
+          "name": "I Have You Now",
+          "description": "You may spend an additional action to make this card's value 9 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Spend 1 additional action?",
+              "options": [
+                {
+                  "id": "spend",
+                  "label": "Spend 1 action \u00b7 value 9",
+                  "effects": [
+                    {
+                      "type": "actions",
+                      "amount": -1
+                    },
+                    {
+                      "type": "set-combat-value",
+                      "value": 9
+                    }
+                  ]
+                },
+                {
+                  "id": "skip",
+                  "label": "Keep value 3",
+                  "effects": []
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "compare",
+            "left": {
+              "stat": "actions"
+            },
+            "op": "gte",
+            "right": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-form-v-mastery",
+      "name": "Form V Mastery",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 3,
+      "description": "During combat: Discard the top card of your opponent's deck. Increase the value of this card by twice that card's BOOST value.",
+      "art": {
+        "scene": "shield",
+        "variant": 0,
+        "image": "/cards/darth-vader/form-v-mastery.svg"
+      },
+      "flavor": "Turn their strength aside.",
+      "abilities": [
+        {
+          "id": "form-v-mastery-before-combat",
+          "name": "Form V Mastery",
+          "description": "Discard the top card of your opponent's deck. Increase the value of this card by twice that card's BOOST value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard-deck",
+              "target": "opponent",
+              "count": 1,
+              "onDiscard": [
+                {
+                  "type": "modify",
+                  "field": "defense",
+                  "amount": {
+                    "card": "selected",
+                    "field": "boost"
+                  }
+                },
+                {
+                  "type": "modify",
+                  "field": "defense",
+                  "amount": {
+                    "card": "selected",
+                    "field": "boost"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-power-of-the-dark-side",
+      "name": "Power of the Dark Side",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "count": 2,
+      "description": "After combat: Draw cards equal to the amount of combat damage you took.",
+      "art": {
+        "scene": "fire",
+        "variant": 1,
+        "image": "/cards/darth-vader/power-of-the-dark-side.svg"
+      },
+      "flavor": "Pain feeds the furnace.",
+      "abilities": [
+        {
+          "id": "power-of-the-dark-side-after-combat",
+          "name": "Power of the Dark Side",
+          "description": "Draw cards equal to the amount of combat damage you took.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": {
+                "event": "amount"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-hunt-down-and-destroy",
+      "name": "Hunt Down and Destroy",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 1,
+      "count": 2,
+      "description": "Move Darth Vader up to 4 spaces. He may move through opposing fighters.\nThen, if he is adjacent to an opposing fighter, gain 1 action.",
+      "art": {
+        "scene": "trail",
+        "variant": 2,
+        "image": "/cards/darth-vader/hunt-down-and-destroy.svg"
+      },
+      "flavor": "Bootsteps echo down the corridor.",
+      "effects": [
+        {
+          "type": "move",
+          "distance": 4,
+          "throughEnemies": true
+        },
+        {
+          "type": "if",
+          "condition": {
+            "type": "compare",
+            "left": {
+              "fighters": "enemy",
+              "range": "adjacent"
+            },
+            "op": "gt",
+            "right": 0
+          },
+          "then": [
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-meditation-chamber",
+      "name": "Meditation Chamber",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 1,
+      "count": 2,
+      "description": "Place Darth Vader in a starting space. Draw 1 card. Gain 1 action.",
+      "art": {
+        "scene": "lantern",
+        "variant": 3,
+        "image": "/cards/darth-vader/meditation-chamber.svg"
+      },
+      "flavor": "The mask lifts in silence.",
+      "effects": [
+        {
+          "type": "teleport",
+          "starting": true,
+          "includeOrigin": true,
+          "optional": false
+        },
+        {
+          "type": "draw",
+          "count": 1
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "darth-vader-unstoppable",
+      "name": "Unstoppable",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Draw 2 cards and recover 2 health.",
+      "art": {
+        "scene": "ward",
+        "variant": 4,
+        "image": "/cards/darth-vader/unstoppable.svg"
+      },
+      "flavor": "Steel holds. The darkness rises.",
+      "effects": [
+        {
+          "type": "draw",
+          "count": 2
+        },
+        {
+          "type": "heal",
+          "amount": 2
+        }
+      ]
+    }
+  ]
+}

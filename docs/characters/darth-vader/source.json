@@ -1,0 +1,299 @@
+{
+  "sourceUrl": "https://unmatched.cards/decks/2v3B/versions/5v1oF3oZ",
+  "apiUrl": "https://unmatched.cards/api/decks/5v1oF3oZ",
+  "retrievedAt": "2026-10-26T10:07:50.207476+00:00",
+  "deck": {
+    "bgg_link": null,
+    "created_on": "Mon, 22 Jan 2024 00:26:03 GMT",
+    "deck_data": {
+      "appearance": {
+        "borderColour": "#6a80ef",
+        "cardbackUrl": "https://i.imgur.com/cu5SZ3b.png",
+        "highlightColour": "#470000",
+        "isPNP": false,
+        "patternName": ""
+      },
+      "cards": [
+        {
+          "afterText": "",
+          "basicText": "",
+          "boost": 2,
+          "characterName": "DARTH VADER",
+          "duringText": "If you are attacking, the value of this card is 4 instead.",
+          "imageUrl": "https://i.imgur.com/hiOy68v.png",
+          "immediateText": "Cancel all effects on your opponent's card.",
+          "quantity": 3,
+          "title": "Dark Lord's Presence",
+          "type": "versatile",
+          "value": 1
+        },
+        {
+          "afterText": "If you won the combat, your opponent chooses whether you both draw a card or both discard a card.\nIf you lost the combat, you make that choice instead.",
+          "basicText": "",
+          "boost": 1,
+          "characterName": "DARTH VADER",
+          "duringText": "",
+          "imageUrl": "https://i.imgur.com/NsMcTzq.png",
+          "immediateText": "",
+          "quantity": 3,
+          "title": "Inner Conflict",
+          "type": "versatile",
+          "value": 2
+        },
+        {
+          "afterText": "If you won the combat, deal 1 damage to each fighter adjacent to Darth Vader.",
+          "basicText": "",
+          "boost": 1,
+          "characterName": "DARTH VADER",
+          "duringText": "",
+          "imageUrl": "https://i.imgur.com/mpbFzmp.png",
+          "immediateText": "",
+          "quantity": 3,
+          "title": "Surrounded by Fear",
+          "type": "versatile",
+          "value": 4
+        },
+        {
+          "afterText": "",
+          "basicText": "",
+          "boost": 1,
+          "characterName": "DARTH VADER",
+          "duringText": "",
+          "imageUrl": "https://i.imgur.com/YTcO7ys.png",
+          "immediateText": "If Darth Vader is adjacent to the opposing fighter, the opposing fighter may not leave their space this turn.",
+          "quantity": 3,
+          "title": "There is No Escape",
+          "type": "versatile",
+          "value": 3
+        },
+        {
+          "afterText": "If you dealt 2 or more combat damage, your opponent discards 2 random cards.",
+          "basicText": "",
+          "boost": 2,
+          "characterName": "DARTH VADER",
+          "duringText": "",
+          "imageUrl": "https://i.imgur.com/7fMY9gH.png",
+          "immediateText": "",
+          "quantity": 2,
+          "title": "All Too Easy",
+          "type": "attack",
+          "value": 5
+        },
+        {
+          "afterText": "If you won the combat, you may choose a card in your discard pile and shuffle it into your deck.",
+          "basicText": "",
+          "boost": 2,
+          "characterName": "DARTH VADER",
+          "duringText": "",
+          "imageUrl": "https://i.imgur.com/a0RB64N.png",
+          "immediateText": "",
+          "quantity": 3,
+          "title": "By the Emperor's Will",
+          "type": "attack",
+          "value": 4
+        },
+        {
+          "afterText": "",
+          "basicText": "",
+          "boost": 3,
+          "characterName": "DARTH VADER",
+          "duringText": "You may spend an additional action to make this card's value 9 instead.",
+          "imageUrl": "https://i.imgur.com/BXD7ARu.png",
+          "immediateText": "",
+          "quantity": 2,
+          "title": "I Have You Now",
+          "type": "attack",
+          "value": 3
+        },
+        {
+          "afterText": "",
+          "basicText": "",
+          "boost": 2,
+          "characterName": "DARTH VADER",
+          "duringText": "Discard the top card of your opponent's deck. Increase the value of this card by twice that card's BOOST value.",
+          "imageUrl": "https://i.imgur.com/Oe9poHO.png",
+          "immediateText": "",
+          "quantity": 3,
+          "title": "Form V Mastery",
+          "type": "defence",
+          "value": 0
+        },
+        {
+          "afterText": "Draw cards equal to the amount of combat damage you took.",
+          "basicText": "",
+          "boost": 2,
+          "characterName": "DARTH VADER",
+          "duringText": "",
+          "imageUrl": "https://i.imgur.com/SCgqMXK.png",
+          "immediateText": "",
+          "quantity": 2,
+          "title": "Power of the Dark Side",
+          "type": "defence",
+          "value": 2
+        },
+        {
+          "afterText": null,
+          "basicText": "Move Darth Vader up to 4 spaces. He may move through opposing fighters.\nThen, if he is adjacent to an opposing fighter, gain 1 action.",
+          "boost": 1,
+          "characterName": "DARTH VADER",
+          "duringText": null,
+          "imageUrl": "https://i.imgur.com/ljAL0yv.png",
+          "immediateText": null,
+          "quantity": 2,
+          "title": "Hunt Down and Destroy",
+          "type": "scheme",
+          "value": null
+        },
+        {
+          "afterText": null,
+          "basicText": "Place Darth Vader in a starting space. Draw 1 card. Gain 1 action.",
+          "boost": 1,
+          "characterName": "DARTH VADER",
+          "duringText": null,
+          "imageUrl": "https://i.imgur.com/NLuAtfN.png",
+          "immediateText": null,
+          "quantity": 2,
+          "title": "Meditation Chamber",
+          "type": "scheme",
+          "value": null
+        },
+        {
+          "afterText": null,
+          "basicText": "Draw 2 cards and recover 2 health.",
+          "boost": 2,
+          "characterName": "DARTH VADER",
+          "duringText": null,
+          "imageUrl": "https://i.imgur.com/MoDj7UM.png",
+          "immediateText": null,
+          "quantity": 2,
+          "title": "Unstoppable",
+          "type": "scheme",
+          "value": null
+        }
+      ],
+      "extraCharacters": [],
+      "hero": {
+        "hp": 20,
+        "isRanged": false,
+        "move": 2,
+        "name": "Darth Vader",
+        "specialAbility": "FORCE GRIP\nAt the start of your turn, you may discard a card to deal damage equal to its BOOST value to a fighter in Darth Vader's zone.\n\n\n"
+      },
+      "name": "",
+      "ruleCards": [],
+      "sidekick": {
+        "hp": null,
+        "isRanged": false,
+        "name": "Sidekick",
+        "quantity": 0,
+        "quote": "\n            \"Now, release your anger!\n     Only your hatred can destroy me!\""
+      }
+    },
+    "deck_first_published_on": "Fri, 19 Jan 2024 15:20:10 GMT",
+    "deck_published": true,
+    "family_id": "2v3B",
+    "id": "2v3B",
+    "liked": false,
+    "likes": 3,
+    "name": "Darth Vader (She-Hulk reskin, Star Wars)",
+    "note": "",
+    "published": true,
+    "published_on": "Thu, 22 Feb 2024 18:22:48 GMT",
+    "tags": [
+      {
+        "name": "Melee Hero",
+        "slug": "melee-hero"
+      },
+      {
+        "name": "Fully-arted",
+        "slug": "fully-arted"
+      },
+      {
+        "name": "Male Hero",
+        "slug": "male-hero"
+      },
+      {
+        "name": "Solo Fighter",
+        "slug": "solo-fighter"
+      },
+      {
+        "name": "Video game",
+        "slug": "video-game"
+      },
+      {
+        "name": "Movie",
+        "slug": "movie"
+      },
+      {
+        "name": "Villain",
+        "slug": "villain"
+      },
+      {
+        "name": "TV",
+        "slug": "tv"
+      },
+      {
+        "name": "Tested",
+        "slug": "tested"
+      },
+      {
+        "name": "Science fiction",
+        "slug": "science-fiction"
+      },
+      {
+        "name": "Fantasy",
+        "slug": "fantasy"
+      },
+      {
+        "name": "No sidekicks",
+        "slug": "no-sidekicks"
+      },
+      {
+        "name": "english",
+        "slug": "english"
+      },
+      {
+        "name": "reskin",
+        "slug": "reskin"
+      },
+      {
+        "name": "Star Wars",
+        "slug": "star-wars"
+      },
+      {
+        "name": "Disney",
+        "slug": "disney"
+      },
+      {
+        "name": "Unmatched",
+        "slug": "unmatched"
+      },
+      {
+        "name": "Star Wars reskin set",
+        "slug": "star-wars-reskin-set"
+      }
+    ],
+    "updated_on": "Thu, 18 Jun 2026 02:37:39 GMT",
+    "user": "TedWatson",
+    "version_id": "5v1oF3oZ",
+    "version_name": "Initial version",
+    "versions": [
+      {
+        "created_on": "Mon, 22 Jan 2024 00:26:03 GMT",
+        "id": "5v1oF3oZ",
+        "name": "Darth Vader (She-Hulk reskin, Star Wars)",
+        "published": true,
+        "updated_on": "Thu, 18 Jun 2026 02:37:39 GMT",
+        "version_name": "Initial version"
+      },
+      {
+        "created_on": "Fri, 19 Jan 2024 12:19:39 GMT",
+        "id": "9mYGUB4V",
+        "name": "Darth Vader (She-Hulk reskin, Star Wars)",
+        "published": true,
+        "updated_on": "Fri, 19 Jan 2024 15:20:10 GMT",
+        "version_name": "Initial version"
+      }
+    ]
+  }
+}

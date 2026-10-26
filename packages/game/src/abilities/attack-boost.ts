@@ -10,12 +10,13 @@ function canBoost(
   frame: Frame | undefined,
   owner: string,
   grant: string,
+  field: 'attack' | 'defense' = 'attack',
 ): frame is Extract<Frame, { kind: 'combat' }> {
   return (
     frame?.kind === 'combat' &&
-    frame.attacker === owner &&
+    (field === 'attack' ? frame.attacker === owner : frame.defender === owner) &&
     !fighterById(runtime.state, owner)?.defeated &&
-    !frame.boosts.some((b) => b.grant === grant) &&
+    !frame.boosts.some((b) => b.grant === grant && (b.fighter ?? frame.attacker) === owner) &&
     (frame.hook === 'before-attack' || frame.hook === 'before-combat')
   );
 }
@@ -27,9 +28,10 @@ export function offerAttackBoost(
   provenance?: CardProvenance,
   grant = 'attack',
   cancelWithCard = false,
+  field: 'attack' | 'defense' = 'attack',
 ): void {
   const frame = runtime.data.frames[frameId];
-  if (!canBoost(runtime, frame, owner, grant)) return;
+  if (!canBoost(runtime, frame, owner, grant, field)) return;
   const player = runtime.state.players.find(
     (p) => p.id === fighterById(runtime.state, owner)!.player,
   )!;
@@ -38,7 +40,7 @@ export function offerAttackBoost(
     runtime,
     frameId,
     player.id,
-    'Boost attack',
+    `Boost ${field}`,
     [
       ...player.hand.map((card) => ({
         id: card.id,
@@ -52,6 +54,7 @@ export function offerAttackBoost(
             card: card.id,
             grant,
             cancelWithCard,
+            field,
           },
         ],
       })),
@@ -70,25 +73,35 @@ export function commitAttackBoost(
   id: string,
   grant: string,
   cancelWithCard: boolean,
+  field: 'attack' | 'defense' = 'attack',
+  provenance?: CardProvenance,
 ): void {
   const frame = runtime.data.frames[frameId];
-  if (!canBoost(runtime, frame, owner, grant)) return;
+  if (!canBoost(runtime, frame, owner, grant, field)) return;
   const player = runtime.state.players.find(
     (p) => p.id === fighterById(runtime.state, owner)!.player,
   )!;
   const { card, amount } = payBoost(player, id, runtime.defs);
-  frame.boosts.push({ card, grant, cancelWithCard });
-  modifyCombatValue(frame, 'attack', amount);
+  frame.boosts.push({
+    card,
+    grant,
+    cancelWithCard,
+    field,
+    fighter: owner,
+    cardEffect: !!provenance,
+  });
+  modifyCombatValue(frame, field, amount, !!provenance);
   if (frame.revealed) {
     if (runtime.state.revealed) runtime.state.revealed.boosts = publicBoosts(runtime, frame);
-    revealBoost(runtime, owner, card, 'attack');
+    revealBoost(runtime, owner, card, field);
   }
 }
 
 export function publicBoosts(runtime: Runtime, frame: Extract<Frame, { kind: 'combat' }>) {
-  return frame.boosts.map(({ card, cancelled }) => ({
+  return frame.boosts.map(({ card, cancelled, field }) => ({
     card,
     amount: cancelled ? 0 : runtime.defs.cards[card.definition].boost,
     ...(cancelled ? { cancelled: true } : {}),
+    ...(field === 'defense' ? { field } : {}),
   }));
 }

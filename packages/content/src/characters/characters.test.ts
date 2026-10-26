@@ -17,15 +17,23 @@ describe('complete character bundles', () => {
       'bigfoot',
       'robin-hood',
       'bruce-lee',
+      'invisible-man',
+      'geralt-of-rivia',
+      'darth-vader',
     ]);
     expect(JSON.parse(JSON.stringify(basic))).toEqual(basic);
     const owned = new Set<string>();
     for (const character of Object.values(characters)) {
-      expect(deckDefinitions(character.id)).toHaveLength(30);
+      expect(deckDefinitions(character.id)).toHaveLength(
+        character.id === 'geralt-of-rivia' ? 36 : 30,
+      );
       expect(character.deck).toHaveLength(
         (
           {
             'bruce-lee': 17,
+            'invisible-man': 14,
+            'geralt-of-rivia': 15,
+            'darth-vader': 12,
             dracula: 13,
             bigfoot: 11,
             'robin-hood': 11,
@@ -46,7 +54,7 @@ describe('complete character bundles', () => {
         expect(basic.cards[card]).not.toHaveProperty('count');
       }
     }
-    expect(owned.size).toBe(116);
+    expect(owned.size).toBe(157);
     expect(() => deckDefinitions('ranger')).toThrow('supported character');
   });
   it('rejects duplicate definitions, invalid copies and unsafe artwork recipes', () => {
