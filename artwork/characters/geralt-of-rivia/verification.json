@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-28",
+  "status": "partial",
+  "coverage": {
+    "selectedAssets": 10,
+    "requiredAssets": 19,
+    "rasterCards": 8,
+    "svgCardsRetained": 7,
+    "portraits": 1,
+    "tokens": 1,
+    "variants": 28,
+    "variantBytes": 2647774
+  },
+  "checks": {
+    "originalsMatchGeneratorOutputs": true,
+    "masterHashes": true,
+    "derivativeHashesBytesAndDimensions": true,
+    "realTokenAlpha": true,
+    "transparentTokenEdges": true,
+    "allRequestedVariantSizes": true,
+    "preparationIdempotent": true,
+    "rulesSemanticallyUnchanged": true,
+    "typecheck": "passed",
+    "lint": "passed",
+    "format": "passed",
+    "build": "passed (existing Rollup annotation and large-chunk warnings)",
+    "focusedUnitTests": "22 passed: assets, textures and figure lifecycle",
+    "fullUnitSuite": "Stopped after approximately three minutes without test results; focused Geralt engine/content run also stalled and was stopped.",
+    "browser": "7 of 8 initial Geralt tests passed; both dedicated artwork lifecycle tests passed in both motion modes. Reduced-motion lifecycle test passed again after final portrait focal adjustment.",
+    "browserErrors": "No console errors or missing artwork observed in passing tests and inspector review"
+  },
+  "visualReview": {
+    "viewports": [
+      [1440, 1000],
+      [844, 390]
+    ],
+    "scenesReviewedInBothInspectors": 8,
+    "allFourOwnerColors": true,
+    "numberedAlly": true,
+    "selectionMovementDefeatRevival": true,
+    "mixedSvgRaster": true,
+    "normalAndReducedMotion": true,
+    "sharedDandelionTokenRequests": 1,
+    "portraitFocal": [0.5, 0.1],
+    "notes": [
+      "Portrait focal point adjusted after reviewing the wide revival banner.",
+      "Full-body figure refined so feather, cap, lute and both boots clear every canvas edge."
+    ]
+  },
+  "responsiveRequests": {
+    "review": [
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-annoying-tune",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-640-af548834d2b8.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-plot-twist",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-640-091d246c03e1.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-gear-sword-of-steel",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-640-ed03a9b90462.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-gear-sword-of-silver",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-640-41a629868dae.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-gear-wolf-medallion",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-640-6c86663beea8.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-640-af821120d1f3.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-gear-blizzard",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-640-1745689a193e.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 1440,
+        "asset": "geralt-of-rivia-gear-tawny-owl",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-640-477441ec8390.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-annoying-tune",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-640-af548834d2b8.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-plot-twist",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-640-091d246c03e1.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-gear-sword-of-steel",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-640-ed03a9b90462.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-gear-sword-of-silver",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-640-41a629868dae.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-gear-wolf-medallion",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-640-6c86663beea8.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-640-af821120d1f3.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-gear-blizzard",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-640-1745689a193e.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      },
+      {
+        "viewport": 844,
+        "asset": "geralt-of-rivia-gear-tawny-owl",
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-640-477441ec8390.webp",
+        "naturalWidth": 599,
+        "displayWidth": 350,
+        "objectPosition": "50% 50%"
+      }
+    ],
+    "resources": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-320-db3b8b2b40db.webp",
+        "transferSize": 25272,
+        "encodedBodySize": 24972
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-320-f1e20a01acad.webp",
+        "transferSize": 21638,
+        "encodedBodySize": 21338
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-320-fa5f358b85c5.webp",
+        "transferSize": 22776,
+        "encodedBodySize": 22476
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-320-d8ae9465561c.webp",
+        "transferSize": 16732,
+        "encodedBodySize": 16432
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-320-29eca05ec8bb.webp",
+        "transferSize": 20880,
+        "encodedBodySize": 20580
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-320-292fca5303a8.webp",
+        "transferSize": 22570,
+        "encodedBodySize": 22270
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-320-87dc5753b3d4.webp",
+        "transferSize": 25710,
+        "encodedBodySize": 25410
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-320-cd40d40ffcbf.webp",
+        "transferSize": 24438,
+        "encodedBodySize": 24138
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-640-af548834d2b8.webp",
+        "transferSize": 81356,
+        "encodedBodySize": 81056
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-640-091d246c03e1.webp",
+        "transferSize": 61160,
+        "encodedBodySize": 60860
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-640-ed03a9b90462.webp",
+        "transferSize": 78988,
+        "encodedBodySize": 78688
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-640-41a629868dae.webp",
+        "transferSize": 54686,
+        "encodedBodySize": 54386
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-640-6c86663beea8.webp",
+        "transferSize": 65528,
+        "encodedBodySize": 65228
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-640-af821120d1f3.webp",
+        "transferSize": 68600,
+        "encodedBodySize": 68300
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-640-1745689a193e.webp",
+        "transferSize": 80804,
+        "encodedBodySize": 80504
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-640-477441ec8390.webp",
+        "transferSize": 73948,
+        "encodedBodySize": 73648
+      }
+    ],
+    "transferredBytes": 745086,
+    "encodedBytes": 740286
+  },
+  "knownFailures": [
+    {
+      "test": "Geralt’s complete gear pool has fifteen loaded illustrations and keyboard card inspectors",
+      "assertion": "document scrollHeight <= innerHeight on landscape phone",
+      "evidence": "At 844x390, document and body remain 844x896 with both the new potion raster and its existing SVG replacement. This is existing page overflow, independent of the image format."
+    }
+  ],
+  "remaining": [
+    "Geralt portrait",
+    "Geralt transparent figure",
+    "Igni",
+    "Riposte",
+    "Yrden",
+    "Rend",
+    "Disciplined Duelist",
+    "Damn, You're Ugly",
+    "Witcher Senses"
+  ]
+}

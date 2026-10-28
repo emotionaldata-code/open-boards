@@ -78,8 +78,14 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
         runtime.data.combat === null ? undefined : runtime.data.frames[runtime.data.combat];
       const protectedFighter =
         combat?.kind === 'combat' && combat.protectedFighters?.includes(fighter.id);
+      const ongoingProtection =
+        frame.reason === 'ability' &&
+        fighter.role === 'main' &&
+        owner.ongoing?.some(
+          (c) => runtime.defs.cards[c.definition].ongoing?.preventMainAbilityDamage,
+        );
       frame.amount =
-        frame.cancelled || protectedFighter || fighter.position === null
+        frame.cancelled || protectedFighter || ongoingProtection || fighter.position === null
           ? 0
           : Math.max(0, Math.min(1000, frame.amount));
       const area = frame.area === undefined ? undefined : runtime.data.frames[frame.area];

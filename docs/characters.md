@@ -83,3 +83,19 @@ Geralt is playable with a **36-card pool across 15 designs**, selecting a **30-c
 ## Darth Vader
 
 Darth Vader preserves **30 cards across 12 designs**, 20 HP, movement 2, melee attacks and no allies from TedWatson’s linked Star Wars reskin. Force Grip trades a card for its BOOST in damage to any fighter in Vader’s zone. His deck adds delegated draw/discard decisions, turn-long movement locks, action-paid attacks, top-deck BOOST defense and starting-space recovery. The [exact source inventory](characters/darth-vader/inventory.json) and [import notes](characters/darth-vader.md) document every printed clause, reusable rule extensions, shared game conventions and twelve original illustrations plus an owner-colored figure.
+
+## Alice
+
+Alice is playable with **30 cards across 15 designs**, 13 HP, movement 2, melee attacks and one **8-HP melee Jabberwock**. She chooses BIG or SMALL before opening hands are dealt, then changes size through her printed card effects. BIG increases her attack cards by 2; SMALL increases her defense cards by 1. Looking Glass selects two distinct effects in the owner’s chosen order. The [source inventory](characters/alice/inventory.json) and [import notes](characters/alice.md) document every printed clause, reusable setup/choice operations and original portraits, transparent figures and fifteen card scenes.
+
+## Philippa
+
+Philippa is playable with **30 cards across 13 designs**, 12 HP, movement 2, ranged attacks and one **6-HP melee Dijkstra**. Two Steps Ahead optionally refills her hand to four at turn end. Her deck combines private opponent-selected reveals, paid discard dilemmas, exact printed-value locking, selected-zone lightning and Polymorphy’s ongoing movement. All source counts, BOOSTs, restrictions and timed clauses are retained. The [source inventory](characters/philippa/inventory.json) and [import notes](characters/philippa.md) document every mapping, publisher clarifications and original portraits, transparent figures and thirteen card scenes.
+
+## Yennefer & Triss
+
+Yennefer & Triss are playable with **30 cards across eleven designs**. Choose either ranged sorceress as the **14-HP hero** before opening hands; the other becomes a **6-HP ranged sidekick**, with movement 2 shared by both. Named cards follow identity, while only the chosen hero’s special applies. Their deck includes immediate attack BOOSTs, scheme retaliation, ongoing BOOST bonuses, exact optional payments, portals and sealed simultaneous card reveals. The [source inventory](characters/yennefer-triss/inventory.json) and [import notes](characters/yennefer-triss.md) document every printed clause and fifteen original illustrations/portraits/figures.
+
+## Eredin
+
+Eredin is playable with **30 cards across 11 designs**, 14 HP, movement 2, melee attacks and **four 1-HP melee Red Riders**. When every Rider is defeated, his continuous ENRAGED state raises movement to 3 and combat-card values by 1. His deck sacrifices and revives Riders, declares face-up attacks across the battlefield, transfers defense through portals and maintains an ongoing damage ward. The [source inventory](characters/eredin/inventory.json) and [import notes](characters/eredin.md) record every printed clause, reusable operations and fifteen original artwork assets.

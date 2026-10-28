@@ -52,7 +52,7 @@ const cue = (
 const recipes: Recipes = {
   'hand-revealed': (o, c) =>
     cue(
-      'Hand revealed',
+      'Cards revealed',
       `${c.name(o.player)} reveals ${o.cards.length} cards`,
       [],
       'gold',
@@ -244,7 +244,7 @@ const recipes: Recipes = {
       [{ name: 'heal' }],
     ),
   ability: (o, c) => {
-    const character = fighterById(c.game, o.fighter)?.character ?? '';
+    const character = fighterById(c.game, o.fighter)?.definition ?? '';
     const status = Object.values(basic.statuses ?? {}).find((s) =>
       s.abilities?.some((ability) => ability.name === o.name),
     );

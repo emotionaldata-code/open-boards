@@ -1,0 +1,135 @@
+[
+  {
+    "id": "dracula-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: original square 1254x1254 or larger character identity portrait for a gothic Victorian board game. Cinematic illustrated realism, credible anatomy and weathered tactile fabrics, painterly detail, dramatic motivated candlelight with cold moon rim light. Dracula: adult aristocratic male, pale ivory skin, long angular face, severe cheekbones, aquiline nose, slicked-back black hair with a widow's peak, clean-shaven, deep crimson eyes, subtly visible fangs. Black Victorian frock coat, high black cape collar with muted burgundy lining, ivory shirt, burgundy cravat and antique silver clasp. Stern restrained menace, chest-up three-quarter view with entire face and upper cape silhouette clearly visible. Background out-of-focus plum-dark castle stone, no other people. Palette plum, black, pale ivory and muted crimson. Realistic painted illustration, not photographic costume, plastic or cut-paper. No text, letters, numbers, frames, icons, logos or watermark.",
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-sister-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: original square 1254x1254 or larger identity portrait for a gothic Victorian board game. Cinematic illustrated realism, credible anatomy, painterly texture, motivated warm candlelight and cold moon rim light. One Sister of Dracula: clearly adult female vampire, pale ivory skin, angular oval face, red eyes, long loose jet-black hair, slight visible fangs, fierce intelligent expression. Fully clothed in a high-necked long-sleeved Victorian plum-black gown with muted crimson front panel, antique silver small diadem and clasps. Head and upper torso three-quarter portrait, hands lowered out of crop, face and hair silhouette readable. Background shadowed ruined castle arch, fog, no other people. Restrained plum, black, ivory and muted crimson palette. Realistic painted illustration, no photographic costume, no plastic, no cut-paper. No text, letters, numbers, frames, icons, logos or watermark.",
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-token",
+    "prompt": "Use case: identity-preserve. Asset type: one full-body transparent board figure, square 1254x1254 or larger. Input image is Dracula identity reference only; match his exact pale angular adult face, slick black widow's-peak hair, red eyes, black high collar and burgundy-lined cape, Victorian black frock coat, ivory shirt, burgundy cravat and antique silver clasp. Cinematic realistic painted illustration, tactile fabrics, clear readable silhouette. Entire body head to boots visible, complete hands with correct five fingers, arms slightly bent away from body, one open threatening hand. Balanced standing three-quarter pose, cape falls behind with modest spread, black trousers and two visible black boots. Figure fills 85% canvas height, margin on every edge. Actual transparent background and transparent space around silhouette; no scene, floor, pedestal, base, drop shadow, fog or owner-color markings. No text, numbers, frames, icons, logos, watermarks. Preserve reference identity and clothes, no photographic costume or plastic miniature.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "dracula-sister-token",
+    "prompt": "Use case: identity-preserve. Asset type: one full-body transparent board figure, square 1254x1254 or larger. Input image is the Sister identity reference only; match exact pale adult female face, long loose black hair, red eyes, antique silver diadem and high-neck long-sleeved plum-black Victorian gown with muted crimson front panel and silver clasps. Cinematic realistic painted illustration, tactile fabric, readable silhouette. Entire body head to both boots visible, complete hands and fingers, arms slightly raised to either side with clawlike threatening fingers, correct anatomy. Balanced standing three-quarter pose, long flowing skirt just above visible black boot tips, no floor. Figure fills 85% canvas height with margin at every edge. Actual transparent background and transparent space around silhouette, no background, pedestal, base, ground shadow, fog or owner color. No text, numbers, frames, icons, logos or watermark. Preserve reference identity, no plastic miniature or photographic costume.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/sister.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "dracula-feint",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula bows courteously in a candlelit castle ballroom, one hand over his heart, while his other hand conceals an antique dagger behind his sweeping cape. Medium three-quarter composition, ironic calm, empty dance floor and dramatic diagonal cape. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-dash",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula swiftly strides across a moonlit stone bridge, cape billowing horizontally behind him, boots still solid while trailing wisps dissolve into low fog. Wide dynamic profile, broken arches and distant castle, direction and urgency. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-exploit",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: A Sister peers through a fractured chapel window at a distracted anonymous adult Victorian hunter below, her pale hand reaching through the gap to disarm his silver dagger. Medium oblique two-person view, crisp broken window silhouette, tense sudden opportunity, no injury. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/sister.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-ambush",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula emerges from darkness beside a stopped Victorian carriage as an adult cloaked traveler turns with a raised lantern. Low-angle medium-wide shot, lantern casts Dracula's long shadow onto rain-wet cobbles, cape curves around the light, surprise without contact. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-feeding-frenzy",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula advances in a ruined chapel while exactly three fully clothed adult Sisters close in around one anonymous adult hunter. Wide elevated composition, the three Sisters share the female reference identity and gown, one to either side and one behind the hunter; Dracula foreground left, moonlit mist, readable encirclement, no gore. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/sister.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-beastform",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula transforms into a massive feral batlike humanoid vampire beast: retain recognizable angular face, red eyes, slick black hair and remnants of his black coat and burgundy cape. Muscular long clawed arms spread, pointed ears and bared fangs, snarling atop crypt steps. Single coherent body, correct limb count, dramatic low angle, moon rim light, no gore. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-do-my-bidding",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula calmly raises one pale hand in a commanding gesture in a candlelit library, making an anonymous adult Victorian swordsman lower his weapon against his will. Medium two-person shot, Dracula's face clearly visible on left and transfixed hunter on right, tense mirrored hand positions, no literal puppet strings. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-look-into-my-eyes",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Intense extreme close-up of Dracula's unmistakable face, red eyes sharply focused and hypnotic, one pale hand gently lifting an antique candle near his cheek. Candle flame bends toward his gaze, soft gothic darkness and velvet collar, strong intimate horizontal composition. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-mistform",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula's upper body materializes out of curling silver mist passing through the iron bars of a locked crypt gate. His recognizable face and black high collar solid, lower cape dissolving into fog, no extra limbs. Medium-wide frontal view, cold moonbeam against faint candlelight behind gate. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-prey-upon",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Dracula looms at the center of a ruined courtyard as two adult armed Victorian hunters recoil on either side, one clutching a shoulder and one dropping a torch. His cape spreads like a dark wing and faint crimson light returns toward his silver clasp, restored predatory strength. Medium-wide dynamic view, no blood or visible wounds. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-baptism-of-blood",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: In a vaulted crypt Dracula extends an antique silver chalice containing dark crimson liquid over a Sister awakening from a carved stone sarcophagus. She rises upright with eyes newly red, black hair and silver diadem intact, fully clothed plum gown. Intimate medium two-person scene, candlelight on chalice and faces, no pouring onto wounds, no gore. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/sister.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-thirst-for-sustenance",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: A Sister in the foreground reaches one clawlike pale hand toward an off-frame adversary while beckoning Dracula with her other hand; Dracula steps from an open gothic doorway in the middle distance to join her. Low-angle medium-wide view along a moonlit corridor, the Sister's expression hungry and commanding, complete correct hands. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/dracula.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/sister.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "dracula-ravening-seduction",
+    "prompt": "Use case: illustration-story. Asset type: one original landscape board-game card illustration, 8:5 framing, 1586x992 pixels or larger. Cinematic illustrated realism with visible painterly brushwork, credible anatomy, tactile Victorian cloth and weathered gothic stone, dramatic motivated moonlight and candlelight. Restrained plum-black, pale ivory and muted crimson palette. Input references define character identity and costume only: Dracula is the pale angular adult male with slicked black hair, red eyes, high black collar, burgundy-lined cape, black Victorian coat, ivory shirt, burgundy cravat and silver clasp; Sister is the pale adult female with long black hair, red eyes, small silver diadem and fully clothed high-necked plum and crimson Victorian gown. Preserve these identities. Scene: Exactly three adult Sisters in their high-necked plum gowns guide an enthralled anonymous adult Victorian traveler into a moonlit cloister. One offers a hand, two wait behind forming a closing semicircle, identical shared female face, black hair and silver diadem. High oblique wide view, long shadows and candlelit doorway, ominous invitation, fully clothed and non-sexual. Keep crucial faces and action inside central 80%, deliberate readable staging, landscape 8:5. No text, lettering, numbers, frame, icons, symbols, logos or watermarks. No plastic miniatures, cut-paper style or photographic costumes. Non-graphic gothic menace.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/dracula/references/sister.png"
+    ],
+    "transparent_background": false
+  }
+]

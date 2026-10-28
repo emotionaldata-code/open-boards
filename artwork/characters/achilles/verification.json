@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-27",
+  "character": "achilles",
+  "artwork": {
+    "assets": 16,
+    "cardDesigns": 12,
+    "portraits": 2,
+    "transparentFigures": 2,
+    "derivatives": 44,
+    "derivativeBytes": 4762428,
+    "selectedOriginalsMatchedBySha256": 16,
+    "realAlphaVerified": true,
+    "repeatPreparationRuns": 4,
+    "repeatPreparationStable": true,
+    "rulesUnchanged": true
+  },
+  "review": {
+    "desktop": [1440, 1000],
+    "landscapePhone": [844, 390],
+    "allCardScenesReviewed": true,
+    "allFourOwnerColorsReviewed": true,
+    "numberedAllySelectionMovementRemovalRestorationReviewed": true,
+    "reducedAndFullMotionReviewed": true,
+    "mixedSvgRasterReviewed": true,
+    "sharedFigureTextureRequests": 2,
+    "scopedBrowserErrors": [],
+    "patroclusBannerCrop": "Adjusted portrait focal Y to 0.24 after phone revival review; final screenshot keeps his eyes visible.",
+    "screenshots": "/tmp/achilles-artwork-final; final focal review /tmp/achilles-crop-review",
+    "notes": [
+      "The existing event dialog requests the default small portrait variant even for its wide banner; no shared UI renderer or layout changes were made."
+    ]
+  },
+  "checks": {
+    "focusedUnit": {
+      "status": "passed",
+      "tests": 42,
+      "files": 5,
+      "coverage": [
+        "Achilles rules and room integration",
+        "Achilles artwork coverage, dimensions, hashes, canonical paths, bytes and alpha",
+        "Shared pending/resolved figure textures",
+        "SVG fallback, failed figure loading and destruction during loading"
+      ]
+    },
+    "achillesBrowser": {
+      "status": "passed",
+      "uniqueScenarios": 3,
+      "finalCropRecheckScenarios": 2
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "scopedFormat": "passed",
+    "build": "passed",
+    "diffWhitespace": "passed"
+  },
+  "broaderChecks": {
+    "unit": {
+      "status": "failed",
+      "passed": 741,
+      "failed": 12,
+      "skipped": 6,
+      "passedFiles": 50,
+      "failedFiles": 6,
+      "notes": [
+        "Observed during concurrent unrelated edits; this result does not represent an isolated Achilles-only snapshot.",
+        "PostgreSQL integration/migration checks failed with ECONNREFUSED on localhost:5432 and terminated connections.",
+        "Bigfoot artwork was not yet prepared when its newly added coverage check ran.",
+        "Alice/setup-choice assertions and the all-card unique-illustration assertion also failed."
+      ]
+    },
+    "format": {
+      "status": "failed",
+      "files": [
+        "apps/client/src/characters/profiles.ts",
+        "packages/content/src/characters/alice.test.ts",
+        "packages/content/src/statuses.ts",
+        "packages/game/src/abilities/setup-choices.test.ts"
+      ],
+      "notes": "Files belonged to concurrent unrelated work; Achilles files passed the scoped format check."
+    },
+    "fullBrowserSuite": "Not run: this refresh changes asset data, registration and tests, without shared UI implementation changes."
+  },
+  "galleryTransfers": {
+    "256": {
+      "requests": 1,
+      "encodedBodyBytes": 19544
+    },
+    "320": {
+      "requests": 12,
+      "encodedBodyBytes": 291542
+    },
+    "640": {
+      "requests": 12,
+      "encodedBodyBytes": 958948
+    },
+    "1024": {
+      "requests": 1,
+      "encodedBodyBytes": 198148
+    }
+  }
+}

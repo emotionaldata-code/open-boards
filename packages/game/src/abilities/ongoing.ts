@@ -1,3 +1,4 @@
+import { sharesZone } from '../targeting';
 import { mainFighter, fighterById } from '../fighters';
 import { openChoice } from './choices';
 import type { Runtime } from './runtime';
@@ -15,7 +16,7 @@ export function actionGainPrevented(runtime: Runtime, player: string): boolean {
 /** Decide before another player is allowed to inspect/select the protected hand. */
 export function offerDiscardProtection(
   runtime: Runtime,
-  task: Extract<Task, { type: 'effect' | 'named-value-discard' }>,
+  task: Extract<Task, { type: 'effect' | 'named-value-discard' | 'reveal-hand' }>,
   player: string,
 ): boolean {
   const p = runtime.state.players.find((p) => p.id === player)!;
@@ -70,10 +71,18 @@ export function offerDiscardProtection(
 
 export function expireOngoing(runtime: Runtime, player: string): void {
   const p = runtime.state.players.find((p) => p.id === player)!;
-  if (runtime.data.attacked?.includes(player)) return;
-  const expired = (p.ongoing ?? []).filter(
-    (c) => runtime.defs.cards[c.definition].ongoing?.discardUnlessAttacked,
+  const main = mainFighter(runtime.state, player);
+  const enemyInZone = runtime.state.fighters.some(
+    (f) =>
+      !f.defeated && f.player !== player && sharesZone(runtime.defs.map, main.position, f.position),
   );
+  const expired = (p.ongoing ?? []).filter((c) => {
+    const rule = runtime.defs.cards[c.definition].ongoing;
+    return (
+      (rule?.discardUnlessAttacked && !runtime.data.attacked?.includes(player)) ||
+      (rule?.discardUnlessEnemyInZone && !enemyInZone)
+    );
+  });
   p.ongoing = (p.ongoing ?? []).filter((c) => !expired.includes(c));
   // Normal discard receipts and reactions run once for each exact ongoing instance.
   for (const card of expired) {

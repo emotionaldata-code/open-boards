@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-26",
+  "character": "sherlock-holmes",
+  "artwork": {
+    "assets": 17,
+    "cardDesigns": 13,
+    "portraits": 2,
+    "transparentFigures": 2,
+    "derivatives": 47,
+    "derivativeBytes": 4047474,
+    "selectedOriginalsMatchedBySha256": 17,
+    "realAlphaVerified": true,
+    "repeatPreparationRuns": 2,
+    "repeatPreparationStable": true,
+    "rulesUnchanged": true
+  },
+  "review": {
+    "desktop": [1440, 1000],
+    "landscapePhone": [844, 390],
+    "allCardScenesReviewed": true,
+    "allFourOwnerColorsReviewed": true,
+    "numberedAllySelectionMovementRemovalRestorationReviewed": true,
+    "reducedAndFullMotionReviewed": true,
+    "mixedSvgRasterReviewed": true,
+    "sharedFigureTextureRequests": 2,
+    "scopedBrowserErrors": []
+  },
+  "desktopCardTransfers": {
+    "width320": {
+      "requests": 13,
+      "encodedBodyBytes": 254390
+    },
+    "width640": {
+      "requests": 13,
+      "encodedBodyBytes": 823456
+    }
+  },
+  "checks": {
+    "unit": {
+      "status": "passed",
+      "files": 54,
+      "tests": 714
+    },
+    "sherlockBrowser": {
+      "status": "passed",
+      "uniqueScenarios": 5
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "format": "passed",
+    "build": "passed",
+    "diffWhitespace": "passed"
+  },
+  "broaderBrowserAttempt": {
+    "status": "failed",
+    "selected": 150,
+    "passed": 105,
+    "failed": 3,
+    "notRun": 42,
+    "notes": [
+      "Validation used a fixed temporary source snapshot because unrelated UI files were changing during live-server runs.",
+      "Counts combine the 86 completed snapshot checks with a second run selecting only the 64 remaining checks. That run stopped at its three-failure limit.",
+      "The temporary proxy forwarded the existing trusted localhost:5173 Origin to the live backend; no application authentication policy was changed.",
+      "The two-player and four-player complete-match checks passed."
+    ],
+    "failures": [
+      {
+        "test": "tests/e2e/cinematic.spec.ts:153",
+        "reason": "Invite-link expectation hard-codes localhost:5173; the isolated test UI correctly generated localhost:5185."
+      },
+      {
+        "test": "tests/e2e/geralt-of-rivia.spec.ts:296",
+        "reason": "Landscape-phone gallery/inspector leaves document dimensions larger than the viewport."
+      },
+      {
+        "test": "tests/e2e/matches.spec.ts:531",
+        "reason": "Medusa's Skip choice click timed out: initially disabled, then intercepted by map-terrain pointer events. WebSocket ECONNRESET errors were also logged."
+      }
+    ]
+  }
+}

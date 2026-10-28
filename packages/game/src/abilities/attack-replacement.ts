@@ -83,7 +83,8 @@ export function replaceAttack(
       definition.value +
         modifier(attacker, 'attack', runtime.defs) +
         frame.boosts.reduce(
-          (sum, b) => sum + (b.cancelled ? 0 : runtime.defs.cards[b.card.definition].boost),
+          (sum, b) =>
+            sum + (b.cancelled ? 0 : (b.amount ?? runtime.defs.cards[b.card.definition].boost)),
           0,
         ),
     );

@@ -1,0 +1,121 @@
+[
+  {
+    "id": "dracula-portrait",
+    "kind": "portrait",
+    "source": "masters/dracula-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "dracula-sister-portrait",
+    "kind": "portrait",
+    "source": "masters/sister-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "dracula-token",
+    "kind": "token",
+    "source": "masters/dracula-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "dracula-sister-token",
+    "kind": "token",
+    "source": "masters/sister-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "dracula-feint",
+    "kind": "card",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-feint"
+  },
+  {
+    "id": "dracula-dash",
+    "kind": "card",
+    "source": "masters/dash.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-dash"
+  },
+  {
+    "id": "dracula-exploit",
+    "kind": "card",
+    "source": "masters/exploit.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-exploit"
+  },
+  {
+    "id": "dracula-ambush",
+    "kind": "card",
+    "source": "masters/ambush.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-ambush"
+  },
+  {
+    "id": "dracula-feeding-frenzy",
+    "kind": "card",
+    "source": "masters/feeding-frenzy.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-feeding-frenzy"
+  },
+  {
+    "id": "dracula-beastform",
+    "kind": "card",
+    "source": "masters/beastform.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-beastform"
+  },
+  {
+    "id": "dracula-do-my-bidding",
+    "kind": "card",
+    "source": "masters/do-my-bidding.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-do-my-bidding"
+  },
+  {
+    "id": "dracula-look-into-my-eyes",
+    "kind": "card",
+    "source": "masters/look-into-my-eyes.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-look-into-my-eyes"
+  },
+  {
+    "id": "dracula-mistform",
+    "kind": "card",
+    "source": "masters/mistform.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-mistform"
+  },
+  {
+    "id": "dracula-prey-upon",
+    "kind": "card",
+    "source": "masters/prey-upon.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-prey-upon"
+  },
+  {
+    "id": "dracula-baptism-of-blood",
+    "kind": "card",
+    "source": "masters/baptism-of-blood.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-baptism-of-blood"
+  },
+  {
+    "id": "dracula-thirst-for-sustenance",
+    "kind": "card",
+    "source": "masters/thirst-for-sustenance.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-thirst-for-sustenance"
+  },
+  {
+    "id": "dracula-ravening-seduction",
+    "kind": "card",
+    "source": "masters/ravening-seduction.png",
+    "focal": [0.5, 0.5],
+    "card": "dracula-ravening-seduction"
+  }
+]

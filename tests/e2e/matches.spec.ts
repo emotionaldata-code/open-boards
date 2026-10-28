@@ -1,5 +1,7 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
+  eredin: { name: 'Eredin', allies: 4 },
+  philippa: { name: 'Philippa', allies: 1 },
   'geralt-of-rivia': { name: 'Geralt of Rivia', allies: 1 },
   medusa: { name: 'Medusa', allies: 3 },
   'darth-vader': { name: 'Darth Vader', allies: 0 },
@@ -626,6 +628,8 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
         ['Invisible Man', 14],
         ['Geralt of Rivia', 15],
         ['Darth Vader', 12],
+        ['Alice', 15],
+        ['Philippa', 13],
       ]),
     );
     for (const [name, designs] of fighters) {
@@ -1333,5 +1337,76 @@ test('Geralt selects gear before Dandelion deployment and resumes a four-seat Ma
     });
   } finally {
     await Promise.allSettled(rivals.map((r) => r.context.close()));
+  }
+});
+
+test('Philippa and Dijkstra deploy over real sockets and reconnect during shared Maneuver', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 2, true, 'philippa');
+  try {
+    const host = rivals[0].page;
+    await expect(host.locator('.badge-ally').filter({ hasText: 'Dijkstra' })).toHaveCount(2);
+    await host.getByRole('button', { name: /^Maneuver/ }).click();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await host.reload();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await finishManeuver(host);
+    for (const { page, errors } of rivals) {
+      await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
+      await fitsViewport(page);
+      expect(errors).toEqual([]);
+    }
+    await host.screenshot({
+      path: test.info().outputPath('philippa-socket-phone.png'),
+      animations: 'disabled',
+    });
+  } finally {
+    await Promise.allSettled(rivals.map((r) => r.context.close()));
+  }
+});
+
+test('selects Eredin over sockets, deploys all sixteen Red Riders and reconnects on phone', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 4, true, 'eredin');
+  const page = rivals[0].page;
+  try {
+    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    const labels = ['Eredin', 'Red Rider 1', 'Red Rider 2', 'Red Rider 3', 'Red Rider 4'];
+    await expect(picker.getByRole('button')).toHaveText(labels);
+    for (const rival of rivals) {
+      await expect(
+        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
+      ).toContainText('Red Rider 4');
+      await fitsViewport(rival.page);
+    }
+    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Red Rider 4', exact: true }).tap();
+    await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
+    await page.reload();
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('4 left');
+    await expect(page.locator('.pixi-surface canvas')).toBeVisible();
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
+    await page.screenshot({
+      path: test.info().outputPath('eredin-sixteen-riders-phone.png'),
+      animations: 'disabled',
+    });
+    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await expect(picker.getByRole('button')).toHaveText(labels);
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await fitsViewport(page);
+    await page.screenshot({
+      path: test.info().outputPath('eredin-socket-desktop.png'),
+      animations: 'disabled',
+    });
+    expect(rivals.flatMap((r) => r.errors)).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map(({ context }) => context.close()));
   }
 });

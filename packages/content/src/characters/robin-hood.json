@@ -76,7 +76,7 @@
       ],
       "art": {
         "scene": "trail",
-        "image": "/cards/robin-hood/ambush.svg"
+        "image": "/artwork/robin-hood/robin-hood-ambush-1280-f6954db33326.webp"
       },
       "flavor": "The greenwood holds its breath."
     },
@@ -91,7 +91,7 @@
       "description": "Attack with value 5.",
       "art": {
         "scene": "bolt",
-        "image": "/cards/robin-hood/a-hunter-s-eye.svg"
+        "image": "/artwork/robin-hood/robin-hood-a-hunter-s-eye-1280-12ce215da489.webp"
       },
       "flavor": "One feather. One opening."
     },
@@ -167,7 +167,7 @@
       ],
       "art": {
         "scene": "map",
-        "image": "/cards/robin-hood/steal-from-the-rich.svg"
+        "image": "/artwork/robin-hood/robin-hood-steal-from-the-rich-1280-1ac8b2ff5757.webp"
       },
       "flavor": "A lighter purse, a fuller table."
     },
@@ -198,7 +198,7 @@
       ],
       "art": {
         "scene": "bolt",
-        "image": "/cards/robin-hood/disarming-shot.svg"
+        "image": "/artwork/robin-hood/robin-hood-disarming-shot-1280-d55562a696d5.webp"
       },
       "flavor": "The sword falls before its master."
     },
@@ -227,7 +227,7 @@
       ],
       "art": {
         "scene": "bolt",
-        "image": "/cards/robin-hood/piercing-shot.svg"
+        "image": "/artwork/robin-hood/robin-hood-piercing-shot-1280-db1530a6b9d2.webp"
       },
       "flavor": "An arrow finds the seam."
     },
@@ -260,7 +260,7 @@
       ],
       "art": {
         "scene": "shield",
-        "image": "/cards/robin-hood/defenders-of-sherwood.svg"
+        "image": "/artwork/robin-hood/robin-hood-defenders-of-sherwood-1280-9f2dc657d1e5.webp"
       },
       "flavor": "Sherwood never stands alone."
     },
@@ -292,7 +292,7 @@
       ],
       "art": {
         "scene": "blade",
-        "image": "/cards/robin-hood/highway-robbery.svg"
+        "image": "/artwork/robin-hood/robin-hood-highway-robbery-1280-97871bb616e9.webp"
       },
       "flavor": "The toll goes to the hungry."
     },
@@ -327,7 +327,7 @@
       ],
       "art": {
         "scene": "ward",
-        "image": "/cards/robin-hood/snark.svg"
+        "image": "/artwork/robin-hood/robin-hood-snark-1280-f5243dae4230.webp"
       },
       "flavor": "A sharp tongue buys a heartbeat."
     },
@@ -364,7 +364,7 @@
       ],
       "art": {
         "scene": "blade",
-        "image": "/cards/robin-hood/wily-fighting.svg"
+        "image": "/artwork/robin-hood/robin-hood-wily-fighting-1280-69dbf90ae517.webp"
       },
       "flavor": "Oak and shadow fight beside us."
     },
@@ -392,7 +392,7 @@
       ],
       "art": {
         "scene": "ward",
-        "image": "/cards/robin-hood/feint.svg"
+        "image": "/artwork/robin-hood/robin-hood-feint-1280-17ee7e613f79.webp"
       },
       "flavor": "Watch the hand without the arrow."
     },
@@ -436,7 +436,7 @@
       ],
       "art": {
         "scene": "lantern",
-        "image": "/cards/robin-hood/regroup.svg"
+        "image": "/artwork/robin-hood/robin-hood-regroup-1280-4dffd00fd466.webp"
       },
       "flavor": "Meet again beneath the great oak."
     }

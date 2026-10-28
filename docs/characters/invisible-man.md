@@ -33,7 +33,9 @@ Temporary removal preserves health, ownership and living status. At the end of t
 
 ## Original artwork
 
-All illustrations are original code-native cut-paper SVGs authored for this import, with no source image redistribution or remote assets. The fourteen distinct 320×200 illustrations live in `apps/client/public/cards/invisible-man/`, one named for each source slug. Subjects include empty coats, goggles, hats, coded pages, street lamps, knives, footprints and rolling mist. The original owner-colored bandaged figure is registered in `apps/client/src/characters/art.ts`; three numbered fog markers use the owner's seat color in the board overlay. Source image URLs are retained solely as provenance/reference in the inventory.
+The 2026-10-28 artwork refresh uses original cinematic Victorian illustrations generated with Codex integrated Imagegen: one portrait, one transparent full-body figure and fourteen distinct card scenes. The bandaged face, opaque brass-rimmed goggles, charcoal hat, cream scarf and dark teal overcoat remain consistent through a shared portrait reference. Scenes include covert preparations, unseen blows, coded pages, abandoned clothing and rolling gaslit fog.
+
+Selected PNG originals, the identity reference, exact prompts, source/crop settings and generation attribution live in `artwork/characters/invisible-man/`. Hashed responsive WebP derivatives live in `apps/client/public/artwork/invisible-man/`: cards at 320/640/1280, portraits at 256/512/1024 and the transparent figure at 512. Regenerate derivatives with `pnpm artwork:prepare invisible-man`. Shared raster rendering keeps owner-colored pedestals, selection and animation separate; the three numbered fog markers retain their owner colors in the board overlay. Original code-native SVGs remain available as fallbacks. Source image URLs in the import inventory are references only; no third-party card imagery is redistributed.
 
 ## Verification
 

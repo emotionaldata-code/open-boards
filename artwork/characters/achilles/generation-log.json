@@ -1,0 +1,135 @@
+{
+  "generations": [
+    {
+      "id": "achilles",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-3153f5a1-6396-474e-b789-750bf98dac3d.png",
+      "prompt": "prompts.json#achilles-portrait"
+    },
+    {
+      "id": "patroclus",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-3042623f-6c9f-4dab-9b67-0dc8e4665864.png",
+      "prompt": "prompts.json#patroclus-portrait"
+    },
+    {
+      "id": "patroclus-token",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-c1806b42-d55a-4755-9fb0-d2cbae03703f.png",
+      "prompt": "prompts.json#patroclus-token"
+    },
+    {
+      "id": "battle-frenzy",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-d9cc3d25-d844-419c-aea4-29030749276f.png",
+      "prompt": "prompts.json#battle-frenzy"
+    },
+    {
+      "id": "test-for-weakness",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-2cdce142-d1e5-475d-9e0a-5c11ad963ba3.png",
+      "prompt": "prompts.json#test-for-weakness"
+    },
+    {
+      "id": "the-day-of-your-doom",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-ab88823c-397b-4608-8244-51f2198b9ed5.png",
+      "prompt": "prompts.json#the-day-of-your-doom"
+    },
+    {
+      "id": "brothers-in-arms",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-94275ebf-48e8-4f8d-b138-24f9a7e6999f.png",
+      "prompt": "prompts.json#brothers-in-arms"
+    },
+    {
+      "id": "feint",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-a8b89054-a2c0-4dd0-ab2e-ded63d3a2da1.png",
+      "prompt": "prompts.json#feint"
+    },
+    {
+      "id": "battle-hardened",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-d1c80e8c-f9cf-497b-838d-438e83099e48.png",
+      "prompt": "prompts.json#battle-hardened"
+    },
+    {
+      "id": "wily-fighting",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-f861cac2-c146-4592-b48f-20778b4acd2e.png",
+      "prompt": "prompts.json#wily-fighting"
+    },
+    {
+      "id": "blessed-by-hermes",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-1f2444c2-8a18-4a7b-b6eb-83fbd1353818.png",
+      "prompt": "prompts.json#blessed-by-hermes"
+    },
+    {
+      "id": "skirmish",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-35a50b70-74d4-4549-8fa7-edaeeb552a5e.png",
+      "prompt": "prompts.json#skirmish"
+    },
+    {
+      "id": "under-achilles-helm",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-a471d4c6-4301-4090-a219-5c5a2950a3ab.png",
+      "prompt": "prompts.json#under-achilles-helm"
+    },
+    {
+      "id": "achilles-heel",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-a92a503a-5eb2-4f53-8436-dc2d7aae0a85.png",
+      "prompt": "prompts.json#achilles-heel"
+    },
+    {
+      "id": "spear-throw",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-c76efcc1-6ae8-4364-a0d1-1260b71fa7a0.png",
+      "prompt": "prompts.json#spear-throw"
+    },
+    {
+      "id": "battle-frenzy",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-e6f4e2fc-4a44-4a06-a5ef-efbec87339dc.png",
+      "prompt": "revisions.json#battle-frenzy"
+    },
+    {
+      "id": "the-day-of-your-doom",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-ef9db4a7-dec7-4e3e-9644-57991d98e30b.png",
+      "prompt": "revisions.json#the-day-of-your-doom"
+    },
+    {
+      "id": "feint",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-862816d6-7c79-4d81-8c24-0bb272226ca0.png",
+      "prompt": "revisions.json#feint"
+    },
+    {
+      "id": "test-for-weakness",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-cf7b92bd-447d-42a3-a979-4917773c0418.png",
+      "prompt": "revisions.json#test-for-weakness"
+    },
+    {
+      "id": "spear-throw",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-7d2f8294-72e4-47f6-80d5-8e5824f7e49d.png",
+      "prompt": "revisions.json#spear-throw"
+    },
+    {
+      "id": "wily-fighting",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-4b832d7a-f974-4729-90b9-b4c5bc3e3610.png",
+      "prompt": "revisions.json#wily-fighting"
+    },
+    {
+      "id": "skirmish",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-5e690a01-ddd9-42ee-882f-4e7a08097a70.png",
+      "prompt": "revisions.json#skirmish"
+    },
+    {
+      "id": "achilles-token",
+      "source": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-0b0d6741-bf16-4897-b388-1679ca7a38d7.png",
+      "prompt": "revisions.json#achilles-token"
+    }
+  ],
+  "failures": [
+    {
+      "id": "achilles-token",
+      "stage": "output",
+      "error": "Imagegen HTTP 400 moderation_blocked, category other, request 77bbefa0-3e7f-4569-8bef-c27435a2a398. Benign fictional armored warrior; no asset delivered."
+    },
+    {
+      "id": "achilles-token",
+      "error": "Imagegen HTTP 400 output moderation_blocked, category other, request 0b438f18-4661-423e-bf61-9c09ef08cc59. No asset delivered."
+    },
+    {
+      "id": "achilles-token",
+      "prompt": "Use case: illustration-story. Create one full-length painted character illustration with real transparent background, square 1024px or larger. The reference portrait establishes Achilles' face and costume. Show this adult fictional Greek guardian standing calmly at attention, complete head-to-sandals silhouette centered with clear margin on every edge. Bronze cuirass and greaves, leather skirt over terracotta linen, red-crested bronze helmet, round bronze shield carried at the left side and an upright ash-wood spear in the right hand. Preserve the reference face and colors. Both feet visible near the same baseline. Refined cinematic painted realism, readable at board-game scale, natural anatomy and hands. No ground, scenery, pedestal, shadows, text, frames, watermarks or UI graphics.",
+      "error": "Imagegen HTTP 400 output moderation_blocked, category other, request 30d6f457-d996-4a3f-9ae9-5ff7daacdc38. No asset delivered."
+    }
+  ]
+}

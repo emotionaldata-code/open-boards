@@ -7,7 +7,17 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const { name, designs } of [
+  { name: 'Invisible Man', designs: 14 },
+  { name: 'Eredin', designs: 11 },
+  { name: 'Bruce Lee', designs: 17 },
+  { name: 'Alice', designs: 15 },
+  { name: 'Yennefer & Triss', designs: 11 },
+  { name: 'Philippa', designs: 13 },
+  { name: 'Achilles', designs: 12 },
+  { name: 'Dracula', designs: 13 },
+  { name: 'Bigfoot', designs: 11 },
   { name: 'The Genie', designs: 12 },
+  { name: 'Robin Hood', designs: 11 },
   { name: 'Medusa', designs: 11 },
   { name: 'King Arthur', designs: 16 },
   { name: 'Sherlock Holmes', designs: 13 },
@@ -111,7 +121,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('request', (request) => {
       if (/\/(medusa|harpy)-token-/.test(request.url())) textures.push(request.url());
     });
-    const players: GameView['players'] = ['medusa', 'medusa', 'medusa', 'bigfoot'].map(
+    const players: GameView['players'] = ['medusa', 'medusa', 'medusa', 'darth-vader'].map(
       (character, i) => ({
         id: ['a', 'b', 'c', 'd'][i],
         name: `Owner ${i + 1}`,
@@ -129,7 +139,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         character: player.character,
         definition: player.character,
         role: 'main' as const,
-        hp: 16,
+        hp: player.character === 'darth-vader' ? 18 : 16,
         position: ['n0', 'n7', 'n13', 'n20'][i],
         defeated: false,
         counters: {},

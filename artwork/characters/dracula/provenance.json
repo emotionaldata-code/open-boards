@@ -1,0 +1,203 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-27",
+  "authorship": "Original generated illustrations; no third-party card artwork reused.",
+  "references": ["references/dracula.png", "references/sister.png"],
+  "prompts": "prompts.json",
+  "generationLog": "generation-log.json",
+  "notes": [
+    "All 17 generation requests succeeded. Selected generator originals are preserved unchanged and matched to generator output by SHA-256.",
+    "Portraits were generated and inspected first, then reused as identity references for figures and scenes.",
+    "Repository identity notes informed subject matter; no source-deck images were copied."
+  ],
+  "assets": [
+    {
+      "id": "dracula-portrait",
+      "master": "masters/dracula-portrait.png",
+      "sha256": "1e7a2c1662753e1b3b29d66cbf93224f3fb304cc66377209b2064d1b4ea0a23d",
+      "prompt": "prompts.json#dracula-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-d45b7330-f663-4bf0-97cc-85f4bc8d288a.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-sister-portrait",
+      "master": "masters/sister-portrait.png",
+      "sha256": "1f6608a95e7a365f6eb93932260a7ecfe0178abc40096ee6be38529c31d80252",
+      "prompt": "prompts.json#dracula-sister-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-39f985cf-4eef-4e42-a800-d74dd6e52e97.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-token",
+      "master": "masters/dracula-token.png",
+      "sha256": "1ac7edbb8824911c5e1078c41a3b8b831409a975f1917bb1fd3927cddb9ac2ab",
+      "prompt": "prompts.json#dracula-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-bb13363b-9f76-46fb-88de-31ede88c2a5b.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "isOpaque": false
+    },
+    {
+      "id": "dracula-sister-token",
+      "master": "masters/sister-token.png",
+      "sha256": "bbe6a7813473b3c915c9d79dbe653b6fc57354690fe26b06a9337c273cf70ea0",
+      "prompt": "prompts.json#dracula-sister-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-e428fc14-6a6f-49e6-8688-ecc398427332.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "isOpaque": false
+    },
+    {
+      "id": "dracula-feint",
+      "master": "masters/feint.png",
+      "sha256": "b5771fb343d079769bfb376055ee5a207e6673688f5c060676ca54612c2c689e",
+      "prompt": "prompts.json#dracula-feint",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-6bf768f8-810b-48b2-8a86-9d1797e3eda7.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-dash",
+      "master": "masters/dash.png",
+      "sha256": "c16f12605ddee6012f6e60a899b28fba560098ee3d74293ba777acc6a0500f25",
+      "prompt": "prompts.json#dracula-dash",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-e2309fb2-a4c2-46f9-9f91-d057a209301a.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-exploit",
+      "master": "masters/exploit.png",
+      "sha256": "8d5f8af53889ea3b3478cbfe280b59f7ab8b80b86e105fdeb0b706184e68b222",
+      "prompt": "prompts.json#dracula-exploit",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-20e241b6-5b1c-4caa-b339-5edca2ab2277.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-ambush",
+      "master": "masters/ambush.png",
+      "sha256": "aad07563110b70f7c9887ae6769bc2f2863d0129c275f25677b0cb157ea183b5",
+      "prompt": "prompts.json#dracula-ambush",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-43305a3c-6b35-4788-a05b-a82ed138f4b8.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-feeding-frenzy",
+      "master": "masters/feeding-frenzy.png",
+      "sha256": "8f66694276585925624988d641aaee8c7a4f61d874ba43e350643730a477096b",
+      "prompt": "prompts.json#dracula-feeding-frenzy",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-0c272c2a-76f6-47f5-a06e-16e392185133.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-beastform",
+      "master": "masters/beastform.png",
+      "sha256": "41376ae4e2aa16659c6e31b0dca8bff57793449024f419a31539742437d659bd",
+      "prompt": "prompts.json#dracula-beastform",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-5bfd0f39-10b8-4bd9-a54c-ced5016423f3.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-do-my-bidding",
+      "master": "masters/do-my-bidding.png",
+      "sha256": "29f4085d7f91d02b584c602883dd02bae18275c1a8568c91554ebceb5eb23385",
+      "prompt": "prompts.json#dracula-do-my-bidding",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-5f0c9386-1715-447d-a40a-c07d457fe589.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-look-into-my-eyes",
+      "master": "masters/look-into-my-eyes.png",
+      "sha256": "e791b3b6027d84534ac86f53e7e3f1e5defc94315ac76743272986db4b2845af",
+      "prompt": "prompts.json#dracula-look-into-my-eyes",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-c735e506-96b1-4249-bd18-50d25072306c.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-mistform",
+      "master": "masters/mistform.png",
+      "sha256": "7f3032aaba5db4ef7de2242c040264488071a314fc5e6e7759e2cb36f51e3d6f",
+      "prompt": "prompts.json#dracula-mistform",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-ab643b35-79bb-4b7b-b3d3-99d1a73459ec.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-prey-upon",
+      "master": "masters/prey-upon.png",
+      "sha256": "c26939c51e7c42f46b57dfa8f07a0f22da385994636be2198953aac79548e1e8",
+      "prompt": "prompts.json#dracula-prey-upon",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-93e61c81-3935-45c1-a224-0eae798470e1.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-baptism-of-blood",
+      "master": "masters/baptism-of-blood.png",
+      "sha256": "b0afdb8b1015521e5fc9cca9b147c3406bd8acccee5fe3913d006f0f9eb1e5fc",
+      "prompt": "prompts.json#dracula-baptism-of-blood",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-9511f9c8-3cb9-4ef7-a240-6558abae65aa.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-thirst-for-sustenance",
+      "master": "masters/thirst-for-sustenance.png",
+      "sha256": "b3159e084aa6f2c27496d2f14fbf44c02d25af87640bfdef18f2b86a6c737116",
+      "prompt": "prompts.json#dracula-thirst-for-sustenance",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-630aa53a-30e7-46cc-9bdb-712c6db18f9e.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    },
+    {
+      "id": "dracula-ravening-seduction",
+      "master": "masters/ravening-seduction.png",
+      "sha256": "e7aea2b6ff94642447da4a511fccc0bcc4735503b1ccb3eeea725551415c7f8b",
+      "prompt": "prompts.json#dracula-ravening-seduction",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-db41-7d03-a4fb-7d144feb1951/exec-717cc423-7e61-4889-ba23-177e484e9419.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "isOpaque": true
+    }
+  ]
+}

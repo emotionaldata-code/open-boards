@@ -1,0 +1,566 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/alice",
+  "apiUrl": "https://unmatched.cards/api/db/decks/alice",
+  "retrievedAt": "2026-10-27T18:39:25.661Z",
+  "deck": {
+    "cards": [
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "JABBERWOCK",
+        "deck_card_notes": null,
+        "duringText": "If the opposing fighter is a hero, this card's value is 5 instead.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/claws-that-catch.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "claws-that-catch",
+        "title": "Claws That Catch",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": "If your fighter started this turn in a different space, this card's value is 5 instead.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/momentous-shift.png",
+        "immediateText": null,
+        "other_decks": [
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Spider-Man",
+            "slug": "spider_man"
+          },
+          {
+            "name": "Ms. Marvel",
+            "slug": "ms-marvel"
+          },
+          {
+            "name": "T. Rex",
+            "slug": "t-rex"
+          },
+          {
+            "name": "Sinbad",
+            "slug": "sinbad"
+          },
+          {
+            "name": "Angel",
+            "slug": "angel"
+          },
+          {
+            "name": "Yennenga",
+            "slug": "yennenga"
+          },
+          {
+            "name": "Oda Nobunaga",
+            "slug": "oda-nobunaga"
+          }
+        ],
+        "quantity": 2,
+        "slug": "momentous-shift",
+        "title": "Momentous Shift",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/skirmish.png",
+        "immediateText": null,
+        "other_decks": [
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "Jekyll & Hyde",
+            "slug": "jekyll-hyde"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Achilles",
+            "slug": "achilles"
+          },
+          {
+            "name": "Spike",
+            "slug": "spike"
+          },
+          {
+            "name": "Buffy",
+            "slug": "buffy"
+          },
+          {
+            "name": "Beowulf",
+            "slug": "beowulf"
+          },
+          {
+            "name": "Yennenga",
+            "slug": "yennenga"
+          },
+          {
+            "name": "Golden Bat",
+            "slug": "golden-bat"
+          },
+          {
+            "name": "Tomoe Gozen",
+            "slug": "tomoe-gozen"
+          },
+          {
+            "name": "Eredin",
+            "slug": "eredin"
+          }
+        ],
+        "quantity": 2,
+        "slug": "skirmish",
+        "title": "Skirmish",
+        "type": "versatile",
+        "value": 4
+      },
+      {
+        "afterText": "Move each of your fighters up to 2 spaces. Change size.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/mad-as-a-hatter.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "mad-as-a-hatter",
+        "title": "Mad as a Hatter",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": "Discard the top card of your deck. Add its BOOST value to this card's value.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/manxome-foe.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "manxome-foe",
+        "title": "Manxome Foe",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/feint.png",
+        "immediateText": "Cancel all effects on your opponent's card.",
+        "other_decks": [
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Dracula",
+            "slug": "dracula"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "Jekyll & Hyde",
+            "slug": "jekyll-hyde"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Medusa",
+            "slug": "medusa"
+          },
+          {
+            "name": "Robin Hood",
+            "slug": "robin-hood"
+          },
+          {
+            "name": "Bloody Mary",
+            "slug": "bloody-mary"
+          },
+          {
+            "name": "Black Panther",
+            "slug": "black-panther"
+          },
+          {
+            "name": "Deadpool",
+            "slug": "deadpool"
+          },
+          {
+            "name": "Black Widow",
+            "slug": "black-widow"
+          },
+          {
+            "name": "Winter Soldier",
+            "slug": "winter-soldier"
+          },
+          {
+            "name": "The Genie",
+            "slug": "the-genie"
+          },
+          {
+            "name": "Achilles",
+            "slug": "achilles"
+          },
+          {
+            "name": "Bullseye",
+            "slug": "bullseye"
+          },
+          {
+            "name": "Squirrel Girl",
+            "slug": "squirrel-girl"
+          },
+          {
+            "name": "Ms. Marvel",
+            "slug": "ms-marvel"
+          },
+          {
+            "name": "Cloak and Dagger",
+            "slug": "cloak-and-dagger"
+          },
+          {
+            "name": "Moon Knight",
+            "slug": "moon-knight"
+          },
+          {
+            "name": "Ghost Rider",
+            "slug": "ghost-rider"
+          },
+          {
+            "name": "Raptors",
+            "slug": "raptors"
+          },
+          {
+            "name": "Sherlock Holmes",
+            "slug": "sherlock-holmes"
+          },
+          {
+            "name": "Sinbad",
+            "slug": "sinbad"
+          },
+          {
+            "name": "InGen",
+            "slug": "ingen"
+          },
+          {
+            "name": "Willow",
+            "slug": "willow"
+          },
+          {
+            "name": "Angel",
+            "slug": "angel"
+          },
+          {
+            "name": "Spike",
+            "slug": "spike"
+          },
+          {
+            "name": "Buffy",
+            "slug": "buffy"
+          },
+          {
+            "name": "Beowulf",
+            "slug": "beowulf"
+          },
+          {
+            "name": "Dr. Ellie Sattler",
+            "slug": "dr-ellie-sattler"
+          },
+          {
+            "name": "Daredevil",
+            "slug": "daredevil"
+          },
+          {
+            "name": "Doctor Strange",
+            "slug": "doctor_strange"
+          }
+        ],
+        "quantity": 3,
+        "slug": "feint",
+        "title": "Feint",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/regroup.png",
+        "immediateText": null,
+        "other_decks": [
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Medusa",
+            "slug": "medusa"
+          },
+          {
+            "name": "Robin Hood",
+            "slug": "robin-hood"
+          },
+          {
+            "name": "Black Panther",
+            "slug": "black-panther"
+          },
+          {
+            "name": "Luke Cage",
+            "slug": "luke-cage"
+          },
+          {
+            "name": "Sinbad",
+            "slug": "sinbad"
+          },
+          {
+            "name": "InGen",
+            "slug": "ingen"
+          },
+          {
+            "name": "Willow",
+            "slug": "willow"
+          },
+          {
+            "name": "Angel",
+            "slug": "angel"
+          },
+          {
+            "name": "Spike",
+            "slug": "spike"
+          },
+          {
+            "name": "Buffy",
+            "slug": "buffy"
+          },
+          {
+            "name": "Dr. Ellie Sattler",
+            "slug": "dr-ellie-sattler"
+          }
+        ],
+        "quantity": 3,
+        "slug": "regroup",
+        "title": "Regroup",
+        "type": "versatile",
+        "value": 1
+      },
+      {
+        "afterText": "Choose 2 different effects:\n- draw 2 cards\n- Alice recovers 3 health\n- place Alice in any other space",
+        "basicText": null,
+        "boost": 4,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/looking-glass.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "looking-glass",
+        "title": "Looking Glass",
+        "type": "defense",
+        "value": 2
+      },
+      {
+        "afterText": "If you won the combat, look at your opponent's hand and choose 1 card for them to discard.",
+        "basicText": null,
+        "boost": 4,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/snicker-snack.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 1,
+        "slug": "snicker-snack",
+        "title": "Snicker-Snack",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "Change size.",
+        "basicText": null,
+        "boost": 4,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/o-frabjous-day.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 1,
+        "slug": "o-frabjous-day",
+        "title": "O Frabjous Day!",
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "afterText": "Move Alice up to 3 spaces. Change size.",
+        "basicText": null,
+        "boost": 4,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/the-other-side-of-the-mushroom.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 1,
+        "slug": "the-other-side-of-the-mushroom",
+        "title": "The Other Side of the Mushroom",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": "Move Alice up to 3 spaces. Change size.",
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/eat-me.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "eat-me",
+        "title": "Eat Me",
+        "type": "scheme",
+        "value": 2
+      },
+      {
+        "afterText": "Move Alice up to 5 spaces. Change size.",
+        "basicText": null,
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/i-m-late-i-m-late.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "i-m-late-i-m-late",
+        "title": "I'm Late, I'm Late",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": null,
+        "basicText": "Draw 2 cards. Change size.",
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "ALICE",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/drink-me.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "drink-me",
+        "title": "Drink Me",
+        "type": "scheme",
+        "value": 2
+      },
+      {
+        "afterText": "Deal 2 damage to any one fighter adjacent to the Jabberwock.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "JABBERWOCK",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/alice/jaws-that-bite.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "jaws-that-bite",
+        "title": "Jaws That Bite",
+        "type": "attack",
+        "value": 4
+      }
+    ],
+    "heroes": [
+      {
+        "attack_type": "melee",
+        "hp": 13,
+        "name": "Alice",
+        "quantity": 1,
+        "slug": "alice"
+      }
+    ],
+    "movement": 2,
+    "name": "Alice",
+    "notes": null,
+    "quote": null,
+    "set": "Battle of Legends, Volume One",
+    "setSlug": "battle-of-legends-volume-one",
+    "sidekicks": [
+      {
+        "attack_type": "melee",
+        "hp": 8,
+        "name": "The Jabberwock",
+        "quantity": 1,
+        "slug": "the-jabberwock"
+      }
+    ],
+    "slug": "alice",
+    "special": "CURIOSER AND CURIOSER\r\nWhen you place Alice, choose whether she starts the game BIG or SMALL. \r\nWhen Alice is BIG, add 2 to the value of her attack cards. \r\nWhen Alice is SMALL, add 1 to the value of her defense cards."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-27",
+  "sourceInventory": "docs/characters/alice/inventory.json",
+  "copies": 30,
+  "cardDesigns": 15,
+  "masters": 19,
+  "derivativeVariants": 53,
+  "derivativeBytes": 6853350,
+  "masterHashes": "provenance.json",
+  "preparationByteIdentical": true,
+  "preparationReview": "/tmp/alice-prepare-verification/",
+  "newTests": { "content": 40, "neutralEngine": 6, "roomReconnect": 3, "passed": 49 },
+  "unitIntegration": {
+    "fullPassed": 764,
+    "fullFailed": 1,
+    "fullCases": 765,
+    "failure": "Concurrent Bigfoot artwork preparation; subsequent asset/card/room rerun passes all 12 cases.",
+    "log": "/tmp/alice-tests-final.log",
+    "rerunLog": "/tmp/alice-assets-room-final.log"
+  },
+  "browser": {
+    "aliceCases": 5,
+    "alicePassed": 5,
+    "fullCases": 164,
+    "fullPassed": 148,
+    "fullFailed": 16,
+    "verifiedWithTargetedReruns": 161,
+    "remainingUnrelatedFailures": [
+      "Geralt gallery expects a scrollable sign-in document to fit the landscape-phone viewport",
+      "Portal socket test expects the old description before passage-arrow clarification",
+      "Vader socket test expects Confirm instead of the current empty-payment Skip button"
+    ],
+    "fullLog": "/tmp/alice-e2e-full.log",
+    "gameplayReview": "/tmp/alice-browser-final/",
+    "artworkReview": "/tmp/alice-art-browser/",
+    "correctedBadges": "/tmp/alice-colors-final/"
+  },
+  "checks": {
+    "typecheck": "pass",
+    "lint": "pass",
+    "format": "pass",
+    "build": "pass",
+    "whitespace": "pass"
+  },
+  "unsupportedRules": [],
+  "sourceAdaptations": [],
+  "deployed": false
+}

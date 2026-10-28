@@ -516,7 +516,7 @@ it('keeps an explicit public hand reveal readable after subsequent snapshots wit
     { type: 'hand-revealed', player: 'b', cards, sequence: 1, revision: 1, audience: 'all' },
   ]);
   expect(events).toHaveLength(1);
-  expect(events[0].title).toBe('Hand revealed');
+  expect(events[0].title).toBe('Cards revealed');
   expect(events[0].review?.cards).toEqual(['sherlock-holmes-elementary']);
   expect(events[0].review?.explanation).toContain('Briar');
   expect(JSON.stringify(events)).not.toContain('medusa-gaze-of-stone');

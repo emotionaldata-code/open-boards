@@ -41,6 +41,8 @@ export type Operation =
       defenseCard: Card | null;
       boosts: {
         card: Card;
+        amount?: number;
+        revealed?: boolean;
         grant: string;
         cancelWithCard: boolean;
         cancelled?: boolean;
@@ -59,6 +61,7 @@ export type Operation =
       revealed?: boolean;
       defenseCancelled?: boolean;
       faceUpDefense?: boolean;
+      faceUpAttack?: boolean;
       suppressedCards?: string[];
       prediction?: number;
       ignoredValues?: ('attack' | 'defense')[];
@@ -94,10 +97,27 @@ export interface Binding {
   owner: string;
   chosen?: string;
   selectedCard?: Card;
+  selectedPlayer?: string;
   chosenToken?: string;
   tokenChooser?: string;
 }
 export type Task = (
+  | ({ type: 'complete-payment'; payment: number; count: number; effects: Effect[] } & Binding)
+  | { type: 'select-hero'; player: string; identity?: string }
+  | {
+      type: 'order-abilities';
+      frame: number;
+      owner: string;
+      abilities: Extract<Task, { type: 'ability' }>[];
+    }
+  | ({
+      type: 'boost-draw';
+      remaining: string[];
+      commitments: { player: string; card?: Card; boost: number; draw?: number }[];
+      selected?: { player: string; card: string };
+      stage: 'commit' | 'draw' | 'damage';
+      index: number;
+    } & Binding)
   | { type: 'select-deck'; player: string; group: number; selected?: string }
   | { type: 'begin-play' }
   | ({ type: 'activate-ongoing'; card: Card } & Binding)
@@ -116,11 +136,25 @@ export type Task = (
     } & Binding)
   | ({ type: 'token-group'; remaining: string[]; effects: Effect[] } & Binding)
   | ({ type: 'token-setup'; remaining: string[] } & Binding)
-  | ({ type: 'return-to-deck'; remaining: number; selected?: string; ordered: string[] } & Binding)
+  | ({
+      type: 'return-to-deck';
+      player?: string;
+      remaining: number;
+      selected?: string;
+      ordered: string[];
+    } & Binding)
   | ({ type: 'select-attack' } & Binding)
   | ({ type: 'replace-attack'; card: string } & Binding)
   | ({ type: 'damage-result'; damage: number; effects: Effect[]; onDefeat?: Effect[] } & Binding)
   | ({ type: 'swap-apply'; frames: number[]; effects: Effect[] } & Binding)
+  | ({
+      type: 'reveal-hand';
+      target: string;
+      count: number;
+      discard: number;
+      selected: string[];
+      discardAllowed?: boolean;
+    } & Binding)
   | ({ type: 'predict-value'; value: number } & Binding)
   | ({
       type: 'named-value-discard';
@@ -158,11 +192,13 @@ export type Task = (
       type: 'revive-placement';
       fighter: string;
       anchor: PlayerRef;
+      zone?: 'any';
     } & Binding)
   | ({
       type: 'revive';
       fighter: string;
       anchor: PlayerRef;
+      zone?: 'any';
       position: string;
     } & Binding)
   | {
@@ -174,6 +210,7 @@ export type Task = (
     }
   | {
       type: 'discard-card';
+      payment?: number;
       player: string;
       card: string;
       combat?: number;
@@ -240,6 +277,7 @@ export interface PendingChoice {
   continuations: Record<string, Task[]>;
 }
 export interface ResolutionState {
+  discardPayments?: Record<number, number>;
   queue: Task[];
   frames: Record<number, Frame>;
   next: number;
@@ -253,6 +291,7 @@ export interface ResolutionState {
   dormant?: string[];
   movementLocks?: string[];
   attacked?: string[];
+  maneuvered?: string[];
   endTurnRequested?: boolean;
   random: number;
   uses: Record<string, { turn: number; count: number; total: number }>;

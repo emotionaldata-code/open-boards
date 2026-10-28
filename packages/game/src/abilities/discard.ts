@@ -17,6 +17,40 @@ export function offerDiscard(
     ? reference(runtime.state, binding, effect.chooser)?.player
     : playerId;
   if (!chooser) return;
+  if (effect.optional) {
+    if (player.hand.length < effect.count) return;
+    openChoice(
+      runtime,
+      binding.frame,
+      chooser,
+      `Discard ${effect.count} cards?`,
+      [
+        {
+          id: 'pay',
+          label: `Discard ${effect.count} cards`,
+          tasks: runtime.effects([{ ...effect, optional: false }], binding),
+        },
+        { id: '$decline', label: 'Decline discard', decline: true, tasks: [] },
+      ],
+      1,
+      1,
+      binding.provenance,
+      { fighter: binding.owner },
+    );
+    return;
+  }
+  if (effect.onComplete && player.hand.length < effect.count) return;
+  const payment = effect.onComplete ? ++runtime.data.next : undefined;
+  if (payment !== undefined) {
+    (runtime.data.discardPayments ??= {})[payment] = 0;
+    runtime.prepend({
+      ...binding,
+      type: 'complete-payment',
+      payment,
+      count: effect.count,
+      effects: effect.onComplete!,
+    });
+  }
   if (effect.onDecline) {
     if (!player.hand.length) {
       runtime.prepend(...runtime.effects(effect.onDecline, binding));
@@ -90,6 +124,7 @@ export function offerDiscard(
       tasks: [
         {
           type: 'discard-card',
+          payment,
           player: playerId,
           card: card.id,
           combat: binding.frame,

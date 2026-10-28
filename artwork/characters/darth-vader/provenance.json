@@ -1,0 +1,31 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-28",
+  "status": "generation-blocked",
+  "character": "darth-vader",
+  "expected": {
+    "portraits": 1,
+    "tokens": 1,
+    "cardScenes": 12,
+    "totalAssets": 14
+  },
+  "prompts": "prompts.json",
+  "assets": [],
+  "attempts": [
+    {
+      "id": "darth-vader-portrait",
+      "prompt": "prompts.json#darth-vader-portrait",
+      "status": "failed",
+      "error": {
+        "httpStatus": 400,
+        "type": "image_generation_user_error",
+        "code": "moderation_blocked",
+        "moderationStage": "output",
+        "categories": ["other"],
+        "requestId": "b024f8a3-c513-474b-87a6-3f58f4f40bdb"
+      }
+    }
+  ],
+  "notes": "No image was returned or copied. Existing SVG artwork and runtime references are unchanged. Portrait inspection, identity references, token and card generation, derivative preparation, integration and browser verification remain pending."
+}

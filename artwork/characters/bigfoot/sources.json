@@ -1,0 +1,107 @@
+[
+  {
+    "id": "bigfoot-portrait",
+    "kind": "portrait",
+    "source": "masters/bigfoot-portrait.png",
+    "focal": [0.5, 0.4]
+  },
+  {
+    "id": "bigfoot-token",
+    "kind": "token",
+    "source": "masters/bigfoot-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "bigfoot-jackalope-portrait",
+    "kind": "portrait",
+    "source": "masters/jackalope-portrait.png",
+    "focal": [0.5, 0.25]
+  },
+  {
+    "id": "bigfoot-jackalope-token",
+    "kind": "token",
+    "source": "masters/jackalope-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "bigfoot-skirmish",
+    "kind": "card",
+    "card": "bigfoot-skirmish",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-larger-than-life",
+    "kind": "card",
+    "card": "bigfoot-larger-than-life",
+    "source": "masters/larger-than-life.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-crash-through-the-trees",
+    "kind": "card",
+    "card": "bigfoot-crash-through-the-trees",
+    "source": "masters/crash-through-the-trees.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-it-s-just-your-imagination",
+    "kind": "card",
+    "card": "bigfoot-it-s-just-your-imagination",
+    "source": "masters/it-s-just-your-imagination.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-savagery",
+    "kind": "card",
+    "card": "bigfoot-savagery",
+    "source": "masters/savagery.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-hoax",
+    "kind": "card",
+    "card": "bigfoot-hoax",
+    "source": "masters/hoax.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-jackalope-horns",
+    "kind": "card",
+    "card": "bigfoot-jackalope-horns",
+    "source": "masters/jackalope-horns.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-disengage",
+    "kind": "card",
+    "card": "bigfoot-disengage",
+    "source": "masters/disengage.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-momentous-shift",
+    "kind": "card",
+    "card": "bigfoot-momentous-shift",
+    "source": "masters/momentous-shift.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-feint",
+    "kind": "card",
+    "card": "bigfoot-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bigfoot-regroup",
+    "kind": "card",
+    "card": "bigfoot-regroup",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5]
+  }
+]

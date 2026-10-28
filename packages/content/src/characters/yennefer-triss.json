@@ -1,0 +1,517 @@
+{
+  "id": "yennefer-triss",
+  "name": "Yennefer & Triss",
+  "hp": 14,
+  "movement": 2,
+  "attackType": "ranged",
+  "heroSelection": {
+    "name": "Rival Heroes · Choose your hero",
+    "description": "Choose Yennefer or Triss as your 14-health hero. The other is your 6-health sidekick. Only your hero's special ability applies.",
+    "mainName": "Yennefer"
+  },
+  "abilities": [
+    {
+      "id": "sorceress-of-vengerberg",
+      "name": "Sorceress of Vengerberg",
+      "description": "IMMEDIATELY: If Yennefer is your hero and is attacking, you may BOOST her attack. This effect cannot be canceled.",
+      "trigger": "combat-reveal",
+      "effects": [
+        {
+          "type": "boost-attack"
+        }
+      ],
+      "orderWithCard": true,
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "role",
+            "role": "attacker"
+          },
+          {
+            "type": "fighter-role",
+            "role": "main"
+          }
+        ]
+      }
+    }
+  ],
+  "ally": {
+    "id": "yennefer-triss-triss",
+    "name": "Triss",
+    "count": 1,
+    "hp": 6,
+    "attackType": "ranged",
+    "abilities": [
+      {
+        "id": "merigold-the-fearless",
+        "name": "Merigold the Fearless",
+        "description": "After Triss plays a scheme, deal 2 damage to a fighter adjacent to Triss. Only applies when Triss is your hero.",
+        "trigger": "after-action",
+        "effects": [
+          {
+            "type": "choose-fighter",
+            "relation": "any",
+            "range": "adjacent",
+            "effects": [
+              {
+                "type": "damage",
+                "target": "chosen",
+                "amount": 2
+              }
+            ]
+          }
+        ],
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "role",
+              "role": "actor"
+            },
+            {
+              "type": "fighter-role",
+              "role": "main"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "palette": {
+    "ground": "#30283e",
+    "ink": "#e5d6e8",
+    "accent": "#bb9fd7"
+  },
+  "cards": [
+    {
+      "id": "yennefer-triss-incinerate",
+      "name": "Incinerate",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 7,
+      "boost": 2,
+      "description": "This card's effects cannot be canceled. DURING COMBAT: Your opponent may discard 2 cards to ignore this card's value.",
+      "art": {
+        "scene": "fire",
+        "variant": 0,
+        "image": "/artwork/yennefer-triss/yennefer-triss-incinerate-1280-d3c163db70aa.webp"
+      },
+      "flavor": "Power answers to discipline.",
+      "fighter": "yennefer-triss",
+      "effectsCannotBeCancelled": true,
+      "abilities": [
+        {
+          "id": "incinerate",
+          "name": "Incinerate",
+          "description": "Incinerate.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 2,
+              "optional": true,
+              "onComplete": [
+                {
+                  "type": "ignore-combat-value"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-merigolds-hailstorm",
+      "name": "Merigold's Hailstorm",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 4,
+      "boost": 3,
+      "description": "AFTER COMBAT: Your opponent chooses one: - they discard 2 cards - deal 3 damage to their hero - they discard the top 4 cards of their deck",
+      "art": {
+        "scene": "bolt",
+        "variant": 1,
+        "image": "/artwork/yennefer-triss/yennefer-triss-merigolds-hailstorm-1280-10dec0601c35.webp"
+      },
+      "flavor": "The sky remembers its fury.",
+      "fighter": "yennefer-triss-triss",
+      "abilities": [
+        {
+          "id": "merigolds-hailstorm",
+          "name": "Merigold's Hailstorm",
+          "description": "Merigold's Hailstorm.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "chooser": "opponent",
+              "prompt": "Choose the consequence of Merigold's Hailstorm",
+              "options": [
+                {
+                  "id": "hand",
+                  "label": "Discard 2 cards",
+                  "effects": [
+                    {
+                      "type": "discard",
+                      "target": "opponent",
+                      "count": 2
+                    }
+                  ]
+                },
+                {
+                  "id": "health",
+                  "label": "Deal 3 damage to your hero",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "opponent-main",
+                      "amount": 3
+                    }
+                  ]
+                },
+                {
+                  "id": "deck",
+                  "label": "Discard the top 4 cards of your deck",
+                  "effects": [
+                    {
+                      "type": "discard-deck",
+                      "target": "opponent",
+                      "count": 4
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-portal-to-anywhere",
+      "name": "Portal To Anywhere",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 1,
+      "boost": 2,
+      "description": "AFTER COMBAT: Place a fighter in the combat in any space. Gain 1 action.",
+      "art": {
+        "scene": "map",
+        "variant": 2,
+        "image": "/artwork/yennefer-triss/yennefer-triss-portal-to-anywhere-1280-42d8416fe56a.webp"
+      },
+      "flavor": "Every distance has a door.",
+      "abilities": [
+        {
+          "id": "portal-to-anywhere",
+          "name": "Portal To Anywhere",
+          "description": "Portal To Anywhere.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "combat",
+              "effects": [
+                {
+                  "type": "teleport",
+                  "target": "chosen",
+                  "zone": "any",
+                  "includeOrigin": true,
+                  "optional": false
+                }
+              ]
+            },
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-echoing-blast",
+      "name": "Echoing Blast",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 3,
+      "boost": 1,
+      "description": "AFTER COMBAT: If you won the combat, return this card to your hand.",
+      "art": {
+        "scene": "bolt",
+        "variant": 3,
+        "image": "/artwork/yennefer-triss/yennefer-triss-echoing-blast-1280-5a8e8d9d4fbc.webp"
+      },
+      "flavor": "Power returns to its source.",
+      "abilities": [
+        {
+          "id": "echoing-blast",
+          "name": "Echoing Blast",
+          "description": "Echoing Blast.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "return-combat-card"
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-ball-lightning",
+      "name": "Ball Lightning",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "AFTER COMBAT: If you won the combat, your opponent discards 1 card. Otherwise, both players discard 1 card.",
+      "art": {
+        "scene": "bolt",
+        "variant": 4,
+        "image": "/artwork/yennefer-triss/yennefer-triss-ball-lightning-1280-df9c7c129321.webp"
+      },
+      "flavor": "A storm between two hands.",
+      "abilities": [
+        {
+          "id": "ball-lightning",
+          "name": "Ball Lightning",
+          "description": "Ball Lightning.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "discard",
+                  "target": "opponent",
+                  "count": 1
+                }
+              ],
+              "else": [
+                {
+                  "type": "discard",
+                  "count": 1
+                },
+                {
+                  "type": "discard",
+                  "target": "opponent",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-telepathy",
+      "name": "Telepathy",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "IMMEDIATELY: Your opponent may discard 1 card. If they don't cancel all effects on their card.",
+      "art": {
+        "scene": "ward",
+        "variant": 5,
+        "image": "/artwork/yennefer-triss/yennefer-triss-telepathy-1280-63ddd32ebddd.webp"
+      },
+      "flavor": "A thought is an open door.",
+      "abilities": [
+        {
+          "id": "telepathy",
+          "name": "Telepathy",
+          "description": "Telepathy.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1,
+              "onDecline": [
+                {
+                  "type": "suppress-card-effects"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-quick-and-ready",
+      "name": "Quick And Ready",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 2,
+      "description": "AFTER COMBAT: Place your fighter in any space in their zone. Draw 1 card.",
+      "art": {
+        "scene": "trail",
+        "variant": 6,
+        "image": "/artwork/yennefer-triss/yennefer-triss-quick-and-ready-1280-50278cc6ac50.webp"
+      },
+      "flavor": "Already one step ahead.",
+      "abilities": [
+        {
+          "id": "quick-and-ready",
+          "name": "Quick And Ready",
+          "description": "Quick And Ready.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "teleport",
+              "target": "self",
+              "zone": "shared",
+              "includeOrigin": true,
+              "optional": false
+            },
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-magical-barrier",
+      "name": "Magical Barrier",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "defense",
+      "value": 4,
+      "boost": 3,
+      "description": "IMMEDIATELY: Your fighter recovers 1 health.",
+      "art": {
+        "scene": "shield",
+        "variant": 0,
+        "image": "/artwork/yennefer-triss/yennefer-triss-magical-barrier-1280-2e760b46b866.webp"
+      },
+      "flavor": "Even fire needs shelter.",
+      "abilities": [
+        {
+          "id": "magical-barrier",
+          "name": "Magical Barrier",
+          "description": "Magical Barrier.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "heal",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-paralyzing-fetters",
+      "name": "Paralyzing Fetters",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "defense",
+      "value": 2,
+      "boost": 2,
+      "description": "IMMEDIATELY: The value of your opponent's card is equal to its printed value and cannot be changed.",
+      "art": {
+        "scene": "ward",
+        "variant": 1,
+        "image": "/artwork/yennefer-triss/yennefer-triss-paralyzing-fetters-1280-6d2f52f5e514.webp"
+      },
+      "flavor": "Power held perfectly still.",
+      "abilities": [
+        {
+          "id": "paralyzing-fetters",
+          "name": "Paralyzing Fetters",
+          "description": "Paralyzing Fetters.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "lock-card-value",
+              "target": "opponent",
+              "value": {
+                "card": "opposing",
+                "field": "value"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-advisor-to-the-king",
+      "name": "Advisor To The King",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Each of your fighters recovers 1 health. Draw 1 card. [ONGOING]: Your BOOST values are +1. Discard this card at the end of your turn if you didn't attack.",
+      "art": {
+        "scene": "lantern",
+        "variant": 2,
+        "image": "/artwork/yennefer-triss/yennefer-triss-advisor-to-the-king-1280-49f2a0e2c691.webp"
+      },
+      "flavor": "A throne is only another battlefield.",
+      "ongoing": {
+        "boostBonus": 1,
+        "discardUnlessAttacked": true
+      },
+      "effects": [
+        {
+          "type": "for-each-fighter",
+          "relation": "friendly",
+          "effects": [
+            {
+              "type": "heal",
+              "target": "chosen",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "type": "draw",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "yennefer-triss-lodge-of-sorceresses",
+      "name": "Lodge Of Sorceresses",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Each player simultaneously reveals a card from their hand and draws card equal to their card's BOOST value. Then, the player(s) who drew the most cards deals that much damage to their hero.",
+      "art": {
+        "scene": "embers",
+        "variant": 3,
+        "image": "/artwork/yennefer-triss/yennefer-triss-lodge-of-sorceresses-1280-12f8963c4100.webp"
+      },
+      "flavor": "Every gift has a price.",
+      "effects": [
+        {
+          "type": "reveal-boost-draw"
+        }
+      ]
+    }
+  ]
+}

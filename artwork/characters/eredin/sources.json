@@ -1,0 +1,107 @@
+[
+  {
+    "id": "eredin-portrait",
+    "kind": "portrait",
+    "source": "masters/portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "eredin-red-rider-portrait",
+    "kind": "portrait",
+    "source": "masters/rider-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "eredin-token",
+    "kind": "token",
+    "source": "masters/eredin-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "eredin-red-rider-token",
+    "kind": "token",
+    "source": "masters/rider-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "eredin-brutal-strike",
+    "kind": "card",
+    "source": "masters/brutal-strike.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-brutal-strike"
+  },
+  {
+    "id": "eredin-backhand",
+    "kind": "card",
+    "source": "masters/backhand.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-backhand"
+  },
+  {
+    "id": "eredin-foul-purpose",
+    "kind": "card",
+    "source": "masters/foul-purpose.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-foul-purpose"
+  },
+  {
+    "id": "eredin-unyielding-hordes",
+    "kind": "card",
+    "source": "masters/unyielding-hordes.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-unyielding-hordes"
+  },
+  {
+    "id": "eredin-wild-hunt",
+    "kind": "card",
+    "source": "masters/wild-hunt.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-wild-hunt"
+  },
+  {
+    "id": "eredin-skirmish",
+    "kind": "card",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-skirmish"
+  },
+  {
+    "id": "eredin-icy-guile",
+    "kind": "card",
+    "source": "masters/icy-guile.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-icy-guile"
+  },
+  {
+    "id": "eredin-portal-defense",
+    "kind": "card",
+    "source": "masters/portal-defense.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-portal-defense"
+  },
+  {
+    "id": "eredin-implacable",
+    "kind": "card",
+    "source": "masters/implacable.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-implacable"
+  },
+  {
+    "id": "eredin-might-of-the-aen-elle",
+    "kind": "card",
+    "source": "masters/might-of-the-aen-elle.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-might-of-the-aen-elle"
+  },
+  {
+    "id": "eredin-close-for-the-kill",
+    "kind": "card",
+    "source": "masters/close-for-the-kill.png",
+    "focal": [0.5, 0.5],
+    "card": "eredin-close-for-the-kill"
+  }
+]

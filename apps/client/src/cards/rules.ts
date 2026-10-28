@@ -2,6 +2,7 @@ import type { Hook } from '@open-boards/game';
 
 /** Human timing labels, independent of the interpreter and its implementation. */
 export const hookDescriptions: Record<Hook, string> = {
+  'game-start': 'During setup, before the first turn.',
   'turn-start': 'At the start of your turn.',
   'turn-end': 'At the end of your turn.',
   'before-draw': 'Before cards are drawn.',
@@ -20,6 +21,7 @@ export const hookDescriptions: Record<Hook, string> = {
   'after-damage': 'After damage is applied.',
   'before-heal': 'Before healing is applied.',
   'after-heal': 'After healing is applied.',
+  'after-action': 'After the scheme finishes resolving.',
   'card-played': 'When the card is played.',
   'card-discarded': 'When the card is discarded.',
   eliminated: 'When a fighter is defeated.',

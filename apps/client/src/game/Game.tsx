@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { basic } from '@open-boards/content';
 import {
-  canAttack,
+  canAttackWithCard,
+  canPlayAttack,
+  attackModeAvailable,
   cardEligible,
   deploymentSpaces,
   fighterById,
@@ -84,6 +86,7 @@ export function Game({
   });
   const selected = selection.cards;
   const selectedFighter = selection.fighter;
+  const [faceUpCard, setFaceUpCard] = useState<string | null>(null);
   const pending = useRef(false);
   const [sending, setSending] = useState(false);
   const board = useRef<BoardPlayback>(null);
@@ -93,6 +96,7 @@ export function Game({
   const [confirmLeave, setConfirmLeave] = useState(false);
   useEffect(() => {
     setSelection({ cards: [], fighter: '' });
+    setFaceUpCard(null);
     pending.current = false;
     setSending(false);
   }, [game.revision, reset]);
@@ -150,8 +154,10 @@ export function Game({
     myTurn &&
     chosenDefinition &&
     cardEligible(chosenDefinition, fighter) &&
-    ['attack', 'versatile'].includes(chosenDefinition.category)
-      ? game.fighters.filter((f) => canAttack(fighter, f, basic))
+    canPlayAttack(game, fighter, chosenDefinition)
+      ? game.fighters.filter((f) =>
+          canAttackWithCard(game, fighter, f, chosenDefinition, basic, faceUpCard === chosen?.id),
+        )
       : [];
   const choice = game.choice;
   const highlights = locked
@@ -220,7 +226,13 @@ export function Game({
     const option = choice?.options.find((o) => o.object?.type === 'fighter' && o.object.id === id);
     if (option) select(option.id);
     else if (targets.some((f) => f.id === id) && chosen)
-      send({ type: 'attack', fighter: fighter.id, card: chosen.id, target: id });
+      send({
+        type: 'attack',
+        fighter: fighter.id,
+        card: chosen.id,
+        target: id,
+        ...(faceUpCard === chosen.id ? { faceUp: true } : {}),
+      });
     else if (moving && fighter.id === id) send({ type: 'move', fighter: id, path: [] });
     else if (available.some((f) => f.id === id)) setSelection({ fighter: id, cards: [] });
   }
@@ -326,7 +338,7 @@ export function Game({
               </div>
             )}
           </section>
-          {game.observation && !choice ? (
+          {game.observation && !choice && !defending ? (
             <section className="hand-panel" aria-label="Revealed cards">
               <h2>{game.observation.prompt}</h2>
               <div className="ability-options">
@@ -353,6 +365,16 @@ export function Game({
               onSelect={select}
               onChoose={choose}
               onCommand={send}
+              faceUpAttack={
+                !!chosen &&
+                !!chosenDefinition?.attackMode?.faceUp &&
+                attackModeAvailable(game, fighter, chosenDefinition)
+                  ? {
+                      active: faceUpCard === chosen.id,
+                      toggle: () => setFaceUpCard(faceUpCard === chosen.id ? null : chosen.id),
+                    }
+                  : undefined
+              }
             />
           )}
         </div>

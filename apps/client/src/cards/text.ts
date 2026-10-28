@@ -66,6 +66,10 @@ export function cardText(id: string): string {
 export function cardFighter(id: string): string {
   const card = basic.cards[id];
   const character = basic.characters[cardPresentation[id].character];
+  if (card.fighter)
+    return card.fighter === character.ally?.id
+      ? character.ally.name
+      : (character.heroSelection?.mainName ?? character.name);
   return card.usableBy === 'BOTH'
     ? 'Any fighter'
     : card.usableBy === 'ALLY'

@@ -14,7 +14,8 @@ function candidates(runtime: Runtime, binding: Binding) {
     (f) => f.player === owner.player && f.role === 'ally' && f.defeated,
   );
 }
-function destinations(runtime: Runtime, binding: Binding, anchor: PlayerRef) {
+function destinations(runtime: Runtime, binding: Binding, anchor: PlayerRef, zone?: 'any') {
+  if (zone === 'any') return runtime.defs.map.nodes.filter((n) => emptyEndpoint(runtime.state, n));
   const fighter = reference(runtime.state, binding, anchor);
   if (!fighter || fighter.defeated || fighter.position === null) return [];
   return runtime.defs.map.nodes.filter(
@@ -27,12 +28,14 @@ export function offerRevival(
   effect: Extract<Effect, { type: 'revive-ally' }>,
 ): void {
   const anchor = effect.anchor ?? 'main';
-  if (!destinations(runtime, binding, anchor).length) return;
+  if (!destinations(runtime, binding, anchor, effect.zone).length) return;
   const options: (ChoiceOption & { tasks: Task[] })[] = candidates(runtime, binding).map((f) => ({
     id: f.id,
     object: { type: 'fighter', id: f.id },
     label: fighterLabel(f, runtime.defs),
-    tasks: [{ ...binding, type: 'revive-placement' as const, fighter: f.id, anchor }],
+    tasks: [
+      { ...binding, type: 'revive-placement' as const, fighter: f.id, anchor, zone: effect.zone },
+    ],
   }));
   if (!options.length) return;
   if (effect.optional) options.push({ id: '$skip', decline: true, label: 'Skip', tasks: [] });
@@ -58,7 +61,7 @@ export function offerPlacement(
     task.frame,
     fighterById(runtime.state, task.owner)!.player,
     'Choose where to return the ally',
-    destinations(runtime, task, task.anchor).map((position) => ({
+    destinations(runtime, task, task.anchor, task.zone).map((position) => ({
       id: position,
       object: { type: 'space' as const, id: position },
       label: `Space ${runtime.defs.map.nodes.indexOf(position) + 1}`,
@@ -72,7 +75,8 @@ export function offerPlacement(
 }
 export function revive(runtime: Runtime, task: Extract<Task, { type: 'revive' }>): void {
   const fighter = candidates(runtime, task).find((f) => f.id === task.fighter);
-  if (!fighter || !destinations(runtime, task, task.anchor).includes(task.position)) return;
+  if (!fighter || !destinations(runtime, task, task.anchor, task.zone).includes(task.position))
+    return;
   const definition = fighterDefinition(fighter, runtime.defs);
   fighter.defeated = false;
   fighter.hp = definition.hp;

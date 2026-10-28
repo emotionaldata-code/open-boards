@@ -57,7 +57,7 @@
       "description": "Immediately: Cancel all effects on your opponent's card.",
       "art": {
         "scene": "ward",
-        "image": "/cards/dracula/feint.svg"
+        "image": "/artwork/dracula/dracula-feint-1280-b2d9d81ce38d.webp"
       },
       "flavor": "A polite bow hides a sharpened intention.",
       "abilities": [
@@ -85,7 +85,7 @@
       "description": "After combat: Move your fighter up to 3 spaces.",
       "art": {
         "scene": "trail",
-        "image": "/cards/dracula/dash.svg"
+        "image": "/artwork/dracula/dracula-dash-1280-4e5dc09802bf.webp"
       },
       "flavor": "The last footfall dissolves into fog.",
       "abilities": [
@@ -114,7 +114,7 @@
       "description": "After combat: Draw 1 card.",
       "art": {
         "scene": "blade",
-        "image": "/cards/dracula/exploit.svg"
+        "image": "/artwork/dracula/dracula-exploit-1280-7b2a3dcbdb4e.webp"
       },
       "flavor": "A moment of weakness is an invitation.",
       "abilities": [
@@ -143,7 +143,7 @@
       "description": "During combat: Your opponent discards 1 random card. Add its BOOST value to this card's attack value.",
       "art": {
         "scene": "blade",
-        "image": "/cards/dracula/ambush.svg"
+        "image": "/artwork/dracula/dracula-ambush-1280-06320158d12e.webp"
       },
       "flavor": "Something waits beyond the carriage light.",
       "abilities": [
@@ -178,7 +178,7 @@
       "description": "During combat: This card's value is +1 for each Sister in the same zone as the opposing fighter.",
       "art": {
         "scene": "embers",
-        "image": "/cards/dracula/feeding-frenzy.svg"
+        "image": "/artwork/dracula/dracula-feeding-frenzy-1280-430419542693.webp"
       },
       "flavor": "Three shadows gather at the threshold.",
       "abilities": [
@@ -213,7 +213,7 @@
       "description": "During combat: You may discard any number of cards from your hand. This card's value is +1 for each card you discard.",
       "art": {
         "scene": "fire",
-        "image": "/cards/dracula/beastform.svg"
+        "image": "/artwork/dracula/dracula-beastform-1280-8f98352a3b34.webp"
       },
       "flavor": "The velvet restraint gives way to claws.",
       "abilities": [
@@ -247,7 +247,7 @@
       "description": "Immediately: Return your opponent's attack card to their hand. Look at their hand and choose an attack or versatile card for them to play. (It may be the same card.)",
       "art": {
         "scene": "shield",
-        "image": "/cards/dracula/do-my-bidding.svg"
+        "image": "/artwork/dracula/dracula-do-my-bidding-1280-b22e182ba7b0.webp"
       },
       "flavor": "Your will is merely another door.",
       "abilities": [
@@ -275,7 +275,7 @@
       "description": "During combat: Add the BOOST value from your opponent's attack card to the defense value of this card.",
       "art": {
         "scene": "ward",
-        "image": "/cards/dracula/look-into-my-eyes.svg"
+        "image": "/artwork/dracula/dracula-look-into-my-eyes-1280-ce06ff4c0753.webp"
       },
       "flavor": "The candle bends toward his gaze.",
       "abilities": [
@@ -308,7 +308,7 @@
       "description": "Place Dracula in any space.\nGain 1 action.",
       "art": {
         "scene": "trail",
-        "image": "/cards/dracula/mistform.svg"
+        "image": "/artwork/dracula/dracula-mistform-1280-20da28bc1c4e.webp"
       },
       "flavor": "No lock can hold the evening mist.",
       "effects": [
@@ -335,7 +335,7 @@
       "description": "Deal 1 damage to all opposing fighters adjacent to Dracula. Dracula recovers 1 health for each damage dealt.",
       "art": {
         "scene": "embers",
-        "image": "/cards/dracula/prey-upon.svg"
+        "image": "/artwork/dracula/dracula-prey-upon-1280-30fb1f6cd795.webp"
       },
       "flavor": "Every heartbeat draws the night closer.",
       "effects": [
@@ -366,7 +366,7 @@
       "description": "Recover 2 health. Return a defeated Sister (if any) to any space in Dracula's zone.",
       "art": {
         "scene": "lantern",
-        "image": "/cards/dracula/baptism-of-blood.svg"
+        "image": "/artwork/dracula/dracula-baptism-of-blood-1280-f457e397daa0.webp"
       },
       "flavor": "A crimson vow outlasts the grave.",
       "effects": [
@@ -391,7 +391,7 @@
       "description": "After combat: If you won the combat, place Dracula in any space adjacent to the opposing fighter.",
       "art": {
         "scene": "blade",
-        "image": "/cards/dracula/thirst-for-sustenance.svg"
+        "image": "/artwork/dracula/dracula-thirst-for-sustenance-1280-d0ef7010646a.webp"
       },
       "flavor": "Her hunger calls the master home.",
       "abilities": [
@@ -428,7 +428,7 @@
       "description": "Move any fighter up to 2 spaces. After moving, deal 1 damage to the moved fighter for each Sister adjacent to them.",
       "art": {
         "scene": "map",
-        "image": "/cards/dracula/ravening-seduction.svg"
+        "image": "/artwork/dracula/dracula-ravening-seduction-1280-de722ac6ddbb.webp"
       },
       "flavor": "A whispered invitation, a closing circle.",
       "effects": [

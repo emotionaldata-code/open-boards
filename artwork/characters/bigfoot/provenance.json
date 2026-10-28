@@ -1,0 +1,198 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-27",
+  "authorship": "Original generated illustrations; no published deck artwork copied or reused.",
+  "references": ["references/bigfoot.png", "references/jackalope.png"],
+  "prompts": "prompts.json",
+  "revisions": "revisions.json",
+  "generationLog": "generation-log.json",
+  "notes": [
+    "Seventeen built-in generation requests completed: fifteen selected assets and two superseded candidates retained for provenance. No generation requests failed.",
+    "The first Jackalope token clipped antler tips; the revised token preserves complete tips on real alpha. The first Jackalope Horns scene duplicated an ear; its revision restores two-ear anatomy.",
+    "Selected masters are unchanged copies of generator outputs, matched by SHA-256. Portraits were inspected before being reused as identity references."
+  ],
+  "assets": [
+    {
+      "id": "bigfoot-portrait",
+      "master": "masters/bigfoot-portrait.png",
+      "sha256": "8d8544740848e98038fe9bd1b1588661d4c555efa614a9a70dc1ce553f02f345",
+      "bytes": 3321009,
+      "prompt": "prompts.json#bigfoot-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-b628c6d1-d92f-4701-b731-fa40386928ba.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-token",
+      "master": "masters/bigfoot-token.png",
+      "sha256": "4390d2ff5eb1422e06930e2e75933284508e1a339903e0b2730b0bca4bf5a16f",
+      "bytes": 1583096,
+      "prompt": "prompts.json#bigfoot-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-01e0baa6-7487-44fe-864e-baa10e5cc545.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "bigfoot-jackalope-portrait",
+      "master": "masters/jackalope-portrait.png",
+      "sha256": "8a9d8e2b407a1f9a80d83d12a2da9332845f898852a642347f2a71752a7ac56a",
+      "bytes": 2890169,
+      "prompt": "prompts.json#bigfoot-jackalope-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-6210c384-6202-42c1-bfa2-14b0d0ebba66.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-jackalope-token",
+      "master": "masters/jackalope-token.png",
+      "sha256": "ebe400b438a2ca8074b053ccac1531be6828c5b0705eb406b10e390cc26d8299",
+      "bytes": 1565885,
+      "prompt": "revisions.json#bigfoot-jackalope-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-61b64b0c-f437-4c27-9f59-8f58291ae31d.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "bigfoot-skirmish",
+      "master": "masters/skirmish.png",
+      "sha256": "433392847e97ac89a7febe428ec68a33c61b814426e8ce4226c589e6eb32a399",
+      "bytes": 3379815,
+      "prompt": "prompts.json#bigfoot-skirmish",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-19ce4f5d-8d09-4e02-8b52-d55b86d0f5a9.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-larger-than-life",
+      "master": "masters/larger-than-life.png",
+      "sha256": "21b6663404a25118dfb4db30759889bc4d393ba83673b341ab8050b26da638f8",
+      "bytes": 3525534,
+      "prompt": "prompts.json#bigfoot-larger-than-life",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-ee70ab44-1bac-4799-b967-b31758f28728.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-crash-through-the-trees",
+      "master": "masters/crash-through-the-trees.png",
+      "sha256": "edad77b96d2609959b7d2432e10849d55aa2a2787e7e85b65a24dd6e82adc4f4",
+      "bytes": 3425876,
+      "prompt": "prompts.json#bigfoot-crash-through-the-trees",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-dea46d3b-3ad0-4e94-a03f-001d5b1a02ae.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-it-s-just-your-imagination",
+      "master": "masters/it-s-just-your-imagination.png",
+      "sha256": "18d15ec4b55cb32217f8f3336ad1ebdc62d0683df9d2acbc582372d2117025c7",
+      "bytes": 2558088,
+      "prompt": "prompts.json#bigfoot-it-s-just-your-imagination",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-0050cc7c-0400-468d-8230-fd753a8a0451.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-savagery",
+      "master": "masters/savagery.png",
+      "sha256": "c4ad1a02a995eb0a8e93464973e89beb98ef70f78ec49495bff2faa67762e409",
+      "bytes": 3594010,
+      "prompt": "prompts.json#bigfoot-savagery",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-5c3e25e6-2135-4ed1-a3e8-86d9e21bbfcf.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-hoax",
+      "master": "masters/hoax.png",
+      "sha256": "f063394eca681aa1f4fd1d9ae8ea3e6f2457a30a32786e831abf8799172d3a9d",
+      "bytes": 3552525,
+      "prompt": "prompts.json#bigfoot-hoax",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-cb2794be-a255-40d8-9a60-46038e97c33e.png",
+      "width": 1585,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-jackalope-horns",
+      "master": "masters/jackalope-horns.png",
+      "sha256": "950e943043f5d84ac9e378b23a36d77c4b5b37453928222ba9bf4b3a91fb34da",
+      "bytes": 2972360,
+      "prompt": "revisions.json#bigfoot-jackalope-horns",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-828f1d41-3802-426c-8c22-c88708ae2bf6.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-disengage",
+      "master": "masters/disengage.png",
+      "sha256": "6a6b27ebfb8052d5903bd564cf74598c52b1b90e564ef6384c747f8f3e3f7581",
+      "bytes": 3220459,
+      "prompt": "prompts.json#bigfoot-disengage",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-89215a55-7d40-4007-86e1-03b02a2f9d21.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-momentous-shift",
+      "master": "masters/momentous-shift.png",
+      "sha256": "51afef656594bc4bfd65b25413befc1f32a58a616a8ad8633134750a251b0d3d",
+      "bytes": 3571108,
+      "prompt": "prompts.json#bigfoot-momentous-shift",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-0e9b373b-5e80-43e4-a3bf-90a4daf957a6.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-feint",
+      "master": "masters/feint.png",
+      "sha256": "736ff11f7886b3f55a30735de2cb72826bef80f21b54d6f09bf283315a0e4d6f",
+      "bytes": 3203305,
+      "prompt": "prompts.json#bigfoot-feint",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-7f26a227-272c-40e7-9ff2-ece8efe11fc9.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bigfoot-regroup",
+      "master": "masters/regroup.png",
+      "sha256": "c82ed5be63eb8d81e5b07fd92a4ea8b9bebaab093dfdbe028db9c9907b156884",
+      "bytes": 3479201,
+      "prompt": "prompts.json#bigfoot-regroup",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-aa091ce8-1023-4d79-91ea-65fe4cbcd923.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ],
+  "candidates": [
+    {
+      "id": "bigfoot-jackalope-token",
+      "source": "candidates/jackalope-token-cropped.png",
+      "reason": "Clipped antler tips at the top edge.",
+      "sha256": "1d278f36d6a01f3b35daafbc29bd6305190874aeee772a2af2a0ce1469e847da",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-e5780865-e18c-48cf-b1d8-c5e5d7910c66.png"
+    },
+    {
+      "id": "bigfoot-jackalope-horns",
+      "source": "candidates/jackalope-horns-extra-ear.png",
+      "reason": "Duplicated furred ear behind the main left ear.",
+      "sha256": "9e9a101bd23f761edd04fcd90a7ad8f2ea0a7e0ee11361ffc1c499fa2ea9ff64",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17976-5d4c-77d0-8761-fd38aab7536f/exec-627d31af-9873-415e-9bc8-c23c5638af86.png"
+    }
+  ]
+}

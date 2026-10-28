@@ -1,0 +1,114 @@
+[
+  {
+    "id": "alice-portrait",
+    "prompt": "Use case: illustration-story. Original game character portrait, square. Alice of Wonderland, courageous young adult with straight shoulder-length golden blond hair, a black ribbon, sharp curious blue eyes, Victorian cornflower blue dress, ivory apron, dark leather belt, carrying an antique steel vorpal sword. Cinematic illustrated realism, realistic painted anatomy, tactile woven cloth and weathered steel, warm face light against deep teal fantastical woodland and oversized mushrooms, subtle crimson accents, readable upper body silhouette. No text, frames, logos, watermarks. Save this project asset.",
+    "source": "masters/alice-portrait.png"
+  },
+  {
+    "id": "alice-jabberwock-portrait",
+    "prompt": "Use case: illustration-story. Square original character portrait of the Jabberwock from Wonderland: formidable sinuous dragon with a long horned head, two long whisker tendrils, huge hooked foreclaws, leathery folded wings, iridescent dark teal scales, burnt copper throat and amber eyes. Animal anatomy, two forelimbs and two hindlimbs, credible threatening creature, no clothing. Cinematic illustrated realism, textured painted scales, dramatic warm rim light, deep misty teal woodland and oversized crimson mushrooms. Clear head and upper body silhouette, no text, numbers, logo, borders or watermark.",
+    "source": "masters/alice-jabberwock-portrait.png"
+  },
+  {
+    "id": "alice-token",
+    "prompt": "Use case: illustration-story. Reference image fixes Alice's identity, face, blond hair and black ribbon, blue Victorian dress, ivory apron and antique vorpal sword. Create a single original full-body game board figure, head to both complete boots, sword and every extremity fully visible with generous transparent margins. Alert combat stance, feet close together, sword diagonally beside her body, readable at small scale. Cinematic realistic painted illustration, tactile cloth and steel, neutral directional light. Actual transparent alpha background, no scene, floor, pedestal, shadow disk, owner colors, text or watermark.",
+    "source": "masters/alice-token.png",
+    "references": ["references/alice-portrait.png"]
+  },
+  {
+    "id": "alice-jabberwock-token",
+    "prompt": "Use case: illustration-story. Reference fixes the Jabberwock's identity: horned teal dragon, copper throat, whisker tendrils, amber eyes and hooked claws. Create one single original full-body board figure, all four limbs and tail visible, compact rearing stance with folded leathery wings, narrow tall silhouette and both hindfeet together at bottom. Entire creature inside image with transparent margins. Cinematic realistic painted scales and credible animal anatomy, clear silhouette. Actual transparent alpha background, no scene, floor, pedestal, shadow disk, owner colors, text or watermark.",
+    "source": "masters/alice-jabberwock-token.png",
+    "references": ["references/alice-jabberwock-portrait.png"]
+  },
+  {
+    "id": "alice-claws-that-catch",
+    "source": "masters/claws-that-catch.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Close low-angle view of the Jabberwock’s immense hooked foreclaws tearing through bark toward a tiny armored knight, dragon head in background. Keep crucial action within central 80%, varied narrative framing. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-momentous-shift",
+    "source": "masters/momentous-shift.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Wide dynamic view of Alice vaulting from one mossy stepping stone to another across a ravine in Wonderland, her vorpal sword trailing a thin arc of light. Keep crucial action within central 80%, varied narrative framing. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-skirmish",
+    "source": "masters/skirmish.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Alice parrying an armored chess soldier’s spear, feet pivoting on a giant chessboard half reclaimed by ivy; close dynamic crossed weapons. Keep crucial action within central 80%, varied narrative framing. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-mad-as-a-hatter",
+    "source": "masters/mad-as-a-hatter.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Alice and the Jabberwock weaving between the spilled cups and broken chairs of an enormous abandoned woodland tea party, kinetic wide view. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-manxome-foe",
+    "source": "masters/manxome-foe.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Distant Alice facing the towering Jabberwock in a fog-filled clearing, sword held ready, low moon and tangled branches, solemn and threatening. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-feint",
+    "source": "masters/feint.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Close view of Alice’s empty left hand drawing an armored opponent’s attention while her vorpal blade slips behind her shoulder, tense sly expression. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-regroup",
+    "source": "masters/regroup.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Quiet wide view of Alice seated on a mossy root while the Jabberwock rests protectively behind her among tall ferns, warm dawn. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-looking-glass",
+    "source": "masters/looking-glass.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Alice reaching toward an ornate silver standing mirror in a ruined woodland chamber; reflection shows the same Alice on a distant path, luminous glass, intimate view. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-snicker-snack",
+    "source": "masters/snicker-snack.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Alice cutting a crisp silver sword arc through thorn vines in a moonlit clearing, focused face and flying leaves, dramatic side view. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-o-frabjous-day",
+    "source": "masters/o-frabjous-day.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Low-angle Alice lifting her vorpal sword triumphantly into warm sunrise above the forest canopy, her blue dress and ivory apron billowing. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-the-other-side-of-the-mushroom",
+    "source": "masters/the-other-side-of-the-mushroom.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Alice standing beside an enormous crimson mushroom, one hand on its pale gills, her silhouette subtly reflected at a different scale in dew drops, curious contemplative scene. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-eat-me",
+    "source": "masters/eat-me.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Macro foreground of Alice’s hand lifting a tiny golden cake from an antique porcelain saucer on a woodland table, Alice’s curious face beyond, no lettering on cake. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-i-m-late-i-m-late",
+    "source": "masters/i-m-late-i-m-late.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Alice sprinting down a winding woodland staircase, a waistcoat-wearing white rabbit running ahead with a plain antique pocket watch, no numerals or text, dramatic tilted camera. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-drink-me",
+    "source": "masters/drink-me.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Close three-quarter view of Alice lifting a tiny clear glass potion bottle filled with turquoise light, cool light across her face, oversized mushroom forest behind, no label. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  },
+  {
+    "id": "alice-jaws-that-bite",
+    "source": "masters/jaws-that-bite.png",
+    "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+    "prompt": "Use case: illustration-story. Original standalone game card illustration, landscape 8:5 composition, cinematic illustrated realism with tactile cloth, steel and detailed scales, credible anatomy and dramatic motivated light. Reference images fix Alice (blue Victorian dress, ivory apron, black hair ribbon, blond hair, silver vorpal sword) and her Jabberwock (teal dragon, copper throat, whiskers, amber eyes). Intense close view of the Jabberwock’s open jaws and hooked teeth snapping toward an armored chess soldier’s shield, scales and amber eyes sharp, no blood. Keep crucial action within central 80%. No text, numerals, labels, logos, card frames or watermarks."
+  }
+]

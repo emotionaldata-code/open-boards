@@ -7,6 +7,38 @@ export interface CharacterProfile {
   ground: string;
 }
 export const profiles: Record<string, CharacterProfile> = {
+  'yennefer-triss': {
+    role: 'Rival sorceresses',
+    summary: 'Two sorceresses. One fateful choice.',
+    tactic:
+      'Choose Yennefer for immediate attack BOOSTs or Triss for damage after schemes. Portal across the battlefield and pressure your rival’s hand.',
+    accent: '#bb9fd7',
+    ground: '#30283e',
+  },
+  eredin: {
+    role: 'King of the Wild Hunt',
+    summary: 'Four riders. A king whose fury outlives them.',
+    tactic:
+      'Surround rivals with the Red Riders, trade their lives for decisive effects, then strike across the battlefield when Eredin becomes enraged.',
+    accent: '#b46d75',
+    ground: '#26343e',
+  },
+  philippa: {
+    role: 'Sorceress and spymaster',
+    summary: 'An owl in the shadows. A hand in every plot.',
+    tactic:
+      'Spend your hand on powerful magic, then refill with Two Steps Ahead. Send Dijkstra to dismantle your rival’s plans and use Polymorphy to stay close.',
+    accent: '#c6a267',
+    ground: '#352c40',
+  },
+  alice: {
+    role: 'Adventurer in Wonderland',
+    summary: 'A vorpal blade. A world of changing proportions.',
+    tactic:
+      'Grow BIG to strike harder, turn SMALL to defend, and let the Jabberwock punish anyone who comes too close.',
+    accent: '#cba76c',
+    ground: '#263e4a',
+  },
   'darth-vader': {
     role: 'Dark Lord of the Sith',
     summary: 'An iron will. A galaxy held in his grip.',

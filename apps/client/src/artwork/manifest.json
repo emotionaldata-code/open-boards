@@ -1798,5 +1798,4687 @@
         "bytes": 192352
       }
     ]
+  },
+  "dracula-portrait": {
+    "url": "/artwork/dracula/dracula-portrait-1024-94b528e646ea.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 115844,
+    "kind": "portrait",
+    "focal": [0.5, 0.38],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-portrait-256-e11836d83224.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 12376
+      },
+      {
+        "url": "/artwork/dracula/dracula-portrait-512-077e72d1082d.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 38080
+      },
+      {
+        "url": "/artwork/dracula/dracula-portrait-1024-94b528e646ea.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 115844
+      }
+    ]
+  },
+  "dracula-sister-portrait": {
+    "url": "/artwork/dracula/dracula-sister-portrait-1024-ffc3aa72c0fb.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 129432,
+    "kind": "portrait",
+    "focal": [0.5, 0.38],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-sister-portrait-256-46a1ac6b7722.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 14056
+      },
+      {
+        "url": "/artwork/dracula/dracula-sister-portrait-512-e90bbe03b550.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 45582
+      },
+      {
+        "url": "/artwork/dracula/dracula-sister-portrait-1024-ffc3aa72c0fb.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 129432
+      }
+    ]
+  },
+  "dracula-token": {
+    "url": "/artwork/dracula/dracula-token-512-a71ae8a7b3fa.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 45412,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-token-512-a71ae8a7b3fa.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 45412
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "dracula-sister-token": {
+    "url": "/artwork/dracula/dracula-sister-token-512-96892d889eb6.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 54486,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-sister-token-512-96892d889eb6.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 54486
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "dracula-feint": {
+    "url": "/artwork/dracula/dracula-feint-1280-b2d9d81ce38d.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 151408,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-feint-320-76259c65dbcf.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17814
+      },
+      {
+        "url": "/artwork/dracula/dracula-feint-640-0134693a5cc2.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 56142
+      },
+      {
+        "url": "/artwork/dracula/dracula-feint-1280-b2d9d81ce38d.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 151408
+      }
+    ]
+  },
+  "dracula-dash": {
+    "url": "/artwork/dracula/dracula-dash-1280-4e5dc09802bf.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 190052,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-dash-320-42f99b6f3d5e.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18880
+      },
+      {
+        "url": "/artwork/dracula/dracula-dash-640-f3fa9af9dac5.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 63878
+      },
+      {
+        "url": "/artwork/dracula/dracula-dash-1280-4e5dc09802bf.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 190052
+      }
+    ]
+  },
+  "dracula-exploit": {
+    "url": "/artwork/dracula/dracula-exploit-1280-7b2a3dcbdb4e.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 206242,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-exploit-320-d6438a503cee.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21150
+      },
+      {
+        "url": "/artwork/dracula/dracula-exploit-640-e74c7da8f82b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 70836
+      },
+      {
+        "url": "/artwork/dracula/dracula-exploit-1280-7b2a3dcbdb4e.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 206242
+      }
+    ]
+  },
+  "dracula-ambush": {
+    "url": "/artwork/dracula/dracula-ambush-1280-06320158d12e.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 174558,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-ambush-320-0e411863dfa1.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19590
+      },
+      {
+        "url": "/artwork/dracula/dracula-ambush-640-80fea16a35eb.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 62154
+      },
+      {
+        "url": "/artwork/dracula/dracula-ambush-1280-06320158d12e.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 174558
+      }
+    ]
+  },
+  "dracula-feeding-frenzy": {
+    "url": "/artwork/dracula/dracula-feeding-frenzy-1280-430419542693.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 214786,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-feeding-frenzy-320-76b73a1676ce.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21674
+      },
+      {
+        "url": "/artwork/dracula/dracula-feeding-frenzy-640-d73c303122db.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 74098
+      },
+      {
+        "url": "/artwork/dracula/dracula-feeding-frenzy-1280-430419542693.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 214786
+      }
+    ]
+  },
+  "dracula-beastform": {
+    "url": "/artwork/dracula/dracula-beastform-1280-8f98352a3b34.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 194380,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-beastform-320-66d394c28872.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20272
+      },
+      {
+        "url": "/artwork/dracula/dracula-beastform-640-86b865af1f64.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 66612
+      },
+      {
+        "url": "/artwork/dracula/dracula-beastform-1280-8f98352a3b34.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 194380
+      }
+    ]
+  },
+  "dracula-do-my-bidding": {
+    "url": "/artwork/dracula/dracula-do-my-bidding-1280-b22e182ba7b0.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 153550,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-do-my-bidding-320-e86233824358.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 16210
+      },
+      {
+        "url": "/artwork/dracula/dracula-do-my-bidding-640-c81f2aac53c6.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 52912
+      },
+      {
+        "url": "/artwork/dracula/dracula-do-my-bidding-1280-b22e182ba7b0.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 153550
+      }
+    ]
+  },
+  "dracula-look-into-my-eyes": {
+    "url": "/artwork/dracula/dracula-look-into-my-eyes-1280-ce06ff4c0753.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 131210,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-look-into-my-eyes-320-ececce7719c1.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 14676
+      },
+      {
+        "url": "/artwork/dracula/dracula-look-into-my-eyes-640-1b699358a62a.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 44372
+      },
+      {
+        "url": "/artwork/dracula/dracula-look-into-my-eyes-1280-ce06ff4c0753.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 131210
+      }
+    ]
+  },
+  "dracula-mistform": {
+    "url": "/artwork/dracula/dracula-mistform-1280-20da28bc1c4e.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 176640,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-mistform-320-f05aad57ea71.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18802
+      },
+      {
+        "url": "/artwork/dracula/dracula-mistform-640-b1d2c7d07ece.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 61342
+      },
+      {
+        "url": "/artwork/dracula/dracula-mistform-1280-20da28bc1c4e.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 176640
+      }
+    ]
+  },
+  "dracula-prey-upon": {
+    "url": "/artwork/dracula/dracula-prey-upon-1280-30fb1f6cd795.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 186234,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-prey-upon-320-90bdfaa423fb.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18922
+      },
+      {
+        "url": "/artwork/dracula/dracula-prey-upon-640-72460893b719.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 62996
+      },
+      {
+        "url": "/artwork/dracula/dracula-prey-upon-1280-30fb1f6cd795.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 186234
+      }
+    ]
+  },
+  "dracula-baptism-of-blood": {
+    "url": "/artwork/dracula/dracula-baptism-of-blood-1280-f457e397daa0.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 174888,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-baptism-of-blood-320-58d52fb4d45a.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19230
+      },
+      {
+        "url": "/artwork/dracula/dracula-baptism-of-blood-640-1bd86d3eb899.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 61080
+      },
+      {
+        "url": "/artwork/dracula/dracula-baptism-of-blood-1280-f457e397daa0.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 174888
+      }
+    ]
+  },
+  "dracula-thirst-for-sustenance": {
+    "url": "/artwork/dracula/dracula-thirst-for-sustenance-1280-d0ef7010646a.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 170568,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-thirst-for-sustenance-320-5dc3b1145b45.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18338
+      },
+      {
+        "url": "/artwork/dracula/dracula-thirst-for-sustenance-640-e284e08d3647.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 59998
+      },
+      {
+        "url": "/artwork/dracula/dracula-thirst-for-sustenance-1280-d0ef7010646a.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 170568
+      }
+    ]
+  },
+  "dracula-ravening-seduction": {
+    "url": "/artwork/dracula/dracula-ravening-seduction-1280-de722ac6ddbb.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 241636,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/dracula/dracula-ravening-seduction-320-50b27b4281ad.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21350
+      },
+      {
+        "url": "/artwork/dracula/dracula-ravening-seduction-640-bd4d259eb268.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 77246
+      },
+      {
+        "url": "/artwork/dracula/dracula-ravening-seduction-1280-de722ac6ddbb.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 241636
+      }
+    ]
+  },
+  "achilles-portrait": {
+    "url": "/artwork/achilles/achilles-portrait-1024-1f7c6986261b.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 198148,
+    "kind": "portrait",
+    "focal": [0.5, 0.42],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-portrait-256-936cffab96d9.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 19544
+      },
+      {
+        "url": "/artwork/achilles/achilles-portrait-512-8ed533f8bb41.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 63016
+      },
+      {
+        "url": "/artwork/achilles/achilles-portrait-1024-1f7c6986261b.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 198148
+      }
+    ]
+  },
+  "achilles-token": {
+    "url": "/artwork/achilles/achilles-token-512-bc754aa466d9.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 53628,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-token-512-bc754aa466d9.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 53628
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "achilles-patroclus-portrait": {
+    "url": "/artwork/achilles/achilles-patroclus-portrait-1024-6c6d030d884b.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 180168,
+    "kind": "portrait",
+    "focal": [0.5, 0.24],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-patroclus-portrait-256-f1f450fc0d62.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 18142
+      },
+      {
+        "url": "/artwork/achilles/achilles-patroclus-portrait-512-63aa92a39701.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 57988
+      },
+      {
+        "url": "/artwork/achilles/achilles-patroclus-portrait-1024-6c6d030d884b.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 180168
+      }
+    ]
+  },
+  "achilles-patroclus-token": {
+    "url": "/artwork/achilles/achilles-patroclus-token-512-8a082c733de4.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 55350,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-patroclus-token-512-8a082c733de4.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 55350
+      }
+    ],
+    "anchor": [0.55, 0.96875],
+    "scale": 0.27
+  },
+  "achilles-battle-frenzy": {
+    "url": "/artwork/achilles/achilles-battle-frenzy-1280-df6abad30368.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 266112,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-battle-frenzy-320-0386b4f1a781.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26052
+      },
+      {
+        "url": "/artwork/achilles/achilles-battle-frenzy-640-8069d63635e6.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 87326
+      },
+      {
+        "url": "/artwork/achilles/achilles-battle-frenzy-1280-df6abad30368.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 266112
+      }
+    ]
+  },
+  "achilles-test-for-weakness": {
+    "url": "/artwork/achilles/achilles-test-for-weakness-1280-fc0bcbd45986.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 245244,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-test-for-weakness-320-15be468594d3.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23118
+      },
+      {
+        "url": "/artwork/achilles/achilles-test-for-weakness-640-b5f04adad667.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 78496
+      },
+      {
+        "url": "/artwork/achilles/achilles-test-for-weakness-1280-fc0bcbd45986.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 245244
+      }
+    ]
+  },
+  "achilles-the-day-of-your-doom": {
+    "url": "/artwork/achilles/achilles-the-day-of-your-doom-1280-0bf26810eb99.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 243464,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-the-day-of-your-doom-320-467975c1848c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24068
+      },
+      {
+        "url": "/artwork/achilles/achilles-the-day-of-your-doom-640-78464514b26b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 80880
+      },
+      {
+        "url": "/artwork/achilles/achilles-the-day-of-your-doom-1280-0bf26810eb99.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 243464
+      }
+    ]
+  },
+  "achilles-brothers-in-arms": {
+    "url": "/artwork/achilles/achilles-brothers-in-arms-1280-3773694fcf0f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 259176,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-brothers-in-arms-320-b2f57cc4b27c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24680
+      },
+      {
+        "url": "/artwork/achilles/achilles-brothers-in-arms-640-46d4e5bfedff.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 82590
+      },
+      {
+        "url": "/artwork/achilles/achilles-brothers-in-arms-1280-3773694fcf0f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 259176
+      }
+    ]
+  },
+  "achilles-feint": {
+    "url": "/artwork/achilles/achilles-feint-1280-807f9465c977.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 233242,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-feint-320-b5d87688586e.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24970
+      },
+      {
+        "url": "/artwork/achilles/achilles-feint-640-e57724f11f2b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 79256
+      },
+      {
+        "url": "/artwork/achilles/achilles-feint-1280-807f9465c977.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 233242
+      }
+    ]
+  },
+  "achilles-battle-hardened": {
+    "url": "/artwork/achilles/achilles-battle-hardened-1280-410aa799ccdb.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 217234,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-battle-hardened-320-78a68a098067.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21900
+      },
+      {
+        "url": "/artwork/achilles/achilles-battle-hardened-640-ac42eaf8f75b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 71354
+      },
+      {
+        "url": "/artwork/achilles/achilles-battle-hardened-1280-410aa799ccdb.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 217234
+      }
+    ]
+  },
+  "achilles-wily-fighting": {
+    "url": "/artwork/achilles/achilles-wily-fighting-1280-8c3898efa1ca.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 266902,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-wily-fighting-320-666aa478b3c0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26566
+      },
+      {
+        "url": "/artwork/achilles/achilles-wily-fighting-640-282a70c23609.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 90824
+      },
+      {
+        "url": "/artwork/achilles/achilles-wily-fighting-1280-8c3898efa1ca.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 266902
+      }
+    ]
+  },
+  "achilles-blessed-by-hermes": {
+    "url": "/artwork/achilles/achilles-blessed-by-hermes-1280-0313279f873c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 260194,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-blessed-by-hermes-320-f6db1888cfce.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26888
+      },
+      {
+        "url": "/artwork/achilles/achilles-blessed-by-hermes-640-4af2c6eeb304.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 87732
+      },
+      {
+        "url": "/artwork/achilles/achilles-blessed-by-hermes-1280-0313279f873c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 260194
+      }
+    ]
+  },
+  "achilles-skirmish": {
+    "url": "/artwork/achilles/achilles-skirmish-1280-116ab1912d13.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 262988,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-skirmish-320-f15efec1c485.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26200
+      },
+      {
+        "url": "/artwork/achilles/achilles-skirmish-640-196c0204ed55.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 87666
+      },
+      {
+        "url": "/artwork/achilles/achilles-skirmish-1280-116ab1912d13.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 262988
+      }
+    ]
+  },
+  "achilles-under-achilles-helm": {
+    "url": "/artwork/achilles/achilles-under-achilles-helm-1280-8eb7ff619a34.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 227242,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-under-achilles-helm-320-14b1e5b0d0f1.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21980
+      },
+      {
+        "url": "/artwork/achilles/achilles-under-achilles-helm-640-09bb01348ec2.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 73588
+      },
+      {
+        "url": "/artwork/achilles/achilles-under-achilles-helm-1280-8eb7ff619a34.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 227242
+      }
+    ]
+  },
+  "achilles-achilles-heel": {
+    "url": "/artwork/achilles/achilles-achilles-heel-1280-498a79b27b15.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 181384,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-achilles-heel-320-a315a217ad34.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22674
+      },
+      {
+        "url": "/artwork/achilles/achilles-achilles-heel-640-cdaf1cf966c7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 67690
+      },
+      {
+        "url": "/artwork/achilles/achilles-achilles-heel-1280-498a79b27b15.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 181384
+      }
+    ]
+  },
+  "achilles-spear-throw": {
+    "url": "/artwork/achilles/achilles-spear-throw-1280-1e1af3d8d597.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 202772,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/achilles/achilles-spear-throw-320-7e9ac05254fd.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22446
+      },
+      {
+        "url": "/artwork/achilles/achilles-spear-throw-640-92909b5d2c74.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 71546
+      },
+      {
+        "url": "/artwork/achilles/achilles-spear-throw-1280-1e1af3d8d597.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 202772
+      }
+    ]
+  },
+  "alice-portrait": {
+    "url": "/artwork/alice/alice-portrait-1024-6d12c74cec35.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 194100,
+    "kind": "portrait",
+    "focal": [0.5, 0.42],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-portrait-256-89d365a1c12b.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 23796
+      },
+      {
+        "url": "/artwork/alice/alice-portrait-512-71ceb201fccf.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 72320
+      },
+      {
+        "url": "/artwork/alice/alice-portrait-1024-6d12c74cec35.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 194100
+      }
+    ]
+  },
+  "alice-jabberwock-portrait": {
+    "url": "/artwork/alice/alice-jabberwock-portrait-1024-b1d83be15417.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 232292,
+    "kind": "portrait",
+    "focal": [0.5, 0.42],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-jabberwock-portrait-256-521ff5b6697d.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 24266
+      },
+      {
+        "url": "/artwork/alice/alice-jabberwock-portrait-512-28b9e3ae66cf.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 82344
+      },
+      {
+        "url": "/artwork/alice/alice-jabberwock-portrait-1024-b1d83be15417.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 232292
+      }
+    ]
+  },
+  "alice-token": {
+    "url": "/artwork/alice/alice-token-512-ce31d96a8494.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 60164,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-token-512-ce31d96a8494.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 60164
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "alice-jabberwock-token": {
+    "url": "/artwork/alice/alice-jabberwock-token-512-8ae6e3567ff1.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 88284,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-jabberwock-token-512-8ae6e3567ff1.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 88284
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "alice-claws-that-catch": {
+    "url": "/artwork/alice/alice-claws-that-catch-1280-5558ad09e124.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 270718,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-claws-that-catch-320-b807e99d6176.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28874
+      },
+      {
+        "url": "/artwork/alice/alice-claws-that-catch-640-20e83606021e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 96548
+      },
+      {
+        "url": "/artwork/alice/alice-claws-that-catch-1280-5558ad09e124.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 270718
+      }
+    ]
+  },
+  "alice-momentous-shift": {
+    "url": "/artwork/alice/alice-momentous-shift-1280-37ad8ec094e5.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 295504,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-momentous-shift-320-3236d6563dba.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 30672
+      },
+      {
+        "url": "/artwork/alice/alice-momentous-shift-640-da650e6b89b6.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 102904
+      },
+      {
+        "url": "/artwork/alice/alice-momentous-shift-1280-37ad8ec094e5.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 295504
+      }
+    ]
+  },
+  "alice-skirmish": {
+    "url": "/artwork/alice/alice-skirmish-1280-bcf190663803.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 281220,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-skirmish-320-55040a11a498.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 30784
+      },
+      {
+        "url": "/artwork/alice/alice-skirmish-640-7e33a907b848.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 103100
+      },
+      {
+        "url": "/artwork/alice/alice-skirmish-1280-bcf190663803.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 281220
+      }
+    ]
+  },
+  "alice-mad-as-a-hatter": {
+    "url": "/artwork/alice/alice-mad-as-a-hatter-1280-9ac1afe0af92.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 324552,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-mad-as-a-hatter-320-3779e4c65fed.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 31004
+      },
+      {
+        "url": "/artwork/alice/alice-mad-as-a-hatter-640-1fda6270eacc.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 108974
+      },
+      {
+        "url": "/artwork/alice/alice-mad-as-a-hatter-1280-9ac1afe0af92.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 324552
+      }
+    ]
+  },
+  "alice-manxome-foe": {
+    "url": "/artwork/alice/alice-manxome-foe-1280-ed31d30e10a5.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 271554,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-manxome-foe-320-5699a204b43f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25470
+      },
+      {
+        "url": "/artwork/alice/alice-manxome-foe-640-f55746cb5044.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 89146
+      },
+      {
+        "url": "/artwork/alice/alice-manxome-foe-1280-ed31d30e10a5.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 271554
+      }
+    ]
+  },
+  "alice-feint": {
+    "url": "/artwork/alice/alice-feint-1280-6bc551dd6ad9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 247624,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-feint-320-680b72838de5.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27140
+      },
+      {
+        "url": "/artwork/alice/alice-feint-640-0ff00febe897.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 89704
+      },
+      {
+        "url": "/artwork/alice/alice-feint-1280-6bc551dd6ad9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 247624
+      }
+    ]
+  },
+  "alice-regroup": {
+    "url": "/artwork/alice/alice-regroup-1280-d1ee2b188cc0.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 293728,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-regroup-320-7c66e4057e70.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28664
+      },
+      {
+        "url": "/artwork/alice/alice-regroup-640-b50ccd319671.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 99340
+      },
+      {
+        "url": "/artwork/alice/alice-regroup-1280-d1ee2b188cc0.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 293728
+      }
+    ]
+  },
+  "alice-looking-glass": {
+    "url": "/artwork/alice/alice-looking-glass-1280-8c9dc4c6d84f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 314234,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-looking-glass-320-394cf14f511d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29988
+      },
+      {
+        "url": "/artwork/alice/alice-looking-glass-640-54ae4528f39e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 104372
+      },
+      {
+        "url": "/artwork/alice/alice-looking-glass-1280-8c9dc4c6d84f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 314234
+      }
+    ]
+  },
+  "alice-snicker-snack": {
+    "url": "/artwork/alice/alice-snicker-snack-1280-374020c63560.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 274076,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-snicker-snack-320-329cdd5f5163.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29386
+      },
+      {
+        "url": "/artwork/alice/alice-snicker-snack-640-398b22dd7a7d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 96376
+      },
+      {
+        "url": "/artwork/alice/alice-snicker-snack-1280-374020c63560.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 274076
+      }
+    ]
+  },
+  "alice-o-frabjous-day": {
+    "url": "/artwork/alice/alice-o-frabjous-day-1280-5a575b9e270b.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 272410,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-o-frabjous-day-320-bdf6c7d8a1a7.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29150
+      },
+      {
+        "url": "/artwork/alice/alice-o-frabjous-day-640-70f086787156.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 97768
+      },
+      {
+        "url": "/artwork/alice/alice-o-frabjous-day-1280-5a575b9e270b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 272410
+      }
+    ]
+  },
+  "alice-the-other-side-of-the-mushroom": {
+    "url": "/artwork/alice/alice-the-other-side-of-the-mushroom-1280-ba93e78d69e9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 256424,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-the-other-side-of-the-mushroom-320-1b95dac748e0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27312
+      },
+      {
+        "url": "/artwork/alice/alice-the-other-side-of-the-mushroom-640-826457971586.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 88750
+      },
+      {
+        "url": "/artwork/alice/alice-the-other-side-of-the-mushroom-1280-ba93e78d69e9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 256424
+      }
+    ]
+  },
+  "alice-eat-me": {
+    "url": "/artwork/alice/alice-eat-me-1280-b9ba376c5008.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 229890,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-eat-me-320-324bb01aa221.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27638
+      },
+      {
+        "url": "/artwork/alice/alice-eat-me-640-9d080751ce76.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 84208
+      },
+      {
+        "url": "/artwork/alice/alice-eat-me-1280-b9ba376c5008.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 229890
+      }
+    ]
+  },
+  "alice-i-m-late-i-m-late": {
+    "url": "/artwork/alice/alice-i-m-late-i-m-late-1280-283d1ba3248b.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 287270,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-i-m-late-i-m-late-320-156756c5ce98.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 30266
+      },
+      {
+        "url": "/artwork/alice/alice-i-m-late-i-m-late-640-ba6f80abfe83.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 100990
+      },
+      {
+        "url": "/artwork/alice/alice-i-m-late-i-m-late-1280-283d1ba3248b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 287270
+      }
+    ]
+  },
+  "alice-drink-me": {
+    "url": "/artwork/alice/alice-drink-me-1280-ba101a9c614d.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 272112,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-drink-me-320-0707c7f45688.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27542
+      },
+      {
+        "url": "/artwork/alice/alice-drink-me-640-edfab2c9b7bf.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 93750
+      },
+      {
+        "url": "/artwork/alice/alice-drink-me-1280-ba101a9c614d.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 272112
+      }
+    ]
+  },
+  "alice-jaws-that-bite": {
+    "url": "/artwork/alice/alice-jaws-that-bite-1280-e9ce1ddb6ec5.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 291478,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/alice/alice-jaws-that-bite-320-06ca6ceff846.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 30884
+      },
+      {
+        "url": "/artwork/alice/alice-jaws-that-bite-640-45548c111db1.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 102286
+      },
+      {
+        "url": "/artwork/alice/alice-jaws-that-bite-1280-e9ce1ddb6ec5.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 291478
+      }
+    ]
+  },
+  "bigfoot-portrait": {
+    "url": "/artwork/bigfoot/bigfoot-portrait-1024-403f0718beb3.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 276848,
+    "kind": "portrait",
+    "focal": [0.5, 0.4],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-portrait-256-f2d3ad9b547f.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 20758
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-portrait-512-e55baf53e826.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 79086
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-portrait-1024-403f0718beb3.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 276848
+      }
+    ]
+  },
+  "bigfoot-token": {
+    "url": "/artwork/bigfoot/bigfoot-token-512-e6c4f840137d.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 63382,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-token-512-e6c4f840137d.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 63382
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "bigfoot-jackalope-portrait": {
+    "url": "/artwork/bigfoot/bigfoot-jackalope-portrait-1024-1c924e2628e3.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 230650,
+    "kind": "portrait",
+    "focal": [0.5, 0.25],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-portrait-256-d66327d6cde9.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 24388
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-portrait-512-1a718844c62b.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 78252
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-portrait-1024-1c924e2628e3.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 230650
+      }
+    ]
+  },
+  "bigfoot-jackalope-token": {
+    "url": "/artwork/bigfoot/bigfoot-jackalope-token-512-33d460d4f2b7.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 78908,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-token-512-33d460d4f2b7.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 78908
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "bigfoot-skirmish": {
+    "url": "/artwork/bigfoot/bigfoot-skirmish-1280-ae783570c6a6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 313920,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-skirmish-320-f983f41644a1.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28220
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-skirmish-640-6f4c9babb9f7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 99740
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-skirmish-1280-ae783570c6a6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 313920
+      }
+    ]
+  },
+  "bigfoot-larger-than-life": {
+    "url": "/artwork/bigfoot/bigfoot-larger-than-life-1280-0d6b6eb3d0ca.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 334320,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-larger-than-life-320-bf7862bc73ae.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26534
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-larger-than-life-640-b6e061a23aef.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 98484
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-larger-than-life-1280-0d6b6eb3d0ca.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 334320
+      }
+    ]
+  },
+  "bigfoot-crash-through-the-trees": {
+    "url": "/artwork/bigfoot/bigfoot-crash-through-the-trees-1280-f0dbe9335e89.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 313070,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-crash-through-the-trees-320-cf70b39b2264.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29024
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-crash-through-the-trees-640-a05f1bb2e484.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 101984
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-crash-through-the-trees-1280-f0dbe9335e89.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 313070
+      }
+    ]
+  },
+  "bigfoot-it-s-just-your-imagination": {
+    "url": "/artwork/bigfoot/bigfoot-it-s-just-your-imagination-1280-2a1eccb11b32.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 165922,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-it-s-just-your-imagination-320-6c9a2eb6f90d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18238
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-it-s-just-your-imagination-640-e319401aeb5c.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 58888
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-it-s-just-your-imagination-1280-2a1eccb11b32.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 165922
+      }
+    ]
+  },
+  "bigfoot-savagery": {
+    "url": "/artwork/bigfoot/bigfoot-savagery-1280-f41be4720b15.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 362434,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-savagery-320-93600488e5af.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29410
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-savagery-640-b1a57bb6e455.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 108646
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-savagery-1280-f41be4720b15.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 362434
+      }
+    ]
+  },
+  "bigfoot-hoax": {
+    "url": "/artwork/bigfoot/bigfoot-hoax-1280-1f65ab900d69.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 337728,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-hoax-320-500399cf182d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28214
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-hoax-640-1674a97a7680.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 104112
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-hoax-1280-1f65ab900d69.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 337728
+      }
+    ]
+  },
+  "bigfoot-jackalope-horns": {
+    "url": "/artwork/bigfoot/bigfoot-jackalope-horns-1280-c397ef642481.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 258016,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-horns-320-c2bc79a7d7af.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29060
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-horns-640-14a7137c31b6.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 92054
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-jackalope-horns-1280-c397ef642481.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 258016
+      }
+    ]
+  },
+  "bigfoot-disengage": {
+    "url": "/artwork/bigfoot/bigfoot-disengage-1280-0d3b5eea77a9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 292768,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-disengage-320-25b6d02c57a4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29318
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-disengage-640-7c945fe82b83.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 99338
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-disengage-1280-0d3b5eea77a9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 292768
+      }
+    ]
+  },
+  "bigfoot-momentous-shift": {
+    "url": "/artwork/bigfoot/bigfoot-momentous-shift-1280-24e64f614a91.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 347510,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-momentous-shift-320-40c640b2c6f6.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28534
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-momentous-shift-640-399b783444c0.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 103062
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-momentous-shift-1280-24e64f614a91.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 347510
+      }
+    ]
+  },
+  "bigfoot-feint": {
+    "url": "/artwork/bigfoot/bigfoot-feint-1280-d70df085538d.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 287780,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-feint-320-584823a5d461.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28288
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-feint-640-72c09a7b8b1d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 96142
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-feint-1280-d70df085538d.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 287780
+      }
+    ]
+  },
+  "bigfoot-regroup": {
+    "url": "/artwork/bigfoot/bigfoot-regroup-1280-480bbd970973.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 331612,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bigfoot/bigfoot-regroup-320-a64c623f45e8.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27742
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-regroup-640-ef0897db832d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 101696
+      },
+      {
+        "url": "/artwork/bigfoot/bigfoot-regroup-1280-480bbd970973.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 331612
+      }
+    ]
+  },
+  "robin-hood-portrait": {
+    "url": "/artwork/robin-hood/robin-hood-portrait-1024-6dd71f1387c4.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 192962,
+    "kind": "portrait",
+    "focal": [0.53, 0.24],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-portrait-256-ff104910df3f.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 23070
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-portrait-512-6d7b00647b3f.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 70696
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-portrait-1024-6dd71f1387c4.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 192962
+      }
+    ]
+  },
+  "robin-hood-token": {
+    "url": "/artwork/robin-hood/robin-hood-token-512-c297e8e098a4.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 52152,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-token-512-c297e8e098a4.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 52152
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "robin-hood-outlaw-portrait": {
+    "url": "/artwork/robin-hood/robin-hood-outlaw-portrait-1024-fdfdd35c9888.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 230058,
+    "kind": "portrait",
+    "focal": [0.5, 0.18],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-outlaw-portrait-256-7daf9cfb4f9b.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 20878
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-outlaw-portrait-512-d187ac2675b9.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 73468
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-outlaw-portrait-1024-fdfdd35c9888.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 230058
+      }
+    ]
+  },
+  "robin-hood-outlaw-token": {
+    "url": "/artwork/robin-hood/robin-hood-outlaw-token-512-00f426f217d5.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 51850,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-outlaw-token-512-00f426f217d5.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 51850
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "robin-hood-ambush": {
+    "url": "/artwork/robin-hood/robin-hood-ambush-1280-f6954db33326.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 261880,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-ambush-320-fe82f4aef0df.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28452
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-ambush-640-96de48fe078a.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 93710
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-ambush-1280-f6954db33326.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 261880
+      }
+    ]
+  },
+  "robin-hood-a-hunter-s-eye": {
+    "url": "/artwork/robin-hood/robin-hood-a-hunter-s-eye-1280-12ce215da489.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 166360,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-a-hunter-s-eye-320-2f9afafb9db0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21524
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-a-hunter-s-eye-640-349de327ca95.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 60616
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-a-hunter-s-eye-1280-12ce215da489.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 166360
+      }
+    ]
+  },
+  "robin-hood-steal-from-the-rich": {
+    "url": "/artwork/robin-hood/robin-hood-steal-from-the-rich-1280-1ac8b2ff5757.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 241030,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-steal-from-the-rich-320-3de950a298c0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28228
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-steal-from-the-rich-640-c7fdbb13f990.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 90104
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-steal-from-the-rich-1280-1ac8b2ff5757.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 241030
+      }
+    ]
+  },
+  "robin-hood-disarming-shot": {
+    "url": "/artwork/robin-hood/robin-hood-disarming-shot-1280-d55562a696d5.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 236500,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-disarming-shot-320-7c62bc5434e0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28808
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-disarming-shot-640-6570d055a447.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 91660
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-disarming-shot-1280-d55562a696d5.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 236500
+      }
+    ]
+  },
+  "robin-hood-piercing-shot": {
+    "url": "/artwork/robin-hood/robin-hood-piercing-shot-1280-db1530a6b9d2.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 282640,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-piercing-shot-320-c5f62ff18bf3.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 30334
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-piercing-shot-640-996257f5df90.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 100404
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-piercing-shot-1280-db1530a6b9d2.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 282640
+      }
+    ]
+  },
+  "robin-hood-defenders-of-sherwood": {
+    "url": "/artwork/robin-hood/robin-hood-defenders-of-sherwood-1280-9f2dc657d1e5.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 275070,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-defenders-of-sherwood-320-7f6d2c564a24.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28892
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-defenders-of-sherwood-640-3f95a64a0d6e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 94942
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-defenders-of-sherwood-1280-9f2dc657d1e5.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 275070
+      }
+    ]
+  },
+  "robin-hood-highway-robbery": {
+    "url": "/artwork/robin-hood/robin-hood-highway-robbery-1280-97871bb616e9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 244660,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-highway-robbery-320-5728478b7574.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26084
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-highway-robbery-640-be643d3903dd.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 84468
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-highway-robbery-1280-97871bb616e9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 244660
+      }
+    ]
+  },
+  "robin-hood-snark": {
+    "url": "/artwork/robin-hood/robin-hood-snark-1280-f5243dae4230.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 242840,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-snark-320-7f277d9bf0bc.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26690
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-snark-640-62865c884033.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 86998
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-snark-1280-f5243dae4230.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 242840
+      }
+    ]
+  },
+  "robin-hood-wily-fighting": {
+    "url": "/artwork/robin-hood/robin-hood-wily-fighting-1280-69dbf90ae517.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 299460,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-wily-fighting-320-1f7427ec6b80.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 30624
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-wily-fighting-640-8129d7c40c71.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 103114
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-wily-fighting-1280-69dbf90ae517.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 299460
+      }
+    ]
+  },
+  "robin-hood-feint": {
+    "url": "/artwork/robin-hood/robin-hood-feint-1280-17ee7e613f79.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 253664,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-feint-320-6eeea497eb41.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27234
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-feint-640-34c9b20c35e5.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 88470
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-feint-1280-17ee7e613f79.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 253664
+      }
+    ]
+  },
+  "robin-hood-regroup": {
+    "url": "/artwork/robin-hood/robin-hood-regroup-1280-4dffd00fd466.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 235100,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/robin-hood/robin-hood-regroup-320-238e0e481b44.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26324
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-regroup-640-c60f3a9455dd.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 85572
+      },
+      {
+        "url": "/artwork/robin-hood/robin-hood-regroup-1280-4dffd00fd466.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 235100
+      }
+    ]
+  },
+  "bruce-lee-portrait": {
+    "url": "/artwork/bruce-lee/bruce-lee-portrait-1024-ed8bb7d56863.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 112180,
+    "kind": "portrait",
+    "focal": [0.5, 0.2],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-portrait-256-acbc1febefce.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 16198
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-portrait-512-4339f938b6f7.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 41198
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-portrait-1024-ed8bb7d56863.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 112180
+      }
+    ]
+  },
+  "bruce-lee-token": {
+    "url": "/artwork/bruce-lee/bruce-lee-token-512-9f5f2697dd4a.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 40774,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-token-512-9f5f2697dd4a.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 40774
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "bruce-lee-skirmish": {
+    "url": "/artwork/bruce-lee/bruce-lee-skirmish-1280-a85c29291b09.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 232000,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-skirmish-320-3b91a86b465f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24690
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-skirmish-640-d04963e1cda4.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 80148
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-skirmish-1280-a85c29291b09.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 232000
+      }
+    ]
+  },
+  "bruce-lee-little-dragon": {
+    "url": "/artwork/bruce-lee/bruce-lee-little-dragon-1280-14e66d471e55.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 174894,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-little-dragon-320-7e65830570c8.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23012
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-little-dragon-640-cd0b2455523c.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 69988
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-little-dragon-1280-14e66d471e55.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 174894
+      }
+    ]
+  },
+  "bruce-lee-taste-of-blood": {
+    "url": "/artwork/bruce-lee/bruce-lee-taste-of-blood-1280-63f6357a549c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 103856,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-taste-of-blood-320-a0709d72422c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 14338
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-taste-of-blood-640-588d06fcd98d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 37708
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-taste-of-blood-1280-63f6357a549c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 103856
+      }
+    ]
+  },
+  "bruce-lee-be-like-water": {
+    "url": "/artwork/bruce-lee/bruce-lee-be-like-water-1280-1861f24a9fa9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 194940,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-be-like-water-320-fc57a2eb03de.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22332
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-be-like-water-640-5b5ea31a4bd1.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 71290
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-be-like-water-1280-1861f24a9fa9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 194940
+      }
+    ]
+  },
+  "bruce-lee-hoo-whaaaaaa": {
+    "url": "/artwork/bruce-lee/bruce-lee-hoo-whaaaaaa-1280-011a57e1e2ac.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 159900,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-hoo-whaaaaaa-320-0440df577aa9.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19910
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-hoo-whaaaaaa-640-1351afdd1a50.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 57788
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-hoo-whaaaaaa-1280-011a57e1e2ac.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 159900
+      }
+    ]
+  },
+  "bruce-lee-jeet-kune-do-high-straight-lead": {
+    "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-high-straight-lead-1280-376b6207d23a.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 139106,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-high-straight-lead-320-835ca6047127.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19012
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-high-straight-lead-640-f450a4f03a1e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 53698
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-high-straight-lead-1280-376b6207d23a.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 139106
+      }
+    ]
+  },
+  "bruce-lee-jeet-kune-do-downward-side-kick": {
+    "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-downward-side-kick-1280-48cc6e7813d0.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 219172,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-downward-side-kick-320-c84577781ffe.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22790
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-downward-side-kick-640-b1c0853315e1.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75846
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-downward-side-kick-1280-48cc6e7813d0.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 219172
+      }
+    ]
+  },
+  "bruce-lee-jeet-kune-do-wrist-lock": {
+    "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-wrist-lock-1280-7af846b71712.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 130294,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-wrist-lock-320-544d8814ba52.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17346
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-wrist-lock-640-b15010f735ab.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 47254
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-wrist-lock-1280-7af846b71712.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 130294
+      }
+    ]
+  },
+  "bruce-lee-jeet-kune-do-intercepting-fist": {
+    "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-intercepting-fist-1280-34231ea0662f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 119268,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-intercepting-fist-320-2510dc036bfb.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18582
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-intercepting-fist-640-4f251cb0f819.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 47322
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-intercepting-fist-1280-34231ea0662f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 119268
+      }
+    ]
+  },
+  "bruce-lee-jeet-kune-do-corkscrew-finger-jab": {
+    "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-corkscrew-finger-jab-1280-1b29894b2bcb.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 137802,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-corkscrew-finger-jab-320-c0e4fd3a3b6c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17100
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-corkscrew-finger-jab-640-6118c0301dfd.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 49630
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-corkscrew-finger-jab-1280-1b29894b2bcb.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 137802
+      }
+    ]
+  },
+  "bruce-lee-jeet-kune-do-short-lead-hook": {
+    "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-short-lead-hook-1280-55ed222af059.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 127332,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-short-lead-hook-320-dcb03077185e.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17068
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-short-lead-hook-640-955003983579.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 47962
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-short-lead-hook-1280-55ed222af059.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 127332
+      }
+    ]
+  },
+  "bruce-lee-bring-it-on": {
+    "url": "/artwork/bruce-lee/bruce-lee-bring-it-on-1280-4510e5689f74.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 136294,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-bring-it-on-320-309edcdff98d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18802
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-bring-it-on-640-7596eb083b61.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 54240
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-bring-it-on-1280-4510e5689f74.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 136294
+      }
+    ]
+  },
+  "bruce-lee-one-inch-punch": {
+    "url": "/artwork/bruce-lee/bruce-lee-one-inch-punch-1280-bd0bd774c180.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 148148,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-one-inch-punch-320-a4bc3440a4bc.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17442
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-one-inch-punch-640-d3b0d45c9d42.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 51518
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-one-inch-punch-1280-bd0bd774c180.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 148148
+      }
+    ]
+  },
+  "bruce-lee-nunchaku": {
+    "url": "/artwork/bruce-lee/bruce-lee-nunchaku-1280-3e891b7d9fd8.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 114624,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-nunchaku-320-ce33466cd0f8.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17426
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-nunchaku-640-ea50b8b3b9a8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 45688
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-nunchaku-1280-3e891b7d9fd8.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 114624
+      }
+    ]
+  },
+  "bruce-lee-momentous-shift": {
+    "url": "/artwork/bruce-lee/bruce-lee-momentous-shift-1280-413cc64b5586.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 213490,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-momentous-shift-320-8563affb8c3a.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24102
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-momentous-shift-640-e51ef8ffca6d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 76458
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-momentous-shift-1280-413cc64b5586.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 213490
+      }
+    ]
+  },
+  "bruce-lee-feint": {
+    "url": "/artwork/bruce-lee/bruce-lee-feint-1280-57a02d09ea9a.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 118208,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-feint-320-cddccfe242ed.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17096
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-feint-640-1ae25da99898.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 46360
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-feint-1280-57a02d09ea9a.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 118208
+      }
+    ]
+  },
+  "bruce-lee-regroup": {
+    "url": "/artwork/bruce-lee/bruce-lee-regroup-1280-74e82fb5c802.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 180256,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-regroup-320-aafb21ef75e4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21598
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-regroup-640-db3f6197a7ce.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 65088
+      },
+      {
+        "url": "/artwork/bruce-lee/bruce-lee-regroup-1280-74e82fb5c802.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 180256
+      }
+    ]
+  },
+  "yennefer-portrait": {
+    "url": "/artwork/yennefer-triss/yennefer-portrait-1024-6fe58566560f.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 144684,
+    "kind": "portrait",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-portrait-256-228c74bbf244.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 16068
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-portrait-512-7c808f2f018f.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 50076
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-portrait-1024-6fe58566560f.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 144684
+      }
+    ]
+  },
+  "triss-portrait": {
+    "url": "/artwork/yennefer-triss/triss-portrait-1024-1ec32722ef38.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 213784,
+    "kind": "portrait",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/triss-portrait-256-abb5b53d0c21.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 23246
+      },
+      {
+        "url": "/artwork/yennefer-triss/triss-portrait-512-a5b10fe2e1f5.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 74610
+      },
+      {
+        "url": "/artwork/yennefer-triss/triss-portrait-1024-1ec32722ef38.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 213784
+      }
+    ]
+  },
+  "yennefer-token": {
+    "url": "/artwork/yennefer-triss/yennefer-token-512-bb39b17f975a.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 62494,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-token-512-bb39b17f975a.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 62494
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "triss-token": {
+    "url": "/artwork/yennefer-triss/triss-token-512-13db464084c4.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 52556,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/triss-token-512-13db464084c4.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 52556
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "yennefer-triss-merigolds-hailstorm": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-merigolds-hailstorm-1280-10dec0601c35.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 300342,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-merigolds-hailstorm-320-320a18738141.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29534
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-merigolds-hailstorm-640-bfbeef774fa7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 101774
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-merigolds-hailstorm-1280-10dec0601c35.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 300342
+      }
+    ]
+  },
+  "yennefer-triss-incinerate": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-incinerate-1280-d3c163db70aa.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 261850,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-incinerate-320-30b505359f22.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27200
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-incinerate-640-fde072246aca.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 91474
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-incinerate-1280-d3c163db70aa.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 261850
+      }
+    ]
+  },
+  "yennefer-triss-portal-to-anywhere": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-portal-to-anywhere-1280-42d8416fe56a.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 246986,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-portal-to-anywhere-320-04e3df144ab6.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24826
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-portal-to-anywhere-640-f5ad63566a65.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 84520
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-portal-to-anywhere-1280-42d8416fe56a.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 246986
+      }
+    ]
+  },
+  "yennefer-triss-echoing-blast": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-echoing-blast-1280-5a8e8d9d4fbc.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 294758,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-echoing-blast-320-1bc1a4a470f9.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28536
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-echoing-blast-640-1efec80e9b50.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 99054
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-echoing-blast-1280-5a8e8d9d4fbc.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 294758
+      }
+    ]
+  },
+  "yennefer-triss-ball-lightning": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-ball-lightning-1280-df9c7c129321.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 287484,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-ball-lightning-320-545c9a4b2aca.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26198
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-ball-lightning-640-263c3201f429.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 92220
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-ball-lightning-1280-df9c7c129321.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 287484
+      }
+    ]
+  },
+  "yennefer-triss-quick-and-ready": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-quick-and-ready-1280-50278cc6ac50.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 317768,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-quick-and-ready-320-f321f8729239.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28320
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-quick-and-ready-640-6f25ab6ef628.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 101414
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-quick-and-ready-1280-50278cc6ac50.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 317768
+      }
+    ]
+  },
+  "yennefer-triss-telepathy": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-telepathy-1280-63ddd32ebddd.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 162510,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-telepathy-320-6998bb132ab1.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19484
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-telepathy-640-1d01819755fb.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 58530
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-telepathy-1280-63ddd32ebddd.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 162510
+      }
+    ]
+  },
+  "yennefer-triss-magical-barrier": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-magical-barrier-1280-2e760b46b866.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 274962,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-magical-barrier-320-c3f26f88ac42.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28022
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-magical-barrier-640-b67b07316ffb.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 93264
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-magical-barrier-1280-2e760b46b866.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 274962
+      }
+    ]
+  },
+  "yennefer-triss-paralyzing-fetters": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-paralyzing-fetters-1280-6d2f52f5e514.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 265014,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-paralyzing-fetters-320-790f6f631b86.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26928
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-paralyzing-fetters-640-2efc127416c5.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 92816
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-paralyzing-fetters-1280-6d2f52f5e514.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 265014
+      }
+    ]
+  },
+  "yennefer-triss-lodge-of-sorceresses": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-lodge-of-sorceresses-1280-12f8963c4100.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 305116,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-lodge-of-sorceresses-320-75af0473162f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27496
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-lodge-of-sorceresses-640-7db2f56671ea.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 99362
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-lodge-of-sorceresses-1280-12f8963c4100.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 305116
+      }
+    ]
+  },
+  "yennefer-triss-advisor-to-the-king": {
+    "url": "/artwork/yennefer-triss/yennefer-triss-advisor-to-the-king-1280-49f2a0e2c691.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 216844,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-advisor-to-the-king-320-68c4945451d0.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 23714
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-advisor-to-the-king-640-192d79ca8e0e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75658
+      },
+      {
+        "url": "/artwork/yennefer-triss/yennefer-triss-advisor-to-the-king-1280-49f2a0e2c691.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 216844
+      }
+    ]
+  },
+  "philippa-portrait": {
+    "url": "/artwork/philippa/philippa-portrait-1024-60f622477f34.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 118348,
+    "kind": "portrait",
+    "focal": [0.5, 0.4],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-portrait-256-c8365e4c9feb.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 12670
+      },
+      {
+        "url": "/artwork/philippa/philippa-portrait-512-91fae07ad93d.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 39474
+      },
+      {
+        "url": "/artwork/philippa/philippa-portrait-1024-60f622477f34.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 118348
+      }
+    ]
+  },
+  "philippa-token": {
+    "url": "/artwork/philippa/philippa-token-512-7a2bb7fae2b3.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 62418,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-token-512-7a2bb7fae2b3.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 62418
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "philippa-dijkstra-portrait": {
+    "url": "/artwork/philippa/philippa-dijkstra-portrait-1024-fe290d3ac4f7.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 146946,
+    "kind": "portrait",
+    "focal": [0.5, 0.4],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-dijkstra-portrait-256-8b9da410011a.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 18840
+      },
+      {
+        "url": "/artwork/philippa/philippa-dijkstra-portrait-512-aec1aeffdeb0.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 54762
+      },
+      {
+        "url": "/artwork/philippa/philippa-dijkstra-portrait-1024-fe290d3ac4f7.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 146946
+      }
+    ]
+  },
+  "philippa-dijkstra-token": {
+    "url": "/artwork/philippa/philippa-dijkstra-token-512-db4393c99dec.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 48288,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-dijkstra-token-512-db4393c99dec.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 48288
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "philippa-backup-plan": {
+    "url": "/artwork/philippa/philippa-backup-plan-1280-c2b827d94ec6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 140564,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-backup-plan-320-f75845f9d729.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18450
+      },
+      {
+        "url": "/artwork/philippa/philippa-backup-plan-640-39f80a1f83a2.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 52200
+      },
+      {
+        "url": "/artwork/philippa/philippa-backup-plan-1280-c2b827d94ec6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 140564
+      }
+    ]
+  },
+  "philippa-spymasters-ruse": {
+    "url": "/artwork/philippa/philippa-spymasters-ruse-1280-4585e1c74e1b.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 180174,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-spymasters-ruse-320-97310d1dc2a3.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20532
+      },
+      {
+        "url": "/artwork/philippa/philippa-spymasters-ruse-640-b620fdb0459f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 62250
+      },
+      {
+        "url": "/artwork/philippa/philippa-spymasters-ruse-1280-4585e1c74e1b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 180174
+      }
+    ]
+  },
+  "philippa-polymorphy": {
+    "url": "/artwork/philippa/philippa-polymorphy-1280-927b31b87123.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 270506,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-polymorphy-320-2fe2023a19d8.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 26194
+      },
+      {
+        "url": "/artwork/philippa/philippa-polymorphy-640-7851ff8d924f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 88724
+      },
+      {
+        "url": "/artwork/philippa/philippa-polymorphy-1280-927b31b87123.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 270506
+      }
+    ]
+  },
+  "philippa-paralyzing-fetters": {
+    "url": "/artwork/philippa/philippa-paralyzing-fetters-1280-71e59cacdcd7.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 203596,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-paralyzing-fetters-320-cffcba7dbc34.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20420
+      },
+      {
+        "url": "/artwork/philippa/philippa-paralyzing-fetters-640-249a677b7077.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 67922
+      },
+      {
+        "url": "/artwork/philippa/philippa-paralyzing-fetters-1280-71e59cacdcd7.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 203596
+      }
+    ]
+  },
+  "philippa-do-my-bidding": {
+    "url": "/artwork/philippa/philippa-do-my-bidding-1280-17ed38d9da7c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 166556,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-do-my-bidding-320-6ce99d19638e.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17654
+      },
+      {
+        "url": "/artwork/philippa/philippa-do-my-bidding-640-6f114a9fec59.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 55982
+      },
+      {
+        "url": "/artwork/philippa/philippa-do-my-bidding-1280-17ed38d9da7c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 166556
+      }
+    ]
+  },
+  "philippa-blinding-dust": {
+    "url": "/artwork/philippa/philippa-blinding-dust-1280-9171f35efe43.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 226834,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-blinding-dust-320-b710e29aeefa.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22932
+      },
+      {
+        "url": "/artwork/philippa/philippa-blinding-dust-640-29e1163fec9b.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75984
+      },
+      {
+        "url": "/artwork/philippa/philippa-blinding-dust-1280-9171f35efe43.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 226834
+      }
+    ]
+  },
+  "philippa-cunning": {
+    "url": "/artwork/philippa/philippa-cunning-1280-b3dbc0a04d85.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 177224,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-cunning-320-8cde84d23425.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19760
+      },
+      {
+        "url": "/artwork/philippa/philippa-cunning-640-cbe8094bb273.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 62516
+      },
+      {
+        "url": "/artwork/philippa/philippa-cunning-1280-b3dbc0a04d85.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 177224
+      }
+    ]
+  },
+  "philippa-redanian-plot": {
+    "url": "/artwork/philippa/philippa-redanian-plot-1280-f4f1133e7e62.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 209446,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-redanian-plot-320-e757d6b3f77d.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22052
+      },
+      {
+        "url": "/artwork/philippa/philippa-redanian-plot-640-3de23926ba11.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 70688
+      },
+      {
+        "url": "/artwork/philippa/philippa-redanian-plot-1280-f4f1133e7e62.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 209446
+      }
+    ]
+  },
+  "philippa-spellbreaker": {
+    "url": "/artwork/philippa/philippa-spellbreaker-1280-8b42ff522b5c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 191320,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-spellbreaker-320-4aa596276cc6.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20342
+      },
+      {
+        "url": "/artwork/philippa/philippa-spellbreaker-640-60f7e1f15133.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 64178
+      },
+      {
+        "url": "/artwork/philippa/philippa-spellbreaker-1280-8b42ff522b5c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 191320
+      }
+    ]
+  },
+  "philippa-chain-lightning": {
+    "url": "/artwork/philippa/philippa-chain-lightning-1280-5f4a5e2fb4b8.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 283278,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-chain-lightning-320-50454e598d3f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25004
+      },
+      {
+        "url": "/artwork/philippa/philippa-chain-lightning-640-6fc529108245.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 90528
+      },
+      {
+        "url": "/artwork/philippa/philippa-chain-lightning-1280-5f4a5e2fb4b8.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 283278
+      }
+    ]
+  },
+  "philippa-regicide": {
+    "url": "/artwork/philippa/philippa-regicide-1280-77e547398a39.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 179270,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-regicide-320-493a66eeafb1.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19812
+      },
+      {
+        "url": "/artwork/philippa/philippa-regicide-640-4adc9520902e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 62204
+      },
+      {
+        "url": "/artwork/philippa/philippa-regicide-1280-77e547398a39.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 179270
+      }
+    ]
+  },
+  "philippa-lightning-bolt": {
+    "url": "/artwork/philippa/philippa-lightning-bolt-1280-839dac13d1ec.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 271790,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-lightning-bolt-320-8beb5e393640.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24532
+      },
+      {
+        "url": "/artwork/philippa/philippa-lightning-bolt-640-8b62af03c9c2.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 86190
+      },
+      {
+        "url": "/artwork/philippa/philippa-lightning-bolt-1280-839dac13d1ec.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 271790
+      }
+    ]
+  },
+  "philippa-owlform": {
+    "url": "/artwork/philippa/philippa-owlform-1280-9de49df52e09.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 205176,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/philippa/philippa-owlform-320-a83f3edab51a.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24226
+      },
+      {
+        "url": "/artwork/philippa/philippa-owlform-640-babb00a31d11.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 76780
+      },
+      {
+        "url": "/artwork/philippa/philippa-owlform-1280-9de49df52e09.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 205176
+      }
+    ]
+  },
+  "eredin-portrait": {
+    "url": "/artwork/eredin/eredin-portrait-1024-81f98bc67a56.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 209454,
+    "kind": "portrait",
+    "focal": [0.5, 0.42],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-portrait-256-96ef5216b8fc.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 20708
+      },
+      {
+        "url": "/artwork/eredin/eredin-portrait-512-e616580d218e.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 67806
+      },
+      {
+        "url": "/artwork/eredin/eredin-portrait-1024-81f98bc67a56.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 209454
+      }
+    ]
+  },
+  "eredin-red-rider-portrait": {
+    "url": "/artwork/eredin/eredin-red-rider-portrait-1024-21a9823db63b.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 227962,
+    "kind": "portrait",
+    "focal": [0.5, 0.42],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-red-rider-portrait-256-d580f3dae0ed.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 22556
+      },
+      {
+        "url": "/artwork/eredin/eredin-red-rider-portrait-512-a2eaf45f2946.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 73884
+      },
+      {
+        "url": "/artwork/eredin/eredin-red-rider-portrait-1024-21a9823db63b.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 227962
+      }
+    ]
+  },
+  "eredin-token": {
+    "url": "/artwork/eredin/eredin-token-512-1478e2c93c3f.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 75030,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-token-512-1478e2c93c3f.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 75030
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "eredin-red-rider-token": {
+    "url": "/artwork/eredin/eredin-red-rider-token-512-fab9648f3c3e.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 74652,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-red-rider-token-512-fab9648f3c3e.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 74652
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "eredin-brutal-strike": {
+    "url": "/artwork/eredin/eredin-brutal-strike-1280-d3c676d6fa85.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 269832,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-brutal-strike-320-0e9fb67875d2.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28622
+      },
+      {
+        "url": "/artwork/eredin/eredin-brutal-strike-640-176b035d2761.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 95148
+      },
+      {
+        "url": "/artwork/eredin/eredin-brutal-strike-1280-d3c676d6fa85.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 269832
+      }
+    ]
+  },
+  "eredin-backhand": {
+    "url": "/artwork/eredin/eredin-backhand-1280-bc9feab469a6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 265964,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-backhand-320-d21b123f9cd2.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28416
+      },
+      {
+        "url": "/artwork/eredin/eredin-backhand-640-2b4c3050aab1.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 93770
+      },
+      {
+        "url": "/artwork/eredin/eredin-backhand-1280-bc9feab469a6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 265964
+      }
+    ]
+  },
+  "eredin-foul-purpose": {
+    "url": "/artwork/eredin/eredin-foul-purpose-1280-bc9b0c008629.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 237994,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-foul-purpose-320-8142155d79b4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24828
+      },
+      {
+        "url": "/artwork/eredin/eredin-foul-purpose-640-12369c7b7d84.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 82052
+      },
+      {
+        "url": "/artwork/eredin/eredin-foul-purpose-1280-bc9b0c008629.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 237994
+      }
+    ]
+  },
+  "eredin-unyielding-hordes": {
+    "url": "/artwork/eredin/eredin-unyielding-hordes-1280-645acc362ad3.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 268884,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-unyielding-hordes-320-469e5ad214ca.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28456
+      },
+      {
+        "url": "/artwork/eredin/eredin-unyielding-hordes-640-fddd75535859.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 95200
+      },
+      {
+        "url": "/artwork/eredin/eredin-unyielding-hordes-1280-645acc362ad3.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 268884
+      }
+    ]
+  },
+  "eredin-wild-hunt": {
+    "url": "/artwork/eredin/eredin-wild-hunt-1280-d5f3701395e3.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 297686,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-wild-hunt-320-516980463304.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27498
+      },
+      {
+        "url": "/artwork/eredin/eredin-wild-hunt-640-d98607beecd2.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 95062
+      },
+      {
+        "url": "/artwork/eredin/eredin-wild-hunt-1280-d5f3701395e3.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 297686
+      }
+    ]
+  },
+  "eredin-skirmish": {
+    "url": "/artwork/eredin/eredin-skirmish-1280-d9220cb1e6c6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 324134,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-skirmish-320-8d9cc8993567.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29646
+      },
+      {
+        "url": "/artwork/eredin/eredin-skirmish-640-ca5b5b727f0f.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 104022
+      },
+      {
+        "url": "/artwork/eredin/eredin-skirmish-1280-d9220cb1e6c6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 324134
+      }
+    ]
+  },
+  "eredin-icy-guile": {
+    "url": "/artwork/eredin/eredin-icy-guile-1280-27d72933850b.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 258170,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-icy-guile-320-ef50bbd77c3a.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 27138
+      },
+      {
+        "url": "/artwork/eredin/eredin-icy-guile-640-dbaa633be31c.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 89872
+      },
+      {
+        "url": "/artwork/eredin/eredin-icy-guile-1280-27d72933850b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 258170
+      }
+    ]
+  },
+  "eredin-portal-defense": {
+    "url": "/artwork/eredin/eredin-portal-defense-1280-960e290a2b67.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 316004,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-portal-defense-320-8dc71411c805.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 29924
+      },
+      {
+        "url": "/artwork/eredin/eredin-portal-defense-640-fb32ba11e6f2.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 105574
+      },
+      {
+        "url": "/artwork/eredin/eredin-portal-defense-1280-960e290a2b67.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 316004
+      }
+    ]
+  },
+  "eredin-implacable": {
+    "url": "/artwork/eredin/eredin-implacable-1280-30049d4f3871.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 287262,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-implacable-320-345ff6e364f9.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28472
+      },
+      {
+        "url": "/artwork/eredin/eredin-implacable-640-8906b49f5e0d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 98274
+      },
+      {
+        "url": "/artwork/eredin/eredin-implacable-1280-30049d4f3871.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 287262
+      }
+    ]
+  },
+  "eredin-might-of-the-aen-elle": {
+    "url": "/artwork/eredin/eredin-might-of-the-aen-elle-1280-3c5b34275eb3.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 287474,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-might-of-the-aen-elle-320-294dbdf35e97.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25662
+      },
+      {
+        "url": "/artwork/eredin/eredin-might-of-the-aen-elle-640-e5a9031286b8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 90382
+      },
+      {
+        "url": "/artwork/eredin/eredin-might-of-the-aen-elle-1280-3c5b34275eb3.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 287474
+      }
+    ]
+  },
+  "eredin-close-for-the-kill": {
+    "url": "/artwork/eredin/eredin-close-for-the-kill-1280-f55867e906f7.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 261422,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/eredin/eredin-close-for-the-kill-320-1ed34b4fd584.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 28476
+      },
+      {
+        "url": "/artwork/eredin/eredin-close-for-the-kill-640-33217dce00e8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 93838
+      },
+      {
+        "url": "/artwork/eredin/eredin-close-for-the-kill-1280-f55867e906f7.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 261422
+      }
+    ]
+  },
+  "invisible-man-portrait": {
+    "url": "/artwork/invisible-man/invisible-man-portrait-1024-ab183d106567.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 173616,
+    "kind": "portrait",
+    "focal": [0.5, 0.42],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-portrait-256-7e0bf43acfe9.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 15212
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-portrait-512-e19fcb81f9e0.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 52748
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-portrait-1024-ab183d106567.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 173616
+      }
+    ]
+  },
+  "invisible-man-token": {
+    "url": "/artwork/invisible-man/invisible-man-token-512-133292c12780.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 34966,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-token-512-133292c12780.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 34966
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "invisible-man-covert-preparation": {
+    "url": "/artwork/invisible-man/invisible-man-covert-preparation-1280-8094b555105c.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 201420,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-covert-preparation-320-ae38880e2310.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19786
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-covert-preparation-640-fd9402c00358.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 65882
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-covert-preparation-1280-8094b555105c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 201420
+      }
+    ]
+  },
+  "invisible-man-dreaming-of-revenge": {
+    "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-1280-cff1edd38e62.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 173634,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-320-994a3f68766a.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 17198
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-640-dd37a731d7ab.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 57074
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-1280-cff1edd38e62.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 173634
+      }
+    ]
+  },
+  "invisible-man-confound": {
+    "url": "/artwork/invisible-man/invisible-man-confound-1280-7b8e90aa4ee6.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 204420,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-confound-320-54174e0f4087.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21792
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-confound-640-a9890f9c72ba.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 71720
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-confound-1280-7b8e90aa4ee6.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 204420
+      }
+    ]
+  },
+  "invisible-man-impossible-to-see": {
+    "url": "/artwork/invisible-man/invisible-man-impossible-to-see-1280-86e716c8ca74.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 211338,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-impossible-to-see-320-338e7beed792.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21852
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-impossible-to-see-640-0f89fb11d490.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 72334
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-impossible-to-see-1280-86e716c8ca74.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 211338
+      }
+    ]
+  },
+  "invisible-man-surprise-attack": {
+    "url": "/artwork/invisible-man/invisible-man-surprise-attack-1280-27b1ffb34d98.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 164210,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-surprise-attack-320-ecfc866e435c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18360
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-surprise-attack-640-5e6fc87f5ad8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 56640
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-surprise-attack-1280-27b1ffb34d98.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 164210
+      }
+    ]
+  },
+  "invisible-man-slip-away": {
+    "url": "/artwork/invisible-man/invisible-man-slip-away-1280-3516bfc28768.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 224272,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-slip-away-320-354545f7c88f.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21130
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-slip-away-640-84b5bb847d67.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 73220
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-slip-away-1280-3516bfc28768.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 224272
+      }
+    ]
+  },
+  "invisible-man-emerge-from-mist": {
+    "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-1280-204311a7dfba.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 158784,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-320-3e569ecccab7.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18820
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-640-b1cf62d42e12.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 57726
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-1280-204311a7dfba.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 158784
+      }
+    ]
+  },
+  "invisible-man-lurking": {
+    "url": "/artwork/invisible-man/invisible-man-lurking-1280-6a200391458f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 127080,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-lurking-320-29c3910852f4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18426
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-lurking-640-03edf5ebda60.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 50352
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-lurking-1280-6a200391458f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 127080
+      }
+    ]
+  },
+  "invisible-man-into-thin-air": {
+    "url": "/artwork/invisible-man/invisible-man-into-thin-air-1280-fcb3dd8d802e.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 203364,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-into-thin-air-320-a8d94e98e1ef.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20260
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-into-thin-air-640-165ac5671a56.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 67636
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-into-thin-air-1280-fcb3dd8d802e.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 203364
+      }
+    ]
+  },
+  "invisible-man-coded-notes": {
+    "url": "/artwork/invisible-man/invisible-man-coded-notes-1280-9c0a2031d63f.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 185070,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-coded-notes-320-102124cce1df.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 19474
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-coded-notes-640-c3e458149dc0.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 63102
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-coded-notes-1280-9c0a2031d63f.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 185070
+      }
+    ]
+  },
+  "invisible-man-reign-of-terror": {
+    "url": "/artwork/invisible-man/invisible-man-reign-of-terror-1280-cb02ee7aabe2.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 190048,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-reign-of-terror-320-e8d2408c3c1b.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21974
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-reign-of-terror-640-299939a7a3d1.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 69390
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-reign-of-terror-1280-cb02ee7aabe2.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 190048
+      }
+    ]
+  },
+  "invisible-man-vanish": {
+    "url": "/artwork/invisible-man/invisible-man-vanish-1280-d77896bfe3da.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 219430,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-vanish-320-78b6810f7f39.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22868
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-vanish-640-3a6f46f8de4d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 73036
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-vanish-1280-d77896bfe3da.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 219430
+      }
+    ]
+  },
+  "invisible-man-step-lightly": {
+    "url": "/artwork/invisible-man/invisible-man-step-lightly-1280-66ab386ae526.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 193700,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-step-lightly-320-c8b3d2bea8a3.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20102
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-step-lightly-640-8197bb16d581.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 65748
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-step-lightly-1280-66ab386ae526.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 193700
+      }
+    ]
+  },
+  "invisible-man-rolling-fog": {
+    "url": "/artwork/invisible-man/invisible-man-rolling-fog-1280-73701dbe5fa9.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 223410,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/invisible-man/invisible-man-rolling-fog-320-13c1c854d712.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 18410
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-rolling-fog-640-5151891ab9c7.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 68472
+      },
+      {
+        "url": "/artwork/invisible-man/invisible-man-rolling-fog-1280-73701dbe5fa9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 223410
+      }
+    ]
+  },
+  "geralt-of-rivia-dandelion-portrait": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-dandelion-portrait-1024-9beccddb85bc.webp",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 180564,
+    "kind": "portrait",
+    "focal": [0.5, 0.1],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-dandelion-portrait-256-d3c8bb7f3840.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 19956
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-dandelion-portrait-512-6bd91a03ea70.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 61790
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-dandelion-portrait-1024-9beccddb85bc.webp",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 180564
+      }
+    ]
+  },
+  "geralt-of-rivia-dandelion-token": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-dandelion-token-512-fa9ac1e19ec2.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 47764,
+    "kind": "token",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-dandelion-token-512-fa9ac1e19ec2.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 47764
+      }
+    ],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  "geralt-of-rivia-annoying-tune": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-1280-2f9040a6f8ec.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 226566,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-320-db3b8b2b40db.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24972
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-640-af548834d2b8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 81056
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-1280-2f9040a6f8ec.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 226566
+      }
+    ]
+  },
+  "geralt-of-rivia-plot-twist": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-1280-ceb8d9723038.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 161778,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-320-f1e20a01acad.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21338
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-640-091d246c03e1.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 60860
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-1280-ceb8d9723038.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 161778
+      }
+    ]
+  },
+  "geralt-of-rivia-gear-sword-of-steel": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-1280-bd408808ae46.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 237794,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-320-fa5f358b85c5.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22476
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-640-ed03a9b90462.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 78688
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-1280-bd408808ae46.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 237794
+      }
+    ]
+  },
+  "geralt-of-rivia-gear-sword-of-silver": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-1280-b0aec78813a7.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 162162,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-320-d8ae9465561c.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 16432
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-640-41a629868dae.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 54386
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-1280-b0aec78813a7.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 162162
+      }
+    ]
+  },
+  "geralt-of-rivia-gear-wolf-medallion": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-1280-9a5552ffd1e7.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 182642,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-320-29eca05ec8bb.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 20580
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-640-6c86663beea8.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 65228
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-1280-9a5552ffd1e7.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 182642
+      }
+    ]
+  },
+  "geralt-of-rivia-gear-armor-of-the-forgotten-wolf": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-1280-b96cd888036e.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 190474,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-320-292fca5303a8.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22270
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-640-af821120d1f3.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 68300
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-1280-b96cd888036e.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 190474
+      }
+    ]
+  },
+  "geralt-of-rivia-gear-blizzard": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-1280-6e8c41c9c632.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 231790,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-320-87dc5753b3d4.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 25410
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-640-1745689a193e.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 80504
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-1280-6e8c41c9c632.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 231790
+      }
+    ]
+  },
+  "geralt-of-rivia-gear-tawny-owl": {
+    "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-1280-d0ecd9931a31.webp",
+    "width": 1280,
+    "height": 800,
+    "bytes": 204208,
+    "kind": "card",
+    "focal": [0.5, 0.5],
+    "variants": [
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-320-cd40d40ffcbf.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 24138
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-640-477441ec8390.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 73648
+      },
+      {
+        "url": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-1280-d0ecd9931a31.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 204208
+      }
+    ]
   }
 }

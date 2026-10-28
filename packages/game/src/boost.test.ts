@@ -530,7 +530,7 @@ describe('boost authoring validation', () => {
       expect(() => validateDefinitions(defs)).toThrow();
     },
   );
-  it.each(['after-attack', 'card-discarded', 'combat-reveal'] as const)(
+  it.each(['after-attack', 'card-discarded', 'after-action'] as const)(
     'rejects nested boost-attack outside allowed timings: %s',
     (trigger) => {
       const h = setup();

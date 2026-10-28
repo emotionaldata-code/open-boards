@@ -1,0 +1,121 @@
+[
+  {
+    "id": "philippa-portrait",
+    "kind": "portrait",
+    "source": "masters/philippa-portrait.png",
+    "focal": [0.5, 0.4]
+  },
+  {
+    "id": "philippa-token",
+    "kind": "token",
+    "source": "masters/philippa-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "philippa-dijkstra-portrait",
+    "kind": "portrait",
+    "source": "masters/philippa-dijkstra-portrait.png",
+    "focal": [0.5, 0.4]
+  },
+  {
+    "id": "philippa-dijkstra-token",
+    "kind": "token",
+    "source": "masters/philippa-dijkstra-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "philippa-backup-plan",
+    "kind": "card",
+    "source": "masters/backup-plan.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-backup-plan"
+  },
+  {
+    "id": "philippa-spymasters-ruse",
+    "kind": "card",
+    "source": "masters/spymasters-ruse.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-spymasters-ruse"
+  },
+  {
+    "id": "philippa-polymorphy",
+    "kind": "card",
+    "source": "masters/polymorphy.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-polymorphy"
+  },
+  {
+    "id": "philippa-paralyzing-fetters",
+    "kind": "card",
+    "source": "masters/paralyzing-fetters.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-paralyzing-fetters"
+  },
+  {
+    "id": "philippa-do-my-bidding",
+    "kind": "card",
+    "source": "masters/do-my-bidding.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-do-my-bidding"
+  },
+  {
+    "id": "philippa-blinding-dust",
+    "kind": "card",
+    "source": "masters/blinding-dust.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-blinding-dust"
+  },
+  {
+    "id": "philippa-cunning",
+    "kind": "card",
+    "source": "masters/cunning.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-cunning"
+  },
+  {
+    "id": "philippa-redanian-plot",
+    "kind": "card",
+    "source": "masters/redanian-plot.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-redanian-plot"
+  },
+  {
+    "id": "philippa-spellbreaker",
+    "kind": "card",
+    "source": "masters/spellbreaker.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-spellbreaker"
+  },
+  {
+    "id": "philippa-chain-lightning",
+    "kind": "card",
+    "source": "masters/chain-lightning.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-chain-lightning"
+  },
+  {
+    "id": "philippa-regicide",
+    "kind": "card",
+    "source": "masters/regicide.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-regicide"
+  },
+  {
+    "id": "philippa-lightning-bolt",
+    "kind": "card",
+    "source": "masters/lightning-bolt.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-lightning-bolt"
+  },
+  {
+    "id": "philippa-owlform",
+    "kind": "card",
+    "source": "masters/owlform.png",
+    "focal": [0.5, 0.5],
+    "card": "philippa-owlform"
+  }
+]

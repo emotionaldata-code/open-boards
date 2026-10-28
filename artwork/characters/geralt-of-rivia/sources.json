@@ -1,0 +1,72 @@
+[
+  {
+    "id": "geralt-of-rivia-dandelion-portrait",
+    "kind": "portrait",
+    "source": "masters/dandelion-portrait.png",
+    "focal": [0.5, 0.1]
+  },
+  {
+    "id": "geralt-of-rivia-dandelion-token",
+    "kind": "token",
+    "source": "masters/dandelion-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "geralt-of-rivia-annoying-tune",
+    "kind": "card",
+    "source": "masters/annoying-tune.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-annoying-tune"
+  },
+  {
+    "id": "geralt-of-rivia-plot-twist",
+    "kind": "card",
+    "source": "masters/plot-twist.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-plot-twist"
+  },
+  {
+    "id": "geralt-of-rivia-gear-sword-of-steel",
+    "kind": "card",
+    "source": "masters/gear-sword-of-steel.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-gear-sword-of-steel"
+  },
+  {
+    "id": "geralt-of-rivia-gear-sword-of-silver",
+    "kind": "card",
+    "source": "masters/gear-sword-of-silver.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-gear-sword-of-silver"
+  },
+  {
+    "id": "geralt-of-rivia-gear-wolf-medallion",
+    "kind": "card",
+    "source": "masters/gear-wolf-medallion.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-gear-wolf-medallion"
+  },
+  {
+    "id": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+    "kind": "card",
+    "source": "masters/gear-armor-of-the-forgotten-wolf.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf"
+  },
+  {
+    "id": "geralt-of-rivia-gear-blizzard",
+    "kind": "card",
+    "source": "masters/gear-blizzard.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-gear-blizzard"
+  },
+  {
+    "id": "geralt-of-rivia-gear-tawny-owl",
+    "kind": "card",
+    "source": "masters/gear-tawny-owl.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-gear-tawny-owl"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "achilles-portrait",
+    "kind": "portrait",
+    "source": "masters/achilles-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "achilles-token",
+    "kind": "token",
+    "source": "masters/achilles-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "achilles-patroclus-portrait",
+    "kind": "portrait",
+    "source": "masters/patroclus-portrait.png",
+    "focal": [0.5, 0.24]
+  },
+  {
+    "id": "achilles-patroclus-token",
+    "kind": "token",
+    "source": "masters/patroclus-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.55, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "achilles-battle-frenzy",
+    "kind": "card",
+    "card": "achilles-battle-frenzy",
+    "source": "masters/battle-frenzy.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-test-for-weakness",
+    "kind": "card",
+    "card": "achilles-test-for-weakness",
+    "source": "masters/test-for-weakness.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-the-day-of-your-doom",
+    "kind": "card",
+    "card": "achilles-the-day-of-your-doom",
+    "source": "masters/the-day-of-your-doom.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-brothers-in-arms",
+    "kind": "card",
+    "card": "achilles-brothers-in-arms",
+    "source": "masters/brothers-in-arms.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-feint",
+    "kind": "card",
+    "card": "achilles-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-battle-hardened",
+    "kind": "card",
+    "card": "achilles-battle-hardened",
+    "source": "masters/battle-hardened.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-wily-fighting",
+    "kind": "card",
+    "card": "achilles-wily-fighting",
+    "source": "masters/wily-fighting.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-blessed-by-hermes",
+    "kind": "card",
+    "card": "achilles-blessed-by-hermes",
+    "source": "masters/blessed-by-hermes.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-skirmish",
+    "kind": "card",
+    "card": "achilles-skirmish",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-under-achilles-helm",
+    "kind": "card",
+    "card": "achilles-under-achilles-helm",
+    "source": "masters/under-achilles-helm.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-achilles-heel",
+    "kind": "card",
+    "card": "achilles-achilles-heel",
+    "source": "masters/achilles-heel.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "achilles-spear-throw",
+    "kind": "card",
+    "card": "achilles-spear-throw",
+    "source": "masters/spear-throw.png",
+    "focal": [0.5, 0.5]
+  }
+]

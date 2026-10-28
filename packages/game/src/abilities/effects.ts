@@ -13,8 +13,10 @@ import { suppressOpponent } from './suppression';
 import { offerAttackBoost } from './attack-boost';
 import { setCombatValue, modifyCombatValue, lockCardValue } from './combat-values';
 import { actionGainPrevented, offerDiscardProtection } from './ongoing';
-import { discardDeck, searchCards } from './deck';
+import { discardDeck, searchCards, randomIndex } from './deck';
+import { eliminate } from './operations';
 import { offerDiscard } from './discard';
+import { returnCombatCard } from './combat-return';
 
 import { inspectDeck, searchCard, recoverCard, returnPlayedCard } from './deck';
 import { inspectHand, nameValue, predictValue } from './hand';
@@ -37,6 +39,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
     (e.type === 'discard' ||
       e.type === 'draw' ||
       e.type === 'inspect-hand' ||
+      e.type === 'reveal-hand' ||
+      e.type === 'draw-to' ||
       e.type === 'named-value-discard')
   )
     return;
@@ -48,6 +52,21 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
   )
     return;
   switch (e.type) {
+    case 'reveal-boost-draw':
+      runtime.prepend({
+        ...task,
+        type: 'boost-draw',
+        remaining: state.players
+          .filter((p) => !p.eliminated && !runtime.data.dormant?.includes(p.id))
+          .map((p) => p.id),
+        commitments: [],
+        stage: 'commit',
+        index: 0,
+      });
+      break;
+    case 'return-combat-card':
+      returnCombatCard(runtime, task);
+      break;
     case 'discard-deck':
       discardDeck(runtime, task, e);
       break;
@@ -68,7 +87,34 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       });
       break;
     case 'return-to-deck':
-      runtime.prepend({ ...task, type: 'return-to-deck', remaining: e.count, ordered: [] });
+      if (target) {
+        const player = state.players.find((p) => p.id === target.player)!;
+        if (player.eliminated || runtime.data.dormant?.includes(player.id)) break;
+        if (e.random) {
+          const cards = Array.from(
+            { length: Math.min(e.count, player.hand.length) },
+            () => player.hand.splice(randomIndex(runtime, player.hand.length), 1)[0],
+          );
+          player.deck.unshift(...cards);
+        } else
+          runtime.prepend({
+            ...task,
+            type: 'return-to-deck',
+            player: player.id,
+            remaining: e.count,
+            ordered: [],
+          });
+      }
+      break;
+    case 'defeat':
+      if (
+        target &&
+        !target.defeated &&
+        !state.players.find((p) => p.id === target.player)!.eliminated
+      ) {
+        runtime.prepend(...runtime.effects(e.onDefeat ?? [], task));
+        eliminate(runtime, target.id, owner.id);
+      }
       break;
     case 'remove-until-next-turn':
       if (target && !target.defeated && !runtime.data.movementLocks?.includes(target.id)) {
@@ -104,6 +150,28 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       break;
     case 'replace-attack':
       offerAttackReplacement(runtime, task);
+      break;
+    case 'reveal-hand':
+      if (target)
+        runtime.prepend({
+          ...task,
+          type: 'reveal-hand',
+          target: target.id,
+          count: e.count,
+          discard: e.discard,
+          selected: [],
+        });
+      break;
+    case 'draw-to':
+      if (target)
+        runtime.operation({
+          kind: 'draw',
+          actor: target.id,
+          amount: Math.max(
+            0,
+            e.count - state.players.find((p) => p.id === target.player)!.hand.length,
+          ),
+        });
       break;
     case 'inspect-hand':
       inspectHand(runtime, task, e);
@@ -196,8 +264,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
             tasks: runtime.effects(o.effects, task),
           };
         }),
-        1,
-        1,
+        e.count ?? 1,
+        e.count ?? 1,
         task.provenance,
         { fighter: task.owner },
       );
@@ -213,17 +281,20 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         (f) =>
           !f.defeated &&
           f.position !== null &&
+          (e.type !== 'choose-fighter' || !e.role || f.role === e.role) &&
           (e.relation === 'any' ||
             (e.relation === 'self' || e.relation === 'friendly'
               ? f.player === owner.player
               : f.player !== owner.player)) &&
           (!e.range ||
             e.range === 'any' ||
-            (e.range === 'adjacent'
-              ? adjacent(defs.map, owner.position, f.position)
-              : e.range === 'zone'
-                ? sharesZone(defs.map, owner.position, f.position)
-                : inAttackRange(owner, f, defs))),
+            (e.range === 'combat'
+              ? frame.kind === 'combat' && [frame.attacker, frame.defender].includes(f.id)
+              : e.range === 'adjacent'
+                ? adjacent(defs.map, owner.position, f.position)
+                : e.range === 'zone'
+                  ? sharesZone(defs.map, owner.position, f.position)
+                  : inAttackRange(owner, f, defs))),
       );
       openChoice(
         runtime,

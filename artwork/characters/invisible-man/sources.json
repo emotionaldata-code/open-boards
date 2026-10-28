@@ -1,0 +1,114 @@
+[
+  {
+    "id": "invisible-man-portrait",
+    "kind": "portrait",
+    "source": "masters/portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "invisible-man-token",
+    "kind": "token",
+    "source": "masters/token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "invisible-man-covert-preparation",
+    "kind": "card",
+    "card": "invisible-man-covert-preparation",
+    "source": "masters/covert-preparation.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-dreaming-of-revenge",
+    "kind": "card",
+    "card": "invisible-man-dreaming-of-revenge",
+    "source": "masters/dreaming-of-revenge.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-confound",
+    "kind": "card",
+    "card": "invisible-man-confound",
+    "source": "masters/confound.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-impossible-to-see",
+    "kind": "card",
+    "card": "invisible-man-impossible-to-see",
+    "source": "masters/impossible-to-see.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-surprise-attack",
+    "kind": "card",
+    "card": "invisible-man-surprise-attack",
+    "source": "masters/surprise-attack.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-slip-away",
+    "kind": "card",
+    "card": "invisible-man-slip-away",
+    "source": "masters/slip-away.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-emerge-from-mist",
+    "kind": "card",
+    "card": "invisible-man-emerge-from-mist",
+    "source": "masters/emerge-from-mist.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-lurking",
+    "kind": "card",
+    "card": "invisible-man-lurking",
+    "source": "masters/lurking.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-into-thin-air",
+    "kind": "card",
+    "card": "invisible-man-into-thin-air",
+    "source": "masters/into-thin-air.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-coded-notes",
+    "kind": "card",
+    "card": "invisible-man-coded-notes",
+    "source": "masters/coded-notes.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-reign-of-terror",
+    "kind": "card",
+    "card": "invisible-man-reign-of-terror",
+    "source": "masters/reign-of-terror.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-vanish",
+    "kind": "card",
+    "card": "invisible-man-vanish",
+    "source": "masters/vanish.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-step-lightly",
+    "kind": "card",
+    "card": "invisible-man-step-lightly",
+    "source": "masters/step-lightly.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "invisible-man-rolling-fog",
+    "kind": "card",
+    "card": "invisible-man-rolling-fog",
+    "source": "masters/rolling-fog.png",
+    "focal": [0.5, 0.5]
+  }
+]

@@ -1,0 +1,206 @@
+[
+  {
+    "id": "bruce-lee-portrait",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-bc6c089c-a953-4ec4-a48c-f9f990d843c4.png",
+    "selected": false,
+    "usedAsIdentityReference": true
+  },
+  {
+    "id": "bruce-lee-token",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-fedacf8d-b26d-4f33-b752-50029e867c34.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-skirmish",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-932ec5d2-80b9-4ff2-acff-933a74ff3931.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-little-dragon",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-0fc2c798-947c-4f80-8b34-1f2b36f6ebd7.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-taste-of-blood",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-90228a22-43d1-4fc8-b7d7-6bbe8eb94651.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-be-like-water",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-99735633-909f-4359-af88-abdc265ca11f.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-hoo-whaaaaaa",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6957bef7-1219-4b0e-b4a3-ae1e7a09b9c1.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-high-straight-lead",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6a83a665-4a21-4f4c-928f-48a6b731fb5f.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-downward-side-kick",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-15f37bf3-82f5-479c-ac7a-0bb2e7b15f3f.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-wrist-lock",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-2c5efe0f-d236-4823-987c-f63fa93d97d5.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-intercepting-fist",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-67c4bf5e-3dd5-48e9-ad59-0d83a8538cb4.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-b7e06b54-95cb-4310-89f6-353cf79ae026.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-short-lead-hook",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-15fb30a5-00d5-4d5a-aca3-db9dedde6163.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-bring-it-on",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-68b09efd-862f-4f18-971e-9d56208b8497.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-one-inch-punch",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-adaeea9e-daf3-4543-bcfb-39c9a8b98cb7.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-nunchaku",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-919eedb7-0304-4ff4-8196-8c40b5c6cf54.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-momentous-shift",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6cbdc682-5a6f-4f6d-b32d-336174a20671.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-feint",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-e661c70b-16bb-4e23-9870-52bfc62b4a7d.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-regroup",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-59985aea-aaa7-4802-b371-1344ba2f0ed5.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-short-lead-hook-refinement",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-791d98d3-7a08-4465-950b-2fbb48b74947.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-portrait-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-bc6c089c-a953-4ec4-a48c-f9f990d843c4.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-fd1ef462-869e-47bf-b7d3-e114097b9a4f.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-skirmish-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-932ec5d2-80b9-4ff2-acff-933a74ff3931.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-f87f38f6-b2cc-49fc-bcea-aa34c43faed5.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-little-dragon-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-0fc2c798-947c-4f80-8b34-1f2b36f6ebd7.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-f630b2cd-28bb-45aa-9db1-cc0ae80362b6.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-taste-of-blood-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-90228a22-43d1-4fc8-b7d7-6bbe8eb94651.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-4f4d2a1b-756d-420b-a215-3488f572033a.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-be-like-water-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-99735633-909f-4359-af88-abdc265ca11f.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-fc415962-8b30-4089-bf21-0625f8277532.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-hoo-whaaaaaa-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6957bef7-1219-4b0e-b4a3-ae1e7a09b9c1.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-a7f4ceaa-ca84-4e87-b54e-5edfdfd7476a.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-high-straight-lead-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6a83a665-4a21-4f4c-928f-48a6b731fb5f.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-93c77e48-d777-449c-bea0-61cfd17226c4.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-downward-side-kick-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-15f37bf3-82f5-479c-ac7a-0bb2e7b15f3f.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-ae28c71c-8cd7-470f-91f0-9303e29ac098.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-wrist-lock-cleanup",
+    "status": "succeeded",
+    "prompt": "corner-cleanup-review",
+    "input": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-2c5efe0f-d236-4823-987c-f63fa93d97d5.png",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-b6a2858c-168e-4d81-8fd9-4d934f865fb2.png",
+    "selected": false
+  },
+  {
+    "id": "bruce-lee-nunchaku-cleanup",
+    "status": "succeeded",
+    "output": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-b5660cb0-0a90-4370-82fa-a198e15dd8d2.png",
+    "selected": true
+  },
+  {
+    "id": "bruce-lee-nunchaku-cleanup-preflight",
+    "status": "rejected-before-generation",
+    "error": "Missing prompt field: the prompt was not yet visible outside an ongoing orchestration cell. Retried with the exact explicit prompt; no image was produced by this rejected call."
+  }
+]

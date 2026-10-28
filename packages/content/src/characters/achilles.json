@@ -40,7 +40,7 @@
     {
       "id": "rage",
       "name": "Rage",
-      "description": "While Patroclus is defeated, add +2 to all Achilles\u2019 attacks.",
+      "description": "While Patroclus is defeated, add +2 to all Achilles’ attacks.",
       "trigger": "before-combat",
       "effects": [
         {
@@ -102,7 +102,7 @@
       "art": {
         "scene": "fire",
         "variant": 0,
-        "image": "/cards/achilles/battle-frenzy.svg"
+        "image": "/artwork/achilles/achilles-battle-frenzy-1280-df6abad30368.webp"
       },
       "flavor": "Even friendship has a breaking point.",
       "abilities": [
@@ -137,7 +137,7 @@
       "art": {
         "scene": "blade",
         "variant": 1,
-        "image": "/cards/achilles/test-for-weakness.svg"
+        "image": "/artwork/achilles/achilles-test-for-weakness-1280-fc0bcbd45986.webp"
       },
       "flavor": "A small opening. A relentless answer.",
       "abilities": [
@@ -168,7 +168,7 @@
       "art": {
         "scene": "embers",
         "variant": 2,
-        "image": "/cards/achilles/the-day-of-your-doom.svg"
+        "image": "/artwork/achilles/achilles-the-day-of-your-doom-1280-0bf26810eb99.webp"
       },
       "flavor": "The price is paid before the blow.",
       "abilities": [
@@ -204,7 +204,7 @@
       "art": {
         "scene": "shield",
         "variant": 3,
-        "image": "/cards/achilles/brothers-in-arms.svg"
+        "image": "/artwork/achilles/achilles-brothers-in-arms-1280-3773694fcf0f.webp"
       },
       "flavor": "Two shields against a thousand spears.",
       "abilities": [
@@ -241,7 +241,7 @@
       "art": {
         "scene": "trail",
         "variant": 4,
-        "image": "/cards/achilles/feint.svg"
+        "image": "/artwork/achilles/achilles-feint-1280-807f9465c977.webp"
       },
       "flavor": "The bronze catches only air.",
       "abilities": [
@@ -270,7 +270,7 @@
       "art": {
         "scene": "bastion",
         "variant": 5,
-        "image": "/cards/achilles/battle-hardened.svg"
+        "image": "/artwork/achilles/achilles-battle-hardened-1280-410aa799ccdb.webp"
       },
       "flavor": "Scars remember what the hand forgets.",
       "abilities": [
@@ -299,7 +299,7 @@
       "art": {
         "scene": "blade",
         "variant": 6,
-        "image": "/cards/achilles/wily-fighting.svg"
+        "image": "/artwork/achilles/achilles-wily-fighting-1280-8c3898efa1ca.webp"
       },
       "flavor": "Every edge has another edge.",
       "abilities": [
@@ -337,7 +337,7 @@
       "art": {
         "scene": "ward",
         "variant": 0,
-        "image": "/cards/achilles/blessed-by-hermes.svg"
+        "image": "/artwork/achilles/achilles-blessed-by-hermes-1280-0313279f873c.webp"
       },
       "flavor": "Winged sandals leave no dust.",
       "abilities": [
@@ -375,7 +375,7 @@
       "art": {
         "scene": "map",
         "variant": 1,
-        "image": "/cards/achilles/skirmish.svg"
+        "image": "/artwork/achilles/achilles-skirmish-1280-116ab1912d13.webp"
       },
       "flavor": "Win the moment. Choose the ground.",
       "abilities": [
@@ -435,7 +435,7 @@
       "art": {
         "scene": "shield",
         "variant": 2,
-        "image": "/cards/achilles/under-achilles-helm.svg"
+        "image": "/artwork/achilles/achilles-under-achilles-helm-1280-8eb7ff619a34.webp"
       },
       "flavor": "Another face beneath the same bronze.",
       "abilities": [
@@ -479,7 +479,7 @@
       "art": {
         "scene": "embers",
         "variant": 3,
-        "image": "/cards/achilles/achilles-heel.svg"
+        "image": "/artwork/achilles/achilles-achilles-heel-1280-498a79b27b15.webp"
       },
       "flavor": "Even legends cast a vulnerable shadow.",
       "abilities": [
@@ -514,7 +514,7 @@
       "art": {
         "scene": "bolt",
         "variant": 4,
-        "image": "/cards/achilles/spear-throw.svg"
+        "image": "/artwork/achilles/achilles-spear-throw-1280-1e1af3d8d597.webp"
       },
       "flavor": "The ash-wood shaft carries its own thunder.",
       "effects": [

@@ -1,8 +1,12 @@
 import { execute, type Definitions, type GameState } from '../packages/game/src/index';
 
-/** Resolve only pre-deal loadout choices; leave ordinary gameplay decisions untouched. */
+/** Resolve only pre-deal setup/loadout choices; leave ordinary gameplay decisions untouched. */
 export function completeDeckSelection(state: GameState, defs: Definitions): GameState {
-  while (state.resolution.choice?.prompt.startsWith('Always Prepared')) {
+  while (
+    state.resolution.choice &&
+    (state.resolution.frames[state.resolution.choice.frame]?.hook === 'game-start' ||
+      state.resolution.choice.prompt.startsWith('Always Prepared'))
+  ) {
     const choice = state.resolution.choice;
     const result = execute(
       state,
@@ -10,7 +14,11 @@ export function completeDeckSelection(state: GameState, defs: Definitions): Game
       {
         id: `loadout-${state.revision}`,
         revision: state.revision,
-        command: { type: 'choose', choice: choice.id, options: [choice.options[0].id] },
+        command: {
+          type: 'choose',
+          choice: choice.id,
+          options: choice.options.slice(0, choice.min).map((o) => o.id),
+        },
       },
       defs,
     );

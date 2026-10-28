@@ -15,6 +15,14 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  'yennefer-triss': { mark: 'bolt', tone: 'gold' },
+  'yennefer-triss-triss': { mark: 'flame', tone: 'ember' },
+  philippa: { mark: 'bolt', tone: 'gold' },
+  'philippa-dijkstra': { mark: 'compass', tone: 'mint' },
+  eredin: { mark: 'blade', tone: 'ember' },
+  'eredin-red-rider': { mark: 'blade', tone: 'ember' },
+  alice: { mark: 'compass', tone: 'gold' },
+  'alice-jabberwock': { mark: 'blade', tone: 'ember' },
   'darth-vader': { mark: 'bolt', tone: 'ember' },
   'geralt-of-rivia': { mark: 'blade', tone: 'gold' },
   'geralt-of-rivia-dandelion': { mark: 'wave', tone: 'mint' },
@@ -39,6 +47,8 @@ export const abilityVisuals: Record<
 
 export const statusVisuals: Record<string, { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }> =
   {
+    big: { mark: 'blade', tone: 'gold' },
+    small: { mark: 'shield', tone: 'mint' },
     'attack-up': { mark: 'blade', tone: 'gold' },
     'fixed-four': { mark: 'bolt', tone: 'gold' },
     burn: { mark: 'flame', tone: 'ember' },

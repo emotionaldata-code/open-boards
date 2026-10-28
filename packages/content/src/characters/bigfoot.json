@@ -53,7 +53,7 @@
       "art": {
         "scene": "blade",
         "variant": 0,
-        "image": "/cards/bigfoot/skirmish.svg"
+        "image": "/artwork/bigfoot/bigfoot-skirmish-1280-ae783570c6a6.webp"
       },
       "flavor": "",
       "abilities": [
@@ -112,7 +112,7 @@
       "art": {
         "scene": "bastion",
         "variant": 1,
-        "image": "/cards/bigfoot/larger-than-life.svg"
+        "image": "/artwork/bigfoot/bigfoot-larger-than-life-1280-0d6b6eb3d0ca.webp"
       },
       "flavor": ""
     },
@@ -128,7 +128,7 @@
       "art": {
         "scene": "trail",
         "variant": 2,
-        "image": "/cards/bigfoot/crash-through-the-trees.svg"
+        "image": "/artwork/bigfoot/bigfoot-crash-through-the-trees-1280-f0dbe9335e89.webp"
       },
       "flavor": "",
       "effects": [
@@ -151,7 +151,7 @@
       "art": {
         "scene": "ward",
         "variant": 3,
-        "image": "/cards/bigfoot/it-s-just-your-imagination.svg"
+        "image": "/artwork/bigfoot/bigfoot-it-s-just-your-imagination-1280-2a1eccb11b32.webp"
       },
       "flavor": "",
       "abilities": [
@@ -180,7 +180,7 @@
       "art": {
         "scene": "embers",
         "variant": 4,
-        "image": "/cards/bigfoot/savagery.svg"
+        "image": "/artwork/bigfoot/bigfoot-savagery-1280-f41be4720b15.webp"
       },
       "flavor": "",
       "abilities": [
@@ -216,7 +216,7 @@
       "art": {
         "scene": "trail",
         "variant": 5,
-        "image": "/cards/bigfoot/hoax.svg"
+        "image": "/artwork/bigfoot/bigfoot-hoax-1280-1f65ab900d69.webp"
       },
       "flavor": "",
       "abilities": [
@@ -247,7 +247,7 @@
       "art": {
         "scene": "blade",
         "variant": 6,
-        "image": "/cards/bigfoot/jackalope-horns.svg"
+        "image": "/artwork/bigfoot/bigfoot-jackalope-horns-1280-c397ef642481.webp"
       },
       "flavor": "",
       "effects": [
@@ -282,7 +282,7 @@
       "art": {
         "scene": "trail",
         "variant": 0,
-        "image": "/cards/bigfoot/disengage.svg"
+        "image": "/artwork/bigfoot/bigfoot-disengage-1280-0d3b5eea77a9.webp"
       },
       "flavor": "",
       "abilities": [
@@ -313,7 +313,7 @@
       "art": {
         "scene": "bolt",
         "variant": 1,
-        "image": "/cards/bigfoot/momentous-shift.svg"
+        "image": "/artwork/bigfoot/bigfoot-momentous-shift-1280-24e64f614a91.webp"
       },
       "flavor": "",
       "abilities": [
@@ -347,7 +347,7 @@
       "art": {
         "scene": "ward",
         "variant": 2,
-        "image": "/cards/bigfoot/feint.svg"
+        "image": "/artwork/bigfoot/bigfoot-feint-1280-d70df085538d.webp"
       },
       "flavor": "",
       "abilities": [
@@ -376,7 +376,7 @@
       "art": {
         "scene": "lantern",
         "variant": 3,
-        "image": "/cards/bigfoot/regroup.svg"
+        "image": "/artwork/bigfoot/bigfoot-regroup-1280-480bbd970973.webp"
       },
       "flavor": "",
       "abilities": [

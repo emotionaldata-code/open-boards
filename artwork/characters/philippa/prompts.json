@@ -1,0 +1,86 @@
+[
+  {
+    "id": "philippa-portrait",
+    "prompt": "Square illustrated game portrait of Philippa Eilhart from The Witcher. Adult pale angular face, black braided updo, opaque burgundy silk eye-covering band with gold embroidery. Modest high-necked dark plum velvet court gown fully covering chest and shoulders, feathered mantle and small gold owl brooch at collar. She stands regally in a dim candlelit palace. Head and shoulders only, face prominent. Cinematic painted realism, visible brush texture and credible materials, atmospheric violet and warm candle lighting. Original art. No text, frame, watermark."
+  },
+  {
+    "id": "philippa-dijkstra-portrait",
+    "prompt": "Use case: stylized-concept. Square game sidekick portrait of Sigismund Dijkstra from The Witcher: imposing heavy-set middle-aged pale man, broad bald head, small shrewd eyes, short reddish beard, heavy green brocade coat with gold trim over brown leather, broad powerful upper body, calculating expression. Cinematic illustrated realism, believable anatomy, painted material texture, candlelit Redanian spy chamber, muted green and aged gold light. Clear face and upper silhouette. No text, letters, frame, watermark. Original composition."
+  },
+  {
+    "id": "philippa-dijkstra-token",
+    "referenceImages": ["references/dijkstra.png"],
+    "transparent_background": true
+  },
+  {
+    "id": "philippa-token",
+    "prompt": "Use the portrait as an identity and costume reference. Complete full-body transparent game figure of the same Philippa Eilhart, adult woman with braided black updo, burgundy silk blindfold, modest high-necked plum court gown, gold owl brooch and black feathered mantle. Standing three-quarter pose casting a small violet spell from one outstretched hand, other hand at her side. Complete head hands and booted feet visible, centered with generous transparent margins. Cinematic painted realism with clearly painted textures. Actual alpha transparency, no background, floor, pedestal, shadow, text or watermark.",
+    "referenceImages": ["references/philippa.png"],
+    "transparent_background": true
+  },
+  {
+    "id": "backup-plan",
+    "prompt": "Original 8:5 landscape card illustration, cinematic illustrated realism with painterly brushwork. Use portrait for Philippa identity: black braided hair, burgundy blindfold, modest high-neck plum gown with feathered mantle, gold owl brooch. Scene: Philippa calmly uncorks a small healing vial while her other hand rests on a secret escape map in a candlelit stone study; no readable marks on the map. Medium shot, tangible glass and velvet, violet and amber light, shrewd composure. Crucial action central 80%. No text, border, logo, watermark.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "spymasters-ruse",
+    "prompt": "Original 8:5 landscape fantasy card illustration in cinematic painted realism with visible brushwork. Use Dijkstra identity reference: massive bald middle-aged man, short reddish beard, dark green brocade coat with aged gold trim. Scene: Dijkstra at a candlelit desk slides two sealed intercepted letters out of four toward a brazier, shadowy courier waiting behind him; letters unmarked. Close three-quarter composition, broad shrewd face and hands, smoky warm light against cold stone. Crucial action central 80%. No words, text, border, logos, watermark.",
+    "referenceImages": ["references/dijkstra.png"]
+  },
+  {
+    "id": "blinding-dust",
+    "prompt": "Original 8:5 landscape fantasy game card illustration. Cinematic painted realism, visible fine brush texture, natural anatomy and materials, dramatic motivated lighting. Crucial action central 80%. Philippa matches reference: black braided updo, burgundy blindfold, modest high-necked plum gown, feathered mantle and owl brooch. Dijkstra when shown matches reference: heavy-set bald man, short reddish beard, green brocade coat. No text, lettering, borders, logos, watermark. Close dynamic view: Philippa casts a handful of shimmering golden dust into the path of an approaching armored swordsman in a moonlit courtyard. Swirling dust catches violet sparks, her hand in foreground, staggered guard beyond.",
+    "referenceImages": ["references/philippa.png", "references/dijkstra.png"]
+  },
+  {
+    "id": "cunning",
+    "prompt": "Original 8:5 landscape fantasy game card illustration. Cinematic painted realism, visible fine brush texture, natural anatomy and materials, dramatic motivated lighting. Crucial action central 80%. Philippa matches reference: black braided updo, burgundy blindfold, modest high-necked plum gown, feathered mantle and owl brooch. Dijkstra when shown matches reference: heavy-set bald man, short reddish beard, green brocade coat. No text, lettering, borders, logos, watermark. At a dim court table Dijkstra offers an unmarked sealed letter in one broad hand while keeping a dagger concealed behind his back; Philippa's shadow falls across the wall behind him. Low intimate angle, emerald brocade and warm candlelight, calculating smile.",
+    "referenceImages": ["references/philippa.png", "references/dijkstra.png"]
+  },
+  {
+    "id": "redanian-plot",
+    "prompt": "Original 8:5 landscape fantasy game card illustration. Cinematic painted realism, visible fine brush texture, natural anatomy and materials, dramatic motivated lighting. Crucial action central 80%. Philippa matches reference: black braided updo, burgundy blindfold, modest high-necked plum gown, feathered mantle and owl brooch. Dijkstra when shown matches reference: heavy-set bald man, short reddish beard, green brocade coat. No text, lettering, borders, logos, watermark. Overhead composition of Philippa and Dijkstra's hands moving carved wooden royal chess pieces around a parchment city plan, a crown-shaped piece toppled, no readable marks. Burgundy sleeve and green sleeve, warm candle pools and deep shadow. Political intrigue.",
+    "referenceImages": ["references/philippa.png", "references/dijkstra.png"]
+  },
+  {
+    "id": "spellbreaker",
+    "prompt": "Original 8:5 landscape fantasy game card illustration. Cinematic painted realism, visible fine brush texture, natural anatomy and materials, dramatic motivated lighting. Crucial action central 80%. Philippa matches reference: black braided updo, burgundy blindfold, modest high-necked plum gown, feathered mantle and owl brooch. Dijkstra when shown matches reference: heavy-set bald man, short reddish beard, green brocade coat. No text, lettering, borders, logos, watermark. Philippa stands in profile as a bright incoming magical sigil shatters into harmless violet glass-like sparks against her outstretched palm. Palace stairwell, strong silhouette, icy light against plum velvet, decisive suspended moment, no actual glyph lettering.",
+    "referenceImages": ["references/philippa.png", "references/dijkstra.png"]
+  },
+  {
+    "id": "polymorphy",
+    "prompt": "Original 8:5 landscape fantasy card illustration. Cinematic illustrated realism with visible painted brushwork, credible anatomy and materials, dramatic motivated light, readable composition with crucial action central 80%. Use supplied portrait for Philippa identity: adult pale woman, black braided updo, burgundy blindfold, modest high-neck plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logo or watermark. Philippa transforms into a magnificent grey-brown owl mid-flight through a palace window; feathers trail from her cloak into fully detailed wings, dusk rooftops and warm room beyond. Wide dynamic diagonal, amber eyes on the owl, magical violet mist.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "paralyzing-fetters",
+    "prompt": "Original 8:5 landscape fantasy card illustration. Cinematic illustrated realism with visible painted brushwork, credible anatomy and materials, dramatic motivated light, readable composition with crucial action central 80%. Use supplied portrait for Philippa identity: adult pale woman, black braided updo, burgundy blindfold, modest high-neck plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logo or watermark. Philippa binds an armored swordsman's raised weapon and wrists with luminous violet magical bands, freezing his lunge in a candlelit stone hall. Side view, tense restrained motion, sharply resolved chains of light and steel.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "do-my-bidding",
+    "prompt": "Original 8:5 landscape fantasy card illustration. Cinematic illustrated realism with visible painted brushwork, credible anatomy and materials, dramatic motivated light, readable composition with crucial action central 80%. Use supplied portrait for Philippa identity: adult pale woman, black braided updo, burgundy blindfold, modest high-neck plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logo or watermark. Philippa commands an armed court guard with a subtle raised hand while he lowers one weapon and reluctantly takes another from a rack. Medium-wide shot across a shadowy royal hall, threads of violet magic between her fingertips and his gauntlet, psychological control, no gore.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "chain-lightning",
+    "prompt": "Original 8:5 landscape fantasy game card illustration in cinematic painted realism. Visible painterly texture, plausible anatomy and materials, dramatic light and varied narrative composition, crucial action central 80%. Use supplied Philippa reference: adult pale woman, black braided updo, burgundy blindfold, modest high-necked plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logos or watermark. Wide elevated shot in a rain-dark courtyard: Philippa releases forked blue-violet lightning that arcs from one armored enemy shield to two more distant hostile fighters in the same courtyard. Branching energy, wet stone reflections, thundercloud depth.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "regicide",
+    "prompt": "Original 8:5 landscape fantasy game card illustration in cinematic painted realism. Visible painterly texture, plausible anatomy and materials, dramatic light and varied narrative composition, crucial action central 80%. Use supplied Philippa reference: adult pale woman, black braided updo, burgundy blindfold, modest high-necked plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logos or watermark. A fallen golden crown lies in a shallow puddle beside a stone throne; Philippa stands beyond, upright and composed, a faint violet spell extinguishing in her hand, no body, no blood. Low close foreground crown, distant imposing figure, ominous dawn light through tall windows.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "lightning-bolt",
+    "prompt": "Original 8:5 landscape fantasy game card illustration in cinematic painted realism. Visible painterly texture, plausible anatomy and materials, dramatic light and varied narrative composition, crucial action central 80%. Use supplied Philippa reference: adult pale woman, black braided updo, burgundy blindfold, modest high-necked plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logos or watermark. Dynamic low-angle view of Philippa planted firmly on palace steps, casting a single concentrated violet-white lightning bolt across the rainy courtyard toward an armored swordsman. Her feet remain still, cloak billows, crisp branching sparks, high energy.",
+    "referenceImages": ["references/philippa.png"]
+  },
+  {
+    "id": "owlform",
+    "prompt": "Original 8:5 landscape fantasy game card illustration in cinematic painted realism. Visible painterly texture, plausible anatomy and materials, dramatic light and varied narrative composition, crucial action central 80%. Use supplied Philippa reference: adult pale woman, black braided updo, burgundy blindfold, modest high-necked plum gown, black feather mantle and gold owl brooch. No text, lettering, border, logos or watermark. A magnificent grey-brown owl with fierce amber eyes dives directly toward the viewer with spread talons, its detailed feathered wings filling the frame; burgundy-violet magical ribbons trail from it, Philippa's shadowed blindfolded silhouette dissolves behind. Moonlit palace towers, powerful foreshortening.",
+    "referenceImages": ["references/philippa.png"]
+  }
+]

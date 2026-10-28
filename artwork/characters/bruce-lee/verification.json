@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-28",
+  "character": "bruce-lee",
+  "artwork": {
+    "assets": 19,
+    "cardDesigns": 17,
+    "portraits": 1,
+    "transparentFigures": 1,
+    "derivatives": 55,
+    "derivativeBytes": 4170566,
+    "selectedOriginalsMatchedBySha256": 19,
+    "realAlphaVerified": true,
+    "preparationRuns": 5,
+    "repeatPreparationStable": true,
+    "rulesUnchanged": true
+  },
+  "review": {
+    "desktop": [1440, 1000],
+    "landscapePhone": [844, 390],
+    "allCardScenesReviewed": true,
+    "allFourOwnerColorsReviewed": true,
+    "selectionMovementDefeatRestorationReviewed": true,
+    "numberedAllies": "not applicable: Bruce Lee has no allies",
+    "reducedAndFullMotionReviewed": true,
+    "mixedSvgRasterReviewed": true,
+    "portraitFocal": [0.5, 0.2],
+    "portraitCropNote": "Raised the focal point after inspecting the wide revival dialog so the eyes and face remain visible.",
+    "sharedFigureTextureRequests": 1,
+    "scopedBrowserErrors": []
+  },
+  "cardTransfers": {
+    "width320": {
+      "requests": 17,
+      "encodedBodyBytes": 332646
+    },
+    "width640": {
+      "requests": 17,
+      "encodedBodyBytes": 977986
+    },
+    "width1280": {
+      "requests": 0,
+      "note": "Available and locally verified; the browser correctly selected 640px for these inspector viewports."
+    }
+  },
+  "checks": {
+    "assetAndTextureUnit": {
+      "status": "passed",
+      "files": 3,
+      "tests": 17,
+      "note": "Final Bruce Lee asset case rerun after corner cleanup: one passed, unrelated character cases skipped."
+    },
+    "contentAndRoom": {
+      "status": "passed",
+      "files": 2,
+      "tests": 47,
+      "skipped": 1,
+      "note": "The expensive combinatorial roster case was excluded from the clean retry. It passed in the initial run, which exited with a Vitest RPC timeout."
+    },
+    "browser": {
+      "status": "passed",
+      "scenarios": 3,
+      "note": "Gallery inspected all 17 designs on desktop and landscape phone; four-owner figure lifecycle ran with reduced and full motion. Full-motion lifecycle rerun after final focal adjustment also passed."
+    },
+    "typecheck": "passed",
+    "scopedLint": "passed",
+    "scopedFormat": "passed",
+    "build": "passed",
+    "diffWhitespace": "passed",
+    "finalAssetVerification": "passed"
+  },
+  "broaderCheckLimitations": {
+    "initialContentRun": {
+      "status": "failed",
+      "assertionsPassed": 55,
+      "filesPassed": 4,
+      "error": "Vitest worker RPC onTaskUpdate timeout during the synchronous combinatorial roster case."
+    },
+    "repositoryLint": {
+      "status": "failed",
+      "reason": "Seven no-explicit-any violations in concurrently created tests/e2e/robin-review.tmp.spec.ts; no Bruce Lee files were reported."
+    },
+    "repositoryFormat": {
+      "status": "failed",
+      "reason": "Unrelated files were unformatted or being removed by concurrent workspace work.",
+      "files": [
+        "apps/client/src/game/Game.tsx",
+        "apps/server/src/transport/projection.ts",
+        "artwork/characters/yennefer-triss/sources.json",
+        "packages/content/src/characters/eredin.test.ts",
+        "packages/game/src/abilities/conditional-combat.test.ts",
+        "packages/game/src/abilities/operations.ts",
+        "packages/game/src/abilities/revival.ts",
+        "packages/game/src/card-attacks.ts",
+        "tests/deck-harness.ts",
+        "tests/e2e/robin-debug.tmp.spec.ts (removed during formatting scan)"
+      ]
+    },
+    "fullUnitAndBrowserSuites": "Not run for this asset-registration-only refresh; no shared UI renderer or engine changes were made."
+  },
+  "artifacts": {
+    "browserReport": "/tmp/bruce-art-refresh/browser-report.json",
+    "browserScreenshots": "/tmp/bruce-art-refresh/final-browser-results",
+    "finalCropReport": "/tmp/bruce-art-refresh/crop-browser-report.json",
+    "finalCropScreenshots": "/tmp/bruce-art-refresh/crop-browser-results"
+  }
+}

@@ -8,6 +8,7 @@ import { spaces } from './layout';
 
 export class ArenaScene {
   private actors = new Map<string, Container>();
+  private appearances = new Map<string, string>();
   private people = new Container({ sortableChildren: true });
   private effects = new Container();
   private seen = new Set<string>();
@@ -25,6 +26,7 @@ export class ArenaScene {
     if (resetting) {
       this.people.removeChildren().forEach((actor) => actor.destroy({ children: true }));
       this.actors.clear();
+      this.appearances.clear();
       this.seen.clear();
       this.moving.clear();
       this.effects.removeChildren().forEach((c) => c.destroy());
@@ -39,7 +41,7 @@ export class ArenaScene {
               f.role === 'ally'
                 ? f.id.split('-').at(-1)!
                 : game.players.find((p) => p.id === f.player)!.name,
-            artwork: f.role === 'ally' ? f.definition : f.character,
+            artwork: f.definition,
             color: playerColors[game.players.findIndex((p) => p.id === f.player)],
           }))
       : [
@@ -75,6 +77,13 @@ export class ArenaScene {
       if (!players.some((p) => p.id === id)) actor.visible = false;
     players.forEach((player) => {
       let actor = this.actors.get(player.id);
+      const appearance = `${player.artwork}:${player.color}`;
+      if (actor && this.appearances.get(player.id) !== appearance) {
+        this.people.removeChild(actor);
+        actor.destroy({ children: true });
+        this.actors.delete(player.id);
+        actor = undefined;
+      }
       if (!actor) {
         actor = createFigure(player.artwork, player.color, this.render, () => !this.disposed);
         const label = new Text({
@@ -93,6 +102,7 @@ export class ArenaScene {
         label.position.set(0, 23);
         actor.addChild(label);
         this.actors.set(player.id, actor);
+        this.appearances.set(player.id, appearance);
         this.people.addChild(actor);
       }
       actor.visible = !player.defeated;

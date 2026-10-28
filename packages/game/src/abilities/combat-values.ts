@@ -98,9 +98,9 @@ export function lockCardValue(
   )
     return;
   frame[field] =
-    effect.value +
+    Math.max(0, Math.min(100, value(runtime.state, runtime.defs, binding, effect.value))) +
     frame.boosts
       .filter((b) => (b.field ?? 'attack') === field && !b.cancelled && !b.cardEffect)
-      .reduce((sum, b) => sum + runtime.defs.cards[b.card.definition].boost, 0);
+      .reduce((sum, b) => sum + (b.amount ?? runtime.defs.cards[b.card.definition].boost), 0);
   (frame.cardLockedValues ??= []).push(field);
 }

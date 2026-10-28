@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-28",
+  "assets": 15,
+  "cards": 11,
+  "portraits": 2,
+  "tokens": 2,
+  "variants": 41,
+  "totalVariantBytes": 4737590,
+  "canonicalCardChangesOnly": true,
+  "deterministicPreparation": true,
+  "tokenAlpha": [
+    {
+      "id": "robin-hood-token",
+      "width": 512,
+      "height": 512,
+      "transparentPixels": 202830,
+      "opaquePixels": 1754,
+      "cornerAlpha": [0, 0, 0, 0],
+      "anchor": [0.5, 0.96875],
+      "scale": 0.27
+    },
+    {
+      "id": "robin-hood-outlaw-token",
+      "width": 512,
+      "height": 512,
+      "transparentPixels": 189588,
+      "opaquePixels": 1112,
+      "cornerAlpha": [0, 0, 0, 0],
+      "anchor": [0.5, 0.96875],
+      "scale": 0.27
+    }
+  ],
+  "galleryTransfer": {
+    "requests": 24,
+    "encodedBodyBytes": 1499284,
+    "record": "transfers.json",
+    "observedWidths": [256, 320, 640, 1024]
+  },
+  "textureRequests": {
+    "unique": 2,
+    "total": 2,
+    "participatingFigures": 20,
+    "heroes": 4,
+    "numberedAllies": 16
+  },
+  "review": {
+    "viewports": [
+      [1440, 1000],
+      [844, 390]
+    ],
+    "motion": ["reduce", "no-preference"],
+    "ownerColors": 4,
+    "states": ["selection", "movement", "defeat", "revival", "mixed SVG/raster"],
+    "cards": "All 11 scenes inspected in desktop and phone UI",
+    "artifacts": [
+      "test-results/robin-gallery-final",
+      "test-results/robin-review",
+      "test-results/robin-final-review"
+    ],
+    "captureNote": "Temporary browser-only instrumentation requested an explicit Pixi redraw/readback before board screenshots to avoid blank headless GPU captures; production renderer unchanged."
+  },
+  "checks": {
+    "robinAssetTest": "passed, 1 test",
+    "sharedTextureAndFigureTests": "passed, 7 tests",
+    "robinAndMixedBrowserScenarios": "passed, 10 tests",
+    "artworkRegressionBrowserScenarios": "passed, 15 tests",
+    "finalGalleryBrowserTest": "passed, 1 test",
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "formatScoped": "passed",
+    "formatRepository": "failed: 26 unrelated existing/concurrent files at time of check",
+    "fullUnitSuite": "stalled without per-file results; stopped",
+    "robinContentAndRoomTests": "timed out after 60 seconds without per-file results",
+    "aggregateArtworkTests": "initial 17 tests passed; later run had 18 passes and 1 failure in concurrent unfinished Philippa assets. Robin-specific final test passed."
+  }
+}

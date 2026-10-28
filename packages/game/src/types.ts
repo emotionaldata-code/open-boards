@@ -3,6 +3,7 @@ import type {
   ActiveStatus,
   CounterDefinition,
   Effect,
+  FighterCondition,
   StatusDefinition,
 } from './abilities/vocabulary';
 import type { ResolutionState } from './abilities/state';
@@ -11,15 +12,23 @@ export interface CardDefinition {
   id: string;
   name: string;
   usableBy: 'MAIN' | 'ALLY' | 'BOTH';
+  /** Optional exact fighter identity, independent of its chosen hero/sidekick role. */
+  fighter?: string;
   category: CardCategory;
   value: number;
   boost: number;
   description?: string;
   faceUpDefense?: boolean;
+  effectsCannotBeCancelled?: boolean;
+  attackMode?: { when: FighterCondition; range?: 'any'; faceUp?: boolean };
   ongoing?: {
     preventEnemyActionGain?: boolean;
     optionalDiscardProtection?: boolean;
     discardUnlessAttacked?: boolean;
+    movementValue?: number;
+    discardUnlessEnemyInZone?: boolean;
+    boostBonus?: number;
+    preventMainAbilityDamage?: boolean;
   };
   effects?: Effect[];
   abilities?: Ability[];
@@ -34,6 +43,16 @@ export interface FighterDefinition {
 export interface CharacterDefinition extends FighterDefinition {
   id: string;
   movement: number;
+  /** Choose either identity as hero before opening hands; role health stays fixed. */
+  heroSelection?: { name: string; description: string; mainName: string };
+  conditionalModifiers?: {
+    name: string;
+    description: string;
+    when: FighterCondition;
+    attack?: number;
+    defense?: number;
+    movement?: number;
+  }[];
   boardTokens?: {
     id: string;
     name: string;
@@ -156,7 +175,7 @@ export type Command =
   | { type: 'place-ally'; fighter: string; position: string }
   | { type: 'finish-maneuver' }
   | { type: 'move'; fighter: string; path: string[] }
-  | { type: 'attack'; fighter: string; card: string; target: string }
+  | { type: 'attack'; fighter: string; card: string; target: string; faceUp?: boolean }
   | { type: 'defend'; card: string | null }
   | { type: 'play-action'; fighter: string; card: string }
   | { type: 'discard'; cards: string[] }

@@ -89,11 +89,7 @@ export function AbilityChoice({
                 aria-pressed={selected.includes(option.id)}
                 onClick={() => onSelect(option.id)}
               >
-                {fighter && (
-                  <CharacterPortrait
-                    character={fighter.role === 'ally' ? fighter.definition : fighter.character}
-                  />
-                )}
+                {fighter && <CharacterPortrait character={fighter.definition} />}
                 {object?.type === 'pile' && (
                   <span className="pile-back" aria-hidden="true">
                     {

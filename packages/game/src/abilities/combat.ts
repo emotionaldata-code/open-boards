@@ -5,7 +5,8 @@ import type { Runtime } from './runtime';
 import type { Frame, Task } from './state';
 import { revealBoost } from '../boost';
 import { publicBoosts } from './attack-boost';
-import { applyCombatValues } from './combat-values';
+import { applyCombatValues, modifyCombatValue } from './combat-values';
+import { conditionalModifier } from './fighter-conditions';
 
 export function publishCombat(runtime: Runtime, frame: Extract<Frame, { kind: 'combat' }>): void {
   const combat: CombatReveal = {
@@ -27,7 +28,7 @@ export function cancelCombat(runtime: Runtime, hooks = true): void {
   const frame = runtime.data.frames[id];
   runtime.data.combat = null;
   if (frame?.kind === 'combat' && !frame.revealed) {
-    for (const boost of frame.boosts)
+    for (const boost of frame.boosts.filter((b) => !b.revealed))
       revealBoost(
         runtime,
         boost.fighter ?? frame.attacker,
@@ -35,6 +36,7 @@ export function cancelCombat(runtime: Runtime, hooks = true): void {
         boost.field ?? 'attack',
         hooks,
         boost.cancelled,
+        boost.amount,
       );
     for (const [player, card] of [
       [frame.attacker, frame.card],
@@ -66,6 +68,7 @@ export function startCombat(
   defender: string,
   card: Card,
   bonus?: BonusAttack,
+  faceUp = false,
 ): void {
   const frame = runtime.frame({
     kind: 'combat',
@@ -77,6 +80,7 @@ export function startCombat(
     defenseCard: null,
     boosts: [],
     ...(bonus ? { bonus } : {}),
+    ...(faceUp ? { faceUpAttack: true } : {}),
     attack: bonus?.value ?? runtime.defs.cards[card.definition].value,
     defense: 0,
     amount: 0,
@@ -162,7 +166,7 @@ export function combatStep(
       if (!frame.bonus) runtime.cardEvents(attacker.id, frame.card, false);
       if (frame.defenseCard)
         runtime.cardEvents(defender.id, frame.defenseCard, frame.defenseCancelled ?? false);
-      for (const boost of frame.boosts)
+      for (const boost of frame.boosts.filter((b) => !b.revealed))
         revealBoost(
           runtime,
           boost.fighter ?? attacker.id,
@@ -170,9 +174,22 @@ export function combatStep(
           boost.field ?? 'attack',
           true,
           boost.cancelled,
+          boost.amount,
         );
       break;
     case 'damage':
+      if (!frame.bonus)
+        modifyCombatValue(
+          frame,
+          'attack',
+          conditionalModifier(runtime.state, attacker, 'attack', runtime.defs),
+        );
+      if (frame.defenseCard && !frame.defenseCancelled)
+        modifyCombatValue(
+          frame,
+          'defense',
+          conditionalModifier(runtime.state, defender, 'defense', runtime.defs),
+        );
       frame.amount =
         frame.cancelled || attacker.defeated || defender.defeated
           ? 0

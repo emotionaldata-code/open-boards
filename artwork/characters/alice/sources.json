@@ -1,0 +1,135 @@
+[
+  {
+    "id": "alice-portrait",
+    "kind": "portrait",
+    "source": "masters/alice-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "alice-jabberwock-portrait",
+    "kind": "portrait",
+    "source": "masters/alice-jabberwock-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "alice-token",
+    "kind": "token",
+    "source": "masters/alice-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "alice-jabberwock-token",
+    "kind": "token",
+    "source": "masters/alice-jabberwock-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "alice-claws-that-catch",
+    "kind": "card",
+    "source": "masters/claws-that-catch.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-claws-that-catch"
+  },
+  {
+    "id": "alice-momentous-shift",
+    "kind": "card",
+    "source": "masters/momentous-shift.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-momentous-shift"
+  },
+  {
+    "id": "alice-skirmish",
+    "kind": "card",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-skirmish"
+  },
+  {
+    "id": "alice-mad-as-a-hatter",
+    "kind": "card",
+    "source": "masters/mad-as-a-hatter.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-mad-as-a-hatter"
+  },
+  {
+    "id": "alice-manxome-foe",
+    "kind": "card",
+    "source": "masters/manxome-foe.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-manxome-foe"
+  },
+  {
+    "id": "alice-feint",
+    "kind": "card",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-feint"
+  },
+  {
+    "id": "alice-regroup",
+    "kind": "card",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-regroup"
+  },
+  {
+    "id": "alice-looking-glass",
+    "kind": "card",
+    "source": "masters/looking-glass.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-looking-glass"
+  },
+  {
+    "id": "alice-snicker-snack",
+    "kind": "card",
+    "source": "masters/snicker-snack.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-snicker-snack"
+  },
+  {
+    "id": "alice-o-frabjous-day",
+    "kind": "card",
+    "source": "masters/o-frabjous-day.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-o-frabjous-day"
+  },
+  {
+    "id": "alice-the-other-side-of-the-mushroom",
+    "kind": "card",
+    "source": "masters/the-other-side-of-the-mushroom.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-the-other-side-of-the-mushroom"
+  },
+  {
+    "id": "alice-eat-me",
+    "kind": "card",
+    "source": "masters/eat-me.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-eat-me"
+  },
+  {
+    "id": "alice-i-m-late-i-m-late",
+    "kind": "card",
+    "source": "masters/i-m-late-i-m-late.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-i-m-late-i-m-late"
+  },
+  {
+    "id": "alice-drink-me",
+    "kind": "card",
+    "source": "masters/drink-me.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-drink-me"
+  },
+  {
+    "id": "alice-jaws-that-bite",
+    "kind": "card",
+    "source": "masters/jaws-that-bite.png",
+    "focal": [0.5, 0.5],
+    "card": "alice-jaws-that-bite"
+  }
+]

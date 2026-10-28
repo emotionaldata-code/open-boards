@@ -87,6 +87,6 @@ it.each(['scene', 'actor'])('ignores a completed load after %s destruction', asy
 it('does not request raster textures for an unmigrated fighter', async () => {
   const { createFigure } = await import('./figures');
   mocks.load.mockClear();
-  createFigure('bigfoot', 0xdcc58d);
+  createFigure('darth-vader', 0xdcc58d);
   expect(mocks.load).not.toHaveBeenCalled();
 });

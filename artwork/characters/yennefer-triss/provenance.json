@@ -1,0 +1,84 @@
+{
+  "tool": "integrated Codex Imagegen",
+  "generatedAt": "2026-10-28",
+  "style": "cinematic illustrated realism",
+  "sourceDeck": "https://unmatched.cards/umdb/decks/yennefer-triss",
+  "publishedArtworkReused": false,
+  "assets": [
+    {
+      "id": "yennefer-portrait",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-440621ab-f72d-47a7-814a-3c73be9a559d.png",
+      "sha256": "c67eda29c87fee18980b74a20d7900b8fbf40d68efd69da6f4fc356f61147a12"
+    },
+    {
+      "id": "triss-portrait",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-69b5f0cf-3469-4ee9-b0b9-350dbe0722a2.png",
+      "sha256": "5da7f8f69d10947d6072a34f94718d3f75e48a0e8c71d9b4e6e4ebfb81eb6dec"
+    },
+    {
+      "id": "yennefer-token",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-ccdf487b-4fd7-4a4b-ae8d-73d5ba4353dd.png",
+      "sha256": "e7bf1a85b533b15ea5452ccff83ebee48a2951e12212c98f7d56e8c91a115e88"
+    },
+    {
+      "id": "triss-token",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-050ba115-e554-48ab-ad91-86ad27b55c48.png",
+      "sha256": "7aff412a0044d39fc6548bf6d2f8dbfa66b775db61ebd5731deb702e151f359a"
+    },
+    {
+      "id": "merigolds-hailstorm",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-50bae2cd-4f47-41b4-b395-f62fd9983937.png",
+      "sha256": "746a5cb9383b388a39391838b17a34b9c831e3ed2ed5fdcefe2a154ceac8d1d1"
+    },
+    {
+      "id": "incinerate",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-e0e365eb-7235-42f5-b133-f81fb98d5242.png",
+      "sha256": "b1a0bd74d06c059ee3a3f2713278a82c4e1395124a80d4222e8a4870bcfecd30"
+    },
+    {
+      "id": "portal-to-anywhere",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-b1ef09d6-b9e7-4688-9cf4-e4f8dc960fa7.png",
+      "sha256": "1813e0509bea785a7e75e9cb8c37c7be5d9606d8e50be2c2668f60249c41b5a6"
+    },
+    {
+      "id": "echoing-blast",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-5fce7bc8-7e8c-4962-adf5-85c78e6dae02.png",
+      "sha256": "8d959b39f71b1a37413c64c042f2af2b26ee2f6b17bb43dba28d1b7c9f483b1e"
+    },
+    {
+      "id": "ball-lightning",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-5a70ee15-27c2-46d0-9a19-0f779bd59540.png",
+      "sha256": "194bb244e5870804d3e1c5654318426316901f91635ba45dc99903c568eef697"
+    },
+    {
+      "id": "quick-and-ready",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-a3e5adf1-cc2c-4b7f-b821-b7ed36129f84.png",
+      "sha256": "cba70b7adb490d7cdc9a727e482a3cd3a90c713d7a78cdefb45c32799c3991c0"
+    },
+    {
+      "id": "telepathy",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-e88e693a-740d-4d77-80cf-b46006028d38.png",
+      "sha256": "08c6864676b2ccf2a92219028b60fa57fc4fda90a40341cfbe72603048903545"
+    },
+    {
+      "id": "magical-barrier",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-3d62f064-014e-4d26-9c5f-4812da008801.png",
+      "sha256": "b0ac86d13046e65ca9fb2fe9ac83a0b0a23cdbdf8dc7707691945061316c54b9"
+    },
+    {
+      "id": "paralyzing-fetters",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-0153c713-be02-4f13-8a77-f16162641cb3.png",
+      "sha256": "9a7ee89d59209774b750e261df8aa1afb14edebd062fbcc6524b923f02411ec0"
+    },
+    {
+      "id": "lodge-of-sorceresses",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-2dfada92-104d-4213-bd5b-11c5fcd5aeec.png",
+      "sha256": "06ab9b5784b1ebe2ab3527886c4ae2fa480efc8016d52f5ea91ec0b114b2690a"
+    },
+    {
+      "id": "advisor-to-the-king",
+      "source": "/home/francesco/.codex/generated_images/01a183ee-dc97-7ac2-a706-04bd3d6a5943/exec-e7cb8d0f-c239-4be2-b5e9-8da13fcafaf8.png",
+      "sha256": "35ebbd4a60849e15a047d495199842bcd4612a28e1c3084626a4ebe1717de807"
+    }
+  ]
+}

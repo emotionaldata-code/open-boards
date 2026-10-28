@@ -1,0 +1,107 @@
+[
+  {
+    "id": "robin-hood-portrait",
+    "kind": "portrait",
+    "source": "masters/robin-hood-portrait.png",
+    "focal": [0.53, 0.24]
+  },
+  {
+    "id": "robin-hood-token",
+    "kind": "token",
+    "source": "masters/robin-hood-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "robin-hood-outlaw-portrait",
+    "kind": "portrait",
+    "source": "masters/robin-hood-outlaw-portrait.png",
+    "focal": [0.5, 0.18]
+  },
+  {
+    "id": "robin-hood-outlaw-token",
+    "kind": "token",
+    "source": "masters/robin-hood-outlaw-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "robin-hood-ambush",
+    "kind": "card",
+    "card": "robin-hood-ambush",
+    "source": "masters/ambush.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-a-hunter-s-eye",
+    "kind": "card",
+    "card": "robin-hood-a-hunter-s-eye",
+    "source": "masters/a-hunter-s-eye.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-steal-from-the-rich",
+    "kind": "card",
+    "card": "robin-hood-steal-from-the-rich",
+    "source": "masters/steal-from-the-rich.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-disarming-shot",
+    "kind": "card",
+    "card": "robin-hood-disarming-shot",
+    "source": "masters/disarming-shot.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-piercing-shot",
+    "kind": "card",
+    "card": "robin-hood-piercing-shot",
+    "source": "masters/piercing-shot.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-defenders-of-sherwood",
+    "kind": "card",
+    "card": "robin-hood-defenders-of-sherwood",
+    "source": "masters/defenders-of-sherwood.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-highway-robbery",
+    "kind": "card",
+    "card": "robin-hood-highway-robbery",
+    "source": "masters/highway-robbery.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-snark",
+    "kind": "card",
+    "card": "robin-hood-snark",
+    "source": "masters/snark.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-wily-fighting",
+    "kind": "card",
+    "card": "robin-hood-wily-fighting",
+    "source": "masters/wily-fighting.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-feint",
+    "kind": "card",
+    "card": "robin-hood-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "robin-hood-regroup",
+    "kind": "card",
+    "card": "robin-hood-regroup",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5]
+  }
+]

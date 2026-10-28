@@ -1,0 +1,100 @@
+[
+  {
+    "id": "geralt-portrait-attempt-1",
+    "prompt": "Use case: stylized-concept. Asset type: square 1024x1024 hero portrait for an illustrated tabletop game. Original cinematic illustrated realism, realistic painted illustration with credible anatomy, weathered materials, dramatic motivated light, readable silhouette, restrained cool steel and warm amber palette. Geralt of Rivia, mature pale scarred angular face, catlike amber eyes, long white hair tied half back, short white beard, rugged dark brown and black leather witcher armor with chainmail and worn steel plates, small snarling wolf medallion on chest, two sword hilts over his back. Three-quarter bust with clear face and upper silhouette, head fully inside frame, misty ruined medieval woodland background, cold dawn rim light and warm reflected light on face. Establish a consistent original illustrated identity, not a photographic actor likeness. No text, numbers, border, icons, logos, watermark or split panels.",
+    "status": "failed",
+    "requestId": "fa1c984d-c465-4207-a435-89d3f734b06c",
+    "error": "http 400 moderation_blocked at output stage, category other"
+  },
+  {
+    "id": "geralt-portrait-attempt-2",
+    "prompt": "Use case: stylized-concept. Create an original square 1024px illustrated portrait of Geralt of Rivia for a fantasy board game. Cinematic painted realism. Adult white-haired fantasy traveler with amber eyes, a short white beard, weathered angular face, dark leather and chainmail armor, a small silver wolf pendant and two sheathed swords on his back. Three-quarter upper-body portrait, entire head within frame, calm watchful expression. Cool misty woodland at dawn, subtle warm light on face, believable materials and anatomy, richly painted detail. No text, border, symbols, logos or watermark.",
+    "status": "failed",
+    "requestId": "12d61f5d-62ba-4330-9454-8b6e67e3e042",
+    "error": "http 400 moderation_blocked at output stage, category other"
+  },
+  {
+    "id": "geralt-portrait-attempt-3",
+    "prompt": "Create a painterly fantasy book illustration of Geralt of Rivia for a board-game portrait. Square 1024 by 1024 or larger. Hand-painted brushwork and stylized illustrated facial proportions. A mature white-haired traveler in dark leather armor and chainmail, amber eyes, a short white beard, a silver wolf pendant and paired sheathed swords behind his shoulders. Show his head and upper torso, with his entire head comfortably inside the frame. He looks thoughtfully toward a misty woodland path at dawn. Muted forest greens, cool steel and restrained golden light. Original illustration; no photographic style, text, border, insignia or watermark.",
+    "status": "failed",
+    "requestId": "44f71329-4df6-46f8-b2f9-86ad536880a8",
+    "error": "http 400 moderation_blocked at output stage, category other"
+  },
+  {
+    "id": "dandelion-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: square 1024x1024 ally portrait for a fantasy tabletop game. Dandelion, the human troubadour companion of Geralt of Rivia: an adult man with a slender expressive face, chestnut shoulder-length hair, a neat small moustache and pointed goatee, a burgundy Renaissance-style feathered cap, rich plum doublet with gold embroidery over a cream shirt, holding a beautifully crafted wooden lute. Original cinematic painted realism, credible anatomy, cloth and wood grain, dramatic warm tavern window light against a cool softly receding medieval interior. Three-quarter upper-body portrait, clear face, complete cap and feather within frame, lute neck visible, self-assured playful expression. No lettering, numbers, border, frame, logos or watermark.",
+    "status": "succeeded",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-b05c4082-d8e9-482a-a9c0-f646198b5f57.png"
+  },
+  {
+    "id": "dandelion-token",
+    "prompt": "Use case: stylized-concept. Asset type: genuinely transparent full-body board-game figure, square canvas at least 1024px. Input image 1 is the Dandelion identity reference: preserve face, chestnut hair, neat moustache and goatee, burgundy feathered cap, plum embroidered doublet, cream shirt and wooden lute. Paint Dandelion standing in a lively stable three-quarter pose, playing his lute, both hands naturally placed on strings and fretboard, dark fitted trousers and knee-high brown leather boots. Cinematic illustrated realism with believable anatomy and rich fabric, painted edge detail, strong readable silhouette. Show the entire feather, cap, lute and both boots comfortably inside canvas with transparent space around every extremity. Actual transparent background and alpha; no scenery, ground, floor, shadow, pedestal, owner-color glow, text, numbers, border or watermark.",
+    "status": "succeeded",
+    "references": ["references/dandelion.png"],
+    "transparent": true
+  },
+  {
+    "id": "geralt-of-rivia-annoying-tune",
+    "prompt": "Use case: stylized-concept. Asset type: tabletop card scene, landscape 8:5 framing, at least 1600 by 1000 pixels. Reference image 1 defines Dandelion: preserve his chestnut hair, moustache and small goatee, feathered burgundy cap, embroidered plum doublet, cream shirt and wooden lute. Scene for Annoying Tune: Dandelion cheerfully strums and sings in a medieval tavern courtyard, leaning toward a grumpy armored traveler who covers one ear and retreats through an archway. Dandelion's expressive face and both hands on the lute are readable, playful physical storytelling. Cinematic painted realism with credible anatomy and materials, warm afternoon light against deep cool archway shadows, rich wood, worn stone and burgundy fabric. Medium-wide composition with all crucial action in central 80%, one continuous scene. No writing, musical-note symbols, numbers, speech balloons, frame, logo or watermark.",
+    "status": "succeeded",
+    "references": ["references/dandelion.png"],
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-annoying-tune-reframe",
+    "prompt": "Create one LANDSCAPE illustration with an exact 8:5 aspect ratio. The canvas must be at least 1600 pixels wide AND at least 1000 pixels tall. A moderately wide rectangle, not panoramic. Use the supplied portrait as Dandelion's face, feathered burgundy cap, plum embroidered doublet and lute identity reference. For the card Annoying Tune, depict Dandelion cheerfully playing his lute in a medieval tavern courtyard, teasing an irritated armored traveler who covers one ear and turns to leave through an archway. Cinematic hand-painted fantasy realism, warm afternoon light, cool stone shadows, believable human hands and lute strings. Keep the two main characters close together in the central 75% of the frame, both faces and lute fully readable. Single scene filling the entire canvas. No text, musical symbols, frame, numbers, logos or watermark.",
+    "status": "succeeded",
+    "references": ["references/dandelion.png"],
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-plot-twist",
+    "prompt": "Create one landscape 8:5 fantasy tabletop card illustration, a moderately wide rectangle at least 1600 pixels wide and 1000 tall. Reference image 1 defines Dandelion: preserve expressive face, chestnut hair, neat moustache and small goatee, feathered burgundy cap, embroidered plum doublet and cream shirt. Scene for Plot Twist: a sly Dandelion sits across a wooden tavern table from a startled merchant, revealing a previously concealed folded parchment as the merchant hastily gathers loose papers; Dandelion smiles knowingly, his lute leaning beside his chair. Parchments contain only abstract faded marks, no legible text. Intimate over-table composition, hands clear and anatomically credible, rich layered storytelling, candlelit warm interior and cold rain at window. Cinematic painted realism, believable fabric and wood, varied camera angle from the other card. Keep crucial action inside central 80%. No writing, letters, numbers, card frame, logo, watermark, panels or symbols.",
+    "status": "succeeded",
+    "references": ["references/dandelion.png"],
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-gear-sword-of-steel",
+    "prompt": "Use case: stylized-concept. Asset type: one fantasy tabletop card illustration, LANDSCAPE exact 8:5 aspect ratio, moderately wide rectangle at least 1600 pixels wide and 1000 tall. Original cinematic painted realism, believable weathered materials, strong readable composition, dramatic motivated light and atmospheric depth. A dedicated narrative still life, no people. Keep crucial subject inside central 80%. No writing, letters, numbers, symbols, border, frame, logos or watermark. A witcher's practical steel longsword resting diagonally across a worn oak workbench in a medieval armory, entire long blade and simple crossguard visible, fine battle scratches in the steel and dark leather-wrapped grip. Cold blade sheen against warm forge embers behind, whetstone and scabbard nearby, grounded rugged craftsmanship.",
+    "status": "succeeded",
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-gear-sword-of-silver",
+    "prompt": "Use case: stylized-concept. Asset type: one fantasy tabletop card illustration, LANDSCAPE exact 8:5 aspect ratio, moderately wide rectangle at least 1600 pixels wide and 1000 tall. Original cinematic painted realism, believable weathered materials, strong readable composition, dramatic motivated light and atmospheric depth. A dedicated narrative still life, no people. Keep crucial subject inside central 80%. No writing, letters, numbers, symbols, border, frame, logos or watermark. An elegant silver longsword laid diagonally on dark cloth beside its leather scabbard inside an old stone monster-hunter sanctuary, entire blade and distinctive refined crossguard visible. Moonlight catches the polished silver edge, a few tiny water droplets, cold luminous atmosphere, soft candle amber in background. The sword is silver metal, no magical writing.",
+    "status": "succeeded",
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-gear-wolf-medallion",
+    "prompt": "Use case: stylized-concept. Create one LANDSCAPE fantasy tabletop card illustration with exact 8:5 aspect ratio, moderately wide rectangle at least 1600 pixels wide and 1000 pixels tall. Original cinematic illustrated realism, realistic painted materials, atmospheric depth, dramatic motivated light, readable composition. Keep crucial subject in central 80%. A single dedicated scene, no people. No lettering, numbers, labels, border, frame, logos or watermark. Close view of a small silver pendant shaped like a snarling angular wolf head on a sturdy silver chain, resting on worn dark leather beside a folded chainmail collar on a medieval oak table. Intricately worked silver fur catches cold reflected light; a subtle violet reflection suggests nearby magic, no literal glow symbols. The wolf pendant and chain dominate the scene, shallow atmospheric background with an old stone window.",
+    "status": "succeeded",
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+    "prompt": "Use case: stylized-concept. Create one LANDSCAPE fantasy tabletop card illustration with exact 8:5 aspect ratio, moderately wide rectangle at least 1600 pixels wide and 1000 pixels tall. Original cinematic illustrated realism, realistic painted materials, atmospheric depth, dramatic motivated light, readable composition. Keep crucial subject in central 80%. A single dedicated scene, no people. No lettering, numbers, labels, border, frame, logos or watermark. A complete dark brown and black leather witcher's cuirass with layered worn steel shoulder plates and fine chainmail sleeves displayed on a plain wooden armor stand in a ruined medieval keep. Functional rivets, crossed leather straps, scuffed metal and heavy woven cloth. Solemn dawn light through a high window picks out the cuirass silhouette, dusty air and broken stone, three-quarter view. No helmet, no human body or face, just the armor.",
+    "status": "succeeded",
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-gear-blizzard",
+    "prompt": "Use case: stylized-concept. Create one LANDSCAPE fantasy tabletop card illustration with exact 8:5 aspect ratio, moderately wide rectangle at least 1600 pixels wide and 1000 pixels tall. Original cinematic painted realism with detailed credible glass, leather and stone, dramatic motivated light and atmospheric depth. Dedicated still life, no people. Keep crucial action within central 80%. No lettering, numbers, labels, border, card frame, logos or watermark. A single squat faceted glass alchemical potion bottle filled with pale ice-blue liquid, thick sealed cork and simple leather neck binding, standing on a snow-dusted stone ledge of a medieval witcher's workshop. Crystalline frost crawls over the glass and pale vapor swirls behind it, a winter storm visible through an open arch. Cold blue light with a sliver of warm lamp reflection; bottle large and sharply readable.",
+    "status": "succeeded",
+    "transparent": false
+  },
+  {
+    "id": "geralt-of-rivia-gear-tawny-owl",
+    "prompt": "Use case: stylized-concept. Create one LANDSCAPE fantasy tabletop card illustration with exact 8:5 aspect ratio, moderately wide rectangle at least 1600 pixels wide and 1000 pixels tall. Original cinematic painted realism with detailed credible glass, leather and stone, dramatic motivated light and atmospheric depth. Dedicated still life, no people. Keep crucial action within central 80%. No lettering, numbers, labels, border, card frame, logos or watermark. A rounded amber-glass alchemical potion bottle filled with warm golden liquid, sealed cork and simple bronze neck clasp, on a dark wooden medieval alchemist's table. A single tawny owl feather lies beside the bottle with an open leather herb satchel and dried herbs; an owl rests in the shadowed window beyond. Warm golden lamplight against deep blue moonlight, rich close still-life composition. No drawings or symbols on the bottle.",
+    "status": "succeeded",
+    "transparent": false
+  },
+  {
+    "id": "dandelion-token-margin",
+    "prompt": "Edit the supplied transparent Dandelion board figure. Preserve his face, outfit, lute, pose, both boots, painting and genuine transparent alpha. Fit the entire figure slightly smaller and centered inside the same square canvas so there is a generous clear transparent margin on all four sides, especially above the cap and feather. Complete the tiny tip of the cap at the top edge so no painted pixels touch the canvas edges. Keep the same complete full-body silhouette and natural anatomy. No floor, shadow, pedestal, background, text or watermark.",
+    "status": "succeeded",
+    "references": ["references/dandelion-token-initial.png"],
+    "transparent": true
+  }
+]

@@ -10,7 +10,47 @@ type AreaEffect = Extract<Effect, { type: 'area-damage' }>;
 
 export function chooseArea(runtime: Runtime, binding: Binding, effect: AreaEffect): void {
   const owner = fighterById(runtime.state, binding.owner)!;
+  if (effect.range === 'adjacent-to-friendly') {
+    // Snapshot the union of adjacent spaces: each target is damaged once, even beside several allies.
+    damageArea(runtime, {
+      ...binding,
+      type: 'area-apply',
+      effect,
+      spaces: runtime.defs.map.nodes.filter((n) =>
+        runtime.state.fighters.some(
+          (f) =>
+            f.player === owner.player && !f.defeated && adjacent(runtime.defs.map, f.position, n),
+        ),
+      ),
+    });
+    return;
+  }
   if (owner.defeated || owner.position === null) return;
+  if (effect.range === 'own-zone') {
+    openChoice(
+      runtime,
+      binding.frame,
+      owner.player,
+      'Choose a zone this fighter is in',
+      (runtime.defs.map.zones[owner.position] ?? []).map((zone) => ({
+        id: zone,
+        label: zone,
+        tasks: [
+          {
+            ...binding,
+            type: 'area-apply' as const,
+            effect,
+            spaces: runtime.defs.map.nodes.filter((n) => runtime.defs.map.zones[n]?.includes(zone)),
+          },
+        ],
+      })),
+      1,
+      1,
+      binding.provenance,
+      { fighter: owner.id },
+    );
+    return;
+  }
   if (effect.range === 'adjacent') {
     damageArea(runtime, {
       ...binding,

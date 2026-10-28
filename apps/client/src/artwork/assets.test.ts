@@ -5,8 +5,58 @@ import sharp from 'sharp';
 import { cardPresentation } from '@open-boards/content';
 import { fighterArtwork, rasterAssets, rasterForUrl } from './assets';
 
+it('ships the available Geralt artwork with complete derivatives while retaining SVG coverage', async () => {
+  const sources = JSON.parse(
+    await readFile('artwork/characters/geralt-of-rivia/sources.json', 'utf8'),
+  ) as { id: string; kind: string; card?: string }[];
+  expect(sources).toHaveLength(10);
+  const cards = Object.values(cardPresentation).filter(
+    (card) => card.character === 'geralt-of-rivia',
+  );
+  expect(cards.filter((card) => rasterForUrl(card.art.image))).toHaveLength(8);
+  expect(cards.filter((card) => card.art.image?.endsWith('.svg'))).toHaveLength(7);
+  expect(fighterArtwork['geralt-of-rivia']).toBeUndefined();
+  expect(fighterArtwork['geralt-of-rivia-dandelion'].token).toBe('geralt-of-rivia-dandelion-token');
+  for (const source of sources) {
+    const asset = rasterAssets[source.id];
+    expect(asset.kind).toBe(source.kind);
+    expect(asset.variants.map(({ width }) => width)).toEqual(
+      source.kind === 'token'
+        ? [512]
+        : source.kind === 'portrait'
+          ? [256, 512, 1024]
+          : [320, 640, 1280],
+    );
+    if (source.card) expect(cardPresentation[source.card].art.image).toBe(asset.url);
+    for (const variant of asset.variants) {
+      const bytes = await readFile(`apps/client/public${variant.url}`);
+      expect(bytes.length).toBe(variant.bytes);
+      expect(variant.url).toContain(createHash('sha256').update(bytes).digest('hex').slice(0, 12));
+      expect(await sharp(bytes).metadata()).toMatchObject({
+        format: 'webp',
+        width: variant.width,
+        height: variant.height,
+      });
+      if (source.kind === 'token') {
+        expect((await sharp(bytes).metadata()).hasAlpha).toBe(true);
+        expect((await sharp(bytes).stats()).isOpaque).toBe(false);
+      }
+    }
+  }
+});
+
 it.each([
+  { character: 'invisible-man', ally: null, designs: 14 },
+  { character: 'eredin', ally: 'eredin-red-rider', designs: 11 },
+  { character: 'bruce-lee', ally: null, designs: 17 },
+  { character: 'yennefer-triss', ally: 'yennefer-triss-triss', designs: 11 },
+  { character: 'alice', ally: 'alice-jabberwock', designs: 15 },
+  { character: 'philippa', ally: 'philippa-dijkstra', designs: 13 },
+  { character: 'achilles', ally: 'achilles-patroclus', designs: 12 },
+  { character: 'dracula', ally: 'dracula-sister', designs: 13 },
+  { character: 'bigfoot', ally: 'bigfoot-jackalope', designs: 11 },
   { character: 'the-genie', ally: null, designs: 12 },
+  { character: 'robin-hood', ally: 'robin-hood-outlaw', designs: 11 },
   { character: 'medusa', ally: 'medusa-harpy', designs: 11 },
   { character: 'king-arthur', ally: 'king-arthur-merlin', designs: 16 },
   { character: 'sherlock-holmes', ally: 'sherlock-holmes-dr-watson', designs: 13 },
@@ -25,6 +75,9 @@ it.each([
       pilot.add(rasterAssets[fighterArtwork[fighter].token]);
     }
     expect(pilot.size).toBe(designs + fighters.length * 2);
+    const sources = JSON.parse(
+      await readFile(`artwork/characters/${character}/sources.json`, 'utf8'),
+    ) as { id: string; anchor?: [number, number] }[];
     for (const asset of pilot) {
       const widths =
         asset.kind === 'card'
@@ -49,7 +102,9 @@ it.each([
         if (asset.kind === 'token') {
           expect(metadata.hasAlpha).toBe(true);
           expect((await sharp(bytes).stats()).isOpaque).toBe(false);
-          expect(asset.anchor).toEqual([0.5, 0.96875]);
+          expect(asset.anchor).toEqual(
+            sources.find((source) => rasterAssets[source.id] === asset)?.anchor,
+          );
         }
       }
     }

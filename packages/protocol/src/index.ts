@@ -32,6 +32,7 @@ export const commandSchema = z.object({
       fighter: cardId,
       card: cardId,
       target: z.string().max(100),
+      faceUp: z.boolean().optional(),
     }),
     z.object({ type: z.literal('defend'), card: cardId.nullable() }),
     z.object({ type: z.literal('play-action'), fighter: cardId, card: cardId }),

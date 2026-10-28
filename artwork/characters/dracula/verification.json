@@ -1,0 +1,330 @@
+{
+  "date": "2026-10-27",
+  "scope": "Dracula presentation refresh; rules unchanged",
+  "assets": {
+    "assets": 17,
+    "cardDesigns": 13,
+    "derivatives": 47,
+    "bytes": 3881994,
+    "rulesUnchanged": true,
+    "tokens": [
+      {
+        "id": "dracula-token",
+        "transparentPixels": 1006073,
+        "opaquePixels": 749,
+        "width": 1254,
+        "height": 1254,
+        "apparentHeight": 129.60000000000002
+      },
+      {
+        "id": "dracula-sister-token",
+        "transparentPixels": 924214,
+        "opaquePixels": 606,
+        "width": 1254,
+        "height": 1254,
+        "apparentHeight": 129.60000000000002
+      }
+    ],
+    "mastersUnmodified": true,
+    "referencesMatchPortraits": true,
+    "preparationStable": true
+  },
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "formatCheck": "passed",
+    "build": "passed with existing dependency annotation and bundle-size warnings",
+    "diffCheck": "passed",
+    "focused": {
+      "command": "pnpm exec playwright test tests/e2e/dracula-artwork.spec.ts tests/e2e/artwork.spec.ts --grep 'Dracula'",
+      "passed": 3,
+      "failed": 0,
+      "desktop": [1440, 1000],
+      "landscapePhone": [844, 390],
+      "coverage": [
+        "13 card scenes in galleries and inspectors",
+        "all four owner colors",
+        "all three numbered Sisters per owner",
+        "two shared figure textures",
+        "selection",
+        "movement",
+        "defeat and revival",
+        "reduced motion",
+        "mixed SVG/raster scene",
+        "no browser errors or missing Dracula assets"
+      ]
+    },
+    "focusedUnit": {
+      "command": "pnpm exec vitest run apps/client/src/artwork/assets.test.ts apps/client/src/artwork/textures.test.ts apps/client/src/board/figures.test.ts packages/content/src/characters/dracula.test.ts",
+      "passed": 49,
+      "failed": 1,
+      "failure": "The concurrently added Bigfoot raster-coverage case ran before its assets were integrated. Dracula asset, texture loading, figure lifecycle and all 37 Dracula content tests passed."
+    },
+    "fullUnit": {
+      "command": "pnpm test",
+      "passed": 704,
+      "failed": 7,
+      "skipped": 6,
+      "failedFiles": 3,
+      "failures": [
+        "Bigfoot artwork coverage was incomplete during its concurrent refresh.",
+        "Six PostgreSQL migration cases and integration suite setup/cleanup failed because localhost:5432 refused connections."
+      ]
+    },
+    "fullBrowser": {
+      "command": "pnpm exec playwright test --output=test-results/dracula-full-suite",
+      "passed": 115,
+      "failed": 41,
+      "total": 156,
+      "failuresByCategory": [
+        {
+          "count": 3,
+          "reason": "Concurrent Bigfoot refresh: missing portrait and figure raster assets."
+        },
+        {
+          "count": 22,
+          "reason": "Live authentication/socket flows could not reach a working backend, including the four-Dracula socket deployment case; screenshot displays The server is unavailable."
+        },
+        {
+          "count": 15,
+          "reason": "Geralt gallery plus Invisible Man, Arthur and map tests failed during a transient unresolved Alice JSON import added by concurrent work; dynamic Game.tsx imports failed."
+        },
+        {
+          "count": 1,
+          "reason": "Genie reduced-motion lifecycle test timed out waiting for its action notice, with the element absent."
+        }
+      ],
+      "failureDetails": [
+        {
+          "test": "artwork.spec.ts >> Bigfoot raster gallery selects small variants and larger inspector images on desktop and phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('region', { name: 'Character roster' }).locator('.roster-detail img[data-raster]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('region', { name: 'Character roster' }).locator('.roster-detail img[data-raster]') with timeout 5000ms\n  - waiting for getByRole('region', { name: 'Character roster' }).locator('.roster-detail img[data-raster]')",
+          "artifact": "test-results/dracula-full-suite/artwork-Bigfoot-raster-gal-dec57-images-on-desktop-and-phone/error-context.md"
+        },
+        {
+          "test": "bigfoot-artwork.spec.ts >> Bigfoot and numbered Jackalope share textures across four owner colors (reduce)",
+          "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 2\nReceived: 0\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+          "artifact": "test-results/dracula-full-suite/bigfoot-artwork-Bigfoot-an-6e216-s-four-owner-colors-reduce-/error-context.md"
+        },
+        {
+          "test": "bigfoot-artwork.spec.ts >> Bigfoot and numbered Jackalope share textures across four owner colors (no-preference)",
+          "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 2\nReceived: 0\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+          "artifact": "test-results/dracula-full-suite/bigfoot-artwork-Bigfoot-an-73775-owner-colors-no-preference-/error-context.md"
+        },
+        {
+          "test": "cinematic.spec.ts >> sign in, invite, choose a fighter, ready up and start a match",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table', exact: true })",
+          "artifact": "test-results/dracula-full-suite/cinematic-sign-in-invite-c-7d6c2--ready-up-and-start-a-match/error-context.md"
+        },
+        {
+          "test": "genie-artwork.spec.ts >> Genie shares one figure texture across four owner colors and survives lifecycle changes (reduce)",
+          "error": "Error: expect(locator).not.toHaveClass(expected) failed\n\nLocator: locator('.action-notice')\nExpected pattern: not /is-visible/\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"not toHaveClass\" locator('.action-notice') with timeout 15000ms\n  - waiting for locator('.action-notice')\n    3 × locator resolved to <div data-tone=\"ember\" aria-live=\"polite\" aria-atomic=\"true\" data-event=\"outcome:2\" data-event-revision=\"2\" class=\"action-notice is-visible\">…</div>\n      - unexpected value \"action-notice is-visible\"",
+          "artifact": "test-results/dracula-full-suite/genie-artwork-Genie-shares-49130-s-lifecycle-changes-reduce-/error-context.md"
+        },
+        {
+          "test": "geralt-of-rivia.spec.ts >> Geralt’s complete gear pool has fifteen loaded illustrations and keyboard card inspectors",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Sign in to play', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Sign in to play', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Sign in to play', exact: true })",
+          "artifact": "test-results/dracula-full-suite/geralt-of-rivia-Geralt’s-c-7329b-nd-keyboard-card-inspectors/error-context.md"
+        },
+        {
+          "test": "invisible-man.spec.ts >> Invisible Man keeps opponent fog control private and resumes it after reconnect",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/invisible-man-Invisible-Ma-2a6bd--resumes-it-after-reconnect/error-context.md"
+        },
+        {
+          "test": "invisible-man.spec.ts >> Invisible Man sets up fog, moves it and travels between tokens after reload (no-preference)",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/invisible-man-Invisible-Ma-3adbf-after-reload-no-preference-/error-context.md"
+        },
+        {
+          "test": "invisible-man.spec.ts >> Invisible Man orders Coded Notes privately across reconnect",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/invisible-man-Invisible-Ma-65a59--privately-across-reconnect/error-context.md"
+        },
+        {
+          "test": "invisible-man.spec.ts >> Invisible Man sets up fog, moves it and travels between tokens after reload (reduce)",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/invisible-man-Invisible-Ma-68902-tokens-after-reload-reduce-/error-context.md"
+        },
+        {
+          "test": "invisible-man.spec.ts >> Invisible Man restores Vanish from an empty board position across a phone reload",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/invisible-man-Invisible-Ma-ee437-ition-across-a-phone-reload/error-context.md"
+        },
+        {
+          "test": "king-arthur.spec.ts >> Arthur and Merlin recover private choices on desktop and landscape phone (no-preference)",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/king-arthur-Arthur-and-Mer-cb505-dscape-phone-no-preference-/error-context.md"
+        },
+        {
+          "test": "king-arthur.spec.ts >> Arthur and Merlin recover private choices on desktop and landscape phone (reduce)",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/king-arthur-Arthur-and-Mer-ef21e-and-landscape-phone-reduce-/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> failed map artwork reveals vector scenery while spaces remain playable",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-failed-map-86d41-hile-spaces-remain-playable/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> zones and occupied portals remain distinct at 1440px with WebGL true",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-zones-and--28316-t-at-1440px-with-WebGL-true/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> zones and occupied portals remain distinct at 1440px with WebGL false",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-zones-and--3e256--at-1440px-with-WebGL-false/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> zones and occupied portals remain distinct at 844px with WebGL false",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-zones-and--b1095-t-at-844px-with-WebGL-false/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> zones and occupied portals remain distinct at 390px with WebGL true",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-zones-and--c9250-ct-at-390px-with-WebGL-true/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> zones and occupied portals remain distinct at 390px with WebGL false",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-zones-and--d5510-t-at-390px-with-WebGL-false/error-context.md"
+        },
+        {
+          "test": "map-readability.spec.ts >> zones and occupied portals remain distinct at 844px with WebGL true",
+          "error": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://localhost:5173/src/game/Game.tsx",
+          "artifact": "test-results/dracula-full-suite/map-readability-zones-and--deb28-ct-at-844px-with-WebGL-true/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> Bruce Lee starts a solo four-seat match and resumes Maneuver after socket reconnect",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-Bruce-Lee-starts-a-b3a62-uver-after-socket-reconnect/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> Darth Vader selects without allies and reconnects during Maneuver",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-Darth-Vader-select-b7609--reconnects-during-Maneuver/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> Geralt selects gear before Dandelion deployment and resumes a four-seat Maneuver over real sockets",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-Geralt-selects-gea-3d74f--Maneuver-over-real-sockets/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> Invisible Man deploys twelve fog tokens over real sockets and reconnects movement on phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-Invisible-Man-depl-66c96-econnects-movement-on-phone/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> Medusa selects and attacks a distant rival through a multicolor space",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-Medusa-selects-and-21ea4--through-a-multicolor-space/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> boosts a Maneuver once for the hero and all allies, updates ranges and reconnects",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-boosts-a-Maneuver--44740-dates-ranges-and-reconnects/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> completes a 2-player match in separate authenticated contexts",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'How to play', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('button', { name: 'How to play', exact: true }) with timeout 5000ms\n  - waiting for getByRole('button', { name: 'How to play', exact: true })",
+          "artifact": "test-results/dracula-full-suite/matches-completes-a-2-play-23e5b-rate-authenticated-contexts/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> completes a 4-player match in separate authenticated contexts on phones",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'How to play', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('button', { name: 'How to play', exact: true }) with timeout 5000ms\n  - waiting for getByRole('button', { name: 'How to play', exact: true })",
+          "artifact": "test-results/dracula-full-suite/matches-completes-a-4-play-c39c6-nticated-contexts-on-phones/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> crosses a portal, preserves its destination on reconnect and explores the larger map",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-crosses-a-portal-p-a6587-and-explores-the-larger-map/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> inspects compact waiting cards without playing them",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-inspects-compact-waiting-cards-without-playing-them/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> plays a hidden attack and free defense through the interface",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-plays-a-hidden-att-7fc7b-fense-through-the-interface/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> populated room lists paginate and four waiting seats remain accessible on phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-populated-room-lis-b6e1c--remain-accessible-on-phone/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selecting Medusa preserves readiness and syncs the remaining roster",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selecting-Medusa-p-a2719--syncs-the-remaining-roster/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects Achilles over sockets, deploys Patroclus and restores his shared Maneuver on phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-Achilles-o-e987c-is-shared-Maneuver-on-phone/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects Arthur over sockets, deploys Merlin and reconnects on a landscape phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-Arthur-ove-f734d-nnects-on-a-landscape-phone/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects Bigfoot over sockets, deploys The Jackalope and restores his shared Maneuver on phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-Bigfoot-ov-3bec5-is-shared-Maneuver-on-phone/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects Medusa over real sockets, deploys three Harpies and reconnects shared movement",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-Medusa-ove-e8261--reconnects-shared-movement/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects Robin Hood over sockets, deploys all sixteen Outlaws and reconnects on phone",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-Robin-Hood-0764c-aws-and-reconnects-on-phone/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects four Draculas over sockets, deploys numbered Sisters and restores a phone Maneuver",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-four-Dracu-16b65-d-restores-a-phone-Maneuver/error-context.md"
+        },
+        {
+          "test": "matches.spec.ts >> selects four Holmes over sockets, deploys numbered Watsons and restores a phone Maneuver",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/matches-selects-four-Holme-38898-d-restores-a-phone-Maneuver/error-context.md"
+        },
+        {
+          "test": "the-genie.spec.ts >> selects The Genie over real sockets and restores Infinite Power after reload",
+          "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Find your table' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Find your table' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Find your table' })",
+          "artifact": "test-results/dracula-full-suite/the-genie-selects-The-Geni-f69ce-Infinite-Power-after-reload/error-context.md"
+        }
+      ],
+      "note": "All three Dracula artwork checks and five Dracula deterministic gameplay browser checks passed in this run."
+    }
+  },
+  "browserTransfers": {
+    "entries": 28,
+    "encodedBytes": 1188794,
+    "selectedWidths": [256, 320, 640, 1024],
+    "note": "Measured gallery and inspectors on desktop and landscape phone; 1280px derivatives are available, while these device settings selected 640px inspector images."
+  },
+  "visualReview": {
+    "status": "passed",
+    "reviewed": [
+      "All 13 scenes, portraits and transparent figures",
+      "Desktop and landscape-phone card inspector screenshots",
+      "Four owner colors with 12 numbered Sisters",
+      "Selection, movement, revival and mixed SVG/raster screenshots"
+    ],
+    "contactSheets": [
+      "test-results/dracula-verification/ui-cards-1440.png",
+      "test-results/dracula-verification/ui-cards-844.png"
+    ],
+    "figureApparentHeight": 129.6
+  },
+  "limitations": [
+    "Other sessions changed Bigfoot, Achilles, Alice and shared files during verification. These concurrent edits were preserved; the full-workspace results describe that changing snapshot."
+  ]
+}

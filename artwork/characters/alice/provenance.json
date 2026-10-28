@@ -1,0 +1,185 @@
+{
+  "character": "alice",
+  "generatedAt": "2026-10-27",
+  "tool": "Integrated Codex Imagegen",
+  "style": "Cinematic illustrated realism",
+  "sourceDeck": "https://unmatched.cards/umdb/decks/alice",
+  "sourceArtworkRedistributed": false,
+  "identityReferences": [
+    "references/alice-portrait.png",
+    "references/alice-jabberwock-portrait.png"
+  ],
+  "assets": [
+    {
+      "id": "alice-portrait",
+      "master": "masters/alice-portrait.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-b367ad47-f078-4da7-b51a-3323e1bdbef4.png",
+      "transparentBackground": false,
+      "references": [],
+      "sha256": "6b894267046d990c169451feb294b37ce4827274601de7aaa7151b264f571697"
+    },
+    {
+      "id": "alice-jabberwock-portrait",
+      "master": "masters/alice-jabberwock-portrait.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-41816ce2-c611-456d-8960-d68964c2b0e7.png",
+      "transparentBackground": false,
+      "references": [],
+      "sha256": "23d033cc345eb4bc22c608f0f045feb79d77ec5e65d2b286f8c7e92d7f3c6c62"
+    },
+    {
+      "id": "alice-token",
+      "master": "masters/alice-token.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-98eede8c-65b8-4d2a-b4b7-2d9605e14751.png",
+      "transparentBackground": true,
+      "references": ["references/alice-portrait.png"],
+      "sha256": "cee0e33ed6d40764e31dac753a42ad6e7364ea62ffe8af81b0cda46b9b126895"
+    },
+    {
+      "id": "alice-jabberwock-token",
+      "master": "masters/alice-jabberwock-token.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-e1471369-fca4-4d32-8504-0e346457e55f.png",
+      "transparentBackground": true,
+      "references": ["references/alice-jabberwock-portrait.png"],
+      "sha256": "5703b1506a4a73af0498d3a4a2619ee39ea4fea33723711e13812b677fa129d8"
+    },
+    {
+      "id": "alice-claws-that-catch",
+      "master": "masters/claws-that-catch.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-ae306b0a-1cb5-44a9-b9f1-fce30f623df2.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "2aaf9599f6d0594c2747fc5c2c08374edf38556c59b2d9796d52bab80e558f7c"
+    },
+    {
+      "id": "alice-momentous-shift",
+      "master": "masters/momentous-shift.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-6b4d62f4-c41f-4012-ad54-27c367f7a587.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "b68f850bf071e9788d1bd95c049b155c5dfe59feb816e80a3d516bd2eaf21037"
+    },
+    {
+      "id": "alice-skirmish",
+      "master": "masters/skirmish.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-7fa3ad75-2f3f-401d-94bb-2694302d5b37.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "1f2a410a562cbf14875a407bd461d2352e65448c576059f2e0f3231a316e5a34"
+    },
+    {
+      "id": "alice-mad-as-a-hatter",
+      "master": "masters/mad-as-a-hatter.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-a5c9c955-487b-4791-a4ff-245e5ed00f7d.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "2c1306d05b6ca409140240c57391df9b63bebecfe7fde9621b8416bd3356f6cf"
+    },
+    {
+      "id": "alice-manxome-foe",
+      "master": "masters/manxome-foe.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-16f39b6a-ee1b-4f4e-90c1-00ba5d3041d1.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "2f61d2cafb0b8a0b050340caf35573b4d520585a2004a945e33d83468b519d60"
+    },
+    {
+      "id": "alice-feint",
+      "master": "masters/feint.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-4d5635cc-97cb-4ec5-88d0-e8593ee6869e.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "fdcc9cff553b0f540602d179d645e87a96ef1095a1420091df051bf350e2fac4"
+    },
+    {
+      "id": "alice-regroup",
+      "master": "masters/regroup.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-f66458b8-c0bb-4fb4-acba-966c1cf02392.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "4595a59a088e7f8429f5af83bf31c7b18b67bec01436857612eb4bbf97ac7015"
+    },
+    {
+      "id": "alice-looking-glass",
+      "master": "masters/looking-glass.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-352ce9a7-928c-4d8a-b3a8-bf4043f35788.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "b6775e645cf8d448cbbcb0e0281efa8289c34521e90015e8167fd3ce109ec0f9"
+    },
+    {
+      "id": "alice-snicker-snack",
+      "master": "masters/snicker-snack.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-230e0b2b-b388-48e5-9d4d-0d8e0dd6672c.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "93711df483aebcc1aee7c334d2f1065bb472081aac27ed22c6737903965f242e"
+    },
+    {
+      "id": "alice-o-frabjous-day",
+      "master": "masters/o-frabjous-day.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-aac73c69-2413-4f36-84b3-738910134945.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "aedfb4c62fd5ed11902609557eef64e039ab1b29aa91cc0f96b61154b1b59198"
+    },
+    {
+      "id": "alice-the-other-side-of-the-mushroom",
+      "master": "masters/the-other-side-of-the-mushroom.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-38a1d537-8cf5-4af6-b56e-df48470a4448.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "f063f217febc5a1ca35e82efccb5903b4dfbb9b97bbf333a3315e1b6e6144325"
+    },
+    {
+      "id": "alice-eat-me",
+      "master": "masters/eat-me.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-b3018039-9fa4-4933-91ad-e3a2c827cf4b.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "154272852ba3a6aa440eb6fcbf6e31df4131ce70cd1b629ab67d249d8fcf9c9d"
+    },
+    {
+      "id": "alice-i-m-late-i-m-late",
+      "master": "masters/i-m-late-i-m-late.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-4a3c44b7-c8a6-49a7-bda2-7bf3b9306fa5.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "0931b69447f5baf8a01ea7c5a03aa137676ab05a0547927ea5ccfa824a37ebfc"
+    },
+    {
+      "id": "alice-drink-me",
+      "master": "masters/drink-me.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-5286c346-7477-4b10-951c-113fd12a2a5c.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "306ef18f8f45a13a095aa6639c37347b1f0847d67ffd876dfc8eed1a15370c73"
+    },
+    {
+      "id": "alice-jaws-that-bite",
+      "master": "masters/jaws-that-bite.png",
+      "promptFile": "prompts.json",
+      "generatedSource": "/home/francesco/.codex/generated_images/01a17ea8-b50e-71a1-80dd-950072796c87/exec-73626382-8785-428c-bd94-729f7832dc1d.png",
+      "transparentBackground": false,
+      "references": ["references/alice-portrait.png", "references/alice-jabberwock-portrait.png"],
+      "sha256": "a48f1202b52671619ab35682f5d12e1a9011fc9fa0d186897d761e38adf8da78"
+    }
+  ]
+}

@@ -1,10 +1,14 @@
+import { boostValue } from '../boost';
+import { resolveBoostDraw } from './boost-draw';
+import { orderAbilities } from './immediate-order';
 import { fighterById, fighterDefinition, mainFighter, ownedFighters } from '../fighters';
 import type { Card, Definitions, GameState } from '../types';
 import type { Emit } from '../rules';
 import { victory } from '../rules';
 import { requireRule } from '../errors';
-import { selectDeck, beginPlay } from './setup';
+import { selectHero, selectDeck, beginPlay } from './setup';
 import { expireOngoing, activateOngoing } from './ongoing';
+import { revealHand } from './hand';
 import { takeSearched } from './deck';
 import { condition } from './conditions';
 import { applyOperation } from './operations';
@@ -55,6 +59,7 @@ export class Runtime {
       owner: binding.owner,
       chosen: binding.chosen,
       selectedCard: binding.selectedCard,
+      selectedPlayer: binding.selectedPlayer,
       chosenToken: binding.chosenToken,
       tokenChooser: binding.tokenChooser,
       provenance: binding.provenance,
@@ -209,11 +214,31 @@ export class Runtime {
           Number('owner' in b && b.owner === frame.defender) -
           Number('owner' in a && a.owner === frame.defender),
       );
-    this.prepend(
-      ...(hook === 'after-combat' || hook === 'combat-reveal'
-        ? [...cards, ...passives]
-        : [...passives, ...cards]),
-    );
+    if (hook === 'combat-reveal' && frame.kind === 'combat') {
+      const ordered = [frame.defender, frame.attacker].flatMap((owner): Task[] => {
+        const ownCards = cards.filter((t) => 'owner' in t && t.owner === owner);
+        const ownPassives = passives.filter((t) => 'owner' in t && t.owner === owner);
+        const selectable = [
+          ...ownCards,
+          ...ownPassives.filter((t) => t.type === 'ability' && t.ability.orderWithCard),
+        ] as Extract<Task, { type: 'ability' }>[];
+        return [
+          ...(selectable.length > 1
+            ? [{ type: 'order-abilities' as const, frame: frameId, owner, abilities: selectable }]
+            : selectable),
+          ...ownPassives.filter((t) => t.type !== 'ability' || !t.ability.orderWithCard),
+        ];
+      });
+      this.prepend(
+        ...ordered,
+        ...passives.filter(
+          (t) => !('owner' in t) || ![frame.attacker, frame.defender].includes(t.owner),
+        ),
+      );
+    } else
+      this.prepend(
+        ...(hook === 'after-combat' ? [...cards, ...passives] : [...passives, ...cards]),
+      );
   }
   activate(task: Extract<Task, { type: 'ability' }>): void {
     const { ability, key, owner, frame } = task;
@@ -378,6 +403,7 @@ export class Runtime {
         } while (state.players[state.turn].eliminated);
         this.data.turn++;
         this.data.attacked = [];
+        this.data.maneuvered = [];
         this.data.movementLocks = [];
         this.data.endTurnRequested = false;
         state.actions = 2;
@@ -411,6 +437,7 @@ export class Runtime {
     } else this.state.phase = { type: 'choosing-movement', player: maneuver.player };
   }
   clear(): void {
+    this.data.discardPayments = {};
     this.state.maneuver = null;
     this.data.queue = [];
     this.data.frames = {};
@@ -425,6 +452,8 @@ export class Runtime {
       );
       const task = this.data.queue.shift()!;
       if (suppressed(this, task.provenance)) {
+        if (task.type === 'complete-payment' && this.data.discardPayments)
+          delete this.data.discardPayments[task.payment];
         // An operation already entered its before hooks: finish it as cancelled so
         // after hooks observe zero applied distance/amount, like ordinary cancellation.
         if (task.type === 'swap-apply') {
@@ -435,6 +464,21 @@ export class Runtime {
         else continue;
       }
       switch (task.type) {
+        case 'complete-payment': {
+          const paid = this.data.discardPayments?.[task.payment] ?? 0;
+          if (this.data.discardPayments) delete this.data.discardPayments[task.payment];
+          if (paid === task.count) this.prepend(...this.effects(task.effects, task));
+          break;
+        }
+        case 'select-hero':
+          selectHero(this, task);
+          break;
+        case 'order-abilities':
+          if (this.data.frames[task.frame]) orderAbilities(this, task);
+          break;
+        case 'boost-draw':
+          resolveBoostDraw(this, task);
+          break;
         case 'select-deck':
           selectDeck(this, task);
           break;
@@ -537,6 +581,9 @@ export class Runtime {
             task.provenance,
           );
           break;
+        case 'reveal-hand':
+          revealHand(this, task);
+          break;
         case 'discard-card': {
           const p = this.state.players.find((p) => p.id === task.player)!;
           const index = p.hand.findIndex((c) => c.id === task.card);
@@ -546,15 +593,18 @@ export class Runtime {
               modifyCombatValue(
                 combat,
                 task.bonus.field,
-                task.bonus.per === 'card' ? 1 : this.defs.cards[p.hand[index].definition].boost,
+                task.bonus.per === 'card' ? 1 : boostValue(p, p.hand[index], this.defs),
                 !!task.provenance,
               );
             const card = p.hand.splice(index, 1)[0];
+            if (task.payment !== undefined && this.data.discardPayments)
+              this.data.discardPayments[task.payment]++;
             if (task.continuation)
               this.prepend(
                 ...this.effects(task.continuation.effects, {
                   ...task.continuation.binding,
                   selectedCard: card,
+                  selectedPlayer: p.id,
                 }),
               );
             this.card(mainFighter(this.state, p.id).id, card, true);

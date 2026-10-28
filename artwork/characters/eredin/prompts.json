@@ -1,0 +1,77 @@
+[
+  {
+    "id": "eredin-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: square character portrait for fantasy tactical board game. Primary request: original cinematic illustrated realism portrait of Eredin, the elven King of the Wild Hunt from The Witcher. Tall imposing spectral warlord, blackened articulated plate armor shaped like skeletal ribs, angular skull-like steel face mask with narrow eye slits and a tall jagged crown helmet, cold pale eyes, dark red cloak, weathered dark metal and ice crystals. Chest-up three-quarter portrait, readable helmet and upper silhouette, dramatic cold cyan rim light and restrained red reflected light, distant frozen battlefield softly blurred. Realistic painterly materials, solemn menace, credible anatomy, richly detailed armor. No text, letters, numbers, logos, frame, watermark, pedestal or colored team badge. Square composition, face centered in upper middle.",
+    "source": "masters/portrait.png"
+  },
+  {
+    "id": "eredin-red-rider-portrait",
+    "prompt": "Use case: stylized-concept. Asset type: square ally portrait for tactical fantasy board game. Original cinematic illustrated realism of a Red Rider of Eredin's Wild Hunt from The Witcher: dark iron skeletal ribbed armor, enclosed iron skull visor helmet with short backward horn projections (lower rank than king, no tall crown), worn crimson hood and cloak, cold blue eye slits. Chest-up three-quarter view with visible face mask and shoulders, snowy wind and spectral frost in soft-focus background, dramatic cold cyan rim light and muted crimson, detailed weathered steel and fabric. Credible anatomy, painted realism, solemn threatening soldier. No text letters logos numbers watermark frame pedestal.",
+    "source": "masters/rider-portrait.png"
+  },
+  {
+    "id": "eredin-token",
+    "prompt": "Use case: stylized-concept. Asset type: transparent full-body tactical board-game figure. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Create a transparent full-body board figure of Eredin matching reference 1 exactly: tall jagged crown and skull faceplate, black skeletal rib armor, dark red cloak, long steel greatsword angled downward, strong upright three-quarter battle stance. Complete helmet spikes, feet, cloak and sword inside frame. Single figure centered, feet at bottom, no pedestal, ground, shadow, text or decorations.",
+    "source": "masters/eredin-token.png"
+  },
+  {
+    "id": "eredin-red-rider-token",
+    "prompt": "Use case: stylized-concept. Asset type: transparent full-body tactical board-game figure. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Create a transparent full-body board figure of the Red Rider soldier matching reference 1: enclosed skull visor, short swept horns, crimson hood and cloak, black skeletal plate armor, steel sword down at side, sturdy upright stance. Complete head horns boots cloak and sword inside frame. Single figure centered, no pedestal ground shadow text or decorations.",
+    "source": "masters/rider-token.png"
+  },
+  {
+    "id": "eredin-brutal-strike",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Eredin in skeletal black armor and tall crown swings a greatsword in a crushing diagonal strike through a splintering wooden shield, tight low-angle action composition, shards and frost caught in cyan rim light, stormy frozen courtyard, powerful martial motion.",
+    "source": "masters/brutal-strike.png"
+  },
+  {
+    "id": "eredin-backhand",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Close side view of Eredin delivering a forceful backhand with a black armored gauntlet against an enemy soldier's shield, crimson cloak curling behind, icy sparks in dramatic cold sidelight, readable hands and violent momentum in snowy ruins.",
+    "source": "masters/backhand.png"
+  },
+  {
+    "id": "eredin-foul-purpose",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Wide atmospheric scene: Eredin emerges alone from a torn oval of ice-blue portal light far behind a startled enemy warrior, castle ramparts on opposite sides of a snowy ravine; emphasize uncanny long-range ambush, full silhouettes, strategic depth.",
+    "source": "masters/foul-purpose.png"
+  },
+  {
+    "id": "eredin-unyielding-hordes",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Low wide battlefield view: three Red Rider infantry soldiers with matching crimson cloaks and skull-visored armor surround a shield-bearing enemy at spear and sword point, while a fourth Rider steps from a blue spectral portal in the background; tight coordinated formation.",
+    "source": "masters/unyielding-hordes.png"
+  },
+  {
+    "id": "eredin-wild-hunt",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Epic distant wide shot of Eredin leading four Red Riders on spectral black horses through a blizzard across an ancient stone bridge, scattered enemy soldiers recoiling on both flanks, pale moon and whipping red banners of cloth without symbols, cinematic depth.",
+    "source": "masters/wild-hunt.png"
+  },
+  {
+    "id": "eredin-skirmish",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Bird's-eye diagonal view of a Red Rider dueling a bronze-armored enemy at a snowy ruined stairway, blades locked as the enemy loses footing and retreats two steps, sharp silhouettes, dynamic geometry of masonry and crimson cloak.",
+    "source": "masters/skirmish.png"
+  },
+  {
+    "id": "eredin-icy-guile",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Close magical confrontation: Eredin makes a restrained open-gauntlet gesture and the enemy's raised blade is caught in translucent jagged ice, a Red Rider's fading spectral silhouette in the background suggesting a sacrifice. Strong foreground icy blade, cunning king behind.",
+    "source": "masters/icy-guile.png"
+  },
+  {
+    "id": "eredin-portal-defense",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Eredin steps sideways through one blue oval portal while a Red Rider emerges from a second portal in his former space to intercept an enemy sword strike with his own blade. Clear two-character positional exchange, wide castle courtyard framing, dramatic cyan light.",
+    "source": "masters/portal-defense.png"
+  },
+  {
+    "id": "eredin-implacable",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Low-angle medium-wide scene of Eredin bracing his greatsword across his body, deflecting a heavy enemy axe as sparks and frost burst from the crossed steel. Tall jagged crown fully visible, crimson cloak still against violent wind, stern unstoppable presence.",
+    "source": "masters/implacable.png"
+  },
+  {
+    "id": "eredin-might-of-the-aen-elle",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Solemn wide scene of Eredin standing with a sword planted beside him within a translucent blue protective aura, four ghostly elven ancestral figures and distant monumental elven arches behind, incoming fiery arrows dissolving harmlessly at the aura's surface. Regal magical authority.",
+    "source": "masters/might-of-the-aen-elle.png"
+  },
+  {
+    "id": "eredin-close-for-the-kill",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 8:5 fantasy card illustration, crucial action within central 80%. Cinematic illustrated realism, credible anatomy and weathered materials, dramatic motivated light, painted detail; varied readable staging, cold cyan and restrained crimson palette; no text, letters, numbers, icons, logos, frames or watermark. Reference images establish character identity and equipment; preserve them. Wide side-on action scene: Eredin and two Red Riders rush through a line of bewildered enemy infantry using jagged blue portal openings, passing through opponents to surround them. Flowing crimson cloaks, snowy forest ruins, strong forward movement and readable silhouettes.",
+    "source": "masters/close-for-the-kill.png"
+  }
+]

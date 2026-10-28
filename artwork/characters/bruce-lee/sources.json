@@ -1,0 +1,135 @@
+[
+  {
+    "id": "bruce-lee-portrait",
+    "kind": "portrait",
+    "source": "masters/bruce-lee-portrait.png",
+    "focal": [0.5, 0.2]
+  },
+  {
+    "id": "bruce-lee-token",
+    "kind": "token",
+    "source": "masters/bruce-lee-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "bruce-lee-skirmish",
+    "kind": "card",
+    "card": "bruce-lee-skirmish",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-little-dragon",
+    "kind": "card",
+    "card": "bruce-lee-little-dragon",
+    "source": "masters/little-dragon.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-taste-of-blood",
+    "kind": "card",
+    "card": "bruce-lee-taste-of-blood",
+    "source": "masters/taste-of-blood.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-be-like-water",
+    "kind": "card",
+    "card": "bruce-lee-be-like-water",
+    "source": "masters/be-like-water.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-hoo-whaaaaaa",
+    "kind": "card",
+    "card": "bruce-lee-hoo-whaaaaaa",
+    "source": "masters/hoo-whaaaaaa.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-high-straight-lead",
+    "kind": "card",
+    "card": "bruce-lee-jeet-kune-do-high-straight-lead",
+    "source": "masters/jeet-kune-do-high-straight-lead.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-downward-side-kick",
+    "kind": "card",
+    "card": "bruce-lee-jeet-kune-do-downward-side-kick",
+    "source": "masters/jeet-kune-do-downward-side-kick.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-wrist-lock",
+    "kind": "card",
+    "card": "bruce-lee-jeet-kune-do-wrist-lock",
+    "source": "masters/jeet-kune-do-wrist-lock.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-intercepting-fist",
+    "kind": "card",
+    "card": "bruce-lee-jeet-kune-do-intercepting-fist",
+    "source": "masters/jeet-kune-do-intercepting-fist.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+    "kind": "card",
+    "card": "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+    "source": "masters/jeet-kune-do-corkscrew-finger-jab.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-jeet-kune-do-short-lead-hook",
+    "kind": "card",
+    "card": "bruce-lee-jeet-kune-do-short-lead-hook",
+    "source": "masters/jeet-kune-do-short-lead-hook.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-bring-it-on",
+    "kind": "card",
+    "card": "bruce-lee-bring-it-on",
+    "source": "masters/bring-it-on.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-one-inch-punch",
+    "kind": "card",
+    "card": "bruce-lee-one-inch-punch",
+    "source": "masters/one-inch-punch.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-nunchaku",
+    "kind": "card",
+    "card": "bruce-lee-nunchaku",
+    "source": "masters/nunchaku.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-momentous-shift",
+    "kind": "card",
+    "card": "bruce-lee-momentous-shift",
+    "source": "masters/momentous-shift.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-feint",
+    "kind": "card",
+    "card": "bruce-lee-feint",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "bruce-lee-regroup",
+    "kind": "card",
+    "card": "bruce-lee-regroup",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5]
+  }
+]

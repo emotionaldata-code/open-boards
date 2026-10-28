@@ -165,7 +165,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       harness.updatePresentationGame({
         players: players.slice(0, 2).map((player, i) => ({
           ...player,
-          character: i ? 'bigfoot' : 'sherlock-holmes',
+          character: i ? 'darth-vader' : 'sherlock-holmes',
         })),
         fighters: [
           {
@@ -183,10 +183,10 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           {
             id: 'b:main',
             player: 'b',
-            character: 'bigfoot',
-            definition: 'bigfoot',
+            character: 'darth-vader',
+            definition: 'darth-vader',
             role: 'main',
-            hp: 16,
+            hp: 15,
             position: 'n13',
             defeated: false,
             counters: {},
@@ -198,7 +198,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     await expect(
       page
         .getByRole('region', { name: 'Arena', exact: true })
-        .getByText('Bigfoot', { exact: true }),
+        .getByText('Darth Vader', { exact: true }),
     ).toBeAttached();
     await page.screenshot({
       animations: 'disabled',

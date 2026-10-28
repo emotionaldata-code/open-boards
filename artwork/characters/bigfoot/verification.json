@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-27",
+  "character": "bigfoot",
+  "artwork": {
+    "assets": 15,
+    "cardDesigns": 11,
+    "portraits": 2,
+    "transparentFigures": 2,
+    "derivatives": 41,
+    "derivativeBytes": 5564080,
+    "selectedOriginalsMatchedBySha256": 15,
+    "generationRequests": 17,
+    "supersededCandidates": 2,
+    "generationFailures": 0,
+    "realAlphaVerified": true,
+    "stablePreparationRuns": 2,
+    "rulesUnchanged": true
+  },
+  "review": {
+    "desktop": [1440, 1000],
+    "landscapePhone": [844, 390],
+    "allCardScenesReviewed": true,
+    "bothPortraitsReviewed": true,
+    "allFourOwnerColorsReviewed": true,
+    "numberedAllySelectionMovementDefeatRestorationReviewed": true,
+    "reducedAndFullMotionReviewed": true,
+    "mixedSvgRasterReviewed": true,
+    "sharedFigureTextureRequests": 2,
+    "browserErrors": [],
+    "jackalopePortraitFocal": [0.5, 0.25]
+  },
+  "checks": {
+    "unit": {
+      "status": "passed",
+      "files": 5,
+      "tests": 49,
+      "scope": "Bigfoot rules plus artwork asset, card, figure and texture loading checks"
+    },
+    "browser": {
+      "status": "passed",
+      "uniqueScenarios": 20,
+      "lifecycleScreenshotRerunScenarios": 2
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "format": "passed",
+    "build": "passed",
+    "diffWhitespace": "passed"
+  },
+  "network": {
+    "viewports": [
+      [1440, 1000],
+      [844, 390]
+    ],
+    "deviceScaleFactor": 1,
+    "summary": {
+      "256": {
+        "requests": 1,
+        "bytes": 20758
+      },
+      "320": {
+        "requests": 11,
+        "bytes": 302582
+      },
+      "640": {
+        "requests": 11,
+        "bytes": 1064146
+      },
+      "1024": {
+        "requests": 1,
+        "bytes": 276848
+      }
+    }
+  },
+  "scope": {
+    "sharedRendererOrUiCodeChanged": false,
+    "fullBrowserSuiteRun": false,
+    "notes": [
+      "Browser checks cover the shared artwork suite, Bigfoot gallery/figures/rules and migrated Sherlock mixed SVG/raster fixtures.",
+      "The unmigrated fighter fixtures now use Robin Hood, since Bigfoot has raster artwork.",
+      "Synthetic Jackalope restoration is presentation coverage only and introduces no game rule.",
+      "Unrelated concurrent Alice, Achilles and Dracula work was preserved."
+    ]
+  }
+}

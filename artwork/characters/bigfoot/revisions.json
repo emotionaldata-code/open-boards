@@ -1,0 +1,22 @@
+[
+  {
+    "id": "bigfoot-jackalope-token",
+    "reason": "The first token clipped two antler tips at the top edge.",
+    "prompt": "Use case: identity-preserve. Image 1 is the edit target: a transparent Jackalope board figure with antler tips accidentally clipped by the top edge. Image 2 is the approved portrait identity reference. Reframe the entire same animal smaller on a square 1254x1254 canvas, reconstructing the clipped antler tips naturally so every tine, both ears, tail, feet and whiskers are completely visible. Leave at least 8% genuinely transparent padding on ALL sides and 10% above the highest antler tip; the full figure including antlers must occupy at most 82% of canvas height. Preserve the same tawny hare anatomy, face, fur markings, black-tipped ears, exactly two branching pale antlers, collar and pose. Cinematic realistic painted illustration. Actual transparent alpha background, no scenery, ground, shadow, pedestal, outline, lettering, icons or watermark.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/candidates/jackalope-token-cropped.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "bigfoot-jackalope-horns",
+    "reason": "The first scene duplicated a furred ear behind the main left ear.",
+    "prompt": "Use case: precise-object-edit. Image 1 is the edit target, an 8:5 landscape illustration of a charging Jackalope. Image 2 is the correct portrait identity reference. Correct only the animal's ear anatomy: remove the extra small sideways-pointing furred ear that protrudes behind the large left ear near the upper-left of its head, replacing that small extra ear with the forest background. Retain exactly TWO natural black-tipped hare ears, one large ear on the left and one on the right, and exactly TWO pale branching deer antlers. Keep the face, collar, fur markings, four legs, leaping pose, forest, lighting, camera and painterly quality unchanged. Preserve the landscape 8:5 composition at 1586x992 pixels or larger. Keep all remaining ear and antler tips visible inside the frame, with a little breathing room at the top. No text, border, icons or watermark.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/candidates/jackalope-horns-extra-ear.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": false
+  }
+]

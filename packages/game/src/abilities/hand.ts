@@ -1,3 +1,4 @@
+import { boostValue } from '../boost';
 import { fighterById, mainFighter } from '../fighters';
 import { offerDiscardProtection } from './ongoing';
 import { openChoice } from './choices';
@@ -131,7 +132,7 @@ export function discardNamedValue(
             kind: 'damage',
             actor: task.owner,
             target: mainFighter(runtime.state, player.id).id,
-            amount: runtime.defs.cards[card.definition].boost,
+            amount: boostValue(player, card, runtime.defs),
             reason: 'ability',
           },
         },
@@ -139,6 +140,56 @@ export function discardNamedValue(
     })),
     1,
     1,
+    task.provenance,
+    { fighter: task.owner },
+  );
+}
+
+/** The affected owner privately assembles a subset; only the complete reveal is public. */
+export function revealHand(runtime: Runtime, task: Extract<Task, { type: 'reveal-hand' }>): void {
+  const target = fighterById(runtime.state, task.target);
+  const player = runtime.state.players.find((p) => p.id === target?.player);
+  if (!player || player.eliminated || runtime.data.dormant?.includes(player.id)) return;
+  const cards = player.hand.filter((c) => task.selected.includes(c.id));
+  const count = Math.min(task.count, player.hand.length);
+  if (cards.length < count) {
+    openChoice(
+      runtime,
+      task.frame,
+      player.id,
+      `Choose cards to reveal (${cards.length}/${count})`,
+      player.hand
+        .filter((c) => !task.selected.includes(c.id))
+        .map((card) => ({
+          id: card.id,
+          card: { ...card },
+          label: runtime.defs.cards[card.definition].name,
+          tasks: [{ ...task, selected: [...task.selected, card.id] }],
+        })),
+      1,
+      1,
+      task.provenance,
+      { fighter: task.owner },
+    );
+    return;
+  }
+  if (!task.discardAllowed)
+    runtime.emit({ type: 'hand-revealed', player: player.id, cards: structuredClone(cards) });
+  if (!task.discard || !cards.length || offerDiscardProtection(runtime, task, player.id)) return;
+  const discard = Math.min(task.discard, cards.length);
+  openChoice(
+    runtime,
+    task.frame,
+    fighterById(runtime.state, task.owner)!.player,
+    `Discard ${discard} revealed cards`,
+    cards.map((card) => ({
+      id: card.id,
+      card: { ...card },
+      label: runtime.defs.cards[card.definition].name,
+      tasks: [{ type: 'discard-card', player: player.id, card: card.id }],
+    })),
+    discard,
+    discard,
     task.provenance,
     { fighter: task.owner },
   );

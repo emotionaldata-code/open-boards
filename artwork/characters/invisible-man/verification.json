@@ -1,0 +1,795 @@
+{
+  "date": "2026-10-28",
+  "assets": [
+    {
+      "id": "invisible-man-portrait",
+      "master": "masters/portrait.png",
+      "sha256": "9b203c473fe2032dc385675a020ad227c1ec97fe0eb42460c086422000ea9b39",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-portrait",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-256-7e0bf43acfe9.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 15212,
+          "sha256": "7e0bf43acfe96b6884faf10313440c9b6f984c81143e1e2206211660d125a314"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-512-e19fcb81f9e0.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 52748,
+          "sha256": "e19fcb81f9e0bcf3cb145c4ae62242c5085d117ef720d81cf7bf7f99ea7888dc"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-1024-ab183d106567.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 173616,
+          "sha256": "ab183d1065673e0fa58659607e383976670dcc206eba343e953791ce0f0c486b"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-token",
+      "master": "masters/token.png",
+      "sha256": "2aad6f7e59f83811196d60a908691aad21723f28319076343fe9645f32918678",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "prompt": "prompts.json#invisible-man-token",
+      "alpha": {
+        "transparentPixels": 197659,
+        "opaquePixels": 1224,
+        "totalPixels": 262144
+      },
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-token-512-133292c12780.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 34966,
+          "sha256": "133292c12780a38147c5ac1d52f7191d25f1d8b352a35ee788070d47215c176f"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-covert-preparation",
+      "master": "masters/covert-preparation.png",
+      "sha256": "8bea770a2508f7bd04bf5d9e512055e0f1ef44a26ebfa479ebd2e2eefb42f057",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-covert-preparation",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-320-ae38880e2310.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 19786,
+          "sha256": "ae38880e23107edbfa6d8fd6212ee932193be9928d45246ace85092d868456b0"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-640-fd9402c00358.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 65882,
+          "sha256": "fd9402c003589ce808b881b65b0996432f29f1ef5ee8fe7aace17e7aef93c8e7"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-1280-8094b555105c.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 201420,
+          "sha256": "8094b555105cdee2181e95a57178abc6e03b3eab027dbd3ceb8f046cc677b74c"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-dreaming-of-revenge",
+      "master": "masters/dreaming-of-revenge.png",
+      "sha256": "39c8338609288fda8d2173c0500b43aaab994a4d0b9562291b41e1273262633e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-dreaming-of-revenge",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-320-994a3f68766a.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 17198,
+          "sha256": "994a3f68766ab236fe5a9cad74dddb07d46dda13f2e5ea09305f575ffc3d1320"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-640-dd37a731d7ab.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 57074,
+          "sha256": "dd37a731d7ab051a40e697431e4bb84f8788a84c07d534bb910d281b5676d563"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-1280-cff1edd38e62.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 173634,
+          "sha256": "cff1edd38e624ff983860c2dc10c623bace43e542a31d0788ad4bb96f629fe1f"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-confound",
+      "master": "masters/confound.png",
+      "sha256": "c5a006b77e6bb69b469e57237e995299ba596aa040f7bb17b8267bcc09d4ab05",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-confound",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-confound-320-54174e0f4087.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 21792,
+          "sha256": "54174e0f4087eb45e90d484a1c807c27cfd1340d8e005d78464e11f9268fdb44"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-confound-640-a9890f9c72ba.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 71720,
+          "sha256": "a9890f9c72baa72b4f969fb9d4caa9e3c23052adfc93b0ff9645a426555598c2"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-confound-1280-7b8e90aa4ee6.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 204420,
+          "sha256": "7b8e90aa4ee66fe22a811d59bedbeb66efba5d47161144fdb58ff128fa71ef2d"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-impossible-to-see",
+      "master": "masters/impossible-to-see.png",
+      "sha256": "9f413371591f7a0f29b6803f1274b1c49e96b1f14d0c103890a831d350ae710c",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-impossible-to-see",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-impossible-to-see-320-338e7beed792.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 21852,
+          "sha256": "338e7beed7927b99d583e23b8531973b9bcf6d83393b6d4a25655b5f17206bf4"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-impossible-to-see-640-0f89fb11d490.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 72334,
+          "sha256": "0f89fb11d4908f4c9bf4c1105b9dd8d68203619c301daf281694f3cdc5cb5267"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-impossible-to-see-1280-86e716c8ca74.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 211338,
+          "sha256": "86e716c8ca7440c6653879b4c3ead2a164f445b1e1d5ba862f82f9d2ca4e6d20"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-surprise-attack",
+      "master": "masters/surprise-attack.png",
+      "sha256": "7df46db23d289bdcdaf5a76e182ae058bb8a8b303ef58365b44f69daddc5f7b9",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-surprise-attack",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-surprise-attack-320-ecfc866e435c.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 18360,
+          "sha256": "ecfc866e435cc95507978db58964a0ee1edaba30d7b083a7709cef7873563ce4"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-surprise-attack-640-5e6fc87f5ad8.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 56640,
+          "sha256": "5e6fc87f5ad8c21497b01d32c81218863693c074506c514de8b0fa44dc1f1973"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-surprise-attack-1280-27b1ffb34d98.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 164210,
+          "sha256": "27b1ffb34d98b6539beebbb772b4183cd5a4212784dca8ba3d6fa65a31253fa2"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-slip-away",
+      "master": "masters/slip-away.png",
+      "sha256": "0136ef00838a2773191f6386697544776d1c5ae511163550cb19e5ad3695543a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-slip-away",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-slip-away-320-354545f7c88f.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 21130,
+          "sha256": "354545f7c88f87c103a8a2bbd74f7816ebf8e9db43a9146f1ac52fc9a308b5af"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-slip-away-640-84b5bb847d67.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 73220,
+          "sha256": "84b5bb847d6770727cc1232c0279be7709b97b31a42042d85fb1d61315c744ee"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-slip-away-1280-3516bfc28768.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 224272,
+          "sha256": "3516bfc28768f0aae5e33e8d25eaeecec3d5e07d7389a8d3560c09aa3d93c72b"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-emerge-from-mist",
+      "master": "masters/emerge-from-mist.png",
+      "sha256": "1f537d44c58f06941e91930db753e354218fca8db149a0c045e9cb3724b9e909",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-emerge-from-mist",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-320-3e569ecccab7.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 18820,
+          "sha256": "3e569ecccab752796a9ce220de7cd1b9fabd9880694b8a271bbbfdaa426be207"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-640-b1cf62d42e12.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 57726,
+          "sha256": "b1cf62d42e12b83c3300a9c27b1564021c2acab4bf14582e17671f861083591b"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-1280-204311a7dfba.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 158784,
+          "sha256": "204311a7dfba7b439c26b05489846b9acfb15e677dabb4f36d2f2b47656562cd"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-lurking",
+      "master": "masters/lurking.png",
+      "sha256": "2311d1c6cc9e2f27c3b2891edd7ee3f99903686376813944aa54857f31b1d6b3",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-lurking",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-lurking-320-29c3910852f4.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 18426,
+          "sha256": "29c3910852f434c4173fdc0c9f2776e84771f5b013a15e01579fc9bba7373b00"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-lurking-640-03edf5ebda60.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 50352,
+          "sha256": "03edf5ebda600c3768d2f8ef88b9e8a33eb0b2e6e1e7d01dddf77bfe5533d2fd"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-lurking-1280-6a200391458f.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 127080,
+          "sha256": "6a200391458f8b0b09faaaaed81f84df0be0f3586ebfdc840f3b79249170761d"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-into-thin-air",
+      "master": "masters/into-thin-air.png",
+      "sha256": "a9bc50e2b224bf6a7ba0b1cf0edd8e8eb3d0b925a6243575830153fa378e1be9",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-into-thin-air",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-into-thin-air-320-a8d94e98e1ef.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 20260,
+          "sha256": "a8d94e98e1ef58f5eec8e4d3ea55c445b34a1bab5d046e8f518d1ce9e0dc9c18"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-into-thin-air-640-165ac5671a56.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 67636,
+          "sha256": "165ac5671a56c71e77890476e6a46a3511ad3b486caec8008726fa01f1154ab8"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-into-thin-air-1280-fcb3dd8d802e.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 203364,
+          "sha256": "fcb3dd8d802eea94dd66f6b3612344231c0f389a309aa89b47722bd931af618a"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-coded-notes",
+      "master": "masters/coded-notes.png",
+      "sha256": "033c75a8e1ba4a39af64588e4ad78e67e6382f57202711db8a6e0b02f83f6437",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-coded-notes",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-coded-notes-320-102124cce1df.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 19474,
+          "sha256": "102124cce1dfbd102e7f2b5f5c22ce0c17562e05447902206b83f93329dac905"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-coded-notes-640-c3e458149dc0.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 63102,
+          "sha256": "c3e458149dc04f24a80d03f1d03b7cdcebae4cc23b62ab4f3bd763933794d90b"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-coded-notes-1280-9c0a2031d63f.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 185070,
+          "sha256": "9c0a2031d63fd43339d9d1897ba72dfbf83d91c18614d2e13931ba2ec72c8026"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-reign-of-terror",
+      "master": "masters/reign-of-terror.png",
+      "sha256": "2817460403af4f244dd674f1eb187c892a8a4a0e860be2a15859885567b19076",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-reign-of-terror",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-reign-of-terror-320-e8d2408c3c1b.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 21974,
+          "sha256": "e8d2408c3c1b9020d9c7c1624503cb85111cbb84ff35f848da522f3e5e321d90"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-reign-of-terror-640-299939a7a3d1.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 69390,
+          "sha256": "299939a7a3d116457b71e0793946fef6fd62b53aaeafb34788b78a424b9f3a35"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-reign-of-terror-1280-cb02ee7aabe2.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 190048,
+          "sha256": "cb02ee7aabe2b4cefd45809ee5b00f3c3cc94f57526c7cd23c3ab5e14dc0cfd6"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-vanish",
+      "master": "masters/vanish.png",
+      "sha256": "0aa736db8e49168c603f3d778b8b9a05841d25544b2dbd7152a1e7bacbf60b69",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-vanish",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-vanish-320-78b6810f7f39.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 22868,
+          "sha256": "78b6810f7f3985bb92b6063eff42d688894fcb08228827548559ea7eb48dd97c"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-vanish-640-3a6f46f8de4d.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 73036,
+          "sha256": "3a6f46f8de4d06983ea645de2ae05dbbfb1cedfb9d74975a9188530016c235e2"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-vanish-1280-d77896bfe3da.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 219430,
+          "sha256": "d77896bfe3dad1c50566a829809f7f16c042d7cd22ab7a12fc78f39a3acba660"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-step-lightly",
+      "master": "masters/step-lightly.png",
+      "sha256": "e658ff06be5779980c56ed1aaf4c49871d459341fa1072365b3815af05c60026",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-step-lightly",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-step-lightly-320-c8b3d2bea8a3.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 20102,
+          "sha256": "c8b3d2bea8a3ce295dd0143ca8682da95c40a0d49045952b28aa3f0a67361ee5"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-step-lightly-640-8197bb16d581.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 65748,
+          "sha256": "8197bb16d5813ebca2451d52d0b30078cf969160b494084d93123bcef7d05341"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-step-lightly-1280-66ab386ae526.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 193700,
+          "sha256": "66ab386ae526d00bf35521b09d626110d5d2bb2d4097da5b1a81209fca804412"
+        }
+      ]
+    },
+    {
+      "id": "invisible-man-rolling-fog",
+      "master": "masters/rolling-fog.png",
+      "sha256": "835f98dc5d69b9e1021b246af7bfb4d6638b5eeff7dc8e672fe64b61893ed257",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "prompt": "prompts.json#invisible-man-rolling-fog",
+      "variants": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-rolling-fog-320-13c1c854d712.webp",
+          "width": 320,
+          "height": 200,
+          "bytes": 18410,
+          "sha256": "13c1c854d712548efa85a1da875e2af092368a7a5f9a4d9b13551d38eb35ac08"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-rolling-fog-640-5151891ab9c7.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 68472,
+          "sha256": "5151891ab9c7aad9e6b78384cc00bcaaa5ea68d6c41b8810e92fc0502e8fffae"
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-rolling-fog-1280-73701dbe5fa9.webp",
+          "width": 1280,
+          "height": 800,
+          "bytes": 223410,
+          "sha256": "73701dbe5fa98f71ef516ed5ab6fcab12c34522fa82d8b445f13d39bd7cf5ba5"
+        }
+      ]
+    }
+  ],
+  "derivatives": 46,
+  "totalBytes": 4149506,
+  "deterministicPreparation": true,
+  "rulesUnchanged": true,
+  "preExistingManifestEntriesPreserved": true,
+  "visualReview": {
+    "masters": "All 16 inspected for identity, anatomy, composition and unwanted lettering. Token alpha verified.",
+    "desktop": [1440, 1000],
+    "landscapePhone": [844, 390],
+    "scenesReviewed": 14,
+    "ownerColors": 4,
+    "fogMarkers": 12,
+    "sharedFigureTextures": 1,
+    "states": [
+      "selection",
+      "movement",
+      "defeat",
+      "revival",
+      "reduced motion",
+      "mixed SVG/raster",
+      "failed raster fallback"
+    ],
+    "screenshots": ".vite/invisible-man-results/"
+  },
+  "browserMetrics": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "gallerySources": [
+        "/artwork/invisible-man/invisible-man-covert-preparation-320-ae38880e2310.webp",
+        "/artwork/invisible-man/invisible-man-dreaming-of-revenge-320-994a3f68766a.webp",
+        "/artwork/invisible-man/invisible-man-confound-320-54174e0f4087.webp",
+        "/artwork/invisible-man/invisible-man-impossible-to-see-320-338e7beed792.webp",
+        "/artwork/invisible-man/invisible-man-surprise-attack-320-ecfc866e435c.webp",
+        "/artwork/invisible-man/invisible-man-slip-away-320-354545f7c88f.webp",
+        "/artwork/invisible-man/invisible-man-emerge-from-mist-320-3e569ecccab7.webp",
+        "/artwork/invisible-man/invisible-man-lurking-320-29c3910852f4.webp",
+        "/artwork/invisible-man/invisible-man-into-thin-air-320-a8d94e98e1ef.webp",
+        "/artwork/invisible-man/invisible-man-coded-notes-320-102124cce1df.webp",
+        "/artwork/invisible-man/invisible-man-reign-of-terror-320-e8d2408c3c1b.webp",
+        "/artwork/invisible-man/invisible-man-vanish-320-78b6810f7f39.webp",
+        "/artwork/invisible-man/invisible-man-step-lightly-320-c8b3d2bea8a3.webp",
+        "/artwork/invisible-man/invisible-man-rolling-fog-320-13c1c854d712.webp"
+      ],
+      "inspectorSource": "/artwork/invisible-man/invisible-man-covert-preparation-640-fd9402c00358.webp",
+      "resources": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-256-7e0bf43acfe9.webp",
+          "bytes": 15212,
+          "transferred": 15512
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-1024-ab183d106567.webp",
+          "bytes": 173616,
+          "transferred": 173916
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-320-ae38880e2310.webp",
+          "bytes": 19786,
+          "transferred": 20086
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-320-994a3f68766a.webp",
+          "bytes": 17198,
+          "transferred": 17498
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-confound-320-54174e0f4087.webp",
+          "bytes": 21792,
+          "transferred": 22092
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-impossible-to-see-320-338e7beed792.webp",
+          "bytes": 21852,
+          "transferred": 22152
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-surprise-attack-320-ecfc866e435c.webp",
+          "bytes": 18360,
+          "transferred": 18660
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-slip-away-320-354545f7c88f.webp",
+          "bytes": 21130,
+          "transferred": 21430
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-320-3e569ecccab7.webp",
+          "bytes": 18820,
+          "transferred": 19120
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-lurking-320-29c3910852f4.webp",
+          "bytes": 18426,
+          "transferred": 18726
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-into-thin-air-320-a8d94e98e1ef.webp",
+          "bytes": 20260,
+          "transferred": 20560
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-coded-notes-320-102124cce1df.webp",
+          "bytes": 19474,
+          "transferred": 19774
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-reign-of-terror-320-e8d2408c3c1b.webp",
+          "bytes": 21974,
+          "transferred": 22274
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-vanish-320-78b6810f7f39.webp",
+          "bytes": 22868,
+          "transferred": 23168
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-step-lightly-320-c8b3d2bea8a3.webp",
+          "bytes": 20102,
+          "transferred": 20402
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-rolling-fog-320-13c1c854d712.webp",
+          "bytes": 18410,
+          "transferred": 18710
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-640-fd9402c00358.webp",
+          "bytes": 65882,
+          "transferred": 66182
+        }
+      ],
+      "totalEncodedBytes": 535162
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "gallerySources": [
+        "/artwork/invisible-man/invisible-man-covert-preparation-320-ae38880e2310.webp",
+        "/artwork/invisible-man/invisible-man-dreaming-of-revenge-320-994a3f68766a.webp",
+        "/artwork/invisible-man/invisible-man-confound-320-54174e0f4087.webp",
+        "/artwork/invisible-man/invisible-man-impossible-to-see-320-338e7beed792.webp",
+        "/artwork/invisible-man/invisible-man-surprise-attack-320-ecfc866e435c.webp",
+        "/artwork/invisible-man/invisible-man-slip-away-320-354545f7c88f.webp",
+        "/artwork/invisible-man/invisible-man-emerge-from-mist-320-3e569ecccab7.webp",
+        "/artwork/invisible-man/invisible-man-lurking-320-29c3910852f4.webp",
+        "/artwork/invisible-man/invisible-man-into-thin-air-320-a8d94e98e1ef.webp",
+        "/artwork/invisible-man/invisible-man-coded-notes-320-102124cce1df.webp",
+        "/artwork/invisible-man/invisible-man-reign-of-terror-320-e8d2408c3c1b.webp",
+        "/artwork/invisible-man/invisible-man-vanish-320-78b6810f7f39.webp",
+        "/artwork/invisible-man/invisible-man-step-lightly-320-c8b3d2bea8a3.webp",
+        "/artwork/invisible-man/invisible-man-rolling-fog-320-13c1c854d712.webp"
+      ],
+      "inspectorSource": "/artwork/invisible-man/invisible-man-covert-preparation-640-fd9402c00358.webp",
+      "resources": [
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-256-7e0bf43acfe9.webp",
+          "bytes": 15212,
+          "transferred": 15512
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-portrait-512-e19fcb81f9e0.webp",
+          "bytes": 52748,
+          "transferred": 53048
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-320-ae38880e2310.webp",
+          "bytes": 19786,
+          "transferred": 20086
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-320-994a3f68766a.webp",
+          "bytes": 17198,
+          "transferred": 17498
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-confound-320-54174e0f4087.webp",
+          "bytes": 21792,
+          "transferred": 22092
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-impossible-to-see-320-338e7beed792.webp",
+          "bytes": 21852,
+          "transferred": 22152
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-surprise-attack-320-ecfc866e435c.webp",
+          "bytes": 18360,
+          "transferred": 18660
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-slip-away-320-354545f7c88f.webp",
+          "bytes": 21130,
+          "transferred": 21430
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-emerge-from-mist-320-3e569ecccab7.webp",
+          "bytes": 18820,
+          "transferred": 19120
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-lurking-320-29c3910852f4.webp",
+          "bytes": 18426,
+          "transferred": 18726
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-into-thin-air-320-a8d94e98e1ef.webp",
+          "bytes": 20260,
+          "transferred": 20560
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-coded-notes-320-102124cce1df.webp",
+          "bytes": 19474,
+          "transferred": 19774
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-reign-of-terror-320-e8d2408c3c1b.webp",
+          "bytes": 21974,
+          "transferred": 22274
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-vanish-320-78b6810f7f39.webp",
+          "bytes": 22868,
+          "transferred": 23168
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-step-lightly-320-c8b3d2bea8a3.webp",
+          "bytes": 20102,
+          "transferred": 20402
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-rolling-fog-320-13c1c854d712.webp",
+          "bytes": 18410,
+          "transferred": 18710
+        },
+        {
+          "url": "/artwork/invisible-man/invisible-man-covert-preparation-640-fd9402c00358.webp",
+          "bytes": 65882,
+          "transferred": 66182
+        }
+      ],
+      "totalEncodedBytes": 414294
+    }
+  ],
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed; existing main bundle exceeds 800 kB warning threshold",
+    "focusedTests": {
+      "passed": 58,
+      "skipped": 1,
+      "command": "pnpm exec vitest run apps/client/src/artwork/assets.test.ts apps/client/src/artwork/textures.test.ts apps/client/src/board/figures.test.ts packages/content/src/characters/invisible-man.test.ts --maxWorkers=1 --no-file-parallelism --testNamePattern='^(?!.*deploys full allies)'"
+    },
+    "repositoryFormatCheck": "Initially passed; later concurrent workspace changes caused a formatting failure in packages/content/src/characters/geralt-of-rivia.json. Unrelated file preserved.",
+    "outstandingFailures": [
+      {
+        "test": "deploys full allies and all tokens for every ordered two/four-seat roster containing Invisible Man",
+        "file": "packages/content/src/characters/invisible-man.test.ts:506",
+        "result": "Initial run passed 45 assertions but reported Vitest onTaskUpdate RPC timeout. Single-worker rerun passed 44 tests, with exhaustive deployment test exceeding its 180000ms timeout and another RPC timeout."
+      }
+    ],
+    "scopedFormatCheck": "passed",
+    "browser": {
+      "uniqueChecksPassed": 25,
+      "execution": "Validated across focused runs and corrected-fixture reruns; no final unresolved browser failures. Full repository browser suite was not run because production UI components were unchanged.",
+      "coverage": [
+        "all 14 card scenes at desktop and landscape-phone widths",
+        "320px gallery and 640px inspector requests",
+        "four owner colors and 12 numbered fog markers",
+        "one shared Invisible Man figure texture",
+        "selection, movement, defeat and revival",
+        "reduced and normal motion",
+        "mixed SVG/raster and failed image fallback",
+        "Invisible Man fog setup/movement, Vanish, reconnect and Coded Notes flows",
+        "updated SVG fixtures for Achilles, Bigfoot, Bruce Lee, Dracula, Robin Hood and Sherlock Holmes"
+      ],
+      "resolvedDuringVerification": [
+        "Migrated-character SVG fixture expectations changed to Darth Vader; corrected reruns passed.",
+        "Sherlock normal-motion run lost its mounted harness during a concurrent Vite page reload; isolated rerun passed."
+      ]
+    }
+  },
+  "selectedOriginalsByteIdenticalToGeneratorOutputs": true
+}

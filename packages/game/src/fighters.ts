@@ -8,6 +8,14 @@ export function mainFighter(state: Pick<GameState, 'fighters'>, player: string):
 }
 export function fighterDefinition(fighter: Fighter, defs: Definitions): FighterDefinition {
   const character = defs.characters[fighter.character];
+  if (character.heroSelection) {
+    const identity = fighter.definition === character.ally!.id ? character.ally! : character;
+    return {
+      ...identity,
+      name: identity === character ? character.heroSelection.mainName : identity.name,
+      hp: fighter.role === 'main' ? character.hp : character.ally!.hp,
+    };
+  }
   return fighter.role === 'main' ? character : character.ally!;
 }
 export function ownedFighters(state: Pick<GameState, 'fighters'>, player: string): Fighter[] {
@@ -15,10 +23,12 @@ export function ownedFighters(state: Pick<GameState, 'fighters'>, player: string
 }
 export function cardEligible(
   card: CardDefinition,
-  fighter: Pick<Fighter, 'role' | 'defeated'>,
+  fighter: Pick<Fighter, 'role' | 'defeated'> & Partial<Pick<Fighter, 'definition'>>,
 ): boolean {
   return (
-    !fighter.defeated && (card.usableBy === 'BOTH' || card.usableBy === fighter.role.toUpperCase())
+    !fighter.defeated &&
+    (!card.fighter || card.fighter === fighter.definition) &&
+    (card.usableBy === 'BOTH' || card.usableBy === fighter.role.toUpperCase())
   );
 }
 

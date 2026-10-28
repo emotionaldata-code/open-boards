@@ -36,6 +36,7 @@ export function suppressOpponent(runtime: Runtime, binding: Binding): void {
     binding.owner === combat.attacker ? combat.defender : combat.attacker,
   );
   const protection = recipient && runtime.defs.characters[recipient.character].cardEffectProtection;
+  if (card && runtime.defs.cards[card.definition].effectsCannotBeCancelled) return;
   if (card && protection?.tags.includes(runtime.defs.cards[card.definition].usableBy)) return;
   if (
     !card ||
@@ -48,7 +49,11 @@ export function suppressOpponent(runtime: Runtime, binding: Binding): void {
     for (const boost of combat.boosts)
       if (boost.cancelWithCard && !boost.cancelled) {
         boost.cancelled = true;
-        modifyCombatValue(combat, 'attack', -runtime.defs.cards[boost.card.definition].boost);
+        modifyCombatValue(
+          combat,
+          'attack',
+          -(boost.amount ?? runtime.defs.cards[boost.card.definition].boost),
+        );
       }
   if (runtime.state.revealed) runtime.state.revealed.boosts = publicBoosts(runtime, combat);
 }
@@ -63,6 +68,10 @@ function pendingCardEffects(
   if (combat.bonus && combat.card.id === card) return false;
   const abilities = runtime.defs.cards[definition].abilities ?? [];
   return runtime.data.queue.some((task) => {
+    if (task.type === 'order-abilities')
+      return task.abilities.some(
+        (ability) => ability.provenance?.card === card && ability.ability.effects.length,
+      );
     if (
       task.provenance?.card === card &&
       ['ability', 'effect', 'operation', 'apply'].includes(task.type)

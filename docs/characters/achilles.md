@@ -28,13 +28,16 @@ Defender-first immediate ordering means Under Achilles' Helm can finish its exch
 
 ## Original artwork
 
-All delivered assets are original code-native SVG illustrations in the repository's cut-paper style. No published source artwork was copied or hotlinked.
+Refreshed 2026-10-27 with original cinematic illustrations generated through Codex integrated Imagegen. No published source artwork was copied or hotlinked. Achilles retains his tall red helmet crest, spear, round shield and bronze cuirass; Patroclus has a shorter dark crest, beard, sword, rectangular shield and teal cloth.
 
-- `apps/client/src/characters/art.ts`: Achilles has a high red helmet crest, long spear, round shield and bronze armor; Patroclus has a shorter crest, sword and rectangular shield. Both use a visible seat-colored garment/shield.
-- `apps/client/public/cards/achilles/*.svg`: twelve distinct 320×200 compositions, one per source slug. Subjects include paired shields, cracked bronze, a helmet exchange, winged sandals, a vulnerable heel and a flying spear.
-- `packages/content/src/characters/achilles.json`: local asset references, bronze/terracotta palette and original flavor lines, separate from executable rules.
+- `artwork/characters/achilles/`: sixteen intact selected masters, two portrait identity references, exact prompts, revisions, generation log and per-asset provenance with SHA-256 hashes. Three failed figure generations are recorded; the selected transparent figure succeeded. Card revisions distinguish anonymous enemies from the heroes and provide every requested resolution without enlargement.
+- `apps/client/public/artwork/achilles/`: twelve card scenes at 320/640/1280px, two portraits at 256/512/1024px, and two transparent 512px figures. The 44 hashed WebP derivatives total 4,762,428 bytes.
+- `artwork/characters/achilles/sources.json`: responsive focal positions and board anchors/scale. Patroclus' horizontal anchor accounts for the sword extending beyond his feet. Owner colors, numbered ally labels, pedestals, selection and animation remain separate from the figure pixels.
+- `apps/client/src/artwork/assets.ts`: shared portrait/figure registration. Existing SVG artwork remains available as fallback. `packages/content/src/characters/achilles.json` changes only the canonical card image paths; rules, card quantities, stats, palette and flavor remain intact.
 
 The source-art URLs in the inventory are evidence/provenance references only. They are not used by the client.
+
+See `artwork/characters/achilles/verification.json` for refresh validation and browser-review results.
 
 ## Verification
 

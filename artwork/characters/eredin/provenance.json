@@ -1,0 +1,16 @@
+{
+  "character": "eredin",
+  "date": "2026-10-28",
+  "tool": "Integrated Codex Imagegen (built-in image_gen)",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/eredin",
+  "originalArtwork": true,
+  "redistributedSourceArtwork": false,
+  "style": "Cinematic illustrated realism; identity reference portraits precede figures and all eleven card scenes.",
+  "references": ["references/eredin.png", "references/red-rider.png"],
+  "mastersPreserved": true,
+  "generatedAssets": 15,
+  "prompts": "prompts.json",
+  "sources": "sources.json",
+  "derivatives": "pnpm artwork:prepare eredin",
+  "transparency": "Both figure masters generated with transparent_background=true; genuine nonopaque RGBA with alpha-zero corners verified."
+}

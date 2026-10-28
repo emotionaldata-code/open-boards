@@ -16,6 +16,7 @@ const ref = z.enum([
   'attacker',
   'defender',
   'opponent',
+  'opponent-main',
   'chosen',
   'main',
   'ally',
@@ -26,6 +27,7 @@ const expression = z.union([
     role: z.enum(['main', 'ally']).optional(),
     range: z.enum(['adjacent', 'zone']).optional(),
     anchor: ref.optional(),
+    exclude: ref.optional(),
   }),
   z.strictObject({ stat: z.enum(['hp', 'hand', 'deck', 'movement']), of: ref.optional() }),
   z.strictObject({ stat: z.literal('counter'), name: id, of: ref.optional() }),
@@ -37,8 +39,15 @@ const expression = z.union([
   }),
 ]);
 const value = z.union([signed, expression]);
+const fighterConditionSchema = z.strictObject({ type: z.literal('allies-defeated') });
 const conditionSchema: z.ZodType<Condition> = z.lazy(() =>
   z.discriminatedUnion('type', [
+    fighterConditionSchema,
+    z.strictObject({
+      type: z.literal('card-has-hook'),
+      card: z.literal('opposing'),
+      hook: z.enum(hooks),
+    }),
     z.strictObject({ type: z.enum(['all', 'any']), conditions: z.array(conditionSchema).max(32) }),
     z.strictObject({ type: z.literal('not'), condition: conditionSchema }),
     z.strictObject({
@@ -58,6 +67,11 @@ const conditionSchema: z.ZodType<Condition> = z.lazy(() =>
       role: z.enum(['actor', 'target', 'attacker', 'defender']),
     }),
     z.strictObject({
+      type: z.literal('fighter-role'),
+      target: ref.optional(),
+      role: z.enum(['main', 'ally']),
+    }),
+    z.strictObject({
       type: z.literal('card-category'),
       card: z.enum(['played', 'attack', 'defense']),
       category: z.enum(['attack', 'defense', 'versatile', 'action']),
@@ -74,6 +88,7 @@ const conditionSchema: z.ZodType<Condition> = z.lazy(() =>
       target: ref.optional(),
       atTurnStart: z.boolean().optional(),
     }),
+    z.strictObject({ type: z.literal('maneuvered'), target: ref.optional() }),
     z.strictObject({ type: z.literal('changed-position'), target: ref.optional() }),
     z.strictObject({ type: z.literal('has-status'), player: ref.optional(), status: id }),
   ]),
@@ -97,7 +112,13 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       optional: z.boolean().optional(),
       placeSelf: z.boolean().optional(),
     }),
-    z.strictObject({ type: z.literal('return-to-deck'), count }),
+    z.strictObject({
+      type: z.literal('return-to-deck'),
+      count,
+      target: ref.optional(),
+      random: z.boolean().optional(),
+    }),
+    z.strictObject({ type: z.literal('defeat'), target: ref, onDefeat: effects().optional() }),
     z.strictObject({
       type: z.literal('discard-deck'),
       target: ref.optional(),
@@ -105,7 +126,11 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       onDiscard: effects().optional(),
     }),
     z.strictObject({ type: z.literal('remove-until-next-turn'), target: ref.optional() }),
-    z.strictObject({ type: z.literal('lock-card-value'), target: ref.optional(), value: count }),
+    z.strictObject({
+      type: z.literal('lock-card-value'),
+      target: ref.optional(),
+      value: z.union([count, expression]),
+    }),
     z.strictObject({
       type: z.literal('draw'),
       target: ref.optional(),
@@ -151,6 +176,8 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       upTo: z.boolean().optional(),
       onDiscard: effects().optional(),
       onDecline: effects().optional(),
+      optional: z.boolean().optional(),
+      onComplete: effects().optional(),
       combatBonus: z
         .strictObject({ field: z.enum(['attack', 'defense']), per: z.enum(['card', 'boost']) })
         .optional(),
@@ -203,7 +230,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     z.strictObject({ type: z.literal('inspect-deck'), count, take: count }),
     z.strictObject({
       type: z.literal('area-damage'),
-      range: z.enum(['zone', 'any', 'adjacent']),
+      range: z.enum(['zone', 'any', 'adjacent', 'own-zone', 'adjacent-to-friendly']),
       adjacent: z.boolean().optional(),
       relation: z.enum(['friendly', 'enemy', 'any']),
       amount: count,
@@ -223,9 +250,18 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       cards: z.array(id).min(1).max(100).optional(),
     }),
     z.strictObject({ type: z.literal('return-played-card') }),
+    z.strictObject({ type: z.literal('return-combat-card') }),
+    z.strictObject({ type: z.literal('reveal-boost-draw') }),
     z.strictObject({ type: z.literal('suppress-card-effects') }),
     z.strictObject({ type: z.literal('predict-value') }),
     z.strictObject({ type: z.literal('ignore-combat-value'), target: ref.optional() }),
+    z.strictObject({
+      type: z.literal('reveal-hand'),
+      target: ref.optional(),
+      count,
+      discard: count,
+    }),
+    z.strictObject({ type: z.literal('draw-to'), target: ref.optional(), count }),
     z.strictObject({
       type: z.literal('inspect-hand'),
       target: ref.optional(),
@@ -237,6 +273,7 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       type: z.literal('revive-ally'),
       optional: z.boolean().optional(),
       anchor: ref.optional(),
+      zone: z.literal('any').optional(),
     }),
     z.strictObject({
       type: z.literal('for-each-fighter'),
@@ -254,18 +291,20 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     z.strictObject({
       type: z.literal('choose-fighter'),
       relation: z.enum(['friendly', 'enemy', 'any']),
-      range: z.enum(['any', 'adjacent', 'zone', 'attack-range']).optional(),
+      role: z.enum(['main', 'ally']).optional(),
+      range: z.enum(['any', 'adjacent', 'zone', 'attack-range', 'combat']).optional(),
       effects: effects(),
     }),
     z.strictObject({
       type: z.literal('choose-player'),
       relation: z.enum(['opponent', 'any', 'self']),
-      range: z.enum(['any', 'adjacent', 'zone', 'attack-range']).optional(),
+      range: z.enum(['any', 'adjacent', 'zone', 'attack-range', 'combat']).optional(),
       effects: effects(),
     }),
     z.strictObject({
       type: z.literal('choose-option'),
       chooser: ref.optional(),
+      count: count.min(1).max(16).optional(),
       prompt: z.string().min(1).max(200),
       options: z
         .array(
@@ -288,6 +327,7 @@ const abilitySchema: z.ZodType<Ability> = z.strictObject({
   description: z.string().min(1).max(500),
   trigger: z.enum(hooks),
   scope: z.enum(['self', 'any']).optional(),
+  orderWithCard: z.boolean().optional(),
   when: conditionSchema.optional(),
   optional: z.boolean().optional(),
   limit: z.strictObject({ scope: z.enum(['turn', 'match']), count: count.min(1) }).optional(),
@@ -314,6 +354,26 @@ const definitionSchema = z.strictObject({
       id,
       ...fighterFields,
       movement: count,
+      conditionalModifiers: z
+        .array(
+          z.strictObject({
+            name: z.string().min(1).max(100),
+            description: z.string().min(1).max(500),
+            when: fighterConditionSchema,
+            attack: signed.optional(),
+            defense: signed.optional(),
+            movement: signed.optional(),
+          }),
+        )
+        .max(16)
+        .optional(),
+      heroSelection: z
+        .strictObject({
+          name: z.string().min(1).max(100),
+          description: z.string().min(1).max(500),
+          mainName: z.string().min(1).max(100),
+        })
+        .optional(),
       boardTokens: z
         .strictObject({
           id,
@@ -363,16 +423,29 @@ const definitionSchema = z.strictObject({
       id,
       name: z.string().min(1).max(100),
       usableBy: z.enum(['MAIN', 'ALLY', 'BOTH']),
+      fighter: id.optional(),
       category: z.enum(['attack', 'defense', 'versatile', 'action']),
       value: count,
       boost: count,
       description: z.string().max(500).optional(),
       faceUpDefense: z.boolean().optional(),
+      effectsCannotBeCancelled: z.boolean().optional(),
+      attackMode: z
+        .strictObject({
+          when: fighterConditionSchema,
+          range: z.literal('any').optional(),
+          faceUp: z.boolean().optional(),
+        })
+        .optional(),
       ongoing: z
         .strictObject({
           preventEnemyActionGain: z.boolean().optional(),
           optionalDiscardProtection: z.boolean().optional(),
           discardUnlessAttacked: z.boolean().optional(),
+          preventMainAbilityDamage: z.boolean().optional(),
+          movementValue: count.optional(),
+          discardUnlessEnemyInZone: z.boolean().optional(),
+          boostBonus: count.optional(),
         })
         .optional(),
       effects: effects().optional(),
@@ -526,8 +599,21 @@ export function validateDefinitions(input: unknown): asserts input is Definition
         assert(known(defs.cards, card), `unknown search card ${String(card)}`);
     if ('type' in node && node.type === 'boost-attack')
       assert(
-        trigger === 'before-attack' || trigger === 'before-combat',
-        'boost-attack needs before-attack/before-combat',
+        trigger === 'before-attack' || trigger === 'before-combat' || trigger === 'combat-reveal',
+        'boost-attack needs before-attack/combat-reveal/before-combat',
+      );
+    if ('orderWithCard' in node && node.orderWithCard)
+      assert(trigger === 'combat-reveal', 'orderWithCard requires combat-reveal');
+    if ('type' in node && node.type === 'return-combat-card')
+      assert(trigger === 'after-combat', 'return-combat-card needs after-combat');
+    if ('type' in node && node.type === 'discard' && ('optional' in node || 'onComplete' in node))
+      assert(
+        !('random' in node) &&
+          !('upTo' in node) &&
+          !('onDecline' in node) &&
+          'count' in node &&
+          Number(node.count) > 0,
+        'complete discard payments require a positive exact count',
       );
     if ('type' in node && node.type === 'suppress-card-effects')
       assert(!!trigger, 'suppress-card-effects needs an ability hook');
@@ -538,6 +624,14 @@ export function validateDefinitions(input: unknown): asserts input is Definition
         new Set(node.options.map((x) => x.id)).size === node.options.length,
         'duplicate option IDs',
       );
+    if ('type' in node && node.type === 'choose-option' && 'count' in node)
+      assert(
+        typeof node.count === 'number' &&
+          'options' in node &&
+          Array.isArray(node.options) &&
+          node.count <= node.options.length,
+        'choose-option count exceeds available options',
+      );
     for (const child of Object.values(node)) inspect(child, trigger);
   };
   for (const [key, c] of Object.entries(defs.characters)) {
@@ -546,6 +640,19 @@ export function validateDefinitions(input: unknown): asserts input is Definition
     const size = c.deck.reduce((sum, e) => sum + e.count, 0);
     assert(size >= 5 && size <= 100, 'decks need 5–100 cards');
     if (c.ally) assert(c.ally.id !== c.id, 'ally and character IDs must differ');
+    if (c.heroSelection)
+      assert(
+        c.ally?.count === 1 && !c.boardTokens,
+        'hero selection requires one sidekick and no board tokens',
+      );
+    for (const entry of c.deck) {
+      const identity = defs.cards[entry.card].fighter;
+      if (identity)
+        assert(
+          identity === c.id || identity === c.ally?.id,
+          'card fighter must belong to its character',
+        );
+    }
     if (c.deckSelection) {
       const pool = c.deckSelection.groups.flatMap((g) => g.cards);
       assert(new Set(pool).size === pool.length, 'deck selection groups must be disjoint');
@@ -596,6 +703,8 @@ export function validateDefinitions(input: unknown): asserts input is Definition
       assert(key === d.id, 'definition key must equal its id');
       if ('category' in d && d.ongoing)
         assert(d.category === 'action', 'ongoing cards must be actions');
+      if ('category' in d && d.attackMode)
+        assert(d.category !== 'action', 'alternate attacks need a combat card');
       if ('category' in d)
         assert(
           d.category === 'action' || !d.effects?.length,

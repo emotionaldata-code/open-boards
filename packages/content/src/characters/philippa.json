@@ -1,0 +1,526 @@
+{
+  "id": "philippa",
+  "name": "Philippa",
+  "hp": 12,
+  "movement": 2,
+  "attackType": "ranged",
+  "ally": {
+    "id": "philippa-dijkstra",
+    "name": "Dijkstra",
+    "count": 1,
+    "hp": 6,
+    "attackType": "melee"
+  },
+  "palette": {
+    "ground": "#352c40",
+    "ink": "#e2d5c3",
+    "accent": "#c6a267"
+  },
+  "abilities": [
+    {
+      "id": "two-steps-ahead",
+      "name": "Two Steps Ahead",
+      "description": "At the end of your turn, you may draw until you have a hand of 4 cards.",
+      "trigger": "turn-end",
+      "when": {
+        "type": "compare",
+        "left": {
+          "stat": "hand"
+        },
+        "op": "lt",
+        "right": 4
+      },
+      "optional": true,
+      "effects": [
+        {
+          "type": "draw-to",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "philippa-backup-plan",
+      "name": "Backup Plan",
+      "count": 2,
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "description": "Choose one: -set Philippa's health to 5 -draw 3 cards",
+      "art": {
+        "scene": "lantern",
+        "variant": 0,
+        "image": "/artwork/philippa/philippa-backup-plan-1280-c2b827d94ec6.webp"
+      },
+      "flavor": "A contingency for every setback.",
+      "effects": [
+        {
+          "type": "choose-option",
+          "prompt": "Choose your Backup Plan",
+          "options": [
+            {
+              "id": "health",
+              "label": "Set Philippa\u2019s health to 5",
+              "effects": [
+                {
+                  "type": "set-health",
+                  "value": 5
+                }
+              ]
+            },
+            {
+              "id": "draw",
+              "label": "Draw 3 cards",
+              "effects": [
+                {
+                  "type": "draw",
+                  "count": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-spymasters-ruse",
+      "name": "Spymaster's Ruse",
+      "count": 2,
+      "category": "action",
+      "usableBy": "ALLY",
+      "value": 0,
+      "boost": 2,
+      "description": "Choose an opponent. They reveal 4 cards from their hand. Choose 2 of those cards for them to discard. Then, they draw 2 cards.",
+      "art": {
+        "scene": "map",
+        "variant": 1,
+        "image": "/artwork/philippa/philippa-spymasters-ruse-1280-4585e1c74e1b.webp"
+      },
+      "flavor": "Every secret has a price.",
+      "effects": [
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "reveal-hand",
+              "target": "chosen",
+              "count": 4,
+              "discard": 2
+            },
+            {
+              "type": "draw",
+              "target": "chosen",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-polymorphy",
+      "name": "Polymorphy",
+      "count": 2,
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "description": "Place Philippa in any space. [ONGOING]: Philippa's move value is 5. Discard this card at the end of your turn if Philippa is not in a zone with an opposing fighter.",
+      "art": {
+        "scene": "trail",
+        "variant": 2,
+        "image": "/artwork/philippa/philippa-polymorphy-1280-927b31b87123.webp"
+      },
+      "flavor": "A feather falls where the sorceress stood.",
+      "effects": [
+        {
+          "type": "teleport",
+          "includeOrigin": true,
+          "optional": false
+        }
+      ],
+      "ongoing": {
+        "movementValue": 5,
+        "discardUnlessEnemyInZone": true
+      }
+    },
+    {
+      "id": "philippa-paralyzing-fetters",
+      "name": "Paralyzing Fetters",
+      "count": 2,
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "description": "Immediately: The value of your opponent's card is equal to its printed value and cannot be changed.",
+      "art": {
+        "scene": "ward",
+        "variant": 3,
+        "image": "/artwork/philippa/philippa-paralyzing-fetters-1280-71e59cacdcd7.webp"
+      },
+      "flavor": "Even strength can be bound.",
+      "abilities": [
+        {
+          "id": "paralyzing-fetters-combat-reveal",
+          "name": "Paralyzing Fetters",
+          "description": "The value of your opponent's card is equal to its printed value and cannot be changed.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "lock-card-value",
+              "target": "opponent",
+              "value": {
+                "card": "opposing",
+                "field": "value"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-do-my-bidding",
+      "name": "Do My Bidding",
+      "count": 2,
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "description": "Immediately: Return your opponent's attack card to their hand. Look at their hand and choose an attack or versatile card for them to play. (It may be the same card.)",
+      "art": {
+        "scene": "shield",
+        "variant": 4,
+        "image": "/artwork/philippa/philippa-do-my-bidding-1280-17ed38d9da7c.webp"
+      },
+      "flavor": "Your hand. Her decision.",
+      "abilities": [
+        {
+          "id": "do-my-bidding-combat-reveal",
+          "name": "Do My Bidding",
+          "description": "Return your opponent's attack card to their hand. Look at their hand and choose an attack or versatile card for them to play. (It may be the same card.)",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "replace-attack"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-blinding-dust",
+      "name": "Blinding Dust",
+      "count": 2,
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "description": "After combat: You may discard 1 card. If you do, deal damage to the opposing fighter equal to its BOOST value.",
+      "art": {
+        "scene": "embers",
+        "variant": 5,
+        "image": "/artwork/philippa/philippa-blinding-dust-1280-9171f35efe43.webp"
+      },
+      "flavor": "A veil of dust, a spark of pain.",
+      "abilities": [
+        {
+          "id": "blinding-dust-after-combat",
+          "name": "Blinding Dust",
+          "description": "You may discard 1 card. If you do, deal damage to the opposing fighter equal to its BOOST value.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "count": 1,
+              "onDecline": [],
+              "onDiscard": [
+                {
+                  "type": "damage",
+                  "target": "opponent",
+                  "amount": {
+                    "card": "selected",
+                    "field": "boost"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-cunning",
+      "name": "Cunning",
+      "count": 2,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "description": "After combat: Your opponent may discard 1 card. If they don't deal 2 damage to the opposing fighter.",
+      "art": {
+        "scene": "blade",
+        "variant": 6,
+        "image": "/artwork/philippa/philippa-cunning-1280-b3dbc0a04d85.webp"
+      },
+      "flavor": "Pay for your hesitation.",
+      "abilities": [
+        {
+          "id": "cunning-after-combat",
+          "name": "Cunning",
+          "description": "Your opponent may discard 1 card. If they don't deal 2 damage to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1,
+              "onDecline": [
+                {
+                  "type": "damage",
+                  "target": "opponent",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-redanian-plot",
+      "name": "Redanian Plot",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 1,
+      "description": "Immediately: Your opponent may discard 1 card. If they don't, ignore their card's value.",
+      "art": {
+        "scene": "map",
+        "variant": 0,
+        "image": "/artwork/philippa/philippa-redanian-plot-1280-f4f1133e7e62.webp"
+      },
+      "flavor": "The court is already hers.",
+      "abilities": [
+        {
+          "id": "redanian-plot-combat-reveal",
+          "name": "Redanian Plot",
+          "description": "Your opponent may discard 1 card. If they don't, ignore their card's value.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1,
+              "onDecline": [
+                {
+                  "type": "ignore-combat-value",
+                  "target": "opponent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-spellbreaker",
+      "name": "Spellbreaker",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card. After combat: End the turn.",
+      "art": {
+        "scene": "ward",
+        "variant": 1,
+        "image": "/artwork/philippa/philippa-spellbreaker-1280-8b42ff522b5c.webp"
+      },
+      "flavor": "Silence falls before the last word.",
+      "abilities": [
+        {
+          "id": "spellbreaker-combat-reveal",
+          "name": "Spellbreaker",
+          "description": "Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        },
+        {
+          "id": "spellbreaker-after-combat",
+          "name": "Spellbreaker",
+          "description": "End the turn.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "end-turn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-chain-lightning",
+      "name": "Chain Lightning",
+      "count": 2,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "description": "After combat: Choose a zone Philippa is in. Deal 1 damage to each opposing fighter in that zone.",
+      "art": {
+        "scene": "bolt",
+        "variant": 2,
+        "image": "/artwork/philippa/philippa-chain-lightning-1280-5f4a5e2fb4b8.webp"
+      },
+      "flavor": "One spark finds another.",
+      "abilities": [
+        {
+          "id": "chain-lightning-after-combat",
+          "name": "Chain Lightning",
+          "description": "Choose a zone Philippa is in. Deal 1 damage to each opposing fighter in that zone.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "area-damage",
+              "range": "own-zone",
+              "relation": "enemy",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-regicide",
+      "name": "Regicide",
+      "count": 2,
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 2,
+      "description": "During combat: If the opposing fighter is a hero, this card's value is a 6 instead.",
+      "art": {
+        "scene": "blade",
+        "variant": 3,
+        "image": "/artwork/philippa/philippa-regicide-1280-77e547398a39.webp"
+      },
+      "flavor": "Crowns offer little protection.",
+      "abilities": [
+        {
+          "id": "regicide-before-combat",
+          "name": "Regicide",
+          "description": "If the opposing fighter is a hero, this card's value is a 6 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "fighter-role",
+                "target": "opponent",
+                "role": "main"
+              },
+              "then": [
+                {
+                  "type": "set-combat-value",
+                  "value": 6,
+                  "mode": "printed"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-lightning-bolt",
+      "name": "Lightning Bolt",
+      "count": 3,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "description": "After combat: If you haven't taken a maneuver action this turn, deal 1 damage to each opposing fighter in Philippa's zone.",
+      "art": {
+        "scene": "bolt",
+        "variant": 4,
+        "image": "/artwork/philippa/philippa-lightning-bolt-1280-839dac13d1ec.webp"
+      },
+      "flavor": "The storm does not need to move.",
+      "abilities": [
+        {
+          "id": "lightning-bolt-after-combat",
+          "name": "Lightning Bolt",
+          "description": "If you haven't taken a maneuver action this turn, deal 1 damage to each opposing fighter in Philippa's zone.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "not",
+                "condition": {
+                  "type": "maneuvered"
+                }
+              },
+              "then": [
+                {
+                  "type": "for-each-fighter",
+                  "relation": "enemy",
+                  "range": "zone",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "chosen",
+                      "amount": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippa-owlform",
+      "name": "Owlform",
+      "count": 3,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 3,
+      "description": "During combat: Discard any number of cards from your hand. Add +1 to this card's value for each card discarded.",
+      "art": {
+        "scene": "fire",
+        "variant": 5,
+        "image": "/artwork/philippa/philippa-owlform-1280-9de49df52e09.webp"
+      },
+      "flavor": "Talons where her hands had been.",
+      "abilities": [
+        {
+          "id": "owlform-before-combat",
+          "name": "Owlform",
+          "description": "Discard any number of cards from your hand. Add +1 to this card's value for each card discarded.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "count": 100,
+              "upTo": true,
+              "combatBonus": {
+                "field": "attack",
+                "per": "card"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

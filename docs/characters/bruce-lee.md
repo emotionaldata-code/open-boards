@@ -31,9 +31,11 @@ No printed clause is unsupported or intentionally omitted. Shared Open Boards co
 
 ## Artwork provenance
 
-All delivered artwork is original code-authored vector art in the repository's cut-paper style. Seventeen distinct 320×200 compositions live at `apps/client/public/cards/bruce-lee/<source-slug>.svg`, with subjects including distinct strike stances, a dragon, flowing water, crossed wrists, a close-range punch and swinging nunchaku. The single Bruce Lee figure in `apps/client/src/characters/art.ts` uses a visible owner-colored sash in all four seat colors and renders as both portrait and board miniature. There are no allies to illustrate.
+The 2026-10-28 refresh supplies 19 original cinematic painted illustrations made with Codex integrated Imagegen: one Bruce Lee portrait, one complete transparent board figure, and one scene for each of the 17 card designs. The portrait establishes the shared identity: short black hair, lean muscular build, bare chest and black kung fu trousers, with restrained amber light and jade shadows. The six Jeet Kune Do cards depict their named techniques individually; other scenes include flowing water, the dragon relief, nunchaku practice and a quiet recovery moment.
 
-Source card scans were inspected to establish subjects and rules, including One-Inch Punch and High Straight Lead. Published scans are not redistributed, traced or hotlinked. Assets contain no scripts, external references or embedded rule text. Bundle palettes, image references, presentation marks and roster flavor stay outside engine Definitions.
+Selected generator originals are preserved unchanged under `artwork/characters/bruce-lee/masters/`, with the identity reference under `references/`, exact generation prompts in `prompts.json`, source/crop/anchor settings in `sources.json`, and per-image attribution and hashes in `provenance.json`. Prepared, hashed WebP derivatives live under `apps/client/public/artwork/bruce-lee/`. Portraits provide 256/512/1024 variants, cards 320/640/1280 variants, and the transparent figure a 512 canvas. All 30 card copies use their corresponding design's canonical raster path.
+
+The shared React and Pixi artwork loaders render the images; the board owns the separate pedestal, four seat colors, selection and animation. Existing locally authored SVGs remain available as fallbacks. No source card scans are redistributed, traced or hotlinked. The refresh changes presentation references only; rules, counts, BOOSTs and abilities remain intact. Asset and browser results are recorded in `artwork/characters/bruce-lee/verification.json`.
 
 ## Verification
 

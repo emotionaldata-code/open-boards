@@ -1,9 +1,11 @@
+import { boostValue } from '../boost';
 import { mainFighter } from '../fighters';
-import type { Definitions, GameState, Fighter } from '../types';
+import type { Definitions, GameState, Fighter, Player } from '../types';
 import { adjacent } from '../movement';
 import { inAttackRange, sharesZone } from '../targeting';
 import type { Binding, Frame } from './state';
 import type { Condition, PlayerRef, Value } from './vocabulary';
+import { conditionalModifier, fighterCondition } from './fighter-conditions';
 
 export function reference(
   state: GameState,
@@ -38,7 +40,7 @@ export function reference(
         ? binding.owner
         : ref === 'chosen'
           ? binding.chosen
-          : ref === 'opponent'
+          : ref === 'opponent' || ref === 'opponent-main'
             ? opponent
             : ref === 'source'
               ? frame.kind === 'elimination'
@@ -48,6 +50,7 @@ export function reference(
                 ? frame[ref as keyof Frame]
                 : undefined;
   const fighter = state.fighters.find((p) => p.id === id);
+  if (ref === 'opponent-main') return fighter ? mainFighter(state, fighter.player) : undefined;
   return fighter &&
     frame.kind === 'card' &&
     frame.hook === 'card-discarded' &&
@@ -66,12 +69,22 @@ export function modifier(
   );
 }
 export function movement(
-  player: Pick<Fighter, 'character' | 'statuses'>,
+  player: Pick<Fighter, 'character' | 'statuses' | 'player'>,
   defs: Definitions,
+  state?: Pick<GameState, 'fighters'> & {
+    players?: Pick<Player, 'id' | 'ongoing'>[];
+  },
 ): number {
+  const active = state?.players?.find((p) => p.id === player.player)?.ongoing;
+  const base =
+    active
+      ?.map((c) => defs.cards[c.definition].ongoing?.movementValue)
+      .find((n) => n !== undefined) ?? defs.characters[player.character].movement;
   return Math.max(
     0,
-    defs.characters[player.character].movement + modifier(player, 'movement', defs),
+    base +
+      modifier(player, 'movement', defs) +
+      (state ? conditionalModifier(state, player, 'movement', defs) : 0),
   );
 }
 export function value(state: GameState, defs: Definitions, binding: Binding, v: Value): number {
@@ -83,6 +96,7 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
       (f) =>
         !f.defeated &&
         f.position !== null &&
+        (!v.exclude || f.id !== reference(state, binding, v.exclude)?.id) &&
         (v.fighters === 'any' ||
           (v.fighters === 'friendly' ? f.player === owner?.player : f.player !== owner?.player)) &&
         (!v.role || f.role === v.role) &&
@@ -117,6 +131,22 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
                     ? frame.card
                     : null
             : null;
+    if (card && v.field === 'boost') {
+      const fighter =
+        v.card === 'selected'
+          ? undefined
+          : frame?.kind === 'combat'
+            ? state.fighters.find(
+                (f) => f.id === (card.id === frame.card.id ? frame.attacker : frame.defender),
+              )
+            : frame?.kind === 'card'
+              ? state.fighters.find((f) => f.id === frame.actor)
+              : undefined;
+      const player = state.players.find(
+        (p) => p.id === (v.card === 'selected' ? binding.selectedPlayer : fighter?.player),
+      );
+      return player ? boostValue(player, card, defs) : defs.cards[card.definition].boost;
+    }
     return card
       ? v.field === 'value' && frame?.kind === 'combat' && card.id === frame.card.id && frame.bonus
         ? frame.bonus.value
@@ -136,7 +166,7 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
     case 'counter':
       return p.counters[v.name] ?? 0;
     case 'movement':
-      return movement(p, defs);
+      return movement(p, defs, state);
   }
 }
 export function condition(
@@ -147,6 +177,25 @@ export function condition(
 ): boolean {
   const frame = state.resolution.frames[binding.frame];
   switch (c.type) {
+    case 'allies-defeated': {
+      const owner = reference(state, binding);
+      return !!owner && fighterCondition(state, owner, c);
+    }
+    case 'card-has-hook': {
+      const card =
+        frame?.kind === 'combat'
+          ? binding.owner === frame.attacker
+            ? frame.defenseCard
+            : binding.owner === frame.defender
+              ? frame.card
+              : null
+          : null;
+      return (
+        !!card &&
+        !(frame?.kind === 'combat' && frame.bonus && card.id === frame.card.id) &&
+        !!defs.cards[card.definition].abilities?.some((a) => a.trigger === c.hook)
+      );
+    }
     case 'all':
       return c.conditions.every((child) => condition(state, defs, binding, child));
     case 'any':
@@ -160,6 +209,8 @@ export function condition(
     }
     case 'role':
       return reference(state, binding, c.role)?.id === binding.owner;
+    case 'fighter-role':
+      return reference(state, binding, c.target)?.role === c.role;
     case 'relation': {
       const a = reference(state, binding, c.a),
         b = reference(state, binding, c.b);
@@ -201,6 +252,11 @@ export function condition(
         )
       );
     }
+    case 'maneuvered':
+      return (
+        state.resolution.maneuvered?.includes(reference(state, binding, c.target)?.player ?? '') ??
+        false
+      );
     case 'changed-position': {
       const fighter = reference(state, binding, c.target);
       const start = fighter && state.resolution.turnPositions[fighter.id];

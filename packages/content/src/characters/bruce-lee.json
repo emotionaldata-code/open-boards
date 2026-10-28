@@ -36,7 +36,7 @@
       "art": {
         "scene": "trail",
         "variant": 0,
-        "image": "/cards/bruce-lee/skirmish.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-skirmish-1280-a85c29291b09.webp"
       },
       "flavor": "Find the space between strikes.",
       "abilities": [
@@ -95,7 +95,7 @@
       "art": {
         "scene": "fire",
         "variant": 1,
-        "image": "/cards/bruce-lee/little-dragon.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-little-dragon-1280-14e66d471e55.webp"
       },
       "flavor": "Empty the hand. Fill the moment.",
       "abilities": [
@@ -146,7 +146,7 @@
       "art": {
         "scene": "embers",
         "variant": 2,
-        "image": "/cards/bruce-lee/taste-of-blood.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-taste-of-blood-1280-63f6357a549c.webp"
       },
       "flavor": "The last breath is still a weapon.",
       "abilities": [
@@ -184,7 +184,7 @@
       "art": {
         "scene": "ward",
         "variant": 3,
-        "image": "/cards/bruce-lee/be-like-water.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-be-like-water-1280-1861f24a9fa9.webp"
       },
       "flavor": "No shape can hold running water.",
       "abilities": [
@@ -221,7 +221,7 @@
       "art": {
         "scene": "bolt",
         "variant": 4,
-        "image": "/cards/bruce-lee/hoo-whaaaaaa.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-hoo-whaaaaaa-1280-011a57e1e2ac.webp"
       },
       "flavor": "The room answers the cry.",
       "effects": [
@@ -254,7 +254,7 @@
       "art": {
         "scene": "blade",
         "variant": 5,
-        "image": "/cards/bruce-lee/jeet-kune-do-high-straight-lead.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-high-straight-lead-1280-376b6207d23a.webp"
       },
       "flavor": "Arrive before the opening closes.",
       "abilities": [
@@ -310,7 +310,7 @@
       "art": {
         "scene": "bolt",
         "variant": 6,
-        "image": "/cards/bruce-lee/jeet-kune-do-downward-side-kick.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-downward-side-kick-1280-48cc6e7813d0.webp"
       },
       "flavor": "Let the heel finish the sentence.",
       "abilities": [
@@ -346,7 +346,7 @@
       "art": {
         "scene": "shield",
         "variant": 0,
-        "image": "/cards/bruce-lee/jeet-kune-do-wrist-lock.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-wrist-lock-1280-7af846b71712.webp"
       },
       "flavor": "A small turn changes everything.",
       "abilities": [
@@ -380,7 +380,7 @@
       "art": {
         "scene": "ward",
         "variant": 1,
-        "image": "/cards/bruce-lee/jeet-kune-do-intercepting-fist.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-intercepting-fist-1280-34231ea0662f.webp"
       },
       "flavor": "Meet intention at its source.",
       "abilities": [
@@ -421,7 +421,7 @@
       "art": {
         "scene": "blade",
         "variant": 2,
-        "image": "/cards/bruce-lee/jeet-kune-do-corkscrew-finger-jab.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-corkscrew-finger-jab-1280-1b29894b2bcb.webp"
       },
       "flavor": "A line too narrow to guard.",
       "abilities": [
@@ -456,7 +456,7 @@
       "art": {
         "scene": "trail",
         "variant": 3,
-        "image": "/cards/bruce-lee/jeet-kune-do-short-lead-hook.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-jeet-kune-do-short-lead-hook-1280-55ed222af059.webp"
       },
       "flavor": "Give the circle back to its center.",
       "abilities": [
@@ -508,7 +508,7 @@
       "art": {
         "scene": "map",
         "variant": 4,
-        "image": "/cards/bruce-lee/bring-it-on.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-bring-it-on-1280-4510e5689f74.webp"
       },
       "flavor": "The distance is an invitation.",
       "effects": [
@@ -545,7 +545,7 @@
       "art": {
         "scene": "bolt",
         "variant": 5,
-        "image": "/cards/bruce-lee/one-inch-punch.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-one-inch-punch-1280-bd0bd774c180.webp"
       },
       "flavor": "One inch is enough.",
       "effects": [
@@ -580,7 +580,7 @@
       "art": {
         "scene": "blade",
         "variant": 6,
-        "image": "/cards/bruce-lee/nunchaku.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-nunchaku-1280-3e891b7d9fd8.webp"
       },
       "flavor": "Two sticks. One continuous line.",
       "effects": [
@@ -607,7 +607,7 @@
       "art": {
         "scene": "trail",
         "variant": 0,
-        "image": "/cards/bruce-lee/momentous-shift.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-momentous-shift-1280-413cc64b5586.webp"
       },
       "flavor": "The fight has already moved.",
       "abilities": [
@@ -641,7 +641,7 @@
       "art": {
         "scene": "shield",
         "variant": 1,
-        "image": "/cards/bruce-lee/feint.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-feint-1280-57a02d09ea9a.webp"
       },
       "flavor": "An opening offered, then taken.",
       "abilities": [
@@ -670,7 +670,7 @@
       "art": {
         "scene": "lantern",
         "variant": 2,
-        "image": "/cards/bruce-lee/regroup.svg"
+        "image": "/artwork/bruce-lee/bruce-lee-regroup-1280-74e82fb5c802.webp"
       },
       "flavor": "Stillness gathers the next storm.",
       "abilities": [

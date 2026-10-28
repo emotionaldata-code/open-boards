@@ -1,5 +1,5 @@
 import { fighterById } from '../fighters';
-import { payBoost, revealBoost } from '../boost';
+import { boostValue, payBoost, revealBoost } from '../boost';
 import { modifyCombatValue } from './combat-values';
 import { openChoice } from './choices';
 import type { Runtime } from './runtime';
@@ -17,7 +17,9 @@ function canBoost(
     (field === 'attack' ? frame.attacker === owner : frame.defender === owner) &&
     !fighterById(runtime.state, owner)?.defeated &&
     !frame.boosts.some((b) => b.grant === grant && (b.fighter ?? frame.attacker) === owner) &&
-    (frame.hook === 'before-attack' || frame.hook === 'before-combat')
+    (frame.hook === 'before-attack' ||
+      frame.hook === 'before-combat' ||
+      frame.hook === 'combat-reveal')
   );
 }
 
@@ -45,7 +47,7 @@ export function offerAttackBoost(
       ...player.hand.map((card) => ({
         id: card.id,
         card: { ...card },
-        label: `${runtime.defs.cards[card.definition].name} · BOOST +${runtime.defs.cards[card.definition].boost}`,
+        label: `${runtime.defs.cards[card.definition].name} · BOOST +${boostValue(player, card, runtime.defs)}`,
         tasks: [
           {
             type: 'boost-attack' as const,
@@ -85,6 +87,8 @@ export function commitAttackBoost(
   const { card, amount } = payBoost(player, id, runtime.defs);
   frame.boosts.push({
     card,
+    amount,
+    revealed: frame.revealed,
     grant,
     cancelWithCard,
     field,
@@ -94,14 +98,14 @@ export function commitAttackBoost(
   modifyCombatValue(frame, field, amount, !!provenance);
   if (frame.revealed) {
     if (runtime.state.revealed) runtime.state.revealed.boosts = publicBoosts(runtime, frame);
-    revealBoost(runtime, owner, card, field);
+    revealBoost(runtime, owner, card, field, true, false, amount);
   }
 }
 
 export function publicBoosts(runtime: Runtime, frame: Extract<Frame, { kind: 'combat' }>) {
-  return frame.boosts.map(({ card, cancelled, field }) => ({
+  return frame.boosts.map(({ card, amount, cancelled, field }) => ({
     card,
-    amount: cancelled ? 0 : runtime.defs.cards[card.definition].boost,
+    amount: cancelled ? 0 : (amount ?? runtime.defs.cards[card.definition].boost),
     ...(cancelled ? { cancelled: true } : {}),
     ...(field === 'defense' ? { field } : {}),
   }));

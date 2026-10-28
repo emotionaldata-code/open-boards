@@ -1,0 +1,176 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-27",
+  "authorship": "Original generated illustrations; no third-party card artwork reused.",
+  "references": ["references/achilles.png", "references/patroclus.png"],
+  "prompts": "prompts.json",
+  "revisions": "revisions.json",
+  "generationLog": "generation-log.json",
+  "notes": [
+    "Three Achilles token attempts returned output moderation errors without delivering an image; the selected revised figure succeeded. Exact failed prompt and request details are recorded in generation-log.json.",
+    "Seven card scenes were regenerated to distinguish enemies from the two heroes and to supply all requested derivative sizes without enlargement."
+  ],
+  "assets": [
+    {
+      "id": "achilles-portrait",
+      "master": "masters/achilles-portrait.png",
+      "sha256": "80e14ea0fcc7faa77bc9735a2a271bc92edabe0a985c97aefc4d582f64be12a9",
+      "prompt": "prompts.json#achilles-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-3153f5a1-6396-474e-b789-750bf98dac3d.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-token",
+      "master": "masters/achilles-token.png",
+      "sha256": "4ecf18bced02033ebdc4b262c245fbf4d475423623b3b8f6f62dcf9a780ca219",
+      "prompt": "revisions.json#achilles-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-0b0d6741-bf16-4897-b388-1679ca7a38d7.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "achilles-patroclus-portrait",
+      "master": "masters/patroclus-portrait.png",
+      "sha256": "561e20584bac9fd5162d55def836c452db5882799df54cdcb0937ce91b1fa857",
+      "prompt": "prompts.json#patroclus-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-3042623f-6c9f-4dab-9b67-0dc8e4665864.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-patroclus-token",
+      "master": "masters/patroclus-token.png",
+      "sha256": "2c3e14d196b6d80fb32dd76f41eee61c9275658ac26d246c577cd0562a558c2e",
+      "prompt": "prompts.json#patroclus-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-c1806b42-d55a-4755-9fb0-d2cbae03703f.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "achilles-battle-frenzy",
+      "master": "masters/battle-frenzy.png",
+      "sha256": "82ff421d2570940d45b9727dd49b11ecb28cc470320bc5bdddfc79c5fdcfa788",
+      "prompt": "revisions.json#battle-frenzy",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-e6f4e2fc-4a44-4a06-a5ef-efbec87339dc.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-test-for-weakness",
+      "master": "masters/test-for-weakness.png",
+      "sha256": "5c464fab81266e03fd86f294f05b4b6715badb6c1fd7db994f16d2459235f2e3",
+      "prompt": "revisions.json#test-for-weakness",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-cf7b92bd-447d-42a3-a979-4917773c0418.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-the-day-of-your-doom",
+      "master": "masters/the-day-of-your-doom.png",
+      "sha256": "97148413ebba3b0a7ad8621206b67de781ec68915efc9171910a4ededa52fbc8",
+      "prompt": "revisions.json#the-day-of-your-doom",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-ef9db4a7-dec7-4e3e-9644-57991d98e30b.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-brothers-in-arms",
+      "master": "masters/brothers-in-arms.png",
+      "sha256": "0ee8fc35320666ab721f5f851e682ff4cf2d2b2579f2d556cb7d0d4dd9cb8a4d",
+      "prompt": "prompts.json#brothers-in-arms",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-94275ebf-48e8-4f8d-b138-24f9a7e6999f.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-feint",
+      "master": "masters/feint.png",
+      "sha256": "6180771030c2538affedeb1e1f7fab6607a67df5419c753b527ee39ca81bfdc9",
+      "prompt": "revisions.json#feint",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-862816d6-7c79-4d81-8c24-0bb272226ca0.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-battle-hardened",
+      "master": "masters/battle-hardened.png",
+      "sha256": "c4e2f46704754d6bd1402e79e0f8d11c5576de95a87df0d5e34ce435254718b0",
+      "prompt": "prompts.json#battle-hardened",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-d1c80e8c-f9cf-497b-838d-438e83099e48.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-wily-fighting",
+      "master": "masters/wily-fighting.png",
+      "sha256": "5fe5a4e8da9f30edc4008e525371c3891f9c7a73268a0a51922cd8f2cabfd9e4",
+      "prompt": "revisions.json#wily-fighting",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-4b832d7a-f974-4729-90b9-b4c5bc3e3610.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-blessed-by-hermes",
+      "master": "masters/blessed-by-hermes.png",
+      "sha256": "b8718f306113e965e8051b6c54395afa08975448cc09f5182d6480366a5ca05c",
+      "prompt": "prompts.json#blessed-by-hermes",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-1f2444c2-8a18-4a7b-b6eb-83fbd1353818.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-skirmish",
+      "master": "masters/skirmish.png",
+      "sha256": "677462d373db95017ee547cb578d66e9306a420a8bf13068efd964ac52bfcaeb",
+      "prompt": "revisions.json#skirmish",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-5e690a01-ddd9-42ee-882f-4e7a08097a70.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-under-achilles-helm",
+      "master": "masters/under-achilles-helm.png",
+      "sha256": "330352334c62d04f329c3afb5932ca0f2439f47cbd9c972bc90256b810ad7c09",
+      "prompt": "prompts.json#under-achilles-helm",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-a471d4c6-4301-4090-a219-5c5a2950a3ab.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-achilles-heel",
+      "master": "masters/achilles-heel.png",
+      "sha256": "36dc2f919f0ee3eb3b34cef748c45cf434818a2968dd42bed357436e1ae18fef",
+      "prompt": "prompts.json#achilles-heel",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-a92a503a-5eb2-4f53-8436-dc2d7aae0a85.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "achilles-spear-throw",
+      "master": "masters/spear-throw.png",
+      "sha256": "84db0254c2ed15f801b71e802a4afd3a99d71c22b3fae34a114871aac0be80b0",
+      "prompt": "revisions.json#spear-throw",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a17e8e-5cb1-7391-bb37-c1e82d2fab2d/exec-7d2f8294-72e4-47f6-80d5-8e5824f7e49d.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

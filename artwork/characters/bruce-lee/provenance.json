@@ -1,0 +1,215 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-28",
+  "authorship": "Original generated illustrations; no third-party card scans reused, traced or hotlinked.",
+  "references": [
+    {
+      "path": "references/bruce-lee.png",
+      "role": "Original portrait identity reference used for figure and all initial card scenes",
+      "sha256": "3328430036a4363249b806ce6ec8e405ce094cd527ede553a67487616ecffe74"
+    }
+  ],
+  "prompts": "prompts.json",
+  "generationLog": "generation-log.json",
+  "notes": [
+    "Portrait generated and visually inspected before being reused as the identity reference.",
+    "Selected generator originals are preserved unchanged and verified against their output files by SHA-256.",
+    "Portrait and Nunchaku received targeted corner-mark cleanup. Short Lead Hook was regenerated for a clearer bent-arm technique.",
+    "Eight additional corner-cleanup variants were reviewed but not selected; the original scenes already had clean corners and retained their original detail.",
+    "Thirty image-producing calls succeeded. One malformed request was rejected before generation and then corrected; the generation log records it.",
+    "Bruce Lee has no allies. Board ownership colors, selection, pedestal and animations remain separate from the transparent pixels."
+  ],
+  "assets": [
+    {
+      "id": "bruce-lee-portrait",
+      "master": "masters/bruce-lee-portrait.png",
+      "sha256": "5d654deb81bcf97a472ba609fabb0d15cbd4fe094666ba1a275f8719f9969ac5",
+      "prompt": "prompts.json#bruce-lee-portrait-cleanup",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-fd1ef462-869e-47bf-b7d3-e114097b9a4f.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-token",
+      "master": "masters/bruce-lee-token.png",
+      "sha256": "90eda95e1d6a4ba485f82f87a10ab2722113d552c933801c40321e5cffb128c7",
+      "prompt": "prompts.json#bruce-lee-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-fedacf8d-b26d-4f33-b752-50029e867c34.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "bruce-lee-skirmish",
+      "master": "masters/skirmish.png",
+      "sha256": "aaf2cfbb8298915530c7922ffd1d7ee6687b32f86482b4a52254523ebe38a4e7",
+      "prompt": "prompts.json#bruce-lee-skirmish",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-932ec5d2-80b9-4ff2-acff-933a74ff3931.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-little-dragon",
+      "master": "masters/little-dragon.png",
+      "sha256": "d011ae2f8238f34cafc3b1af0b2cf2879ca7666bc1fd41df027492ad24adc8f4",
+      "prompt": "prompts.json#bruce-lee-little-dragon",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-0fc2c798-947c-4f80-8b34-1f2b36f6ebd7.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-taste-of-blood",
+      "master": "masters/taste-of-blood.png",
+      "sha256": "548534095f14edd4b3dd0e26cb255be0d0d34845d2e62ec15ef5eb737eea5d10",
+      "prompt": "prompts.json#bruce-lee-taste-of-blood",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-90228a22-43d1-4fc8-b7d7-6bbe8eb94651.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-be-like-water",
+      "master": "masters/be-like-water.png",
+      "sha256": "2901c6c0e044a12585b44dcc6ff7bd7590889f1a818558239aa9565570ae4ed9",
+      "prompt": "prompts.json#bruce-lee-be-like-water",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-99735633-909f-4359-af88-abdc265ca11f.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-hoo-whaaaaaa",
+      "master": "masters/hoo-whaaaaaa.png",
+      "sha256": "5a56850d0cf0762d41b8c484e5912cf204cdda0ca6d60005bf951e5aae2d05d3",
+      "prompt": "prompts.json#bruce-lee-hoo-whaaaaaa",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6957bef7-1219-4b0e-b4a3-ae1e7a09b9c1.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-high-straight-lead",
+      "master": "masters/jeet-kune-do-high-straight-lead.png",
+      "sha256": "a51f7765ff52cf84f68b6cfa4d346076a2cc40359d7875f4d51c426a25b2feb1",
+      "prompt": "prompts.json#bruce-lee-jeet-kune-do-high-straight-lead",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6a83a665-4a21-4f4c-928f-48a6b731fb5f.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-downward-side-kick",
+      "master": "masters/jeet-kune-do-downward-side-kick.png",
+      "sha256": "c01b73e5131fbcfcd13a028062cca829b33b8ab9686c64ee56fe94eb18e4eec3",
+      "prompt": "prompts.json#bruce-lee-jeet-kune-do-downward-side-kick",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-15f37bf3-82f5-479c-ac7a-0bb2e7b15f3f.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-wrist-lock",
+      "master": "masters/jeet-kune-do-wrist-lock.png",
+      "sha256": "13c3dc22e334ff5ac8225320a9e5a1f40c54b05e59c35bac6640db3cece3ed78",
+      "prompt": "prompts.json#bruce-lee-jeet-kune-do-wrist-lock",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-2c5efe0f-d236-4823-987c-f63fa93d97d5.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-intercepting-fist",
+      "master": "masters/jeet-kune-do-intercepting-fist.png",
+      "sha256": "9ffc98d22c0a4c8f7fdde74cd77ba42cfed6939d502f511ad18354128e446aa6",
+      "prompt": "prompts.json#bruce-lee-jeet-kune-do-intercepting-fist",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-67c4bf5e-3dd5-48e9-ad59-0d83a8538cb4.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+      "master": "masters/jeet-kune-do-corkscrew-finger-jab.png",
+      "sha256": "ba017f8f53de1ffb980aa6cc9bb7639c81e986e76296961cfb93da031cd8520c",
+      "prompt": "prompts.json#bruce-lee-jeet-kune-do-corkscrew-finger-jab",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-b7e06b54-95cb-4310-89f6-353cf79ae026.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-jeet-kune-do-short-lead-hook",
+      "master": "masters/jeet-kune-do-short-lead-hook.png",
+      "sha256": "860641cdbaa263c9573bd25a22d9b35ee3150ce4cb81a952638f9659ad91e5a9",
+      "prompt": "prompts.json#bruce-lee-jeet-kune-do-short-lead-hook-refinement",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-791d98d3-7a08-4465-950b-2fbb48b74947.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-bring-it-on",
+      "master": "masters/bring-it-on.png",
+      "sha256": "a6bfec25b164b26ecc212030a6900fa7b83a3f26dba74c9204b0ca52d49cccad",
+      "prompt": "prompts.json#bruce-lee-bring-it-on",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-68b09efd-862f-4f18-971e-9d56208b8497.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-one-inch-punch",
+      "master": "masters/one-inch-punch.png",
+      "sha256": "c7506a643c15c6b5b39249685c2666023709205f4900310b3f23f8c1f7650a5a",
+      "prompt": "prompts.json#bruce-lee-one-inch-punch",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-adaeea9e-daf3-4543-bcfb-39c9a8b98cb7.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-nunchaku",
+      "master": "masters/nunchaku.png",
+      "sha256": "be9e1cde45583abe7c0e9aa4f02003a8c3064ed8cdfbe76981de1f82bd3d8909",
+      "prompt": "prompts.json#bruce-lee-nunchaku-cleanup",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-b5660cb0-0a90-4370-82fa-a198e15dd8d2.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-momentous-shift",
+      "master": "masters/momentous-shift.png",
+      "sha256": "16523c5b699b061b24c5b648f00476dc1b2e772c83c13501558fd807184060a9",
+      "prompt": "prompts.json#bruce-lee-momentous-shift",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-6cbdc682-5a6f-4f6d-b32d-336174a20671.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-feint",
+      "master": "masters/feint.png",
+      "sha256": "54965eaa63ff2fd0ab09f9e4c0f913f765fdd0cb3299de2b567ea6799fc93109",
+      "prompt": "prompts.json#bruce-lee-feint",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-e661c70b-16bb-4e23-9870-52bfc62b4a7d.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "bruce-lee-regroup",
+      "master": "masters/regroup.png",
+      "sha256": "be271c3fc6a0f441cdf3f4433334dc992f03e2c508f3c1bf32610afdca76e873",
+      "prompt": "prompts.json#bruce-lee-regroup",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a183ef-ee79-7253-a80b-27007ade5d77/exec-59985aea-aaa7-4802-b371-1344ba2f0ed5.png",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

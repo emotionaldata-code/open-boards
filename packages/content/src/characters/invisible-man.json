@@ -72,7 +72,7 @@
       "art": {
         "scene": "map",
         "variant": 0,
-        "image": "/cards/invisible-man/covert-preparation.svg"
+        "image": "/artwork/invisible-man/invisible-man-covert-preparation-1280-8094b555105c.webp"
       },
       "flavor": "Two footprints, no visitor.",
       "abilities": [
@@ -124,7 +124,7 @@
       "art": {
         "scene": "embers",
         "variant": 1,
-        "image": "/cards/invisible-man/dreaming-of-revenge.svg"
+        "image": "/artwork/invisible-man/invisible-man-dreaming-of-revenge-1280-cff1edd38e62.webp"
       },
       "flavor": "Every shadow remembers.",
       "abilities": [
@@ -180,7 +180,7 @@
       "art": {
         "scene": "ward",
         "variant": 2,
-        "image": "/cards/invisible-man/confound.svg"
+        "image": "/artwork/invisible-man/invisible-man-confound-1280-7b8e90aa4ee6.webp"
       },
       "flavor": "A certainty turns inside out.",
       "abilities": [
@@ -223,7 +223,7 @@
       "art": {
         "scene": "shield",
         "variant": 3,
-        "image": "/cards/invisible-man/impossible-to-see.svg"
+        "image": "/artwork/invisible-man/invisible-man-impossible-to-see-1280-86e716c8ca74.webp"
       },
       "flavor": "Strike at the empty coat.",
       "abilities": [
@@ -254,7 +254,7 @@
       "art": {
         "scene": "blade",
         "variant": 4,
-        "image": "/cards/invisible-man/surprise-attack.svg"
+        "image": "/artwork/invisible-man/invisible-man-surprise-attack-1280-27b1ffb34d98.webp"
       },
       "flavor": "The room has one more guest.",
       "abilities": [
@@ -310,7 +310,7 @@
       "art": {
         "scene": "trail",
         "variant": 5,
-        "image": "/cards/invisible-man/slip-away.svg"
+        "image": "/artwork/invisible-man/invisible-man-slip-away-1280-3516bfc28768.webp"
       },
       "flavor": "Only the cold remains.",
       "abilities": [
@@ -347,7 +347,7 @@
       "art": {
         "scene": "fire",
         "variant": 6,
-        "image": "/cards/invisible-man/emerge-from-mist.svg"
+        "image": "/artwork/invisible-man/invisible-man-emerge-from-mist-1280-204311a7dfba.webp"
       },
       "flavor": "A silhouette gathers in the mist.",
       "abilities": [
@@ -383,7 +383,7 @@
       "art": {
         "scene": "lantern",
         "variant": 0,
-        "image": "/cards/invisible-man/lurking.svg"
+        "image": "/artwork/invisible-man/invisible-man-lurking-1280-6a200391458f.webp"
       },
       "flavor": "Patience has no face.",
       "abilities": [
@@ -447,7 +447,7 @@
       "art": {
         "scene": "trail",
         "variant": 1,
-        "image": "/cards/invisible-man/into-thin-air.svg"
+        "image": "/artwork/invisible-man/invisible-man-into-thin-air-1280-fcb3dd8d802e.webp"
       },
       "flavor": "The last button fades.",
       "abilities": [
@@ -488,7 +488,7 @@
       "art": {
         "scene": "map",
         "variant": 2,
-        "image": "/cards/invisible-man/coded-notes.svg"
+        "image": "/artwork/invisible-man/invisible-man-coded-notes-1280-9c0a2031d63f.webp"
       },
       "flavor": "Ink reveals what eyes cannot.",
       "abilities": [
@@ -522,7 +522,7 @@
       "art": {
         "scene": "bolt",
         "variant": 3,
-        "image": "/cards/invisible-man/reign-of-terror.svg"
+        "image": "/artwork/invisible-man/invisible-man-reign-of-terror-1280-cb02ee7aabe2.webp"
       },
       "flavor": "No witness saw a thing.",
       "effects": [
@@ -560,7 +560,7 @@
       "art": {
         "scene": "embers",
         "variant": 4,
-        "image": "/cards/invisible-man/vanish.svg"
+        "image": "/artwork/invisible-man/invisible-man-vanish-1280-d77896bfe3da.webp"
       },
       "flavor": "The coat falls empty.",
       "effects": [
@@ -588,7 +588,7 @@
       "art": {
         "scene": "blade",
         "variant": 5,
-        "image": "/cards/invisible-man/step-lightly.svg"
+        "image": "/artwork/invisible-man/invisible-man-step-lightly-1280-66ab386ae526.webp"
       },
       "flavor": "A footstep in the wrong direction.",
       "effects": [
@@ -651,7 +651,7 @@
       "art": {
         "scene": "ward",
         "variant": 6,
-        "image": "/cards/invisible-man/rolling-fog.svg"
+        "image": "/artwork/invisible-man/invisible-man-rolling-fog-1280-73701dbe5fa9.webp"
       },
       "flavor": "The street rearranges itself.",
       "effects": [

@@ -35,24 +35,24 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                     game.turn === i && game.phase.type !== 'finished' ? 'step' : undefined
                   }
                   onClick={() => setDetail(p.id)}
-                  aria-label={`${p.name}${p.id === selfId ? ' (you)' : ''}: ${f.hp} health, ${movement(f, basic)} movement, ${p.handCount} cards. Player details`}
+                  aria-label={`${p.name}${p.id === selfId ? ' (you)' : ''}: ${f.hp} health, ${movement(f, basic, game)} movement, ${p.handCount} cards. Player details`}
                   aria-describedby={allies.length ? `allies-${p.id}` : undefined}
                 >
                   <span className={`player-sigil seat-${i}`}>
-                    <CharacterPortrait character={p.character} sizes="64px" />
+                    <CharacterPortrait character={f.definition} sizes="64px" />
                   </span>
                   <span className="badge-name">
                     {p.name}
                     <small>
                       {p.id === selfId ? 'You · ' : ''}
-                      {basic.characters[p.character].name} ·{' '}
+                      {fighterDefinition(f, basic).name} ·{' '}
                       {f.position === null && !f.defeated
                         ? 'away'
                         : basic.characters[p.character].attackType}
                     </small>
                   </span>
                   <span className="badge-movement">
-                    {movement(f, basic)}
+                    {movement(f, basic, game)}
                     <small>Move</small>
                   </span>
                   <span className="badge-counts">
@@ -119,7 +119,7 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
           )}
           <div className="player-stats">
             <div>
-              <strong>{movement(main!, basic)}</strong>
+              <strong>{movement(main!, basic, game)}</strong>
               <span>Movement</span>
             </div>
             <div>
@@ -154,6 +154,11 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
           {(basic.characters[player.character].abilities ?? []).map((ability) => (
             <p key={ability.id}>
               <strong>{ability.name}</strong> · {ability.description}
+            </p>
+          ))}
+          {(basic.characters[player.character].conditionalModifiers ?? []).map((rule) => (
+            <p key={rule.name}>
+              <strong>{rule.name}</strong> · {rule.description}
             </p>
           ))}
           {Object.entries(main!.counters).map(([name, count]) => (

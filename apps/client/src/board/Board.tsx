@@ -220,9 +220,7 @@ export function Board(props: Props) {
                     }}
                     onClick={interactive ? () => props.onFighter?.(fighter.id) : undefined}
                   >
-                    <CharacterPortrait
-                      character={fighter.role === 'ally' ? fighter.definition : fighter.character}
-                    />
+                    <CharacterPortrait character={fighter.definition} />
                     <span className="fighter-label">{fighterLabel(fighter, basic)}</span>
                   </Figure>
                 );

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "geralt-portrait-attempt-1",
+    "status": "failed",
+    "requestId": "fa1c984d-c465-4207-a435-89d3f734b06c",
+    "error": "http 400 moderation_blocked at output stage, category other",
+    "transparent": false,
+    "selected": false
+  },
+  {
+    "id": "geralt-portrait-attempt-2",
+    "status": "failed",
+    "requestId": "12d61f5d-62ba-4330-9454-8b6e67e3e042",
+    "error": "http 400 moderation_blocked at output stage, category other",
+    "transparent": false,
+    "selected": false
+  },
+  {
+    "id": "geralt-portrait-attempt-3",
+    "status": "failed",
+    "requestId": "44f71329-4df6-46f8-b2f9-86ad536880a8",
+    "error": "http 400 moderation_blocked at output stage, category other",
+    "transparent": false,
+    "selected": false
+  },
+  {
+    "id": "dandelion-portrait",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "dandelion-portrait",
+    "prompt": "dandelion-portrait",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-b05c4082-d8e9-482a-a9c0-f646198b5f57.png"
+  },
+  {
+    "id": "dandelion-token",
+    "status": "succeeded",
+    "transparent": true,
+    "references": ["references/dandelion.png"],
+    "selected": false,
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-65fe286d-50a8-4b06-adff-3504e765b6be.png",
+    "reason": "Replaced to provide transparent canvas margins"
+  },
+  {
+    "id": "geralt-of-rivia-annoying-tune",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/dandelion.png"],
+    "selected": false,
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-b9504981-b42e-42c5-a1af-21deb84655c7.png",
+    "reason": "Replaced: 1983x793 master was too short for the required 1280x800 derivative"
+  },
+  {
+    "id": "geralt-of-rivia-annoying-tune-reframe",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/dandelion.png"],
+    "selected": true,
+    "slug": "annoying-tune",
+    "prompt": "geralt-of-rivia-annoying-tune-reframe",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-ad4edda0-d0e5-4524-bcb5-8014b07f9d75.png"
+  },
+  {
+    "id": "geralt-of-rivia-plot-twist",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/dandelion.png"],
+    "selected": true,
+    "slug": "plot-twist",
+    "prompt": "geralt-of-rivia-plot-twist",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-d9ea6d6d-9528-45d4-9051-5dd7db341088.png"
+  },
+  {
+    "id": "geralt-of-rivia-gear-sword-of-steel",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "gear-sword-of-steel",
+    "prompt": "geralt-of-rivia-gear-sword-of-steel",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-76f822b4-a9df-4b15-8c0c-60683c0f8c86.png"
+  },
+  {
+    "id": "geralt-of-rivia-gear-sword-of-silver",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "gear-sword-of-silver",
+    "prompt": "geralt-of-rivia-gear-sword-of-silver",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-7b8902cc-0282-4335-8a9e-e56203e50af5.png"
+  },
+  {
+    "id": "geralt-of-rivia-gear-wolf-medallion",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "gear-wolf-medallion",
+    "prompt": "geralt-of-rivia-gear-wolf-medallion",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-4e90df44-0933-4f60-9af5-48423bc16b14.png"
+  },
+  {
+    "id": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "gear-armor-of-the-forgotten-wolf",
+    "prompt": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-265ded4f-67f0-40a0-99dc-9dc7a7846acc.png"
+  },
+  {
+    "id": "geralt-of-rivia-gear-blizzard",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "gear-blizzard",
+    "prompt": "geralt-of-rivia-gear-blizzard",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-0e6fef48-aeb4-4672-b5bf-d07d65afe45c.png"
+  },
+  {
+    "id": "geralt-of-rivia-gear-tawny-owl",
+    "status": "succeeded",
+    "transparent": false,
+    "selected": true,
+    "slug": "gear-tawny-owl",
+    "prompt": "geralt-of-rivia-gear-tawny-owl",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-b306eb6a-2a9a-4a62-87dd-72547adc8515.png"
+  },
+  {
+    "id": "dandelion-token-margin",
+    "status": "succeeded",
+    "transparent": true,
+    "references": ["references/dandelion-token-initial.png"],
+    "selected": true,
+    "slug": "dandelion-token",
+    "prompt": "dandelion-token-margin",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-88e54bd0-f581-4a85-aaf6-93245879ea0d.png"
+  }
+]

@@ -119,7 +119,7 @@
           "effects": [
             {
               "type": "choose-option",
-              "prompt": "Riposte \u00b7 Choose one",
+              "prompt": "Riposte · Choose one",
               "options": [
                 {
                   "id": "damage",
@@ -257,7 +257,7 @@
           "effects": [
             {
               "type": "choose-option",
-              "prompt": "Disciplined Duelist \u00b7 Draw a card?",
+              "prompt": "Disciplined Duelist · Draw a card?",
               "options": [
                 {
                   "id": "draw",
@@ -362,7 +362,7 @@
       "art": {
         "scene": "trail",
         "variant": 6,
-        "image": "/cards/geralt-of-rivia/annoying-tune.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-annoying-tune-1280-2f9040a6f8ec.webp"
       },
       "flavor": "A melody no one can ignore.",
       "abilities": [
@@ -393,7 +393,7 @@
       "art": {
         "scene": "map",
         "variant": 0,
-        "image": "/cards/geralt-of-rivia/plot-twist.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-plot-twist-1280-ceb8d9723038.webp"
       },
       "flavor": "Every ballad needs a surprise.",
       "abilities": [
@@ -459,7 +459,7 @@
       "art": {
         "scene": "blade",
         "variant": 2,
-        "image": "/cards/geralt-of-rivia/gear-sword-of-steel.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-steel-1280-bd408808ae46.webp"
       },
       "flavor": "For those who bleed.",
       "abilities": [
@@ -509,7 +509,7 @@
       "art": {
         "scene": "blade",
         "variant": 3,
-        "image": "/cards/geralt-of-rivia/gear-sword-of-silver.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-sword-of-silver-1280-b0aec78813a7.webp"
       },
       "flavor": "For things that haunt the dark.",
       "abilities": [
@@ -548,7 +548,7 @@
       "art": {
         "scene": "ward",
         "variant": 4,
-        "image": "/cards/geralt-of-rivia/gear-wolf-medallion.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-wolf-medallion-1280-9a5552ffd1e7.webp"
       },
       "flavor": "A warning at the throat.",
       "abilities": [
@@ -598,7 +598,7 @@
       "art": {
         "scene": "shield",
         "variant": 5,
-        "image": "/cards/geralt-of-rivia/gear-armor-of-the-forgotten-wolf.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-armor-of-the-forgotten-wolf-1280-b96cd888036e.webp"
       },
       "flavor": "Old steel. Familiar weight.",
       "abilities": [
@@ -643,7 +643,7 @@
       "art": {
         "scene": "embers",
         "variant": 6,
-        "image": "/cards/geralt-of-rivia/gear-blizzard.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-blizzard-1280-6e8c41c9c632.webp"
       },
       "flavor": "One breath before the storm.",
       "effects": [
@@ -673,7 +673,7 @@
       "art": {
         "scene": "lantern",
         "variant": 0,
-        "image": "/cards/geralt-of-rivia/gear-tawny-owl.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-gear-tawny-owl-1280-d0ecd9931a31.webp"
       },
       "flavor": "Night sharpens the senses.",
       "effects": [

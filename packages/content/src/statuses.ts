@@ -1,6 +1,49 @@
 import type { StatusDefinition } from '@open-boards/game';
 
 export const statuses: Record<string, StatusDefinition> = {
+  big: {
+    id: 'big',
+    name: 'BIG · Attack cards +2',
+    maxStacks: 1,
+    abilities: [
+      {
+        id: 'big-attack',
+        name: 'BIG',
+        description: 'Add 2 to the value of this fighter’s attack cards.',
+        trigger: 'before-combat',
+        when: { type: 'role', role: 'attacker' },
+        effects: [{ type: 'modify', field: 'attack', amount: 2 }],
+      },
+    ],
+  },
+  small: {
+    id: 'small',
+    name: 'SMALL · Defense cards +1',
+    maxStacks: 1,
+    abilities: [
+      {
+        id: 'small-defense',
+        name: 'SMALL',
+        description:
+          'Add 1 to the value of this fighter’s defense cards. A defense card is required.',
+        trigger: 'before-combat',
+        when: {
+          type: 'all',
+          conditions: [
+            { type: 'role', role: 'defender' },
+            {
+              type: 'any',
+              conditions: [
+                { type: 'card-category', card: 'defense', category: 'defense' },
+                { type: 'card-category', card: 'defense', category: 'versatile' },
+              ],
+            },
+          ],
+        },
+        effects: [{ type: 'modify', field: 'defense', amount: 1 }],
+      },
+    ],
+  },
   'attack-up': {
     id: 'attack-up',
     name: 'Attack +1',

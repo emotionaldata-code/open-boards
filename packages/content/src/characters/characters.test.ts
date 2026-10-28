@@ -20,6 +20,10 @@ describe('complete character bundles', () => {
       'invisible-man',
       'geralt-of-rivia',
       'darth-vader',
+      'alice',
+      'yennefer-triss',
+      'philippa',
+      'eredin',
     ]);
     expect(JSON.parse(JSON.stringify(basic))).toEqual(basic);
     const owned = new Set<string>();
@@ -34,6 +38,10 @@ describe('complete character bundles', () => {
             'invisible-man': 14,
             'geralt-of-rivia': 15,
             'darth-vader': 12,
+            alice: 15,
+            'yennefer-triss': 11,
+            philippa: 13,
+            eredin: 11,
             dracula: 13,
             bigfoot: 11,
             'robin-hood': 11,
@@ -54,7 +62,7 @@ describe('complete character bundles', () => {
         expect(basic.cards[card]).not.toHaveProperty('count');
       }
     }
-    expect(owned.size).toBe(157);
+    expect(owned.size).toBe(207);
     expect(() => deckDefinitions('ranger')).toThrow('supported character');
   });
   it('rejects duplicate definitions, invalid copies and unsafe artwork recipes', () => {

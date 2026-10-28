@@ -322,7 +322,9 @@ export function returnToDeck(
   runtime: Runtime,
   task: Extract<Task, { type: 'return-to-deck' }>,
 ): void {
-  const p = player(runtime, task);
+  const p = task.player
+    ? runtime.state.players.find((p) => p.id === task.player)!
+    : player(runtime, task);
   if (p.eliminated) return;
   if (task.selected) {
     const card = p.hand.find((c) => c.id === task.selected);
@@ -366,7 +368,11 @@ export function discardDeck(
   const card = p.deck.shift();
   if (!card) return;
   runtime.prepend(
-    ...runtime.effects(effect.onDiscard ?? [], { ...binding, selectedCard: card }),
+    ...runtime.effects(effect.onDiscard ?? [], {
+      ...binding,
+      selectedCard: card,
+      selectedPlayer: p.id,
+    }),
     ...runtime.effects(effect.count > 1 ? [{ ...effect, count: effect.count - 1 }] : [], binding),
   );
   runtime.card(target!.id, card, true);

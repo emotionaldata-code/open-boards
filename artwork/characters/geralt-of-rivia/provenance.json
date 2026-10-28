@@ -1,0 +1,145 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-28",
+  "status": "partial",
+  "authorship": "Original generated illustrations; no third-party artwork copied, traced or hotlinked.",
+  "prompts": "prompts.json",
+  "generationLog": "generation-log.json",
+  "references": [
+    {
+      "path": "references/dandelion.png",
+      "role": "Original portrait identity reference for Dandelion figure and card scenes",
+      "sha256": "3f93b959b0f15f68a9a15d4f65c9d8f9526fe5d3770a7c482394d1ad7abc2ff1"
+    },
+    {
+      "path": "references/dandelion-token-initial.png",
+      "role": "Initial figure, subsequently corrected for canvas margin",
+      "sha256": "444a71378d3fa3d86129c3c1588bd0d39592c6e43e9e34a3e6a0d340954e64c2"
+    }
+  ],
+  "failures": [
+    "Geralt portrait rejected three times with http 400 moderation_blocked at output stage, category other. Request IDs and exact prompts are in prompts.json."
+  ],
+  "remaining": [
+    "Geralt portrait",
+    "Geralt transparent figure",
+    "Igni",
+    "Riposte",
+    "Yrden",
+    "Rend",
+    "Disciplined Duelist",
+    "Damn, You're Ugly",
+    "Witcher Senses"
+  ],
+  "notes": [
+    "Selected generator originals preserved unchanged.",
+    "Initial Annoying Tune scene was rejected for insufficient height; regenerated to retain all requested derivative sizes.",
+    "Initial Dandelion figure was refined to provide clear margins around the entire silhouette.",
+    "Geralt and seven card scenes retain existing SVG artwork. No gameplay rules changed.",
+    "CLI fallback was not used.",
+    "12 generation calls succeeded; 10 selected assets and two superseded variants. Three Geralt portrait calls failed. All 15 calls are recorded in generation-log.json."
+  ],
+  "assets": [
+    {
+      "id": "geralt-of-rivia-dandelion-portrait",
+      "master": "masters/dandelion-portrait.png",
+      "prompt": "prompts.json#dandelion-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-b05c4082-d8e9-482a-a9c0-f646198b5f57.png",
+      "sha256": "3f93b959b0f15f68a9a15d4f65c9d8f9526fe5d3770a7c482394d1ad7abc2ff1",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-dandelion-token",
+      "master": "masters/dandelion-token.png",
+      "prompt": "prompts.json#dandelion-token-margin",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-88e54bd0-f581-4a85-aaf6-93245879ea0d.png",
+      "sha256": "985a714781ceacaf6fcebf3bfe16f4ea9109520c1ce74829e00e1e2469401692",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "geralt-of-rivia-annoying-tune",
+      "master": "masters/annoying-tune.png",
+      "prompt": "prompts.json#geralt-of-rivia-annoying-tune-reframe",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-ad4edda0-d0e5-4524-bcb5-8014b07f9d75.png",
+      "sha256": "7b2c61a73e94a95bcf53348a8b820321a87aefdb5ffbee92e62153950079bcfd",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-plot-twist",
+      "master": "masters/plot-twist.png",
+      "prompt": "prompts.json#geralt-of-rivia-plot-twist",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-d9ea6d6d-9528-45d4-9051-5dd7db341088.png",
+      "sha256": "9a2959c4f24aa41389c92fa26533a1e28bfe5b5651d8ec2b6c23c3b7260e08a2",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-gear-sword-of-steel",
+      "master": "masters/gear-sword-of-steel.png",
+      "prompt": "prompts.json#geralt-of-rivia-gear-sword-of-steel",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-76f822b4-a9df-4b15-8c0c-60683c0f8c86.png",
+      "sha256": "fd2955d60cacd20dfd0c67c78f1afbf72fbf271140c80e3d292d354e7b52cd74",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-gear-sword-of-silver",
+      "master": "masters/gear-sword-of-silver.png",
+      "prompt": "prompts.json#geralt-of-rivia-gear-sword-of-silver",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-7b8902cc-0282-4335-8a9e-e56203e50af5.png",
+      "sha256": "d1e9315d5a0865395eacbe1b51d328aaca813ad95ee9f711eb31b29fd997e477",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-gear-wolf-medallion",
+      "master": "masters/gear-wolf-medallion.png",
+      "prompt": "prompts.json#geralt-of-rivia-gear-wolf-medallion",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-4e90df44-0933-4f60-9af5-48423bc16b14.png",
+      "sha256": "982913f6249a668dfa6fed38ccfc4b0bfb964e167eae01bab99d0b4a5a8aa473",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+      "master": "masters/gear-armor-of-the-forgotten-wolf.png",
+      "prompt": "prompts.json#geralt-of-rivia-gear-armor-of-the-forgotten-wolf",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-265ded4f-67f0-40a0-99dc-9dc7a7846acc.png",
+      "sha256": "56b238d7739e206d7a6ac6aa4cdf40222919382eea2ff0484bc05eeb7cb1be2a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-gear-blizzard",
+      "master": "masters/gear-blizzard.png",
+      "prompt": "prompts.json#geralt-of-rivia-gear-blizzard",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-0e6fef48-aeb4-4672-b5bf-d07d65afe45c.png",
+      "sha256": "24bd2ec8ef80a9985c00ba1098d86b08ef5077033899d01e266638f710608e46",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-gear-tawny-owl",
+      "master": "masters/gear-tawny-owl.png",
+      "prompt": "prompts.json#geralt-of-rivia-gear-tawny-owl",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-b306eb6a-2a9a-4a62-87dd-72547adc8515.png",
+      "sha256": "ae2b1f0476a052f84a53b1280f5b016f27362ad6ff7af1e19b120cb3c9e91735",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

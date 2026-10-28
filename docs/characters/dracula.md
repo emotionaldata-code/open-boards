@@ -42,14 +42,18 @@ The existing engine represents Achilles’s second attack as an **effectless bon
 
 ## Original artwork
 
-All delivered imagery is original local vector art, authored for this import in the existing cut-paper style. No published source artwork is copied or hotlinked. The source image URLs remain in the audit for reference/provenance only.
+The cinematic illustrated-realism refresh includes **17 original assets** generated with Codex integrated Imagegen on **2026-10-27**: Dracula and Sister portraits, two genuinely transparent full-body figures, and one landscape scene for each of the thirteen card designs. The three Sisters share the same pixels; their stable numbers and all four owner colors remain separate board overlays.
 
-- Thirteen separate 320×200 SVG illustrations: `apps/client/public/cards/dracula/<source-slug>.svg`, referenced individually by the bundle. Subjects include a nocturnal feint, fog flight, a blade at the chapel window, a lantern ambush, three Sisters, the beast, puppet strings, a hypnotic gaze, mist at the crypt, feeding, a blood chalice, the Sister’s summons and a closing circle.
-- Dracula and Sister portraits/miniatures: original paths in `apps/client/src/characters/art.ts`. Both have visible garments in every owner color. Repeated Sisters use stable numbered board labels.
-- Palette: plum ground `#302535`, pale ink `#d4bcb2`, muted crimson `#ba716f`. Reusable flame/blade marks communicate Bloodthirsty and the Sisters’ attacks.
+Dracula retains his pale angular face, slick black hair, high black collar and crimson-lined cape. The Sisters retain pale faces, long black hair and plum gowns, with a silver diadem identifying their shared silhouette. Scenes use motivated candlelight and moonlight, weathered gothic architecture, and subjects specific to each design.
+
+Generator originals are preserved unchanged in `artwork/characters/dracula/masters/`; the selected portraits are retained in `references/` as identity references. Exact generation requests, output paths and hashes are recorded in [prompts.json](../../artwork/characters/dracula/prompts.json), [generation-log.json](../../artwork/characters/dracula/generation-log.json) and [provenance.json](../../artwork/characters/dracula/provenance.json). No published source artwork was copied or hotlinked.
+
+Run `pnpm artwork:prepare dracula` to reproduce the hashed WebP derivatives in `apps/client/public/artwork/dracula/`: 320/640/1280-wide card scenes, 256/512/1024-square portraits, and 512-square transparent figures. Shared responsive artwork and texture loading render these assets, with the existing SVG art retained for failed loads. The refresh changes presentation only; rules, card quantities, values and abilities are preserved.
 
 ## Verification
 
 Fixed-deck tests cover the complete source inventory and restrictions, cancellation, computed counts, private/reconnect choices, exact recipients, attack replacement (including Feint and Arthur), prevention-sensitive healing, allied victims, Sister revival, lethal anchors, movement and all supported roster deployments at full ally counts. Room tests restore six distinct private workflows and reject forged, stale, wrong-owner and duplicate changes. Neutral engine tests cover the reusable expressions, damage receipts, discard bonuses, replacement and seeded recovery independently of Dracula.
 
 Final check results and browser artifacts are recorded in [verification.md](../verification.md).
+
+Artwork-refresh coverage, byte counts, desktop/phone review and actual workspace check failures are recorded in [verification.json](../../artwork/characters/dracula/verification.json).

@@ -1,0 +1,87 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "date": "2026-10-28",
+  "attempts": [
+    {
+      "id": "invisible-man-portrait",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-8d953714-bf0c-44bd-9cc6-982bef80fc77.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-token",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-5cd787bc-bc70-47b8-9523-c99aeb4c3537.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-covert-preparation",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-7663592a-0387-46b9-982d-fe12625bf3ce.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-dreaming-of-revenge",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-c725ad65-f5e5-42c1-a588-671272f2455e.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-confound",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-48a6b030-8967-4958-8c81-0802819c0fa7.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-impossible-to-see",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-4675f40b-61a0-4dba-a436-c4469cb8d08d.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-surprise-attack",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-49399cb4-a2eb-4876-8330-149b11f8981e.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-slip-away",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-532114c7-8298-4256-9e3d-6e247b8b63cf.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-emerge-from-mist",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-9efae653-6b57-4734-81ac-de6ec0067a1d.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-lurking",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-431926e4-48d3-4bbb-b3f8-b5294cc36c82.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-into-thin-air",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-ed1b5ed1-cdc3-4acd-8736-b0c888c317ea.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-coded-notes",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-e68f892e-046a-4f94-8d67-8a507cdc50d3.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-reign-of-terror",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-517ad7cf-b1e0-4a0e-beee-b7eab2f7c574.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-vanish",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-9f1e9b85-bfdb-4f6c-b5b0-3e6c25448dad.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-step-lightly",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-fe9d1cb9-9f5c-4265-8ade-0db8925cf9a2.png",
+      "status": "selected"
+    },
+    {
+      "id": "invisible-man-rolling-fog",
+      "source": "/home/francesco/.codex/generated_images/01a18408-ff20-7981-99d5-c61d52282d90/exec-e3ead86a-7fc6-42a5-b514-a94b37ca8e69.png",
+      "status": "selected"
+    }
+  ],
+  "failures": []
+}

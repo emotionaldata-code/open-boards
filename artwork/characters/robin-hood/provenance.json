@@ -1,0 +1,179 @@
+{
+  "generator": "Codex integrated Imagegen",
+  "mode": "built-in",
+  "date": "2026-10-28",
+  "authorship": "Original generated illustrations; no published artwork reused.",
+  "references": ["references/robin-hood.png", "references/outlaw.png"],
+  "prompts": "prompts.json",
+  "revisions": "revisions.json",
+  "generationFailures": [],
+  "rejectedOutputs": [
+    {
+      "asset": "steal-from-the-rich",
+      "reason": "Ultrawide 1983×793 master could not provide the required 1280×800 derivative without enlargement.",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-7a0d3e1f-f92e-4d54-96d9-65ade3742fac.png"
+    },
+    {
+      "asset": "piercing-shot",
+      "reason": "Identity reference drift depicted Robin shooting an Outlaw ally; regenerated with an armored enemy and Robin-only reference.",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-4e693516-f4ac-4147-932b-50f7d9a9440d.png"
+    },
+    {
+      "asset": "regroup",
+      "reason": "Ultrawide master and an extra hand on the Outlaw; regenerated with simpler poses and exact 8:5 framing.",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-fa455e13-ab80-4dac-abd5-5ead3b628753.png"
+    }
+  ],
+  "assets": [
+    {
+      "id": "robin-hood-portrait",
+      "master": "masters/robin-hood-portrait.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-38b3e56a-b838-4dd9-88fd-86148881607a.png",
+      "prompt": "prompts.json#robin-hood-portrait",
+      "sha256": "832258c8e2846b36099dd3c5f31e17fbe7a9ad8d09f3dd4fba546f8352aa724f",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-token",
+      "master": "masters/robin-hood-token.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-04cb7b63-03e8-4062-a88a-63ab88872133.png",
+      "prompt": "prompts.json#robin-hood-token",
+      "sha256": "8640963c23da5504a9f6b117eced5260c052ca79b87b3daa731f5c7f545445d5",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "robin-hood-outlaw-portrait",
+      "master": "masters/robin-hood-outlaw-portrait.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-7f199433-7fec-44d5-9721-8fc7aa501c4a.png",
+      "prompt": "prompts.json#robin-hood-outlaw-portrait",
+      "sha256": "914a3c2f326e08c67c048244853446b16fd0d415ff883c85b9417313e05e3fcb",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-outlaw-token",
+      "master": "masters/robin-hood-outlaw-token.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-35f7860e-f9ee-4871-8d9b-607cf477a6c3.png",
+      "prompt": "prompts.json#robin-hood-outlaw-token",
+      "sha256": "b86ca2b5ecd19158eb28fa5f79b0909a81c17e6cb20369ed814c08651e15e919",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "robin-hood-ambush",
+      "master": "masters/ambush.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-44ef698e-1c1a-4043-bce3-c119eeeae792.png",
+      "prompt": "prompts.json#ambush",
+      "sha256": "024d0adfa630083b3a2047d4d06347bc724338d5ca75703ca12ba70ffb06c3a2",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-a-hunter-s-eye",
+      "master": "masters/a-hunter-s-eye.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-b7437140-39ad-47fc-9984-79a58370a136.png",
+      "prompt": "prompts.json#a-hunter-s-eye",
+      "sha256": "662eea6f9a35659fa1aeb4968d75db649a6bd690bfd7efee8a4183ad893637e2",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-steal-from-the-rich",
+      "master": "masters/steal-from-the-rich.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-b6491f60-8164-4644-a754-412610477974.png",
+      "prompt": "revisions.json#steal",
+      "sha256": "20db64da37f6ce65402a91accb568e441aa916d6d8acb705f3f5b9f83b20ad00",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-disarming-shot",
+      "master": "masters/disarming-shot.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-1e31fb14-d824-4a2a-b165-76937c671781.png",
+      "prompt": "prompts.json#disarming-shot",
+      "sha256": "dfc3d4a412058161b340074ef135453ff4ed8f4ee0a987f616dd0b9c8621a99a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-piercing-shot",
+      "master": "masters/piercing-shot.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-31edbc52-405c-43ac-bae5-aa9ae7650f58.png",
+      "prompt": "revisions.json#piercing",
+      "sha256": "f12d926c382fa2c5149e28742921b3ca24415d50985259cfa0fc6ee7eeb3ef25",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-defenders-of-sherwood",
+      "master": "masters/defenders-of-sherwood.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-b71e1f0a-3988-4150-b9ee-9835a71db265.png",
+      "prompt": "prompts.json#defenders-of-sherwood",
+      "sha256": "03a28f2249a01a0d06d0f62b35d8030566cb393b37b3622e6d276e09b6a3a804",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-highway-robbery",
+      "master": "masters/highway-robbery.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-e6902db6-f47e-447e-bba4-693a2f31c117.png",
+      "prompt": "prompts.json#highway-robbery",
+      "sha256": "8b88890d90dd9e86b063752ecdc7c16c73d2cfe371005c6ca11dca61740997db",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-snark",
+      "master": "masters/snark.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-2af70910-e261-4afa-90b5-94d39cdf86a4.png",
+      "prompt": "prompts.json#snark",
+      "sha256": "b2885c3a71d8eaa210e830b77842584290afa9240c00c919f52f2723585c879d",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-wily-fighting",
+      "master": "masters/wily-fighting.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-17d1b7c2-c1da-45c6-a0e5-ad5c1ba05418.png",
+      "prompt": "prompts.json#wily-fighting",
+      "sha256": "2acdaf26a1c203a4e702e0dd796cd01310c443612c325436e11b2b31f8044e8d",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-feint",
+      "master": "masters/feint.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-c56e196e-fb30-46ec-9d47-8e2e617410c0.png",
+      "prompt": "prompts.json#feint",
+      "sha256": "ec26eb8337ff068385ab00030eed18c9aec893ddf4c3cd1b34863cb14317395e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "robin-hood-regroup",
+      "master": "masters/regroup.png",
+      "source": "/home/francesco/.codex/generated_images/01a183ef-c998-7b32-bdca-5f9d69607313/exec-0460a84a-8a19-463a-8480-6f1a187d30bb.png",
+      "prompt": "revisions.json#regroup",
+      "sha256": "4d2abae5769f13f9c69f27d7b4998b2eca1bde899fa5bbd6e0d251680aeae055",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

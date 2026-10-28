@@ -11,7 +11,7 @@ import type {
   Result,
 } from './types';
 import { validPath } from './movement';
-import { canAttack } from './targeting';
+import { canAttackWithCard } from './card-attacks';
 import { emitter, victory } from './rules';
 import { Illegal, requireRule } from './errors';
 import { Runtime } from './abilities/runtime';
@@ -20,6 +20,7 @@ import { choose } from './abilities/choices';
 import { maneuverMovement, payBoost, revealBoost } from './boost';
 import { cancelCombat, startCombat } from './abilities/combat';
 import { validateDefinitions } from './abilities/validation';
+import { setupAbilities } from './abilities/setup';
 
 export function createGame(
   seats: { id: string; name: string; character: string; deck: Card[] }[],
@@ -69,8 +70,8 @@ export function createGame(
       id: p.id,
       name: p.name,
       character: p.character,
-      hand: defs.characters[p.character].deckSelection ? [] : structuredClone(p.deck.slice(0, 5)),
-      deck: structuredClone(defs.characters[p.character].deckSelection ? p.deck : p.deck.slice(5)),
+      hand: [],
+      deck: structuredClone(p.deck),
       discard: [],
       eliminated: false,
       departed: false,
@@ -112,9 +113,9 @@ export function createGame(
   if (!canDeploy(state, defs.map)) throw new Error('Selected fighters cannot deploy on this map.');
   const runtime = new Runtime(state, defs, emitter(state, []));
   runtime.prepend(
-    ...state.players
-      .filter((p) => defs.characters[p.character].deckSelection)
-      .map((p) => ({ type: 'select-deck' as const, player: p.id, group: 0 })),
+    ...state.players.map((p) => ({ type: 'select-hero' as const, player: p.id })),
+    ...setupAbilities(runtime),
+    ...state.players.map((p) => ({ type: 'select-deck' as const, player: p.id, group: 0 })),
     { type: 'begin-play' },
   );
   runtime.run();
@@ -279,6 +280,7 @@ export function execute(
       switch (command.type) {
         case 'maneuver':
           state.actions--;
+          (runtime.data.maneuvered ??= []).push(actor);
           state.maneuver = {
             player: actor,
             remaining: ownedFighters(state, actor)
@@ -293,19 +295,24 @@ export function execute(
         case 'attack': {
           const fighter = fighterById(state, command.fighter);
           const target = fighterById(state, command.target);
-          requireRule(
-            fighter && fighter.player === actor && target && canAttack(fighter, target, defs),
-            'Choose an opponent within your character’s attack range.',
-          );
           const card = take(player, command.card);
           requireRule(
-            ['attack', 'versatile'].includes(defs.cards[card.definition].category) &&
-              cardEligible(defs.cards[card.definition], fighter),
-            'That card cannot attack.',
+            fighter &&
+              fighter.player === actor &&
+              target &&
+              canAttackWithCard(
+                state,
+                fighter,
+                target,
+                defs.cards[card.definition],
+                defs,
+                command.faceUp,
+              ),
+            'Choose an opponent within your character’s attack range.',
           );
           state.actions--;
           (runtime.data.attacked ??= []).push(actor);
-          startCombat(runtime, fighter.id, target.id, card);
+          startCombat(runtime, fighter.id, target.id, card, undefined, command.faceUp);
           break;
         }
         case 'play-action': {
@@ -334,6 +341,7 @@ export function execute(
             ...(definition.ongoing
               ? [{ type: 'activate-ongoing' as const, frame, owner: fighter.id, card }]
               : [{ type: 'event' as const, frame, hook: 'card-discarded' as const }]),
+            { type: 'event', frame, hook: 'after-action' },
             { type: 'release', frame },
           );
           break;

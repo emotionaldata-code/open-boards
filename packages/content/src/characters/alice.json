@@ -1,0 +1,785 @@
+{
+  "id": "alice",
+  "name": "Alice",
+  "hp": 13,
+  "movement": 2,
+  "attackType": "melee",
+  "ally": {
+    "id": "alice-jabberwock",
+    "name": "The Jabberwock",
+    "count": 1,
+    "hp": 8,
+    "attackType": "melee"
+  },
+  "abilities": [
+    {
+      "id": "curioser-and-curioser",
+      "name": "Curiouser and Curiouser",
+      "description": "When you place Alice, choose whether she starts the game BIG or SMALL.  When Alice is BIG, add 2 to the value of her attack cards.  When Alice is SMALL, add 1 to the value of her defense cards.",
+      "trigger": "game-start",
+      "effects": [
+        {
+          "type": "choose-option",
+          "prompt": "Curiouser and Curiouser · Choose Alice’s starting size",
+          "options": [
+            {
+              "id": "big",
+              "label": "BIG · Attack cards +2",
+              "effects": [
+                {
+                  "type": "status",
+                  "status": "big"
+                }
+              ]
+            },
+            {
+              "id": "small",
+              "label": "SMALL · Defense cards +1",
+              "effects": [
+                {
+                  "type": "status",
+                  "status": "small"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "ground": "#263e4a",
+    "ink": "#e5dfcc",
+    "accent": "#cba76c"
+  },
+  "cards": [
+    {
+      "id": "alice-claws-that-catch",
+      "name": "Claws That Catch",
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "description": "During Combat: If the opposing fighter is a hero, this card's value is 5 instead.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/alice/alice-claws-that-catch-1280-5558ad09e124.webp"
+      },
+      "flavor": "The claws remember every trespass.",
+      "abilities": [
+        {
+          "id": "claws-that-catch",
+          "name": "Claws That Catch",
+          "description": "During Combat: If the opposing fighter is a hero, this card's value is 5 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 5
+            }
+          ],
+          "when": {
+            "type": "fighter-role",
+            "target": "opponent",
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alice-momentous-shift",
+      "name": "Momentous Shift",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+      "art": {
+        "scene": "trail",
+        "variant": 1,
+        "image": "/artwork/alice/alice-momentous-shift-1280-37ad8ec094e5.webp"
+      },
+      "flavor": "A step can change the whole story.",
+      "abilities": [
+        {
+          "id": "momentous-shift",
+          "name": "Momentous Shift",
+          "description": "During Combat: If your fighter started this turn in a different space, this card's value is 5 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 5
+            }
+          ],
+          "when": {
+            "type": "changed-position"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alice-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "count": 2,
+      "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "shield",
+        "variant": 2,
+        "image": "/artwork/alice/alice-skirmish-1280-bcf190663803.webp"
+      },
+      "flavor": "One turn ahead of the blade.",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Choose a combat fighter to move",
+              "options": [
+                {
+                  "id": "self",
+                  "label": "Your fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "distance": 2
+                    }
+                  ],
+                  "target": "self"
+                },
+                {
+                  "id": "opponent",
+                  "label": "Opposing fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "target": "opponent",
+                      "distance": 2
+                    }
+                  ],
+                  "target": "opponent"
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alice-mad-as-a-hatter",
+      "name": "Mad as a Hatter",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "description": "After Combat: Move each of your fighters up to 2 spaces. Change size.",
+      "art": {
+        "scene": "map",
+        "variant": 3,
+        "image": "/artwork/alice/alice-mad-as-a-hatter-1280-9ac1afe0af92.webp"
+      },
+      "flavor": "There is no sensible way through Wonderland.",
+      "abilities": [
+        {
+          "id": "mad-as-a-hatter",
+          "name": "Mad as a Hatter",
+          "description": "After Combat: Move each of your fighters up to 2 spaces. Change size.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "for-each-fighter",
+              "relation": "friendly",
+              "effects": [
+                {
+                  "type": "move",
+                  "target": "chosen",
+                  "distance": 2
+                }
+              ]
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "has-status",
+                "status": "big"
+              },
+              "then": [
+                {
+                  "type": "remove-status",
+                  "status": "big"
+                },
+                {
+                  "type": "status",
+                  "status": "small"
+                }
+              ],
+              "else": [
+                {
+                  "type": "remove-status",
+                  "status": "small"
+                },
+                {
+                  "type": "status",
+                  "status": "big"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-manxome-foe",
+      "name": "Manxome Foe",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "description": "During Combat: Discard the top card of your deck. Add its BOOST value to this card's value.",
+      "art": {
+        "scene": "embers",
+        "variant": 4,
+        "image": "/artwork/alice/alice-manxome-foe-1280-ed31d30e10a5.webp"
+      },
+      "flavor": "Beware the quiet between the trees.",
+      "abilities": [
+        {
+          "id": "manxome-foe",
+          "name": "Manxome Foe",
+          "description": "During Combat: Discard the top card of your deck. Add its BOOST value to this card's value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard-deck",
+              "count": 1,
+              "onDiscard": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "role",
+                    "role": "attacker"
+                  },
+                  "then": [
+                    {
+                      "type": "modify",
+                      "field": "attack",
+                      "amount": {
+                        "card": "selected",
+                        "field": "boost"
+                      }
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "modify",
+                      "field": "defense",
+                      "amount": {
+                        "card": "selected",
+                        "field": "boost"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "variant": 5,
+        "image": "/artwork/alice/alice-feint-1280-6bc551dd6ad9.webp"
+      },
+      "flavor": "An invitation to strike at nothing.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Immediately: Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-regroup",
+      "name": "Regroup",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 1,
+      "boost": 2,
+      "count": 3,
+      "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+      "art": {
+        "scene": "lantern",
+        "variant": 6,
+        "image": "/artwork/alice/alice-regroup-1280-d1ee2b188cc0.webp"
+      },
+      "flavor": "Take a breath before the next chapter.",
+      "abilities": [
+        {
+          "id": "regroup",
+          "name": "Regroup",
+          "description": "After Combat: Draw 1 card. If you won the combat, draw 2 cards instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-looking-glass",
+      "name": "Looking Glass",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 4,
+      "count": 2,
+      "description": "After Combat: Choose 2 different effects:\n- draw 2 cards\n- Alice recovers 3 health\n- place Alice in any other space",
+      "art": {
+        "scene": "ward",
+        "variant": 0,
+        "image": "/artwork/alice/alice-looking-glass-1280-8c9dc4c6d84f.webp"
+      },
+      "flavor": "Three possibilities. Two reflections.",
+      "abilities": [
+        {
+          "id": "looking-glass",
+          "name": "Looking Glass",
+          "description": "After Combat: Choose 2 different effects:\n- draw 2 cards\n- Alice recovers 3 health\n- place Alice in any other space",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "count": 2,
+              "prompt": "Looking Glass · Choose 2 different effects in resolution order",
+              "options": [
+                {
+                  "id": "draw",
+                  "label": "Draw 2 cards",
+                  "effects": [
+                    {
+                      "type": "draw",
+                      "count": 2
+                    }
+                  ]
+                },
+                {
+                  "id": "heal",
+                  "label": "Alice recovers 3 health",
+                  "effects": [
+                    {
+                      "type": "heal",
+                      "amount": 3
+                    }
+                  ]
+                },
+                {
+                  "id": "place",
+                  "label": "Place Alice in any other space",
+                  "effects": [
+                    {
+                      "type": "teleport",
+                      "optional": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-snicker-snack",
+      "name": "Snicker-Snack",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 4,
+      "count": 1,
+      "description": "After Combat: If you won the combat, look at your opponent's hand and choose 1 card for them to discard.",
+      "art": {
+        "scene": "blade",
+        "variant": 1,
+        "image": "/artwork/alice/alice-snicker-snack-1280-374020c63560.webp"
+      },
+      "flavor": "The blade knows its own ending.",
+      "abilities": [
+        {
+          "id": "snicker-snack",
+          "name": "Snicker-Snack",
+          "description": "After Combat: If you won the combat, look at your opponent's hand and choose 1 card for them to discard.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "chooser": "self",
+              "count": 1
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alice-o-frabjous-day",
+      "name": "O Frabjous Day!",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 4,
+      "count": 1,
+      "description": "After Combat: Change size.",
+      "art": {
+        "scene": "fire",
+        "variant": 2,
+        "image": "/artwork/alice/alice-o-frabjous-day-1280-5a575b9e270b.webp"
+      },
+      "flavor": "Let the forest hear the victory.",
+      "abilities": [
+        {
+          "id": "o-frabjous-day",
+          "name": "O Frabjous Day!",
+          "description": "After Combat: Change size.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "has-status",
+                "status": "big"
+              },
+              "then": [
+                {
+                  "type": "remove-status",
+                  "status": "big"
+                },
+                {
+                  "type": "status",
+                  "status": "small"
+                }
+              ],
+              "else": [
+                {
+                  "type": "remove-status",
+                  "status": "small"
+                },
+                {
+                  "type": "status",
+                  "status": "big"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-the-other-side-of-the-mushroom",
+      "name": "The Other Side of the Mushroom",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 4,
+      "count": 1,
+      "description": "After Combat: Move Alice up to 3 spaces. Change size.",
+      "art": {
+        "scene": "trail",
+        "variant": 3,
+        "image": "/artwork/alice/alice-the-other-side-of-the-mushroom-1280-ba93e78d69e9.webp"
+      },
+      "flavor": "Nothing keeps the same measure here.",
+      "abilities": [
+        {
+          "id": "the-other-side-of-the-mushroom",
+          "name": "The Other Side of the Mushroom",
+          "description": "After Combat: Move Alice up to 3 spaces. Change size.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 3
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "has-status",
+                "status": "big"
+              },
+              "then": [
+                {
+                  "type": "remove-status",
+                  "status": "big"
+                },
+                {
+                  "type": "status",
+                  "status": "small"
+                }
+              ],
+              "else": [
+                {
+                  "type": "remove-status",
+                  "status": "small"
+                },
+                {
+                  "type": "status",
+                  "status": "big"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-eat-me",
+      "name": "Eat Me",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "description": "Move Alice up to 3 spaces. Change size.",
+      "art": {
+        "scene": "lantern",
+        "variant": 4,
+        "image": "/artwork/alice/alice-eat-me-1280-b9ba376c5008.webp"
+      },
+      "flavor": "A crumb can change your world.",
+      "effects": [
+        {
+          "type": "move",
+          "distance": 3
+        },
+        {
+          "type": "if",
+          "condition": {
+            "type": "has-status",
+            "status": "big"
+          },
+          "then": [
+            {
+              "type": "remove-status",
+              "status": "big"
+            },
+            {
+              "type": "status",
+              "status": "small"
+            }
+          ],
+          "else": [
+            {
+              "type": "remove-status",
+              "status": "small"
+            },
+            {
+              "type": "status",
+              "status": "big"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-i-m-late-i-m-late",
+      "name": "I'm Late, I'm Late",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "count": 3,
+      "description": "After Combat: Move Alice up to 5 spaces. Change size.",
+      "art": {
+        "scene": "trail",
+        "variant": 5,
+        "image": "/artwork/alice/alice-i-m-late-i-m-late-1280-283d1ba3248b.webp"
+      },
+      "flavor": "Time never waits for a sensible answer.",
+      "abilities": [
+        {
+          "id": "i-m-late-i-m-late",
+          "name": "I'm Late, I'm Late",
+          "description": "After Combat: Move Alice up to 5 spaces. Change size.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 5
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "has-status",
+                "status": "big"
+              },
+              "then": [
+                {
+                  "type": "remove-status",
+                  "status": "big"
+                },
+                {
+                  "type": "status",
+                  "status": "small"
+                }
+              ],
+              "else": [
+                {
+                  "type": "remove-status",
+                  "status": "small"
+                },
+                {
+                  "type": "status",
+                  "status": "big"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-drink-me",
+      "name": "Drink Me",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Draw 2 cards. Change size.",
+      "art": {
+        "scene": "lantern",
+        "variant": 6,
+        "image": "/artwork/alice/alice-drink-me-1280-ba101a9c614d.webp"
+      },
+      "flavor": "A little courage in a little bottle.",
+      "effects": [
+        {
+          "type": "draw",
+          "count": 2
+        },
+        {
+          "type": "if",
+          "condition": {
+            "type": "has-status",
+            "status": "big"
+          },
+          "then": [
+            {
+              "type": "remove-status",
+              "status": "big"
+            },
+            {
+              "type": "status",
+              "status": "small"
+            }
+          ],
+          "else": [
+            {
+              "type": "remove-status",
+              "status": "small"
+            },
+            {
+              "type": "status",
+              "status": "big"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice-jaws-that-bite",
+      "name": "Jaws That Bite",
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 4,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: Deal 2 damage to any one fighter adjacent to the Jabberwock.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/alice/alice-jaws-that-bite-1280-e9ce1ddb6ec5.webp"
+      },
+      "flavor": "Beware the jaws that bite.",
+      "abilities": [
+        {
+          "id": "jaws-that-bite",
+          "name": "Jaws That Bite",
+          "description": "After Combat: Deal 2 damage to any one fighter adjacent to the Jabberwock.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "adjacent",
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "chosen",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

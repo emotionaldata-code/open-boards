@@ -24,9 +24,7 @@ export function FighterPicker({
             disabled={disabled}
             onClick={() => onSelect(fighter.id)}
           >
-            <CharacterPortrait
-              character={fighter.role === 'ally' ? fighter.definition : fighter.character}
-            />
+            <CharacterPortrait character={fighter.definition} />
             <span>{fighterLabel(fighter, basic)}</span>
           </button>
         ))}

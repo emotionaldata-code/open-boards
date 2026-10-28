@@ -1,0 +1,555 @@
+{
+  "id": "eredin",
+  "name": "Eredin",
+  "hp": 14,
+  "movement": 2,
+  "attackType": "melee",
+  "ally": {
+    "id": "eredin-red-rider",
+    "name": "Red Rider",
+    "count": 4,
+    "hp": 1,
+    "attackType": "melee"
+  },
+  "conditionalModifiers": [
+    {
+      "name": "King of the Wild Hunt",
+      "description": "While all of your Red Riders are defeated, Eredin is ENRAGED. If Eredin is ENRAGED, add +1 to the value of your combat cards, and your move value is 3.",
+      "when": {
+        "type": "allies-defeated"
+      },
+      "attack": 1,
+      "defense": 1,
+      "movement": 1
+    }
+  ],
+  "palette": {
+    "ground": "#26343e",
+    "ink": "#d4e3e6",
+    "accent": "#b46d75"
+  },
+  "cards": [
+    {
+      "id": "eredin-brutal-strike",
+      "name": "Brutal Strike",
+      "count": 3,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "description": "This card's effects cannot be canceled. During combat: If your opponent's card has an IMMEDIATELY effect, ignore their card's value.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/eredin/eredin-brutal-strike-1280-d3c676d6fa85.webp"
+      },
+      "flavor": "",
+      "effectsCannotBeCancelled": true,
+      "abilities": [
+        {
+          "id": "brutal-strike-before-combat",
+          "name": "Brutal Strike",
+          "description": "If your opponent's card has an IMMEDIATELY effect, ignore their card's value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "ignore-combat-value",
+              "target": "opponent"
+            }
+          ],
+          "when": {
+            "type": "card-has-hook",
+            "card": "opposing",
+            "hook": "combat-reveal"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eredin-backhand",
+      "name": "Backhand",
+      "count": 3,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 3,
+      "description": "After combat: Your opponent puts 1 random card from their hand on top of their deck. If Eredin is ENRAGED, they discard it instead.",
+      "art": {
+        "scene": "blade",
+        "variant": 1,
+        "image": "/artwork/eredin/eredin-backhand-1280-bc9feab469a6.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "backhand-after-combat",
+          "name": "Backhand",
+          "description": "Your opponent puts 1 random card from their hand on top of their deck. If Eredin is ENRAGED, they discard it instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "allies-defeated"
+              },
+              "then": [
+                {
+                  "type": "discard",
+                  "target": "opponent",
+                  "count": 1,
+                  "random": true
+                }
+              ],
+              "else": [
+                {
+                  "type": "return-to-deck",
+                  "target": "opponent",
+                  "count": 1,
+                  "random": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eredin-foul-purpose",
+      "name": "Foul Purpose",
+      "count": 2,
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "description": "If Eredin is ENRAGED, you may play this card face-up to target a fighter in any space. After combat: You may defeat a Red Rider to return this card to your hand.",
+      "art": {
+        "scene": "ward",
+        "variant": 2,
+        "image": "/artwork/eredin/eredin-foul-purpose-1280-bc9b0c008629.webp"
+      },
+      "flavor": "",
+      "attackMode": {
+        "when": {
+          "type": "allies-defeated"
+        },
+        "range": "any",
+        "faceUp": true
+      },
+      "abilities": [
+        {
+          "id": "foul-purpose-after-combat",
+          "name": "Foul Purpose",
+          "description": "You may defeat a Red Rider to return this card to your hand.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "friendly",
+              "role": "ally",
+              "effects": [
+                {
+                  "type": "defeat",
+                  "target": "chosen",
+                  "onDefeat": [
+                    {
+                      "type": "return-combat-card"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "optional": true,
+          "when": {
+            "type": "compare",
+            "left": {
+              "fighters": "friendly",
+              "role": "ally"
+            },
+            "op": "gt",
+            "right": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "eredin-unyielding-hordes",
+      "name": "Unyielding Hordes",
+      "count": 3,
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 1,
+      "boost": 2,
+      "description": "Immediately: Return a defeated Red Rider to any space. During combat: Add +1 to this card's value for each other friendly fighter adjacent to the opposing fighter.",
+      "art": {
+        "scene": "bastion",
+        "variant": 3,
+        "image": "/artwork/eredin/eredin-unyielding-hordes-1280-645acc362ad3.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "unyielding-hordes-combat-reveal",
+          "name": "Unyielding Hordes",
+          "description": "Return a defeated Red Rider to any space.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "revive-ally",
+              "zone": "any"
+            }
+          ]
+        },
+        {
+          "id": "unyielding-hordes-before-combat",
+          "name": "Unyielding Hordes",
+          "description": "Add +1 to this card's value for each other friendly fighter adjacent to the opposing fighter.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "modify",
+              "field": "attack",
+              "amount": {
+                "fighters": "friendly",
+                "range": "adjacent",
+                "anchor": "opponent",
+                "exclude": "self"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eredin-wild-hunt",
+      "name": "Wild Hunt",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "description": "After combat: Deal 1 damage to each opposing fighter that is adjacent to at least one of your fighters. If Eredin is ENRAGED, deal 2 damage instead.",
+      "art": {
+        "scene": "trail",
+        "variant": 4,
+        "image": "/artwork/eredin/eredin-wild-hunt-1280-d5f3701395e3.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "wild-hunt-after-combat",
+          "name": "Wild Hunt",
+          "description": "Deal 1 damage to each opposing fighter that is adjacent to at least one of your fighters. If Eredin is ENRAGED, deal 2 damage instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "allies-defeated"
+              },
+              "then": [
+                {
+                  "type": "area-damage",
+                  "range": "adjacent-to-friendly",
+                  "relation": "enemy",
+                  "amount": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "area-damage",
+                  "range": "adjacent-to-friendly",
+                  "relation": "enemy",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eredin-skirmish",
+      "name": "Skirmish",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "description": "After combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "blade",
+        "variant": 5,
+        "image": "/artwork/eredin/eredin-skirmish-1280-d9220cb1e6c6.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Choose a combat fighter to move",
+              "options": [
+                {
+                  "id": "self",
+                  "label": "Your fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "distance": 2
+                    }
+                  ],
+                  "target": "self"
+                },
+                {
+                  "id": "opponent",
+                  "label": "Opposing fighter",
+                  "effects": [
+                    {
+                      "type": "move",
+                      "target": "opponent",
+                      "distance": 2
+                    }
+                  ],
+                  "target": "opponent"
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eredin-icy-guile",
+      "name": "Icy Guile",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 1,
+      "description": "Immediately: If Eredin is ENRAGED, cancel all effects on your opponent's card. During combat: You may defeat a Red Rider to ignore the value of your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "variant": 6,
+        "image": "/artwork/eredin/eredin-icy-guile-1280-27d72933850b.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "icy-guile-combat-reveal",
+          "name": "Icy Guile",
+          "description": "If Eredin is ENRAGED, cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ],
+          "when": {
+            "type": "allies-defeated"
+          }
+        },
+        {
+          "id": "icy-guile-before-combat",
+          "name": "Icy Guile",
+          "description": "You may defeat a Red Rider to ignore the value of your opponent's card.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "friendly",
+              "role": "ally",
+              "effects": [
+                {
+                  "type": "defeat",
+                  "target": "chosen",
+                  "onDefeat": [
+                    {
+                      "type": "ignore-combat-value",
+                      "target": "opponent"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "optional": true,
+          "when": {
+            "type": "compare",
+            "left": {
+              "fighters": "friendly",
+              "role": "ally"
+            },
+            "op": "gt",
+            "right": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "eredin-portal-defense",
+      "name": "Portal Defense",
+      "count": 2,
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 1,
+      "description": "Immediately: Eredin swaps spaces with an adjacent friendly fighter. That fighter is now the defender. After combat: If Eredin is ENRAGED, draw 2 cards.",
+      "art": {
+        "scene": "ward",
+        "variant": 0,
+        "image": "/artwork/eredin/eredin-portal-defense-1280-960e290a2b67.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "portal-defense-combat-reveal",
+          "name": "Portal Defense",
+          "description": "Eredin swaps spaces with an adjacent friendly fighter. That fighter is now the defender.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "friendly",
+              "role": "ally",
+              "range": "adjacent",
+              "effects": [
+                {
+                  "type": "swap",
+                  "target": "chosen",
+                  "onSuccess": [
+                    {
+                      "type": "replace-defender",
+                      "target": "chosen"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "portal-defense-after-combat",
+          "name": "Portal Defense",
+          "description": "If Eredin is ENRAGED, draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": 2
+            }
+          ],
+          "when": {
+            "type": "allies-defeated"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eredin-implacable",
+      "name": "Implacable",
+      "count": 3,
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 3,
+      "description": "If Eredin is ENRAGED, you may play this card as an attack. During combat: You may BOOST this card.",
+      "art": {
+        "scene": "shield",
+        "variant": 1,
+        "image": "/artwork/eredin/eredin-implacable-1280-30049d4f3871.webp"
+      },
+      "flavor": "",
+      "attackMode": {
+        "when": {
+          "type": "allies-defeated"
+        }
+      },
+      "abilities": [
+        {
+          "id": "implacable-before-combat",
+          "name": "Implacable",
+          "description": "You may BOOST this card.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "boost-combat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eredin-might-of-the-aen-elle",
+      "name": "Might Of The Aen Elle",
+      "count": 2,
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "description": "Draw 1 card. Gain 1 action. [ONGOING]: Eredin does not take damage except combat damage or from exhaustion. Discard this card at the end of your turn if you didn't attack.",
+      "art": {
+        "scene": "embers",
+        "variant": 2,
+        "image": "/artwork/eredin/eredin-might-of-the-aen-elle-1280-3c5b34275eb3.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "draw",
+          "count": 1
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ],
+      "ongoing": {
+        "preventMainAbilityDamage": true,
+        "discardUnlessAttacked": true
+      }
+    },
+    {
+      "id": "eredin-close-for-the-kill",
+      "name": "Close For The Kill",
+      "count": 3,
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 4,
+      "description": "Draw 2 cards. Move each of your fighters up to 3 spaces each. They may move through opposing fighters.",
+      "art": {
+        "scene": "trail",
+        "variant": 3,
+        "image": "/artwork/eredin/eredin-close-for-the-kill-1280-f55867e906f7.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "draw",
+          "count": 2
+        },
+        {
+          "type": "for-each-fighter",
+          "relation": "friendly",
+          "effects": [
+            {
+              "type": "move",
+              "target": "chosen",
+              "distance": 3,
+              "throughEnemies": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

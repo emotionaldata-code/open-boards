@@ -1,0 +1,271 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/eredin",
+  "apiUrl": "https://unmatched.cards/api/db/decks/eredin",
+  "retrievedAt": "2026-10-28T19:13:55.636Z",
+  "deck": {
+    "cards": [
+      {
+        "afterText": null,
+        "basicText": "This card's effects cannot be canceled.",
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "EREDIN",
+        "deck_card_notes": null,
+        "duringText": "If your opponent's card has an IMMEDIATELY effect, ignore their card's value.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/brutal-strike.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "brutal-strike",
+        "title": "Brutal Strike",
+        "type": "attack",
+        "value": 2
+      },
+      {
+        "afterText": "Your opponent puts 1 random card from their hand on top of their deck. If Eredin is ENRAGED, they discard it instead.",
+        "basicText": null,
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "EREDIN",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/backhand.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "backhand",
+        "title": "Backhand",
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "afterText": "You may defeat a Red Rider to return this card to your hand.",
+        "basicText": "If Eredin is ENRAGED, you may play this card face-up to target a fighter in any space.",
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/foul-purpose.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "foul-purpose",
+        "title": "Foul Purpose",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "RED RIDER",
+        "deck_card_notes": null,
+        "duringText": "Add +1 to this card's value for each other friendly fighter adjacent to the opposing fighter.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/unyielding-hordes.png",
+        "immediateText": "Return a defeated Red Rider to any space.",
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "unyielding-hordes",
+        "title": "Unyielding Hordes",
+        "type": "attack",
+        "value": 1
+      },
+      {
+        "afterText": "Deal 1 damage to each opposing fighter that is adjacent to at least one of your fighters. If Eredin is ENRAGED, deal 2 damage instead.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/wild-hunt.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "wild-hunt",
+        "title": "Wild Hunt",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/skirmish.png",
+        "immediateText": null,
+        "other_decks": [
+          {
+            "name": "Alice",
+            "slug": "alice"
+          },
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "Jekyll & Hyde",
+            "slug": "jekyll-hyde"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Achilles",
+            "slug": "achilles"
+          },
+          {
+            "name": "Spike",
+            "slug": "spike"
+          },
+          {
+            "name": "Buffy",
+            "slug": "buffy"
+          },
+          {
+            "name": "Beowulf",
+            "slug": "beowulf"
+          },
+          {
+            "name": "Yennenga",
+            "slug": "yennenga"
+          },
+          {
+            "name": "Golden Bat",
+            "slug": "golden-bat"
+          },
+          {
+            "name": "Tomoe Gozen",
+            "slug": "tomoe-gozen"
+          }
+        ],
+        "quantity": 3,
+        "slug": "skirmish",
+        "title": "Skirmish",
+        "type": "versatile",
+        "value": 4
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": "You may defeat a Red Rider to ignore the value of your opponent's card.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/icy-guile.png",
+        "immediateText": "If Eredin is ENRAGED, cancel all effects on your opponent's card.",
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "icy-guile",
+        "title": "Icy Guile",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "If Eredin is ENRAGED, draw 2 cards.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "EREDIN",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/portal-defense.png",
+        "immediateText": "Eredin swaps spaces with an adjacent friendly fighter. That fighter is now the defender.",
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "portal-defense",
+        "title": "Portal Defense",
+        "type": "defense",
+        "value": 0
+      },
+      {
+        "afterText": null,
+        "basicText": "If Eredin is ENRAGED, you may play this card as an attack.",
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "EREDIN",
+        "deck_card_notes": null,
+        "duringText": "You may BOOST this card.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/implacable.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "implacable",
+        "title": "Implacable",
+        "type": "defense",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": "Draw 1 card. Gain 1 action. [ONGOING]: Eredin does not take damage except combat damage or from exhaustion. Discard this card at the end of your turn if you didn't attack.",
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "EREDIN",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/might-of-the-aen-elle.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "might-of-the-aen-elle",
+        "title": "Might Of The Aen Elle",
+        "type": "scheme",
+        "value": null
+      },
+      {
+        "afterText": null,
+        "basicText": "Draw 2 cards. Move each of your fighters up to 3 spaces each. They may move through opposing fighters.",
+        "boost": 4,
+        "card_notes": null,
+        "characterName": "ANY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/eredin/close-for-the-kill.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "close-for-the-kill",
+        "title": "Close For The Kill",
+        "type": "scheme",
+        "value": null
+      }
+    ],
+    "heroes": [
+      {
+        "attack_type": "melee",
+        "hp": 14,
+        "name": "Eredin",
+        "quantity": 1,
+        "slug": "eredin"
+      }
+    ],
+    "movement": 2,
+    "name": "Eredin",
+    "notes": null,
+    "quote": null,
+    "set": "Realm's Fall",
+    "setSlug": "realms-fall",
+    "sidekicks": [
+      {
+        "attack_type": "melee",
+        "hp": 1,
+        "name": "Red Riders",
+        "quantity": 4,
+        "slug": "red-riders"
+      }
+    ],
+    "slug": "eredin",
+    "special": "King of the Wild Hunt\r\nWhile all of your Red Riders are defeated, Eredin is ENRAGED.\r\n\r\nIf Eredin is ENRAGED, add +1 to the value of your combat cards, and your move value is 3."
+  }
+}

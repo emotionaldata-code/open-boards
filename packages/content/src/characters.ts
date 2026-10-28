@@ -1,3 +1,5 @@
+import yenneferTriss from './characters/yennefer-triss.json';
+import eredin from './characters/eredin.json';
 import darthVader from './characters/darth-vader.json';
 import invisibleMan from './characters/invisible-man.json';
 import geraltOfRivia from './characters/geralt-of-rivia.json';
@@ -11,6 +13,8 @@ import dracula from './characters/dracula.json';
 import bigfoot from './characters/bigfoot.json';
 import robinHood from './characters/robin-hood.json';
 import bruceLee from './characters/bruce-lee.json';
+import alice from './characters/alice.json';
+import philippa from './characters/philippa.json';
 
 // JSON literals are validated as engine Definitions at startup and by content tests.
 const bundles = [
@@ -26,6 +30,10 @@ const bundles = [
   invisibleMan,
   geraltOfRivia,
   darthVader,
+  alice,
+  yenneferTriss,
+  philippa,
+  eredin,
 ] as CharacterBundle[];
 export const { characters, cards, cardPresentation } = compileRoster(bundles);
 export const defaultCharacter = 'medusa';

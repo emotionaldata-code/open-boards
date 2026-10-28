@@ -1,6 +1,8 @@
 import { fighterById, type GameState, type Outcome } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
 export function projectGame(state: GameState, viewer: string, paused: boolean): GameView {
+  const combat =
+    state.resolution.combat === null ? undefined : state.resolution.frames[state.resolution.combat];
   const phase =
     state.phase.type === 'awaiting-defense'
       ? {
@@ -8,14 +10,15 @@ export function projectGame(state: GameState, viewer: string, paused: boolean): 
           attacker: state.phase.attacker,
           defender: state.phase.defender,
           ...(state.phase.bonus ? { bonus: state.phase.bonus } : {}),
-          ...(fighterById(state, state.phase.attacker)?.player === viewer
+          ...(fighterById(state, state.phase.attacker)?.player === viewer ||
+          (combat?.kind === 'combat' && combat.faceUpAttack)
             ? { committedCard: state.phase.card }
             : {}),
         }
       : state.phase;
   const choice = state.resolution.choice;
-  const combat =
-    state.resolution.combat === null ? undefined : state.resolution.frames[state.resolution.combat];
+  const publicAttack =
+    combat?.kind === 'combat' && combat.faceUpAttack && !combat.revealed ? combat.card : null;
   const publicDefense =
     combat?.kind === 'combat' &&
     !combat.revealed &&
@@ -33,14 +36,21 @@ export function projectGame(state: GameState, viewer: string, paused: boolean): 
             cards: choice.options.flatMap((o) => (o.card ? [o.card] : [])),
           },
         }
-      : publicDefense
+      : publicAttack
         ? {
             observation: {
-              prompt: 'Face-up defense · predicting the attack value',
-              cards: [publicDefense],
+              prompt: publicDefense ? 'Face-up combat cards' : 'Face-up attack',
+              cards: [publicAttack, ...(publicDefense ? [publicDefense] : [])],
             },
           }
-        : {}),
+        : publicDefense
+          ? {
+              observation: {
+                prompt: 'Face-up defense · predicting the attack value',
+                cards: [publicDefense],
+              },
+            }
+          : {}),
     choice:
       choice?.player === viewer
         ? {

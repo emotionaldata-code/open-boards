@@ -1,0 +1,118 @@
+[
+  {
+    "id": "bigfoot-portrait",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: square hero portrait, 1254x1254 pixels or larger. Bigfoot, a massive upright forest hominid with broad shoulders, extraordinarily long powerful arms, deep umber and chestnut shaggy fur, warm tan leathery face, heavy brow, wide flat nose, thoughtful dark amber-brown eyes and closed mouth. A simple weathered muted ochre cloth sash crosses the chest; no other clothing, armor or weapons. Head, shoulders and upper torso, face clear within central 70%, three-quarter view toward viewer, solemn watchful intelligence rather than aggression. Background of immense Pacific Northwest old-growth cedars fading into green mist. Cold forest light and a narrow warm dawn rim on individual strands of fur.",
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-jackalope-portrait",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: square ally portrait, 1254x1254 pixels or larger. The Jackalope: a believable tawny gray-brown wild hare with long black-tipped upright ears, dark glossy eyes, pale cream muzzle and throat, delicate whiskers and exactly two naturally branching pale deer antlers growing from its forehead. Each antler has a few distinct tines, readable and anatomically attached; keep both ears and all antler tips fully inside the square with generous top margin. A narrow worn dark brown leather collar with a small plain brass buckle. Alert proud three-quarter pose, animal anatomy with forepaws visible below chest, no humanoid body. Ferns and mossy log in a softly blurred misty conifer forest. Warm dappled light along fur against cool forest shadows. Creature is fierce and nimble, not a plush toy.",
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-token",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: square 1254x1254 transparent full-body board figure. Input image is Bigfoot's identity reference; preserve that face, umber fur, ochre sash and powerful long-armed silhouette. Entire upright body from crown to both broad bare feet, every hand and finger complete, centered with 8% padding. Weight on one leg in alert three-quarter stance, massive arms slightly away from torso for clear silhouette. No weapons. Actual alpha transparency with nothing behind the figure: no scenery, floor, ground shadow, base, pedestal, text or colored outline. Neutral sash color is fixed, no owner-color accents.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "bigfoot-jackalope-token",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: square 1254x1254 transparent full-body board figure. Input image is the Jackalope identity reference; preserve tawny hare fur, black-tipped ears, two pale branching deer antlers and dark brown leather collar. Entire anatomically believable hare in alert three-quarter upright crouch on its large hind feet, both small forepaws visible, short tail and all antler/ear tips complete, centered with 8% padding. Exactly four animal legs, no human limbs. Strong readable silhouette and long ears distinct from antlers. Actual alpha transparency: no background, floor, ground shadow, base, pedestal, text or colored outline, no owner-color accents.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": true
+  },
+  {
+    "id": "bigfoot-skirmish",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: A medium-wide action view of Bigfoot pivoting between two moss-covered tree trunks, one open hand pushing a branch aside while the Jackalope darts low across the foreground. Opposing movement is only suggested by a blurred distant traveler silhouette. Strong diagonal movement, clearly separate hominid and hare anatomies, flying wet fern fronds and cool mist. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-larger-than-life",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Worm's-eye view from a mossy fallen cedar up toward Bigfoot towering above it, broad shoulders and powerful long arms framed by immense ancient trunks. One huge bare hand rests against the cedar, face and ochre sash clear. Dramatic but believable forest giant scale, pale dawn shaft through canopy and deep forest depth, solemn imposing presence. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-crash-through-the-trees",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Wide lateral action shot of Bigfoot driving shoulder-first through a screen of dead branches and slender saplings, branches snapping and needles flying, not uprooting enormous old-growth trees. His sash and heavy umber fur stream with momentum; one complete figure, two arms and two legs naturally posed. Overcast forest light with a warm rim on splinters, main action central. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-it-s-just-your-imagination",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: An eerie misty forest at blue hour, Bigfoot's recognizable broad furred shoulder and tan face barely glimpsed behind a massive trunk in the middle distance, almost confused with bark and foliage. Foreground ferns and dark arching branches, deep layers of fog and a narrow glimmer on one eye. Wide secretive composition about a sighting that disappears, no captions or supernatural glow. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-savagery",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: A forceful slightly elevated medium view of Bigfoot slamming a massive open hand into the earth in a woodland clearing, scattering loose soil, rotten wood and fern fronds outward. His other arm braces naturally and broad feet are planted; a fierce but natural expression, no exposed fangs or gore, no weapon. Strong radial impact composition with grounded anatomy and warm light catching debris. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-hoax",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Close low-angle foreground view of an enormous five-toed muddy footprint filling with rain beside ordinary roots, while far behind it the same shaggy Bigfoot slips behind a cedar, mostly concealed by mist. The footprint is the narrative focus and his ochre sash is a subtle identity cue. Wet earth, individual droplets, mysterious believable forest depth rather than a human costume or fake prop. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-jackalope-horns",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Ground-level dynamic close view of the Jackalope bounding forward over a gnarled root with its two branching antlers lowered, ears angled back, powerful hind legs driving and both forepaws tucked naturally. Antlers, face and complete believable hare body clear inside frame. Loose leaves spray outward, dappled shafts of light, ferocious speed without blood or an impaled victim. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-disengage",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Wide low side view of the Jackalope making a powerful long leap across a narrow forest stream toward a mossy bank, all four animal legs distinct and naturally extended, ears and two antlers intact. A shadow falls on the bank it has just left, suggesting an escaped pursuer. Cool water, warm leaf reflections, airborne droplets and clear open space around its silhouette. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-momentous-shift",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Low-angle three-quarter medium action shot of Bigfoot landing heavily on a rocky moss-covered ledge after a bounding step, torso turning with momentum, one broad bare foot forward and the other behind. The ochre sash cuts across shaggy chest, his long arms balance the landing. Stones and autumn leaves shift beneath him, diagonal staging, strong cool-to-warm natural side light. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-feint",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Intimate low medium shot of the Jackalope crouched behind a mossy stump, head and antlers angled toward the right while its haunches and forepaws turn left to spring away. Readable single hare with exactly two antlers and four natural legs, a subtle misleading rustle of foliage in the opposite direction. Clever alert dark eye, soft green forest shadows and a warm patch of sunlight. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": false
+  },
+  {
+    "id": "bigfoot-regroup",
+    "prompt": "Use case: illustration-story. Original cinematic painted realism for a forest-cryptid board game: credible anatomy, finely resolved fur and bark, visible painterly brushwork, atmospheric depth, motivated natural light, restrained moss green, weathered umber, pale mist and ochre palette. Not a photo, costume, plastic miniature, cartoon or flat vector. No embedded text, numbers, card frames, icons, logos or watermarks. Asset type: one standalone landscape card illustration, 8:5 composition, 1586x992 pixels or larger, never panoramic. Input images supply character identities and fixed costume details only; when two are supplied, Bigfoot first and Jackalope second. Scene: Quiet wide two-character scene: Bigfoot kneels beside a sheltered forest pool with one huge hand resting on moss, while the Jackalope stands close at his side, head lifted toward him. Preserve their large size difference and both identities, fur, sash, collar and antlers. Pale morning mist, ancient cedars, soft warm light and calm water reflections, a moment of shared recovery after action. Keep essential faces, action and antler tips in the central 80% for UI cropping. Preserve recognizable species and exact reference identity, with strong painterly texture. No lettering, glyphs or printed graphics.",
+    "referenced_image_paths": [
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/bigfoot.png",
+      "/home/francesco/Desktop/personal-coding/open-boards/artwork/characters/bigfoot/references/jackalope.png"
+    ],
+    "transparent_background": false
+  }
+]

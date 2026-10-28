@@ -1,0 +1,107 @@
+[
+  {
+    "id": "yennefer-portrait",
+    "kind": "portrait",
+    "source": "masters/yennefer-portrait.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "triss-portrait",
+    "kind": "portrait",
+    "source": "masters/triss-portrait.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "yennefer-token",
+    "kind": "token",
+    "source": "masters/yennefer-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "triss-token",
+    "kind": "token",
+    "source": "masters/triss-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "yennefer-triss-merigolds-hailstorm",
+    "kind": "card",
+    "source": "masters/merigolds-hailstorm.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-merigolds-hailstorm"
+  },
+  {
+    "id": "yennefer-triss-incinerate",
+    "kind": "card",
+    "source": "masters/incinerate.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-incinerate"
+  },
+  {
+    "id": "yennefer-triss-portal-to-anywhere",
+    "kind": "card",
+    "source": "masters/portal-to-anywhere.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-portal-to-anywhere"
+  },
+  {
+    "id": "yennefer-triss-echoing-blast",
+    "kind": "card",
+    "source": "masters/echoing-blast.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-echoing-blast"
+  },
+  {
+    "id": "yennefer-triss-ball-lightning",
+    "kind": "card",
+    "source": "masters/ball-lightning.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-ball-lightning"
+  },
+  {
+    "id": "yennefer-triss-quick-and-ready",
+    "kind": "card",
+    "source": "masters/quick-and-ready.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-quick-and-ready"
+  },
+  {
+    "id": "yennefer-triss-telepathy",
+    "kind": "card",
+    "source": "masters/telepathy.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-telepathy"
+  },
+  {
+    "id": "yennefer-triss-magical-barrier",
+    "kind": "card",
+    "source": "masters/magical-barrier.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-magical-barrier"
+  },
+  {
+    "id": "yennefer-triss-paralyzing-fetters",
+    "kind": "card",
+    "source": "masters/paralyzing-fetters.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-paralyzing-fetters"
+  },
+  {
+    "id": "yennefer-triss-lodge-of-sorceresses",
+    "kind": "card",
+    "source": "masters/lodge-of-sorceresses.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-lodge-of-sorceresses"
+  },
+  {
+    "id": "yennefer-triss-advisor-to-the-king",
+    "kind": "card",
+    "source": "masters/advisor-to-the-king.png",
+    "focal": [0.5, 0.5],
+    "card": "yennefer-triss-advisor-to-the-king"
+  }
+]

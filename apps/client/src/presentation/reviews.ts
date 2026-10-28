@@ -28,7 +28,7 @@ function participant(game: GameView, id: string, role: string, card?: string): R
     fighter: {
       name: fighterLabel(fighter, basic),
       player: game.players.find((p) => p.id === fighter.player)!.name,
-      artwork: fighter.role === 'ally' ? fighter.definition : fighter.character,
+      artwork: fighter.definition,
     },
   };
 }
@@ -56,7 +56,7 @@ export function outcomeReview(
       return {
         participants: [],
         cards: outcome.cards.map((c) => c.definition),
-        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} reveals their hand because no combat card matches the named value.`,
+        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} reveals ${outcome.cards.length} card${outcome.cards.length === 1 ? '' : 's'} from their hand.`,
       };
     case 'played':
       if (!isActionPlay(outcome, previous)) return;

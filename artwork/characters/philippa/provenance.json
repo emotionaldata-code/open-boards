@@ -1,0 +1,18 @@
+{
+  "character": "philippa",
+  "generatedAt": "2026-10-28",
+  "tool": "integrated Codex image_gen",
+  "sourceDeck": "https://unmatched.cards/umdb/decks/philippa",
+  "sourceArt": "Source card art was inspected for identity only. It is not redistributed or served.",
+  "identityReferences": ["references/philippa.png", "references/dijkstra.png"],
+  "originalAssets": 17,
+  "direction": "Cinematic illustrated realism; plum, burgundy, violet and aged gold for Philippa; dark green brocade for Dijkstra.",
+  "failures": [
+    {
+      "asset": "philippa-portrait",
+      "attempt": "Edit of initial portrait to add blindfold",
+      "error": "Imagegen output moderation rejected the edit. A new modest high-necked portrait with blindfold was generated successfully."
+    }
+  ],
+  "preparation": "pnpm artwork:prepare philippa; hashed local WebP derivatives; no remote runtime assets."
+}

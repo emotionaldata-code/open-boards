@@ -101,6 +101,17 @@ export function CharacterRoster({
               {character.deckSelection.description}
             </p>
           )}
+          {character.heroSelection && (
+            <p>
+              <strong>{character.heroSelection.name}</strong> ·{' '}
+              {character.heroSelection.description}
+            </p>
+          )}
+          {character.conditionalModifiers?.map((rule) => (
+            <p key={rule.name}>
+              <strong>{rule.name}</strong> {rule.description}
+            </p>
+          ))}
           {(character.abilities ?? []).length
             ? character.abilities!.map((ability) => (
                 <p key={ability.id}>
@@ -108,6 +119,7 @@ export function CharacterRoster({
                 </p>
               ))
             : !character.cardEffectProtection &&
+              !character.conditionalModifiers?.length &&
               !character.deckSelection && <p>No special abilities.</p>}
           {character.ally && (
             <div className="ally-rules">
