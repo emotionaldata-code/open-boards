@@ -327,7 +327,7 @@ export function Game({
                     : [],
                 ) ?? [],
               )}
-              targetFighters={targets.map((f) => f.id)}
+              targetFighters={choice ? interactiveFighters : targets.map((f) => f.id)}
               onFighter={selectFighter}
               interactiveTokens={
                 locked

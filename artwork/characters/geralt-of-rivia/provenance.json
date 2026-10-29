@@ -19,7 +19,8 @@
     }
   ],
   "failures": [
-    "Geralt portrait rejected three times with http 400 moderation_blocked at output stage, category other. Request IDs and exact prompts are in prompts.json."
+    "Geralt portrait rejected three times with http 400 moderation_blocked at output stage, category other. Request IDs and exact prompts are in prompts.json.",
+    "A fourth Geralt portrait attempt on 2026-10-29 failed with http 400 moderation_blocked at output stage, category other. Request ID: df25b076-38b3-431a-bcd7-56774553b829. Exact prompt retained in prompts.json."
   ],
   "remaining": [
     "Geralt portrait",
@@ -38,7 +39,9 @@
     "Initial Dandelion figure was refined to provide clear margins around the entire silhouette.",
     "Geralt and seven card scenes retain existing SVG artwork. No gameplay rules changed.",
     "CLI fallback was not used.",
-    "12 generation calls succeeded; 10 selected assets and two superseded variants. Three Geralt portrait calls failed. All 15 calls are recorded in generation-log.json."
+    "12 generation calls succeeded; 10 selected assets and two superseded variants. Three Geralt portrait calls failed. All 15 calls are recorded in generation-log.json.",
+    "2026-10-29 retry: no image was generated and no assets were replaced. The set remains partial with nine assets outstanding. CLI fallback was not used; OPENAI_API_KEY is absent. The log now contains 16 calls: 12 successes (10 selected assets) and four failed Geralt portrait attempts.",
+    "2026-10-29 original-alternative concept generation succeeded: master preserved for review, not added to sources.json or the client. The log now contains 17 calls: 13 successes (10 selected integrated assets and three unselected outputs), four failed Geralt portrait attempts."
   ],
   "assets": [
     {
@@ -140,6 +143,24 @@
       "width": 1586,
       "height": 992,
       "hasAlpha": false
+    }
+  ],
+  "lastAttemptDate": "2026-10-29",
+  "concepts": [
+    {
+      "id": "original-hunter-concept-2026-10-29",
+      "date": "2026-10-29",
+      "generator": "Codex integrated Imagegen",
+      "mode": "built-in",
+      "master": "masters/original-hunter-concept.png",
+      "prompt": "prompts.json#original-hunter-concept-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a1851c-e13e-7db2-91f4-d081ec11bc75/exec-a6e1e9c2-f2be-466a-9e0b-10a1a0278ad7.png",
+      "sha256": "281160a6ba2528f96b8b7ed8f93165cd028cd88037bf3f03468ee0d5f0a68adf",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "integrated": false,
+      "notes": "Original veteran monster hunter requested as a similar dark-fantasy alternative; distinct face, gray hair, brown eyes, plain bronze clasp and one sword. Existing Geralt artwork and outstanding refresh assets remain unchanged."
     }
   ]
 }

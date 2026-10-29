@@ -133,5 +133,23 @@
     "slug": "dandelion-token",
     "prompt": "dandelion-token-margin",
     "generatorSource": "/home/francesco/.codex/generated_images/01a18409-94c7-7f01-afed-d49c4b30a2e4/exec-88e54bd0-f581-4a85-aaf6-93245879ea0d.png"
+  },
+  {
+    "id": "geralt-portrait-attempt-4",
+    "date": "2026-10-29",
+    "status": "failed",
+    "requestId": "df25b076-38b3-431a-bcd7-56774553b829",
+    "error": "http 400 moderation_blocked at output stage, category other",
+    "transparent": false,
+    "selected": false
+  },
+  {
+    "id": "original-hunter-concept-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a1851c-e13e-7db2-91f4-d081ec11bc75/exec-a6e1e9c2-f2be-466a-9e0b-10a1a0278ad7.png",
+    "transparent": false,
+    "selected": false,
+    "reason": "User-requested original monster-hunter concept with a distinct identity; saved for review, not integrated as Geralt artwork."
   }
 ]

@@ -1,8 +1,8 @@
 {
   "generator": "Codex integrated Imagegen",
   "mode": "built-in",
-  "date": "2026-10-28",
-  "status": "generation-blocked",
+  "date": "2026-10-29",
+  "status": "original-character-candidate-generated",
   "character": "darth-vader",
   "expected": {
     "portraits": 1,
@@ -11,7 +11,22 @@
     "totalAssets": 14
   },
   "prompts": "prompts.json",
-  "assets": [],
+  "assets": [
+    {
+      "id": "obsidian-warden-portrait",
+      "master": "masters/obsidian-warden-portrait.png",
+      "status": "candidate",
+      "characterDesign": "Original Obsidian Warden concept",
+      "prompt": "prompts.json#obsidian-warden-portrait",
+      "sha256": "0a65077e7e3bd7e239adb85135b19c76939c91508cabc5c484dda5ba994a28ea",
+      "bytes": 2445729,
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "generatorOutput": "/home/francesco/.codex/generated_images/01a1851c-88ce-7d92-b698-7ecc31390af3/exec-2a4a3ab6-903c-4d50-b284-cc199ca0f904.png",
+      "runtimeIntegrated": false
+    }
+  ],
   "attempts": [
     {
       "id": "darth-vader-portrait",
@@ -25,7 +40,33 @@
         "categories": ["other"],
         "requestId": "b024f8a3-c513-474b-87a6-3f58f4f40bdb"
       }
+    },
+    {
+      "id": "darth-vader-portrait",
+      "prompt": "prompts.json#darth-vader-portrait-2026-10-29",
+      "status": "failed",
+      "error": {
+        "httpStatus": 400,
+        "code": "moderation_blocked",
+        "categories": ["other"],
+        "requestId": "cd54fe03-3ccc-47d0-9676-44d793e1568e",
+        "message": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID cd54fe03-3ccc-47d0-9676-44d793e1568e.",
+        "type": "image_generation_user_error",
+        "moderationStage": "output"
+      },
+      "outputProduced": false,
+      "date": "2026-10-29"
+    },
+    {
+      "id": "obsidian-warden-portrait",
+      "prompt": "prompts.json#obsidian-warden-portrait",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a1851c-88ce-7d92-b698-7ecc31390af3/exec-2a4a3ab6-903c-4d50-b284-cc199ca0f904.png",
+      "master": "masters/obsidian-warden-portrait.png"
     }
   ],
-  "notes": "No image was returned or copied. Existing SVG artwork and runtime references are unchanged. Portrait inspection, identity references, token and card generation, derivative preparation, integration and browser verification remain pending."
+  "notes": "After two rejected Darth Vader portrait requests, the user requested a similar original design. Integrated Imagegen generated an original Obsidian Warden portrait candidate with faceted armor, amber visor, burgundy mantle and plasma spear. The output was visually inspected and copied intact into masters and references. This candidate does not establish the cause of earlier rejections. Existing Darth Vader SVG assets, runtime references and rules remain unchanged; a full deck refresh has not been completed.",
+  "references": ["references/obsidian-warden.png"]
 }

@@ -96,5 +96,21 @@
     "status": "succeeded",
     "references": ["references/dandelion-token-initial.png"],
     "transparent": true
+  },
+  {
+    "id": "geralt-portrait-attempt-4",
+    "date": "2026-10-29",
+    "prompt": "Use case: stylized-concept. Asset type: square portrait illustration for the Open Boards fantasy tabletop game, at least 1024 by 1024 pixels. Depict Geralt of Rivia in cinematic painted realism: mature angular weathered face, pale skin, amber catlike eyes, small healed scar above his left eye, long white hair half tied back, short white stubble, dark worn leather and chainmail armor, silver wolf medallion and two sheathed sword hilts behind his shoulders. Three-quarter head and chest portrait with his entire head inside the frame and a clear readable silhouette. Misty medieval woodland at dawn, cool forest shadows and restrained warm reflected light across his face. Credible anatomy, tactile leather, steel and hair, atmospheric depth, hand-painted fantasy book illustration. Original illustrated facial design. No text, frame, numbers, logo or watermark.",
+    "status": "failed",
+    "requestId": "df25b076-38b3-431a-bcd7-56774553b829",
+    "error": "http 400 moderation_blocked at output stage, category other"
+  },
+  {
+    "id": "original-hunter-concept-2026-10-29",
+    "date": "2026-10-29",
+    "prompt": "Use case: stylized-concept.\nAsset type: original dark-fantasy adventurer portrait concept for an illustrated tabletop game, square canvas at least 1024 by 1024 pixels.\nPrimary request: design an original veteran monster hunter with a grounded, melancholy dark-fantasy atmosphere.\nSubject: a rugged middle-aged man with a broad weathered face, deep brown eyes, shoulder-length iron-gray hair swept loosely back and a neatly trimmed salt-and-pepper beard. He wears a rain-darkened charcoal travel cloak over practical brown brigandine armor, a muted moss-green scarf, a plain bronze circular clasp and one sheathed longsword across his back. Quiet alert expression, worn equipment, convincing human anatomy.\nScene/backdrop: an old forest road disappearing into blue-gray dawn mist, a few blurred bare branches and weathered standing stones.\nStyle/medium: cinematic painted illustration with rich tactile brushwork, believable leather, cloth, metal and hair; restrained colors, atmospheric depth and motivated warm rim light. Original character design.\nComposition/framing: three-quarter bust, clear face and upper silhouette, entire head and shoulders comfortably inside the frame, face near the upper third, useful margin for a square portrait crop.\nConstraints: no text, numbers, frames, icons, logos, watermark, animal medallions or extra weapons.",
+    "status": "succeeded",
+    "generatorSource": "/home/francesco/.codex/generated_images/01a1851c-e13e-7db2-91f4-d081ec11bc75/exec-a6e1e9c2-f2be-466a-9e0b-10a1a0278ad7.png",
+    "transparent": false
   }
 ]

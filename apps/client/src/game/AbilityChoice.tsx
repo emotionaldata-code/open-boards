@@ -6,7 +6,7 @@ import type { ChoiceView } from '@open-boards/protocol';
 import { CardFace } from './CardFace';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
 
-/** Only objects outside the visible hand/map need a representation in the dock. */
+/** Fighter choices stay explicit in the dock as well as selectable on the map. */
 export function AbilityChoice({
   choice,
   fighters,
@@ -60,13 +60,7 @@ export function AbilityChoice({
             const object = option.object;
             const fighter =
               object?.type === 'fighter' ? fighters.find((f) => f.id === object.id) : undefined;
-            if (
-              object?.type === 'space' ||
-              object?.type === 'token' ||
-              // Older saved matches also attach a fighter object to the Use action.
-              (fighter && fighter.position !== null && !fighter.defeated && !choice.source?.name)
-            )
-              return null;
+            if (object?.type === 'space' || object?.type === 'token') return null;
             if (option.card)
               return (
                 <CardFace
@@ -102,7 +96,11 @@ export function AbilityChoice({
                     )}
                   </span>
                 )}
-                <span>{choiceLabel(option, fighters)}</span>
+                <span>
+                  {fighter && fighter.position !== null && !fighter.defeated && !choice.source?.name
+                    ? `Scegli ${choiceLabel(option, fighters)}`
+                    : choiceLabel(option, fighters)}
+                </span>
               </button>
             );
           })

@@ -157,7 +157,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await expect(choice()).toContainText('Scegli un combattente');
       await page.reload();
       await mountBigfoot(page, 'horns');
-      await page.getByRole('button', { name: /Bigfoot · Hector/ }).tap();
+      await page.getByRole('button', { name: 'Bigfoot · Hector', exact: true }).tap();
       await expect(choice()).toHaveCount(0);
       await expect
         .poll(async () =>
