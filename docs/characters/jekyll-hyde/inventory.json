@@ -1,0 +1,215 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/jekyll-hyde",
+  "apiUrl": "https://unmatched.cards/api/db/decks/jekyll-hyde",
+  "retrievedAt": "2026-10-29T17:57:27.554Z",
+  "set": "Cobble & Fog",
+  "hero": {
+    "attack_type": "melee",
+    "hp": 16,
+    "name": "Jekyll & Hyde",
+    "quantity": 1,
+    "slug": "jekyll-hyde"
+  },
+  "movement": 2,
+  "sidekicks": [],
+  "special": "THE SERUM\r\nStart the game as Dr. Jekyll. At the start of your turn, you may transform into Dr. Jekyll or Mr. Hyde.\r\nWhile Mr. Hyde: After you Maneuver, take 1 damage.\r\nUse the transformation token to indicate what he currently is.",
+  "cards": [
+    {
+      "id": "jekyll-hyde-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "form": null,
+      "count": 3,
+      "value": 2,
+      "boost": 2,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/feint.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "form": null,
+      "count": 3,
+      "value": 4,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/skirmish.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-duality-of-man",
+      "name": "Duality of Man",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "form": null,
+      "count": 2,
+      "value": 3,
+      "boost": 1,
+      "sourceRules": {
+        "duringText": "If you are Dr. Jekyll and playing this card to defend, this card's value is 6 instead. If you are Mr. Hyde and playing this card to attack, this card's value is 6 instead."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/duality-of-man.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-distracted-triage",
+      "name": "Distracted Triage",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "form": "jekyll",
+      "count": 2,
+      "value": 3,
+      "boost": 3,
+      "sourceRules": {
+        "afterText": "If you won the combat, recover 2 health."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/distracted-triage.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-succumb-to-compulsion",
+      "name": "Succumb to Compulsion",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "form": "jekyll",
+      "count": 3,
+      "value": 2,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Move up to 2 spaces. Transform to Mr. Hyde."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/succumb-to-compulsion.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-madness-relents",
+      "name": "Madness Relents",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "form": "hyde",
+      "count": 2,
+      "value": 4,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Transform to Dr. Jekyll."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/madness-relents.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-recoiling-blow",
+      "name": "Recoiling Blow",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "form": "hyde",
+      "count": 2,
+      "value": 5,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Place Mr. Hyde in any space in his zone. \nTransform to Dr. Jekyll."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/recoiling-blow.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-forever-hyde",
+      "name": "Forever Hyde",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "form": "hyde",
+      "count": 2,
+      "value": 5,
+      "boost": 2,
+      "sourceRules": {
+        "duringText": "You may discard Dr. Jekyll cards. Add 2 to this card's value for each card discarded."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/forever-hyde.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-with-haste",
+      "name": "With Haste!",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "form": "jekyll",
+      "count": 2,
+      "value": 4,
+      "boost": 3,
+      "sourceRules": {
+        "afterText": "Move Dr. Jekyll up to 4 spaces."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/with-haste.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-scientific-method",
+      "name": "Scientific Method",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "form": "jekyll",
+      "count": 2,
+      "value": 2,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "Draw a number of cards equal to the damage you were dealt."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/scientific-method.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-calming-research",
+      "name": "Calming Research",
+      "category": "action",
+      "usableBy": "BOTH",
+      "form": "jekyll",
+      "count": 2,
+      "value": 0,
+      "boost": 3,
+      "sourceRules": {
+        "basicText": "Recover 2 health. Draw up to 3 cards. Keep one and put any others on the bottom of your deck in any order."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/calming-research.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-pure-evil",
+      "name": "Pure Evil",
+      "category": "action",
+      "usableBy": "BOTH",
+      "form": "hyde",
+      "count": 3,
+      "value": 0,
+      "boost": 3,
+      "sourceRules": {
+        "basicText": "Place Mr. Hyde in any space in his zone. Mr. Hyde deals 2 damage to all adjacent fighters."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/pure-evil.png",
+      "notes": []
+    },
+    {
+      "id": "jekyll-hyde-strange-case",
+      "name": "Strange Case",
+      "category": "action",
+      "usableBy": "BOTH",
+      "form": "hyde",
+      "count": 2,
+      "value": 0,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Reveal the top card of your deck. Deal damage equal to its BOOST value to one adjacent fighter. Put the card in your hand."
+      },
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/jekyll-hyde/strange-case.png",
+      "notes": []
+    }
+  ],
+  "totalCopies": 30,
+  "distinctDesigns": 13
+}

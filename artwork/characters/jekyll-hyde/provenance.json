@@ -1,0 +1,155 @@
+{
+  "character": "jekyll-hyde",
+  "date": "2026-10-29",
+  "tool": "integrated Imagegen",
+  "style": "Original cinematic illustrated realism, Victorian London, charcoal emerald ivory and amber. No source artwork redistributed.",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/jekyll-hyde",
+  "identityReferences": ["references/identity.png"],
+  "assets": [
+    {
+      "id": "jekyll-hyde-portrait",
+      "source": "masters/jekyll-hyde-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-971b7288-1e01-4fff-a455-f679a6ee980c.png",
+      "sha256": "ea452d824d73dc1a6ea2ea6f102f633b49f289e168bf1ace061496e2df7644c2",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-token",
+      "source": "masters/jekyll-hyde-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-ffa92d89-ba82-427d-ac1b-50ba6ea65a3a.png",
+      "sha256": "8ab2c4900963c08707438134bbb0203e57f0a81ed7b13b48d4e6543e39ea365a",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "jekyll-hyde-feint",
+      "source": "masters/feint.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-28be6395-d63f-46b2-807d-df5bebd06cd7.png",
+      "sha256": "62912f2c594dc9b6b77958b0f2925d01abbee22f15b73682843ea63b2caa6fbd",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-skirmish",
+      "source": "masters/skirmish.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-5c73ae18-5a76-4b16-a6ea-3f5fe3d907dc.png",
+      "sha256": "a02ee98fcf8206cbee7f91f78d2ab013ccc3dca494601ae43fe3fdfc86670d31",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-duality-of-man",
+      "source": "masters/duality-of-man.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-8f0171fd-f7ec-48a4-a9b9-e2abc5979cdd.png",
+      "sha256": "9f93237100a271d7b3adba89f9e1276b3daf7f9b84d5780c5420dd6de2c7694a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-succumb-to-compulsion",
+      "source": "masters/succumb-to-compulsion.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-ca92b347-5f58-4b1a-be72-be92757b9a83.png",
+      "sha256": "80884725b03874dff66852f29ee93f1adc486ddd595b3d682e46a78dc919fd9e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-madness-relents",
+      "source": "masters/madness-relents.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-abf1d025-d610-475d-9b2a-a6f35ae5b4fb.png",
+      "sha256": "6bdcb2cf18ca8ea0e77482fb20a9da770dc70db527ab99b0ed509af86d016532",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-recoiling-blow",
+      "source": "masters/recoiling-blow.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-67fac45a-a06b-4f46-b3ce-b38f3bf99b1b.png",
+      "sha256": "99a87108aa700b0e3826105eb93cb1ae8eb011238af2b8f1fa31f9098731fdc9",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-forever-hyde",
+      "source": "masters/forever-hyde.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-b1aca193-8886-4324-952c-9064358fb81b.png",
+      "sha256": "fa8f13fa1a827986ac851b27e984e0c71ff7fadf715a9dc8d01d82e7e84ad8ab",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-with-haste",
+      "source": "masters/with-haste.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-073fa014-2e3b-4f40-a4bc-242a2a5a1b0d.png",
+      "sha256": "052a68fa5da010707e9c40e57c0bfadea5719a00b21f5fb475d91d3cb5d13731",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-scientific-method",
+      "source": "masters/scientific-method.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-6caffd7e-2038-4cea-bcf8-199b943d8449.png",
+      "sha256": "f2c9554cae810261a6490794c0bb9396cc4f2d6fc58a5a8bf91ff9d39b498ffb",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-calming-research",
+      "source": "masters/calming-research.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-06545084-6cda-461d-83f6-7314b9bc83e8.png",
+      "sha256": "2e902aa9d751bafc76f2e0c3db042ed07c30f1dc76b547489158bad802bccf92",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-pure-evil",
+      "source": "masters/pure-evil.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-4f9d7710-f9f1-401f-9af0-a2c99fd99ce9.png",
+      "sha256": "362e5e9a64c235eec43935d01164bf743eaf0adad1c0d36d3bcb172a854c86f7",
+      "width": 1587,
+      "height": 991,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-strange-case",
+      "source": "masters/strange-case.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-8dcf966f-0bdd-4909-9ffa-1c104e7c56a8.png",
+      "sha256": "1b3031ca4ff809e5c148552d4d33d80953a026af9d6f7da4a41700563d3e9f62",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "jekyll-hyde-distracted-triage",
+      "source": "masters/distracted-triage.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188ce-6fd5-7d61-bedd-0f771f92077f/exec-7332f7cc-4e11-4ed6-be5a-585e641c75f2.png",
+      "sha256": "c763c71a9e15b980e2b0908b83d3a0e458019690b2899fdacbcc3885e379a896",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ],
+  "attempts": 16,
+  "failures": [
+    {
+      "asset": "distracted-triage",
+      "attempt": 1,
+      "error": "Initial concurrent call rejected without an asset. Its exception details were not retained by the completed batch. No explicit refusal was received.",
+      "recovery": "Retried the permitted original physician scene with a concise visual description and the same original identity reference; succeeded."
+    }
+  ],
+  "notes": "One integrated call per selected final asset, plus one unsuccessful card call. All selected originals preserved unmodified. Portrait inspected before reuse as identity reference. Transparent token has true zero-alpha exterior and complete boots/cane. No artificial enlargement."
+}

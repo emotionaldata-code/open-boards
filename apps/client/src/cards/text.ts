@@ -67,6 +67,8 @@ export function cardText(id: string): string {
 export function cardFighter(id: string): string {
   const card = basic.cards[id];
   const character = basic.characters[cardPresentation[id].character];
+  if (card.requiresStatus)
+    return contentText(basic.statuses?.[card.requiresStatus]?.name ?? card.requiresStatus);
   if (card.fighter)
     return contentText(
       card.fighter === character.ally?.id

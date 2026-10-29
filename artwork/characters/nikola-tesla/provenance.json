@@ -1,0 +1,130 @@
+{
+  "character": "nikola-tesla",
+  "date": "2026-10-29",
+  "tool": "integrated Imagegen",
+  "style": "Original cinematic illustrated realism; late-Victorian inventor, copper and electric blue. No source artwork redistributed.",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/nikola-tesla",
+  "identityReferences": ["references/nikola-tesla.png"],
+  "assets": [
+    {
+      "id": "nikola-tesla-portrait",
+      "source": "masters/nikola-tesla-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-01b49e6b-7668-4e58-94d3-f71b3ebdeae1.png",
+      "sha256": "15535138d60f4a3680c367521a967c673369f3f0c25676f89d4075c87c735cfd",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-token",
+      "source": "masters/nikola-tesla-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-e95e5e56-26cc-4f65-9e58-f4546c3efa30.png",
+      "sha256": "c37d1c0c749fbe1b7d3b8d780d91074b14dd0471954b2ec03b10adf15d16f659",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "nikola-tesla-7-hertz",
+      "source": "masters/7-hertz.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-c9a7b869-7260-43a5-9608-edeb0c11ca24.png",
+      "sha256": "4735f6479c8b21cdde72fab0dce07617d42ea38a60ea5eff9fea1895dd9d0b4b",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-the-alternating-current",
+      "source": "masters/the-alternating-current.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-ab4e48af-7d57-4a99-a517-06874a22c700.png",
+      "sha256": "e95e3b04e03a3792257443e273c30d0d40725f916b6cabd429d987ada69e46b8",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-death-ray",
+      "source": "masters/death-ray.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-2004a7c3-8706-4821-a357-2735302bf60e.png",
+      "sha256": "ce0506738a1cb570cb2d2b129e6a4fc2ed6feb4974a8c131e976cdb0b7125df5",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-fully-charged",
+      "source": "masters/fully-charged.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-4686c39d-617b-4e03-a9ba-70a3cb763523.png",
+      "sha256": "70b065ba3deefa4c8ef0d335c1f31c5635ea9502cc026e4f9a088aa237594a65",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-intense-experimentation",
+      "source": "masters/intense-experimentation.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-12bd58af-82bc-49a4-904b-b8d755044fd1.png",
+      "sha256": "8ba2970d63edd6ccf5455455760351e4709e97f0c2f660ff68045ec9dfc156fb",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-kinetic-induction",
+      "source": "masters/kinetic-induction.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-d49c5fa4-cf21-4c8a-91ba-eaf5685c89ac.png",
+      "sha256": "391d51b09c399686bfde7a75bbf030dce00f8d232c1111ccc8db765a4e87986e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-lightning-storm",
+      "source": "masters/lightning-storm.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-3caa8207-71e1-4dfe-b31f-2099d4001cdf.png",
+      "sha256": "0f77170ab7c544116f7e751b80556f0d754c25823814a41198a53f9b907e00a0",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-polyphase-coils",
+      "source": "masters/polyphase-coils.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-791a3a57-116c-4d09-b31a-e4264495ac99.png",
+      "sha256": "99cf8befa1398fa85245f119072d963f5b8a1f1fc9b045922d121865b93559d7",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-remote-control",
+      "source": "masters/remote-control.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-12614944-6f80-40a2-8e63-0e041227905d.png",
+      "sha256": "3091c26336722d34dd65924b02e4b24fa5158f898b1fbb244104016779209c23",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-repulsion-blast",
+      "source": "masters/repulsion-blast.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-1739041d-6547-436b-a35a-43a898a44e27.png",
+      "sha256": "58bdd6551fbc2903dde24d9d038228b0f6dc177c802f11f773970ace468854f2",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "nikola-tesla-x-ray-radiation",
+      "source": "masters/x-ray-radiation.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-2fe0d8b0-441d-4128-8a03-2659ccf3e576.png",
+      "sha256": "492d2268162bafb7c06bf0368534c9aff073685811a91d7ab7810bb9fa6296e8",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ],
+  "attempts": 13,
+  "failures": [],
+  "notes": "One call per final asset. Original portrait reused as identity reference. Selected masters retained unmodified; token has real alpha; no artificial enlargement."
+}

@@ -56,7 +56,23 @@ export function revealBoost(
     purpose,
     ...(cancelled ? { cancelled: true } : {}),
   });
-  if (hooks) runtime.cardEvents(fighter, card, true, true);
+  if (hooks) {
+    runtime.cardEvents(fighter, card, true, true);
+    const effects = runtime.defs.cards[card.definition].boostEffects;
+    if (effects?.length) {
+      const frame = runtime.frame({
+        kind: 'card',
+        actor: fighter,
+        card,
+        discarded: true,
+        suppressAbilities: true,
+      });
+      runtime.prepend(...runtime.effects(effects, { frame, owner: fighter }), {
+        type: 'release',
+        frame,
+      });
+    }
+  }
 }
 
 /** Shared by authoritative path validation and client highlights. Effect moves use their own distance. */

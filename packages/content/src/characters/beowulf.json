@@ -1,0 +1,1332 @@
+{
+  "id": "beowulf",
+  "name": "Beowulf",
+  "hp": 17,
+  "movement": 2,
+  "attackType": "melee",
+  "counters": {
+    "rage": {
+      "initial": 1,
+      "max": 3
+    }
+  },
+  "abilities": [
+    {
+      "id": "rage",
+      "name": "Rage",
+      "description": "Beowulf starts with 1 Rage. When Beowulf is dealt damage, he gains 1 Rage. Beowulf has a maximum of 3 Rage.",
+      "trigger": "after-damage",
+      "effects": [
+        {
+          "type": "counter",
+          "name": "rage",
+          "amount": 1
+        }
+      ],
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "role",
+            "role": "target"
+          },
+          {
+            "type": "compare",
+            "left": {
+              "event": "amount"
+            },
+            "op": "gt",
+            "right": 0
+          }
+        ]
+      }
+    }
+  ],
+  "ally": {
+    "id": "beowulf-wiglaf",
+    "name": "Wiglaf",
+    "hp": 9,
+    "count": 1,
+    "attackType": "melee"
+  },
+  "palette": {
+    "ground": "#2d3c32",
+    "ink": "#d7dcc5",
+    "accent": "#c39752"
+  },
+  "cards": [
+    {
+      "id": "beowulf-remnant-of-valor",
+      "name": "Remnant of Valor",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Wiglaf deals 1 damage to each adjacent fighter. If Beowulf was dealt damage this way, gain 1 action.",
+      "art": {
+        "scene": "shield",
+        "image": "/artwork/beowulf/beowulf-remnant-of-valor-1280-13d9335086c8.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "effects": [
+        {
+          "type": "for-each-fighter",
+          "relation": "any",
+          "range": "adjacent",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 1,
+              "onDamage": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "relation",
+                    "relation": "same",
+                    "a": "chosen",
+                    "b": "main"
+                  },
+                  "then": [
+                    {
+                      "type": "actions",
+                      "amount": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 1,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "blade",
+        "image": "/artwork/beowulf/beowulf-feint-1280-ea74780f2b5b.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-epic-poem",
+      "name": "Epic Poem",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "boost": 2,
+      "description": "Immediately: Gain 1 Rage. During combat: This card's value is +1 for each Rage you have. (You do not spend Rage for this effect.)",
+      "art": {
+        "scene": "fire",
+        "image": "/artwork/beowulf/beowulf-epic-poem-1280-f12f7620ac7c.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "epic-poem-rage",
+          "name": "Epic Poem",
+          "description": "Gain 1 Rage.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "counter",
+              "name": "rage",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "id": "epic-poem-value",
+          "name": "Epic Poem",
+          "description": "This card's value is +1 for each Rage you have. (You do not spend Rage for this effect.)",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "modify",
+              "field": "attack",
+              "amount": {
+                "stat": "counter",
+                "name": "rage"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-the-ancient-heirloom",
+      "name": "The Ancient Heirloom",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "boost": 1,
+      "description": "This card's effects cannot be canceled. During combat: You may spend 2 Rage to make this card's value 5 instead. You may spend 1 Rage to BOOST this card. (You may do both.)",
+      "art": {
+        "scene": "blade",
+        "image": "/artwork/beowulf/beowulf-the-ancient-heirloom-1280-49978e2eccf0.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "effectsCannotBeCancelled": true,
+      "abilities": [
+        {
+          "id": "heirloom-value",
+          "name": "The Ancient Heirloom",
+          "description": "You may spend 2 Rage to make this card's value 5 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "rage"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "The Ancient Heirloom: change its value?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep Rage",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "spend",
+                      "label": "Spend 2 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -2
+                        },
+                        {
+                          "type": "set-combat-value",
+                          "value": 5,
+                          "mode": "printed"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "heirloom-boost",
+          "name": "The Ancient Heirloom",
+          "description": "You may spend 1 Rage to BOOST this card. (You may do both.)",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "hand"
+                },
+                "op": "gt",
+                "right": 0
+              },
+              "then": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "rage"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "The Ancient Heirloom: BOOST?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep Rage",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "spend",
+                          "label": "Spend 1 Rage",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "rage",
+                              "amount": -1
+                            },
+                            {
+                              "type": "boost-combat",
+                              "optional": false,
+                              "grant": "heirloom"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-no-contest-expecteth",
+      "name": "No Contest Expecteth",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "boost": 3,
+      "description": "After combat: If you attacked a sidekick and won the combat, you may spend 3 Rage to defeat that sidekick.",
+      "art": {
+        "scene": "blade",
+        "image": "/artwork/beowulf/beowulf-no-contest-expecteth-1280-ee6abf43f93f.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "no-contest-expecteth",
+          "name": "No Contest Expecteth",
+          "description": "If you attacked a sidekick and won the combat, you may spend 3 Rage to defeat that sidekick.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "rage"
+                },
+                "op": "gte",
+                "right": 3
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "No Contest Expecteth: defeat the sidekick?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep Rage",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "spend",
+                      "label": "Spend 3 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -3
+                        },
+                        {
+                          "type": "defeat",
+                          "target": "opponent"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "combat-result",
+                "result": "won"
+              },
+              {
+                "type": "fighter-role",
+                "target": "opponent",
+                "role": "ally"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "beowulf-the-war-king",
+      "name": "The War-King",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 1,
+      "boost": 3,
+      "description": "During combat: Spend any amount of Rage. This card's value is +2 for each Rage spent.",
+      "art": {
+        "scene": "fire",
+        "image": "/artwork/beowulf/beowulf-the-war-king-1280-6a4b43a70980.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "the-war-king",
+          "name": "The War-King",
+          "description": "Spend any amount of Rage. This card's value is +2 for each Rage spent.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "rage"
+                },
+                "op": "gte",
+                "right": 3
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "The War-King: spend Rage",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Spend no Rage",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "rage-1",
+                      "label": "Spend 1 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -1
+                        },
+                        {
+                          "type": "if",
+                          "condition": {
+                            "type": "role",
+                            "role": "attacker"
+                          },
+                          "then": [
+                            {
+                              "type": "modify",
+                              "field": "attack",
+                              "amount": 2
+                            }
+                          ],
+                          "else": [
+                            {
+                              "type": "modify",
+                              "field": "defense",
+                              "amount": 2
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "rage-2",
+                      "label": "Spend 2 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -2
+                        },
+                        {
+                          "type": "if",
+                          "condition": {
+                            "type": "role",
+                            "role": "attacker"
+                          },
+                          "then": [
+                            {
+                              "type": "modify",
+                              "field": "attack",
+                              "amount": 4
+                            }
+                          ],
+                          "else": [
+                            {
+                              "type": "modify",
+                              "field": "defense",
+                              "amount": 4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "rage-3",
+                      "label": "Spend 3 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -3
+                        },
+                        {
+                          "type": "if",
+                          "condition": {
+                            "type": "role",
+                            "role": "attacker"
+                          },
+                          "then": [
+                            {
+                              "type": "modify",
+                              "field": "attack",
+                              "amount": 6
+                            }
+                          ],
+                          "else": [
+                            {
+                              "type": "modify",
+                              "field": "defense",
+                              "amount": 6
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "rage"
+                    },
+                    "op": "gte",
+                    "right": 2
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "The War-King: spend Rage",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Spend no Rage",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "rage-1",
+                          "label": "Spend 1 Rage",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "rage",
+                              "amount": -1
+                            },
+                            {
+                              "type": "if",
+                              "condition": {
+                                "type": "role",
+                                "role": "attacker"
+                              },
+                              "then": [
+                                {
+                                  "type": "modify",
+                                  "field": "attack",
+                                  "amount": 2
+                                }
+                              ],
+                              "else": [
+                                {
+                                  "type": "modify",
+                                  "field": "defense",
+                                  "amount": 2
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "rage-2",
+                          "label": "Spend 2 Rage",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "rage",
+                              "amount": -2
+                            },
+                            {
+                              "type": "if",
+                              "condition": {
+                                "type": "role",
+                                "role": "attacker"
+                              },
+                              "then": [
+                                {
+                                  "type": "modify",
+                                  "field": "attack",
+                                  "amount": 4
+                                }
+                              ],
+                              "else": [
+                                {
+                                  "type": "modify",
+                                  "field": "defense",
+                                  "amount": 4
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "if",
+                      "condition": {
+                        "type": "compare",
+                        "left": {
+                          "stat": "counter",
+                          "name": "rage"
+                        },
+                        "op": "gte",
+                        "right": 1
+                      },
+                      "then": [
+                        {
+                          "type": "choose-option",
+                          "prompt": "The War-King: spend Rage",
+                          "options": [
+                            {
+                              "id": "keep",
+                              "label": "Spend no Rage",
+                              "effects": [],
+                              "decline": true
+                            },
+                            {
+                              "id": "rage-1",
+                              "label": "Spend 1 Rage",
+                              "effects": [
+                                {
+                                  "type": "counter",
+                                  "name": "rage",
+                                  "amount": -1
+                                },
+                                {
+                                  "type": "if",
+                                  "condition": {
+                                    "type": "role",
+                                    "role": "attacker"
+                                  },
+                                  "then": [
+                                    {
+                                      "type": "modify",
+                                      "field": "attack",
+                                      "amount": 2
+                                    }
+                                  ],
+                                  "else": [
+                                    {
+                                      "type": "modify",
+                                      "field": "defense",
+                                      "amount": 2
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "else": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-the-equal-of-grendel",
+      "name": "The Equal of Grendel",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 3,
+      "boost": 1,
+      "description": "Immediately: You may spend 2 Rage to deal damage to the opposing fighter equal to the printed value of their card.",
+      "art": {
+        "scene": "bastion",
+        "image": "/artwork/beowulf/beowulf-the-equal-of-grendel-1280-8c3d6382f579.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "the-equal-of-grendel",
+          "name": "The Equal of Grendel",
+          "description": "You may spend 2 Rage to deal damage to the opposing fighter equal to the printed value of their card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "rage"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "The Equal of Grendel: deal damage?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep Rage",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "spend",
+                      "label": "Spend 2 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -2
+                        },
+                        {
+                          "type": "damage",
+                          "target": "opponent",
+                          "amount": {
+                            "card": "opposing",
+                            "field": "value"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-vigor-and-courage",
+      "name": "Vigor and Courage",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Choose an opponent. They discard 1 random card. Gain rage equal to its BOOST value.",
+      "art": {
+        "scene": "trail",
+        "image": "/artwork/beowulf/beowulf-vigor-and-courage-1280-6c269f6cf13d.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "effects": [
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "chosen",
+              "count": 1,
+              "random": true,
+              "onDiscard": [
+                {
+                  "type": "counter",
+                  "name": "rage",
+                  "amount": {
+                    "card": "selected",
+                    "field": "boost"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-golden-drinking-horn",
+      "name": "Golden Drinking Horn",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "description": "Spend any amount of Rage. Choose a different effect for each Rage spent: - draw 2 cards - move Beowulf up to 4 spaces - Beowulf recovers 2 health.",
+      "art": {
+        "scene": "lantern",
+        "image": "/artwork/beowulf/beowulf-golden-drinking-horn-1280-e0b14257040e.webp"
+      },
+      "flavor": "The old songs warm the heart.",
+      "effects": [
+        {
+          "type": "if",
+          "condition": {
+            "type": "compare",
+            "left": {
+              "stat": "counter",
+              "name": "rage"
+            },
+            "op": "gte",
+            "right": 3
+          },
+          "then": [
+            {
+              "type": "choose-option",
+              "prompt": "Golden Drinking Horn: spend Rage",
+              "options": [
+                {
+                  "id": "keep",
+                  "label": "Spend no Rage",
+                  "effects": [],
+                  "decline": true
+                },
+                {
+                  "id": "rage-1",
+                  "label": "Spend 1 Rage",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "name": "rage",
+                      "amount": -1
+                    },
+                    {
+                      "type": "choose-option",
+                      "prompt": "Golden Drinking Horn: choose different effects",
+                      "options": [
+                        {
+                          "id": "draw",
+                          "label": "Draw 2 cards",
+                          "effects": [
+                            {
+                              "type": "draw",
+                              "count": 2
+                            }
+                          ]
+                        },
+                        {
+                          "id": "move",
+                          "label": "Move Beowulf up to 4 spaces",
+                          "effects": [
+                            {
+                              "type": "move",
+                              "target": "main",
+                              "distance": 4
+                            }
+                          ]
+                        },
+                        {
+                          "id": "heal",
+                          "label": "Beowulf recovers 2 health",
+                          "effects": [
+                            {
+                              "type": "heal",
+                              "target": "main",
+                              "amount": 2
+                            }
+                          ]
+                        }
+                      ],
+                      "count": 1
+                    }
+                  ]
+                },
+                {
+                  "id": "rage-2",
+                  "label": "Spend 2 Rage",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "name": "rage",
+                      "amount": -2
+                    },
+                    {
+                      "type": "choose-option",
+                      "prompt": "Golden Drinking Horn: choose different effects",
+                      "options": [
+                        {
+                          "id": "draw",
+                          "label": "Draw 2 cards",
+                          "effects": [
+                            {
+                              "type": "draw",
+                              "count": 2
+                            }
+                          ]
+                        },
+                        {
+                          "id": "move",
+                          "label": "Move Beowulf up to 4 spaces",
+                          "effects": [
+                            {
+                              "type": "move",
+                              "target": "main",
+                              "distance": 4
+                            }
+                          ]
+                        },
+                        {
+                          "id": "heal",
+                          "label": "Beowulf recovers 2 health",
+                          "effects": [
+                            {
+                              "type": "heal",
+                              "target": "main",
+                              "amount": 2
+                            }
+                          ]
+                        }
+                      ],
+                      "count": 2
+                    }
+                  ]
+                },
+                {
+                  "id": "rage-3",
+                  "label": "Spend 3 Rage",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "name": "rage",
+                      "amount": -3
+                    },
+                    {
+                      "type": "choose-option",
+                      "prompt": "Golden Drinking Horn: choose different effects",
+                      "options": [
+                        {
+                          "id": "draw",
+                          "label": "Draw 2 cards",
+                          "effects": [
+                            {
+                              "type": "draw",
+                              "count": 2
+                            }
+                          ]
+                        },
+                        {
+                          "id": "move",
+                          "label": "Move Beowulf up to 4 spaces",
+                          "effects": [
+                            {
+                              "type": "move",
+                              "target": "main",
+                              "distance": 4
+                            }
+                          ]
+                        },
+                        {
+                          "id": "heal",
+                          "label": "Beowulf recovers 2 health",
+                          "effects": [
+                            {
+                              "type": "heal",
+                              "target": "main",
+                              "amount": 2
+                            }
+                          ]
+                        }
+                      ],
+                      "count": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "rage"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Golden Drinking Horn: spend Rage",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Spend no Rage",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "rage-1",
+                      "label": "Spend 1 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -1
+                        },
+                        {
+                          "type": "choose-option",
+                          "prompt": "Golden Drinking Horn: choose different effects",
+                          "options": [
+                            {
+                              "id": "draw",
+                              "label": "Draw 2 cards",
+                              "effects": [
+                                {
+                                  "type": "draw",
+                                  "count": 2
+                                }
+                              ]
+                            },
+                            {
+                              "id": "move",
+                              "label": "Move Beowulf up to 4 spaces",
+                              "effects": [
+                                {
+                                  "type": "move",
+                                  "target": "main",
+                                  "distance": 4
+                                }
+                              ]
+                            },
+                            {
+                              "id": "heal",
+                              "label": "Beowulf recovers 2 health",
+                              "effects": [
+                                {
+                                  "type": "heal",
+                                  "target": "main",
+                                  "amount": 2
+                                }
+                              ]
+                            }
+                          ],
+                          "count": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "rage-2",
+                      "label": "Spend 2 Rage",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "rage",
+                          "amount": -2
+                        },
+                        {
+                          "type": "choose-option",
+                          "prompt": "Golden Drinking Horn: choose different effects",
+                          "options": [
+                            {
+                              "id": "draw",
+                              "label": "Draw 2 cards",
+                              "effects": [
+                                {
+                                  "type": "draw",
+                                  "count": 2
+                                }
+                              ]
+                            },
+                            {
+                              "id": "move",
+                              "label": "Move Beowulf up to 4 spaces",
+                              "effects": [
+                                {
+                                  "type": "move",
+                                  "target": "main",
+                                  "distance": 4
+                                }
+                              ]
+                            },
+                            {
+                              "id": "heal",
+                              "label": "Beowulf recovers 2 health",
+                              "effects": [
+                                {
+                                  "type": "heal",
+                                  "target": "main",
+                                  "amount": 2
+                                }
+                              ]
+                            }
+                          ],
+                          "count": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "rage"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Golden Drinking Horn: spend Rage",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Spend no Rage",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "rage-1",
+                          "label": "Spend 1 Rage",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "rage",
+                              "amount": -1
+                            },
+                            {
+                              "type": "choose-option",
+                              "prompt": "Golden Drinking Horn: choose different effects",
+                              "options": [
+                                {
+                                  "id": "draw",
+                                  "label": "Draw 2 cards",
+                                  "effects": [
+                                    {
+                                      "type": "draw",
+                                      "count": 2
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "move",
+                                  "label": "Move Beowulf up to 4 spaces",
+                                  "effects": [
+                                    {
+                                      "type": "move",
+                                      "target": "main",
+                                      "distance": 4
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "heal",
+                                  "label": "Beowulf recovers 2 health",
+                                  "effects": [
+                                    {
+                                      "type": "heal",
+                                      "target": "main",
+                                      "amount": 2
+                                    }
+                                  ]
+                                }
+                              ],
+                              "count": 1
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-hot-for-the-battle",
+      "name": "Hot for the Battle",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "attack",
+      "value": 3,
+      "boost": 3,
+      "description": "After combat: Wiglaf may swap spaces with Beowulf.",
+      "art": {
+        "scene": "blade",
+        "image": "/artwork/beowulf/beowulf-hot-for-the-battle-1280-d233781c06c8.webp"
+      },
+      "flavor": "A faithful shield at the king’s side.",
+      "abilities": [
+        {
+          "id": "hot-for-the-battle",
+          "name": "Hot for the Battle",
+          "description": "Wiglaf may swap spaces with Beowulf.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-option",
+              "prompt": "Hot for the Battle: swap spaces?",
+              "options": [
+                {
+                  "id": "stay",
+                  "label": "Keep positions",
+                  "effects": [],
+                  "decline": true
+                },
+                {
+                  "id": "swap",
+                  "label": "Swap Wiglaf and Beowulf",
+                  "effects": [
+                    {
+                      "type": "swap",
+                      "target": "main"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-fatal-struggle",
+      "name": "Fatal Struggle",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 4,
+      "boost": 2,
+      "description": "After combat: If you won the combat, draw 2 cards. If you lost the combat, your opponent draws 2 cards.",
+      "art": {
+        "scene": "blade",
+        "image": "/artwork/beowulf/beowulf-fatal-struggle-1280-e4a0db789999.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "fatal-struggle",
+          "name": "Fatal Struggle",
+          "description": "If you won the combat, draw 2 cards. If you lost the combat, your opponent draws 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "target": "opponent",
+                  "count": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beowulf-skirmish",
+      "name": "Skirmish",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "boost": 1,
+      "description": "After combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "trail",
+        "image": "/artwork/beowulf/beowulf-skirmish-1280-399dfb2a0688.webp"
+      },
+      "flavor": "The north remembers courage.",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "combat",
+              "effects": [
+                {
+                  "type": "move",
+                  "target": "chosen",
+                  "distance": 2
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    }
+  ]
+}

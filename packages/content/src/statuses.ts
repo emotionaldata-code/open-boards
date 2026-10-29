@@ -44,6 +44,8 @@ export const statuses: Record<string, StatusDefinition> = {
       },
     ],
   },
+  'jekyll-form': { id: 'jekyll-form', name: 'Dr. Jekyll', maxStacks: 1 },
+  'hyde-form': { id: 'hyde-form', name: 'Mr. Hyde', maxStacks: 1 },
   'attack-up': {
     id: 'attack-up',
     name: 'Attack +1',

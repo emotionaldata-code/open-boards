@@ -196,7 +196,7 @@ describe('computed damage, modifiers and discard bonuses', () => {
     }
     expect(reactions).toBe(3); // played attack's discard plus the two payments
     expect(h.state.revealed?.damage).toBe(6);
-    expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-0', ...chosen]);
+    expect(h.state.players[0].discard.map((c) => c.id)).toEqual([...chosen, 'p0-0']);
   });
 
   it('damage callbacks use the resolved receipt after prevention and preserve the original chosen fighter', () => {

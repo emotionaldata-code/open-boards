@@ -15,6 +15,17 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  'golden-bat': { mark: 'bolt', tone: 'gold' },
+  'bloody-mary': { mark: 'wave', tone: 'ember' },
+  hamlet: { mark: 'blade', tone: 'ember' },
+  'hamlet-rosencrantz-guildenstern': { mark: 'compass', tone: 'gold' },
+  beowulf: { mark: 'flame', tone: 'ember' },
+  'beowulf-wiglaf': { mark: 'shield', tone: 'gold' },
+  'harry-houdini': { mark: 'wave', tone: 'gold' },
+  'harry-houdini-bess': { mark: 'compass', tone: 'ember' },
+  'nikola-tesla': { mark: 'bolt', tone: 'gold' },
+  'little-red': { mark: 'blade', tone: 'ember' },
+  'little-red-huntsman': { mark: 'compass', tone: 'mint' },
   sinbad: { mark: 'compass', tone: 'gold' },
   'sinbad-porter': { mark: 'wave', tone: 'mint' },
   'yennefer-triss': { mark: 'bolt', tone: 'gold' },
@@ -45,12 +56,15 @@ export const abilityVisuals: Record<
   'sherlock-holmes-dr-watson': { mark: 'shield', tone: 'mint' },
   'sun-wukong': { mark: 'compass', tone: 'gold' },
   'sun-wukong-clone': { mark: 'compass', tone: 'ember' },
+  'jekyll-hyde': { mark: 'wave', tone: 'mint' },
   medusa: { mark: 'wave', tone: 'mint' },
   'medusa-harpy': { mark: 'blade', tone: 'gold' },
 };
 
 export const statusVisuals: Record<string, { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }> =
   {
+    'jekyll-form': { mark: 'shield', tone: 'mint' },
+    'hyde-form': { mark: 'flame', tone: 'ember' },
     big: { mark: 'blade', tone: 'gold' },
     small: { mark: 'shield', tone: 'mint' },
     'attack-up': { mark: 'blade', tone: 'gold' },

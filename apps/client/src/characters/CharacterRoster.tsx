@@ -116,6 +116,12 @@ export function CharacterRoster({
               <strong>{contentText(rule.name)}</strong> {contentText(rule.description)}
             </p>
           ))}
+          {character.discardBase && (
+            <p>
+              <strong>{contentText(character.discardBase.name)}</strong>{' '}
+              {contentText(character.discardBase.description)}
+            </p>
+          )}
           {character.maneuverBonus && (
             <p>
               <strong>{contentText(character.maneuverBonus.name)}</strong>{' '}
@@ -130,6 +136,7 @@ export function CharacterRoster({
               ))
             : !character.cardEffectProtection &&
               !character.maneuverBonus &&
+              !character.discardBase &&
               !character.conditionalModifiers?.length &&
               !character.deckSelection && <p>Nessuna abilità speciale.</p>}
           {character.ally && (

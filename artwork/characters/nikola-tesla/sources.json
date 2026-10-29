@@ -1,0 +1,93 @@
+[
+  {
+    "id": "nikola-tesla-portrait",
+    "kind": "portrait",
+    "source": "masters/nikola-tesla-portrait.png",
+    "focal": [0.5, 0.36]
+  },
+  {
+    "id": "nikola-tesla-token",
+    "kind": "token",
+    "source": "masters/nikola-tesla-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "nikola-tesla-7-hertz",
+    "kind": "card",
+    "source": "masters/7-hertz.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-7-hertz"
+  },
+  {
+    "id": "nikola-tesla-the-alternating-current",
+    "kind": "card",
+    "source": "masters/the-alternating-current.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-the-alternating-current"
+  },
+  {
+    "id": "nikola-tesla-death-ray",
+    "kind": "card",
+    "source": "masters/death-ray.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-death-ray"
+  },
+  {
+    "id": "nikola-tesla-fully-charged",
+    "kind": "card",
+    "source": "masters/fully-charged.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-fully-charged"
+  },
+  {
+    "id": "nikola-tesla-intense-experimentation",
+    "kind": "card",
+    "source": "masters/intense-experimentation.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-intense-experimentation"
+  },
+  {
+    "id": "nikola-tesla-kinetic-induction",
+    "kind": "card",
+    "source": "masters/kinetic-induction.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-kinetic-induction"
+  },
+  {
+    "id": "nikola-tesla-lightning-storm",
+    "kind": "card",
+    "source": "masters/lightning-storm.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-lightning-storm"
+  },
+  {
+    "id": "nikola-tesla-polyphase-coils",
+    "kind": "card",
+    "source": "masters/polyphase-coils.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-polyphase-coils"
+  },
+  {
+    "id": "nikola-tesla-remote-control",
+    "kind": "card",
+    "source": "masters/remote-control.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-remote-control"
+  },
+  {
+    "id": "nikola-tesla-repulsion-blast",
+    "kind": "card",
+    "source": "masters/repulsion-blast.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-repulsion-blast"
+  },
+  {
+    "id": "nikola-tesla-x-ray-radiation",
+    "kind": "card",
+    "source": "masters/x-ray-radiation.png",
+    "focal": [0.5, 0.5],
+    "card": "nikola-tesla-x-ray-radiation"
+  }
+]

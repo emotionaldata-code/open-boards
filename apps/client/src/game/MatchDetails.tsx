@@ -9,7 +9,7 @@ import { Dialog } from '../ui/Dialog';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
 import { DiscardPile } from './DiscardPile';
 import { Icon } from '../ui/Icon';
-export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string }) {
+export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string | null }) {
   const game = room.game!;
   const [detail, setDetail] = useState<string | null>(null);
   const [discardId, setDiscardId] = useState<string | null>(null);
@@ -171,6 +171,12 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
               <strong>{contentText(rule.name)}</strong> · {contentText(rule.description)}
             </p>
           ))}
+          {basic.characters[player.character].discardBase && (
+            <p>
+              <strong>{contentText(basic.characters[player.character].discardBase!.name)}</strong> ·{' '}
+              {contentText(basic.characters[player.character].discardBase!.description)}
+            </p>
+          )}
           {basic.characters[player.character].maneuverBonus && (
             <p>
               <strong>{contentText(basic.characters[player.character].maneuverBonus!.name)}</strong>{' '}

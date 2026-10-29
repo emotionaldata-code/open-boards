@@ -13,12 +13,20 @@ export function offerDiscard(
   playerId: string,
 ): void {
   const player = runtime.state.players.find((p) => p.id === playerId)!;
+  const eligible = effect.selected
+    ? player.hand.filter(
+        (c) => c.id === binding.selectedCard?.id && player.id === binding.selectedPlayer,
+      )
+    : player.hand;
+  const eligibleCards = effect.tag
+    ? eligible.filter((c) => runtime.defs.cards[c.definition].tags?.includes(effect.tag!))
+    : eligible;
   const chooser = effect.chooser
     ? reference(runtime.state, binding, effect.chooser)?.player
     : playerId;
   if (!chooser) return;
   if (effect.optional) {
-    if (player.hand.length < effect.count) return;
+    if (eligibleCards.length < effect.count) return;
     openChoice(
       runtime,
       binding.frame,
@@ -39,7 +47,7 @@ export function offerDiscard(
     );
     return;
   }
-  if (effect.onComplete && player.hand.length < effect.count) return;
+  if (effect.onComplete && eligibleCards.length < effect.count) return;
   const payment = effect.onComplete ? ++runtime.data.next : undefined;
   if (payment !== undefined) {
     (runtime.data.discardPayments ??= {})[payment] = 0;
@@ -52,7 +60,7 @@ export function offerDiscard(
     });
   }
   if (effect.onDecline) {
-    if (!player.hand.length) {
+    if (!eligibleCards.length) {
       runtime.prepend(...runtime.effects(effect.onDecline, binding));
       return;
     }
@@ -62,13 +70,14 @@ export function offerDiscard(
       chooser,
       'Discard 1 card or decline',
       [
-        ...player.hand.map((card) => ({
+        ...eligibleCards.map((card) => ({
           id: card.id,
           label: runtime.defs.cards[card.definition].name,
           card: { ...card },
           tasks: [
             {
               type: 'discard-card' as const,
+              source: binding.owner,
               player: playerId,
               card: card.id,
               combat: binding.frame,
@@ -93,7 +102,7 @@ export function offerDiscard(
     return;
   }
   if (effect.random) {
-    const remaining = [...player.hand];
+    const remaining = [...eligibleCards];
     const cards = Array.from(
       { length: Math.min(effect.count, remaining.length) },
       () => remaining.splice(randomIndex(runtime, remaining.length), 1)[0],
@@ -101,6 +110,7 @@ export function offerDiscard(
     runtime.prepend(
       ...cards.map((card) => ({
         type: 'discard-card' as const,
+        source: binding.owner,
         player: playerId,
         card: card.id,
         combat: binding.frame,
@@ -111,19 +121,20 @@ export function offerDiscard(
     );
     return;
   }
-  const count = Math.min(effect.count, player.hand.length);
+  const count = Math.min(effect.count, eligibleCards.length);
   openChoice(
     runtime,
     binding.frame,
     chooser,
     `Discard ${effect.upTo ? 'up to ' : ''}${count} card${count === 1 ? '' : 's'}${chooser === playerId ? '' : ` from ${player.name}’s hand`}`,
-    player.hand.map((card) => ({
+    eligibleCards.map((card) => ({
       id: card.id,
       label: runtime.defs.cards[card.definition].name,
       card: { ...card },
       tasks: [
         {
           type: 'discard-card',
+          source: binding.owner,
           payment,
           player: playerId,
           card: card.id,

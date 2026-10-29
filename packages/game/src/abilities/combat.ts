@@ -1,3 +1,5 @@
+import { settleDiscard } from './discard-pile';
+import { eliminate } from './operations';
 import { fighterById } from '../fighters';
 import type { BonusAttack, Card, CombatReveal } from '../types';
 import { modifier } from './conditions';
@@ -206,6 +208,20 @@ export function combatStep(
         });
       break;
     case 'finish':
+      for (const id of frame.lethalFighters ?? []) {
+        const fighter = fighterById(runtime.state, id);
+        if (fighter && !fighter.defeated && fighter.hp <= 0)
+          eliminate(runtime, fighter.id, frame.attacker, false);
+      }
+      for (const [fighter, card] of [
+        [attacker, frame.bonus ? null : frame.card],
+        [defender, frame.defenseCard],
+      ] as const)
+        if (card)
+          settleDiscard(
+            runtime.state.players.find((p) => p.id === fighter.player)!,
+            card,
+          );
       runtime.data.combat = null;
       if (frame.bonusAttack)
         runtime.prepend(

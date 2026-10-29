@@ -8,21 +8,42 @@ import type { Runtime } from './runtime';
 import type { Binding, Task } from './state';
 
 /** Return the revealed commitment without a discard event, then inspect its owner's whole hand. */
-export function offerAttackReplacement(runtime: Runtime, binding: Binding): void {
+export function offerAttackReplacement(
+  runtime: Runtime,
+  binding: Binding,
+  different = false,
+): void {
   const frame = runtime.data.frames[binding.frame];
   if (frame.kind !== 'combat' || frame.hook !== 'combat-reveal' || frame.bonus || !frame.revealed)
     return;
   const attacker = fighterById(runtime.state, frame.attacker)!;
   const player = runtime.state.players.find((p) => p.id === attacker.player)!;
   if (attacker.defeated || player.eliminated) return;
+  if (
+    different &&
+    !player.hand.some((card) => {
+      const definition = runtime.defs.cards[card.definition];
+      return (
+        ['attack', 'versatile'].includes(definition.category) && cardEligible(definition, attacker)
+      );
+    })
+  )
+    return;
   const index = player.discard.findIndex((c) => c.id === frame.card.id);
   if (index < 0) return;
   player.hand.push(player.discard.splice(index, 1)[0]);
-  runtime.prepend({ ...binding, type: 'select-attack' });
+  runtime.prepend({
+    ...binding,
+    type: 'select-attack',
+    ...(different ? { exclude: frame.card.id } : {}),
+  });
   inspectHand(runtime, binding, { type: 'inspect-hand', target: 'attacker' });
 }
 
-export function selectAttack(runtime: Runtime, binding: Binding): void {
+export function selectAttack(
+  runtime: Runtime,
+  binding: Extract<Task, { type: 'select-attack' }>,
+): void {
   const frame = runtime.data.frames[binding.frame];
   if (frame.kind !== 'combat' || frame.bonus) return;
   const attacker = fighterById(runtime.state, frame.attacker)!;
@@ -37,6 +58,7 @@ export function selectAttack(runtime: Runtime, binding: Binding): void {
       .filter((card) => {
         const definition = runtime.defs.cards[card.definition];
         return (
+          card.id !== binding.exclude &&
           (definition.category === 'attack' || definition.category === 'versatile') &&
           cardEligible(definition, attacker)
         );
@@ -66,7 +88,11 @@ export function replaceAttack(
   if (index < 0 || attacker.defeated || player.eliminated) return;
   const card = player.hand[index],
     definition = runtime.defs.cards[card.definition];
-  if (!cardEligible(definition, attacker) || !['attack', 'versatile'].includes(definition.category))
+  if (
+    card.id === task.exclude ||
+    !cardEligible(definition, attacker) ||
+    !['attack', 'versatile'].includes(definition.category)
+  )
     return;
   const previous = frame.card;
   frame.card = player.hand.splice(index, 1)[0];

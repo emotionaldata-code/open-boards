@@ -4,6 +4,7 @@ import type {
   CounterDefinition,
   Effect,
   FighterCondition,
+  DiscardTopCondition,
   StatusDefinition,
 } from './abilities/vocabulary';
 import type { ResolutionState } from './abilities/state';
@@ -14,13 +15,19 @@ export interface CardDefinition {
   usableBy: 'MAIN' | 'ALLY' | 'BOTH';
   /** Optional exact fighter identity, independent of its chosen hero/sidekick role. */
   fighter?: string;
+  /** Required current form/status; declaration permission is checked before commitment. */
+  requiresStatus?: string;
   category: CardCategory;
   value: number;
   boost: number;
   tags?: string[];
   description?: string;
   faceUpDefense?: boolean;
+  defenseMode?: { when: Omit<DiscardTopCondition, 'target'> };
   effectsCannotBeCancelled?: boolean;
+  boostEffects?: Effect[];
+  handInspectionProtection?: boolean;
+  combatSurvival?: boolean;
   attackMode?: { when: FighterCondition; range?: 'any'; faceUp?: boolean };
   ongoing?: {
     preventEnemyActionGain?: boolean;
@@ -44,6 +51,7 @@ export interface FighterDefinition {
 export interface CharacterDefinition extends FighterDefinition {
   id: string;
   movement: number;
+  discardBase?: { name: string; description: string; tags: string[] };
   maneuverBonus?: { name: string; description: string; perDiscardTag: string };
   /** Choose either identity as hero before opening hands; role health stays fixed. */
   heroSelection?: { name: string; description: string; mainName: string };
@@ -131,6 +139,7 @@ export type Phase =
 export interface BonusAttack {
   name: string;
   value: number;
+  combatValue?: number;
 }
 export interface CombatReveal {
   bonus?: BonusAttack;
@@ -188,7 +197,7 @@ export interface CommandEnvelope {
   command: Command;
 }
 export type OutcomeData =
-  | { type: 'hand-revealed'; player: string; cards: Card[] }
+  | { type: 'hand-revealed'; player: string; cards: Card[]; zone?: 'deck' }
   | { type: 'draw'; player: string; cards: Card[] }
   | { type: 'damage'; fighter: string; amount: number; reason: 'combat' | 'exhaustion' | 'ability' }
   | { type: 'move'; fighter: string; path: string[] }

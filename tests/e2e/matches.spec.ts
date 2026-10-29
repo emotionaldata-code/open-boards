@@ -1,6 +1,14 @@
 import { contentText } from '../../apps/client/src/localization/text';
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
+  'nikola-tesla': { name: 'Nikola Tesla', allies: 0 },
+  'harry-houdini': { name: 'Harry Houdini', allies: 1 },
+  'little-red': { name: 'Little Red Riding Hood', allies: 1 },
+  beowulf: { name: 'Beowulf', allies: 1 },
+  hamlet: { name: 'Hamlet', allies: 1 },
+  'bloody-mary': { name: 'Bloody Mary', allies: 0 },
+  'jekyll-hyde': { name: 'Jekyll & Hyde', allies: 0 },
+  'golden-bat': { name: 'Golden Bat', allies: 0 },
   sinbad: { name: 'Sinbad', allies: 1 },
   'sun-wukong': { name: 'Sun Wukong', allies: 0 },
   eredin: { name: 'Eredin', allies: 4 },

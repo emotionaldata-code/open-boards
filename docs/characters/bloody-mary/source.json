@@ -1,0 +1,387 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/bloody-mary",
+  "apiUrl": "https://unmatched.cards/api/db/decks/bloody-mary",
+  "retrievedAt": "2026-10-29T17:56:11.985Z",
+  "deck": {
+    "cards": [
+      {
+        "afterText": "If this is your third action, draw 1 card.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": "Your opponent discards 1 random card. Add its BOOST value to this card's value.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/out-of-the-mirror.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "out-of-the-mirror",
+        "title": "Out Of The Mirror",
+        "type": "attack",
+        "value": 1
+      },
+      {
+        "afterText": "If this is your third action this turn, recover 3 health.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": "You may BOOST this attack.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/ghostly-touch.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "ghostly-touch",
+        "title": "Ghostly Touch",
+        "type": "attack",
+        "value": 1
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": "If this is your third action this turn, this card's value is 7 instead.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/speak-three-times.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "speak-three-times",
+        "title": "Speak Three Times",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": "BLOODY REPRISE: 0 ATK\nDURING COMBAT: If your opponent played a card against BLOODY REQUIEM, this attack's value is that card's printed value.",
+        "basicText": null,
+        "boost": 4,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/bloody-requiem.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "bloody-requiem",
+        "title": "Bloody Requiem",
+        "type": "attack",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/feint.png",
+        "immediateText": "Cancel all effects on your opponent's card.",
+        "other_decks": [
+          {
+            "name": "Alice",
+            "slug": "alice"
+          },
+          {
+            "name": "Bigfoot",
+            "slug": "bigfoot"
+          },
+          {
+            "name": "Dracula",
+            "slug": "dracula"
+          },
+          {
+            "name": "Bruce Lee",
+            "slug": "bruce-lee"
+          },
+          {
+            "name": "Jekyll & Hyde",
+            "slug": "jekyll-hyde"
+          },
+          {
+            "name": "King Arthur",
+            "slug": "king-arthur"
+          },
+          {
+            "name": "Medusa",
+            "slug": "medusa"
+          },
+          {
+            "name": "Robin Hood",
+            "slug": "robin-hood"
+          },
+          {
+            "name": "Black Panther",
+            "slug": "black-panther"
+          },
+          {
+            "name": "Deadpool",
+            "slug": "deadpool"
+          },
+          {
+            "name": "Black Widow",
+            "slug": "black-widow"
+          },
+          {
+            "name": "Winter Soldier",
+            "slug": "winter-soldier"
+          },
+          {
+            "name": "The Genie",
+            "slug": "the-genie"
+          },
+          {
+            "name": "Achilles",
+            "slug": "achilles"
+          },
+          {
+            "name": "Bullseye",
+            "slug": "bullseye"
+          },
+          {
+            "name": "Squirrel Girl",
+            "slug": "squirrel-girl"
+          },
+          {
+            "name": "Ms. Marvel",
+            "slug": "ms-marvel"
+          },
+          {
+            "name": "Cloak and Dagger",
+            "slug": "cloak-and-dagger"
+          },
+          {
+            "name": "Moon Knight",
+            "slug": "moon-knight"
+          },
+          {
+            "name": "Ghost Rider",
+            "slug": "ghost-rider"
+          },
+          {
+            "name": "Raptors",
+            "slug": "raptors"
+          },
+          {
+            "name": "Sherlock Holmes",
+            "slug": "sherlock-holmes"
+          },
+          {
+            "name": "Sinbad",
+            "slug": "sinbad"
+          },
+          {
+            "name": "InGen",
+            "slug": "ingen"
+          },
+          {
+            "name": "Willow",
+            "slug": "willow"
+          },
+          {
+            "name": "Angel",
+            "slug": "angel"
+          },
+          {
+            "name": "Spike",
+            "slug": "spike"
+          },
+          {
+            "name": "Buffy",
+            "slug": "buffy"
+          },
+          {
+            "name": "Beowulf",
+            "slug": "beowulf"
+          },
+          {
+            "name": "Dr. Ellie Sattler",
+            "slug": "dr-ellie-sattler"
+          },
+          {
+            "name": "Daredevil",
+            "slug": "daredevil"
+          },
+          {
+            "name": "Doctor Strange",
+            "slug": "doctor_strange"
+          }
+        ],
+        "quantity": 2,
+        "slug": "feint",
+        "title": "Feint",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "You may place Bloody Mary in any empty space adjacent to the opposing fighter.",
+        "basicText": null,
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/trick-of-the-light.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "trick-of-the-light",
+        "title": "Trick of the Light",
+        "type": "versatile",
+        "value": 2
+      },
+      {
+        "afterText": "If the value of this card matches your opponent's card, draw 1 card and the opposing fighter takes 2 damage.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": "You may increase or decrease the value of this card by 1.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/broken-glass.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 3,
+        "slug": "broken-glass",
+        "title": "Broken Glass",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": "If Bloody Mary shares no zones with the space she started in this turn, this card's value is 6 instead.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/jump-scare.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "jump-scare",
+        "title": "Jump Scare",
+        "type": "versatile",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": "Look at an opponent's hand and choose a card. Your opponent may discard it. If they don't, their hero takes damage equal to its BOOST value.",
+        "boost": 3,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/stolen-memories.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "stolen-memories",
+        "title": "Stolen Memories",
+        "type": "scheme",
+        "value": null
+      },
+      {
+        "afterText": "Choose one of the fighters in the combat and move them up to 4 spaces.",
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/infinity-mirror.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "infinity-mirror",
+        "title": "Infinity Mirror",
+        "type": "versatile",
+        "value": 4
+      },
+      {
+        "afterText": null,
+        "basicText": null,
+        "boost": 2,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": "The value of this card is equal to the printed value of your opponent's card.",
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/mirror-image.png",
+        "immediateText": null,
+        "other_decks": [],
+        "quantity": 2,
+        "slug": "mirror-image",
+        "title": "Mirror Image",
+        "type": "defense",
+        "value": 0
+      },
+      {
+        "afterText": "Draw 1 card.",
+        "basicText": null,
+        "boost": 1,
+        "card_notes": null,
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/evade.png",
+        "immediateText": null,
+        "other_decks": [
+          {
+            "name": "Black Panther",
+            "slug": "black-panther"
+          }
+        ],
+        "quantity": 3,
+        "slug": "evade",
+        "title": "Evade",
+        "type": "defense",
+        "value": 3
+      },
+      {
+        "afterText": null,
+        "basicText": "Move your fighter up to 1 space. Draw 1 card. Gain 1 action.",
+        "boost": 2,
+        "card_notes": "Versions of this card feature the fighter's name instead of \"your fighter\" in the text.",
+        "characterName": "BLOODY MARY",
+        "deck_card_notes": null,
+        "duringText": null,
+        "image": "https://static.unmatched.cards/images/umdb/decks/bloody-mary/closer-than-she-appears.png",
+        "immediateText": null,
+        "other_decks": [
+          {
+            "name": "T. Rex",
+            "slug": "t-rex"
+          }
+        ],
+        "quantity": 2,
+        "slug": "closer-than-she-appears",
+        "title": "Closer Than She Appears",
+        "type": "scheme",
+        "value": null
+      }
+    ],
+    "heroes": [
+      {
+        "attack_type": "melee",
+        "hp": 16,
+        "name": "Bloody Mary",
+        "quantity": 1,
+        "slug": "bloody-mary"
+      }
+    ],
+    "movement": 3,
+    "name": "Bloody Mary",
+    "notes": null,
+    "quote": null,
+    "set": "Battle of Legends, Volume Two",
+    "setSlug": "battle-of-legends-volume-two",
+    "sidekicks": [],
+    "slug": "bloody-mary",
+    "special": "At the start of your turn, if you have exactly 3 cards in hand, gain 1 action."
+  }
+}

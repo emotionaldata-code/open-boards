@@ -1,3 +1,5 @@
+import { startDrawKeep, selectDrawKeep, orderDrawKeep } from './draw-keep';
+import { settleDiscard } from './discard-pile';
 import { boostValue } from '../boost';
 import { resolveBoostDraw } from './boost-draw';
 import { orderAbilities } from './immediate-order';
@@ -13,7 +15,7 @@ import { takeSearched } from './deck';
 import { condition } from './conditions';
 import { applyOperation } from './operations';
 import { combatStep, startCombat } from './combat';
-import { commitAttackBoost } from './attack-boost';
+import { commitAttackBoost, commitBoostGroup } from './attack-boost';
 import { applyEffect } from './effects';
 import { openChoice } from './choices';
 import { cardProvenance, suppressed } from './suppression';
@@ -99,14 +101,27 @@ export class Runtime {
     const frame = this.frame(operation);
     this.prepend({ type: 'event', frame, hook }, { type: 'release', frame });
   }
-  card(player: string, card: Card, discarded: boolean): void {
+  card(player: string, card: Card, discarded: boolean, source?: string): void {
     const fighter = fighterById(this.state, player)!;
     this.state.players.find((p) => p.id === fighter.player)!.discard.push(card);
     this.emit({ type: 'played', player: fighter.player, fighter: fighter.id, card });
-    this.cardEvents(player, card, discarded);
+    this.cardEvents(player, card, discarded, false, source);
   }
-  cardEvents(player: string, card: Card, discarded: boolean, suppressAbilities = false): void {
-    const frame = this.frame({ kind: 'card', actor: player, card, discarded, suppressAbilities });
+  cardEvents(
+    player: string,
+    card: Card,
+    discarded: boolean,
+    suppressAbilities = false,
+    source?: string,
+  ): void {
+    const frame = this.frame({
+      kind: 'card',
+      actor: player,
+      card,
+      discarded,
+      suppressAbilities,
+      source,
+    });
     this.prepend(
       ...(!discarded ? [{ type: 'event' as const, frame, hook: 'card-played' as const }] : []),
       { type: 'event', frame, hook: 'card-discarded' },
@@ -143,6 +158,18 @@ export class Runtime {
       }
     }
     if (frame.kind === 'card' && frame.returned && hook === 'card-discarded') return;
+    if (
+      frame.kind === 'card' &&
+      hook === 'card-discarded' &&
+      !frame.discarded &&
+      this.defs.cards[frame.card.definition].category === 'action'
+    ) {
+      settleDiscard(
+        this.state.players.find((p) => p.id === fighterById(this.state, frame.actor)!.player)!,
+        frame.card,
+      );
+      frame.discarded = true;
+    }
     frame.hook = hook;
     const passives: Task[] = [];
     const cards: Task[] = [];
@@ -200,6 +227,27 @@ export class Runtime {
           : frame.kind === 'card' && !frame.suppressAbilities && p.id === frame.actor
             ? frame.card
             : null;
+      if (
+        frame.kind === 'combat' &&
+        frame.bonus?.combatValue !== undefined &&
+        p.id === frame.attacker
+      )
+        add(
+          [
+            {
+              id: 'bonus-value',
+              name: frame.bonus.name,
+              description: 'Set the bonus attack value during combat.',
+              trigger: 'before-combat',
+              effects: [
+                { type: 'set-combat-value', value: frame.bonus.combatValue, mode: 'printed' },
+              ],
+            },
+          ],
+          'bonus',
+          false,
+          cardProvenance(this, frame, frame.card.id),
+        );
       if (card)
         add(
           this.defs.cards[card.definition].abilities,
@@ -391,6 +439,7 @@ export class Runtime {
         }
         break;
       case 'advance-turn':
+        this.data.actionNumber = 0;
         if (victory(state, this.emit)) {
           this.clear();
           return;
@@ -401,6 +450,7 @@ export class Runtime {
         this.data.turn++;
         this.data.attacked = [];
         this.data.maneuvered = [];
+        this.data.damaged = [];
         this.data.movementLocks = [];
         this.data.endTurnRequested = false;
         state.actions = 2;
@@ -420,6 +470,10 @@ export class Runtime {
     if (!maneuver.remaining.length) {
       this.state.maneuver = null;
       this.prepend({ type: 'flow', action: 'settle' });
+      this.event('after-maneuver', {
+        kind: 'turn',
+        actor: mainFighter(this.state, maneuver.player).id,
+      });
     } else if (maneuver.finishing) {
       const fighter = fighterById(this.state, maneuver.remaining.shift()!)!;
       this.operation({
@@ -461,6 +515,31 @@ export class Runtime {
         else continue;
       }
       switch (task.type) {
+        case 'select-boost-card': {
+          const frame = this.data.frames[task.frame];
+          if (frame?.kind === 'combat') (frame.selectedBoosts ??= []).push(task.card);
+          break;
+        }
+        case 'commit-boost-group':
+          commitBoostGroup(this, task);
+          break;
+        case 'reveal-protection': {
+          const player = this.state.players.find((p) => p.id === task.player);
+          const card = player?.hand.find((c) => c.id === task.card);
+          if (card && this.defs.cards[card.definition].handInspectionProtection) {
+            this.data.queue = this.data.queue.filter(
+              (t) =>
+                !(
+                  t.type === 'effect' &&
+                  t.frame === task.cancel.frame &&
+                  t.owner === task.cancel.owner &&
+                  t.provenance?.card === task.cancel.provenance?.card
+                ),
+            );
+            this.emit({ type: 'hand-revealed', player: task.player, cards: [{ ...card }] });
+          }
+          break;
+        }
         case 'complete-payment': {
           const paid = this.data.discardPayments?.[task.payment] ?? 0;
           if (this.data.discardPayments) delete this.data.discardPayments[task.payment];
@@ -539,6 +618,15 @@ export class Runtime {
         case 'search-card':
           if (this.data.frames[task.frame]) resolveSearch(this, task);
           break;
+        case 'draw-keep-start':
+          if (this.data.frames[task.frame]) startDrawKeep(this, task);
+          break;
+        case 'draw-keep-select':
+          if (this.data.frames[task.frame]) selectDrawKeep(this, task);
+          break;
+        case 'draw-keep-order':
+          if (this.data.frames[task.frame]) orderDrawKeep(this, task);
+          break;
         case 'inspect-take':
           if (this.data.frames[task.frame]) takeInspected(this, task);
           break;
@@ -607,7 +695,7 @@ export class Runtime {
                   selectedPlayer: p.id,
                 }),
               );
-            this.card(mainFighter(this.state, p.id).id, card, true);
+            this.card(mainFighter(this.state, p.id).id, card, true, task.source);
           }
           break;
         }

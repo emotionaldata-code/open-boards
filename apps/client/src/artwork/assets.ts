@@ -13,6 +13,26 @@ export const mapArtwork: Record<string, string> = {
 };
 
 export const fighterArtwork: Record<string, { portrait: string; token: string }> = {
+  'golden-bat': { portrait: 'golden-bat-portrait', token: 'golden-bat-token' },
+  'bloody-mary': { portrait: 'bloody-mary-portrait', token: 'bloody-mary-token' },
+  hamlet: { portrait: 'hamlet-portrait', token: 'hamlet-token' },
+  'hamlet-rosencrantz-guildenstern': {
+    portrait: 'hamlet-rosencrantz-guildenstern-portrait',
+    token: 'hamlet-rosencrantz-guildenstern-token',
+  },
+  beowulf: { portrait: 'beowulf-portrait', token: 'beowulf-token' },
+  'beowulf-wiglaf': { portrait: 'wiglaf-portrait', token: 'wiglaf-token' },
+  'harry-houdini': { portrait: 'harry-houdini-portrait', token: 'harry-houdini-token' },
+  'harry-houdini-bess': {
+    portrait: 'harry-houdini-bess-portrait',
+    token: 'harry-houdini-bess-token',
+  },
+  'nikola-tesla': { portrait: 'nikola-tesla-portrait', token: 'nikola-tesla-token' },
+  'little-red': { portrait: 'little-red-portrait', token: 'little-red-token' },
+  'little-red-huntsman': {
+    portrait: 'little-red-huntsman-portrait',
+    token: 'little-red-huntsman-token',
+  },
   sinbad: { portrait: 'sinbad-portrait', token: 'sinbad-token' },
   'sinbad-porter': { portrait: 'sinbad-porter-portrait', token: 'sinbad-porter-token' },
   'darth-vader': { portrait: 'darth-vader-portrait', token: 'darth-vader-token' },
@@ -53,6 +73,7 @@ export const fighterArtwork: Record<string, { portrait: string; token: string }>
   },
   'sun-wukong': { portrait: 'sun-wukong-portrait', token: 'sun-wukong-token' },
   'sun-wukong-clone': { portrait: 'sun-wukong-clone-portrait', token: 'sun-wukong-clone-token' },
+  'jekyll-hyde': { portrait: 'jekyll-hyde-portrait', token: 'jekyll-hyde-token' },
   medusa: { portrait: 'medusa-portrait', token: 'medusa-token' },
   'medusa-harpy': { portrait: 'harpy-portrait', token: 'harpy-token' },
   'king-arthur': { portrait: 'king-arthur-portrait', token: 'king-arthur-token' },

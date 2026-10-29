@@ -4,10 +4,31 @@ import type { Runtime } from './runtime';
 import { cancelCombat, publishCombat } from './combat';
 import { canPlace, validForcedPath } from './positions';
 
-export function eliminate(runtime: Runtime, id: string, source: string): void {
+export function eliminate(
+  runtime: Runtime,
+  id: string,
+  source: string,
+  allowSurvival = true,
+): boolean {
   const fighter = fighterById(runtime.state, id)!;
   const owner = runtime.state.players.find((p) => p.id === fighter.player)!;
-  if (fighter.defeated) return;
+  if (fighter.defeated) return false;
+  const activeCombat =
+    runtime.data.combat === null ? undefined : runtime.data.frames[runtime.data.combat];
+  if (
+    allowSurvival &&
+    activeCombat?.kind === 'combat' &&
+    activeCombat.revealed &&
+    activeCombat.defender === id &&
+    activeCombat.defenseCard &&
+    runtime.defs.cards[activeCombat.defenseCard.definition].combatSurvival &&
+    !activeCombat.suppressedCards?.includes(activeCombat.defenseCard.id) &&
+    !activeCombat.detachedFighters?.includes(id)
+  ) {
+    fighter.hp = 0;
+    if (!activeCombat.lethalFighters?.includes(id)) (activeCombat.lethalFighters ??= []).push(id);
+    return false;
+  }
   fighter.hp = 0;
   fighter.defeated = true;
   runtime.emit({ type: 'defeated', fighter: id });
@@ -33,6 +54,7 @@ export function eliminate(runtime: Runtime, id: string, source: string): void {
   )
     cancelCombat(runtime);
   runtime.event('eliminated', { kind: 'elimination', actor: id, target: id, source });
+  return true;
 }
 export function applyOperation(runtime: Runtime, frameId: number): void {
   const frame = runtime.data.frames[frameId];
@@ -58,6 +80,7 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       frame.amount = frame.cancelled ? 0 : Math.max(0, Math.min(100, frame.amount));
       const cards = owner.deck.splice(0, frame.amount);
       owner.hand.push(...cards);
+      frame.drawnCards = structuredClone(cards);
       if (cards.length) emit({ type: 'draw', player: owner.id, cards }, owner.id);
       const missing = frame.amount - cards.length;
       frame.amount = cards.length;
@@ -97,13 +120,15 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
           publishCombat(runtime, combat);
         }
       }
+      if (frame.amount > 0 && !runtime.data.damaged?.includes(fighter.id))
+        (runtime.data.damaged ??= []).push(fighter.id);
       fighter.hp = Math.max(0, fighter.hp - frame.amount);
       emit({ type: 'damage', fighter: fighter.id, amount: frame.amount, reason: frame.reason });
       frame.defeated = fighter.hp === 0 && frame.amount > 0;
       if (fighter.hp === 0) {
+        frame.defeated = eliminate(runtime, fighter.id, frame.actor);
         const area = frame.area === undefined ? undefined : runtime.data.frames[frame.area];
-        if (area?.kind === 'area') area.defeats++;
-        eliminate(runtime, fighter.id, frame.actor);
+        if (area?.kind === 'area' && frame.defeated) area.defeats++;
       }
       break;
     }
@@ -145,6 +170,8 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       }
       const origin = fighter.position!;
       fighter.position = frame.path.at(-1) ?? origin;
+      if (frame.consumeManeuver && state.maneuver?.player === fighter.player)
+        state.maneuver.remaining = state.maneuver.remaining.filter((id) => id !== fighter.id);
       frame.distance = frame.path.length;
       if (origin === null)
         emit({ type: 'placed', fighter: fighter.id, position: fighter.position! });

@@ -57,7 +57,7 @@ export function outcomeReview(
       return {
         participants: [],
         cards: outcome.cards.map((c) => c.definition),
-        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} rivela ${outcome.cards.length} ${outcome.cards.length === 1 ? 'carta' : 'carte'} dalla propria mano.`,
+        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} rivela ${outcome.cards.length} ${outcome.cards.length === 1 ? 'carta' : 'carte'} ${outcome.zone === 'deck' ? 'dal proprio mazzo' : 'dalla propria mano'}.`,
       };
     case 'played':
       if (!isActionPlay(outcome, previous)) return;

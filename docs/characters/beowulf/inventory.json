@@ -1,0 +1,152 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/beowulf",
+  "retrievedAt": "2026-10-29T17:17:28.537Z",
+  "cards": [
+    {
+      "id": "beowulf-remnant-of-valor",
+      "name": "Remnant of Valor",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Wiglaf deals 1 damage to each adjacent fighter. If Beowulf was dealt damage this way, gain 1 action."
+      }
+    },
+    {
+      "id": "beowulf-feint",
+      "name": "Feint",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 1,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      }
+    },
+    {
+      "id": "beowulf-epic-poem",
+      "name": "Epic Poem",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "boost": 2,
+      "sourceRules": {
+        "immediateText": "Gain 1 Rage.",
+        "duringText": "This card's value is +1 for each Rage you have. (You do not spend Rage for this effect.)"
+      }
+    },
+    {
+      "id": "beowulf-the-ancient-heirloom",
+      "name": "The Ancient Heirloom",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "boost": 1,
+      "sourceRules": {
+        "basicText": "This card's effects cannot be canceled.",
+        "duringText": "You may spend 2 Rage to make this card's value 5 instead. You may spend 1 Rage to BOOST this card. (You may do both.)"
+      }
+    },
+    {
+      "id": "beowulf-no-contest-expecteth",
+      "name": "No Contest Expecteth",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "boost": 3,
+      "sourceRules": {
+        "afterText": "If you attacked a sidekick and won the combat, you may spend 3 Rage to defeat that sidekick."
+      }
+    },
+    {
+      "id": "beowulf-the-war-king",
+      "name": "The War-King",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 1,
+      "boost": 3,
+      "sourceRules": {
+        "duringText": "Spend any amount of Rage. This card's value is +2 for each Rage spent."
+      }
+    },
+    {
+      "id": "beowulf-the-equal-of-grendel",
+      "name": "The Equal of Grendel",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 3,
+      "boost": 1,
+      "sourceRules": {
+        "immediateText": "You may spend 2 Rage to deal damage to the opposing fighter equal to the printed value of their card."
+      }
+    },
+    {
+      "id": "beowulf-vigor-and-courage",
+      "name": "Vigor and Courage",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "sourceRules": {
+        "basicText": "Choose an opponent. They discard 1 random card. Gain rage equal to its BOOST value."
+      }
+    },
+    {
+      "id": "beowulf-golden-drinking-horn",
+      "name": "Golden Drinking Horn",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "sourceRules": {
+        "basicText": "Spend any amount of Rage. Choose a different effect for each Rage spent: - draw 2 cards - move Beowulf up to 4 spaces - Beowulf recovers 2 health."
+      }
+    },
+    {
+      "id": "beowulf-hot-for-the-battle",
+      "name": "Hot for the Battle",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "attack",
+      "value": 3,
+      "boost": 3,
+      "sourceRules": {
+        "afterText": "Wiglaf may swap spaces with Beowulf."
+      }
+    },
+    {
+      "id": "beowulf-fatal-struggle",
+      "name": "Fatal Struggle",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "attack",
+      "value": 4,
+      "boost": 2,
+      "sourceRules": {
+        "afterText": "If you won the combat, draw 2 cards. If you lost the combat, your opponent draws 2 cards."
+      }
+    },
+    {
+      "id": "beowulf-skirmish",
+      "name": "Skirmish",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 4,
+      "boost": 1,
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces."
+      }
+    }
+  ]
+}

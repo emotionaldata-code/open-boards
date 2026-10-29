@@ -23,11 +23,12 @@ export function ownedFighters(state: Pick<GameState, 'fighters'>, player: string
 }
 export function cardEligible(
   card: CardDefinition,
-  fighter: Pick<Fighter, 'role' | 'defeated'> & Partial<Pick<Fighter, 'definition'>>,
+  fighter: Pick<Fighter, 'role' | 'defeated'> & Partial<Pick<Fighter, 'definition' | 'statuses'>>,
 ): boolean {
   return (
     !fighter.defeated &&
     (!card.fighter || card.fighter === fighter.definition) &&
+    (!card.requiresStatus || !!fighter.statuses?.some((s) => s.id === card.requiresStatus)) &&
     (card.usableBy === 'BOTH' || card.usableBy === fighter.role.toUpperCase())
   );
 }

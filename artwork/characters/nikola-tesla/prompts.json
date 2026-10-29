@@ -1,0 +1,67 @@
+[
+  {
+    "id": "nikola-tesla-portrait",
+    "prompt": "Use case: historical-scene. Asset type: square painted hero portrait for a tabletop game. Nikola Tesla, Serbian inventor circa 1895, lean angular face, dark neatly swept hair, narrow mustache, dark three-piece Victorian suit with ivory shirt, two compact copper induction coils carried at his shoulders, intense thoughtful gaze. Original cinematic illustrated realism, credible skin and cloth, midnight laboratory with branching electric blue light and warm copper machinery, dramatic motivated lighting, chest-up centered clear silhouette, no text, numbers, icons, logo, watermark or frame.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-01b49e6b-7668-4e58-94d3-f71b3ebdeae1.png"
+  },
+  {
+    "id": "nikola-tesla-token",
+    "prompt": "Use case: historical-scene. Asset type: transparent full-body board-game figure. Use the reference portrait solely for Nikola Tesla's identity: angular face, swept dark hair, narrow mustache, lean adult build, dark three-piece 1890s suit and ivory shirt. Tesla stands in a dynamic three-quarter pose holding two compact copper induction coils, blue electric arcs contained between the coils. Complete head, hands, shoes and coat visible, isolated on actual transparent background, no ground shadow, no base or pedestal. Original cinematic illustrated realism, realistic painted materials with readable silhouette. No text, logo, watermark, symbols or frame.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-e95e5e56-26cc-4f65-9e58-f4546c3efa30.png"
+  },
+  {
+    "id": "7-hertz",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla stands in the center of a circular laboratory, copper coils sending seven broad ripples of electric blue resonance through the air, wide dynamic low angle, explosive controlled energy.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-c9a7b869-7260-43a5-9608-edeb0c11ca24.png"
+  },
+  {
+    "id": "the-alternating-current",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla closes a heavy copper switch between two giant alternating current generators, diagonal composition, orange copper and blue electric current pulsing in alternating arcs, medium shot.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-ab4e48af-7d57-4a99-a517-06874a22c700.png"
+  },
+  {
+    "id": "death-ray",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla aims an original large brass and copper experimental ray apparatus across a dark laboratory, brilliant narrow electric blue beam, strong side view, dramatic foreshortening, intact focused inventor.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-2004a7c3-8706-4821-a357-2735302bf60e.png"
+  },
+  {
+    "id": "fully-charged",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Close-up of two polished copper induction coils brimming with electric blue energy on Tesla's laboratory bench, Tesla's hand adjusting the final dial, intimate detailed apparatus still life.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-4686c39d-617b-4e03-a9ba-70a3cb763523.png"
+  },
+  {
+    "id": "intense-experimentation",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla bends over an intricate workbench under a bright blue experimental spark, scattered unlabeled papers, glass vacuum tubes and precision copper components, weary determined face, medium overhead view.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-12bd58af-82bc-49a4-904b-b8d755044fd1.png"
+  },
+  {
+    "id": "kinetic-induction",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla deftly redirects a swinging metal pendulum between twin copper electromagnets, spectacular blue arcs following its motion, dynamic wide composition, Victorian laboratory.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-d49c5fa4-cf21-4c8a-91ba-eaf5685c89ac.png"
+  },
+  {
+    "id": "lightning-storm",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla stands elevated beside immense coils as a spectacular branching lightning storm illuminates a cavernous laboratory, small human scale against roaring electric blue arcs, wide heroic composition.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-3caa8207-71e1-4dfe-b31f-2099d4001cdf.png"
+  },
+  {
+    "id": "polyphase-coils",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Three massive interlocking copper induction coils create a luminous geometric electric field around Tesla, defensive halo of branching blue energy, medium frontal composition, no visible symbols.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-791a3a57-116c-4d09-b31a-e4264495ac99.png"
+  },
+  {
+    "id": "remote-control",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Close view of Tesla's elegant hands manipulating a small copper-and-ebony radio controller while a mechanical miniature boat turns across a dark water tank in his laboratory, warm instrument light.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-12614944-6f80-40a2-8e63-0e041227905d.png"
+  },
+  {
+    "id": "repulsion-blast",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla thrusts a compact induction coil forward, a powerful blue electromagnetic shockwave throws loose metal tools and a shadowy adversary backward, dynamic low angle with inventor in clear foreground.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-1739041d-6547-436b-a35a-43a898a44e27.png"
+  },
+  {
+    "id": "x-ray-radiation",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape card illustration for tabletop game. Identity reference only: Nikola Tesla circa 1895, lean angular face, swept dark hair, narrow mustache, dark three-piece Victorian suit, ivory shirt. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated blue electrical light with warm copper, rich atmospheric depth and readable narrative staging. Keep crucial subject and action within central 80%. No text, letters, numerals, icons, logo, watermark, frame or border. Scene: Tesla studies a glowing translucent radiographic plate showing the bones of a gloved hand beside a flickering vacuum tube, curious focused face half lit blue, intimate laboratory composition, no written markings.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-a1d3-7ea3-a301-06cb0951c6ca/exec-2fe0d8b0-441d-4128-8a03-2659ccf3e576.png"
+  }
+]

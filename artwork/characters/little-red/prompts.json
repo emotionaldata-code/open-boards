@@ -1,0 +1,161 @@
+[
+  {
+    "id": "huntsman-portrait",
+    "prompt": "Use case: illustration-story. Original game ally portrait, square, cinematic illustrated realism. A grizzled adult medieval huntsman, broad weathered face, short salt-and-pepper beard, brown leather coat and moss green hood, sturdy crossbow held low, compassionate watchful eyes. Upper-body three-quarter portrait in a misty pine forest, warm lantern side light, rich natural textures, clear distinct silhouette. No writing, no symbols, no logo, no frame. Original folklore design.",
+    "transparent_background": false,
+    "referenced_image_paths": []
+  },
+  {
+    "id": "little-red-portrait",
+    "prompt": "Use case: illustration-story. Original game hero portrait, square, cinematic illustrated realism. An adult young woman woodland survivor with a vivid weathered crimson hood and cloak, dark braided hair, alert brown eyes, pale freckled face, practical forest-green medieval leather clothes, a wicker basket and a small hunting knife. Upper-body three-quarter portrait, misty pine forest, warm lantern side light, rich natural textures, clear distinct silhouette. No writing, no symbols, no logo, no frame. Not based on any modern adaptation.",
+    "transparent_background": false,
+    "referenced_image_paths": []
+  },
+  {
+    "id": "little-red-token",
+    "prompt": "Use case: illustration-story. Transparent full-body game figure of the adult woman from first reference: crimson hood and weathered cloak, dark braids, green medieval leather clothing, wicker basket in one hand and small hunting knife in other. Complete feet and extremities, upright ready pose, three-quarter view, credible cinematic painted anatomy, no base, no ground, no text, no frame.",
+    "transparent_background": true,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "huntsman-token",
+    "prompt": "Use case: illustration-story. Transparent full-body game figure of the grizzled huntsman from second reference: salt-and-pepper beard, moss green hood, brown medieval leather coat, practical boots, crossbow held across body. Complete feet and extremities, upright ready pose, three-quarter view, credible cinematic painted anatomy, no base, no ground, no text, no frame.",
+    "transparent_background": true,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "what-large-hands-you-have",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Little Red ducks under a huge shadow of a wolf paw cast across a mossy tree, her knife ready, suspenseful close action.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "the-wolf-s-skin",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. The Huntsman raises a grey wolf pelt between himself and flying splinters as a shield, dramatic silhouette and moonlight.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "what-a-terrible-big-mouth-you-have",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Little Red confronts the jaws of a giant snarling grey wolf in a forest clearing, her knife glinting, non-graphic tense action.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "what-big-ears-you-have",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Little Red listens alertly at a tree trunk while enormous wolf ears emerge in the fog behind, diagonal stalking composition.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "what-big-eyes-you-have",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Close portrait of determined Little Red looking into luminous wolf eyes in the darkness, her steady gaze reflected in them.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "what-s-that-in-my-basket",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Close view into Little Red's open wicker basket revealing a hunting knife, folded grey wolf pelt and purple wolfsbane, her red sleeve at edge.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "never-leave-the-path",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Wide misty woodland crossroads, Little Red on a narrow moonlit stone path between looming pines, looking towards a distant cottage light.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "into-the-woods",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Little Red strides between towering mossy roots into the dark forest, flowing crimson cloak, basket swinging, full figure and vast trees.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "long-have-i-sought-you",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Huntsman at close range aiming his crossbow at the looming flank of a giant grey wolf, fierce face, dramatic low angle forest scene.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "a-grimm-tale",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. The Huntsman tends Little Red's minor wounded hand beside a small campfire, healing herbs and basket, humane quiet medieval woodland scene.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "stones-in-the-belly",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. A heap of heavy smooth river stones beside Little Red's opened basket, her hand selecting one, grey wolf shadow across the foreground.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "once-upon-a-time",
+    "prompt": "Use case: illustration-story. Original cinematic illustrated realism for a folklore board game. 8:5 landscape composition, crucial action inside central 80%, credible anatomy, rich painterly leather and cloth texture, dramatic misty forest lighting. Identity references show adult Little Red in worn crimson hood, dark braids, green leather clothes with basket and knife, and grizzled Huntsman in moss hood, brown leather with crossbow. No writing, lettering, symbols, borders, logos or watermarks. Little Red and the Huntsman stand back to back at the edge of a misty forest, distant cottage, resolute fairytale opening scene.",
+    "transparent_background": false,
+    "referenced_image_paths": [
+      "artwork/characters/little-red/masters/little-red-portrait.png",
+      "artwork/characters/little-red/masters/huntsman-portrait.png"
+    ]
+  },
+  {
+    "id": "little-red-stones-in-the-belly-v2",
+    "prompt": "Original cinematic illustrated realism, horizontal 8:5 board-game card illustration. EXTREME CLOSE-UP STILL LIFE ONLY: a wicker basket tipped open on wet forest soil with six large smooth grey river stones spilling out, a small knife and purple wolfsbane beside it. A crimson sleeve and one woman's hand selecting a stone at upper edge. Dramatic cool moonlight and warm firelight, tactile moss and leather. No full human figures, no crossbow, no wolves, no text, no frame, no icons. Central basket and STONES must dominate.",
+    "transparent_background": false,
+    "referenced_image_paths": ["artwork/characters/little-red/masters/little-red-portrait.png"],
+    "reason": "Targeted composition refinement for clearer card-specific subject and camera variation."
+  },
+  {
+    "id": "little-red-never-leave-the-path-v2",
+    "prompt": "Original cinematic illustrated realism, horizontal 8:5 board-game card illustration. EXTREME WIDE LANDSCAPE: a narrow winding stone path stretches through vast towering dark pine trees to a tiny glowing cottage deep in fog. A single small figure of an adult woman in a red hood with wicker basket stands alone on path, back to viewer; she occupies less than one fifth of the image height. Overhanging branches suggest danger. Forest and PATH dominate the frame. No second person, no close portrait, no text or symbols.",
+    "transparent_background": false,
+    "referenced_image_paths": ["artwork/characters/little-red/masters/little-red-portrait.png"],
+    "reason": "Targeted composition refinement for clearer card-specific subject and camera variation."
+  },
+  {
+    "id": "little-red-what-big-ears-you-have-v2",
+    "prompt": "Original cinematic illustrated realism, horizontal 8:5 board-game card illustration. Adult young woman with dark braid, weathered crimson hood and green leather clothes presses close to a huge tree trunk listening cautiously. Behind the trunk, prominently visible in close foreground, two huge furry pointed grey wolf ears rise above the moss; show the ears and part of wolf head. Strong diagonal framing, misty moonlight, tense stealth mood. ONLY one woman, no man, no crossbow, no text, no frame or symbols.",
+    "transparent_background": false,
+    "referenced_image_paths": ["artwork/characters/little-red/masters/little-red-portrait.png"],
+    "reason": "Targeted composition refinement for clearer card-specific subject and camera variation."
+  }
+]

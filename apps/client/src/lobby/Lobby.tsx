@@ -10,12 +10,13 @@ export function Lobby({
   onJoin,
   busy,
 }: {
-  onCreate: (capacity: 2 | 4) => void;
-  onJoin: (id: string) => void;
+  onCreate: (capacity: 2 | 4, role?: 'player' | 'spectator') => void;
+  onJoin: (id: string, role?: 'player' | 'spectator') => void;
   busy: boolean;
 }) {
   const [rooms, setRooms] = useState<RoomListing[]>([]);
   const [id, setId] = useState(new URLSearchParams(location.search).get('room') ?? '');
+  const [watch, setWatch] = useState(new URLSearchParams(location.search).has('watch'));
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
@@ -77,12 +78,15 @@ export function Lobby({
               <span>Tutti contro tutti</span>
             </GameButton>
           </div>
-          <h2>Gioca con gli amici</h2>
+          <GameButton onClick={() => onCreate(2, 'spectator')} disabled={busy}>
+            Organizza una partita tra bot
+          </GameButton>
+          <h2>Entra con un codice</h2>
           <form
             className="inline-form"
             onSubmit={(e) => {
               e.preventDefault();
-              onJoin(id.trim());
+              onJoin(id.trim(), watch ? 'spectator' : 'player');
             }}
           >
             <label className="grow">
@@ -96,16 +100,20 @@ export function Lobby({
               />
             </label>
             <GameButton disabled={busy || !id.trim()} className="primary">
-              Entra al tavolo
+              {watch ? 'Osserva' : 'Entra al tavolo'}
             </GameButton>
           </form>
+          <label className="watch-option">
+            <input type="checkbox" checked={watch} onChange={(e) => setWatch(e.target.checked)} />
+            Entra come spettatore
+          </label>
         </section>
         <section className="panel room-list">
           <GameFrame />
           <div className="section-heading">
-            <h2>In attesa di giocatori</h2>
+            <h2>Tavoli disponibili</h2>
             <span className="muted">
-              {rooms.length} {rooms.length === 1 ? 'tavolo aperto' : 'tavoli aperti'}
+              {rooms.length} {rooms.length === 1 ? 'tavolo' : 'tavoli'}
             </span>
           </div>
           <div className="room-list-content" aria-busy={loading}>
@@ -134,8 +142,11 @@ export function Lobby({
                       <span>
                         {room.seats} / {room.capacity} giocatori
                       </span>
-                      <GameButton disabled={busy} onClick={() => onJoin(room.id)}>
-                        Entra
+                      <GameButton
+                        disabled={busy || (!room.joinable && !room.watchable)}
+                        onClick={() => onJoin(room.id, room.joinable ? 'player' : 'spectator')}
+                      >
+                        {room.joinable ? 'Entra' : 'Osserva'}
                       </GameButton>
                     </li>
                   ))}

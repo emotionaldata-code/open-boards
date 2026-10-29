@@ -1,0 +1,107 @@
+[
+  {
+    "id": "jekyll-hyde-portrait",
+    "kind": "portrait",
+    "source": "masters/jekyll-hyde-portrait.png",
+    "focal": [0.46, 0.35]
+  },
+  {
+    "id": "jekyll-hyde-token",
+    "kind": "token",
+    "source": "masters/jekyll-hyde-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "jekyll-hyde-feint",
+    "kind": "card",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-feint"
+  },
+  {
+    "id": "jekyll-hyde-skirmish",
+    "kind": "card",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-skirmish"
+  },
+  {
+    "id": "jekyll-hyde-duality-of-man",
+    "kind": "card",
+    "source": "masters/duality-of-man.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-duality-of-man"
+  },
+  {
+    "id": "jekyll-hyde-succumb-to-compulsion",
+    "kind": "card",
+    "source": "masters/succumb-to-compulsion.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-succumb-to-compulsion"
+  },
+  {
+    "id": "jekyll-hyde-madness-relents",
+    "kind": "card",
+    "source": "masters/madness-relents.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-madness-relents"
+  },
+  {
+    "id": "jekyll-hyde-recoiling-blow",
+    "kind": "card",
+    "source": "masters/recoiling-blow.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-recoiling-blow"
+  },
+  {
+    "id": "jekyll-hyde-forever-hyde",
+    "kind": "card",
+    "source": "masters/forever-hyde.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-forever-hyde"
+  },
+  {
+    "id": "jekyll-hyde-with-haste",
+    "kind": "card",
+    "source": "masters/with-haste.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-with-haste"
+  },
+  {
+    "id": "jekyll-hyde-scientific-method",
+    "kind": "card",
+    "source": "masters/scientific-method.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-scientific-method"
+  },
+  {
+    "id": "jekyll-hyde-calming-research",
+    "kind": "card",
+    "source": "masters/calming-research.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-calming-research"
+  },
+  {
+    "id": "jekyll-hyde-pure-evil",
+    "kind": "card",
+    "source": "masters/pure-evil.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-pure-evil"
+  },
+  {
+    "id": "jekyll-hyde-strange-case",
+    "kind": "card",
+    "source": "masters/strange-case.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-strange-case"
+  },
+  {
+    "id": "jekyll-hyde-distracted-triage",
+    "kind": "card",
+    "source": "masters/distracted-triage.png",
+    "focal": [0.5, 0.5],
+    "card": "jekyll-hyde-distracted-triage"
+  }
+]

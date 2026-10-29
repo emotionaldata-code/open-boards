@@ -1,0 +1,189 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/bloody-mary",
+  "apiUrl": "https://unmatched.cards/api/db/decks/bloody-mary",
+  "retrievedAt": "2026-10-29T17:56:11.985Z",
+  "hero": {
+    "name": "Bloody Mary",
+    "hp": 16,
+    "movement": 3,
+    "attackType": "melee",
+    "allies": 0
+  },
+  "special": "At the start of your turn, if you have exactly 3 cards in hand, gain 1 action.",
+  "cards": [
+    {
+      "id": "bloody-mary-out-of-the-mirror",
+      "name": "Out Of The Mirror",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 1,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "Your opponent discards 1 random card. Add its BOOST value to this card's value.",
+        "afterText": "If this is your third action, draw 1 card."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-ghostly-touch",
+      "name": "Ghostly Touch",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 1,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "You may BOOST this attack.",
+        "afterText": "If this is your third action this turn, recover 3 health."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-speak-three-times",
+      "name": "Speak Three Times",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "If this is your third action this turn, this card's value is 7 instead."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-bloody-requiem",
+      "name": "Bloody Requiem",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 4,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "BLOODY REPRISE: 0 ATK\nDURING COMBAT: If your opponent played a card against BLOODY REQUIEM, this attack's value is that card's printed value."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-trick-of-the-light",
+      "name": "Trick of the Light",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "You may place Bloody Mary in any empty space adjacent to the opposing fighter."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-broken-glass",
+      "name": "Broken Glass",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 2,
+      "count": 3,
+      "sourceRules": {
+        "duringText": "You may increase or decrease the value of this card by 1.",
+        "afterText": "If the value of this card matches your opponent's card, draw 1 card and the opposing fighter takes 2 damage."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-jump-scare",
+      "name": "Jump Scare",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "If Bloody Mary shares no zones with the space she started in this turn, this card's value is 6 instead."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-stolen-memories",
+      "name": "Stolen Memories",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "sourceRules": {
+        "basicText": "Look at an opponent's hand and choose a card. Your opponent may discard it. If they don't, their hero takes damage equal to its BOOST value."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-infinity-mirror",
+      "name": "Infinity Mirror",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "afterText": "Choose one of the fighters in the combat and move them up to 4 spaces."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-mirror-image",
+      "name": "Mirror Image",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "duringText": "The value of this card is equal to the printed value of your opponent's card."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-evade",
+      "name": "Evade",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "sourceRules": {
+        "afterText": "Draw 1 card."
+      },
+      "notes": []
+    },
+    {
+      "id": "bloody-mary-closer-than-she-appears",
+      "name": "Closer Than She Appears",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "sourceRules": {
+        "basicText": "Move your fighter up to 1 space. Draw 1 card. Gain 1 action."
+      },
+      "notes": [
+        "Versions of this card feature the fighter's name instead of \"your fighter\" in the text."
+      ]
+    }
+  ]
+}

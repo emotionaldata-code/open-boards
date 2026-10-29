@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-29",
+  "generator": "OpenAI integrated Imagegen",
+  "sourceIdentity": "Original early-medieval legendary Geatish king and loyal young warrior; no publisher illustration redistributed.",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/beowulf",
+  "references": ["references/beowulf-identity.png", "references/wiglaf-identity.png"],
+  "generationFailures": [],
+  "assets": [
+    {
+      "id": "beowulf-portrait",
+      "source": "masters/beowulf-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-c00ec98d-75cf-4522-8f63-e74018c3b23e.png",
+      "sha256": "d741dd9a538868d0ac1bec512aac2973f3f9e5b4d6a3442ce201a265688bf512"
+    },
+    {
+      "id": "wiglaf-portrait",
+      "source": "masters/wiglaf-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-146ef89c-fc14-4dc6-8f29-911a4afa4e66.png",
+      "sha256": "865b563c4bb8acf3554135534dccd531d0992b19a0db48ef65aac22e4b7eb38a"
+    },
+    {
+      "id": "beowulf-token",
+      "source": "masters/beowulf-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-25004222-d88c-4285-8f5a-78d358ed6671.png",
+      "sha256": "c87a269da4e05b6e8424034ad21e1c26655305f72846a509400d61995e9fcbf3"
+    },
+    {
+      "id": "wiglaf-token",
+      "source": "masters/wiglaf-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-dd3732e0-517f-4e4b-ae3e-6fb567031a3d.png",
+      "sha256": "659aacbcc37f7b5950f9e7b61882d5e3838d593fb1d3d1077642c1d3c77473cd"
+    },
+    {
+      "id": "remnant-of-valor",
+      "source": "masters/remnant-of-valor.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-e3d9d2fb-a32f-4c90-8c41-3f9c8d484826.png",
+      "sha256": "3d8598bd7d30aed66c6996de0f036c4a7937f98be3c6c76e8f175f6d834c952f"
+    },
+    {
+      "id": "feint",
+      "source": "masters/feint.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-03b92588-ee41-4924-a3a3-81c27fef700d.png",
+      "sha256": "ad8f1d89e0a9d1c9296acb34466e1300db70488c937956214da13fb158eb9f10"
+    },
+    {
+      "id": "epic-poem",
+      "source": "masters/epic-poem.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-f6b5b090-5dc9-4750-8a81-a1a6eeb9e31a.png",
+      "sha256": "1e51f7e035f05fce1432fe85bb565b531b8c235dfd5589b502f5035921faa926"
+    },
+    {
+      "id": "the-ancient-heirloom",
+      "source": "masters/the-ancient-heirloom.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-73f42726-cfc9-4cc6-9775-38fd24f0cd9c.png",
+      "sha256": "cf28c59c3661bd7d081cd6f7138430aeb09753071f92889334bacfebd87c0c90"
+    },
+    {
+      "id": "no-contest-expecteth",
+      "source": "masters/no-contest-expecteth.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-331a6ca0-5a17-4282-a71e-c8f321b1ead8.png",
+      "sha256": "73142454794d8af35be4f81c7e88de79a1d91b6199789e004c65eaa0d5782d42"
+    },
+    {
+      "id": "the-war-king",
+      "source": "masters/the-war-king.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-cd395cde-d27c-44e0-a40f-6655bdb45e4a.png",
+      "sha256": "3e481e95ccc1805ba50d8dd234b199e98f98e872f23b19d4c2178a9cafcb0860"
+    },
+    {
+      "id": "the-equal-of-grendel",
+      "source": "masters/the-equal-of-grendel.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-88b7ebb5-63b9-43f3-a696-3e5f9bff8b53.png",
+      "sha256": "0c8259520ddb82792a2c93f906666e569bd11f990593a0ab08cf76f4dab56381"
+    },
+    {
+      "id": "vigor-and-courage",
+      "source": "masters/vigor-and-courage.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-f7f5325c-fe52-44a4-86c0-9c13c85d14d1.png",
+      "sha256": "d97ca9390d0fb1c690fc399a1f2bdaa4244f69c11ef8be4b836cb2693e79088e"
+    },
+    {
+      "id": "golden-drinking-horn",
+      "source": "masters/golden-drinking-horn.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-ff9245c4-e37e-40db-a360-8d10a092ea96.png",
+      "sha256": "1aca3f1ae4cf435129c3bf2dbc04e836cc372013a059c7cdeda1f2119a446681"
+    },
+    {
+      "id": "hot-for-the-battle",
+      "source": "masters/hot-for-the-battle.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-8e64af75-f949-4238-a947-286d068f25a3.png",
+      "sha256": "3d869888db5c9daf55a60868ac8dc6a9673882335426cbe7cc5f56ea9847da87"
+    },
+    {
+      "id": "fatal-struggle",
+      "source": "masters/fatal-struggle.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-8f66b603-eb86-4994-ac07-9cddbe90969a.png",
+      "sha256": "2d8a691b3a997838e46df9c9f8661602a5f06efeeabec6a6c04a6dbd811aebae"
+    },
+    {
+      "id": "skirmish",
+      "source": "masters/skirmish.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-b622a20d-75c7-4a24-b752-24fa7d22dc75.png",
+      "sha256": "9a31f4bfc31dce4f54b0561f961fa13e9d1de0381b1517def944828bd67f86ff"
+    }
+  ]
+}

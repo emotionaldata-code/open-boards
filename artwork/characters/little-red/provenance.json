@@ -1,0 +1,158 @@
+{
+  "character": "little-red",
+  "date": "2026-10-29",
+  "tool": "integrated Imagegen",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/little-red",
+  "style": "Original cinematic illustrated realism; folklore designs. No source artwork redistributed.",
+  "identityReferences": ["references/little-red.png", "references/huntsman.png"],
+  "generationFailures": [],
+  "assets": [
+    {
+      "id": "little-red-huntsman-portrait",
+      "source": "masters/huntsman-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-682c5847-caf8-4fb4-a65b-d6fe8e51666b.png",
+      "sha256": "7323cc035a1147d71c25293ed177090ec5c2bd4410544d94c3e1d9e4e6a1e2f9",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-portrait",
+      "source": "masters/little-red-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-a8542f1f-7eff-4064-a7e9-8ca1c1ca1563.png",
+      "sha256": "208d5b287252fa22ddf440dee9a62f97c5c3ffdca4aa79082be45d51d3a5de7f",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-token",
+      "source": "masters/little-red-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-3dd8716c-3b50-4da7-aac1-e2f10a4f7e17.png",
+      "sha256": "ffe34c56128d57cc5b977936c9448404c0344c6468d150cdf6e030d2b2c65c83",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "little-red-huntsman-token",
+      "source": "masters/huntsman-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-ca5bc9bc-2ba7-445a-a730-0935ec57941f.png",
+      "sha256": "496466fe64fe99da5a971cda198b8b01dda04fcfecfe8aee7729cde7950754c6",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "little-red-what-large-hands-you-have",
+      "source": "masters/what-large-hands-you-have.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-836e2833-b344-49a2-a6ca-a7aca2df5e68.png",
+      "sha256": "87337749423cc867f4c65ae71b529d949f1993940fc7c759a79621b2b62e1a82",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-the-wolf-s-skin",
+      "source": "masters/the-wolf-s-skin.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-50039ae2-5abe-450e-a213-177915cb9210.png",
+      "sha256": "19314d385724bb95e323e4911e8602a55c76154eff6af011460a9ed0d530935a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-what-a-terrible-big-mouth-you-have",
+      "source": "masters/what-a-terrible-big-mouth-you-have.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-ba677008-f003-40ad-aaac-2ec5f642aa8b.png",
+      "sha256": "6278e676572bcf69f82a473281a220c61fdd5fcd30b699c47f0fa4f3f805d44d",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-what-big-ears-you-have",
+      "source": "masters/what-big-ears-you-have-v2.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-55d3f8cc-d8e9-493a-973d-c19737c58ee5.png",
+      "sha256": "bae5665a091876fa8fe55e9d674ac8c04caa790318480d603a055426694629d3",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "supersededSource": "masters/what-big-ears-you-have.png"
+    },
+    {
+      "id": "little-red-what-big-eyes-you-have",
+      "source": "masters/what-big-eyes-you-have.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-7ce3c983-40b2-49d0-aac1-a33ac62aaf6f.png",
+      "sha256": "786643d6fc5785093a3695ba939b12acd19ec23cbe4f64efdfa5e50c7bdd0ab4",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-what-s-that-in-my-basket",
+      "source": "masters/what-s-that-in-my-basket.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-33b3a6dd-16aa-4dad-8f20-33d416602baf.png",
+      "sha256": "ad789be54d527ad6ee912a20a53bdd3de9a0992f7ed12fb74aab0023746d7893",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-never-leave-the-path",
+      "source": "masters/never-leave-the-path-v2.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-06fe7f99-e1d8-4fac-94c4-4b569b10ea21.png",
+      "sha256": "43be449ded943dc386ebcb516c4e7d4f321699c0e0bf83bc2e39c9102c1dadc4",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "supersededSource": "masters/never-leave-the-path.png"
+    },
+    {
+      "id": "little-red-into-the-woods",
+      "source": "masters/into-the-woods.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-b53ab642-2de4-49e0-bf1c-cfdaae9eb5b8.png",
+      "sha256": "c834eebe487b8cf96e4d54a5176fdb1a77b62729dc139ca5d6031b2e8a95f1b8",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-long-have-i-sought-you",
+      "source": "masters/long-have-i-sought-you.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-5831105f-ada6-4057-ab1c-ea3ade9e33b0.png",
+      "sha256": "dc5cdae3bf46b74a5a538989749b028db1949e623ffe4a8949f6482b236b397a",
+      "width": 1587,
+      "height": 991,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-a-grimm-tale",
+      "source": "masters/a-grimm-tale.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-69c0151a-67a5-437f-8c0d-d53a7be5e601.png",
+      "sha256": "8cabb88c7b4572bc8c8643c4c190f7a85b01ac8f91a6682e86f8adb0078357b1",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "little-red-stones-in-the-belly",
+      "source": "masters/stones-in-the-belly-v2.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-49aa9557-5868-4ab9-91b1-4e8aa26afa47.png",
+      "sha256": "82951fc4c4c010bdf2effe2eeebf4d0631179879a85293e978be85e7e997b57b",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "supersededSource": "masters/stones-in-the-belly.png"
+    },
+    {
+      "id": "little-red-once-upon-a-time",
+      "source": "masters/once-upon-a-time.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-e0b8-7d23-87b2-6c73d44afd61/exec-d48421ee-73e2-4c06-bdda-d44e420c6e53.png",
+      "sha256": "5b4a3a0c149be8bf18f01423683771a4074a9a988fef8897588d1eabafc40fe1",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ]
+}

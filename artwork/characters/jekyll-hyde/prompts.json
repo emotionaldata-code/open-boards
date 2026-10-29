@@ -1,0 +1,100 @@
+[
+  {
+    "id": "jekyll-hyde-portrait",
+    "prompt": "Use case: illustration-story. Asset type: square hero portrait for a Victorian gothic tactical card game. Original Jekyll and Hyde dual identity: a single adult British man with recognizable narrow long face, wavy dark brown hair and a silver streak at the left temple, gray-green eyes. Show the restrained clean-shaven physician in charcoal frock coat, ivory high collar and emerald waistcoat holding a small green glass serum vial; in a cracked mirror immediately behind him his same face is transformed into a heavier-browed, wild-haired, broad-shouldered sinister counterpart with the same clothing torn and a dark wooden cane. Cinematic illustrated realism, credible anatomy, oil-painted material detail, foggy late Victorian London laboratory, warm amber lamplight and sickly emerald reflections. Upper body and face clear, strong silhouette. No text, numbers, frames, icons, logos or watermark. Entirely original design, no resemblance to film actors.",
+    "transparent_background": false,
+    "referenceImages": []
+  },
+  {
+    "id": "jekyll-hyde-token",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: transparent full-body board figure. Full body single man in a readable dynamic three-quarter stance, one side the calm physician holding green vial, other side torn-coated heavier-browed Hyde gripping wooden cane. Complete head, hands, cane and boots in frame, genuine transparent background, no floor, shadow, pedestal or environment.",
+    "transparent_background": true,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-feint",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Jekyll ducks beneath an opponent's cane swing in a foggy cobbled alley, using a deceptive sideways step; tense street duel, wide view.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-skirmish",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Hyde clashes canes with a shadowed assailant on wet London steps, explosive lateral motion, coats swirling; full action wide shot.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-duality-of-man",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. The same man divided by a cracked laboratory mirror, Jekyll calm on the left and Hyde savage in the reflection, green serum between them; balanced intimate composition.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-succumb-to-compulsion",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Jekyll grips the edge of a laboratory desk as green serum takes hold, face beginning to distort into Hyde, torn collar and rising shadow, dramatic low camera.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-madness-relents",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Hyde slumps against a brick wall as his fierce face softens back toward Jekyll, loosening his cane grip, dawn mist and discarded broken vial.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-recoiling-blow",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Hyde strikes a threatening shadow with his cane then recoils backward through gaslit fog, body twisting in a powerful readable diagonal; no gore.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-forever-hyde",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Hyde stands triumphant in the laboratory, ripping the physician's research papers while green serum spills across the workbench; dramatic waist-up view.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-with-haste",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Jekyll races across a rain-slick London street clutching his medical bag, coat tails flying beneath gas lamps, distant pursuer in fog.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-scientific-method",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Jekyll studies bruises and written diagrams at a brass microscope, comparing a green serum sample by lamplight, scholarly tension, over-shoulder close view. Paper has indistinct marks, no readable text.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-calming-research",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Jekyll sits calmly at his laboratory workbench examining three green glass sample tubes, medical instruments and books, warm lamp light pushing back threatening shadows.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-pure-evil",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Hyde erupts from dense London fog in a threatening cane sweep, nearby street attackers thrown off balance, green light from a shattered lamp, readable full-body wide action.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-strange-case",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Hyde opens a small medical case containing a luminous green serum vial, a startled gaslit figure close behind him in the fog; eerie chest-height close shot.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-distracted-triage",
+    "prompt": "Use case: illustration-story. Asset type: landscape 8:5 card illustration. Original Victorian physician with narrow adult British face, wavy dark brown hair with a silver temple streak, gray-green eyes, charcoal frock coat, emerald waistcoat and ivory collar, same identity as the provided portrait. Jekyll hurriedly binds his own injured forearm with white linen at a cluttered physician's desk, glancing anxiously at a locked door, green vial nearby. Cinematic illustrated realism, credible human anatomy, oil-painted materials, atmospheric amber lamplight with emerald reflections. Crucial action in central80%. No text, numbers, frames, logos, icons, watermarks or film actor likeness.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"]
+  },
+  {
+    "id": "jekyll-hyde-distracted-triage-attempt-1",
+    "prompt": "Use case: illustration-story. Original Victorian gothic tactical card-game art. Cinematic illustrated realism, credible anatomy, material detail, dramatic motivated amber lamplight and emerald glow, charcoal/ivory/emerald palette. Use the attached identity reference: narrow adult British face, wavy dark brown hair with a silver streak, gray-green eyes, charcoal frock coat, ivory high collar, emerald waistcoat; Hyde shares the same identity but heavier brow, wild hair and broad shoulders with torn version of the same clothes and dark wooden cane. No text, numerals, frames, logos, icons, watermarks or film actor likeness. Asset type: landscape 8:5 card illustration, crucial action in central80%. Jekyll hurriedly binds his own injured forearm with white linen at a cluttered physician's desk, glancing anxiously at a locked door, green vial nearby.",
+    "transparent_background": false,
+    "referenceImages": ["references/identity.png"],
+    "selected": false,
+    "result": "Initial concurrent call produced no asset; exception details were not retained. A concise original-physician retry succeeded."
+  }
+]

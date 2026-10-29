@@ -273,7 +273,10 @@ describe('complete printed Medusa deck', () => {
     const amount = basic.cards[payment.definition].boost;
     h.choose(payment.id);
     expect(h.state.revealed?.damage).toBe(3 + amount);
-    expect(h.state.players[0].discard.at(-1)?.id).toBe(payment.id);
+    expect(h.state.players[0].discard.map((card) => card.id)).toEqual([
+      payment.id,
+      h.state.revealed!.attack.id,
+    ]);
     const skip = setup();
     skip.fight('medusa-second-shot-3');
     skip.choose('$skip');

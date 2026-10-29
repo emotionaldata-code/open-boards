@@ -30,7 +30,7 @@ import { Hand } from './Hand';
 import { MatchDetails } from './MatchDetails';
 import { CardPrint } from '../cards/CardPrint';
 import { FighterPicker } from './FighterPicker';
-function instruction(game: GameView, user: User): string {
+function instruction(game: GameView, player: string | null): string {
   if (game.phase.type === 'finished') {
     const winner = game.phase.winner;
     return winner
@@ -44,26 +44,26 @@ function instruction(game: GameView, user: User): string {
       'Un avversario sta risolvendo un’abilità.'
     );
   if (game.phase.type === 'awaiting-defense')
-    return fighterById(game, game.phase.defender)?.player === user.id
+    return fighterById(game, game.phase.defender)?.player === player
       ? game.phase.bonus
         ? `${contentText(game.phase.bonus.name)} · Attacco ${game.phase.bonus.value}. Scegli una carta difesa o subisci il colpo.`
         : 'Scegli una difesa o subisci il colpo.'
       : `${game.players.find((p) => p.id === fighterById(game, (game.phase as { defender: string }).defender)?.player)?.name} sta scegliendo una difesa.`;
   if (game.phase.type === 'placing-allies')
-    return game.phase.player === user.id
+    return game.phase.player === player
       ? 'Colloca gli alleati nella zona del tuo eroe.'
       : 'L’avversario sta collocando gli alleati.';
   if (game.phase.type === 'choosing-movement')
-    return game.phase.player === user.id
+    return game.phase.player === player
       ? game.maneuver?.boostable
         ? 'Scegli un combattente, poi una casella. Tocca una carta per potenziare il movimento.'
         : 'Scegli un combattente, poi una casella o la sua casella attuale per restare fermo.'
       : 'L’avversario sta scegliendo un movimento.';
   if (game.phase.type === 'discarding')
-    return game.phase.player === user.id
+    return game.phase.player === player
       ? `Scegli ${game.hand.length - 7} carte da scartare.`
       : 'L’avversario sta scartando fino a sette carte.';
-  return game.players[game.turn].id === user.id
+  return game.players[game.turn].id === player
     ? 'Tocca una carta per giocarla, oppure prepara un attacco e scegli un avversario.'
     : `${game.players[game.turn].name} sta giocando il suo turno.`;
 }
@@ -87,7 +87,8 @@ export function Game({
   commandReset?: number;
 }) {
   const game = room.game!;
-  const self = game.players.find((p) => p.id === user.id)!;
+  const spectating = room.viewerRole === 'spectator';
+  const self = spectating ? undefined : game.players.find((p) => p.id === user.id);
   const phase = game.phase;
   const [selection, setSelection] = useState<{ cards: string[]; fighter: string }>({
     cards: [],
@@ -102,6 +103,12 @@ export function Game({
   const presentation = usePresentation(events, reset, (event, active) =>
     board.current!.present(event, active),
   );
+  useEffect(() => {
+    if (!spectating || !presentation.event?.review) return;
+    const id = presentation.event.id;
+    const timer = window.setTimeout(() => presentation.acknowledge(id), 1800);
+    return () => window.clearTimeout(timer);
+  }, [spectating, presentation.event?.id]);
   const [confirmLeave, setConfirmLeave] = useState(false);
   useEffect(() => {
     setSelection({ cards: [], fighter: '' });
@@ -121,11 +128,12 @@ export function Game({
     return () => window.removeEventListener('keydown', escape);
   }, []);
   const locked =
+    !self ||
     sending ||
     presentation.reviewing ||
     game.paused ||
     !connected ||
-    (self.eliminated && !game.choice) ||
+    (self?.eliminated && !game.choice) ||
     phase.type === 'finished';
   const myTurn =
     game.players[game.turn].id === user.id &&
@@ -151,7 +159,7 @@ export function Game({
       ? fighterById(game, phase.defender)!
       : (available.find((f) => f.id === selectedFighter) ??
         available[0] ??
-        mainFighter(game, user.id));
+        mainFighter(game, self?.id ?? game.players[0].id));
   const discarding =
     phase.type === 'discarding' && phase.player === user.id && (!locked || sending);
   const chosen = game.hand.find((c) => c.id === selected[0]);
@@ -278,7 +286,7 @@ export function Game({
         : 'Nessun nemico a portata. Manovra per avvicinarti.'
       : moving
         ? `${game.maneuver?.remaining.length} da muovere · Movimento ${maneuverMovement(game, fighter, basic)}${game.maneuver?.boostable ? ' · Tocca una carta per potenziare' : ' · Scegli una casella'}`
-        : instruction(game, user);
+        : instruction(game, self?.id ?? null);
   const ended = phase.type === 'finished';
   return (
     <>
@@ -291,6 +299,7 @@ export function Game({
         <div className="game-title">
           <h1>{ended ? 'Partita conclusa' : contentText(basic.map.name)}</h1>
           <span className="turn-label">
+            {spectating ? 'Spettatore · ' : ''}
             {ended ? 'Plancia finale' : `Turno di ${game.players[game.turn].name}`}
           </span>
           <span
@@ -304,18 +313,18 @@ export function Game({
               </>
             )}
           </span>
-          <GameButton onClick={() => (ended ? onLeave() : setConfirmLeave(true))}>
-            {ended ? 'Torna alla lobby' : 'Lascia partita'}
+          <GameButton onClick={() => (ended || spectating ? onLeave() : setConfirmLeave(true))}>
+            {ended || spectating ? 'Torna alla lobby' : 'Lascia partita'}
           </GameButton>
         </div>
-        <MatchDetails room={room} selfId={user.id} />
+        <MatchDetails room={room} selfId={self?.id ?? null} />
         <div className="play-surface">
           <section className="board-panel" aria-label="Arena">
             <ActionNotice event={presentation.event} />
             <Board
               ref={board}
               game={game}
-              selected={choice?.source?.fighter ?? fighter.id}
+              selected={spectating ? undefined : (choice?.source?.fighter ?? fighter.id)}
               highlights={highlights}
               events={events}
               reset={reset}
@@ -366,11 +375,20 @@ export function Game({
                 ))}
               </div>
             </section>
+          ) : spectating ? (
+            <section className="hand-panel" aria-label="Spettatore">
+              <h2>Stai osservando la partita</h2>
+              <p role="status">{prompt}</p>
+              <p className="muted">
+                Le mani restano private. Tocca un giocatore o i suoi scarti per vedere i dettagli
+                pubblici.
+              </p>
+            </section>
           ) : (
             <Hand
               game={game}
               fighter={fighter}
-              eliminated={self.eliminated}
+              eliminated={self?.eliminated ?? false}
               ended={ended}
               prompt={`${prompt}${presentation.reviewing ? ' Conferma gli eventi recenti per continuare.' : ''}`}
               myTurn={myTurn}
@@ -396,7 +414,7 @@ export function Game({
           )}
         </div>
       </main>
-      {presentation.event?.review && (
+      {!spectating && presentation.event?.review && (
         <EventDialog
           key={`${reset}:${presentation.event.id}`}
           event={presentation.event}

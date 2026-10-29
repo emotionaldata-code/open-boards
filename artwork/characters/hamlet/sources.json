@@ -1,0 +1,114 @@
+[
+  {
+    "id": "hamlet-portrait",
+    "kind": "portrait",
+    "source": "masters/hamlet-portrait.png",
+    "focal": [0.5, 0.37]
+  },
+  {
+    "id": "hamlet-rosencrantz-guildenstern-portrait",
+    "kind": "portrait",
+    "source": "masters/hamlet-rosencrantz-guildenstern-portrait.png",
+    "focal": [0.5, 0.37]
+  },
+  {
+    "id": "hamlet-token",
+    "kind": "token",
+    "source": "masters/hamlet-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "hamlet-rosencrantz-guildenstern-token",
+    "kind": "token",
+    "source": "masters/hamlet-rosencrantz-guildenstern-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "hamlet-cruel-to-be-kind",
+    "kind": "card",
+    "source": "masters/cruel-to-be-kind.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-cruel-to-be-kind"
+  },
+  {
+    "id": "hamlet-uncertain-doom",
+    "kind": "card",
+    "source": "masters/uncertain-doom.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-uncertain-doom"
+  },
+  {
+    "id": "hamlet-to-sleep-perchance-to-dream",
+    "kind": "card",
+    "source": "masters/to-sleep-perchance-to-dream.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-to-sleep-perchance-to-dream"
+  },
+  {
+    "id": "hamlet-the-readiness-is-all",
+    "kind": "card",
+    "source": "masters/the-readiness-is-all.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-the-readiness-is-all"
+  },
+  {
+    "id": "hamlet-the-plays-the-thing",
+    "kind": "card",
+    "source": "masters/the-plays-the-thing.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-the-plays-the-thing"
+  },
+  {
+    "id": "hamlet-blood-will-have-blood",
+    "kind": "card",
+    "source": "masters/blood-will-have-blood.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-blood-will-have-blood"
+  },
+  {
+    "id": "hamlet-outrageous-fortune",
+    "kind": "card",
+    "source": "masters/outrageous-fortune.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-outrageous-fortune"
+  },
+  {
+    "id": "hamlet-maddening-insight",
+    "kind": "card",
+    "source": "masters/maddening-insight.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-maddening-insight"
+  },
+  {
+    "id": "hamlet-the-rest-is-silence",
+    "kind": "card",
+    "source": "masters/the-rest-is-silence.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-the-rest-is-silence"
+  },
+  {
+    "id": "hamlet-nothing-either-good-or-bad",
+    "kind": "card",
+    "source": "masters/nothing-either-good-or-bad.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-nothing-either-good-or-bad"
+  },
+  {
+    "id": "hamlet-method-in-the-madness",
+    "kind": "card",
+    "source": "masters/method-in-the-madness.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-method-in-the-madness"
+  },
+  {
+    "id": "hamlet-the-ghost",
+    "kind": "card",
+    "source": "masters/the-ghost.png",
+    "focal": [0.5, 0.5],
+    "card": "hamlet-the-ghost"
+  }
+]

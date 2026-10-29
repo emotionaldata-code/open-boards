@@ -1,3 +1,11 @@
+import goldenBat from './characters/golden-bat.json';
+import jekyllHyde from './characters/jekyll-hyde.json';
+import bloodyMary from './characters/bloody-mary.json';
+import hamlet from './characters/hamlet.json';
+import beowulf from './characters/beowulf.json';
+import harryHoudini from './characters/harry-houdini.json';
+import littleRed from './characters/little-red.json';
+import nikolaTesla from './characters/nikola-tesla.json';
 import sunWukong from './characters/sun-wukong.json';
 import yenneferTriss from './characters/yennefer-triss.json';
 import eredin from './characters/eredin.json';
@@ -38,6 +46,14 @@ const bundles = [
   eredin,
   sunWukong,
   sinbad,
+  nikolaTesla,
+  harryHoudini,
+  littleRed,
+  beowulf,
+  hamlet,
+  bloodyMary,
+  jekyllHyde,
+  goldenBat,
 ] as CharacterBundle[];
 export const { characters, cards, cardPresentation } = compileRoster(bundles);
 export const defaultCharacter = 'medusa';

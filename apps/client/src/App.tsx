@@ -60,12 +60,16 @@ export function App() {
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
-  async function join(capacity?: 2 | 4, id?: string) {
+  async function join(capacity?: 2 | 4, id?: string, role: 'player' | 'spectator' = 'player') {
     setBusy(true);
     setError('');
     try {
-      await connection.current!.connect(capacity, id);
-      history.replaceState(null, '', `/?room=${connection.current!.room!.roomId}`);
+      await connection.current!.connect(capacity, id, role);
+      history.replaceState(
+        null,
+        '',
+        `/?room=${connection.current!.room!.roomId}${role === 'spectator' ? '&watch=1' : ''}`,
+      );
     } catch (error) {
       setError((error as Error).message);
     } finally {
@@ -86,7 +90,7 @@ export function App() {
     setUser(null);
   }
   function command(command: Command) {
-    if (!room?.game) return;
+    if (!room?.game || room.viewerRole === 'spectator') return;
     setError('');
     connection.current?.command({ id: crypto.randomUUID(), revision: room.game.revision, command });
   }
@@ -142,8 +146,8 @@ export function App() {
         <Auth onUser={setUser} />
       ) : !room ? (
         <Lobby
-          onCreate={(capacity) => void join(capacity)}
-          onJoin={(id) => void join(undefined, id)}
+          onCreate={(capacity, role) => void join(capacity, undefined, role)}
+          onJoin={(id, role) => void join(undefined, id, role)}
           busy={busy}
         />
       ) : room.game ? (
@@ -164,6 +168,8 @@ export function App() {
           onReady={() => connection.current?.send('ready')}
           onCharacter={(character) => connection.current?.selectCharacter(character)}
           onStart={() => connection.current?.send('start')}
+          onAddBot={(character) => connection.current?.addBot(character)}
+          onRemoveBot={(id) => connection.current?.removeBot(id)}
           onLeave={() => void leave()}
         />
       )}

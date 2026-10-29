@@ -7,6 +7,62 @@ export interface CharacterProfile {
   ground: string;
 }
 export const profiles: Record<string, CharacterProfile> = {
+  'golden-bat': {
+    role: 'Il primo supereroe',
+    summary: 'Un teschio d’oro. Una risata senza paura.',
+    tactic:
+      'Attacca prima di effettuare una Manovra per ottenere +2. Usa schemi e movimenti dopo il combattimento per cambiare zona e preparare il prossimo colpo.',
+    accent: '#d6ad4c',
+    ground: '#293638',
+  },
+  'bloody-mary': {
+    role: 'Spettro dello specchio',
+    summary: 'Tre carte. Tre azioni. Un riflesso fatale.',
+    tactic:
+      'Inizia il turno con esattamente tre carte per ottenere un’azione extra. Prepara il terzo gesto e cambia zona per rendere imprevedibili i tuoi attacchi.',
+    accent: '#b16b79',
+    ground: '#382c36',
+  },
+  hamlet: {
+    role: 'Principe di Danimarca',
+    summary: 'Essere o non essere. Ogni scelta ha un prezzo.',
+    tactic:
+      'Scegli Essere per alimentare la mano o Non essere per attaccare con forza. Rosencrantz e Guildenstern possono pagare il prezzo della tua risolutezza.',
+    accent: '#ad727c',
+    ground: '#2d303d',
+  },
+  beowulf: {
+    role: 'Re dei Geati',
+    summary: 'Il dolore accende la furia. Il coraggio la trasforma.',
+    tactic:
+      'Accumula Furia quando Beowulf subisce danni e spendila per colpi decisivi. Wiglaf combatte al suo fianco e può aprire una nuova occasione con un attacco impetuoso.',
+    accent: '#c39752',
+    ground: '#2d3c32',
+  },
+  'harry-houdini': {
+    role: 'Maestro dell’evasione',
+    summary: 'Una catena spezzata. Un ultimo trucco.',
+    tactic:
+      'Usa i BOOST per attivare i trucchi delle carte. Houdini si libera da ogni trappola, mentre Bess prepara la scena e protegge la tua mano.',
+    accent: '#c68d63',
+    ground: '#283b40',
+  },
+  'little-red': {
+    role: 'Sopravvissuta della fiaba',
+    summary: 'Un cestino pieno di sorprese. Una lama per il lupo.',
+    tactic:
+      'Prepara il simbolo in cima agli scarti per attivare gli effetti del cestino. Il Cacciatore offre tiro a distanza e cure preziose.',
+    accent: '#c27371',
+    ground: '#382e31',
+  },
+  'nikola-tesla': {
+    role: 'Inventore della corrente alternata',
+    summary: 'Due bobine. Un potenziale senza limiti.',
+    tactic:
+      'Carica le bobine per minacciare chi si avvicina. Scaricale al momento giusto per potenziare le carte, annullare gli effetti e controllare il campo.',
+    accent: '#c99052',
+    ground: '#243b4b',
+  },
   sinbad: {
     role: 'Marinaio dei sette viaggi',
     summary: 'Ogni viaggio lascia il segno. Ogni ritorno è un nuovo inizio.',
@@ -142,6 +198,14 @@ export const profiles: Record<string, CharacterProfile> = {
       'Evoca i Cloni per circondare il nemico. Alterna trasformazioni e inganni, poi colpisci ancora con il bastone magico.',
     accent: '#d3a54b',
     ground: '#3e2929',
+  },
+  'jekyll-hyde': {
+    role: 'Due anime nella nebbia',
+    summary: 'La cura e il mostro condividono lo stesso cuore.',
+    tactic:
+      'Difenditi e recupera come Jekyll, poi trasformati in Hyde per colpire. Ogni Manovra di Hyde costa salute: scegli il momento giusto.',
+    accent: '#8fbf89',
+    ground: '#253733',
   },
   medusa: {
     role: 'Gorgone arciera',

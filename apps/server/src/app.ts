@@ -10,6 +10,7 @@ import { clientAssets } from './client';
 import type { Database } from './db/database';
 import { activeSeats, type Match } from './rooms/match';
 import { gameRoom } from './rooms/game-room';
+import { basic } from '@open-boards/content';
 export interface ServerConfig {
   origin: string;
   secret: string;
@@ -44,12 +45,20 @@ export function createApp(db: Database, config: ServerConfig) {
     authRoutes(db, sessions, (id) => activeSeats.get(id)?.disconnect()),
   );
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
+  app.get('/api/rules', async (req, res) => {
+    try {
+      await sessions.verify(req.headers.cookie);
+      res.json(basic);
+    } catch {
+      res.status(401).json({ message: 'Sign in to read rules.' });
+    }
+  });
   app.get('/api/rooms', async (req, res) => {
     try {
       await sessions.verify(req.headers.cookie);
       res.json(
         [...rooms.values()]
-          .filter((r) => !r.game && r.seats.length > 0 && r.seats.length < r.capacity)
+          .filter((r) => !!r.host && r.game?.phase.type !== 'finished')
           .map((r) => r.listing()),
       );
     } catch {

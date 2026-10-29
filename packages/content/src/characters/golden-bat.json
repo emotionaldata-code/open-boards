@@ -1,0 +1,436 @@
+{
+  "id": "golden-bat",
+  "name": "Golden Bat",
+  "hp": 18,
+  "movement": 3,
+  "attackType": "melee",
+  "palette": {
+    "ground": "#293638",
+    "ink": "#ede0bc",
+    "accent": "#d6ad4c"
+  },
+  "abilities": [
+    {
+      "id": "the-first-superhero",
+      "name": "The First Superhero",
+      "description": "If you haven't taken a Maneuver action this turn, add +2 to the value of Golden Bat's attacks.",
+      "trigger": "before-combat",
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "role",
+            "role": "attacker"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "maneuvered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "modify",
+          "field": "attack",
+          "amount": 2
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "golden-bat-a-punch-to-shake-the-earth",
+      "name": "A Punch to Shake the Earth",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 1,
+      "boost": 1,
+      "count": 3,
+      "description": "After combat: Deal 1 damage to each opposing fighter in Golden Bat's zone. If you won the combat, deal 2 damage instead.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/golden-bat/golden-bat-a-punch-to-shake-the-earth-1280-efb6950a7d5c.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "earth-shock",
+          "name": "A Punch to Shake the Earth",
+          "description": "Deal 1 damage to each opposing fighter in Golden Bat's zone. If you won the combat, deal 2 damage instead.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "for-each-fighter",
+                  "relation": "enemy",
+                  "range": "zone",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "chosen",
+                      "amount": 2
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "for-each-fighter",
+                  "relation": "enemy",
+                  "range": "zone",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "chosen",
+                      "amount": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-alpine-fortress",
+      "name": "Alpine Fortress",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 3,
+      "description": "Choose a card in your discard pile and shuffle it into your deck. Draw 2 cards. Move Golden Bat up to 4 spaces.",
+      "art": {
+        "scene": "bastion",
+        "variant": 1,
+        "image": "/artwork/golden-bat/golden-bat-alpine-fortress-1280-595ed4bc5598.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "recover-card",
+          "destination": "deck"
+        },
+        {
+          "type": "draw",
+          "count": 2
+        },
+        {
+          "type": "move",
+          "distance": 4
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-arrive-just-in-time",
+      "name": "Arrive Just in Time",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Place Golden Bat in any space.",
+      "art": {
+        "scene": "trail",
+        "variant": 2,
+        "image": "/artwork/golden-bat/golden-bat-arrive-just-in-time-1280-b928ff63eb66.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "teleport",
+          "zone": "any",
+          "includeOrigin": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-he-laughs-at-your-feebleness",
+      "name": "He Laughs at Your Feebleness",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 5,
+      "boost": 3,
+      "count": 2,
+      "description": "He Laughs at Your Feebleness.",
+      "art": {
+        "scene": "shield",
+        "variant": 3,
+        "image": "/artwork/golden-bat/golden-bat-he-laughs-at-your-feebleness-1280-71f8782a3c47.webp"
+      },
+      "flavor": ""
+    },
+    {
+      "id": "golden-bat-imposing-presence",
+      "name": "Imposing Presence",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "variant": 4,
+        "image": "/artwork/golden-bat/golden-bat-imposing-presence-1280-6d02b84c4965.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "imposing-cancel",
+          "name": "Imposing Presence",
+          "description": "Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-insight-of-the-ancients",
+      "name": "Insight of the Ancients",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 2,
+      "count": 2,
+      "description": "After combat: If you won the combat, return a random card in your discard pile to your hand.",
+      "art": {
+        "scene": "lantern",
+        "variant": 5,
+        "image": "/artwork/golden-bat/golden-bat-insight-of-the-ancients-1280-851ace8c8788.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "ancient-recovery",
+          "name": "Insight of the Ancients",
+          "description": "If you won the combat, return a random card in your discard pile to your hand.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "recover-card",
+              "random": true
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-like-a-flash-of-golden-light",
+      "name": "Like a Flash of Golden Light",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "During combat: If Golden Bat shares no zones with the space he started this turn in, this card's value is 4 instead. After combat: Move Golden Bat up to 5 spaces.",
+      "art": {
+        "scene": "bolt",
+        "variant": 6,
+        "image": "/artwork/golden-bat/golden-bat-like-a-flash-of-golden-light-1280-da697e07e4cb.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "golden-flash-value",
+          "name": "Like a Flash of Golden Light",
+          "description": "If Golden Bat shares no zones with the space he started this turn in, this card's value is 4 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "value": 4,
+              "mode": "printed"
+            }
+          ],
+          "when": {
+            "type": "left-starting-zone"
+          }
+        },
+        {
+          "id": "golden-flash-move",
+          "name": "Like a Flash of Golden Light",
+          "description": "Move Golden Bat up to 5 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-sight-beyond-sight",
+      "name": "Sight Beyond Sight",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 1,
+      "count": 3,
+      "description": "After combat: Look at the top 3 cards of your opponent's deck. Put them back in any order.",
+      "art": {
+        "scene": "map",
+        "variant": 0,
+        "image": "/artwork/golden-bat/golden-bat-sight-beyond-sight-1280-fd7c92a0bfa9.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "sight-reorder",
+          "name": "Sight Beyond Sight",
+          "description": "Look at the top 3 cards of your opponent's deck. Put them back in any order.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "inspect-deck",
+              "target": "opponent",
+              "count": 3,
+              "take": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 4,
+      "boost": 1,
+      "count": 2,
+      "description": "After combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "blade",
+        "variant": 1,
+        "image": "/artwork/golden-bat/golden-bat-skirmish-1280-24a52698c93a.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "skirmish-move",
+          "name": "Skirmish",
+          "description": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "combat",
+              "effects": [
+                {
+                  "type": "move",
+                  "target": "chosen",
+                  "distance": 2
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-super-strength",
+      "name": "Super Strength",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 5,
+      "boost": 1,
+      "count": 2,
+      "description": "Super Strength.",
+      "art": {
+        "scene": "bastion",
+        "variant": 2,
+        "image": "/artwork/golden-bat/golden-bat-super-strength-1280-b7b85bd099d5.webp"
+      },
+      "flavor": ""
+    },
+    {
+      "id": "golden-bat-terrifying-roar",
+      "name": "Terrifying Roar",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "Immediately: Fighters cannot leave their spaces for the rest of the turn.",
+      "art": {
+        "scene": "fire",
+        "variant": 3,
+        "image": "/artwork/golden-bat/golden-bat-terrifying-roar-1280-8ff94d5ddb0a.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "roar-lock",
+          "name": "Terrifying Roar",
+          "description": "Fighters cannot leave their spaces for the rest of the turn.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "lock-movement",
+              "all": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golden-bat-vaporizing-eyebeams",
+      "name": "Vaporizing Eyebeams",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "After combat: Your opponent discards 1 random card.",
+      "art": {
+        "scene": "bolt",
+        "variant": 4,
+        "image": "/artwork/golden-bat/golden-bat-vaporizing-eyebeams-1280-6d3613f51166.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "eyebeams-discard",
+          "name": "Vaporizing Eyebeams",
+          "description": "Your opponent discards 1 random card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "random": true,
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

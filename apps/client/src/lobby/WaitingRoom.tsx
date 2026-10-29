@@ -14,6 +14,8 @@ export function WaitingRoom({
   onReady,
   onCharacter,
   onStart,
+  onAddBot,
+  onRemoveBot,
   onLeave,
 }: {
   room: RoomView;
@@ -21,11 +23,15 @@ export function WaitingRoom({
   onReady: () => void;
   onCharacter: (character: string) => void;
   onStart: () => void;
+  onAddBot: (character: string) => void;
+  onRemoveBot: (id: string) => void;
   onLeave: () => void;
 }) {
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
-  const own = room.seats.find((s) => s.id === user.id);
+  const own =
+    room.viewerRole === 'spectator' ? undefined : room.seats.find((s) => s.id === user.id);
+  const [botCharacter, setBotCharacter] = useState(defaultCharacter);
   const character = characters[own?.character ?? defaultCharacter];
   const canStart = room.seats.length === room.capacity && room.seats.every((s) => s.ready);
   async function copyInvite() {
@@ -74,7 +80,8 @@ export function WaitingRoom({
                   <div className="grow">
                     <strong>
                       {seat?.name ?? 'Posto libero'}
-                      {seat?.id === user.id ? ' (tu)' : ''}
+                      {own && seat?.id === own.id ? ' (tu)' : ''}
+                      {seat?.controller.type === 'bot' ? ' · Bot' : ''}
                     </strong>
                     <small className="muted">
                       {seat
@@ -85,11 +92,40 @@ export function WaitingRoom({
                   <span className={seat?.ready ? 'ready' : 'muted'}>
                     {seat ? (seat.ready ? 'Pronto' : 'Non pronto') : 'In attesa'}
                   </span>
+                  {seat?.controller.type === 'bot' && room.host === user.id && (
+                    <GameButton
+                      aria-label={`Rimuovi ${seat.name}`}
+                      onClick={() => onRemoveBot(seat.id)}
+                    >
+                      Rimuovi
+                    </GameButton>
+                  )}
                 </li>
               );
             })}
           </ol>
-          <CharacterPicker selected={own?.character ?? defaultCharacter} onChoose={onCharacter} />
+          {room.host === user.id && room.seats.length < room.capacity && (
+            <div className="bot-controls">
+              <label className="grow">
+                Personaggio del bot
+                <select value={botCharacter} onChange={(e) => setBotCharacter(e.target.value)}>
+                  {Object.values(characters).map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {contentText(item.name)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <GameButton onClick={() => onAddBot(botCharacter)}>Aggiungi bot</GameButton>
+            </div>
+          )}
+          {own ? (
+            <CharacterPicker selected={own.character} onChoose={onCharacter} />
+          ) : (
+            <p className="muted">
+              Sei uno spettatore. Puoi seguire la partita senza occupare un posto.
+            </p>
+          )}
         </section>
         <section className="panel invite">
           <GameFrame />
@@ -112,9 +148,11 @@ export function WaitingRoom({
           </span>
           <div className="match-controls">
             <div className="button-row">
-              <GameButton className="primary" onClick={onReady}>
-                {own?.ready ? 'Non pronto' : 'Sono pronto'}
-              </GameButton>
+              {own && (
+                <GameButton className="primary" onClick={onReady}>
+                  {own.ready ? 'Non pronto' : 'Sono pronto'}
+                </GameButton>
+              )}
               {room.host === user.id && (
                 <GameButton onClick={onStart} disabled={!canStart}>
                   Avvia partita
@@ -127,15 +165,17 @@ export function WaitingRoom({
                 : 'Per iniziare, tutti i posti devono essere occupati e i giocatori pronti.'}
             </p>
           </div>
-          <p className="muted">
-            {character.hp} vita · movimento {character.movement} ·{' '}
-            {character.deck.reduce((sum, entry) => sum + entry.count, 0)} carte.{' '}
-            {character.attackType === 'ranged'
-              ? 'Attacca nemici adiacenti o in una zona dello stesso colore.'
-              : 'Attacca nemici adiacenti.'}{' '}
-            Cambiare personaggio annulla il tuo stato di pronto.
-          </p>
-          {(character.abilities ?? []).map((ability) => (
+          {own && (
+            <p className="muted">
+              {character.hp} vita · movimento {character.movement} ·{' '}
+              {character.deck.reduce((sum, entry) => sum + entry.count, 0)} carte.{' '}
+              {character.attackType === 'ranged'
+                ? 'Attacca nemici adiacenti o in una zona dello stesso colore.'
+                : 'Attacca nemici adiacenti.'}{' '}
+              Cambiare personaggio annulla il tuo stato di pronto.
+            </p>
+          )}
+          {(own ? (character.abilities ?? []) : []).map((ability) => (
             <p className="muted" key={ability.id}>
               <strong>{contentText(ability.name)}</strong> · {contentText(ability.description)}
             </p>

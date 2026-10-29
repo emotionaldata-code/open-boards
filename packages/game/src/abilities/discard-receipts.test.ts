@@ -173,7 +173,7 @@ describe('exact-card discard receipts and deck recovery', () => {
     const ids = c.state.players[0].deck.slice(0, 2).map((x) => x.id);
     c.action();
     expect(c.fighter('p0:main').hp).toBe(8);
-    expect(c.state.players[0].discard.slice(1).map((x) => x.id)).toEqual(ids);
+    expect(c.state.players[0].discard.map((x) => x.id)).toEqual([...ids, 'p0-0']);
   });
   it('runs an exact top-card receipt after a suspended discard reaction', () => {
     const h = setup((d) => {

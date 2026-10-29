@@ -490,7 +490,7 @@ it('preserves a BOOST already resolved before defense when the card is later sup
   h.choose('p0-1');
   h.apply({ type: 'defend', card: 'p1-1' }, 'p1');
   expect(h.state.revealed).toMatchObject({ damage: 2, boosts: [{ card: { id: 'p0-1' } }] });
-  expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-0', 'p0-1']);
+  expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-1', 'p0-0']);
 });
 
 it('reports no movement when a before-move reaction defeats a group member and resolves each survivor once', () => {

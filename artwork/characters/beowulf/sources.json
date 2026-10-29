@@ -1,0 +1,114 @@
+[
+  {
+    "id": "beowulf-portrait",
+    "kind": "portrait",
+    "source": "masters/beowulf-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "wiglaf-portrait",
+    "kind": "portrait",
+    "source": "masters/wiglaf-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "beowulf-token",
+    "kind": "token",
+    "source": "masters/beowulf-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "wiglaf-token",
+    "kind": "token",
+    "source": "masters/wiglaf-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "beowulf-remnant-of-valor",
+    "kind": "card",
+    "source": "masters/remnant-of-valor.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-remnant-of-valor"
+  },
+  {
+    "id": "beowulf-feint",
+    "kind": "card",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-feint"
+  },
+  {
+    "id": "beowulf-epic-poem",
+    "kind": "card",
+    "source": "masters/epic-poem.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-epic-poem"
+  },
+  {
+    "id": "beowulf-the-ancient-heirloom",
+    "kind": "card",
+    "source": "masters/the-ancient-heirloom.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-the-ancient-heirloom"
+  },
+  {
+    "id": "beowulf-no-contest-expecteth",
+    "kind": "card",
+    "source": "masters/no-contest-expecteth.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-no-contest-expecteth"
+  },
+  {
+    "id": "beowulf-the-war-king",
+    "kind": "card",
+    "source": "masters/the-war-king.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-the-war-king"
+  },
+  {
+    "id": "beowulf-the-equal-of-grendel",
+    "kind": "card",
+    "source": "masters/the-equal-of-grendel.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-the-equal-of-grendel"
+  },
+  {
+    "id": "beowulf-vigor-and-courage",
+    "kind": "card",
+    "source": "masters/vigor-and-courage.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-vigor-and-courage"
+  },
+  {
+    "id": "beowulf-golden-drinking-horn",
+    "kind": "card",
+    "source": "masters/golden-drinking-horn.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-golden-drinking-horn"
+  },
+  {
+    "id": "beowulf-hot-for-the-battle",
+    "kind": "card",
+    "source": "masters/hot-for-the-battle.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-hot-for-the-battle"
+  },
+  {
+    "id": "beowulf-fatal-struggle",
+    "kind": "card",
+    "source": "masters/fatal-struggle.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-fatal-struggle"
+  },
+  {
+    "id": "beowulf-skirmish",
+    "kind": "card",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5],
+    "card": "beowulf-skirmish"
+  }
+]

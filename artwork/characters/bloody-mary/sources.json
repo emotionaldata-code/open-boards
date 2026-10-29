@@ -1,0 +1,107 @@
+[
+  {
+    "id": "bloody-mary-portrait",
+    "kind": "portrait",
+    "source": "masters/bloody-mary-portrait.png",
+    "focal": [0.5, 0.4]
+  },
+  {
+    "id": "bloody-mary-token",
+    "kind": "token",
+    "source": "masters/bloody-mary-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "bloody-mary-out-of-the-mirror",
+    "kind": "card",
+    "source": "masters/out-of-the-mirror.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-out-of-the-mirror"
+  },
+  {
+    "id": "bloody-mary-ghostly-touch",
+    "kind": "card",
+    "source": "masters/ghostly-touch.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-ghostly-touch"
+  },
+  {
+    "id": "bloody-mary-speak-three-times",
+    "kind": "card",
+    "source": "masters/speak-three-times.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-speak-three-times"
+  },
+  {
+    "id": "bloody-mary-bloody-requiem",
+    "kind": "card",
+    "source": "masters/bloody-requiem.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-bloody-requiem"
+  },
+  {
+    "id": "bloody-mary-feint",
+    "kind": "card",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-feint"
+  },
+  {
+    "id": "bloody-mary-trick-of-the-light",
+    "kind": "card",
+    "source": "masters/trick-of-the-light.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-trick-of-the-light"
+  },
+  {
+    "id": "bloody-mary-broken-glass",
+    "kind": "card",
+    "source": "masters/broken-glass.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-broken-glass"
+  },
+  {
+    "id": "bloody-mary-jump-scare",
+    "kind": "card",
+    "source": "masters/jump-scare.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-jump-scare"
+  },
+  {
+    "id": "bloody-mary-stolen-memories",
+    "kind": "card",
+    "source": "masters/stolen-memories.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-stolen-memories"
+  },
+  {
+    "id": "bloody-mary-infinity-mirror",
+    "kind": "card",
+    "source": "masters/infinity-mirror.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-infinity-mirror"
+  },
+  {
+    "id": "bloody-mary-mirror-image",
+    "kind": "card",
+    "source": "masters/mirror-image.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-mirror-image"
+  },
+  {
+    "id": "bloody-mary-evade",
+    "kind": "card",
+    "source": "masters/evade.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-evade"
+  },
+  {
+    "id": "bloody-mary-closer-than-she-appears",
+    "kind": "card",
+    "source": "masters/closer-than-she-appears.png",
+    "focal": [0.5, 0.5],
+    "card": "bloody-mary-closer-than-she-appears"
+  }
+]

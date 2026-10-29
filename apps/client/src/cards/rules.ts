@@ -7,6 +7,7 @@ export const hookDescriptions: Record<Hook, string> = {
   'turn-end': 'Alla fine del tuo turno.',
   'before-draw': 'Prima di pescare carte.',
   'after-draw': 'Dopo aver pescato carte.',
+  'after-maneuver': 'Dopo aver completato la Manovra, anche senza muovere.',
   'maneuver-boosted': 'Dopo aver potenziato una manovra e risolto le reazioni allo scarto.',
   'before-move': 'Prima del movimento.',
   'after-move': 'Dopo il movimento.',

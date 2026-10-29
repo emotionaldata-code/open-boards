@@ -1,0 +1,157 @@
+[
+  {
+    "id": "hamlet-portrait",
+    "prompt": "Original Hamlet, a thoughtful young adult Danish prince with pale olive skin, angular face, shoulder length dark brown hair and light stubble, black Renaissance doublet with intricate tarnished silver embroidery, burgundy sash, slender rapier. Square upper body portrait holding a weathered skull low in frame, cold Danish castle window light, cinematic illustrated realism, oil-painted credible anatomy and materials, subtle teal and burgundy palette. No text, frame, logos or watermarks.",
+    "transparent_background": false,
+    "referenceImages": []
+  },
+  {
+    "id": "hamlet-rosencrantz-guildenstern-portrait",
+    "prompt": "Original double portrait of Rosencrantz and Guildenstern, two adult Renaissance Danish courtiers, one stocky with curly auburn hair and short beard in muted ochre brocade, the other tall slim clean shaven with straight dark blond hair in deep forest green brocade. Both conspiratorial but humane, distinct readable faces, shoulders close together. Candlelit castle corridor, cinematic illustrated realism, credible materials, square framing. No text, frame, logos or watermarks.",
+    "transparent_background": false,
+    "referenceImages": []
+  },
+  {
+    "id": "hamlet-token",
+    "prompt": "Transparent full-body board figure of the prince in reference one, complete boots, hands, rapier and burgundy sash visible, poised fencing stance, isolated on actual transparent background, no pedestal, no ground, no text. Cinematic realistic painted illustration.",
+    "transparent_background": true,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "hamlet-rosencrantz-guildenstern-token-cropped-attempt",
+    "prompt": "Transparent full-body board figure of BOTH courtiers from reference two together, ochre bearded man and tall green-clad man, subtle ready sword stance side by side, complete boots and hands visible. Actual transparent background, no pedestal, ground or text. Cinematic realistic painted illustration.",
+    "transparent_background": true,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ],
+    "selected": false
+  },
+  {
+    "id": "cruel-to-be-kind",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The dark-haired prince thrusts his slender rapier through a billowing tapestry in a moonlit stone chamber, tense dynamic side view.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "uncertain-doom",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. Two apprehensive courtiers stand at a fork in a candlelit castle stairway; their shadows turn toward a looming doorway, wide view.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "to-sleep-perchance-to-dream",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince rests his head on a black gloved hand at a stone table, dreamlike pale mist revealing distant sea waves beyond a window, contemplative medium shot.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "the-readiness-is-all",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince and an unfamiliar rival swordsman face each other across a stark castle fencing hall, a fallen glove between them, wide symmetrical composition.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "the-plays-the-thing",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince watches traveling masked actors staging a miniature royal drama on a candlelit wooden stage while a distant crowned spectator recoils, dramatic over shoulder view.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "blood-will-have-blood",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince holds a small cut hand closed at his burgundy chest sash and raises his rapier with determined eyes, rain streaking castle window behind him, non graphic.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "outrageous-fortune",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince stands beneath a storm-blown castle balcony as loose parchment and autumn leaves whirl around him, low angle, fate as changing light and shadow.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "maddening-insight",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The auburn-bearded courtier and green-clad courtier share a troubled realization over a chessboard with scattered ivory pieces in candlelight, intimate close view.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "the-rest-is-silence",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince lowers his rapier in an empty mist-filled great hall, a single extinguished candle and pale dawn light, solemn distant composition.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "nothing-either-good-or-bad",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The two courtiers argue quietly before a tall cracked looking glass, their warm lit faces and cool reflected silhouettes forming a visual ambiguity, medium shot.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "method-in-the-madness",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince rearranges sealed letters and ivory counters across an oak desk, deliberate planning behind his distracted expression, elevated three quarter view.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "the-ghost",
+    "prompt": "Original cinematic illustrated realism, credible anatomy and materials, atmospheric Renaissance Danish castle, restrained teal black burgundy and silver palette. Landscape 8:5 illustration, crucial action in central 80%, no text, numbers, logos, frame or watermark. Use the prince's identity from reference image one and the two courtiers' identity from reference two where relevant. The prince gazes at the luminous spectral silhouette of an elderly armored king on a foggy castle battlement under cold stars, emotional wide view.",
+    "transparent_background": false,
+    "referenceImages": [
+      "references/hamlet-portrait.png",
+      "references/hamlet-rosencrantz-guildenstern-portrait.png"
+    ]
+  },
+  {
+    "id": "hamlet-rosencrantz-guildenstern-token-cropped-edit",
+    "prompt": "Edit this transparent two-courtier board figure: retain the exact original faces, clothing, pose, colors, realistic painted style and two separate people. Expand the framing to include the COMPLETE rightmost boot including its toe, complete boots on both men, both sword tips, and all extremities. Leave generous empty transparent margins of at least 8 percent around every extremity; figures together centered and entirely contained. Actual transparent background, no ground, pedestal, text or shadow backdrop. Do not crop any body or equipment.",
+    "transparent_background": true,
+    "referenceImages": [
+      "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-ee5102ff-03a2-4973-8dd2-65391c07a136.png"
+    ],
+    "selected": false
+  },
+  {
+    "id": "hamlet-rosencrantz-guildenstern-token",
+    "prompt": "Create a SQUARE transparent full-body board figure asset, using the two adult Renaissance courtiers' faces and clothing in the reference portrait: the stocky curly auburn-bearded man in ochre brocade and the tall clean-shaven dark blond man in forest green brocade. BOTH people stand close side by side, upright, facing camera, both boots pointing forward, their rapiers held vertically downward close to their bodies. Each man's entire head, both hands and BOTH COMPLETE BOOTS including toes must be visible. The WHOLE TWO-PERSON GROUP occupies ONLY the central 60 percent of the square image, with a very wide 20 percent transparent empty border on ALL FOUR SIDES. Pull the camera far back. Do not extend a leg toward an edge. Cinematic realistic painted illustration, credible anatomy and materials. GENUINELY TRANSPARENT background, no scene, no ground, pedestal, text, frame or watermark.",
+    "transparent_background": true,
+    "referenceImages": ["references/hamlet-rosencrantz-guildenstern-portrait.png"],
+    "selected": true
+  }
+]

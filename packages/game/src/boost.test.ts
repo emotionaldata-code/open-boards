@@ -325,7 +325,7 @@ describe('attack boosting', () => {
       const outcomes = h.apply({ type: 'defend', card: 'p1-1' }, 'p1');
       expect(h.state.phase.type).toBe('taking-actions');
       expect(h.state.revealed).toMatchObject({ damage: 5, boosts: [{ card: { id: 'p0-1' } }] });
-      expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-0', 'p0-1']);
+      expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-1', 'p0-0']);
       expect(outcomes.filter((o) => o.type === 'boost')).toHaveLength(1);
     },
   );
@@ -394,7 +394,7 @@ describe('attack boosting', () => {
     h.reconnect();
     const outcomes = h.choose('p0-1');
     expect(outcomes.filter((o) => o.type === 'boost')).toHaveLength(1);
-    expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-0', 'p0-1']);
+    expect(h.state.players[0].discard.map((c) => c.id)).toEqual(['p0-1', 'p0-0']);
     expect(h.state.revealed?.damage).toBe(6);
     expect(h.state.fighters[0].counters.energy).toBe(2);
     expect(h.state.fighters[1].hp).toBe(9);

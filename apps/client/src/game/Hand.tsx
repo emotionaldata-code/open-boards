@@ -6,6 +6,7 @@ import { boostValue } from '@open-boards/game';
 import { basic } from '@open-boards/content';
 import {
   canPlayAttack,
+  canPlayDefense,
   cardEligible,
   type Fighter,
   type Card,
@@ -68,9 +69,7 @@ export function Hand({
         (definition.category === 'action'
           ? cardEligible(definition, fighter)
           : canPlayAttack(game, fighter, definition))) ||
-      (defending &&
-        ['defense', 'versatile'].includes(definition.category) &&
-        cardEligible(definition, fighter)),
+      (defending && canPlayDefense(game, fighter, definition, basic)),
     );
   }
   function label(card: Card) {

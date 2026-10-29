@@ -293,3 +293,22 @@
     height: 140px;
   }
 }
+
+.watch-option,
+.bot-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-block: 16px;
+}
+.watch-option input {
+  width: auto;
+}
+.bot-controls {
+  align-items: end;
+  flex-wrap: wrap;
+}
+.bot-controls select {
+  width: 100%;
+  min-height: 44px;
+}

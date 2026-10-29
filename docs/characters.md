@@ -1,5 +1,9 @@
 # Characters and decks
 
+The [2026-10-29 UmDb selection audit](characters/2026-10-29-import-selection.md) compares the previous roster with the public catalog and records the eight selected imports and remaining source links.
+
+The completed eight-character batch adds Tesla, Houdini, Little Red, Beowulf, Hamlet, Bloody Mary, Jekyll & Hyde and Golden Bat. Its [integrated verification report](characters/2026-10-29-import-verification.md) records the 26-hero roster, original artwork, passing checks and remaining broader-suite failures.
+
 Medusa is playable with her corrected printed 30-card deck across eleven designs and three Harpies. Her [import notes](characters/medusa.md) record source corrections, reusable rules and original artwork.
 
 The Genie is playable with his full 30-card deck across twelve designs, Infinite Power and all three wishes. His [import notes](characters/the-genie.md) document the shared rule hooks, source inventory and original artwork.
@@ -107,3 +111,35 @@ Eredin is playable with **30 cards across 11 designs**, 14 HP, movement 2, melee
 ## Sun Wukong
 
 Sun Wukong is playable with **30 cards across 12 designs**, 17 HP, movement 2 and **three 1-HP melee Clones that begin off the board**. He summons or relocates Clones, transforms, redirects combat damage and tricks defended attacks into Tricked You. Every printed BOOST, quantity, fighter restriction and timed clause is preserved. His [source inventory](characters/sun-wukong/inventory.json) and [import notes](characters/sun-wukong.md) document publisher clarifications, reusable rules and sixteen original Imagegen assets.
+
+## Nikola Tesla
+
+Nikola Tesla is playable with **30 cards across 11 designs**, 14 HP, movement 2 and ranged attacks, without allies. His two coils charge at turn end, threaten nearby enemies at turn start and power optional card effects. X-Ray Radiation publicly reveals an exact opposing top-deck card before its discharge decision. The [printed inventory](characters/nikola-tesla/inventory.json) and [import notes](characters/nikola-tesla.md) document every clause, reusable reveal/discard operations and original artwork.
+
+## Little Red Riding Hood
+
+Little Red Riding Hood is playable with **30 cards across 12 printed designs**, represented by **14 entries** to preserve Into the Woods’ three distinct basket symbols. She has 14 HP, movement 2, melee attacks and one 9-HP ranged Huntsman. Her live discard basket, wild starting marker, conditional defense and exact top-card recovery retain their printed timing. The [source inventory](characters/little-red/inventory.json) and [import notes](characters/little-red.md) document every clause and sixteen original Imagegen assets.
+
+## Beowulf
+
+Beowulf is playable with **30 cards across twelve designs**, 17 HP, movement 2 and one **9-HP melee Wiglaf**. Damage fuels his capped Rage, which powers combat values, immediate retaliation, sidekick defeat and the Golden Drinking Horn’s distinct ordered effects. Every printed BOOST, restriction and timed clause is retained. The [source inventory](characters/beowulf/inventory.json) and [import notes](characters/beowulf.md) record the complete mapping, reusable computed counter operation and sixteen original Imagegen assets.
+
+## Hamlet
+
+Hamlet is playable with **30 cards across 12 designs**, 15 HP, movement 2, melee attacks and one **6-HP melee Rosencrantz & Guildenstern**. The Question chooses additional Maneuver draws or stronger Hamlet attacks at a friendly fighter’s expense. His deck preserves exact discarded-card recovery, current-turn damage, combat-based movement and optional private hand cycling. The [source inventory](characters/hamlet/inventory.json) and [import notes](characters/hamlet.md) document every printed clause, reusable operations and original artwork.
+
+## Harry Houdini
+
+Harry Houdini is playable with **30 cards across 13 designs**, 14 HP, movement 2, melee attacks and one **5-HP melee Bess**. Escape Artist replaces Houdini's boosted Maneuver movement with placement while Bess moves normally. Printed BOOST bonuses, simultaneous two-card BOOST, exact card recovery, combat exchanges, hand-inspection protection and All Part of the Show's survival are represented by shared rules. The [source inventory](characters/harry-houdini/inventory.json) and [import notes](characters/harry-houdini.md) document every clause, publisher rulings and seventeen original Imagegen assets.
+
+## Bloody Mary
+
+Bloody Mary is playable with **30 cards across 13 designs**, 16 HP, movement 3, melee attacks and no allies. Exactly three cards at turn start grants an action; her third actual action powers several cards independently of action gains. Bloody Reprise retains the first defense's printed value while allowing a fresh, independently cancellable defense. Mirror movement, exact private hand dilemmas and final-value comparisons use reusable rules. The [source inventory](characters/bloody-mary/inventory.json) and [import notes](characters/bloody-mary.md) document every clause and fifteen original Imagegen assets.
+
+## Jekyll & Hyde
+
+Jekyll & Hyde are playable with **30 cards across thirteen designs**, one 16-HP melee fighter, movement 2 and no allies. The Serum starts as Jekyll and optionally changes form each turn; every form-specific card is enforced before play, and Hyde pays health after each Maneuver. Private drawn-card research, exact revealed-card transfers and all transformations retain their printed timing. The [source inventory](characters/jekyll-hyde/inventory.json) and [import notes](characters/jekyll-hyde.md) document all clauses, reusable operations and original artwork.
+
+## Golden Bat
+
+Golden Bat is playable with **30 cards across 12 designs**, 18 HP, movement 3, melee attacks and no allies. The First Superhero rewards attacks before a Maneuver; schemes and after-combat movement prepare positional combinations without spending that bonus. His complete deck includes exact shuffled recovery, seeded random recovery, private opponent-deck ordering and a global current-turn movement lock. The [source inventory](characters/golden-bat/inventory.json) and [import notes](characters/golden-bat.md) record every printed clause and the original portrait, transparent figure and twelve card scenes.

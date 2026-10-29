@@ -1,0 +1,83 @@
+{
+  "character": "golden-bat",
+  "generatedAt": "2026-10-29",
+  "tool": "Integrated Codex Imagegen",
+  "style": "Original cinematic illustrated realism",
+  "sourceRules": "https://unmatched.cards/umdb/decks/golden-bat",
+  "sourceArtUsed": false,
+  "identityReference": "references/identity.png",
+  "assets": [
+    {
+      "id": "golden-bat-portrait",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-b3eb828b-7191-4f0a-a8c4-7fd23e5aeabb.png",
+      "prompt": "portrait"
+    },
+    {
+      "id": "golden-bat-token",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-bcad5ab5-69a7-46a1-bdd1-bd4702db3aff.png",
+      "prompt": "token"
+    },
+    {
+      "id": "golden-bat-a-punch-to-shake-the-earth",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-c1b3abe2-5bda-4645-ac1e-82b242f39ab9.png",
+      "prompt": "a-punch-to-shake-the-earth"
+    },
+    {
+      "id": "golden-bat-alpine-fortress",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-4f9d8dfb-11ca-463c-ad26-9aa161aa9b44.png",
+      "prompt": "alpine-fortress"
+    },
+    {
+      "id": "golden-bat-arrive-just-in-time",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-4818b760-9cbb-4534-83ab-7250404b9cfe.png",
+      "prompt": "arrive-just-in-time"
+    },
+    {
+      "id": "golden-bat-he-laughs-at-your-feebleness",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-878609dc-9c6a-4f90-8353-0d2161fd9b05.png",
+      "prompt": "he-laughs-at-your-feebleness"
+    },
+    {
+      "id": "golden-bat-imposing-presence",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-930cb124-693c-44da-85eb-77f1fc867ecf.png",
+      "prompt": "imposing-presence"
+    },
+    {
+      "id": "golden-bat-insight-of-the-ancients",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-5803c511-f9c6-419d-be2f-6af4ce883d83.png",
+      "prompt": "insight-of-the-ancients"
+    },
+    {
+      "id": "golden-bat-like-a-flash-of-golden-light",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-bb72fabd-0325-492b-b7b4-d95cd06d3aaf.png",
+      "prompt": "like-a-flash-of-golden-light"
+    },
+    {
+      "id": "golden-bat-sight-beyond-sight",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-0b213603-e08c-4736-a513-1efbd9c6425b.png",
+      "prompt": "sight-beyond-sight"
+    },
+    {
+      "id": "golden-bat-skirmish",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-1c817758-69ae-4c42-a8d9-644f8e9343ad.png",
+      "prompt": "skirmish"
+    },
+    {
+      "id": "golden-bat-super-strength",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-70df1852-d031-44a0-bf79-c3571beee884.png",
+      "prompt": "super-strength"
+    },
+    {
+      "id": "golden-bat-terrifying-roar",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-d20c46c8-678f-4196-9d79-45d9471204cc.png",
+      "prompt": "terrifying-roar"
+    },
+    {
+      "id": "golden-bat-vaporizing-eyebeams",
+      "originalGeneratedPath": "/home/francesco/.codex/generated_images/01a188d6-675d-7ad2-8bec-f0448fc134a7/exec-3ff3a1d3-67ba-4efb-a85b-816256998b51.png",
+      "prompt": "vaporizing-eyebeams"
+    }
+  ],
+  "failures": [],
+  "notes": "All final assets generated individually. Portrait inspected before use as identity reference. Token requested as actual transparent alpha. Source images were not redistributed."
+}

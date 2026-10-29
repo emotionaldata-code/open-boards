@@ -1,0 +1,171 @@
+{
+  "character": "hamlet",
+  "date": "2026-10-29",
+  "tool": "integrated Imagegen",
+  "style": "Original cinematic illustrated realism, Renaissance Danish court, burgundy silver black and teal. No source artwork redistributed.",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/hamlet",
+  "identityReferences": [
+    "references/hamlet-portrait.png",
+    "references/hamlet-rosencrantz-guildenstern-portrait.png"
+  ],
+  "assets": [
+    {
+      "id": "hamlet-portrait",
+      "source": "masters/hamlet-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-f5d0e60c-7e21-4cca-a731-3f03582b688b.png",
+      "sha256": "7663f24c6a8cc246cd7ca90b4b1c1cf44ba57810779e4227c083c7509e1ddf77",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-rosencrantz-guildenstern-portrait",
+      "source": "masters/hamlet-rosencrantz-guildenstern-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-cea10286-828c-45b0-ac5b-16d7d8626255.png",
+      "sha256": "662fbca11883c62bbd812ccfbde0bd3f1cd595a5d3e0ea9eb9642b34ecd3865d",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-token",
+      "source": "masters/hamlet-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-934db91a-237d-4f29-86e8-41ed3cfbbd0f.png",
+      "sha256": "b4667c3b88c434017c9c48baf975cee869e7b7b5891d06c61665838efbb817b1",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "hamlet-rosencrantz-guildenstern-token",
+      "source": "masters/hamlet-rosencrantz-guildenstern-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-e6964edf-c5a5-409b-960e-689969197380.png",
+      "sha256": "b3425c54146af60b14346d8e0fe55db60260d6cb26bec6ad301ba220811ab94d",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "hamlet-cruel-to-be-kind",
+      "source": "masters/cruel-to-be-kind.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-00f990cb-9ecb-4ae6-af48-46a3cd0d4690.png",
+      "sha256": "1e4aef436bb971490442e60ad5ad926b6acf38ceca6baf992713c89f88b08a4a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-uncertain-doom",
+      "source": "masters/uncertain-doom.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-809e4e4e-9769-4544-84dd-62cb08ba51aa.png",
+      "sha256": "5b04e3bc979c5dd6b291cbefbb36988491fae223ac64e37de95553117b146421",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-to-sleep-perchance-to-dream",
+      "source": "masters/to-sleep-perchance-to-dream.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-f870e614-f56b-4d39-a6a7-a6b1612bfa57.png",
+      "sha256": "54e75433a7fbbf4a328116177a9fa55c60c822baaa7d9363e722ff9a49d34aaa",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-the-readiness-is-all",
+      "source": "masters/the-readiness-is-all.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-4b1952c8-2a94-4ff4-9dff-b9618fac9665.png",
+      "sha256": "6525aa0363055277cc59db0a7fec64df5cf36f1fae96f688b30855051e22efa0",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-the-plays-the-thing",
+      "source": "masters/the-plays-the-thing.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-2770da04-0f37-4275-8401-f2e55135d4ff.png",
+      "sha256": "9190a37696c33db952b981626f2f4e28b396131431e6726e82b5c5f464b8b1ed",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-blood-will-have-blood",
+      "source": "masters/blood-will-have-blood.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-00bd370f-cabb-4924-88d8-d841fa244f1c.png",
+      "sha256": "064c520adbf44fd7bd5f8c1aedb16c64b6085fed20b85106f1e74cdc4b98bb39",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-outrageous-fortune",
+      "source": "masters/outrageous-fortune.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-ab3ed2cd-4c9c-4e49-9853-dee36d2e4dab.png",
+      "sha256": "dadafe8843710b2278b166a10bfe09af23ce43830bf61122611ff6d32ec42969",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-maddening-insight",
+      "source": "masters/maddening-insight.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-d876ba4a-947f-4202-b755-4db5ae26de5c.png",
+      "sha256": "c8e08947c3297913bed8767e8258377bfc75ed69d37fba71666c192245a02979",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-the-rest-is-silence",
+      "source": "masters/the-rest-is-silence.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-db824280-5578-4e5c-8dd7-9fb335a48129.png",
+      "sha256": "01b722710db855800f98f51225dc2f4ce1d92b177ac9a944b2f2fca581618957",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-nothing-either-good-or-bad",
+      "source": "masters/nothing-either-good-or-bad.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-ced866bb-dc83-41c6-b11c-3f63213c99dc.png",
+      "sha256": "78c0b6ae3c1aedb658f6477bb9e67f6b13b723bd4242228e927ecaebb7f408b5",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-method-in-the-madness",
+      "source": "masters/method-in-the-madness.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-99575aa3-ee67-49b2-80fd-9795c4c4ee02.png",
+      "sha256": "85a7a1a998d82772d8adcf6e16aa360ba8701b73a47c60fe2343a94f16f564aa",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "hamlet-the-ghost",
+      "source": "masters/the-ghost.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-7bd69dc4-14ff-4162-9628-01fd1631f067.png",
+      "sha256": "59e3f212042e6ab1f1dcb8ceb86d0ca793e970780ecd54a0e323fa98946096e5",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ],
+  "attempts": 18,
+  "failures": [],
+  "notes": "One integrated call per final asset plus two successful but unselected ally-token compositions with a cropped boot. The final square ally composition is complete and was visually inspected. Both original portraits were inspected and reused as identity references. Selected masters retained unmodified. Transparent figures use real alpha. No artificial enlargement.",
+  "qualityIterations": [
+    {
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-ee5102ff-03a2-4973-8dd2-65391c07a136.png",
+      "issue": "Original ally token clipped the rightmost boot toe; not selected."
+    },
+    {
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188bc-01ff-7c70-a0b3-890e56cfb222/exec-74373a24-827b-422d-a0d1-92b2fffbf633.png",
+      "prompt": "Edit this transparent two-courtier board figure: retain the exact original faces, clothing, pose, colors, realistic painted style and two separate people. Expand the framing to include the COMPLETE rightmost boot including its toe, complete boots on both men, both sword tips, and all extremities. Leave generous empty transparent margins of at least 8 percent around every extremity; figures together centered and entirely contained. Actual transparent background, no ground, pedestal, text or shadow backdrop. Do not crop any body or equipment.",
+      "issue": "Requested edit retained the clipped toe; not selected."
+    }
+  ]
+}

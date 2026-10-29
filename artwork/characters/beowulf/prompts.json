@@ -1,0 +1,82 @@
+[
+  {
+    "id": "beowulf-portrait",
+    "prompt": "Use case: historical-scene. Asset type: square hero portrait for an original tabletop game. Original legendary early-medieval Geatish warrior king, broad weathered face, swept auburn hair and braided auburn beard, aged forty, muscular, scar over brow, dark iron mail, worn bronze shoulder armor, deep forest-green cloak, ancient straight sword. Chest-up clear silhouette in a smoky timber mead hall, amber firelight and cold northern rim light. Cinematic illustrated realism, credible anatomy and materials, no text, logo, watermark, icon or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-c00ec98d-75cf-4522-8f63-e74018c3b23e.png"
+  },
+  {
+    "id": "wiglaf-portrait",
+    "prompt": "Use case: historical-scene. Asset type: square ally portrait for an original tabletop game. Original young early-medieval Geatish warrior, Wiglaf, twenty-year-old slim athletic man with clean-shaven freckled face and short dark brown curls, alert loyal expression, weathered blue wool tunic under steel ring mail, bronze brooch, round wooden shield and short spear. Chest-up clear silhouette, smoky northern timber mead hall, warm firelight and cold rim light. Cinematic illustrated realism, credible anatomy and materials. No text, logo, watermark, icons or frame.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-146ef89c-fc14-4dc6-8f29-911a4afa4e66.png"
+  },
+  {
+    "id": "beowulf-token",
+    "prompt": "Use case: historical-scene. Asset type: transparent full-body original board-game figure. Use the first reference solely for identity: auburn bearded scarred king, bronze shoulder armor over mail, forest-green cloak and straight sword. Dynamic standing three-quarter combat-ready pose, credible proportions, complete head, hands, sword or spear, shield and boots fully visible. Cinematic illustrated realism, realistic painted metal and cloth, readable silhouette. Isolated on actual transparent background. No ground, shadow, base, pedestal, text, icons, logo, watermark or frame.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-25004222-d88c-4285-8f5a-78d358ed6671.png"
+  },
+  {
+    "id": "wiglaf-token",
+    "prompt": "Use case: historical-scene. Asset type: transparent full-body original board-game figure. Use the reference solely for identity: young clean-shaven freckled man, short dark curls, blue cloak, mail, round wood shield and short spear. Dynamic standing three-quarter combat-ready pose, credible proportions, complete head, hands, sword or spear, shield and boots fully visible. Cinematic illustrated realism, realistic painted metal and cloth, readable silhouette. Isolated on actual transparent background. No ground, shadow, base, pedestal, text, icons, logo, watermark or frame.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-dd3732e0-517f-4e4b-ae3e-6fb567031a3d.png"
+  },
+  {
+    "id": "remnant-of-valor",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: Young Wiglaf in blue mail swings his round shield in a desperate sweeping strike, the auburn bearded green-cloaked king fighting at his shoulder and shadowy raiders recoiling, crowded timber hall, low close action angle. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-e3d9d2fb-a32f-4c90-8c41-3f9c8d484826.png"
+  },
+  {
+    "id": "feint",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: The scarred auburn-bearded king in green cloak makes a deceptive low sword motion as his enemy's sword passes harmlessly overhead, wet stone courtyard, close dynamic diagonal staging. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-03b92588-ee41-4924-a3a3-81c27fef700d.png"
+  },
+  {
+    "id": "epic-poem",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: A northern bard recites without visible writing beside firelight while the legendary auburn-bearded king in green cloak appears towering in the smoky memory behind him, solemn warm mead hall, layered medium composition. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-f6b5b090-5dc9-4750-8a81-a1a6eeb9e31a.png"
+  },
+  {
+    "id": "the-ancient-heirloom",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: Intimate close-up of the king's scarred mailed hand lifting an ancient straight sword with weathered bronze hilt from a sea chest, old northern treasures and cold blue light around warm iron, exquisite metal textures. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-73f42726-cfc9-4cc6-9775-38fd24f0cd9c.png"
+  },
+  {
+    "id": "no-contest-expecteth",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: The massive auburn-bearded warrior king in green cloak stands over a disarmed armored raider, ancient straight sword lowered decisively, wind and ash on a northern battlefield, wide low angle. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-331a6ca0-5a17-4282-a71e-c8f321b1ead8.png"
+  },
+  {
+    "id": "the-war-king",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: Auburn-bearded scarred king in bronze armor over iron mail and forest-green cloak roars and raises his straight sword amid a storm of sparks, embattled timber hall, dramatic heroic medium shot. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-cd395cde-d27c-44e0-a40f-6655bdb45e4a.png"
+  },
+  {
+    "id": "the-equal-of-grendel",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: The auburn-bearded scarred warrior king in green cloak braces and wrestles a huge shadowy swamp ogre's forearm at the doorway of a burning timber hall, physically credible non-gory struggle, strong side view. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-88b7ebb5-63b9-43f3-a696-3e5f9bff8b53.png"
+  },
+  {
+    "id": "vigor-and-courage",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: The auburn-bearded king in green cloak steps forward fiercely through crashing surf toward a dark sea cave, cold northern dawn and amber torch, wide determined adventure composition. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-f7f5325c-fe52-44a4-86c0-9c13c85d14d1.png"
+  },
+  {
+    "id": "golden-drinking-horn",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: Still-life close view of a beautifully worked golden drinking horn on an oak mead-hall table beside the scarred king's hand, ancient sword and green wool cloak, glowing amber firelight, no markings. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-ff9245c4-e37e-40db-a360-8d10a092ea96.png"
+  },
+  {
+    "id": "hot-for-the-battle",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: Young freckled clean-shaven Wiglaf with dark curls and blue mail-cloak rushes forward with spear and round wooden shield as the auburn-bearded green-cloaked king moves behind him, smoky battlefield, dynamic wide staging. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-8e64af75-f949-4238-a947-286d068f25a3.png"
+  },
+  {
+    "id": "fatal-struggle",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: The auburn-bearded scarred king and a hulking armored enemy lock straight swords at close range, both straining for a decisive final opening, rain against northern ruins, restrained intense non-gory cinematic scene. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-8f66b603-eb86-4994-ac07-9cddbe90969a.png"
+  },
+  {
+    "id": "skirmish",
+    "prompt": "Use case: historical-scene. Asset type: original 8:5 landscape tabletop card scene. Identity references only: first image is the scarred auburn-bearded muscular Geatish king in mail, bronze shoulder armor, green cloak and ancient straight sword; second is Wiglaf, young clean-shaven freckled man, short brown curls, blue cloak, mail, spear and round wooden shield. Scene: The auburn-bearded green-cloaked king and young blue-cloaked Wiglaf circle a pair of raiders across a rocky northern path, controlled nimble repositioning with swords and shield, overhead wide tactical composition. Cinematic illustrated realism, credible anatomy and materials, dramatic motivated light, atmospheric depth, varied narrative staging. Essential action inside central 80%. No text, letters, numbers, icons, symbols, logos, watermark, frame or border.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a188b6-1ebe-7ec1-b9ec-87c3227957fe/exec-b622a20d-75c7-4a24-b752-24fa7d22dc75.png"
+  }
+]

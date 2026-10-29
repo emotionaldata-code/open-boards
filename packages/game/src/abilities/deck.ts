@@ -1,4 +1,4 @@
-import { fighterById } from '../fighters';
+import { fighterById, mainFighter } from '../fighters';
 import type { Runtime } from './runtime';
 import type { Binding, Task } from './state';
 import type { Effect } from './vocabulary';
@@ -70,15 +70,44 @@ export function resolveSearch(
   }
 }
 
-export function inspectDeck(runtime: Runtime, binding: Binding, count: number, take: number): void {
-  const cards = player(runtime, binding)
-    .deck.slice(0, count)
-    .map((c) => c.id);
+export function inspectDeck(
+  runtime: Runtime,
+  binding: Binding,
+  effect: Extract<Effect, { type: 'inspect-deck' }>,
+): void {
+  const target = reference(runtime.state, binding, effect.target ?? 'self', false);
+  const p = runtime.state.players.find((p) => p.id === target?.player);
+  if (!p || p.eliminated || runtime.data.dormant?.includes(p.id)) return;
+  const cards = p.deck.slice(0, effect.count).map((c) => c.id);
+  // A one-card inspection still needs a private view before its trivial ordering finishes.
+  if (!effect.take && cards.length === 1) {
+    const card = p.deck[0];
+    openChoice(
+      runtime,
+      binding.frame,
+      player(runtime, binding).id,
+      'Inspect the top card',
+      [
+        {
+          id: card.id,
+          label: runtime.defs.cards[card.definition].name,
+          card: { ...card },
+          tasks: [],
+        },
+      ],
+      1,
+      1,
+      binding.provenance,
+      { fighter: binding.owner },
+    );
+    return;
+  }
   runtime.prepend({
     ...binding,
     type: 'inspect-take',
+    player: p.id,
     cards,
-    remaining: Math.min(take, cards.length),
+    remaining: Math.min(effect.take, cards.length),
   });
 }
 
@@ -86,7 +115,9 @@ export function takeInspected(
   runtime: Runtime,
   task: Extract<Task, { type: 'inspect-take' }>,
 ): void {
-  const p = player(runtime, task);
+  const p = task.player
+    ? runtime.state.players.find((p) => p.id === task.player)!
+    : player(runtime, task);
   if (p.eliminated) return;
   if (task.selected) {
     const index = p.deck.findIndex((c) => c.id === task.selected);
@@ -104,8 +135,8 @@ export function takeInspected(
   openChoice(
     runtime,
     task.frame,
-    p.id,
-    `Choose a card for your hand (${task.remaining} remaining)`,
+    player(runtime, task).id,
+    `Choose a card for ${p.id === player(runtime, task).id ? 'your' : 'their'} hand (${task.remaining} remaining)`,
     cards.map((id) => ({
       id,
       label: runtime.defs.cards[p.deck.find((c) => c.id === id)!.definition].name,
@@ -131,7 +162,9 @@ export function orderInspected(
   runtime: Runtime,
   task: Extract<Task, { type: 'inspect-order' }>,
 ): void {
-  const p = player(runtime, task);
+  const p = task.player
+    ? runtime.state.players.find((p) => p.id === task.player)!
+    : player(runtime, task);
   if (p.eliminated) return;
   if (task.cards.length <= 1) {
     const order = [...task.ordered, ...task.cards];
@@ -142,7 +175,7 @@ export function orderInspected(
   openChoice(
     runtime,
     task.frame,
-    p.id,
+    player(runtime, task).id,
     'Order the remaining cards: choose the next top card',
     task.cards.map((id) => ({
       id,
@@ -176,12 +209,40 @@ export function recoverCard(
 ): void {
   const p = player(runtime, binding);
   if (p.eliminated) return;
+  const frame = runtime.data.frames[binding.frame];
+  const boosted =
+    frame?.kind === 'combat'
+      ? frame.boosts
+          .filter((b) => !effect.boostGrants || effect.boostGrants.includes(b.grant))
+          .map((b) => b.card.id)
+      : [];
+  const discards = availableDiscards(runtime.state, p);
+  const receipts = effect.discardedByCard
+    ? (frame.discardedCards
+        ?.filter((r) => r.source === binding.provenance?.card && r.player === p.id)
+        .map((r) => r.card.id) ?? [])
+    : undefined;
   const available = taggedCards(
-    availableDiscards(runtime.state, p),
+    effect.top ? discards.slice(-1) : discards,
     runtime.defs,
     effect.tag,
-  ).filter((card) => !effect.cards || effect.cards.includes(card.definition));
-  if (effect.all) {
+  ).filter(
+    (card) =>
+      (!effect.cards || effect.cards.includes(card.definition)) &&
+      (!effect.boostedOnly || boosted.includes(card.id)) &&
+      (!receipts || receipts.includes(card.id)),
+  );
+  if (effect.random) {
+    if (!available.length) return;
+    resolveRecovery(runtime, {
+      ...binding,
+      type: 'recover-card',
+      card: available[randomIndex(runtime, available.length)].id,
+      destination: effect.destination,
+    });
+    return;
+  }
+  if (effect.all || effect.discardedByCard) {
     const ids = new Set(available.map((card) => card.id));
     p.discard = p.discard.filter((card) => !ids.has(card.id));
     if (effect.destination === 'deck') {
@@ -210,6 +271,8 @@ export function recoverCard(
           type: 'recover-card',
           card: card.id,
           cards: effect.cards,
+          boostedOnly: effect.boostedOnly,
+          boostGrants: effect.boostGrants,
           tag: effect.tag,
           destination: effect.destination,
         },
@@ -228,9 +291,17 @@ export function resolveRecovery(
 ): void {
   const p = player(runtime, task);
   if (p.eliminated) return;
+  const frame = runtime.data.frames[task.frame];
+  const boosted =
+    frame?.kind === 'combat'
+      ? frame.boosts
+          .filter((b) => !task.boostGrants || task.boostGrants.includes(b.grant))
+          .map((b) => b.card.id)
+      : [];
   const index = p.discard.findIndex(
     (c) =>
       c.id === task.card &&
+      (!task.boostedOnly || boosted.includes(c.id)) &&
       (!task.cards || task.cards.includes(c.definition)) &&
       (!task.tag || runtime.defs.cards[c.definition].tags?.includes(task.tag)),
   );
@@ -353,6 +424,32 @@ export function returnToDeck(
     p.hand = p.hand.filter((c) => !task.ordered.includes(c.id));
     if (task.destination === 'bottom') p.deck.push(...cards);
     else p.deck.unshift(...cards);
+    if (task.redraw === 'up-to' && cards.length)
+      openChoice(
+        runtime,
+        task.frame,
+        p.id,
+        'Choose how many cards to draw',
+        Array.from({ length: cards.length + 1 }, (_, amount) => ({
+          id: String(amount),
+          label: String(amount),
+          value: amount,
+          tasks: [
+            {
+              type: 'operation' as const,
+              operation: {
+                kind: 'draw' as const,
+                actor: mainFighter(runtime.state, p.id).id,
+                amount,
+              },
+            },
+          ],
+        })),
+        1,
+        1,
+        task.provenance,
+        { fighter: task.owner },
+      );
     return;
   }
   openChoice(
@@ -362,12 +459,24 @@ export function returnToDeck(
     task.destination === 'bottom'
       ? 'Choose a card for the bottom of their deck'
       : 'Choose the next card for the top of your deck',
-    available.map((card) => ({
-      id: card.id,
-      label: runtime.defs.cards[card.definition].name,
-      card: { ...card },
-      tasks: [{ ...task, selected: card.id }],
-    })),
+    [
+      ...available.map((card) => ({
+        id: card.id,
+        label: runtime.defs.cards[card.definition].name,
+        card: { ...card },
+        tasks: [{ ...task, selected: card.id }],
+      })),
+      ...(task.upTo
+        ? [
+            {
+              id: '$done',
+              label: 'Finish returning cards',
+              decline: true,
+              tasks: [{ ...task, remaining: 0, selected: undefined }],
+            },
+          ]
+        : []),
+    ],
     1,
     1,
     task.provenance,
@@ -381,11 +490,17 @@ export function discardDeck(
   binding: Binding,
   effect: Extract<Effect, { type: 'discard-deck' }>,
 ): void {
-  const target = reference(runtime.state, binding, effect.target);
+  const target = reference(runtime.state, binding, effect.target, false);
   const p = runtime.state.players.find((p) => p.id === target?.player);
   if (!p || p.eliminated || effect.count <= 0) return;
   const card = p.deck.shift();
   if (!card) return;
+  if (binding.provenance)
+    (runtime.data.frames[binding.frame].discardedCards ??= []).push({
+      card: structuredClone(card),
+      player: p.id,
+      source: binding.provenance.card,
+    });
   runtime.prepend(
     ...runtime.effects(effect.onDiscard ?? [], {
       ...binding,
@@ -394,5 +509,50 @@ export function discardDeck(
     }),
     ...runtime.effects(effect.count > 1 ? [{ ...effect, count: effect.count - 1 }] : [], binding),
   );
-  runtime.card(target!.id, card, true);
+  runtime.card(target!.id, card, true, binding.owner);
+}
+
+/** Reveal an exact top card publicly, keeping its identity through suspended continuations. */
+export function revealTopCard(
+  runtime: Runtime,
+  binding: Binding,
+  effect: Extract<Effect, { type: 'reveal-top-card' }>,
+): void {
+  const target = reference(runtime.state, binding, effect.target, false);
+  const p = runtime.state.players.find((p) => p.id === target?.player);
+  if (!p || p.eliminated || runtime.data.dormant?.includes(p.id)) return;
+  const card = p.deck[0];
+  if (card) {
+    const frame = runtime.data.frames[binding.frame];
+    frame.revealedDeckCards = [...(frame.revealedDeckCards ?? []), structuredClone(card)];
+    runtime.emit({
+      type: 'hand-revealed',
+      player: p.id,
+      cards: [structuredClone(card)],
+      zone: 'deck',
+    });
+  }
+  runtime.prepend(
+    ...runtime.effects(effect.effects, {
+      ...binding,
+      selectedCard: card ? structuredClone(card) : undefined,
+      selectedPlayer: p.id,
+    }),
+  );
+}
+
+/** Discard only the exact deck instance bound by a reveal, then run its receipt. */
+export function discardSelectedCard(
+  runtime: Runtime,
+  binding: Binding,
+  effect: Extract<Effect, { type: 'discard-selected-card' }>,
+): void {
+  const p = runtime.state.players.find((p) => p.id === binding.selectedPlayer);
+  if (!p || p.eliminated || runtime.data.dormant?.includes(p.id) || !binding.selectedCard) return;
+  const index = p.deck.findIndex((c) => c.id === binding.selectedCard!.id);
+  if (index < 0) return;
+  const [card] = p.deck.splice(index, 1);
+  const target = runtime.state.fighters.find((f) => f.player === p.id && f.role === 'main')!;
+  runtime.prepend(...runtime.effects(effect.onDiscard ?? [], { ...binding, selectedCard: card }));
+  runtime.card(target.id, card, true, binding.owner);
 }

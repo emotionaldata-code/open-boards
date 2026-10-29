@@ -46,6 +46,7 @@ const messages: Record<string, string> = {
   'Boost defense': 'Potenzia difesa',
   'Face-up combat cards': 'Carte di combattimento scoperte',
   'Face-up attack': 'Attacco scoperto',
+  'Revealed deck card': 'Carta del mazzo rivelata',
   'Face-up defense · predicting the attack value':
     'Difesa scoperta · previsione del valore di attacco',
   'That username is already taken.': 'Questo nome utente è già in uso.',
@@ -121,7 +122,7 @@ const patterns: [RegExp, (...parts: string[]) => string][] = [
   ],
   [/^Discard (\d+) revealed cards$/, (count) => `Scarta ${count} carte rivelate`],
   [
-    /^Choose a card for your hand \((\d+) remaining\)$/,
+    /^Choose a card for (?:your|their) hand \((\d+) remaining\)$/,
     (count) =>
       `Scegli una carta da aggiungere alla mano (${count} ${count === '1' ? 'rimanente' : 'rimanenti'})`,
   ],

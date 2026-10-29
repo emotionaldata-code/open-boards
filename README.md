@@ -92,10 +92,13 @@ No turn-start draws and no reshuffling: each card you cannot draw immediately de
 - `packages/game`: pure state transitions, per-character targeting, graph validation, and ordered outcomes. No framework, storage, networking, browser, or hardcoded content imports.
 - `packages/content`: separate serializable character, card and colored graph definitions, plus independent visual coordinates and zone styling.
 - `packages/protocol`: runtime validation for requests and explicit public/private transport contracts.
+- `packages/agents`: player-safe observations, typed bot policies, remote account/match SDK, seeded headless simulations and replay. See [agents and headless games](docs/agents.md).
 - `apps/server/src/auth`, `db`: Argon2id hashes, 24-hour signed HttpOnly JWT cookies, rate limiting, user queries and migrations.
-- `apps/server/src/rooms`: admission, duplicate-seat protection, readiness, shuffling, synchronous command processing and reconnect lifecycle.
-- `apps/server/src/transport`: whitelist projection per viewer; no deck order, other hands, or hidden attacks in opponent snapshots or outcomes.
+- `apps/server/src/rooms`: independent player/spectator admission, host-managed bot seats, readiness, synchronous commands and human reconnect lifecycle.
+- `apps/server/src/transport`: shared agent projection per viewer; no deck order, other hands, or hidden attacks in opponent or spectator snapshots and outcomes.
 - `apps/client/src`: account/lobby/game controls, networking adapters, PixiJS board and local animation queue. Confirmed state always wins over animation. Node controls also support keyboard input and WebGL failure.
+
+Create a normal table and add a bot in the waiting room to play against it. Choose **Organizza una partita tra bot** to host as a spectator, add bots, then start. Running tables accept spectators without consuming player seats. The initial bot uses a random legal policy; it is an integration baseline, not a strong opponent.
 
 Colyseus transports explicit per-player `snapshot` messages rather than synchronizing the engine object with Schema. Each snapshot combines public information with only that viewer's hand. Commands include UUIDs and expected revisions. Repeated and stale commands are rejected without mutation. This keeps the privacy boundary visible and testable; the small POC sends full snapshots rather than incremental patches.
 

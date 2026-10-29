@@ -5,6 +5,7 @@ RUN npm install --global pnpm@11.14.0
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/client/package.json apps/client/package.json
 COPY apps/server/package.json apps/server/package.json
+COPY packages/agents/package.json packages/agents/package.json
 COPY packages/content/package.json packages/content/package.json
 COPY packages/game/package.json packages/game/package.json
 COPY packages/protocol/package.json packages/protocol/package.json

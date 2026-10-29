@@ -47,13 +47,24 @@ export const credentialsSchema = z.object({
     .regex(/^[a-zA-Z0-9_]{3,24}$/, 'Use 3–24 letters, numbers or underscores.'),
   password: z.string().min(8).max(128),
 });
-export const createRoomSchema = z.object({ capacity: z.union([z.literal(2), z.literal(4)]) });
+export const connectionRoleSchema = z.enum(['player', 'spectator']);
+export const joinRoomSchema = z.object({ role: connectionRoleSchema.default('player') });
+export const createRoomSchema = joinRoomSchema.extend({
+  capacity: z.union([z.literal(2), z.literal(4)]),
+});
+export const addBotSchema = z.object({
+  character: z.string().min(1).max(64),
+  policy: z.string().min(1).max(64),
+});
+export const removeBotSchema = z.object({ id: z.string().min(1).max(100) });
+export type ConnectionRole = z.infer<typeof connectionRoleSchema>;
 export const characterSelectionSchema = z.object({ character: z.string().min(1).max(64) });
 export interface User {
   id: string;
   name: string;
 }
 export interface Seat extends User {
+  controller: { type: 'human' } | { type: 'bot'; policy: string };
   character: string;
   ready: boolean;
   connected: boolean;
@@ -103,6 +114,8 @@ export interface GameView {
   observation?: { prompt: string; cards: Card[] };
 }
 export interface RoomView {
+  viewerRole: ConnectionRole;
+  spectators: number;
   id: string;
   host: string;
   capacity: 2 | 4;
@@ -110,6 +123,9 @@ export interface RoomView {
   game: GameView | null;
 }
 export interface RoomListing {
+  phase: 'waiting' | 'playing' | 'finished';
+  joinable: boolean;
+  watchable: boolean;
   id: string;
   host: string;
   seats: number;

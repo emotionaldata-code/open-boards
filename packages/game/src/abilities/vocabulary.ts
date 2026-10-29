@@ -6,6 +6,7 @@ export const hooks = [
   'before-draw',
   'after-draw',
   'maneuver-boosted',
+  'after-maneuver',
   'before-move',
   'after-move',
   'before-attack',
@@ -50,10 +51,18 @@ export type Value =
   | { stat: 'discard'; tag?: string; of?: PlayerRef }
   | { stat: 'counter'; name: string; of?: PlayerRef }
   | { stat: 'actions' }
+  | { stat: 'action-number' }
   | { event: 'amount' | 'attack' | 'defense' | 'distance' }
   | { card: 'played' | 'attack' | 'defense' | 'opposing' | 'selected'; field: 'value' | 'boost' };
+export type DiscardTopCondition = {
+  type: 'discard-top';
+  tag: string;
+  wildTag?: string;
+  target?: PlayerRef;
+};
 export type FighterCondition = { type: 'allies-defeated' };
 export type Condition =
+  | DiscardTopCondition
   | FighterCondition
   | { type: 'all' | 'any'; conditions: Condition[] }
   | { type: 'not'; condition: Condition }
@@ -74,12 +83,21 @@ export type Condition =
     }
   | { type: 'combat-result'; result: 'won' | 'lost' | 'blocked' }
   | { type: 'prediction-matches' }
+  | { type: 'combat-lethal' }
+  | { type: 'opponent-discard' }
   | { type: 'defeated'; target?: PlayerRef }
   | { type: 'on-token'; token: string; target?: PlayerRef; atTurnStart?: boolean }
   | { type: 'maneuvered'; target?: PlayerRef }
+  | { type: 'damaged-this-turn'; target?: PlayerRef }
+  | { type: 'draw-reason'; reason: 'maneuver' }
   | { type: 'changed-position'; target?: PlayerRef }
+  | { type: 'left-starting-zone'; target?: PlayerRef }
   | { type: 'has-status'; player?: PlayerRef; status: string };
 export type Effect =
+  | { type: 'reveal-top-card'; target?: PlayerRef; effects: Effect[] }
+  | { type: 'discard-selected-card'; onDiscard?: Effect[] }
+  | { type: 'take-selected-card' }
+  | { type: 'draw-and-keep'; count: number; keep: number; upTo?: boolean }
   | { type: 'reveal-boost-draw' }
   | { type: 'return-combat-card' }
   | { type: 'discard-deck'; target?: PlayerRef; count: number; onDiscard?: Effect[] }
@@ -106,19 +124,27 @@ export type Effect =
       random?: boolean;
       chooser?: PlayerRef;
       destination?: 'top' | 'bottom';
+      upTo?: boolean;
+      redraw?: 'up-to';
     }
   | { type: 'defeat'; target: PlayerRef; onDefeat?: Effect[] }
   | { type: 'remove-until-next-turn'; target?: PlayerRef }
   | { type: 'lock-card-value'; target?: PlayerRef; value: Value }
   | { type: 'end-turn' }
-  | { type: 'boost-combat'; target?: PlayerRef; grant?: string }
-  | { type: 'lock-movement'; target?: PlayerRef }
+  | { type: 'boost-combat'; target?: PlayerRef; grant?: string; count?: number; optional?: boolean }
+  | { type: 'lock-movement'; target?: PlayerRef; all?: boolean }
   | { type: 'search-cards'; cards: string[]; recycleOnDeck?: boolean }
-  | { type: 'replace-attack' }
-  | { type: 'bonus-attack'; name: string; value: number }
+  | { type: 'replace-attack'; different?: boolean }
+  | { type: 'bonus-attack'; name: string; value: number; combatValue?: Value }
   | { type: 'replace-defender'; target: PlayerRef }
+  | { type: 'replace-combatant'; target: PlayerRef }
   | {
       type: 'recover-card';
+      random?: boolean;
+      discardedByCard?: boolean;
+      boostedOnly?: boolean;
+      boostGrants?: string[];
+      top?: boolean;
       cards?: string[];
       tag?: string;
       all?: boolean;
@@ -129,7 +155,7 @@ export type Effect =
   | { type: 'set-health'; target?: PlayerRef; value: number }
   | { type: 'prevent-damage'; target?: PlayerRef }
   | { type: 'search-card'; card: string; zones: ('deck' | 'discard')[] }
-  | { type: 'inspect-deck'; count: number; take: number }
+  | { type: 'inspect-deck'; target?: PlayerRef; count: number; take: number }
   | {
       type: 'area-damage';
       range: 'zone' | 'any' | 'adjacent' | 'own-zone' | 'adjacent-to-friendly';
@@ -144,7 +170,7 @@ export type Effect =
   | { type: 'ignore-combat-value'; target?: PlayerRef }
   | { type: 'reveal-hand'; target?: PlayerRef; count: number; discard: number }
   | { type: 'draw-to'; target?: PlayerRef; count: number }
-  | { type: 'inspect-hand'; target?: PlayerRef; public?: boolean }
+  | { type: 'inspect-hand'; target?: PlayerRef; public?: boolean; effects?: Effect[] }
   | { type: 'named-value-discard'; target?: PlayerRef }
   | { type: 'swap'; target: PlayerRef; onSuccess?: Effect[] }
   | { type: 'summon-ally'; placement: 'adjacent' | 'replace-self'; damage?: number }
@@ -160,10 +186,11 @@ export type Effect =
   | { type: 'draw'; target?: PlayerRef; count: Value }
   | { type: 'damage'; target?: PlayerRef; amount: Value; onDamage?: Effect[]; onDefeat?: Effect[] }
   | { type: 'heal'; target?: PlayerRef; amount: Value }
-  | { type: 'move'; target?: PlayerRef; distance: number; throughEnemies?: boolean }
+  | { type: 'move'; target?: PlayerRef; distance: Value; throughEnemies?: boolean }
   | { type: 'push' | 'pull'; target?: PlayerRef; distance: number }
   | {
       type: 'teleport';
+      consumeManeuver?: boolean;
       target?: PlayerRef;
       zone?: 'any' | 'shared';
       anchor?: PlayerRef;
@@ -178,6 +205,8 @@ export type Effect =
       type: 'discard';
       target?: PlayerRef;
       chooser?: PlayerRef;
+      selected?: boolean;
+      tag?: string;
       random?: boolean;
       count: number;
       upTo?: boolean;
@@ -189,7 +218,7 @@ export type Effect =
       onComplete?: Effect[];
     }
   | { type: 'actions'; target?: PlayerRef; amount: number }
-  | { type: 'counter'; name: string; amount: number }
+  | { type: 'counter'; name: string; amount: Value }
   | { type: 'status'; target?: PlayerRef; status: string; stacks?: number; turns?: number }
   | { type: 'remove-status'; target?: PlayerRef; status: string }
   | { type: 'modify'; field: 'amount' | 'attack' | 'defense'; amount: Value }

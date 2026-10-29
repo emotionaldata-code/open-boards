@@ -1,0 +1,590 @@
+{
+  "id": "jekyll-hyde",
+  "name": "Jekyll & Hyde",
+  "hp": 16,
+  "movement": 2,
+  "attackType": "melee",
+  "abilities": [
+    {
+      "id": "the-serum-setup",
+      "name": "The Serum",
+      "description": "Start the game as Dr. Jekyll.",
+      "trigger": "game-start",
+      "effects": [
+        {
+          "type": "remove-status",
+          "status": "hyde-form"
+        },
+        {
+          "type": "status",
+          "status": "jekyll-form"
+        }
+      ]
+    },
+    {
+      "id": "the-serum",
+      "name": "The Serum",
+      "description": "At the start of your turn, you may transform into Dr. Jekyll or Mr. Hyde.",
+      "trigger": "turn-start",
+      "effects": [
+        {
+          "type": "choose-option",
+          "prompt": "The Serum · Choose your form",
+          "options": [
+            {
+              "id": "jekyll",
+              "label": "Dr. Jekyll",
+              "effects": [
+                {
+                  "type": "remove-status",
+                  "status": "hyde-form"
+                },
+                {
+                  "type": "status",
+                  "status": "jekyll-form"
+                }
+              ]
+            },
+            {
+              "id": "hyde",
+              "label": "Mr. Hyde",
+              "effects": [
+                {
+                  "type": "remove-status",
+                  "status": "jekyll-form"
+                },
+                {
+                  "type": "status",
+                  "status": "hyde-form"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "optional": true
+    },
+    {
+      "id": "hyde-maneuver",
+      "name": "Mr. Hyde",
+      "description": "While Mr. Hyde: After you Maneuver, take 1 damage.",
+      "trigger": "after-maneuver",
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 1
+        }
+      ],
+      "when": {
+        "type": "has-status",
+        "status": "hyde-form"
+      }
+    }
+  ],
+  "palette": {
+    "ground": "#253733",
+    "ink": "#e3dfcb",
+    "accent": "#8fbf89"
+  },
+  "cards": [
+    {
+      "id": "jekyll-hyde-feint",
+      "name": "Feint",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "Immediately: Cancel all effects on your opponent's card.",
+      "art": {
+        "scene": "ward",
+        "variant": 0,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-feint-1280-cc89f86e3ae4.webp"
+      },
+      "flavor": "A shadow may hide a second intent.",
+      "abilities": [
+        {
+          "id": "feint",
+          "name": "Feint",
+          "description": "Cancel all effects on your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-skirmish",
+      "name": "Skirmish",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "count": 3,
+      "description": "After Combat: If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+      "art": {
+        "scene": "blade",
+        "variant": 1,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-skirmish-1280-08819956a46f.webp"
+      },
+      "flavor": "The alley offers no sanctuary.",
+      "abilities": [
+        {
+          "id": "skirmish",
+          "name": "Skirmish",
+          "description": "If you won the combat, choose one of the fighters in the combat and move them up to 2 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "combat",
+              "effects": [
+                {
+                  "type": "move",
+                  "target": "chosen",
+                  "distance": 2
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-duality-of-man",
+      "name": "Duality of Man",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 2,
+      "description": "During Combat: If you are Dr. Jekyll and playing this card to defend, this card's value is 6 instead. If you are Mr. Hyde and playing this card to attack, this card's value is 6 instead.",
+      "art": {
+        "scene": "lantern",
+        "variant": 2,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-duality-of-man-1280-4339a89cf13e.webp"
+      },
+      "flavor": "One body. Two wills.",
+      "abilities": [
+        {
+          "id": "duality-of-man",
+          "name": "Duality of Man",
+          "description": "If you are Dr. Jekyll and playing this card to defend, this card's value is 6 instead. If you are Mr. Hyde and playing this card to attack, this card's value is 6 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 6
+            }
+          ],
+          "when": {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "all",
+                "conditions": [
+                  {
+                    "type": "has-status",
+                    "status": "jekyll-form"
+                  },
+                  {
+                    "type": "role",
+                    "role": "defender"
+                  }
+                ]
+              },
+              {
+                "type": "all",
+                "conditions": [
+                  {
+                    "type": "has-status",
+                    "status": "hyde-form"
+                  },
+                  {
+                    "type": "role",
+                    "role": "attacker"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-distracted-triage",
+      "name": "Distracted Triage",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 3,
+      "count": 2,
+      "description": "After Combat: If you won the combat, recover 2 health.",
+      "art": {
+        "scene": "shield",
+        "variant": 3,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-distracted-triage-1280-c07a7c68bf2a.webp"
+      },
+      "flavor": "Steady hands conceal a restless heart.",
+      "requiresStatus": "jekyll-form",
+      "tags": ["jekyll"],
+      "abilities": [
+        {
+          "id": "distracted-triage",
+          "name": "Distracted Triage",
+          "description": "If you won the combat, recover 2 health.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "heal",
+              "amount": 2
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-succumb-to-compulsion",
+      "name": "Succumb to Compulsion",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "After Combat: Move up to 2 spaces. Transform to Mr. Hyde.",
+      "art": {
+        "scene": "embers",
+        "variant": 4,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-succumb-to-compulsion-1280-253c0e73b072.webp"
+      },
+      "flavor": "The vial is already empty.",
+      "requiresStatus": "jekyll-form",
+      "tags": ["jekyll"],
+      "abilities": [
+        {
+          "id": "succumb-to-compulsion",
+          "name": "Succumb to Compulsion",
+          "description": "Move up to 2 spaces. Transform to Mr. Hyde.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 2
+            },
+            {
+              "type": "remove-status",
+              "status": "jekyll-form"
+            },
+            {
+              "type": "status",
+              "status": "hyde-form"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-madness-relents",
+      "name": "Madness Relents",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: Transform to Dr. Jekyll.",
+      "art": {
+        "scene": "lantern",
+        "variant": 5,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-madness-relents-1280-930626ec00ac.webp"
+      },
+      "flavor": "Even the monster must breathe.",
+      "requiresStatus": "hyde-form",
+      "tags": ["hyde"],
+      "abilities": [
+        {
+          "id": "madness-relents",
+          "name": "Madness Relents",
+          "description": "Transform to Dr. Jekyll.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "remove-status",
+              "status": "hyde-form"
+            },
+            {
+              "type": "status",
+              "status": "jekyll-form"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-recoiling-blow",
+      "name": "Recoiling Blow",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 5,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: Place Mr. Hyde in any space in his zone. \nTransform to Dr. Jekyll.",
+      "art": {
+        "scene": "blade",
+        "variant": 6,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-recoiling-blow-1280-b1b591844ab5.webp"
+      },
+      "flavor": "Violence leaves an opening.",
+      "requiresStatus": "hyde-form",
+      "tags": ["hyde"],
+      "abilities": [
+        {
+          "id": "recoiling-blow",
+          "name": "Recoiling Blow",
+          "description": "Place Mr. Hyde in any space in his zone. \nTransform to Dr. Jekyll.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "teleport",
+              "zone": "shared",
+              "includeOrigin": true,
+              "optional": false
+            },
+            {
+              "type": "remove-status",
+              "status": "hyde-form"
+            },
+            {
+              "type": "status",
+              "status": "jekyll-form"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-forever-hyde",
+      "name": "Forever Hyde",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 5,
+      "boost": 2,
+      "count": 2,
+      "description": "During Combat: You may discard Dr. Jekyll cards. Add 2 to this card's value for each card discarded.",
+      "art": {
+        "scene": "fire",
+        "variant": 0,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-forever-hyde-1280-4e62ed9b4261.webp"
+      },
+      "flavor": "The physician becomes a memory.",
+      "requiresStatus": "hyde-form",
+      "tags": ["hyde"],
+      "abilities": [
+        {
+          "id": "forever-hyde",
+          "name": "Forever Hyde",
+          "description": "You may discard Dr. Jekyll cards. Add 2 to this card's value for each card discarded.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "count": 100,
+              "upTo": true,
+              "tag": "jekyll",
+              "onDiscard": [
+                {
+                  "type": "modify",
+                  "field": "attack",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-with-haste",
+      "name": "With Haste!",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 3,
+      "count": 2,
+      "description": "After Combat: Move Dr. Jekyll up to 4 spaces.",
+      "art": {
+        "scene": "trail",
+        "variant": 1,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-with-haste-1280-1bfcbb9ab38e.webp"
+      },
+      "flavor": "Do not look behind you.",
+      "requiresStatus": "jekyll-form",
+      "tags": ["jekyll"],
+      "abilities": [
+        {
+          "id": "with-haste",
+          "name": "With Haste!",
+          "description": "Move Dr. Jekyll up to 4 spaces.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "distance": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-scientific-method",
+      "name": "Scientific Method",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: Draw a number of cards equal to the damage you were dealt.",
+      "art": {
+        "scene": "map",
+        "variant": 2,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-scientific-method-1280-52f29ba863f9.webp"
+      },
+      "flavor": "Every wound is evidence.",
+      "requiresStatus": "jekyll-form",
+      "tags": ["jekyll"],
+      "abilities": [
+        {
+          "id": "scientific-method",
+          "name": "Scientific Method",
+          "description": "Draw a number of cards equal to the damage you were dealt.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "draw",
+              "count": {
+                "event": "amount"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-calming-research",
+      "name": "Calming Research",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 2,
+      "description": "Recover 2 health. Draw up to 3 cards. Keep one and put any others on the bottom of your deck in any order.",
+      "art": {
+        "scene": "lantern",
+        "variant": 3,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-calming-research-1280-9476fcff5ed5.webp"
+      },
+      "flavor": "A quiet hour before the storm.",
+      "requiresStatus": "jekyll-form",
+      "tags": ["jekyll"],
+      "effects": [
+        {
+          "type": "heal",
+          "amount": 2
+        },
+        {
+          "type": "draw-and-keep",
+          "count": 3,
+          "keep": 1,
+          "upTo": true
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-pure-evil",
+      "name": "Pure Evil",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 3,
+      "description": "Place Mr. Hyde in any space in his zone. Mr. Hyde deals 2 damage to all adjacent fighters.",
+      "art": {
+        "scene": "fire",
+        "variant": 4,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-pure-evil-1280-a4485ca8696f.webp"
+      },
+      "flavor": "The city holds its breath.",
+      "requiresStatus": "hyde-form",
+      "tags": ["hyde"],
+      "effects": [
+        {
+          "type": "teleport",
+          "zone": "shared",
+          "includeOrigin": true,
+          "optional": false
+        },
+        {
+          "type": "area-damage",
+          "range": "adjacent",
+          "relation": "any",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "jekyll-hyde-strange-case",
+      "name": "Strange Case",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "Reveal the top card of your deck. Deal damage equal to its BOOST value to one adjacent fighter. Put the card in your hand.",
+      "art": {
+        "scene": "bolt",
+        "variant": 5,
+        "image": "/artwork/jekyll-hyde/jekyll-hyde-strange-case-1280-61006e69eca2.webp"
+      },
+      "flavor": "A case no doctor can explain.",
+      "requiresStatus": "hyde-form",
+      "tags": ["hyde"],
+      "effects": [
+        {
+          "type": "reveal-top-card",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "adjacent",
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "chosen",
+                  "amount": {
+                    "card": "selected",
+                    "field": "boost"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "take-selected-card"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

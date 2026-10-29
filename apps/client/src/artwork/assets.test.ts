@@ -5,7 +5,20 @@ import sharp from 'sharp';
 import { cardPresentation } from '@open-boards/content';
 import { fighterArtwork, rasterAssets, rasterForUrl } from './assets';
 
-it.each([
+const importedArtwork: {
+  character: string;
+  ally: string | null;
+  designs: number;
+  artworks?: number;
+}[] = [
+  { character: 'nikola-tesla', ally: null, designs: 11 },
+  { character: 'harry-houdini', ally: 'harry-houdini-bess', designs: 13 },
+  { character: 'little-red', ally: 'little-red-huntsman', designs: 14, artworks: 12 },
+  { character: 'beowulf', ally: 'beowulf-wiglaf', designs: 12 },
+  { character: 'hamlet', ally: 'hamlet-rosencrantz-guildenstern', designs: 12 },
+  { character: 'bloody-mary', ally: null, designs: 13 },
+  { character: 'jekyll-hyde', ally: null, designs: 13 },
+  { character: 'golden-bat', ally: null, designs: 12 },
   { character: 'sinbad', ally: 'sinbad-porter', designs: 16 },
   { character: 'darth-vader', ally: null, designs: 12 },
   { character: 'geralt-of-rivia', ally: 'geralt-of-rivia-dandelion', designs: 15 },
@@ -24,9 +37,11 @@ it.each([
   { character: 'medusa', ally: 'medusa-harpy', designs: 11 },
   { character: 'king-arthur', ally: 'king-arthur-merlin', designs: 16 },
   { character: 'sherlock-holmes', ally: 'sherlock-holmes-dr-watson', designs: 13 },
-])(
+];
+
+it.each(importedArtwork)(
   'ships $character with correctly sized, hashed derivatives and transparent tokens',
-  async ({ character, ally, designs }) => {
+  async ({ character, ally, designs, artworks = designs }) => {
     const cards = Object.values(cardPresentation).filter((card) => card.character === character);
     expect(cards).toHaveLength(designs);
     for (const card of cards) expect(rasterForUrl(card.art.image)?.kind).toBe('card');
@@ -38,7 +53,7 @@ it.each([
       pilot.add(rasterAssets[fighterArtwork[fighter].portrait]);
       pilot.add(rasterAssets[fighterArtwork[fighter].token]);
     }
-    expect(pilot.size).toBe(designs + fighters.length * 2);
+    expect(pilot.size).toBe(artworks + fighters.length * 2);
     const sources = JSON.parse(
       await readFile(`artwork/characters/${character}/sources.json`, 'utf8'),
     ) as { id: string; anchor?: [number, number] }[];

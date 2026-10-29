@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-29",
+  "generator": "OpenAI integrated Imagegen",
+  "sourceIdentity": "Original folklore mirror ghost, Victorian mourning dress and spectral mirror imagery; no publisher art redistributed.",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/bloody-mary",
+  "references": ["references/bloody-mary-identity.png"],
+  "generationFailures": [],
+  "assets": [
+    {
+      "id": "bloody-mary-portrait",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-fb1d3513-e379-4f4a-9f3b-304d85ba1cc0.png",
+      "source": "masters/bloody-mary-portrait.png",
+      "sha256": "8d0001d6075ff3aab4455f9d0d54ecf8b0f921fd8b6e8bb3bfb93200026a731b"
+    },
+    {
+      "id": "bloody-mary-token",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-a4d1f955-ab2a-4e74-b602-08edb4a0582a.png",
+      "source": "masters/bloody-mary-token.png",
+      "sha256": "0412a8b0a24e048fbb78bc057d11f6596ab7e0a27f9ffca3fad41d38e363b88b"
+    },
+    {
+      "id": "out-of-the-mirror",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-7b0664dc-3975-4b60-803f-f81686ebe71e.png",
+      "source": "masters/out-of-the-mirror.png",
+      "sha256": "22431b2d7a6a52b157cc8f9c073c14d9fcaf1d425a67c49dbd5c1f2628786c12"
+    },
+    {
+      "id": "speak-three-times",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-281a7c73-069c-4e0b-a374-cc579950a7b6.png",
+      "source": "masters/speak-three-times.png",
+      "sha256": "9f21222d435ca369fd1359ba1a8272b5f885e7dd1abe432f649e9a1fbd8d1a98"
+    },
+    {
+      "id": "ghostly-touch",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-66e76f3f-55b8-41cf-9c17-9614024bb55f.png",
+      "source": "masters/ghostly-touch.png",
+      "sha256": "54548e14d9a4af7880690264e5e85482c5211c8d1d722b34540c05c04562e7df"
+    },
+    {
+      "id": "bloody-requiem",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-f49644cc-9a96-4749-be78-892e33ad8425.png",
+      "source": "masters/bloody-requiem.png",
+      "sha256": "c02ab934e890fe32cd9582b959da5d6270ba99af541fe876f58e7cb91d8cf606"
+    },
+    {
+      "id": "trick-of-the-light",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-76b73258-92dd-46ec-80f6-cf5a1ae12d54.png",
+      "source": "masters/trick-of-the-light.png",
+      "sha256": "3b3858896f4ad0dd8deb5c0133df0271b56182a3b7e5f80e2b2a32834e2a8180"
+    },
+    {
+      "id": "feint",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-8176a745-7679-406e-80d5-7c21df217b7d.png",
+      "source": "masters/feint.png",
+      "sha256": "9ef3ebdf8a9982f2ce2e1c9569e00f799660f57623cf2f975f98e11659b65b82"
+    },
+    {
+      "id": "broken-glass",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-79010027-86d6-43a3-b1d9-067859d7dcfc.png",
+      "source": "masters/broken-glass.png",
+      "sha256": "b1ceea2b8c25a35930e8dea9b66aac05519df6ac220b51eb242607b63a8cd483"
+    },
+    {
+      "id": "stolen-memories",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-5bff959d-7f56-4c18-9e37-b49a2a8991d9.png",
+      "source": "masters/stolen-memories.png",
+      "sha256": "fbcef974d3465136a10178cec22d743155235afd610355ffb031e406d7d190c6"
+    },
+    {
+      "id": "jump-scare",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-71fbada6-1abe-48fa-94fa-2bed013023ea.png",
+      "source": "masters/jump-scare.png",
+      "sha256": "685cf811529b2f9a2f7a82a28a473e268fadb016398d425fba624b50f8537fce"
+    },
+    {
+      "id": "infinity-mirror",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-fd9c1270-f92b-4c88-ae68-1867d8151e12.png",
+      "source": "masters/infinity-mirror.png",
+      "sha256": "37e913a9a30636fa2f00f71dc5c294399a95288d1b30a7b0c09fd9b66d48d4c3"
+    },
+    {
+      "id": "closer-than-she-appears",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-cfcf0e51-58ea-4d74-8d8c-e74332403b29.png",
+      "source": "masters/closer-than-she-appears.png",
+      "sha256": "62f4563b699b458a901453d3907b9c6aab67d1d54667e10c6ec362d4ea426b68"
+    },
+    {
+      "id": "mirror-image",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-0d3fd7b2-4bb2-4ae1-9234-fea27dce93a7.png",
+      "source": "masters/mirror-image.png",
+      "sha256": "efa2764626427e56509bf25ebd41cdc865b94ef749b2ea26c03a1cf91a3b58ae"
+    },
+    {
+      "id": "evade",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188c5-098d-71d3-8630-a4774096199c/exec-cd2bd590-a4c9-4c09-a842-8eafd94452d0.png",
+      "source": "masters/evade.png",
+      "sha256": "fcf8599aab56db4992c2db3a86f715b9249676eb90e92668755d788a790d250d"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { offerDrawKeep } from './draw-keep';
+import { offerHandProtection } from './hand-protection';
 import { chooseToken, moveToken } from './tokens';
 import { fighterById, fighterDefinition, fighterLabel, mainFighter } from '../fighters';
 import { adjacent, reachablePaths } from '../movement';
@@ -11,10 +13,10 @@ import { startGroup } from './groups';
 import { offerSummon } from './summoning';
 import { offerRevival } from './revival';
 import { suppressOpponent } from './suppression';
-import { offerAttackBoost } from './attack-boost';
+import { offerAttackBoost, offerBoostGroup } from './attack-boost';
 import { setCombatValue, modifyCombatValue, lockCardValue } from './combat-values';
 import { actionGainPrevented, offerDiscardProtection } from './ongoing';
-import { discardDeck, searchCards, randomIndex } from './deck';
+import { discardDeck, searchCards, randomIndex, revealTopCard, discardSelectedCard } from './deck';
 import { eliminate } from './operations';
 import { offerDiscard } from './discard';
 import { returnCombatCard } from './combat-return';
@@ -23,7 +25,7 @@ import { inspectDeck, searchCard, recoverCard, returnPlayedCard } from './deck';
 import { inspectHand, nameValue, predictValue } from './hand';
 import { swapFighters } from './swap';
 import { chooseArea } from './area';
-import { applyCombatEffect, setHealth, replaceDefender } from './combat-effects';
+import { applyCombatEffect, setHealth, replaceDefender, replaceCombatant } from './combat-effects';
 import { offerAttackReplacement } from './attack-replacement';
 
 export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effect' }>): void {
@@ -33,7 +35,18 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
   const owner = fighterById(state, task.owner)!;
   const ownerPlayer = state.players.find((p) => p.id === owner.player)!;
   if (ownerPlayer.departed || runtime.data.dormant?.includes(ownerPlayer.id)) return;
-  const target = reference(state, task, 'target' in e ? e.target : 'self');
+  const playerEffect = [
+    'draw',
+    'draw-to',
+    'discard',
+    'discard-deck',
+    'inspect-hand',
+    'named-value-discard',
+    'reveal-hand',
+    'return-to-deck',
+    'actions',
+  ].includes(e.type);
+  const target = reference(state, task, 'target' in e ? e.target : 'self', !playerEffect);
   if (
     target &&
     runtime.data.dormant?.includes(target.player) &&
@@ -53,7 +66,34 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
     offerDiscardProtection(runtime, task, target.player)
   )
     return;
+  if (
+    ((e.type === 'discard' &&
+      e.chooser &&
+      reference(state, task, e.chooser)?.player !== target?.player) ||
+      e.type === 'reveal-hand') &&
+    offerHandProtection(runtime, task, e)
+  )
+    return;
   switch (e.type) {
+    case 'draw-and-keep':
+      offerDrawKeep(runtime, task, e);
+      break;
+    case 'take-selected-card': {
+      const p = state.players.find((p) => p.id === task.selectedPlayer);
+      const index = p?.deck.findIndex((c) => c.id === task.selectedCard?.id) ?? -1;
+      if (p && !p.eliminated && !runtime.data.dormant?.includes(p.id) && index >= 0) {
+        const cards = p.deck.splice(index, 1);
+        p.hand.push(...cards);
+        emit({ type: 'draw', player: p.id, cards }, p.id);
+      }
+      break;
+    }
+    case 'reveal-top-card':
+      revealTopCard(runtime, task, e);
+      break;
+    case 'discard-selected-card':
+      discardSelectedCard(runtime, task, e);
+      break;
     case 'reveal-boost-draw':
       runtime.prepend({
         ...task,
@@ -106,6 +146,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
             player: player.id,
             chooser: reference(state, task, e.chooser ?? e.target)?.player,
             destination: e.destination,
+            upTo: e.upTo,
+            redraw: e.redraw,
             remaining: e.count,
             ordered: [],
           });
@@ -117,8 +159,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         !target.defeated &&
         !state.players.find((p) => p.id === target.player)!.eliminated
       ) {
-        runtime.prepend(...runtime.effects(e.onDefeat ?? [], task));
-        eliminate(runtime, target.id, owner.id);
+        if (eliminate(runtime, target.id, owner.id))
+          runtime.prepend(...runtime.effects(e.onDefeat ?? [], task));
       }
       break;
     case 'remove-until-next-turn':
@@ -136,7 +178,11 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       state.actions = 0;
       break;
     case 'lock-movement':
-      if (target && !target.defeated) (runtime.data.movementLocks ??= []).push(target.id);
+      if (e.all) {
+        runtime.data.movementLocks = state.fighters.map((f) => f.id);
+      } else if (target && !target.defeated) {
+        (runtime.data.movementLocks ??= []).push(target.id);
+      }
       break;
     case 'search-cards':
       searchCards(runtime, task, e);
@@ -146,7 +192,11 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
         frame.kind === 'combat' &&
         target &&
         (target.id === frame.attacker || (target.id === frame.defender && frame.defenseCard))
-      )
+      ) {
+        if ((e.count ?? 1) > 1 || e.optional === false) {
+          offerBoostGroup(runtime, task, target.id, e.grant ?? 'combat', e.count ?? 1, e.optional);
+          break;
+        }
         offerAttackBoost(
           runtime,
           task.frame,
@@ -156,9 +206,10 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
           false,
           frame.attacker === target.id ? 'attack' : 'defense',
         );
+      }
       break;
     case 'replace-attack':
-      offerAttackReplacement(runtime, task);
+      offerAttackReplacement(runtime, task, e.different);
       break;
     case 'reveal-hand':
       if (target)
@@ -206,7 +257,16 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       break;
     case 'bonus-attack':
       if (frame.kind === 'combat' && !frame.bonus)
-        frame.bonusAttack = { name: e.name, value: e.value };
+        frame.bonusAttack = {
+          name: e.name,
+          value: e.value,
+          ...(e.combatValue !== undefined
+            ? { combatValue: value(state, defs, task, e.combatValue) }
+            : {}),
+        };
+      break;
+    case 'replace-combatant':
+      replaceCombatant(runtime, task);
       break;
     case 'replace-defender':
       replaceDefender(runtime, task);
@@ -221,7 +281,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       searchCard(runtime, task, e);
       break;
     case 'inspect-deck':
-      inspectDeck(runtime, task, e.count, e.take);
+      inspectDeck(runtime, task, e);
       break;
     case 'area-damage':
       chooseArea(runtime, task, e);
@@ -304,7 +364,9 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
           (!e.range ||
             e.range === 'any' ||
             (e.range === 'combat'
-              ? frame.kind === 'combat' && [frame.attacker, frame.defender].includes(f.id)
+              ? frame.kind === 'combat' &&
+                [frame.attacker, frame.defender].includes(f.id) &&
+                (e.type === 'choose-player' || !frame.detachedFighters?.includes(f.id))
               : e.range === 'adjacent'
                 ? adjacent(defs.map, owner.position, f.position)
                 : e.range === 'zone'
@@ -347,7 +409,7 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       if (definition)
         owner.counters[e.name] = Math.max(
           0,
-          Math.min(definition.max, owner.counters[e.name] + e.amount),
+          Math.min(definition.max, owner.counters[e.name] + value(state, defs, task, e.amount)),
         );
       break;
     }
@@ -453,7 +515,13 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                     .map((n) => [n, [n]]),
                 )
               : e.type === 'move'
-                ? reachablePaths(state, target, defs.map, e.distance, e.throughEnemies)
+                ? reachablePaths(
+                    state,
+                    target,
+                    defs.map,
+                    Math.max(0, Math.min(100, value(state, defs, task, e.distance))),
+                    e.throughEnemies,
+                  )
                 : forcedPaths(state, target, owner, defs, e.distance, e.type);
           const options = Object.entries(paths).map(([node, path]) => {
             return {
@@ -469,8 +537,14 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
                     target: target.id,
                     origin: target.position!,
                     path,
-                    distance: e.type === 'teleport' ? 1 : e.distance,
+                    distance:
+                      e.type === 'teleport'
+                        ? 1
+                        : e.type === 'move'
+                          ? Math.max(0, Math.min(100, value(state, defs, task, e.distance)))
+                          : e.distance,
                     mode: e.type,
+                    consumeManeuver: e.type === 'teleport' ? e.consumeManeuver : undefined,
                     zone: e.type === 'teleport' ? e.zone : undefined,
                     token: e.type === 'teleport' ? e.token : undefined,
                     starting: e.type === 'teleport' ? e.starting : undefined,

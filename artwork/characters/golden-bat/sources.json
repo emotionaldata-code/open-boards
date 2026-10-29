@@ -1,0 +1,100 @@
+[
+  {
+    "id": "golden-bat-portrait",
+    "kind": "portrait",
+    "source": "masters/golden-bat-portrait.png",
+    "focal": [0.5, 0.38]
+  },
+  {
+    "id": "golden-bat-token",
+    "kind": "token",
+    "source": "masters/golden-bat-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "golden-bat-a-punch-to-shake-the-earth",
+    "kind": "card",
+    "source": "masters/a-punch-to-shake-the-earth.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-a-punch-to-shake-the-earth"
+  },
+  {
+    "id": "golden-bat-alpine-fortress",
+    "kind": "card",
+    "source": "masters/alpine-fortress.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-alpine-fortress"
+  },
+  {
+    "id": "golden-bat-arrive-just-in-time",
+    "kind": "card",
+    "source": "masters/arrive-just-in-time.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-arrive-just-in-time"
+  },
+  {
+    "id": "golden-bat-he-laughs-at-your-feebleness",
+    "kind": "card",
+    "source": "masters/he-laughs-at-your-feebleness.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-he-laughs-at-your-feebleness"
+  },
+  {
+    "id": "golden-bat-imposing-presence",
+    "kind": "card",
+    "source": "masters/imposing-presence.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-imposing-presence"
+  },
+  {
+    "id": "golden-bat-insight-of-the-ancients",
+    "kind": "card",
+    "source": "masters/insight-of-the-ancients.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-insight-of-the-ancients"
+  },
+  {
+    "id": "golden-bat-like-a-flash-of-golden-light",
+    "kind": "card",
+    "source": "masters/like-a-flash-of-golden-light.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-like-a-flash-of-golden-light"
+  },
+  {
+    "id": "golden-bat-sight-beyond-sight",
+    "kind": "card",
+    "source": "masters/sight-beyond-sight.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-sight-beyond-sight"
+  },
+  {
+    "id": "golden-bat-skirmish",
+    "kind": "card",
+    "source": "masters/skirmish.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-skirmish"
+  },
+  {
+    "id": "golden-bat-super-strength",
+    "kind": "card",
+    "source": "masters/super-strength.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-super-strength"
+  },
+  {
+    "id": "golden-bat-terrifying-roar",
+    "kind": "card",
+    "source": "masters/terrifying-roar.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-terrifying-roar"
+  },
+  {
+    "id": "golden-bat-vaporizing-eyebeams",
+    "kind": "card",
+    "source": "masters/vaporizing-eyebeams.png",
+    "focal": [0.5, 0.5],
+    "card": "golden-bat-vaporizing-eyebeams"
+  }
+]

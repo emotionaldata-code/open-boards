@@ -1,0 +1,121 @@
+[
+  {
+    "id": "harry-houdini-vanishing-act",
+    "kind": "card",
+    "source": "masters/vanishing-act.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-vanishing-act"
+  },
+  {
+    "id": "harry-houdini-the-big-reveal",
+    "kind": "card",
+    "source": "masters/the-big-reveal.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-the-big-reveal"
+  },
+  {
+    "id": "harry-houdini-smoke-and-mirrors",
+    "kind": "card",
+    "source": "masters/smoke-and-mirrors.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-smoke-and-mirrors"
+  },
+  {
+    "id": "harry-houdini-sleight-of-hand",
+    "kind": "card",
+    "source": "masters/sleight-of-hand.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-sleight-of-hand"
+  },
+  {
+    "id": "harry-houdini-set-the-stage",
+    "kind": "card",
+    "source": "masters/set-the-stage.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-set-the-stage"
+  },
+  {
+    "id": "harry-houdini-misdirection",
+    "kind": "card",
+    "source": "masters/misdirection.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-misdirection"
+  },
+  {
+    "id": "harry-houdini-grand-escape",
+    "kind": "card",
+    "source": "masters/grand-escape.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-grand-escape"
+  },
+  {
+    "id": "harry-houdini-flourish",
+    "kind": "card",
+    "source": "masters/flourish.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-flourish"
+  },
+  {
+    "id": "harry-houdini-portrait",
+    "kind": "portrait",
+    "source": "masters/houdini-portrait.png",
+    "focal": [0.5, 0.36]
+  },
+  {
+    "id": "harry-houdini-bess-portrait",
+    "kind": "portrait",
+    "source": "masters/bess-portrait.png",
+    "focal": [0.5, 0.36]
+  },
+  {
+    "id": "harry-houdini-token",
+    "kind": "token",
+    "source": "masters/houdini-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "harry-houdini-bess-token",
+    "kind": "token",
+    "source": "masters/bess-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "harry-houdini-an-illusion-of-my-own-design",
+    "kind": "card",
+    "source": "masters/an-illusion-of-my-own-design.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-an-illusion-of-my-own-design"
+  },
+  {
+    "id": "harry-houdini-all-part-of-the-show",
+    "kind": "card",
+    "source": "masters/all-part-of-the-show.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-all-part-of-the-show"
+  },
+  {
+    "id": "harry-houdini-a-magician-never-reveals-his-secrets",
+    "kind": "card",
+    "source": "masters/a-magician-never-reveals-his-secrets.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-a-magician-never-reveals-his-secrets"
+  },
+  {
+    "id": "harry-houdini-for-my-next-trick",
+    "kind": "card",
+    "source": "masters/for-my-next-trick.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-for-my-next-trick"
+  },
+  {
+    "id": "harry-houdini-and-the-beautiful-bess",
+    "kind": "card",
+    "source": "masters/and-the-beautiful-bess.png",
+    "focal": [0.5, 0.5],
+    "card": "harry-houdini-and-the-beautiful-bess"
+  }
+]

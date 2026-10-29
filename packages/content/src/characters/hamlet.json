@@ -1,0 +1,658 @@
+{
+  "id": "hamlet",
+  "name": "Hamlet",
+  "hp": 15,
+  "movement": 2,
+  "attackType": "melee",
+  "ally": {
+    "id": "hamlet-rosencrantz-guildenstern",
+    "name": "Rosencrantz & Guildenstern",
+    "count": 1,
+    "hp": 6,
+    "attackType": "melee"
+  },
+  "counters": {
+    "not-to-be": {
+      "initial": 0,
+      "max": 1
+    }
+  },
+  "abilities": [
+    {
+      "id": "the-question",
+      "name": "The Question",
+      "description": "At the start of your turn, choose TO BE or NOT TO BE. If you choose NOT TO BE, deal 2 damage to one of your fighters. TO BE: When you maneuver, draw 1 additional card. NOT TO BE: Add +2 to the value of Hamlet's attacks.",
+      "trigger": "turn-start",
+      "effects": [
+        {
+          "type": "counter",
+          "name": "not-to-be",
+          "amount": -1
+        },
+        {
+          "type": "choose-option",
+          "prompt": "The Question · To Be or Not To Be?",
+          "options": [
+            {
+              "id": "to-be",
+              "label": "TO BE · Maneuver draws 1 additional card",
+              "effects": []
+            },
+            {
+              "id": "not-to-be",
+              "label": "NOT TO BE · Hamlet attacks +2; deal 2 damage to your fighter",
+              "effects": [
+                {
+                  "type": "counter",
+                  "name": "not-to-be",
+                  "amount": 1
+                },
+                {
+                  "type": "choose-fighter",
+                  "relation": "friendly",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "chosen",
+                      "amount": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "to-be",
+      "name": "To Be",
+      "description": "When you maneuver, draw 1 additional card.",
+      "trigger": "before-draw",
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "draw-reason",
+            "reason": "maneuver"
+          },
+          {
+            "type": "compare",
+            "left": {
+              "stat": "counter",
+              "name": "not-to-be"
+            },
+            "op": "eq",
+            "right": 0
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "modify",
+          "field": "amount",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "not-to-be",
+      "name": "Not To Be",
+      "description": "Add +2 to the value of Hamlet's attacks.",
+      "trigger": "before-combat",
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "role",
+            "role": "attacker"
+          },
+          {
+            "type": "compare",
+            "left": {
+              "stat": "counter",
+              "name": "not-to-be"
+            },
+            "op": "eq",
+            "right": 1
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "modify",
+          "field": "attack",
+          "amount": 2
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "ground": "#2d303d",
+    "ink": "#e4d9c6",
+    "accent": "#ad727c"
+  },
+  "cards": [
+    {
+      "id": "hamlet-cruel-to-be-kind",
+      "name": "Cruel To Be Kind",
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 4,
+      "count": 2,
+      "description": "During Combat: You may BOOST this card.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/hamlet/hamlet-cruel-to-be-kind-1280-97824bd590f7.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "cruel-to-be-kind-0",
+          "name": "Cruel To Be Kind",
+          "description": "During Combat: You may BOOST this card.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "boost-combat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hamlet-uncertain-doom",
+      "name": "Uncertain Doom",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 3,
+      "count": 3,
+      "description": "During Combat: If your opponent played a versatile card, ignore its value.",
+      "art": {
+        "scene": "ward",
+        "variant": 1,
+        "image": "/artwork/hamlet/hamlet-uncertain-doom-1280-524495772722.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "uncertain-doom-0",
+          "name": "Uncertain Doom",
+          "description": "During Combat: If your opponent played a versatile card, ignore its value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "ignore-combat-value",
+              "target": "opponent"
+            }
+          ],
+          "when": {
+            "type": "card-category",
+            "card": "defense",
+            "category": "versatile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hamlet-to-sleep-perchance-to-dream",
+      "name": "To Sleep, Perchance To Dream",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 3,
+      "description": "After Combat: If you won the combat, move the opposing fighter a number of spaces up to the amount of combat damage dealt. If you lost the combat, Hamlet recovers 1 health.",
+      "art": {
+        "scene": "lantern",
+        "variant": 2,
+        "image": "/artwork/hamlet/hamlet-to-sleep-perchance-to-dream-1280-328c52f89f77.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "to-sleep-perchance-to-dream-0",
+          "name": "To Sleep, Perchance To Dream",
+          "description": "After Combat: If you won the combat, move the opposing fighter a number of spaces up to the amount of combat damage dealt. If you lost the combat, Hamlet recovers 1 health.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "move",
+                  "target": "opponent",
+                  "distance": {
+                    "event": "amount"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "lost"
+              },
+              "then": [
+                {
+                  "type": "heal",
+                  "target": "main",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hamlet-the-readiness-is-all",
+      "name": "The Readiness Is All",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 2,
+      "description": "After Combat: Place one of the fighters in the combat in any space. They cannot leave that space this turn.",
+      "art": {
+        "scene": "map",
+        "variant": 3,
+        "image": "/artwork/hamlet/hamlet-the-readiness-is-all-1280-474ba1e4fdff.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "the-readiness-is-all-0",
+          "name": "The Readiness Is All",
+          "description": "After Combat: Place one of the fighters in the combat in any space. They cannot leave that space this turn.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "choose-fighter",
+              "relation": "any",
+              "range": "combat",
+              "effects": [
+                {
+                  "type": "teleport",
+                  "target": "chosen",
+                  "zone": "any",
+                  "includeOrigin": true,
+                  "optional": false
+                },
+                {
+                  "type": "lock-movement",
+                  "target": "chosen"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hamlet-the-plays-the-thing",
+      "name": "The Play's The Thing",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 3,
+      "description": "After Combat: Your opponent discards 1 random card. If you won the combat, Hamlet recovers health equal to its BOOST value.",
+      "art": {
+        "scene": "fire",
+        "variant": 4,
+        "image": "/artwork/hamlet/hamlet-the-plays-the-thing-1280-f484fb04f7e3.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "the-plays-the-thing-0",
+          "name": "The Play's The Thing",
+          "description": "After Combat: Your opponent discards 1 random card. If you won the combat, Hamlet recovers health equal to its BOOST value.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "random": true,
+              "count": 1,
+              "onDiscard": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "combat-result",
+                    "result": "won"
+                  },
+                  "then": [
+                    {
+                      "type": "heal",
+                      "target": "main",
+                      "amount": {
+                        "card": "selected",
+                        "field": "boost"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hamlet-blood-will-have-blood",
+      "name": "Blood Will Have Blood",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 1,
+      "count": 3,
+      "description": "After Combat: If Hamlet took damage this turn, deal 1 damage to the opposing fighter.",
+      "art": {
+        "scene": "embers",
+        "variant": 5,
+        "image": "/artwork/hamlet/hamlet-blood-will-have-blood-1280-9c956d89b790.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "blood-will-have-blood-0",
+          "name": "Blood Will Have Blood",
+          "description": "After Combat: If Hamlet took damage this turn, deal 1 damage to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "opponent",
+              "amount": 1
+            }
+          ],
+          "when": {
+            "type": "damaged-this-turn",
+            "target": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hamlet-outrageous-fortune",
+      "name": "Outrageous Fortune",
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 1,
+      "boost": 2,
+      "count": 2,
+      "description": "During Combat: Discard the top card of your deck. Add its BOOST value to this card's value. After Combat: If you lost the combat, return the card you discarded to your hand.",
+      "art": {
+        "scene": "trail",
+        "variant": 6,
+        "image": "/artwork/hamlet/hamlet-outrageous-fortune-1280-9ae3c7b303bc.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "outrageous-fortune-0",
+          "name": "Outrageous Fortune",
+          "description": "During Combat: Discard the top card of your deck. Add its BOOST value to this card's value. After Combat: If you lost the combat, return the card you discarded to your hand.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "discard-deck",
+              "count": 1,
+              "onDiscard": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "role",
+                    "role": "attacker"
+                  },
+                  "then": [
+                    {
+                      "type": "modify",
+                      "field": "attack",
+                      "amount": {
+                        "card": "selected",
+                        "field": "boost"
+                      }
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "modify",
+                      "field": "defense",
+                      "amount": {
+                        "card": "selected",
+                        "field": "boost"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "outrageous-fortune-1",
+          "name": "Outrageous Fortune",
+          "description": "During Combat: Discard the top card of your deck. Add its BOOST value to this card's value. After Combat: If you lost the combat, return the card you discarded to your hand.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "recover-card",
+              "discardedByCard": true
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "lost"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hamlet-maddening-insight",
+      "name": "Maddening Insight",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 1,
+      "count": 2,
+      "description": "During Combat: The value of this card is equal to the number of cards in your hand. After Combat: If you won the combat, your opponent discards 1 card.",
+      "art": {
+        "scene": "shield",
+        "variant": 0,
+        "image": "/artwork/hamlet/hamlet-maddening-insight-1280-5e870dbeef4a.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "maddening-insight-0",
+          "name": "Maddening Insight",
+          "description": "During Combat: The value of this card is equal to the number of cards in your hand. After Combat: If you won the combat, your opponent discards 1 card.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": {
+                "stat": "hand"
+              }
+            }
+          ]
+        },
+        {
+          "id": "maddening-insight-1",
+          "name": "Maddening Insight",
+          "description": "During Combat: The value of this card is equal to the number of cards in your hand. After Combat: If you won the combat, your opponent discards 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1
+            }
+          ],
+          "when": {
+            "type": "combat-result",
+            "result": "won"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hamlet-the-rest-is-silence",
+      "name": "The Rest Is Silence",
+      "category": "defense",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 3,
+      "count": 2,
+      "description": "After Combat: End the turn.",
+      "art": {
+        "scene": "bastion",
+        "variant": 1,
+        "image": "/artwork/hamlet/hamlet-the-rest-is-silence-1280-069300692eff.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "the-rest-is-silence-0",
+          "name": "The Rest Is Silence",
+          "description": "After Combat: End the turn.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "end-turn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hamlet-nothing-either-good-or-bad",
+      "name": "Nothing Either Good Or Bad",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 1,
+      "count": 3,
+      "description": "After Combat: If your opponent played a versatile card, deal 2 damage to the opposing fighter.",
+      "art": {
+        "scene": "ward",
+        "variant": 2,
+        "image": "/artwork/hamlet/hamlet-nothing-either-good-or-bad-1280-1586b7223484.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "abilities": [
+        {
+          "id": "nothing-either-good-or-bad-0",
+          "name": "Nothing Either Good Or Bad",
+          "description": "After Combat: If your opponent played a versatile card, deal 2 damage to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "opponent",
+              "amount": 2
+            }
+          ],
+          "when": {
+            "type": "card-category",
+            "card": "attack",
+            "category": "versatile"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hamlet-method-in-the-madness",
+      "name": "Method In The Madness",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 3,
+      "count": 3,
+      "description": "Put any number of cards in your hand on the bottom of your deck. Then, draw up to that many cards. Gain 1 action.",
+      "art": {
+        "scene": "map",
+        "variant": 3,
+        "image": "/artwork/hamlet/hamlet-method-in-the-madness-1280-0875cf74c612.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "effects": [
+        {
+          "type": "return-to-deck",
+          "count": 100,
+          "destination": "bottom",
+          "upTo": true,
+          "redraw": "up-to"
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hamlet-the-ghost",
+      "name": "The Ghost",
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 0,
+      "boost": 1,
+      "count": 2,
+      "description": "Choose one: -Hamlet recovers 2 health -place Hamlet in any space in his zone and gain 1 action",
+      "art": {
+        "scene": "lantern",
+        "variant": 4,
+        "image": "/artwork/hamlet/hamlet-the-ghost-1280-42ce4edeb85e.webp"
+      },
+      "flavor": "The question waits in every shadow.",
+      "effects": [
+        {
+          "type": "choose-option",
+          "prompt": "The Ghost · Choose one",
+          "options": [
+            {
+              "id": "heal",
+              "label": "Hamlet recovers 2 health",
+              "effects": [
+                {
+                  "type": "heal",
+                  "target": "main",
+                  "amount": 2
+                }
+              ]
+            },
+            {
+              "id": "place",
+              "label": "Place Hamlet in his zone and gain 1 action",
+              "effects": [
+                {
+                  "type": "teleport",
+                  "target": "main",
+                  "zone": "shared",
+                  "includeOrigin": true,
+                  "optional": false
+                },
+                {
+                  "type": "actions",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -65,7 +65,17 @@ function pendingCardEffects(
   card: string,
   definition: string,
 ): boolean {
-  if (combat.bonus && combat.card.id === card) return false;
+  if (combat.bonus && combat.card.id === card)
+    return (
+      combat.bonus.combatValue !== undefined &&
+      runtime.data.queue.some(
+        (task) =>
+          (task.type === 'event' &&
+            task.hook === 'before-combat' &&
+            runtime.data.frames[task.frame] === combat) ||
+          (task.provenance?.card === card && ['ability', 'effect'].includes(task.type)),
+      )
+    );
   const abilities = runtime.defs.cards[definition].abilities ?? [];
   return runtime.data.queue.some((task) => {
     if (task.type === 'order-abilities')

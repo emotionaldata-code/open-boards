@@ -1,0 +1,914 @@
+{
+  "id": "little-red",
+  "name": "Little Red Riding Hood",
+  "hp": 14,
+  "movement": 2,
+  "attackType": "melee",
+  "ally": {
+    "id": "little-red-huntsman",
+    "name": "Huntsman",
+    "count": 1,
+    "hp": 9,
+    "attackType": "ranged"
+  },
+  "palette": {
+    "ground": "#382e31",
+    "ink": "#eadcc8",
+    "accent": "#c27371"
+  },
+  "discardBase": {
+    "name": "Little Red's Basket",
+    "description": "Your basket is the top card of your discard pile. Resolve a symbol effect only if it matches that item. The starting basket is wild: choose any one item, not all three. It does not count as a card.",
+    "tags": ["basket-wild"]
+  },
+  "cards": [
+    {
+      "id": "little-red-what-large-hands-you-have",
+      "name": "What Large Hands You Have 🐺",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 2,
+      "boost": 3,
+      "description": "After Combat: You may return this card to your hand. 🌹 Instead, you may return the top card of your discard pile to your hand.",
+      "tags": ["basket-pelt"],
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/little-red/little-red-what-large-hands-you-have-1280-b2c7837f1e08.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "What Large Hands You Have 🐺",
+          "description": "After Combat: You may return this card to your hand. 🌹 Instead, you may return the top card of your discard pile to your hand.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wolfsbane",
+                "wildTag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Return this card, the top discarded card, or neither",
+                  "options": [
+                    {
+                      "id": "this-card",
+                      "label": "Return this card",
+                      "effects": [
+                        {
+                          "type": "return-combat-card"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "top-card",
+                      "label": "Return the top card of your discard pile",
+                      "effects": [
+                        {
+                          "type": "recover-card",
+                          "top": true
+                        }
+                      ]
+                    },
+                    {
+                      "id": "neither",
+                      "label": "Return neither card",
+                      "effects": []
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Return this card to your hand?",
+                  "options": [
+                    {
+                      "id": "return",
+                      "label": "Return this card",
+                      "effects": [
+                        {
+                          "type": "return-combat-card"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "skip",
+                      "label": "Leave this card in your discard pile",
+                      "effects": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "little-red-the-wolf-s-skin",
+      "name": "The Wolf's Skin ⚔️",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "defense",
+      "value": 2,
+      "boost": 2,
+      "description": "After Combat: 🐺 Draw 2 cards.",
+      "tags": ["basket-knife"],
+      "art": {
+        "scene": "shield",
+        "variant": 1,
+        "image": "/artwork/little-red/little-red-the-wolf-s-skin-1280-3a4cc39bcc0b.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "The Wolf's Skin ⚔️",
+          "description": "After Combat: 🐺 Draw 2 cards.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Choose how your wild basket matches",
+                  "options": [
+                    {
+                      "id": "match",
+                      "label": "Use the matching basket item",
+                      "effects": [
+                        {
+                          "type": "draw",
+                          "count": 2
+                        }
+                      ]
+                    },
+                    {
+                      "id": "different",
+                      "label": "Use a different basket item",
+                      "effects": []
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "draw",
+                  "count": 2
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "discard-top",
+            "tag": "basket-pelt",
+            "wildTag": "basket-wild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "little-red-what-a-terrible-big-mouth-you-have",
+      "name": "What a Terrible Big Mouth You Have ⚔️",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 2,
+      "boost": 2,
+      "description": "After Combat: 🐺  Deal damage to the opposing fighter equal to the printed value of their card.",
+      "tags": ["basket-knife"],
+      "art": {
+        "scene": "ward",
+        "variant": 2,
+        "image": "/artwork/little-red/little-red-what-a-terrible-big-mouth-you-have-1280-b69c70a7f54f.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "What a Terrible Big Mouth You Have ⚔️",
+          "description": "After Combat: 🐺  Deal damage to the opposing fighter equal to the printed value of their card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Choose how your wild basket matches",
+                  "options": [
+                    {
+                      "id": "match",
+                      "label": "Use the matching basket item",
+                      "effects": [
+                        {
+                          "type": "damage",
+                          "target": "opponent",
+                          "amount": {
+                            "card": "opposing",
+                            "field": "value"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "different",
+                      "label": "Use a different basket item",
+                      "effects": []
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "damage",
+                  "target": "opponent",
+                  "amount": {
+                    "card": "opposing",
+                    "field": "value"
+                  }
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "discard-top",
+            "tag": "basket-pelt",
+            "wildTag": "basket-wild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "little-red-what-big-ears-you-have",
+      "name": "What Big Ears You Have 🐺",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "boost": 2,
+      "description": "⚔️ You may play this card as a defense card.",
+      "tags": ["basket-pelt"],
+      "art": {
+        "scene": "trail",
+        "variant": 3,
+        "image": "/artwork/little-red/little-red-what-big-ears-you-have-1280-d07fff9d38ce.webp"
+      },
+      "flavor": "",
+      "defenseMode": {
+        "when": {
+          "type": "discard-top",
+          "tag": "basket-knife",
+          "wildTag": "basket-wild"
+        }
+      }
+    },
+    {
+      "id": "little-red-what-big-eyes-you-have",
+      "name": "What Big Eyes You Have 🐺",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 3,
+      "boost": 2,
+      "description": "Immediately: Cancel all effects on your opponent's card.  🌹 Also ignore the value of your opponent's card.",
+      "tags": ["basket-pelt"],
+      "art": {
+        "scene": "blade",
+        "variant": 4,
+        "image": "/artwork/little-red/little-red-what-big-eyes-you-have-1280-f887cbd63d08.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "What Big Eyes You Have 🐺",
+          "description": "Immediately: Cancel all effects on your opponent's card.  🌹 Also ignore the value of your opponent's card.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "suppress-card-effects"
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wolfsbane",
+                "wildTag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "discard-top",
+                    "tag": "basket-wild"
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Choose how your wild basket matches",
+                      "options": [
+                        {
+                          "id": "match",
+                          "label": "Use the matching basket item",
+                          "effects": [
+                            {
+                              "type": "ignore-combat-value",
+                              "target": "opponent"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "different",
+                          "label": "Use a different basket item",
+                          "effects": []
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "ignore-combat-value",
+                      "target": "opponent"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "little-red-what-s-that-in-my-basket",
+      "name": "What's That In My Basket? 🌟",
+      "count": 4,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 4,
+      "boost": 3,
+      "description": "(🌟 counts as any one 🐺🌹⚔️ symbol.)",
+      "tags": ["basket-wild"],
+      "art": {
+        "scene": "shield",
+        "variant": 5,
+        "image": "/artwork/little-red/little-red-what-s-that-in-my-basket-1280-a9bfa45b40a3.webp"
+      },
+      "flavor": ""
+    },
+    {
+      "id": "little-red-never-leave-the-path",
+      "name": "Never Leave the Path 🐺",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 1,
+      "description": "🐺  Place Little Red in any space. Gain 1 action.  ⚔️ Deal 2 damage to each opposing fighter in Little Red's zone.  🌹 Draw 3 cards.",
+      "tags": ["basket-pelt"],
+      "art": {
+        "scene": "ward",
+        "variant": 6,
+        "image": "/artwork/little-red/little-red-never-leave-the-path-1280-b841ea04f5f0.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "if",
+          "condition": {
+            "type": "discard-top",
+            "tag": "basket-wild"
+          },
+          "then": [
+            {
+              "type": "choose-option",
+              "prompt": "Choose one item from your wild basket",
+              "options": [
+                {
+                  "id": "pelt",
+                  "label": "Pelt: place Little Red and gain 1 action",
+                  "effects": [
+                    {
+                      "type": "teleport",
+                      "zone": "any",
+                      "optional": false,
+                      "includeOrigin": true
+                    },
+                    {
+                      "type": "actions",
+                      "amount": 1
+                    }
+                  ]
+                },
+                {
+                  "id": "knife",
+                  "label": "Knife: deal 2 damage to enemies in your zone",
+                  "effects": [
+                    {
+                      "type": "for-each-fighter",
+                      "relation": "enemy",
+                      "range": "zone",
+                      "effects": [
+                        {
+                          "type": "damage",
+                          "target": "chosen",
+                          "amount": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "wolfsbane",
+                  "label": "Wolfsbane: draw 3 cards",
+                  "effects": [
+                    {
+                      "type": "draw",
+                      "count": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-pelt",
+                "wildTag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "teleport",
+                  "zone": "any",
+                  "optional": false,
+                  "includeOrigin": true
+                },
+                {
+                  "type": "actions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-knife",
+                "wildTag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "for-each-fighter",
+                  "relation": "enemy",
+                  "range": "zone",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "chosen",
+                      "amount": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wolfsbane",
+                "wildTag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "draw",
+                  "count": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "little-red-into-the-woods-pelt",
+      "name": "Into the Woods 🐺",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Move Little Red up to 3 spaces. Gain 1 action.",
+      "tags": ["basket-pelt"],
+      "art": {
+        "scene": "trail",
+        "variant": 0,
+        "image": "/artwork/little-red/little-red-into-the-woods-1280-4b62a817cb68.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "move",
+          "target": "main",
+          "distance": 3
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "little-red-into-the-woods-wolfsbane",
+      "name": "Into the Woods 🌹",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Move Little Red up to 3 spaces. Gain 1 action.",
+      "tags": ["basket-wolfsbane"],
+      "art": {
+        "scene": "trail",
+        "variant": 0,
+        "image": "/artwork/little-red/little-red-into-the-woods-1280-4b62a817cb68.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "move",
+          "target": "main",
+          "distance": 3
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "little-red-into-the-woods-knife",
+      "name": "Into the Woods ⚔️",
+      "count": 1,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 2,
+      "description": "Move Little Red up to 3 spaces. Gain 1 action.",
+      "tags": ["basket-knife"],
+      "art": {
+        "scene": "trail",
+        "variant": 0,
+        "image": "/artwork/little-red/little-red-into-the-woods-1280-4b62a817cb68.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "move",
+          "target": "main",
+          "distance": 3
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "little-red-long-have-i-sought-you",
+      "name": "Long Have I Sought You ⚔️",
+      "count": 3,
+      "usableBy": "ALLY",
+      "category": "attack",
+      "value": 4,
+      "boost": 2,
+      "description": "During Combat: If the Huntsman is adjacent to the opposing fighter, the value of this card is 6 instead.",
+      "tags": ["basket-knife"],
+      "art": {
+        "scene": "blade",
+        "variant": 1,
+        "image": "/artwork/little-red/little-red-long-have-i-sought-you-1280-fa3bc8a74d8b.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "Long Have I Sought You ⚔️",
+          "description": "During Combat: If the Huntsman is adjacent to the opposing fighter, the value of this card is 6 instead.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "set-combat-value",
+              "mode": "printed",
+              "value": 6
+            }
+          ],
+          "when": {
+            "type": "relation",
+            "relation": "adjacent",
+            "a": "self",
+            "b": "opponent"
+          }
+        }
+      ]
+    },
+    {
+      "id": "little-red-a-grimm-tale",
+      "name": "A Grimm Tale 🌹",
+      "count": 2,
+      "usableBy": "ALLY",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "description": "Little Red Recovers 2 health. 🐺 Little Red recovers 4 health instead.",
+      "tags": ["basket-wolfsbane"],
+      "art": {
+        "scene": "shield",
+        "variant": 2,
+        "image": "/artwork/little-red/little-red-a-grimm-tale-1280-ff6843ad5260.webp"
+      },
+      "flavor": "",
+      "effects": [
+        {
+          "type": "if",
+          "condition": {
+            "type": "discard-top",
+            "tag": "basket-pelt",
+            "wildTag": "basket-wild"
+          },
+          "then": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Choose how your wild basket matches",
+                  "options": [
+                    {
+                      "id": "match",
+                      "label": "Use the matching basket item",
+                      "effects": [
+                        {
+                          "type": "heal",
+                          "target": "main",
+                          "amount": 4
+                        }
+                      ]
+                    },
+                    {
+                      "id": "different",
+                      "label": "Use a different basket item",
+                      "effects": [
+                        {
+                          "type": "heal",
+                          "target": "main",
+                          "amount": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "heal",
+                  "target": "main",
+                  "amount": 4
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "heal",
+              "target": "main",
+              "amount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "little-red-stones-in-the-belly",
+      "name": "Stones in the Belly 🌹",
+      "count": 3,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 1,
+      "description": "During Combat: ⚔️ Your opponent discards 1 random card. Add its BOOST value to this card's value.",
+      "tags": ["basket-wolfsbane"],
+      "art": {
+        "scene": "ward",
+        "variant": 3,
+        "image": "/artwork/little-red/little-red-stones-in-the-belly-1280-78eba4bcd974.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "Stones in the Belly 🌹",
+          "description": "During Combat: ⚔️ Your opponent discards 1 random card. Add its BOOST value to this card's value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Choose how your wild basket matches",
+                  "options": [
+                    {
+                      "id": "match",
+                      "label": "Use the matching basket item",
+                      "effects": [
+                        {
+                          "type": "discard",
+                          "target": "opponent",
+                          "random": true,
+                          "count": 1,
+                          "onDiscard": [
+                            {
+                              "type": "if",
+                              "condition": {
+                                "type": "role",
+                                "role": "attacker"
+                              },
+                              "then": [
+                                {
+                                  "type": "modify",
+                                  "field": "attack",
+                                  "amount": {
+                                    "card": "selected",
+                                    "field": "boost"
+                                  }
+                                }
+                              ],
+                              "else": [
+                                {
+                                  "type": "modify",
+                                  "field": "defense",
+                                  "amount": {
+                                    "card": "selected",
+                                    "field": "boost"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "different",
+                      "label": "Use a different basket item",
+                      "effects": []
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "discard",
+                  "target": "opponent",
+                  "random": true,
+                  "count": 1,
+                  "onDiscard": [
+                    {
+                      "type": "if",
+                      "condition": {
+                        "type": "role",
+                        "role": "attacker"
+                      },
+                      "then": [
+                        {
+                          "type": "modify",
+                          "field": "attack",
+                          "amount": {
+                            "card": "selected",
+                            "field": "boost"
+                          }
+                        }
+                      ],
+                      "else": [
+                        {
+                          "type": "modify",
+                          "field": "defense",
+                          "amount": {
+                            "card": "selected",
+                            "field": "boost"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "discard-top",
+            "tag": "basket-knife",
+            "wildTag": "basket-wild"
+          }
+        }
+      ]
+    },
+    {
+      "id": "little-red-once-upon-a-time",
+      "name": "Once Upon a Time 🌹",
+      "count": 2,
+      "usableBy": "BOTH",
+      "category": "versatile",
+      "value": 2,
+      "boost": 1,
+      "description": "After Combat: ⚔️ Deal 3 damage to the opposing fighter.",
+      "tags": ["basket-wolfsbane"],
+      "art": {
+        "scene": "trail",
+        "variant": 4,
+        "image": "/artwork/little-red/little-red-once-upon-a-time-1280-cfca7ad44c20.webp"
+      },
+      "flavor": "",
+      "abilities": [
+        {
+          "id": "effect",
+          "name": "Once Upon a Time 🌹",
+          "description": "After Combat: ⚔️ Deal 3 damage to the opposing fighter.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "discard-top",
+                "tag": "basket-wild"
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Choose how your wild basket matches",
+                  "options": [
+                    {
+                      "id": "match",
+                      "label": "Use the matching basket item",
+                      "effects": [
+                        {
+                          "type": "damage",
+                          "target": "opponent",
+                          "amount": 3
+                        }
+                      ]
+                    },
+                    {
+                      "id": "different",
+                      "label": "Use a different basket item",
+                      "effects": []
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "damage",
+                  "target": "opponent",
+                  "amount": 3
+                }
+              ]
+            }
+          ],
+          "when": {
+            "type": "discard-top",
+            "tag": "basket-knife",
+            "wildTag": "basket-wild"
+          }
+        }
+      ]
+    }
+  ]
+}

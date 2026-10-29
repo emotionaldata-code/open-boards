@@ -1,3 +1,4 @@
+import { canPlayDefense } from './card-defense';
 import { cardEligible, fighterById, mainFighter, ownedFighters } from './fighters';
 import { canDeploy, deploymentSpaces } from './deployment';
 import type {
@@ -186,8 +187,12 @@ export function execute(
       const defense = command.card === null ? null : take(player, command.card);
       if (defense)
         requireRule(
-          ['defense', 'versatile'].includes(defs.cards[defense.definition].category) &&
-            cardEligible(defs.cards[defense.definition], fighterById(state, state.phase.defender)!),
+          canPlayDefense(
+            state,
+            fighterById(state, state.phase.defender)!,
+            defs.cards[defense.definition],
+            defs,
+          ),
           'That card cannot defend.',
         );
       const id = runtime.data.combat!;
@@ -280,6 +285,7 @@ export function execute(
       switch (command.type) {
         case 'maneuver':
           state.actions--;
+          runtime.data.actionNumber = (runtime.data.actionNumber ?? 0) + 1;
           (runtime.data.maneuvered ??= []).push(actor);
           state.maneuver = {
             player: actor,
@@ -290,7 +296,12 @@ export function execute(
             boost: 0,
             boostable: true,
           };
-          runtime.operation({ kind: 'draw', actor: mainFighter(state, actor).id, amount: 1 });
+          runtime.operation({
+            kind: 'draw',
+            actor: mainFighter(state, actor).id,
+            amount: 1,
+            reason: 'maneuver',
+          });
           break;
         case 'attack': {
           const fighter = fighterById(state, command.fighter);
@@ -311,6 +322,7 @@ export function execute(
             'Choose an opponent within your character’s attack range.',
           );
           state.actions--;
+          runtime.data.actionNumber = (runtime.data.actionNumber ?? 0) + 1;
           (runtime.data.attacked ??= []).push(actor);
           startCombat(runtime, fighter.id, target.id, card, undefined, command.faceUp);
           break;
@@ -328,6 +340,7 @@ export function execute(
             'Choose an action card.',
           );
           state.actions--;
+          runtime.data.actionNumber = (runtime.data.actionNumber ?? 0) + 1;
           const frame = runtime.frame({ kind: 'card', actor: fighter.id, card, discarded: false });
           if (!definition.ongoing) player.discard.push(card);
           runtime.emit({ type: 'played', player: actor, fighter: fighter.id, card });

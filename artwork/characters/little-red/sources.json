@@ -1,0 +1,114 @@
+[
+  {
+    "id": "little-red-huntsman-portrait",
+    "kind": "portrait",
+    "source": "masters/huntsman-portrait.png",
+    "focal": [0.5, 0.4]
+  },
+  {
+    "id": "little-red-portrait",
+    "kind": "portrait",
+    "source": "masters/little-red-portrait.png",
+    "focal": [0.5, 0.4]
+  },
+  {
+    "id": "little-red-token",
+    "kind": "token",
+    "source": "masters/little-red-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "little-red-huntsman-token",
+    "kind": "token",
+    "source": "masters/huntsman-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "little-red-what-large-hands-you-have",
+    "kind": "card",
+    "source": "masters/what-large-hands-you-have.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-what-large-hands-you-have"
+  },
+  {
+    "id": "little-red-the-wolf-s-skin",
+    "kind": "card",
+    "source": "masters/the-wolf-s-skin.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-the-wolf-s-skin"
+  },
+  {
+    "id": "little-red-what-a-terrible-big-mouth-you-have",
+    "kind": "card",
+    "source": "masters/what-a-terrible-big-mouth-you-have.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-what-a-terrible-big-mouth-you-have"
+  },
+  {
+    "id": "little-red-what-big-ears-you-have",
+    "kind": "card",
+    "source": "masters/what-big-ears-you-have-v2.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-what-big-ears-you-have"
+  },
+  {
+    "id": "little-red-what-big-eyes-you-have",
+    "kind": "card",
+    "source": "masters/what-big-eyes-you-have.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-what-big-eyes-you-have"
+  },
+  {
+    "id": "little-red-what-s-that-in-my-basket",
+    "kind": "card",
+    "source": "masters/what-s-that-in-my-basket.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-what-s-that-in-my-basket"
+  },
+  {
+    "id": "little-red-never-leave-the-path",
+    "kind": "card",
+    "source": "masters/never-leave-the-path-v2.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-never-leave-the-path"
+  },
+  {
+    "id": "little-red-into-the-woods",
+    "kind": "card",
+    "source": "masters/into-the-woods.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-into-the-woods-pelt"
+  },
+  {
+    "id": "little-red-long-have-i-sought-you",
+    "kind": "card",
+    "source": "masters/long-have-i-sought-you.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-long-have-i-sought-you"
+  },
+  {
+    "id": "little-red-a-grimm-tale",
+    "kind": "card",
+    "source": "masters/a-grimm-tale.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-a-grimm-tale"
+  },
+  {
+    "id": "little-red-stones-in-the-belly",
+    "kind": "card",
+    "source": "masters/stones-in-the-belly-v2.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-stones-in-the-belly"
+  },
+  {
+    "id": "little-red-once-upon-a-time",
+    "kind": "card",
+    "source": "masters/once-upon-a-time.png",
+    "focal": [0.5, 0.5],
+    "card": "little-red-once-upon-a-time"
+  }
+]

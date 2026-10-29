@@ -6,12 +6,13 @@ import { inAttackRange, sharesZone } from '../targeting';
 import type { Binding, Frame } from './state';
 import type { Condition, PlayerRef, Value } from './vocabulary';
 import { conditionalModifier, fighterCondition } from './fighter-conditions';
-import { availableDiscards, taggedCards } from './discard-pile';
+import { availableDiscards, taggedCards, topDiscardTags } from './discard-pile';
 
 export function reference(
   state: GameState,
   binding: Binding,
   ref: PlayerRef = 'self',
+  physical = true,
 ): Fighter | undefined {
   const frame = state.resolution.frames[binding.frame];
   if (!frame) return;
@@ -50,6 +51,14 @@ export function reference(
               : ref in frame
                 ? frame[ref as keyof Frame]
                 : undefined;
+  if (
+    physical &&
+    ref === 'opponent' &&
+    frame.kind === 'combat' &&
+    typeof id === 'string' &&
+    frame.detachedFighters?.includes(id)
+  )
+    return;
   const fighter = state.fighters.find((p) => p.id === id);
   if (ref === 'opponent-main') return fighter ? mainFighter(state, fighter.player) : undefined;
   return fighter &&
@@ -158,7 +167,13 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
       : 0;
   }
   if (v.stat === 'actions') return state.actions;
-  const p = reference(state, binding, v.of);
+  if (v.stat === 'action-number') return state.resolution.actionNumber ?? 0;
+  const p = reference(
+    state,
+    binding,
+    v.of,
+    v.stat === 'hp' || v.stat === 'movement' || v.stat === 'counter',
+  );
   if (!p) return 0;
   switch (v.stat) {
     case 'hp':
@@ -190,6 +205,22 @@ export function condition(
 ): boolean {
   const frame = state.resolution.frames[binding.frame];
   switch (c.type) {
+    case 'discard-top': {
+      const owner = reference(state, binding, c.target);
+      const player = state.players.find((p) => p.id === owner?.player);
+      const tags = player ? topDiscardTags(state, player, defs) : [];
+      return tags.includes(c.tag) || (!!c.wildTag && tags.includes(c.wildTag));
+    }
+    case 'combat-lethal':
+      return frame?.kind === 'combat' && !!frame.lethalFighters?.includes(binding.owner);
+    case 'opponent-discard':
+      return (
+        frame?.kind === 'card' &&
+        frame.discarded &&
+        !!frame.source &&
+        state.fighters.find((f) => f.id === frame.source)?.player !==
+          state.fighters.find((f) => f.id === frame.actor)?.player
+      );
     case 'allies-defeated': {
       const owner = reference(state, binding);
       return !!owner && fighterCondition(state, owner, c);
@@ -203,11 +234,9 @@ export function condition(
               ? frame.card
               : null
           : null;
-      return (
-        !!card &&
-        !(frame?.kind === 'combat' && frame.bonus && card.id === frame.card.id) &&
-        !!defs.cards[card.definition].abilities?.some((a) => a.trigger === c.hook)
-      );
+      if (frame?.kind === 'combat' && frame.bonus && card?.id === frame.card.id)
+        return c.hook === 'before-combat' && frame.bonus.combatValue !== undefined;
+      return !!card && !!defs.cards[card.definition].abilities?.some((a) => a.trigger === c.hook);
     }
     case 'all':
       return c.conditions.every((child) => condition(state, defs, binding, child));
@@ -265,11 +294,27 @@ export function condition(
         )
       );
     }
+    case 'draw-reason':
+      return frame?.kind === 'draw' && frame.reason === c.reason;
+    case 'damaged-this-turn':
+      return (
+        state.resolution.damaged?.includes(reference(state, binding, c.target)?.id ?? '') ?? false
+      );
     case 'maneuvered':
       return (
         state.resolution.maneuvered?.includes(reference(state, binding, c.target)?.player ?? '') ??
         false
       );
+    case 'left-starting-zone': {
+      const fighter = reference(state, binding, c.target);
+      const start = fighter && state.resolution.turnPositions[fighter.id];
+      return (
+        !!fighter &&
+        start != null &&
+        fighter.position !== null &&
+        !sharesZone(defs.map, start, fighter.position)
+      );
+    }
     case 'changed-position': {
       const fighter = reference(state, binding, c.target);
       const start = fighter && state.resolution.turnPositions[fighter.id];

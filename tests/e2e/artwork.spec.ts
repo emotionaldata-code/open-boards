@@ -8,6 +8,14 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const { name, designs } of [
+  { name: 'Nikola Tesla', designs: 11 },
+  { name: 'Harry Houdini', designs: 13 },
+  { name: 'Little Red Riding Hood', designs: 14 },
+  { name: 'Beowulf', designs: 12 },
+  { name: 'Hamlet', designs: 12 },
+  { name: 'Bloody Mary', designs: 13 },
+  { name: 'Jekyll & Hyde', designs: 13 },
+  { name: 'Golden Bat', designs: 12 },
   { name: 'Sinbad', designs: 16 },
   { name: 'Darth Vader', designs: 12 },
   { name: 'Geralt of Rivia', designs: 15 },

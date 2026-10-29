@@ -12,3 +12,5 @@ export * from './deployment';
 export { boostValue, maneuverMovement } from './boost';
 
 export type { ChoiceOption, ChoiceObject, ChoiceSource } from './abilities/state';
+
+export * from './card-defense';

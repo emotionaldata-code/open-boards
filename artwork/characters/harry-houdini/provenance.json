@@ -1,0 +1,165 @@
+{
+  "character": "harry-houdini",
+  "date": "2026-10-29",
+  "tool": "integrated Imagegen",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/harry-houdini",
+  "style": "Original cinematic illustrated realism; Edwardian escape artist and stage assistant. No source game artwork redistributed.",
+  "identityReferences": ["references/houdini.png", "references/bess.png"],
+  "assets": [
+    {
+      "id": "harry-houdini-vanishing-act",
+      "source": "masters/vanishing-act.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-e23112fb-463b-4f63-b2b8-c9ec935cbe73.png",
+      "sha256": "bc9975a37f8591146c75e10d8c4432be37ccea92c46cb8934b85f64baf2d99f1",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-the-big-reveal",
+      "source": "masters/the-big-reveal.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-f338372e-4449-41fd-b41d-9ae1613033e5.png",
+      "sha256": "32efb2d793f1e3124b131fcfb31e2e8948f57027c614c50deb44e8433f2115e8",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-smoke-and-mirrors",
+      "source": "masters/smoke-and-mirrors.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-55ffa90b-81fd-4a9a-a6fe-99de510eb0c3.png",
+      "sha256": "a538f4fc72b5a8bd0a5e1016ab19a237884618e89bf850bfa73f7f16e6784a9e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-sleight-of-hand",
+      "source": "masters/sleight-of-hand.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-4a504eca-5430-4cd0-b960-64d00c17216e.png",
+      "sha256": "ea242ef92501312318798d179c7cae5c3861cdf2f365993446f40c1c7e54cb23",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-set-the-stage",
+      "source": "masters/set-the-stage.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-0faa38c1-df9b-44c4-b7fb-ecdf340dd225.png",
+      "sha256": "1bdefcae9e539a31c88235ff0987ed1d24416389cb18bb496c083bce51663095",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-misdirection",
+      "source": "masters/misdirection.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-69447800-c4ce-4454-b3f8-8a114b505e70.png",
+      "sha256": "690965d1b481ac385e02c1054e624b9c32acbb12c3f67ef84ed9139456d1c4f0",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-grand-escape",
+      "source": "masters/grand-escape.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-119a7c1d-1e51-43ae-ace1-744a02734bbb.png",
+      "sha256": "5bfa42066c108ebd70f5450eee7c778050c098b49e3237003259fe6334bb134c",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-flourish",
+      "source": "masters/flourish.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-9cc3ba4e-1ad7-4385-bb49-f09dbb949207.png",
+      "sha256": "a50dd95ff4c87bf340dda4ef31d2584fb61ea76d9e715a4cc1d4651a9b2db4ab",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-portrait",
+      "source": "masters/houdini-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-764a2f0c-39ce-44ba-9aa5-c7930e67a00d.png",
+      "sha256": "5d91180237b81621136fc340eb6cfe89eabe20830605148c6d4667d4c63d17b4",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-bess-portrait",
+      "source": "masters/bess-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-fa16be42-6963-48a1-871c-de6c7a9b373a.png",
+      "sha256": "685d3438cd59eaa1b874329e26f93a75771ecebbcc2506e67667ef490e0c830c",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-token",
+      "source": "masters/houdini-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-b773cbf6-ec75-4747-a278-b203d95dfe80.png",
+      "sha256": "a9790f8d74e4377d823570e0b21a2a86f0031679d99d5def7d6465b8a64c6b86",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "harry-houdini-bess-token",
+      "source": "masters/bess-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-20a007b1-6eb4-4c32-ac99-a2347bad8fc7.png",
+      "sha256": "5eaf57779c5024547f7bc2920c9fce887ad02d0cd9530f6addc6d0a236963471",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "harry-houdini-an-illusion-of-my-own-design",
+      "source": "masters/an-illusion-of-my-own-design.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-26e2a691-0541-4304-ae17-6f07c78d2416.png",
+      "sha256": "fb08f0324d7b78e5ac9f4bbd51d939ead37f3e1b8343ca530257acee33fdc61b",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-all-part-of-the-show",
+      "source": "masters/all-part-of-the-show.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-b2adb3d7-2118-4eaa-831a-30bcde899cd4.png",
+      "sha256": "f31e4471a53fc1a74e7e9bc85d1e5f800d97fffc6610aeb546da43b2907e9043",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-a-magician-never-reveals-his-secrets",
+      "source": "masters/a-magician-never-reveals-his-secrets.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-e9dd6617-f079-4942-bba0-2fce29cb89cd.png",
+      "sha256": "4f5e959e8a0cc4ad5ce1126e82cb4e3bbddfa95938d6870cf906bc933925ac8e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-for-my-next-trick",
+      "source": "masters/for-my-next-trick.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-6a4cbc3d-0366-4195-939d-cac021f6c894.png",
+      "sha256": "fac0acaa80e540aabeac102ded98d5518f8cc662856ecaf357d131c7b36003bc",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "harry-houdini-and-the-beautiful-bess",
+      "source": "masters/and-the-beautiful-bess.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a188a8-c3e8-7810-8198-68f93c1428b2/exec-73c58a3c-a72f-4805-88c5-f50901e25b55.png",
+      "sha256": "b6999effafe81f63a2024965515ee088bdea63b5032bd3badf9f80047bbeedd3",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ],
+  "attempts": 17,
+  "failures": []
+}

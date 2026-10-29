@@ -1,3 +1,4 @@
+import { offerHandProtection } from './hand-protection';
 import { boostValue } from '../boost';
 import { fighterById, mainFighter } from '../fighters';
 import { offerDiscardProtection } from './ongoing';
@@ -49,10 +50,11 @@ export function inspectHand(
   binding: Binding,
   effect: Extract<Effect, { type: 'inspect-hand' }>,
 ): void {
-  const target = reference(runtime.state, binding, effect.target);
+  const target = reference(runtime.state, binding, effect.target, false);
   if (!target) return;
   const player = runtime.state.players.find((p) => p.id === target.player)!;
   const viewer = fighterById(runtime.state, binding.owner)!.player;
+  if (offerHandProtection(runtime, binding, effect)) return;
   if (effect.public)
     runtime.emit({ type: 'hand-revealed', player: player.id, cards: structuredClone(player.hand) });
   openChoice(
@@ -64,7 +66,11 @@ export function inspectHand(
       id: card.id,
       card: { ...card },
       label: runtime.defs.cards[card.definition].name,
-      tasks: [],
+      tasks: runtime.effects(effect.effects ?? [], {
+        ...binding,
+        selectedCard: structuredClone(card),
+        selectedPlayer: player.id,
+      }),
     })),
     1,
     1,
@@ -78,7 +84,7 @@ export function nameValue(
   binding: Binding,
   effect: Extract<Effect, { type: 'named-value-discard' }>,
 ): void {
-  const target = reference(runtime.state, binding, effect.target);
+  const target = reference(runtime.state, binding, effect.target, false);
   if (!target) return;
   openChoice(
     runtime,
@@ -125,7 +131,7 @@ export function discardNamedValue(
       card: { ...card },
       label: runtime.defs.cards[card.definition].name,
       tasks: [
-        { type: 'discard-card', player: player.id, card: card.id },
+        { type: 'discard-card', player: player.id, card: card.id, source: task.owner },
         {
           type: 'operation',
           operation: {
@@ -186,7 +192,7 @@ export function revealHand(runtime: Runtime, task: Extract<Task, { type: 'reveal
       id: card.id,
       card: { ...card },
       label: runtime.defs.cards[card.definition].name,
-      tasks: [{ type: 'discard-card', player: player.id, card: card.id }],
+      tasks: [{ type: 'discard-card', player: player.id, card: card.id, source: task.owner }],
     })),
     discard,
     discard,

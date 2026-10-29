@@ -26,6 +26,14 @@ describe('complete character bundles', () => {
       'eredin',
       'sun-wukong',
       'sinbad',
+      'nikola-tesla',
+      'harry-houdini',
+      'little-red',
+      'beowulf',
+      'hamlet',
+      'bloody-mary',
+      'jekyll-hyde',
+      'golden-bat',
     ]);
     expect(JSON.parse(JSON.stringify(basic))).toEqual(basic);
     const owned = new Set<string>();
@@ -46,6 +54,14 @@ describe('complete character bundles', () => {
             eredin: 11,
             'sun-wukong': 12,
             sinbad: 16,
+            'nikola-tesla': 11,
+            'harry-houdini': 13,
+            'little-red': 14,
+            beowulf: 12,
+            hamlet: 12,
+            'bloody-mary': 13,
+            'jekyll-hyde': 13,
+            'golden-bat': 12,
             dracula: 13,
             bigfoot: 11,
             'robin-hood': 11,
@@ -66,7 +82,7 @@ describe('complete character bundles', () => {
         expect(basic.cards[card]).not.toHaveProperty('count');
       }
     }
-    expect(owned.size).toBe(235);
+    expect(owned.size).toBe(335);
     expect(() => deckDefinitions('ranger')).toThrow('supported character');
   });
   it('rejects duplicate definitions, invalid copies and unsafe artwork recipes', () => {

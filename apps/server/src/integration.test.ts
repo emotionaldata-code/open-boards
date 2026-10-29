@@ -193,6 +193,13 @@ describe('Postgres accounts and real Colyseus transport', () => {
     expect(logout.status).toBe(204);
     expect(logout.headers.get('set-cookie')).toContain('Max-Age=0');
   });
+  it('exposes the public rules catalog only to authenticated clients', async () => {
+    expect((await request('/rules')).status).toBe(401);
+    const a = await account('rules');
+    const response = await request('/rules', undefined, a.cookie);
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual(basic);
+  });
   it('enforces room capacity/readiness, private snapshots, stale commands and duplicate seats over sockets', async () => {
     const a = await account('host');
     const b = await account('guest');
@@ -259,7 +266,11 @@ describe('Postgres accounts and real Colyseus transport', () => {
     });
     expect((await invalid).code).toBe('INVALID');
     const rooms = await request('/rooms', undefined, a.cookie);
-    expect(((await rooms.json()) as { id: string }[]).some((r) => r.id === r1.roomId)).toBe(false);
+    expect(
+      ((await rooms.json()) as import('@open-boards/protocol').RoomListing[]).find(
+        (r) => r.id === r1.roomId,
+      ),
+    ).toMatchObject({ phase: 'playing', joinable: false, watchable: true });
     await r1.leave();
     await r2.leave();
   });

@@ -1,0 +1,1225 @@
+{
+  "id": "nikola-tesla",
+  "name": "Nikola Tesla",
+  "hp": 14,
+  "movement": 2,
+  "attackType": "ranged",
+  "counters": {
+    "coils": {
+      "initial": 1,
+      "max": 2
+    }
+  },
+  "abilities": [
+    {
+      "id": "electrical-overflow-charge",
+      "name": "Electrical Overflow",
+      "description": "Start the game with 1 coil charged. At the end of your turn, charge 1 coil.",
+      "trigger": "turn-end",
+      "effects": [
+        {
+          "type": "counter",
+          "name": "coils",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "electrical-overflow-discharge",
+      "name": "Electrical Overflow",
+      "description": "At the start of your turn, if both coils are charged, deal 1 damage to each opposing fighter adjacent to Tesla and move them up to 1 space.",
+      "trigger": "turn-start",
+      "when": {
+        "type": "compare",
+        "left": {
+          "stat": "counter",
+          "name": "coils"
+        },
+        "op": "gte",
+        "right": 2
+      },
+      "effects": [
+        {
+          "type": "for-each-fighter",
+          "relation": "enemy",
+          "range": "adjacent",
+          "effects": [
+            {
+              "type": "damage",
+              "target": "chosen",
+              "amount": 1
+            },
+            {
+              "type": "move",
+              "target": "chosen",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "ground": "#243b4b",
+    "ink": "#d0e4e8",
+    "accent": "#c99052"
+  },
+  "cards": [
+    {
+      "id": "nikola-tesla-7-hertz",
+      "name": "7 Hertz",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 4,
+      "boost": 3,
+      "description": "After combat: You may discharge coils: - 1 Coil: Gain 1 action. - 2 Coils: Also, draw 1 card.",
+      "art": {
+        "scene": "bolt",
+        "image": "/artwork/nikola-tesla/nikola-tesla-7-hertz-1280-2dc42b86f46b.webp"
+      },
+      "flavor": "The air itself carries the pulse.",
+      "abilities": [
+        {
+          "id": "seven-hertz",
+          "name": "7 Hertz",
+          "description": "After combat: You may discharge coils: - 1 Coil: Gain 1 action. - 2 Coils: Also, draw 1 card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "7 Hertz: discharge coils?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep coils charged",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "one",
+                      "label": "Discharge 1 coil",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -1
+                        },
+                        {
+                          "type": "actions",
+                          "amount": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "two",
+                      "label": "Discharge 2 coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "actions",
+                          "amount": 1
+                        },
+                        {
+                          "type": "draw",
+                          "count": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "7 Hertz: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "actions",
+                              "amount": 1
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-the-alternating-current",
+      "name": "The Alternating Current",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 5,
+      "boost": 3,
+      "description": "After combat: Choose one: - Charge both coils - Discharge both coils to have Tesla recover 2 health",
+      "art": {
+        "scene": "bolt",
+        "image": "/artwork/nikola-tesla/nikola-tesla-the-alternating-current-1280-c0310ec7e5a6.webp"
+      },
+      "flavor": "Power returns along a different path.",
+      "abilities": [
+        {
+          "id": "the-alternating-current",
+          "name": "The Alternating Current",
+          "description": "After combat: Choose one: - Charge both coils - Discharge both coils to have Tesla recover 2 health",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "The Alternating Current: charge or discharge?",
+                  "options": [
+                    {
+                      "id": "charge",
+                      "label": "Charge both coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": 2
+                        }
+                      ]
+                    },
+                    {
+                      "id": "discharge",
+                      "label": "Discharge both coils; recover 2 health",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "heal",
+                          "target": "main",
+                          "amount": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "counter",
+                  "name": "coils",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-death-ray",
+      "name": "Death Ray",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "attack",
+      "value": 3,
+      "boost": 4,
+      "description": "During combat: You may discharge coils: - 1 Coil: This card's value is 5. - 2 Coils: Instead, this card's value is 7.",
+      "art": {
+        "scene": "bolt",
+        "image": "/artwork/nikola-tesla/nikola-tesla-death-ray-1280-1803dd9666d2.webp"
+      },
+      "flavor": "One bright line through the impossible.",
+      "abilities": [
+        {
+          "id": "death-ray",
+          "name": "Death Ray",
+          "description": "During combat: You may discharge coils: - 1 Coil: This card's value is 5. - 2 Coils: Instead, this card's value is 7.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Death Ray: discharge coils?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep coils charged",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "one",
+                      "label": "Discharge 1 coil",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -1
+                        },
+                        {
+                          "type": "set-combat-value",
+                          "value": 5,
+                          "mode": "printed"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "two",
+                      "label": "Discharge 2 coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "set-combat-value",
+                          "value": 7,
+                          "mode": "printed"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Death Ray: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "set-combat-value",
+                              "value": 5,
+                              "mode": "printed"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-fully-charged",
+      "name": "Fully Charged",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 1,
+      "description": "Charge both coils. Gain 1 action.",
+      "art": {
+        "scene": "lantern",
+        "image": "/artwork/nikola-tesla/nikola-tesla-fully-charged-1280-9fa9f44f85ee.webp"
+      },
+      "flavor": "Potential waits in copper and glass.",
+      "effects": [
+        {
+          "type": "counter",
+          "name": "coils",
+          "amount": 2
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-intense-experimentation",
+      "name": "Intense Experimentation",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "defense",
+      "value": 3,
+      "boost": 2,
+      "description": "After combat: Draw 1 card. You may discharge coils: - 1 Coil: Instead, draw 2 cards. - 2 Coils: Instead, draw 3 cards and Tesla recovers 1 health.",
+      "art": {
+        "scene": "lantern",
+        "image": "/artwork/nikola-tesla/nikola-tesla-intense-experimentation-1280-98a4aa1dc06e.webp"
+      },
+      "flavor": "Every answer demands another question.",
+      "abilities": [
+        {
+          "id": "intense-experimentation",
+          "name": "Intense Experimentation",
+          "description": "After combat: Draw 1 card. You may discharge coils: - 1 Coil: Instead, draw 2 cards. - 2 Coils: Instead, draw 3 cards and Tesla recovers 1 health.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Intense Experimentation: discharge coils?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep coils charged",
+                      "effects": [
+                        {
+                          "type": "draw",
+                          "count": 1
+                        }
+                      ],
+                      "decline": true
+                    },
+                    {
+                      "id": "one",
+                      "label": "Discharge 1 coil",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -1
+                        },
+                        {
+                          "type": "draw",
+                          "count": 2
+                        }
+                      ]
+                    },
+                    {
+                      "id": "two",
+                      "label": "Discharge 2 coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "draw",
+                          "count": 3
+                        },
+                        {
+                          "type": "heal",
+                          "target": "main",
+                          "amount": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Intense Experimentation: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [
+                            {
+                              "type": "draw",
+                              "count": 1
+                            }
+                          ],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "draw",
+                              "count": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "draw",
+                      "count": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-kinetic-induction",
+      "name": "Kinetic Induction",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 2,
+      "boost": 1,
+      "description": "After combat: Charge one coil. If you won the combat, charge both.",
+      "art": {
+        "scene": "ward",
+        "image": "/artwork/nikola-tesla/nikola-tesla-kinetic-induction-1280-9a725a4f315b.webp"
+      },
+      "flavor": "Motion becomes a field.",
+      "abilities": [
+        {
+          "id": "kinetic-induction",
+          "name": "Kinetic Induction",
+          "description": "After combat: Charge one coil. If you won the combat, charge both.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "combat-result",
+                "result": "won"
+              },
+              "then": [
+                {
+                  "type": "counter",
+                  "name": "coils",
+                  "amount": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "counter",
+                  "name": "coils",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-lightning-storm",
+      "name": "Lightning Storm",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "After combat: You may discharge coils: - 1 Coil: Deal 1 damage to each opposing fighter in your zone. - 2 Coils: Instead, deal 2 damage.",
+      "art": {
+        "scene": "bolt",
+        "image": "/artwork/nikola-tesla/nikola-tesla-lightning-storm-1280-ec0acb5e2191.webp"
+      },
+      "flavor": "The sky comes indoors.",
+      "abilities": [
+        {
+          "id": "lightning-storm",
+          "name": "Lightning Storm",
+          "description": "After combat: You may discharge coils: - 1 Coil: Deal 1 damage to each opposing fighter in your zone. - 2 Coils: Instead, deal 2 damage.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Lightning Storm: discharge coils?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep coils charged",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "one",
+                      "label": "Discharge 1 coil",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -1
+                        },
+                        {
+                          "type": "for-each-fighter",
+                          "relation": "enemy",
+                          "range": "zone",
+                          "effects": [
+                            {
+                              "type": "damage",
+                              "target": "chosen",
+                              "amount": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "two",
+                      "label": "Discharge 2 coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "for-each-fighter",
+                          "relation": "enemy",
+                          "range": "zone",
+                          "effects": [
+                            {
+                              "type": "damage",
+                              "target": "chosen",
+                              "amount": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Lightning Storm: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "for-each-fighter",
+                              "relation": "enemy",
+                              "range": "zone",
+                              "effects": [
+                                {
+                                  "type": "damage",
+                                  "target": "chosen",
+                                  "amount": 1
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-polyphase-coils",
+      "name": "Polyphase Coils",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 3,
+      "boost": 1,
+      "description": "Immediately: You may discharge coils: - 1 Coil: Cancel all effects on your opponent's card. - 2 Coils: Also, ignore that card's value.",
+      "art": {
+        "scene": "ward",
+        "image": "/artwork/nikola-tesla/nikola-tesla-polyphase-coils-1280-f229e7c7a76f.webp"
+      },
+      "flavor": "Many currents. One purpose.",
+      "abilities": [
+        {
+          "id": "polyphase-coils",
+          "name": "Polyphase Coils",
+          "description": "Immediately: You may discharge coils: - 1 Coil: Cancel all effects on your opponent's card. - 2 Coils: Also, ignore that card's value.",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Polyphase Coils: discharge coils?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep coils charged",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "one",
+                      "label": "Discharge 1 coil",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -1
+                        },
+                        {
+                          "type": "suppress-card-effects"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "two",
+                      "label": "Discharge 2 coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "suppress-card-effects"
+                        },
+                        {
+                          "type": "ignore-combat-value",
+                          "target": "opponent"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Polyphase Coils: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "suppress-card-effects"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-remote-control",
+      "name": "Remote Control",
+      "count": 2,
+      "usableBy": "MAIN",
+      "category": "action",
+      "value": 0,
+      "boost": 3,
+      "description": "Move all opposing fighters up to 2 spaces. Gain 1 action.",
+      "art": {
+        "scene": "map",
+        "image": "/artwork/nikola-tesla/nikola-tesla-remote-control-1280-4c85c2333113.webp"
+      },
+      "flavor": "Distance is merely another problem.",
+      "effects": [
+        {
+          "type": "for-each-fighter",
+          "relation": "enemy",
+          "effects": [
+            {
+              "type": "move",
+              "target": "chosen",
+              "distance": 2
+            }
+          ]
+        },
+        {
+          "type": "actions",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-repulsion-blast",
+      "name": "Repulsion Blast",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 2,
+      "boost": 2,
+      "description": "After combat: Move the opposing fighter up to 2 spaces. You may discharge coils: - 1 Coil: Also, move Tesla up to 2 spaces. - 2 Coils: Also, your opponent discards 1 random card.",
+      "art": {
+        "scene": "bolt",
+        "image": "/artwork/nikola-tesla/nikola-tesla-repulsion-blast-1280-e140a34cef11.webp"
+      },
+      "flavor": "An invisible hand clears the way.",
+      "abilities": [
+        {
+          "id": "repulsion-blast",
+          "name": "Repulsion Blast",
+          "description": "After combat: Move the opposing fighter up to 2 spaces. You may discharge coils: - 1 Coil: Also, move Tesla up to 2 spaces. - 2 Coils: Also, your opponent discards 1 random card.",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "move",
+              "target": "opponent",
+              "distance": 2
+            },
+            {
+              "type": "if",
+              "condition": {
+                "type": "compare",
+                "left": {
+                  "stat": "counter",
+                  "name": "coils"
+                },
+                "op": "gte",
+                "right": 2
+              },
+              "then": [
+                {
+                  "type": "choose-option",
+                  "prompt": "Repulsion Blast: discharge coils?",
+                  "options": [
+                    {
+                      "id": "keep",
+                      "label": "Keep coils charged",
+                      "effects": [],
+                      "decline": true
+                    },
+                    {
+                      "id": "one",
+                      "label": "Discharge 1 coil",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -1
+                        },
+                        {
+                          "type": "move",
+                          "target": "main",
+                          "distance": 2
+                        }
+                      ]
+                    },
+                    {
+                      "id": "two",
+                      "label": "Discharge 2 coils",
+                      "effects": [
+                        {
+                          "type": "counter",
+                          "name": "coils",
+                          "amount": -2
+                        },
+                        {
+                          "type": "move",
+                          "target": "main",
+                          "distance": 2
+                        },
+                        {
+                          "type": "discard",
+                          "target": "opponent",
+                          "count": 1,
+                          "random": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 1
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "Repulsion Blast: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "move",
+                              "target": "main",
+                              "distance": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikola-tesla-x-ray-radiation",
+      "name": "X-Ray Radiation",
+      "count": 3,
+      "usableBy": "MAIN",
+      "category": "versatile",
+      "value": 4,
+      "boost": 1,
+      "description": "During combat: Reveal the top card of your opponent's deck. You may discharge coils: - 1 Coil: Discard that card. - 2 Coils: Also, add its boost value to this card's value.",
+      "art": {
+        "scene": "ward",
+        "image": "/artwork/nikola-tesla/nikola-tesla-x-ray-radiation-1280-e8ca92ba0299.webp"
+      },
+      "flavor": "Matter cannot hide its secrets.",
+      "abilities": [
+        {
+          "id": "x-ray-radiation",
+          "name": "X-Ray Radiation",
+          "description": "During combat: Reveal the top card of your opponent's deck. You may discharge coils: - 1 Coil: Discard that card. - 2 Coils: Also, add its boost value to this card's value.",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "reveal-top-card",
+              "target": "opponent",
+              "effects": [
+                {
+                  "type": "if",
+                  "condition": {
+                    "type": "compare",
+                    "left": {
+                      "stat": "counter",
+                      "name": "coils"
+                    },
+                    "op": "gte",
+                    "right": 2
+                  },
+                  "then": [
+                    {
+                      "type": "choose-option",
+                      "prompt": "X-Ray Radiation: discharge coils?",
+                      "options": [
+                        {
+                          "id": "keep",
+                          "label": "Keep coils charged",
+                          "effects": [],
+                          "decline": true
+                        },
+                        {
+                          "id": "one",
+                          "label": "Discharge 1 coil",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -1
+                            },
+                            {
+                              "type": "discard-selected-card"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "two",
+                          "label": "Discharge 2 coils",
+                          "effects": [
+                            {
+                              "type": "counter",
+                              "name": "coils",
+                              "amount": -2
+                            },
+                            {
+                              "type": "discard-selected-card",
+                              "onDiscard": [
+                                {
+                                  "type": "if",
+                                  "condition": {
+                                    "type": "role",
+                                    "role": "attacker"
+                                  },
+                                  "then": [
+                                    {
+                                      "type": "modify",
+                                      "field": "attack",
+                                      "amount": {
+                                        "card": "selected",
+                                        "field": "boost"
+                                      }
+                                    }
+                                  ],
+                                  "else": [
+                                    {
+                                      "type": "modify",
+                                      "field": "defense",
+                                      "amount": {
+                                        "card": "selected",
+                                        "field": "boost"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "if",
+                      "condition": {
+                        "type": "compare",
+                        "left": {
+                          "stat": "counter",
+                          "name": "coils"
+                        },
+                        "op": "gte",
+                        "right": 1
+                      },
+                      "then": [
+                        {
+                          "type": "choose-option",
+                          "prompt": "X-Ray Radiation: discharge coils?",
+                          "options": [
+                            {
+                              "id": "keep",
+                              "label": "Keep coils charged",
+                              "effects": [],
+                              "decline": true
+                            },
+                            {
+                              "id": "one",
+                              "label": "Discharge 1 coil",
+                              "effects": [
+                                {
+                                  "type": "counter",
+                                  "name": "coils",
+                                  "amount": -1
+                                },
+                                {
+                                  "type": "discard-selected-card"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "else": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
