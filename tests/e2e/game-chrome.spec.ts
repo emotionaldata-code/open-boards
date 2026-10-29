@@ -67,13 +67,25 @@ for (const width of [1440, 768, 390]) {
             host: 'a',
             capacity: 2,
             game: null,
-            seats: [{ id: 'a', name: 'Arden', character: 'medusa', ready: false }],
+            viewerRole: 'player',
+            spectators: 0,
+            seats: [
+              {
+                id: 'a',
+                name: 'Arden',
+                character: 'medusa',
+                ready: false,
+                controller: { type: 'human' },
+              },
+            ],
           },
           user: { id: 'a', name: 'Arden' },
           onReady: () => {},
           onCharacter: () => {},
           onStart: () => {},
           onLeave: () => {},
+          onAddBot: () => {},
+          onRemoveBot: () => {},
         }),
       );
     });
@@ -81,7 +93,7 @@ for (const width of [1440, 768, 390]) {
     await expectPainted(page);
     await expect(page.getByRole('button', { name: 'Avvia partita' })).toBeDisabled();
     await page.screenshot({ path: test.info().outputPath('waiting.png'), fullPage: true });
-    await page.getByRole('button', { name: 'Scegli personaggio' }).click();
+    await page.getByRole('button', { name: 'Scegli personaggio', exact: true }).click();
     await expectPainted(page);
     await page.screenshot({ path: test.info().outputPath('characters.png') });
     await page.keyboard.press('Escape');

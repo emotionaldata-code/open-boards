@@ -1,5 +1,6 @@
 import { GameButton } from '../ui/GameButton';
 import { GameFrame } from '../ui/GameFrame';
+import { Icon } from '../ui/Icon';
 import { contentText } from '../localization/text';
 import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
@@ -37,7 +38,9 @@ export function WaitingRoom({
   async function copyInvite() {
     setCopyError(false);
     try {
-      await navigator.clipboard.writeText(`${location.origin}/?room=${room.id}`);
+      await navigator.clipboard.writeText(
+        `${location.origin}/?room=${room.id}${own ? '' : '&watch=1'}`,
+      );
       setCopied(true);
     } catch {
       setCopied(false);
@@ -94,10 +97,11 @@ export function WaitingRoom({
                   </span>
                   {seat?.controller.type === 'bot' && room.host === user.id && (
                     <GameButton
+                      className="icon-button remove-bot"
                       aria-label={`Rimuovi ${seat.name}`}
                       onClick={() => onRemoveBot(seat.id)}
                     >
-                      Rimuovi
+                      <Icon name="close" />
                     </GameButton>
                   )}
                 </li>
@@ -105,33 +109,33 @@ export function WaitingRoom({
             })}
           </ol>
           {room.host === user.id && room.seats.length < room.capacity && (
-            <div className="bot-controls">
-              <label className="grow">
-                Personaggio del bot
-                <select value={botCharacter} onChange={(e) => setBotCharacter(e.target.value)}>
-                  {Object.values(characters).map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {contentText(item.name)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <GameButton onClick={() => onAddBot(botCharacter)}>Aggiungi bot</GameButton>
-            </div>
+            <section className="bot-controls" aria-label="Schiera un bot">
+              <h3>Schiera un bot</h3>
+              <CharacterPicker selected={botCharacter} onChoose={setBotCharacter} purpose="bot" />
+              <GameButton className="primary add-bot" onClick={() => onAddBot(botCharacter)}>
+                <Icon name="duel" />
+                Aggiungi bot
+              </GameButton>
+            </section>
           )}
           {own ? (
             <CharacterPicker selected={own.character} onChoose={onCharacter} />
           ) : (
-            <p className="muted">
-              Sei uno spettatore. Puoi seguire la partita senza occupare un posto.
+            <p className="spectator-note muted">
+              <Icon name="spectate" />
+              <span>Sei uno spettatore. Segui il duello senza occupare un posto.</span>
             </p>
           )}
         </section>
         <section className="panel invite">
           <GameFrame />
           <MapPreview />
-          <h2>Invita giocatori</h2>
-          <p className="muted">Condividi il link di invito a questo tavolo.</p>
+          <h2>{own ? 'Invita giocatori' : 'Invita spettatori'}</h2>
+          <p className="muted">
+            {own
+              ? 'Condividi il link di invito a questo tavolo.'
+              : 'Condividi il link per seguire la partita.'}
+          </p>
           <label>
             Codice stanza
             <input readOnly value={room.id} onFocus={(e) => e.target.select()} />

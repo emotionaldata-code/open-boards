@@ -11,9 +11,11 @@ import { profiles } from './profiles';
 export function CharacterPicker({
   selected,
   onChoose,
+  purpose = 'player',
 }: {
   selected: string;
   onChoose: (id: string) => void;
+  purpose?: 'player' | 'bot';
 }) {
   const [open, setOpen] = useState(false);
   const character = characters[selected];
@@ -21,22 +23,28 @@ export function CharacterPicker({
     <div className="character-picker">
       <CharacterPortrait character={selected} />
       <div className="grow">
-        <span className="muted">Il tuo personaggio · {profiles[selected].role}</span>
+        <span className="muted">
+          {purpose === 'bot' ? 'Personaggio del bot' : 'Il tuo personaggio'} ·{' '}
+          {profiles[selected].role}
+        </span>
         <strong>{contentText(character.name)}</strong>
         <span>
           {character.hp} PV · Movimento {character.movement} ·{' '}
           {attackTypeLabel[character.attackType]}
         </span>
       </div>
-      <GameButton onClick={() => setOpen(true)}>Scegli personaggio</GameButton>
+      <GameButton type="button" onClick={() => setOpen(true)}>
+        {purpose === 'bot' ? 'Scegli personaggio del bot' : 'Scegli personaggio'}
+      </GameButton>
       {open && (
         <Dialog
-          title="Scegli il tuo combattente"
+          title={purpose === 'bot' ? 'Scegli il combattente del bot' : 'Scegli il tuo combattente'}
           className="roster-dialog"
           onClose={() => setOpen(false)}
         >
           <CharacterRoster
             selected={selected}
+            choiceHint={purpose === 'bot' ? 'Il bot giocherà con questo combattente.' : undefined}
             onChoose={(id) => {
               onChoose(id);
               setOpen(false);

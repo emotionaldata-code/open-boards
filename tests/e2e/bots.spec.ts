@@ -14,7 +14,9 @@ test('host plays against a bot using an ordinary human seat', async ({ page }) =
   page.on('pageerror', (error) => errors.push(error.message));
   await signIn(page);
   await page.getByRole('button', { name: '2 Duello', exact: true }).click();
-  await page.getByLabel('Personaggio del bot').selectOption('bruce-lee');
+  await page.getByRole('button', { name: 'Scegli personaggio del bot', exact: true }).click();
+  await page.getByRole('button', { name: 'Esamina Bruce Lee', exact: true }).click();
+  await page.getByRole('button', { name: 'Scegli Bruce Lee', exact: true }).click();
   await page.getByRole('button', { name: 'Aggiungi bot', exact: true }).click();
   await expect(page.locator('.seats')).toContainText('Bot');
   await page.getByRole('button', { name: 'Sono pronto', exact: true }).click();
@@ -37,7 +39,9 @@ test('spectator creates and watches bots; another viewer can join after start', 
   await signIn(page);
   await page.getByRole('button', { name: 'Organizza una partita tra bot' }).click();
   await expect(page.getByRole('button', { name: 'Sono pronto', exact: true })).toHaveCount(0);
-  await page.getByLabel('Personaggio del bot').selectOption('bruce-lee');
+  await page.getByRole('button', { name: 'Scegli personaggio del bot', exact: true }).click();
+  await page.getByRole('button', { name: 'Esamina Bruce Lee', exact: true }).click();
+  await page.getByRole('button', { name: 'Scegli Bruce Lee', exact: true }).click();
   await page.getByRole('button', { name: 'Aggiungi bot', exact: true }).click();
   await expect(page.locator('.seats')).toContainText('Bot');
   await page.getByRole('button', { name: 'Aggiungi bot', exact: true }).click();

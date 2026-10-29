@@ -13,8 +13,12 @@ export type SymbolName =
   | 'cards'
   | 'boost'
   | 'confirm'
-  | 'notification';
+  | 'notification'
+  | 'duel'
+  | 'spectate';
 const paths: Record<SymbolName, string> = {
+  duel: 'm4 3 4 1 12 14m-4-1 4-4m-1 3 2 5m-1-18-4 1L4 18m4-1-4-4m1 3-2 5',
+  spectate: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Zm13 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',
   attack: 'm5 19 3-3m-3-3 6 6m-3-3 11-11 1-4-4 1L5 13',
   health:
     'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z',

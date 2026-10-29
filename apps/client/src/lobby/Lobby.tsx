@@ -1,5 +1,6 @@
 import { GameButton } from '../ui/GameButton';
 import { GameFrame } from '../ui/GameFrame';
+import { Icon } from '../ui/Icon';
 import { messageText } from '../ui/messages';
 import { useEffect, useState } from 'react';
 import type { RoomListing } from '@open-boards/protocol';
@@ -77,10 +78,20 @@ export function Lobby({
               <strong>4</strong>
               <span>Tutti contro tutti</span>
             </GameButton>
+            <GameButton
+              className="bot-arena"
+              aria-label="Arena dei bot · Organizza una partita tra bot"
+              onClick={() => onCreate(2, 'spectator')}
+              disabled={busy}
+            >
+              <Icon name="duel" />
+              <span className="mode-copy">
+                <strong>Arena dei bot</strong>
+                <small>Schiera i combattenti e segui il duello</small>
+              </span>
+              <Icon name="spectate" />
+            </GameButton>
           </div>
-          <GameButton onClick={() => onCreate(2, 'spectator')} disabled={busy}>
-            Organizza una partita tra bot
-          </GameButton>
           <h2>Entra con un codice</h2>
           <form
             className="inline-form"
@@ -89,6 +100,31 @@ export function Lobby({
               onJoin(id.trim(), watch ? 'spectator' : 'player');
             }}
           >
+            <div className="join-role" role="group" aria-label="Come vuoi entrare?">
+              <GameButton
+                type="button"
+                aria-pressed={!watch}
+                disabled={busy}
+                onClick={() => setWatch(false)}
+              >
+                <Icon name="attack" />
+                Giocatore
+              </GameButton>
+              <GameButton
+                type="button"
+                aria-pressed={watch}
+                disabled={busy}
+                onClick={() => setWatch(true)}
+              >
+                <Icon name="spectate" />
+                Spettatore
+              </GameButton>
+            </div>
+            <p className="join-role-hint muted">
+              {watch
+                ? 'Segui la partita senza occupare un posto.'
+                : 'Prendi posto e scendi in campo.'}
+            </p>
             <label className="grow">
               Codice stanza
               <input
@@ -103,10 +139,6 @@ export function Lobby({
               {watch ? 'Osserva' : 'Entra al tavolo'}
             </GameButton>
           </form>
-          <label className="watch-option">
-            <input type="checkbox" checked={watch} onChange={(e) => setWatch(e.target.checked)} />
-            Entra come spettatore
-          </label>
         </section>
         <section className="panel room-list">
           <GameFrame />

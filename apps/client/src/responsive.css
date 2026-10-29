@@ -18,7 +18,7 @@
     width: 24px;
   }
   .topbar-right {
-    gap: 8px;
+    gap: 6px;
   }
   .topbar-right > .muted,
   .connection-status {

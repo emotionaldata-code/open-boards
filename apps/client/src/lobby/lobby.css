@@ -69,10 +69,60 @@
   font-size: 30px;
   font-weight: 400;
 }
+.create-options .bot-arena {
+  grid-column: 1 / -1;
+  grid-template-columns: 32px minmax(0, 1fr) 22px;
+  padding: 18px 20px;
+}
+.bot-arena > .icon {
+  color: var(--accent);
+}
+.bot-arena > .icon:first-of-type {
+  width: 32px;
+  height: 32px;
+}
+.mode-copy {
+  display: grid;
+  gap: 5px;
+}
+.mode-copy strong {
+  font-size: 21px;
+}
+.mode-copy small {
+  color: var(--muted);
+  font:
+    12px / 1.5 'Inter Variable',
+    system-ui,
+    sans-serif;
+  text-shadow: none;
+}
 .inline-form {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 12px;
+}
+.join-role {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  grid-column: 1 / -1;
+}
+.join-role button,
+.add-bot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+}
+.join-role button[aria-pressed='true'] {
+  color: var(--accent);
+}
+.join-role-hint {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  margin: 0 0 4px;
 }
 .room-list {
   display: flex;
@@ -172,9 +222,53 @@
   margin-top: 6px;
   line-height: 1.4;
 }
-.seats li > span:last-child {
+.seats li > .ready,
+.seats li > .muted {
   font-size: 12px;
   flex-shrink: 0;
+}
+.seats .remove-bot {
+  width: 44px;
+  min-height: 44px;
+  padding: 6px;
+}
+.seats .remove-bot .icon {
+  width: 18px;
+  height: 18px;
+}
+.bot-controls {
+  margin-top: 24px;
+}
+.bot-controls h3 {
+  margin: 0 0 12px;
+}
+.bot-controls .character-picker {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  margin: 0;
+  gap: 12px 16px;
+}
+.bot-controls .character-picker > .character-portrait {
+  width: 64px;
+  height: 80px;
+}
+.bot-controls .character-picker > button {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+.bot-controls .add-bot {
+  width: 100%;
+  margin-top: 10px;
+}
+.spectator-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  margin: 20px 0 0;
+}
+.spectator-note > .icon {
+  color: var(--accent);
 }
 .ready {
   color: var(--success);
@@ -292,23 +386,4 @@
   .map-preview-art {
     height: 140px;
   }
-}
-
-.watch-option,
-.bot-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-block: 16px;
-}
-.watch-option input {
-  width: auto;
-}
-.bot-controls {
-  align-items: end;
-  flex-wrap: wrap;
-}
-.bot-controls select {
-  width: 100%;
-  min-height: 44px;
 }

@@ -12,10 +12,12 @@ export function CharacterRoster({
   selected = defaultCharacter,
   onChoose,
   featured = false,
+  choiceHint = 'Cambiare personaggio annulla il tuo stato di pronto.',
 }: {
   selected?: string;
   onChoose?: (character: string) => void;
   featured?: boolean;
+  choiceHint?: string;
 }) {
   const [inspected, setInspected] = useState(selected);
   const id = useId();
@@ -164,7 +166,7 @@ export function CharacterRoster({
       {deckOpen && <DeckExplorer character={inspected} onClose={() => setDeckOpen(false)} />}
       {onChoose && (
         <div className="roster-confirm">
-          <p>Cambiare personaggio annulla il tuo stato di pronto.</p>
+          <p>{choiceHint}</p>
           <GameButton type="button" className="primary" onClick={() => onChoose(inspected)}>
             Scegli {contentText(character.name)}
           </GameButton>
