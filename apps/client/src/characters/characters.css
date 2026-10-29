@@ -1,19 +1,18 @@
-/* Registered raster portraits and local SVG figures use the same frame. */
 .character-portrait {
   position: relative;
   display: block;
   overflow: hidden;
   background: var(--character-ground);
-  color: var(--character-ink);
   min-width: 0;
   isolation: isolate;
 }
 .character-portrait img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 8px 2px 0;
+  object-fit: cover;
 }
 .character-roster {
   min-width: 0;
@@ -192,9 +191,6 @@
   width: 100%;
   height: 100%;
   border-radius: var(--radius);
-}
-.player-sigil .character-portrait img {
-  padding: 0;
 }
 /* The portrait leads; details and controls stay on opaque surfaces below it. */
 .roster-featured {

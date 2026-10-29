@@ -171,6 +171,12 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
               <strong>{contentText(rule.name)}</strong> · {contentText(rule.description)}
             </p>
           ))}
+          {basic.characters[player.character].maneuverBonus && (
+            <p>
+              <strong>{contentText(basic.characters[player.character].maneuverBonus!.name)}</strong>{' '}
+              · {contentText(basic.characters[player.character].maneuverBonus!.description)}
+            </p>
+          )}
           {Object.entries(main!.counters).map(([name, count]) => (
             <p key={name}>
               {name}: {count}

@@ -24,6 +24,8 @@ describe('complete character bundles', () => {
       'yennefer-triss',
       'philippa',
       'eredin',
+      'sun-wukong',
+      'sinbad',
     ]);
     expect(JSON.parse(JSON.stringify(basic))).toEqual(basic);
     const owned = new Set<string>();
@@ -42,6 +44,8 @@ describe('complete character bundles', () => {
             'yennefer-triss': 11,
             philippa: 13,
             eredin: 11,
+            'sun-wukong': 12,
+            sinbad: 16,
             dracula: 13,
             bigfoot: 11,
             'robin-hood': 11,
@@ -62,7 +66,7 @@ describe('complete character bundles', () => {
         expect(basic.cards[card]).not.toHaveProperty('count');
       }
     }
-    expect(owned.size).toBe(207);
+    expect(owned.size).toBe(235);
     expect(() => deckDefinitions('ranger')).toThrow('supported character');
   });
   it('rejects duplicate definitions, invalid copies and unsafe artwork recipes', () => {

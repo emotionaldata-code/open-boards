@@ -15,6 +15,8 @@ export const abilityVisuals: Record<
   string,
   { mark: AbilityMark; tone: 'gold' | 'mint' | 'ember' }
 > = {
+  sinbad: { mark: 'compass', tone: 'gold' },
+  'sinbad-porter': { mark: 'wave', tone: 'mint' },
   'yennefer-triss': { mark: 'bolt', tone: 'gold' },
   'yennefer-triss-triss': { mark: 'flame', tone: 'ember' },
   philippa: { mark: 'bolt', tone: 'gold' },
@@ -41,6 +43,8 @@ export const abilityVisuals: Record<
   'king-arthur-merlin': { mark: 'compass', tone: 'mint' },
   'sherlock-holmes': { mark: 'compass', tone: 'gold' },
   'sherlock-holmes-dr-watson': { mark: 'shield', tone: 'mint' },
+  'sun-wukong': { mark: 'compass', tone: 'gold' },
+  'sun-wukong-clone': { mark: 'compass', tone: 'ember' },
   medusa: { mark: 'wave', tone: 'mint' },
   'medusa-harpy': { mark: 'blade', tone: 'gold' },
 };

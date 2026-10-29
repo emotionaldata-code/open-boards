@@ -199,7 +199,7 @@ export function combatStep(
         runtime.operation({
           kind: 'damage',
           actor: attacker.id,
-          target: defender.id,
+          target: frame.damageRecipient ?? defender.id,
           amount: frame.amount,
           reason: 'combat',
           combat: frameId,

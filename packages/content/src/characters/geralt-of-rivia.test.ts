@@ -107,7 +107,7 @@ function setup(
   if (!initialize) return h;
   state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
-    const f = state.fighters.find((f) => f.position === null)!;
+    const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
     h.apply(
       { type: 'place-ally', fighter: f.id, position: deploymentSpaces(state, f.id, defs.map)[0] },
       f.player,
@@ -459,11 +459,12 @@ it('replacing a potion discards its previous instance once and keeps only the ne
 
 it(
   'deploys Geralt and Dandelion at full strength with every two/four-seat roster',
-  { timeout: 120_000 },
-  () => {
+  { timeout: 300_000 },
+  async () => {
     const ids = Object.keys(content.characters);
     for (const count of [2, 4])
       for (let n = 0; n < ids.length ** count; n++) {
+        if (n % 256 === 0) await new Promise<void>((resolve) => setImmediate(resolve));
         let code = n;
         const roster = Array.from({ length: count }, () => {
           const id = ids[code % ids.length];
@@ -472,7 +473,13 @@ it(
         });
         if (!roster.includes('geralt-of-rivia')) continue;
         const h = setup(() => {}, roster);
-        expect(h.state.fighters.every((f) => f.position !== null)).toBe(true);
+        expect(
+          h.state.fighters.every((f) =>
+            f.role === 'ally' && content.characters[f.character].ally?.startsOffBoard
+              ? f.defeated && f.position === null
+              : f.position !== null,
+          ),
+        ).toBe(true);
         for (const [i, id] of roster.entries())
           if (id === 'geralt-of-rivia') {
             expect(h.fighter(`p${i}:ally-1`).hp).toBe(5);

@@ -17,6 +17,7 @@ export interface CardDefinition {
   category: CardCategory;
   value: number;
   boost: number;
+  tags?: string[];
   description?: string;
   faceUpDefense?: boolean;
   effectsCannotBeCancelled?: boolean;
@@ -43,6 +44,7 @@ export interface FighterDefinition {
 export interface CharacterDefinition extends FighterDefinition {
   id: string;
   movement: number;
+  maneuverBonus?: { name: string; description: string; perDiscardTag: string };
   /** Choose either identity as hero before opening hands; role health stays fixed. */
   heroSelection?: { name: string; description: string; mainName: string };
   conditionalModifiers?: {
@@ -67,7 +69,7 @@ export interface CharacterDefinition extends FighterDefinition {
     description: string;
     groups: { name: string; cards: string[] }[];
   };
-  ally?: FighterDefinition & { id: string; count: number };
+  ally?: FighterDefinition & { id: string; count: number; startsOffBoard?: boolean };
 }
 export interface Fighter {
   id: string;

@@ -81,7 +81,7 @@ function setup(
         c.player,
       );
       while (state.phase.type === 'placing-allies') {
-        const f = state.fighters.find((f) => f.position === null)!;
+        const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
         h.apply(
           {
             type: 'place-ally',
@@ -118,7 +118,7 @@ function setup(
   };
   if (!keepStartChoice) state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
-    const f = state.fighters.find((f) => f.position === null)!;
+    const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
     h.apply(
       { type: 'place-ally', fighter: f.id, position: deploymentSpaces(state, f.id, defs.map)[0] },
       f.player,

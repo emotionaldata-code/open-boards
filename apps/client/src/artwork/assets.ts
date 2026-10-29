@@ -13,6 +13,8 @@ export const mapArtwork: Record<string, string> = {
 };
 
 export const fighterArtwork: Record<string, { portrait: string; token: string }> = {
+  sinbad: { portrait: 'sinbad-portrait', token: 'sinbad-token' },
+  'sinbad-porter': { portrait: 'sinbad-porter-portrait', token: 'sinbad-porter-token' },
   'darth-vader': { portrait: 'darth-vader-portrait', token: 'darth-vader-token' },
   'geralt-of-rivia': { portrait: 'geralt-of-rivia-portrait', token: 'geralt-of-rivia-token' },
   'geralt-of-rivia-dandelion': {
@@ -49,6 +51,8 @@ export const fighterArtwork: Record<string, { portrait: string; token: string }>
     portrait: 'robin-hood-outlaw-portrait',
     token: 'robin-hood-outlaw-token',
   },
+  'sun-wukong': { portrait: 'sun-wukong-portrait', token: 'sun-wukong-token' },
+  'sun-wukong-clone': { portrait: 'sun-wukong-clone-portrait', token: 'sun-wukong-clone-token' },
   medusa: { portrait: 'medusa-portrait', token: 'medusa-token' },
   'medusa-harpy': { portrait: 'harpy-portrait', token: 'harpy-token' },
   'king-arthur': { portrait: 'king-arthur-portrait', token: 'king-arthur-token' },

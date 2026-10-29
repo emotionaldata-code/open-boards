@@ -106,7 +106,7 @@ function setup(
   };
   state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
-    const f = state.fighters.find((f) => f.position === null)!;
+    const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
     h.apply(
       { type: 'place-ally', fighter: f.id, position: deploymentSpaces(state, f.id, defs.map)[0] },
       f.player,
@@ -444,10 +444,11 @@ describe('complete Darth Vader source deck', () => {
     c.action('unstoppable');
     expect(c.fighter().defeated).toBe(true);
   });
-  it('deploys all full-count allies in every two/four-seat roster containing Vader', () => {
+  it('deploys all full-count allies in every two/four-seat roster containing Vader', async () => {
     const ids = Object.keys(content.characters);
     for (const size of [2, 4]) {
       for (let n = 0; n < ids.length ** size; n++) {
+        if (n % 256 === 0) await new Promise<void>((resolve) => setImmediate(resolve));
         let code = n;
         const roster = Array.from({ length: size }, () => {
           const character = ids[code % ids.length];
@@ -470,7 +471,7 @@ describe('complete Darth Vader source deck', () => {
         );
         state = completeDeckSelection(state, content);
         while (state.phase.type === 'placing-allies') {
-          const fighter = state.fighters.find((f) => f.position === null)!;
+          const fighter = state.fighters.find((f) => !f.defeated && f.position === null)!;
           const result = execute(
             state,
             fighter.player,
@@ -488,8 +489,14 @@ describe('complete Darth Vader source deck', () => {
           if (!result.ok) throw new Error(result.message);
           state = result.state;
         }
-        expect(state.fighters.every((f) => f.position !== null)).toBe(true);
+        expect(
+          state.fighters.every((f) =>
+            f.role === 'ally' && content.characters[f.character].ally?.startsOffBoard
+              ? f.defeated && f.position === null
+              : f.position !== null,
+          ),
+        ).toBe(true);
       }
     }
-  }, 120000);
+  }, 300000);
 });

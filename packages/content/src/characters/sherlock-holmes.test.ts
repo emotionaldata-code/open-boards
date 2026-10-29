@@ -96,7 +96,7 @@ function setup(
   };
   state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
-    const f = state.fighters.find((f) => f.position === null)!;
+    const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
     h.apply(
       { type: 'place-ally', fighter: f.id, position: deploymentSpaces(state, f.id, defs.map)[0] },
       f.player,
@@ -427,11 +427,12 @@ describe('complete printed Sherlock Holmes deck', () => {
 
   it(
     'retains full ally counts across every supported two/four-seat deployment',
-    { timeout: 120_000 },
-    () => {
+    { timeout: 300_000 },
+    async () => {
       const ids = Object.keys(content.characters);
       for (const count of [2, 4])
         for (let n = 0; n < ids.length ** count; n++) {
+          if (n % 256 === 0) await new Promise<void>((resolve) => setImmediate(resolve));
           let code = n;
           const roster = Array.from({ length: count }, () => {
             const id = ids[code % ids.length];
@@ -453,7 +454,7 @@ describe('complete printed Sherlock Holmes deck', () => {
           );
           state = completeDeckSelection(state, content);
           while (state.phase.type === 'placing-allies') {
-            const f = state.fighters.find((f) => f.position === null)!;
+            const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
             const position = deploymentSpaces(state, f.id, content.map)[0];
             expect(position).toBeDefined();
             const result = execute(
@@ -469,7 +470,13 @@ describe('complete printed Sherlock Holmes deck', () => {
             if (!result.ok) throw new Error(result.message);
             state = result.state;
           }
-          expect(state.fighters.every((f) => f.position !== null)).toBe(true);
+          expect(
+            state.fighters.every((f) =>
+              f.role === 'ally' && content.characters[f.character].ally?.startsOffBoard
+                ? f.defeated && f.position === null
+                : f.position !== null,
+            ),
+          ).toBe(true);
         }
     },
   );

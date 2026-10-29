@@ -26,7 +26,7 @@ it.each(['prophecy', 'the-lady-of-the-lake', 'restless-spirits', 'noble-sacrific
       expect(result.error).toBeUndefined();
     };
     while (match.game!.phase.type === 'placing-allies') {
-      const fighter = match.game!.fighters.find((f) => f.position === null)!;
+      const fighter = match.game!.fighters.find((f) => !f.defeated && f.position === null)!;
       command(fighter.player, {
         type: 'place-ally',
         fighter: fighter.id,

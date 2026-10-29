@@ -96,7 +96,7 @@ function setup(edit: (defs: Definitions) => void = () => {}, roster = ['bruce-le
   };
   state = completeDeckSelection(state, defs);
   while (state.phase.type === 'placing-allies') {
-    const f = state.fighters.find((f) => f.position === null)!;
+    const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
     h.apply(
       { type: 'place-ally', fighter: f.id, position: deploymentSpaces(state, f.id, defs.map)[0] },
       f.player,
@@ -449,11 +449,12 @@ describe('complete printed Bruce Lee deck', () => {
 
 it(
   'deploys every two/four-seat roster containing Bruce Lee at full ally counts',
-  { timeout: 120_000 },
-  () => {
+  { timeout: 300_000 },
+  async () => {
     const ids = Object.keys(content.characters);
     for (const count of [2, 4])
       for (let n = 0; n < ids.length ** count; n++) {
+        if (n % 256 === 0) await new Promise<void>((resolve) => setImmediate(resolve));
         let code = n;
         const roster = Array.from({ length: count }, () => {
           const id = ids[code % ids.length];
@@ -475,7 +476,7 @@ it(
         );
         state = completeDeckSelection(state, content);
         while (state.phase.type === 'placing-allies') {
-          const f = state.fighters.find((f) => f.position === null)!;
+          const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
           const position = deploymentSpaces(state, f.id, content.map)[0];
           expect(position).toBeDefined();
           const r = execute(
@@ -491,7 +492,13 @@ it(
           if (!r.ok) throw new Error(r.message);
           state = r.state;
         }
-        expect(state.fighters.every((f) => f.position !== null)).toBe(true);
+        expect(
+          state.fighters.every((f) =>
+            f.role === 'ally' && content.characters[f.character].ally?.startsOffBoard
+              ? f.defeated && f.position === null
+              : f.position !== null,
+          ),
+        ).toBe(true);
       }
   },
 );

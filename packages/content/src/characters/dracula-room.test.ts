@@ -31,7 +31,7 @@ it.each([
     expect(response.error).toBeUndefined();
   };
   while (match.game!.phase.type === 'placing-allies') {
-    const f = match.game!.fighters.find((f) => f.position === null)!;
+    const f = match.game!.fighters.find((f) => !f.defeated && f.position === null)!;
     send(f.player, {
       type: 'place-ally',
       fighter: f.id,

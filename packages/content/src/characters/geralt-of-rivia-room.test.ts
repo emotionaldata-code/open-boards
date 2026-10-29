@@ -53,7 +53,7 @@ it('restores each private gear selection, Dandelion deployment, and defense BOOS
   }
   expect(loadouts).toBe(6);
   while (match.game!.phase.type === 'placing-allies') {
-    const f = match.game!.fighters.find((f) => f.position === null)!;
+    const f = match.game!.fighters.find((f) => !f.defeated && f.position === null)!;
     match.disconnect(f.player);
     match.reconnect(f.player);
     expect(match.view(f.player).game!.phase).toEqual(match.game!.phase);

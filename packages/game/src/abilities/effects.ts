@@ -8,6 +8,7 @@ import type { Runtime } from './runtime';
 import type { Task } from './state';
 import { canPlace, forcedPaths } from './positions';
 import { startGroup } from './groups';
+import { offerSummon } from './summoning';
 import { offerRevival } from './revival';
 import { suppressOpponent } from './suppression';
 import { offerAttackBoost } from './attack-boost';
@@ -41,7 +42,8 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       e.type === 'inspect-hand' ||
       e.type === 'reveal-hand' ||
       e.type === 'draw-to' ||
-      e.type === 'named-value-discard')
+      e.type === 'named-value-discard' ||
+      e.type === 'return-to-deck')
   )
     return;
   if (
@@ -95,12 +97,15 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
             { length: Math.min(e.count, player.hand.length) },
             () => player.hand.splice(randomIndex(runtime, player.hand.length), 1)[0],
           );
-          player.deck.unshift(...cards);
+          if (e.destination === 'bottom') player.deck.push(...cards);
+          else player.deck.unshift(...cards);
         } else
           runtime.prepend({
             ...task,
             type: 'return-to-deck',
             player: player.id,
+            chooser: reference(state, task, e.chooser ?? e.target)?.player,
+            destination: e.destination,
             remaining: e.count,
             ordered: [],
           });
@@ -137,15 +142,19 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       searchCards(runtime, task, e);
       break;
     case 'boost-combat':
-      if (frame.kind === 'combat')
+      if (
+        frame.kind === 'combat' &&
+        target &&
+        (target.id === frame.attacker || (target.id === frame.defender && frame.defenseCard))
+      )
         offerAttackBoost(
           runtime,
           task.frame,
-          task.owner,
+          target.id,
           task.provenance,
-          'combat',
+          e.grant ?? 'combat',
           false,
-          frame.attacker === task.owner ? 'attack' : 'defense',
+          frame.attacker === target.id ? 'attack' : 'defense',
         );
       break;
     case 'replace-attack':
@@ -231,6 +240,12 @@ export function applyEffect(runtime: Runtime, task: Extract<Task, { type: 'effec
       break;
     case 'for-each-fighter':
       startGroup(runtime, task, e);
+      break;
+    case 'summon-ally':
+      offerSummon(runtime, task, e);
+      break;
+    case 'redirect-combat-damage':
+      if (frame.kind === 'combat' && target && !target.defeated) frame.damageRecipient = target.id;
       break;
     case 'revive-ally':
       offerRevival(runtime, task, e);

@@ -1,0 +1,274 @@
+{
+  "sourceUrl": "https://unmatched.cards/umdb/decks/sinbad",
+  "retrievedAt": "2026-10-29T11:35:39.510Z",
+  "special": "7 VOYAGES\r\nWhen you maneuver, you may move your fighters +1 space for each VOYAGE card in your discard pile.",
+  "heroes": [
+    {
+      "attack_type": "melee",
+      "hp": 15,
+      "name": "Sinbad",
+      "quantity": 1,
+      "slug": "sinbad"
+    }
+  ],
+  "sidekicks": [
+    {
+      "attack_type": "melee",
+      "hp": 6,
+      "name": "The Porter",
+      "quantity": 1,
+      "slug": "the-porter"
+    }
+  ],
+  "movement": 2,
+  "notes": null,
+  "cards": [
+    {
+      "id": "sinbad-exploit",
+      "name": "Exploit",
+      "count": 2,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "afterText": "Draw 1 card."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/exploit.png"
+    },
+    {
+      "id": "sinbad-toil-and-danger",
+      "name": "Toil and Danger",
+      "count": 4,
+      "category": "versatile",
+      "usableBy": "MAIN",
+      "value": 3,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "afterText": "Move Sinbad up to 3 spaces."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/toil-and-danger.png"
+    },
+    {
+      "id": "sinbad-voyage-home",
+      "name": "Voyage Home",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 1,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "Take all other VOYAGE cards from your discard pile and add them to your hand."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-home.png"
+    },
+    {
+      "id": "sinbad-riches-beyond-compare",
+      "name": "Riches Beyond Compare",
+      "count": 2,
+      "category": "action",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "basicText": "Draw 3 cards."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/riches-beyond-compare.png"
+    },
+    {
+      "id": "sinbad-by-fortune-and-fate",
+      "name": "By Fortune and Fate",
+      "count": 3,
+      "category": "attack",
+      "usableBy": "ALLY",
+      "value": 3,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "afterText": "Draw 2 cards."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/by-fortune-and-fate.png"
+    },
+    {
+      "id": "sinbad-voyage-to-the-island-that-was-a-whale",
+      "name": "Voyage to the Island That Was a Whale",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 0,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "Sinbad recovers 2 health."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-to-the-island-that-was-a-whale.png"
+    },
+    {
+      "id": "sinbad-voyage-to-the-valley-of-the-giant-snakes",
+      "name": "Voyage to the Valley of the Giant Snakes",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 0,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "Look at your opponent's hand."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-to-the-valley-of-the-giant-snakes.png"
+    },
+    {
+      "id": "sinbad-voyage-to-the-creature-with-eyes-like-coals-of-fire",
+      "name": "Voyage to the Creature With Eyes Like Coals of Fire",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 0,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "Your opponent discards 1 random card."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-to-the-creature-with-eyes-like-coals-of-fire.png"
+    },
+    {
+      "id": "sinbad-voyage-to-the-cannibals-with-the-root-of-madness",
+      "name": "Voyage to the Cannibals With the Root of Madness",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 0,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "You may move Sinbad up to 2 spaces."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-to-the-cannibals-with-the-root-of-madness.png"
+    },
+    {
+      "id": "sinbad-voyage-to-the-city-of-the-man-eating-apes",
+      "name": "Voyage to the City of the Man-Eating Apes",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 0,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "Deal 2 damage to the opposing fighter."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-to-the-city-of-the-man-eating-apes.png"
+    },
+    {
+      "id": "sinbad-voyage-to-the-city-of-the-king-of-serendib",
+      "name": "Voyage to the City of the King of Serendib",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "MAIN",
+      "value": 2,
+      "boost": 0,
+      "tags": ["voyage"],
+      "sourceRules": {
+        "duringText": "This card's value is +1 for each other VOYAGE card in your discard pile.",
+        "afterText": "Draw 1 card."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/voyage-to-the-city-of-the-king-of-serendib.png"
+    },
+    {
+      "id": "sinbad-commanding-impact",
+      "name": "Commanding Impact",
+      "count": 1,
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 5,
+      "boost": 2,
+      "tags": [],
+      "sourceRules": {
+        "afterText": "Draw 1 card."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/commanding-impact.png"
+    },
+    {
+      "id": "sinbad-leap-away",
+      "name": "Leap Away",
+      "count": 2,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "afterText": "If you won the combat, choose one of the fighters in the combat and move them up to 4 spaces."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/leap-away.png"
+    },
+    {
+      "id": "sinbad-momentous-shift",
+      "name": "Momentous Shift",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "duringText": "If your fighter started this turn in a different space, this card's value is 5 instead."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/momentous-shift.png"
+    },
+    {
+      "id": "sinbad-feint",
+      "name": "Feint",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "immediateText": "Cancel all effects on your opponent's card."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/feint.png"
+    },
+    {
+      "id": "sinbad-regroup",
+      "name": "Regroup",
+      "count": 3,
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 1,
+      "boost": 1,
+      "tags": [],
+      "sourceRules": {
+        "afterText": "Draw 1 card. If you won the combat, draw 2 cards instead."
+      },
+      "sourceNotes": [],
+      "sourceImage": "https://static.unmatched.cards/images/umdb/decks/sinbad/regroup.png"
+    }
+  ]
+}

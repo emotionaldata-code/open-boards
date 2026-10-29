@@ -6,6 +6,8 @@ The Genie is playable with his full 30-card deck across twelve designs, Infinite
 
 Each character owns one JSON bundle in `packages/content/src/characters/`: stats, passive hooks, card rules, copy counts, flavor and artwork recipes. Allies share their owner’s deck, hand and two-action budget, with independent health, counters, statuses and passive usage. MAIN/ALLY/BOTH tags restrict which fighters can use a card.
 
+Sinbad is playable with **30 cards across 16 designs**, 15 HP, movement 2, melee attacks and one **6-HP melee Porter**. Seven Voyages increase both fighters’ Maneuver allowance and Sinbad’s Voyage attacks; Voyage Home recovers earlier Voyages. His [import notes](characters/sinbad.md) record the complete source inventory, rule mapping and original artwork.
+
 ## Author a fighter
 
 For a deck URL, use the repository-local [import-character skill](../.agents/skills/import-character/SKILL.md). It includes a source fetch helper, field mapping, JSON examples, artwork guidance and compatibility checks. Supported mechanics need no new engine behavior, but complete characters still require the registration and presentation edits below. A source import can use a deck within the engine's 5–100-card bounds, with tests checking that source’s exact quantities.
@@ -101,3 +103,7 @@ Yennefer & Triss are playable with **30 cards across eleven designs**. Choose ei
 ## Eredin
 
 Eredin is playable with **30 cards across 11 designs**, 14 HP, movement 2, melee attacks and **four 1-HP melee Red Riders**. When every Rider is defeated, his continuous ENRAGED state raises movement to 3 and combat-card values by 1. His deck sacrifices and revives Riders, declares face-up attacks across the battlefield, transfers defense through portals and maintains an ongoing damage ward. The [source inventory](characters/eredin/inventory.json) and [import notes](characters/eredin.md) record every printed clause, reusable operations and fifteen original artwork assets.
+
+## Sun Wukong
+
+Sun Wukong is playable with **30 cards across 12 designs**, 17 HP, movement 2 and **three 1-HP melee Clones that begin off the board**. He summons or relocates Clones, transforms, redirects combat damage and tricks defended attacks into Tricked You. Every printed BOOST, quantity, fighter restriction and timed clause is preserved. His [source inventory](characters/sun-wukong/inventory.json) and [import notes](characters/sun-wukong.md) document publisher clarifications, reusable rules and sixteen original Imagegen assets.

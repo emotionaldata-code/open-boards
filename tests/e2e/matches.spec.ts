@@ -1,6 +1,8 @@
 import { contentText } from '../../apps/client/src/localization/text';
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
+  sinbad: { name: 'Sinbad', allies: 1 },
+  'sun-wukong': { name: 'Sun Wukong', allies: 0 },
   eredin: { name: 'Eredin', allies: 4 },
   philippa: { name: 'Philippa', allies: 1 },
   'geralt-of-rivia': { name: 'Geralt of Rivia', allies: 1 },
@@ -653,6 +655,7 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
         ['Darth Vader', 12],
         ['Alice', 15],
         ['Philippa', 13],
+        ['Sinbad', 16],
       ]),
     );
     for (const [name, designs] of fighters) {
@@ -1381,6 +1384,32 @@ test('Geralt selects gear before Dandelion deployment and resumes a four-seat Ma
   }
 });
 
+test('Sinbad and the Porter deploy over real sockets and reconnect during shared Manovra', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 2, true, 'sinbad');
+  try {
+    const host = rivals[0].page;
+    await expect(host.locator('.badge-ally').filter({ hasText: 'Il Portatore' })).toHaveCount(2);
+    await host.getByRole('button', { name: /^Manovra/ }).click();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await host.reload();
+    await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await finishManovra(host);
+    for (const { page, errors } of rivals) {
+      await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
+      await fitsViewport(page);
+      expect(errors).toEqual([]);
+    }
+    await host.screenshot({
+      path: test.info().outputPath('sinbad-socket-phone.png'),
+      animations: 'disabled',
+    });
+  } finally {
+    await Promise.allSettled(rivals.map((r) => r.context.close()));
+  }
+});
+
 test('Philippa and Dijkstra deploy over real sockets and reconnect during shared Manovra', async ({
   browser,
 }) => {
@@ -1449,5 +1478,48 @@ test('selects Eredin over sockets, deploys all sixteen Red Riders and reconnects
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));
+  }
+});
+
+test('selects Sun Wukong over sockets, summons a reserve Clone and reconnects on phone', async ({
+  browser,
+}) => {
+  const rivals = await createMatch(browser, 2, true, 'sun-wukong', false, false);
+  try {
+    const page = rivals[0].page;
+    await expect(
+      page.getByRole('button', { name: 'Usa Evocazione dei Cloni', exact: true }),
+    ).toBeVisible();
+    await page.getByRole('button', { name: 'Usa Evocazione dei Cloni', exact: true }).tap();
+    await page
+      .getByRole('button', { name: /^Scegli casella/ })
+      .first()
+      .focus();
+    await page.keyboard.press('Enter');
+    await page.reload();
+    await expect(
+      page.locator('.ability-options').getByRole('button', { name: 'Clone 1', exact: true }),
+    ).toBeVisible();
+    await expect(rivals[1].page.locator('.ability-options')).toHaveCount(0);
+    await page
+      .locator('.ability-options')
+      .getByRole('button', { name: 'Clone 1', exact: true })
+      .tap();
+    await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
+    await expect(page.locator('.fighter-hit')).toHaveCount(3);
+    await expect(rivals[1].page.locator('.fighter-hit')).toHaveCount(3);
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+    await expect(page.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await page.reload();
+    await expect(page.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
+    await finishManovra(page);
+    await fitsViewport(page);
+    await page.screenshot({
+      path: test.info().outputPath('wukong-socket-phone.png'),
+      animations: 'disabled',
+    });
+    for (const rival of rivals) expect(rival.errors).toEqual([]);
+  } finally {
+    await Promise.allSettled(rivals.map((r) => r.context.close()));
   }
 });

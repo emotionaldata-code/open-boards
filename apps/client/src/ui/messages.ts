@@ -11,6 +11,11 @@ const messages: Record<string, string> = {
   'Ignore this discard effect?': 'Ignorare questo effetto di scarto?',
   'Ignore the effect': 'Ignora l’effetto',
   'Resolve the effect': 'Risolvi l’effetto',
+  'Choose an ally to summon': 'Scegli un alleato da evocare',
+  'Place your fighter and leave an ally behind':
+    'Colloca il tuo combattente e lascia un alleato al suo posto',
+  'Summon in an adjacent space': 'Evoca in una casella adiacente',
+  'Choose a card for the bottom of their deck': 'Scegli una carta da mettere in fondo al suo mazzo',
   'Choose a player': 'Scegli un giocatore',
   'Choose a fighter': 'Scegli un combattente',
   'Choose the replacement attack': 'Scegli l’attacco sostitutivo',

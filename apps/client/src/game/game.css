@@ -125,12 +125,6 @@
   height: 32px;
   border-radius: 2px;
 }
-.fighter-picker .character-portrait::before {
-  display: none;
-}
-.fighter-picker .character-portrait img {
-  padding: 0;
-}
 .fighter-picker button[aria-pressed='true'] {
   background: var(--accent);
   color: var(--ground);

@@ -41,7 +41,7 @@ for (const viewport of [
           statuses: [],
         })),
       });
-      await expect(page.locator(webgl ? 'canvas' : '.board-error')).toBeVisible();
+      await expect(page.locator(webgl ? '.pixi-surface canvas' : '.board-error')).toBeVisible();
       if (!webgl) {
         const alert = (await page.locator('.board-error').boundingBox())!;
         const arena = (await page.locator('.arena').boundingBox())!;
@@ -138,11 +138,8 @@ for (const viewport of [
         rings.every(({ inner, zoneOuter, fill }) => inner > zoneOuter && fill === 'none'),
       ).toBe(true);
       const portalTarget = page.getByRole('button', { name: 'Muovi in 08', exact: true });
-      await expect(portalTarget).toHaveAttribute(
-        'aria-description',
-        /passage arrows.*one movement point/,
-      );
-      await expect(portalTarget).toHaveAttribute('title', /One movement point/);
+      await expect(portalTarget).toHaveAttribute('aria-description', /frecce.*un punto movimento/);
+      await expect(portalTarget).toHaveAttribute('title', /Un punto movimento/);
       for (const mark of await terrain.locator('[data-space]').all()) {
         // Fractional fitted SVG bounds can produce an intersection ratio just below one.
         await expect(mark).toBeInViewport({ ratio: 0.9999 });
@@ -167,7 +164,7 @@ for (const viewport of [
   }
 }
 
-test('failed map artwork reveals vector scenery while spaces remain playable', async ({ page }) => {
+test('failed map artwork keeps spaces playable without legacy scenery', async ({ page }) => {
   await page.route('**/artwork/maps/**', (route) => route.abort());
   await page.setViewportSize({ width: 844, height: 390 });
   await presentationHarness(page, true, {
@@ -175,8 +172,7 @@ test('failed map artwork reveals vector scenery while spaces remain playable', a
     maneuver: { player: 'a', remaining: ['a:main'], finishing: false, boost: 0, boostable: false },
   });
   await expect(page.locator('.map-scenery img')).toHaveCount(0);
-  await expect(page.locator('.map-scenery > svg')).toBeVisible();
-  await expect(page.locator('.map-scenery > svg path').first()).toHaveAttribute('fill', '#344438');
+  await expect(page.locator('.map-scenery > svg')).toHaveCount(0);
   await expect(page.locator('.map-terrain [data-space]')).toHaveCount(map.nodes.length);
   await page.getByRole('button', { name: 'Muovi in 02', exact: true }).click();
   expect(

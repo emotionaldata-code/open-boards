@@ -44,7 +44,11 @@ For unsupported rules, identify the precise gap and affected cards, then impleme
 
 Read [JSON authoring](references/json-authoring.md) for the bundle shape, effect timing and existing examples. Use `packages/game/src/abilities/vocabulary.ts` and `validation.ts` as the authoritative schema; `packages/content/src/bundle.ts` supplies bundle-specific constraints. Reuse capabilities; never branch on a character or card ID in infrastructure.
 
-Follow [artwork](references/artwork.md) and the repository-local [refresh-character-art](../refresh-character-art/SKILL.md) workflow for portraits, miniatures and every card illustration. Its shared direction uses cinematic illustrated realism and integrated Imagegen. Supply original artwork by default and retain source/asset attribution. Finish these integration points:
+Follow [artwork](references/artwork.md) and the repository-local [refresh-character-art](../refresh-character-art/SKILL.md) workflow for portraits, miniatures and every card illustration. Its shared direction uses cinematic illustrated realism and integrated Imagegen. Supply original artwork by default and retain source/asset attribution.
+
+If image generation fails, follow [generation failure recovery](../refresh-character-art/SKILL.md#recover-from-generation-failures): consider copyright/IP-sensitive references as a possible cause, check the actual error, and retry permitted requests with more general original visual descriptions instead of unnecessary character/franchise keywords. Respect explicit refusals and the retry limit; preserve source identity and rules in the imported content, and document any unresolved artwork rather than claiming completion.
+
+Finish these integration points:
 
 | File                                        | Required change                                                                                                |
 | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |

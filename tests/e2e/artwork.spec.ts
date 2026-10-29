@@ -8,9 +8,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const { name, designs } of [
+  { name: 'Sinbad', designs: 16 },
   { name: 'Darth Vader', designs: 12 },
   { name: 'Geralt of Rivia', designs: 15 },
   { name: 'Invisible Man', designs: 14 },
+  { name: 'Sun Wukong', designs: 12 },
   { name: 'Eredin', designs: 11 },
   { name: 'Bruce Lee', designs: 17 },
   { name: 'Alice', designs: 15 },
@@ -203,16 +205,16 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
   });
 }
 
-test('React artwork falls back to local SVG when raster requests fail', async ({ page }) => {
+test('unavailable artwork keeps its frame without SVG replacements', async ({ page }) => {
   await page.route('**/artwork/medusa/**', (route) => route.abort());
-  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
   await roster.getByRole('button', { name: 'Esamina Medusa', exact: true }).click();
-  await expect(roster.locator('.roster-detail img')).toHaveAttribute(
-    'src',
-    /^data:image\/svg\+xml/,
-  );
+  await expect(roster.locator('.roster-detail img')).toHaveCount(0);
+  const frame = roster.locator('.roster-detail > .character-portrait');
+  const bounds = await frame.boundingBox();
+  expect(bounds!.height).toBeCloseTo(bounds!.width / 1.15, 0);
   await roster
     .getByRole('button', { name: 'Mazzo di Medusa · 11 carte diverse', exact: true })
     .click();
@@ -221,11 +223,44 @@ test('React artwork falls back to local SVG when raster requests fail', async ({
     .locator('.deck-gallery > button')
     .first();
   await card.click();
-  await expect(page.getByRole('dialog').last().locator('img')).toHaveAttribute(
-    'src',
-    /^data:image\/svg\+xml/,
-  );
+  await expect(page.getByRole('dialog').last().locator('img')).toHaveCount(0);
+  expect(await page.locator('img[src^="data:image/svg"], .map-preview-art svg').count()).toBe(0);
 });
+
+for (const width of [1440, 768, 390]) {
+  test(`artwork loads inside stable, centered frames at ${width}px`, async ({ page }) => {
+    let release!: () => void;
+    const pending = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route('**/artwork/**/*.webp', async (route) => {
+      await pending;
+      await route.continue();
+    });
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    const portrait = page.locator('.roster-detail > .character-portrait');
+    const before = await portrait.boundingBox();
+    expect(before!.height).toBeLessThan(400);
+    expect(await page.locator('img[src^="data:image/svg"], .map-preview-art svg').count()).toBe(0);
+    release();
+    await portrait.locator('img').evaluate((image: HTMLImageElement) => image.decode());
+    expect(await portrait.boundingBox()).toEqual(before);
+    expect(await portrait.locator('img').boundingBox()).toEqual(before);
+    await expect(page.locator('body')).toHaveJSProperty('scrollWidth', width);
+    await page.screenshot({ path: test.info().outputPath(`roster-${width}.png`), fullPage: true });
+    const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
+    await roster.getByRole('button', { name: /Mazzo di/ }).click();
+    const card = page.locator('.deck-gallery > button').first();
+    await card.locator('img').evaluate((image: HTMLImageElement) => image.decode());
+    const boxes = await card.locator('.card-art').evaluate((frame) => ({
+      frame: frame.getBoundingClientRect().toJSON(),
+      image: frame.querySelector('img')!.getBoundingClientRect().toJSON(),
+    }));
+    expect(boxes.image).toEqual(boxes.frame);
+    await page.screenshot({ path: test.info().outputPath(`deck-${width}.png`) });
+  });
+}
 
 for (const reducedMotion of ['reduce', 'no-preference'] as const) {
   test(`Arthur and numbered Merlin figures share textures across four owner colors (${reducedMotion})`, async ({

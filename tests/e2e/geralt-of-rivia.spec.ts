@@ -65,7 +65,7 @@ async function mountGeralt(page: Page, scene: 'gear' | 'potion' | 'rend', viewer
           apply({ type: 'choose', choice: c.id, options: [c.options[0].id] }, c.player);
         }
         while (state.phase.type === 'placing-allies') {
-          const f = state.fighters.find((f) => f.position === null)!;
+          const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
           apply(
             {
               type: 'place-ally',

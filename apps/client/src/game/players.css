@@ -146,12 +146,6 @@
   height: 24px;
   border-radius: 50%;
 }
-.badge-ally .character-portrait::before {
-  display: none;
-}
-.badge-ally .character-portrait img {
-  padding: 0;
-}
 .badge-ally strong {
   font-variant-numeric: tabular-nums;
   color: var(--accent);

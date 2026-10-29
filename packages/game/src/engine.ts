@@ -87,9 +87,9 @@ export function createGame(
         character: character.id,
         definition: definition.id,
         role,
-        hp: definition.hp,
+        hp: role === 'ally' && character.ally?.startsOffBoard ? 0 : definition.hp,
         position: role === 'main' ? defs.map.spawns[seats.length as 2 | 4][seat] : null,
-        defeated: false,
+        defeated: role === 'ally' && !!character.ally?.startsOffBoard,
         statuses: [],
         counters: Object.fromEntries(
           Object.entries(definition.counters ?? {}).map(([key, c]) => [key, c.initial]),

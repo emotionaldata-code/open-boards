@@ -47,6 +47,7 @@ export type Value =
       exclude?: PlayerRef;
     }
   | { stat: 'hp' | 'hand' | 'deck' | 'movement'; of?: PlayerRef }
+  | { stat: 'discard'; tag?: string; of?: PlayerRef }
   | { stat: 'counter'; name: string; of?: PlayerRef }
   | { stat: 'actions' }
   | { event: 'amount' | 'attack' | 'defense' | 'distance' }
@@ -98,18 +99,31 @@ export type Effect =
       optional?: boolean;
       placeSelf?: boolean;
     }
-  | { type: 'return-to-deck'; count: number; target?: PlayerRef; random?: boolean }
+  | {
+      type: 'return-to-deck';
+      count: number;
+      target?: PlayerRef;
+      random?: boolean;
+      chooser?: PlayerRef;
+      destination?: 'top' | 'bottom';
+    }
   | { type: 'defeat'; target: PlayerRef; onDefeat?: Effect[] }
   | { type: 'remove-until-next-turn'; target?: PlayerRef }
   | { type: 'lock-card-value'; target?: PlayerRef; value: Value }
   | { type: 'end-turn' }
-  | { type: 'boost-combat' }
+  | { type: 'boost-combat'; target?: PlayerRef; grant?: string }
   | { type: 'lock-movement'; target?: PlayerRef }
   | { type: 'search-cards'; cards: string[]; recycleOnDeck?: boolean }
   | { type: 'replace-attack' }
   | { type: 'bonus-attack'; name: string; value: number }
   | { type: 'replace-defender'; target: PlayerRef }
-  | { type: 'recover-card'; cards?: string[]; destination?: 'hand' | 'deck' }
+  | {
+      type: 'recover-card';
+      cards?: string[];
+      tag?: string;
+      all?: boolean;
+      destination?: 'hand' | 'deck';
+    }
   | { type: 'return-played-card' }
   | { type: 'boost-attack'; grant?: string; cancelWithCard?: boolean }
   | { type: 'set-health'; target?: PlayerRef; value: number }
@@ -133,6 +147,8 @@ export type Effect =
   | { type: 'inspect-hand'; target?: PlayerRef; public?: boolean }
   | { type: 'named-value-discard'; target?: PlayerRef }
   | { type: 'swap'; target: PlayerRef; onSuccess?: Effect[] }
+  | { type: 'summon-ally'; placement: 'adjacent' | 'replace-self'; damage?: number }
+  | { type: 'redirect-combat-damage'; target: PlayerRef }
   | { type: 'revive-ally'; optional?: boolean; anchor?: PlayerRef; zone?: 'any' }
   | {
       type: 'for-each-fighter';

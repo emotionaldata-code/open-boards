@@ -4,6 +4,7 @@ import type { Binding, Task } from './state';
 import type { Effect } from './vocabulary';
 import { reference } from './conditions';
 import { openChoice } from './choices';
+import { availableDiscards, taggedCards } from './discard-pile';
 
 function player(runtime: Runtime, binding: Binding) {
   return runtime.state.players.find(
@@ -174,11 +175,24 @@ export function recoverCard(
   effect: Extract<Effect, { type: 'recover-card' }>,
 ): void {
   const p = player(runtime, binding);
-  const committed = new Set(
-    Object.values(runtime.data.frames).flatMap((f) =>
-      f.kind === 'combat' ? [f.card.id, ...(f.defenseCard ? [f.defenseCard.id] : [])] : [],
-    ),
-  );
+  if (p.eliminated) return;
+  const available = taggedCards(
+    availableDiscards(runtime.state, p),
+    runtime.defs,
+    effect.tag,
+  ).filter((card) => !effect.cards || effect.cards.includes(card.definition));
+  if (effect.all) {
+    const ids = new Set(available.map((card) => card.id));
+    p.discard = p.discard.filter((card) => !ids.has(card.id));
+    if (effect.destination === 'deck') {
+      p.deck.push(...available);
+      if (available.length) shuffle(runtime, p.deck);
+    } else if (available.length) {
+      p.hand.push(...available);
+      runtime.emit({ type: 'draw', player: p.id, cards: available }, p.id);
+    }
+    return;
+  }
   openChoice(
     runtime,
     binding.frame,
@@ -186,22 +200,21 @@ export function recoverCard(
     effect.destination === 'deck'
       ? 'Shuffle a discarded card into your deck'
       : 'Return a discarded card to your hand',
-    p.discard
-      .filter((c) => !committed.has(c.id) && (!effect.cards || effect.cards.includes(c.definition)))
-      .map((card) => ({
-        id: card.id,
-        label: runtime.defs.cards[card.definition].name,
-        card,
-        tasks: [
-          {
-            ...binding,
-            type: 'recover-card',
-            card: card.id,
-            cards: effect.cards,
-            destination: effect.destination,
-          },
-        ],
-      })),
+    available.map((card) => ({
+      id: card.id,
+      label: runtime.defs.cards[card.definition].name,
+      card,
+      tasks: [
+        {
+          ...binding,
+          type: 'recover-card',
+          card: card.id,
+          cards: effect.cards,
+          tag: effect.tag,
+          destination: effect.destination,
+        },
+      ],
+    })),
     1,
     1,
     binding.provenance,
@@ -216,7 +229,10 @@ export function resolveRecovery(
   const p = player(runtime, task);
   if (p.eliminated) return;
   const index = p.discard.findIndex(
-    (c) => c.id === task.card && (!task.cards || task.cards.includes(c.definition)),
+    (c) =>
+      c.id === task.card &&
+      (!task.cards || task.cards.includes(c.definition)) &&
+      (!task.tag || runtime.defs.cards[c.definition].tags?.includes(task.tag)),
   );
   if (index < 0) return;
   const cards = p.discard.splice(index, 1);
@@ -335,14 +351,17 @@ export function returnToDeck(
   if (task.remaining <= 0 || !available.length) {
     const cards = task.ordered.map((id) => p.hand.find((c) => c.id === id)!);
     p.hand = p.hand.filter((c) => !task.ordered.includes(c.id));
-    p.deck.unshift(...cards);
+    if (task.destination === 'bottom') p.deck.push(...cards);
+    else p.deck.unshift(...cards);
     return;
   }
   openChoice(
     runtime,
     task.frame,
-    p.id,
-    'Choose the next card for the top of your deck',
+    task.chooser ?? p.id,
+    task.destination === 'bottom'
+      ? 'Choose a card for the bottom of their deck'
+      : 'Choose the next card for the top of your deck',
     available.map((card) => ({
       id: card.id,
       label: runtime.defs.cards[card.definition].name,

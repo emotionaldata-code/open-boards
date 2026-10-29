@@ -1,0 +1,193 @@
+{
+  "character": "sinbad",
+  "date": "2026-10-29",
+  "tool": "integrated Imagegen",
+  "style": "Original cinematic illustrated realism; Arabian Nights sailor and porter. No source artwork redistributed.",
+  "sourceUrl": "https://unmatched.cards/umdb/decks/sinbad",
+  "identityReferences": ["references/sinbad.png", "references/porter.png"],
+  "assets": [
+    {
+      "id": "sinbad-portrait",
+      "source": "masters/sinbad-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-af001ab3-8295-44b6-988e-d17907e719b6.png",
+      "sha256": "1ec2bd1c680898615d1e0a56d7b610133f4e73ef978ac605fcd2dc2edd4192d0",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-porter-portrait",
+      "source": "masters/porter-portrait.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-d6cacb7a-b099-48c6-abe4-63bf10a40709.png",
+      "sha256": "fb93b75e3ac337fbab5655276d25bbc0a59d601d05807ba77cc5de2e519b33db",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-token",
+      "source": "masters/sinbad-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-eee1f9b2-57dd-41ea-b733-6dbb4f5697cf.png",
+      "sha256": "26ce74126b228ce2669f4ee047d6ad84c0a4177e5258eac9ba4a86778fe8cf0d",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "sinbad-porter-token",
+      "source": "masters/porter-token.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-044caab9-6d2b-48a2-a4ab-615361d7cd83.png",
+      "sha256": "7e7b8e08d85cab80e56cb98a0a1435299d689958ddd5b98effd03cc17824a629",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true
+    },
+    {
+      "id": "sinbad-exploit",
+      "source": "masters/exploit.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-6228244a-a399-4e4d-bd5f-6f46e623440d.png",
+      "sha256": "996472226d456b75c0b7e8c882f8659a2eac67884a1c83d7a04eb38157c433c9",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-toil-and-danger",
+      "source": "masters/toil-and-danger.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-e50cbba9-7714-42ad-ae50-2a7ceae79902.png",
+      "sha256": "6ba36c6efa98866983abe0910a6e1f221cdf41a45fcf0eff5d50e66e4648e588",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-home",
+      "source": "masters/voyage-home.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-8a909dbd-6ab8-442b-9487-fe7a170c83db.png",
+      "sha256": "25337529e93b944e69b92c8080581f8a788ce8a941b36d6b71d52f710aa83749",
+      "width": 1942,
+      "height": 809,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-riches-beyond-compare",
+      "source": "masters/riches-beyond-compare.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-b9919fde-9ba1-4f14-8f28-9100245c3f33.png",
+      "sha256": "635f639804f2e258f378fb476b1e85462073a7cc9dfd87f213d8849e833e92e3",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-by-fortune-and-fate",
+      "source": "masters/by-fortune-and-fate.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-7af88928-cce6-469e-a3df-d13b1a9ffdb5.png",
+      "sha256": "5224ca94f59891f90d2c8974d3818092a110dd593316f99f5cde92d16e9ef9da",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-to-the-island-that-was-a-whale",
+      "source": "masters/voyage-to-the-island-that-was-a-whale.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-15b4efd9-c519-4f49-8d01-f40a844984e6.png",
+      "sha256": "2a9c61d194b00c98ad1ac5531fa577b19f23e60965f46b42b243f6a7c97b68b1",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-to-the-valley-of-the-giant-snakes",
+      "source": "masters/voyage-to-the-valley-of-the-giant-snakes.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-bc188e28-3082-4343-a6b7-b7553f98726b.png",
+      "sha256": "b09fb4b2ef2218056e610cde08acfc4f7c47ad3e71d836c203c3c164ddffff92",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-to-the-creature-with-eyes-like-coals-of-fire",
+      "source": "masters/voyage-to-the-creature-with-eyes-like-coals-of-fire.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-3c9aa8fe-284f-4fab-b447-2332c082253f.png",
+      "sha256": "caff81303da101c08083b113cae714c401455f3decd309fe5f773d79b64bbfdb",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-leap-away",
+      "source": "masters/leap-away.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-7a90cce2-b054-40bf-99b4-79deeab1c18d.png",
+      "sha256": "2329da282340a4a1fcae3f749d0c4f011e7b07641b2d9188aea480adc3dd0aa3",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-feint",
+      "source": "masters/feint.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-c95cc949-d107-4954-820b-b5a25e78d7a3.png",
+      "sha256": "15bf2e2a25f395fb24299270865a519518c9ab3de5acf30933e9faf15d36b3f4",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-regroup",
+      "source": "masters/regroup.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-8e9bccca-156f-4082-b4f7-e7c1a5396105.png",
+      "sha256": "82ad5a09816f7c3c45ec8be93b5c760e5c3e2ed9704fd590e324793d35bc3322",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-momentous-shift",
+      "source": "masters/momentous-shift.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-323bbfef-5e56-4e48-b2c4-e42fb447a24a.png",
+      "sha256": "d49b1878127d14925d80b6aae5a7538fa562dc627cb60505f16ac7e6e4ca85ef",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-to-the-cannibals-with-the-root-of-madness",
+      "source": "masters/voyage-to-the-cannibals-with-the-root-of-madness.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-a0e92e07-55b4-4819-8c1f-24fcb0be8104.png",
+      "sha256": "3b3b8f70ea917b988f15fc34657d63a2339e4737ab68fcec345279820cd0904d",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-to-the-city-of-the-man-eating-apes",
+      "source": "masters/voyage-to-the-city-of-the-man-eating-apes.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-ffb2a11b-6fe4-4aee-82e2-42b655ed4a3e.png",
+      "sha256": "12f997b2f5dfa8a3298af755af67af056664da676e53c58fb7b004be4debad79",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-voyage-to-the-city-of-the-king-of-serendib",
+      "source": "masters/voyage-to-the-city-of-the-king-of-serendib.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-d4f1d817-2bbc-4546-ab3e-df63c5df3144.png",
+      "sha256": "d212d6e657e48bbf0d8fa4ed8391ba8c8fa67bc17509e09e2eb6121c1d11932a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "sinbad-commanding-impact",
+      "source": "masters/commanding-impact.png",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-477bfd60-ee22-4400-b3d4-9eb605d320d0.png",
+      "sha256": "6ffaa90bcc97fd2375cddf8c5ec2cd0b4c2f1f7f2f3f0a7cac7b725ab78d3d6a",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    }
+  ],
+  "attempts": 26,
+  "failures": [],
+  "notes": "Recompositions replace native-height-insufficient panoramas. Originals are retained unmodified at generator paths; selected masters remain unmodified. No artificial enlargement."
+}

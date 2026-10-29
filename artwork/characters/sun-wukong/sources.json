@@ -1,0 +1,114 @@
+[
+  {
+    "id": "sun-wukong-portrait",
+    "kind": "portrait",
+    "source": "masters/portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "sun-wukong-clone-portrait",
+    "kind": "portrait",
+    "source": "masters/clone-portrait.png",
+    "focal": [0.5, 0.42]
+  },
+  {
+    "id": "sun-wukong-token",
+    "kind": "token",
+    "source": "masters/sun-wukong-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "sun-wukong-clone-token",
+    "kind": "token",
+    "source": "masters/clone-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "sun-wukong-infinite-strikes",
+    "kind": "card",
+    "source": "masters/infinite-strikes.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-infinite-strikes"
+  },
+  {
+    "id": "sun-wukong-ruyi-jingo-bang",
+    "kind": "card",
+    "source": "masters/ruyi-jingo-bang.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-ruyi-jingo-bang"
+  },
+  {
+    "id": "sun-wukong-taunting-laughter",
+    "kind": "card",
+    "source": "masters/taunting-laughter.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-taunting-laughter"
+  },
+  {
+    "id": "sun-wukong-ox-form",
+    "kind": "card",
+    "source": "masters/ox-form.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-ox-form"
+  },
+  {
+    "id": "sun-wukong-72-transformations",
+    "kind": "card",
+    "source": "masters/72-transformations.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-72-transformations"
+  },
+  {
+    "id": "sun-wukong-sly-monkey",
+    "kind": "card",
+    "source": "masters/sly-monkey.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-sly-monkey"
+  },
+  {
+    "id": "sun-wukong-wily-fighting",
+    "kind": "card",
+    "source": "masters/wily-fighting.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-wily-fighting"
+  },
+  {
+    "id": "sun-wukong-bewilderment",
+    "kind": "card",
+    "source": "masters/bewilderment.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-bewilderment"
+  },
+  {
+    "id": "sun-wukong-golden-chain-mail",
+    "kind": "card",
+    "source": "masters/golden-chain-mail.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-golden-chain-mail"
+  },
+  {
+    "id": "sun-wukong-tortoise-form",
+    "kind": "card",
+    "source": "masters/tortoise-form.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-tortoise-form"
+  },
+  {
+    "id": "sun-wukong-fiery-eyes-that-see",
+    "kind": "card",
+    "source": "masters/fiery-eyes-that-see.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-fiery-eyes-that-see"
+  },
+  {
+    "id": "sun-wukong-phoenix-form",
+    "kind": "card",
+    "source": "masters/phoenix-form.png",
+    "focal": [0.5, 0.5],
+    "card": "sun-wukong-phoenix-form"
+  }
+]

@@ -115,7 +115,7 @@ function setup(
     while (state.phase.type === 'placing-allies' || state.resolution.choice) {
       if (++steps > 100) throw new Error('Unbounded setup');
       if (state.phase.type === 'placing-allies') {
-        const f = state.fighters.find((f) => f.position === null)!;
+        const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
         const position = deploymentSpaces(state, f.id, defs.map)[0];
         expect(position).toBeDefined();
         h.apply({ type: 'place-ally', fighter: f.id, position }, f.player);
@@ -503,10 +503,11 @@ describe('printed schemes', () => {
   });
 });
 
-it('deploys full allies and all tokens for every ordered two/four-seat roster containing Invisible Man', () => {
+it('deploys full allies and all tokens for every ordered two/four-seat roster containing Invisible Man', async () => {
   const ids = Object.keys(content.characters);
   for (const count of [2, 4])
     for (let n = 0; n < ids.length ** count; n++) {
+      if (n % 256 === 0) await new Promise<void>((resolve) => setImmediate(resolve));
       let code = n;
       const roster = Array.from({ length: count }, () => {
         const id = ids[code % ids.length];
@@ -515,7 +516,13 @@ it('deploys full allies and all tokens for every ordered two/four-seat roster co
       });
       if (!roster.includes('invisible-man')) continue;
       const h = setup(undefined, roster);
-      expect(h.state.fighters.every((f) => f.position !== null)).toBe(true);
+      expect(
+        h.state.fighters.every((f) =>
+          f.role === 'ally' && content.characters[f.character].ally?.startsOffBoard
+            ? f.defeated && f.position === null
+            : f.position !== null,
+        ),
+      ).toBe(true);
       expect(h.state.boardTokens!.every((t) => t.position !== null)).toBe(true);
       for (const [i, id] of roster.entries())
         expect(

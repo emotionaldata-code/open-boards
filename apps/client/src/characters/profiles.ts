@@ -7,6 +7,14 @@ export interface CharacterProfile {
   ground: string;
 }
 export const profiles: Record<string, CharacterProfile> = {
+  sinbad: {
+    role: 'Marinaio dei sette viaggi',
+    summary: 'Ogni viaggio lascia il segno. Ogni ritorno è un nuovo inizio.',
+    tactic:
+      'Accumula carte VIAGGIO negli scarti per aumentare forza e movimento di Sinbad e del Portatore. Torna a casa per recuperarle e ripartire.',
+    accent: '#c79d65',
+    ground: '#263d48',
+  },
   'yennefer-triss': {
     role: 'Maghe rivali',
     summary: 'Due maghe. Una scelta decisiva.',
@@ -126,6 +134,14 @@ export const profiles: Record<string, CharacterProfile> = {
       'Prevedi gli attacchi e smonta la mano avversaria. Tieni Watson vicino per curarti e avere supporto a distanza.',
     accent: '#b79c67',
     ground: '#283a3b',
+  },
+  'sun-wukong': {
+    role: 'Il Re Scimmia',
+    summary: 'Un solo capello. Mille inganni.',
+    tactic:
+      'Evoca i Cloni per circondare il nemico. Alterna trasformazioni e inganni, poi colpisci ancora con il bastone magico.',
+    accent: '#d3a54b',
+    ground: '#3e2929',
   },
   medusa: {
     role: 'Gorgone arciera',

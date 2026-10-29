@@ -73,7 +73,7 @@ async function mountHolmes(page: Page, scenario: 'hand' | 'defense' = 'hand') {
       };
       if (!saved) {
         while (state.phase.type === 'placing-allies') {
-          const fighter = state.fighters.find((f) => f.position === null)!;
+          const fighter = state.fighters.find((f) => !f.defeated && f.position === null)!;
           apply(
             {
               type: 'place-ally',

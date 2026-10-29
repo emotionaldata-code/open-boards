@@ -1,0 +1,481 @@
+{
+  "id": "sun-wukong",
+  "name": "Sun Wukong",
+  "hp": 17,
+  "movement": 2,
+  "attackType": "melee",
+  "palette": {
+    "ground": "#3e2929",
+    "ink": "#f0d1a2",
+    "accent": "#d3a54b"
+  },
+  "abilities": [
+    {
+      "id": "clone-summoning",
+      "name": "Clone Summoning",
+      "description": "At the start of your turn, you may take 1 damage to summon a Clone in an empty space adjacent to Sun Wukong.\nDo not start with any Clones on the board.",
+      "trigger": "turn-start",
+      "effects": [
+        {
+          "type": "summon-ally",
+          "placement": "adjacent",
+          "damage": 1
+        }
+      ],
+      "optional": true
+    }
+  ],
+  "ally": {
+    "id": "sun-wukong-clone",
+    "name": "Clone",
+    "hp": 1,
+    "attackType": "melee",
+    "count": 3,
+    "startsOffBoard": true
+  },
+  "cards": [
+    {
+      "id": "sun-wukong-infinite-strikes",
+      "name": "Infinite Strikes",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "During combat: For each other friendly fighter adjacent to the opposing fighter, increase the value of this card by +1.\nAfter combat: Gain 1 action.",
+      "art": {
+        "scene": "blade",
+        "variant": 0,
+        "image": "/artwork/sun-wukong/sun-wukong-infinite-strikes-1280-d18922608feb.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "infinite-strikes",
+          "name": "Infinite Strikes",
+          "description": "Infinite Strikes",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "modify",
+              "field": "attack",
+              "amount": {
+                "fighters": "friendly",
+                "range": "adjacent",
+                "anchor": "opponent",
+                "exclude": "self"
+              }
+            }
+          ]
+        },
+        {
+          "id": "relentless",
+          "name": "Relentless",
+          "description": "Relentless",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "actions",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-ruyi-jingo-bang",
+      "name": "Ruyi Jingo Bang",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 3,
+      "count": 3,
+      "description": "If your opponent played a defense card, TRICKED YOU.\r\nTRICKED YOU: 4 ATK",
+      "art": {
+        "scene": "blade",
+        "variant": 1,
+        "image": "/artwork/sun-wukong/sun-wukong-ruyi-jingo-bang-1280-d897d5249ffd.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "tricked-you",
+          "name": "Tricked You",
+          "description": "Tricked You",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "bonus-attack",
+              "name": "Tricked You",
+              "value": 4
+            }
+          ],
+          "when": {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "card-category",
+                "card": "defense",
+                "category": "defense"
+              },
+              {
+                "type": "card-category",
+                "card": "defense",
+                "category": "versatile"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-taunting-laughter",
+      "name": "Taunting Laughter",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 2,
+      "count": 3,
+      "description": "Your opponent may discard 1 card from their hand. If they don't, ignore their card's value.",
+      "art": {
+        "scene": "lantern",
+        "variant": 2,
+        "image": "/artwork/sun-wukong/sun-wukong-taunting-laughter-1280-cea174f0af1d.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "taunting-laughter",
+          "name": "Taunting Laughter",
+          "description": "Taunting Laughter",
+          "trigger": "combat-reveal",
+          "effects": [
+            {
+              "type": "discard",
+              "target": "opponent",
+              "count": 1,
+              "onDecline": [
+                {
+                  "type": "ignore-combat-value",
+                  "target": "opponent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-ox-form",
+      "name": "Ox Form",
+      "category": "attack",
+      "usableBy": "BOTH",
+      "value": 7,
+      "boost": 2,
+      "count": 2,
+      "description": "This card's effects cannot be canceled.\nIf your opponent played a card, they may BOOST it.",
+      "art": {
+        "scene": "bastion",
+        "variant": 3,
+        "image": "/artwork/sun-wukong/sun-wukong-ox-form-1280-2a89a277d769.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "ox-form",
+          "name": "Ox Form",
+          "description": "Ox Form",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "boost-combat",
+              "target": "opponent",
+              "grant": "opposing-form"
+            }
+          ],
+          "when": {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "card-category",
+                "card": "defense",
+                "category": "defense"
+              },
+              {
+                "type": "card-category",
+                "card": "defense",
+                "category": "versatile"
+              }
+            ]
+          }
+        }
+      ],
+      "effectsCannotBeCancelled": true
+    },
+    {
+      "id": "sun-wukong-72-transformations",
+      "name": "72 Transformations",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 2,
+      "count": 3,
+      "description": "Take an OX FORM, TORTOISE FORM, or PHOENIX FORM from your discard pile and return it to your hand.",
+      "art": {
+        "scene": "ward",
+        "variant": 4,
+        "image": "/artwork/sun-wukong/sun-wukong-72-transformations-1280-418e1e071cfb.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "transformations",
+          "name": "72 Transformations",
+          "description": "72 Transformations",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "recover-card",
+              "cards": ["sun-wukong-ox-form", "sun-wukong-tortoise-form", "sun-wukong-phoenix-form"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-sly-monkey",
+      "name": "Sly Monkey",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 2,
+      "boost": 3,
+      "count": 4,
+      "description": "If Sun Wukong played this card, summon a Clone in Sun Wukong's space, then place Sun Wukong in a space in his zone.",
+      "art": {
+        "scene": "trail",
+        "variant": 5,
+        "image": "/artwork/sun-wukong/sun-wukong-sly-monkey-1280-5500ca0ee4f3.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "sly-monkey",
+          "name": "Sly Monkey",
+          "description": "Sly Monkey",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "summon-ally",
+              "placement": "replace-self"
+            }
+          ],
+          "when": {
+            "type": "fighter-role",
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-wily-fighting",
+      "name": "Wily Fighting",
+      "category": "versatile",
+      "usableBy": "BOTH",
+      "value": 3,
+      "boost": 1,
+      "count": 3,
+      "description": "Deal 1 damage to each opposing fighter adjacent to your fighter.",
+      "art": {
+        "scene": "blade",
+        "variant": 6,
+        "image": "/artwork/sun-wukong/sun-wukong-wily-fighting-1280-34501fef0b53.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "wily-fighting",
+          "name": "Wily Fighting",
+          "description": "Wily Fighting",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "area-damage",
+              "range": "adjacent",
+              "relation": "enemy",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-bewilderment",
+      "name": "Bewilderment",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 2,
+      "count": 2,
+      "description": "During combat: Prevent all damage\nAfter combat: You may place your fighter in any space.",
+      "art": {
+        "scene": "ward",
+        "variant": 0,
+        "image": "/artwork/sun-wukong/sun-wukong-bewilderment-1280-d7da425c4aed.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "bewilderment",
+          "name": "Bewilderment",
+          "description": "Bewilderment",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "prevent-damage"
+            }
+          ]
+        },
+        {
+          "id": "escape",
+          "name": "Escape",
+          "description": "Escape",
+          "trigger": "after-combat",
+          "effects": [
+            {
+              "type": "teleport",
+              "zone": "any",
+              "includeOrigin": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-golden-chain-mail",
+      "name": "Golden Chain Mail",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 4,
+      "boost": 2,
+      "count": 2,
+      "description": "Any combat damage you would take is dealt to the opposing fighter instead.",
+      "art": {
+        "scene": "shield",
+        "variant": 1,
+        "image": "/artwork/sun-wukong/sun-wukong-golden-chain-mail-1280-bfabe4b70370.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "golden-chain-mail",
+          "name": "Golden Chain Mail",
+          "description": "Golden Chain Mail",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "redirect-combat-damage",
+              "target": "opponent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-tortoise-form",
+      "name": "Tortoise Form",
+      "category": "defense",
+      "usableBy": "BOTH",
+      "value": 5,
+      "boost": 2,
+      "count": 2,
+      "description": "Your opponent may BOOST their attack.",
+      "art": {
+        "scene": "shield",
+        "variant": 2,
+        "image": "/artwork/sun-wukong/sun-wukong-tortoise-form-1280-a9aec891a27c.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "abilities": [
+        {
+          "id": "tortoise-form",
+          "name": "Tortoise Form",
+          "description": "Tortoise Form",
+          "trigger": "before-combat",
+          "effects": [
+            {
+              "type": "boost-combat",
+              "target": "opponent",
+              "grant": "opposing-form"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-fiery-eyes-that-see",
+      "name": "Fiery Eyes That See",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 1,
+      "count": 2,
+      "description": "Look at an opponent's hand and choose a card. Put that card on the bottom of their deck. You each draw 1 card.",
+      "art": {
+        "scene": "fire",
+        "variant": 3,
+        "image": "/artwork/sun-wukong/sun-wukong-fiery-eyes-that-see-1280-0f97db7248b9.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "effects": [
+        {
+          "type": "choose-player",
+          "relation": "opponent",
+          "effects": [
+            {
+              "type": "return-to-deck",
+              "target": "chosen",
+              "chooser": "self",
+              "destination": "bottom",
+              "count": 1
+            },
+            {
+              "type": "draw",
+              "target": "chosen",
+              "count": 1
+            },
+            {
+              "type": "draw",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sun-wukong-phoenix-form",
+      "name": "Phoenix Form",
+      "category": "action",
+      "usableBy": "BOTH",
+      "value": 0,
+      "boost": 1,
+      "count": 1,
+      "description": "Sun Wukong recovers 1 health for each Clone on the board.",
+      "art": {
+        "scene": "fire",
+        "variant": 4,
+        "image": "/artwork/sun-wukong/sun-wukong-phoenix-form-1280-af1a35349eeb.webp"
+      },
+      "flavor": "A single hair becomes a thousand possibilities.",
+      "effects": [
+        {
+          "type": "heal",
+          "target": "main",
+          "amount": {
+            "fighters": "friendly",
+            "role": "ally"
+          }
+        }
+      ]
+    }
+  ]
+}

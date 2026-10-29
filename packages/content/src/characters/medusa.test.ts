@@ -101,7 +101,7 @@ function setup(roster = ['medusa', 'vanguard']) {
   };
   state = completeDeckSelection(state, basic);
   while (state.phase.type === 'placing-allies') {
-    const f = state.fighters.find((f) => f.position === null)!;
+    const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
     h.apply(
       { type: 'place-ally', fighter: f.id, position: deploymentSpaces(state, f.id, basic.map)[0] },
       f.player,
@@ -349,7 +349,7 @@ it('legally deploys every two/four-seat roster combination with Medusa and retai
         (_, seat) => ids[Math.floor(index / ids.length ** seat) % ids.length],
       );
       const h = setup(roster);
-      const positions = h.state.fighters.map((f) => f.position);
+      const positions = h.state.fighters.filter((f) => !f.defeated).map((f) => f.position);
       expect(positions.every((p) => p !== null)).toBe(true);
       expect(new Set(positions).size).toBe(positions.length);
       roster.forEach((character, seat) => {

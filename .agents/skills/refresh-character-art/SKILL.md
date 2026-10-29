@@ -19,6 +19,14 @@ Use integrated Codex Imagegen by default, one call per final asset, without mand
 
 Keep selected originals intact under `artwork/characters/<id>/masters/`, identity references under `references/`, exact prompts in `prompts.json`, and tool/date/source attribution in `provenance.json`. Copy project assets from the generator's output directory into the repository. Record generation failures truthfully; do not substitute unrelated imagery.
 
+### Recover from generation failures
+
+If generation fails for a named character or franchise, consider copyright/IP-sensitive references as a possible cause; an unexplained failure alone does not establish that diagnosis. Check the returned error first: timeouts, rate limits and service errors need technical recovery, not changes to the subject.
+
+For an otherwise permitted request, try up to two more general, original descriptions before declaring the asset blocked. Replace unnecessary character/franchise names, branded items and adaptation-specific references with plain visual descriptions of the subject's role, era, clothing, materials, pose, action and setting. For example, describe an original legendary archer in weathered medieval clothing rather than naming a film adaptation. Preserve the card's narrative purpose and the project's established original visual identity; avoid copying a modern adaptation's distinctive design. This concerns image prompts only, not character names, deck text or game rules.
+
+If the generator explicitly refuses content, respect the stated restriction: do not disguise the same refused request through keyword substitutions. Retry only with an alternative that addresses the reason for refusal. Record the error, revised prompts and outcome in provenance; if attempts still fail or a compliant alternative would materially change the requested identity, report the missing asset and continue independent work instead of retrying indefinitely.
+
 Source images use Git LFS and are skipped on clone by default. Follow [source artwork storage](../../../docs/artwork-storage.md): install LFS before adding originals, and explicitly fetch the relevant character's sources before inspecting references or running preparation. Keep prompts/provenance/recipes and generated public WebPs in regular Git. Originals stay out of deployment builds.
 
 ## Preparation and integration

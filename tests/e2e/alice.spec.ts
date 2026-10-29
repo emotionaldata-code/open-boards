@@ -60,7 +60,7 @@ async function mountAlice(page: Page, scene: 'setup' | 'looking' | 'hatter', vie
         if (scene !== 'setup') {
           apply({ type: 'choose', choice: state.resolution.choice!.id, options: ['big'] }, 'p0');
           while (state.phase.type === 'placing-allies') {
-            const f = state.fighters.find((f) => f.position === null)!;
+            const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
             apply(
               {
                 type: 'place-ally',

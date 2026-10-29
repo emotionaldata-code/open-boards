@@ -73,7 +73,7 @@ async function mountDracula(page: Page, scene: 'beast' | 'bidding' | 'ritual', v
       };
       if (!saved) {
         while (state.phase.type === 'placing-allies') {
-          const fighter = state.fighters.find((f) => f.position === null)!;
+          const fighter = state.fighters.find((f) => !f.defeated && f.position === null)!;
           apply(
             {
               type: 'place-ally',

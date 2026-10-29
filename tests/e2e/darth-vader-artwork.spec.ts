@@ -3,7 +3,9 @@ import { presentationHarness } from './fixtures/game';
 import type { GameView } from '../../packages/protocol/src/index';
 import type { Outcome } from '../../packages/game/src/index';
 
-test('Vader keeps his SVG figure when its raster fails in a mixed match', async ({ page }) => {
+test('Vader keeps his interactive owner base when its raster fails in a mixed match', async ({
+  page,
+}) => {
   await page.route('**/api/auth/me', (route) => route.fulfill({ json: null }));
   await page.route('**/artwork/darth-vader/*token*', (route) => route.abort());
   const errors: string[] = [];
@@ -47,7 +49,7 @@ test('Vader keeps his SVG figure when its raster fails in a mixed match', async 
     await page.setViewportSize({ width, height: width === 1440 ? 1000 : 390 });
     await page.screenshot({
       animations: 'disabled',
-      path: test.info().outputPath(`vader-svg-raster-fallback-${width}.png`),
+      path: test.info().outputPath(`vader-artwork-unavailable-${width}.png`),
     });
   }
   expect(errors).toEqual([]);

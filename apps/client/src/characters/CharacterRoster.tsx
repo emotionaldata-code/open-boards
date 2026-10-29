@@ -43,7 +43,7 @@ export function CharacterRoster({
               ? '(max-width: 760px) calc(100vw - 32px), (max-width: 1100px) 55vw, 720px'
               : '(max-width: 600px) 140px, 280px'
           }
-          priority={featured}
+          priority
         />
         <div className="roster-description" aria-live="polite" aria-atomic="true">
           <p className="character-role">
@@ -80,7 +80,7 @@ export function CharacterRoster({
               if (event.detail) detail.current?.scrollIntoView({ block: 'nearest' });
             }}
           >
-            <CharacterPortrait character={candidate.id} />
+            <CharacterPortrait character={candidate.id} sizes="(max-width: 760px) 110px, 160px" />
             <span>{contentText(candidate.name)}</span>
           </GameButton>
         ))}
@@ -116,6 +116,12 @@ export function CharacterRoster({
               <strong>{contentText(rule.name)}</strong> {contentText(rule.description)}
             </p>
           ))}
+          {character.maneuverBonus && (
+            <p>
+              <strong>{contentText(character.maneuverBonus.name)}</strong>{' '}
+              {contentText(character.maneuverBonus.description)}
+            </p>
+          )}
           {(character.abilities ?? []).length
             ? character.abilities!.map((ability) => (
                 <p key={ability.id}>
@@ -123,6 +129,7 @@ export function CharacterRoster({
                 </p>
               ))
             : !character.cardEffectProtection &&
+              !character.maneuverBonus &&
               !character.conditionalModifiers?.length &&
               !character.deckSelection && <p>Nessuna abilità speciale.</p>}
           {character.ally && (

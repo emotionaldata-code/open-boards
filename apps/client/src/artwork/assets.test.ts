@@ -6,9 +6,11 @@ import { cardPresentation } from '@open-boards/content';
 import { fighterArtwork, rasterAssets, rasterForUrl } from './assets';
 
 it.each([
+  { character: 'sinbad', ally: 'sinbad-porter', designs: 16 },
   { character: 'darth-vader', ally: null, designs: 12 },
   { character: 'geralt-of-rivia', ally: 'geralt-of-rivia-dandelion', designs: 15 },
   { character: 'invisible-man', ally: null, designs: 14 },
+  { character: 'sun-wukong', ally: 'sun-wukong-clone', designs: 12 },
   { character: 'eredin', ally: 'eredin-red-rider', designs: 11 },
   { character: 'bruce-lee', ally: null, designs: 17 },
   { character: 'yennefer-triss', ally: 'yennefer-triss-triss', designs: 11 },

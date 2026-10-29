@@ -67,7 +67,7 @@ async function mountSorceresses(page: Page, scene: 'setup' | 'lodge', viewer = '
             'p0',
           );
           while (state.phase.type === 'placing-allies') {
-            const f = state.fighters.find((f) => f.position === null)!;
+            const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
             apply(
               {
                 type: 'place-ally',

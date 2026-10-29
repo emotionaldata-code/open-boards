@@ -53,6 +53,7 @@ export type Operation =
       bonus?: BonusAttack;
       bonusAttack?: BonusAttack;
       protectedFighters?: string[];
+      damageRecipient?: string;
       cardValues?: Record<string, number>;
       attack: number;
       defense: number;
@@ -142,6 +143,8 @@ export type Task = (
       remaining: number;
       selected?: string;
       ordered: string[];
+      chooser?: string;
+      destination?: 'top' | 'bottom';
     } & Binding)
   | ({ type: 'select-attack' } & Binding)
   | ({ type: 'replace-attack'; card: string } & Binding)
@@ -166,6 +169,7 @@ export type Task = (
   | ({
       type: 'recover-card';
       card: string;
+      tag?: string;
       cards?: string[];
       destination?: 'hand' | 'deck';
     } & Binding)
@@ -187,6 +191,14 @@ export type Task = (
       type: 'fighter-group';
       effect: Extract<Effect, { type: 'for-each-fighter' }>;
       remaining: string[];
+    } & Binding)
+  | ({
+      type: 'summon-ally';
+      effect: Extract<Effect, { type: 'summon-ally' }>;
+      fighter: string;
+      origin: string;
+      position: string;
+      stage: 'select' | 'finish';
     } & Binding)
   | ({
       type: 'revive-placement';

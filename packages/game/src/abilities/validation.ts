@@ -30,6 +30,7 @@ const expression = z.union([
     exclude: ref.optional(),
   }),
   z.strictObject({ stat: z.enum(['hp', 'hand', 'deck', 'movement']), of: ref.optional() }),
+  z.strictObject({ stat: z.literal('discard'), tag: id.optional(), of: ref.optional() }),
   z.strictObject({ stat: z.literal('counter'), name: id, of: ref.optional() }),
   z.strictObject({ stat: z.literal('actions') }),
   z.strictObject({ event: z.enum(['amount', 'attack', 'defense', 'distance']) }),
@@ -117,6 +118,8 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
       count,
       target: ref.optional(),
       random: z.boolean().optional(),
+      chooser: ref.optional(),
+      destination: z.enum(['top', 'bottom']).optional(),
     }),
     z.strictObject({ type: z.literal('defeat'), target: ref, onDefeat: effects().optional() }),
     z.strictObject({
@@ -205,7 +208,11 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     }),
     z.strictObject({ type: z.literal('cancel') }),
     z.strictObject({ type: z.literal('end-turn') }),
-    z.strictObject({ type: z.literal('boost-combat') }),
+    z.strictObject({
+      type: z.literal('boost-combat'),
+      target: ref.optional(),
+      grant: id.optional(),
+    }),
     z.strictObject({ type: z.literal('lock-movement'), target: ref.optional() }),
     z.strictObject({
       type: z.literal('search-cards'),
@@ -246,6 +253,8 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     z.strictObject({ type: z.literal('replace-attack') }),
     z.strictObject({
       type: z.literal('recover-card'),
+      tag: id.optional(),
+      all: z.boolean().optional(),
       destination: z.enum(['hand', 'deck']).optional(),
       cards: z.array(id).min(1).max(100).optional(),
     }),
@@ -269,6 +278,12 @@ export const effectSchema: z.ZodType<Effect> = z.lazy(() =>
     }),
     z.strictObject({ type: z.literal('named-value-discard'), target: ref.optional() }),
     z.strictObject({ type: z.literal('swap'), target: ref, onSuccess: effects().optional() }),
+    z.strictObject({
+      type: z.literal('summon-ally'),
+      placement: z.enum(['adjacent', 'replace-self']),
+      damage: count.optional(),
+    }),
+    z.strictObject({ type: z.literal('redirect-combat-damage'), target: ref }),
     z.strictObject({
       type: z.literal('revive-ally'),
       optional: z.boolean().optional(),
@@ -354,6 +369,13 @@ const definitionSchema = z.strictObject({
       id,
       ...fighterFields,
       movement: count,
+      maneuverBonus: z
+        .strictObject({
+          name: z.string().min(1).max(100),
+          description: z.string().min(1).max(500),
+          perDiscardTag: id,
+        })
+        .optional(),
       conditionalModifiers: z
         .array(
           z.strictObject({
@@ -408,7 +430,14 @@ const definitionSchema = z.strictObject({
             .max(3),
         })
         .optional(),
-      ally: z.strictObject({ id, ...fighterFields, count: count.min(1) }).optional(),
+      ally: z
+        .strictObject({
+          id,
+          ...fighterFields,
+          count: count.min(1),
+          startsOffBoard: z.boolean().optional(),
+        })
+        .optional(),
       deck: z
         .array(z.strictObject({ card: id, count: count.min(1) }))
         .min(1)
@@ -427,6 +456,12 @@ const definitionSchema = z.strictObject({
       category: z.enum(['attack', 'defense', 'versatile', 'action']),
       value: count,
       boost: count,
+      tags: z
+        .array(id)
+        .min(1)
+        .max(16)
+        .refine((tags) => new Set(tags).size === tags.length)
+        .optional(),
       description: z.string().max(500).optional(),
       faceUpDefense: z.boolean().optional(),
       effectsCannotBeCancelled: z.boolean().optional(),
@@ -564,7 +599,10 @@ export function validateDefinitions(input: unknown): asserts input is Definition
     )
       for (const card of node.cards)
         assert(known(defs.cards, card), `unknown recovery card ${String(card)}`);
-    if ('type' in node && node.type === 'prevent-damage')
+    if (
+      'type' in node &&
+      (node.type === 'prevent-damage' || node.type === 'redirect-combat-damage')
+    )
       assert(trigger === 'before-combat', `${node.type} needs before-combat`);
     if ('type' in node && node.type === 'predict-value')
       assert(trigger === 'before-defense', 'predict-value needs before-defense');

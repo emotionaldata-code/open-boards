@@ -1,0 +1,142 @@
+[
+  {
+    "id": "sinbad-portrait",
+    "kind": "portrait",
+    "source": "masters/sinbad-portrait.png",
+    "focal": [0.5, 0.36]
+  },
+  {
+    "id": "sinbad-porter-portrait",
+    "kind": "portrait",
+    "source": "masters/porter-portrait.png",
+    "focal": [0.5, 0.36]
+  },
+  {
+    "id": "sinbad-token",
+    "kind": "token",
+    "source": "masters/sinbad-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "sinbad-porter-token",
+    "kind": "token",
+    "source": "masters/porter-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "sinbad-exploit",
+    "kind": "card",
+    "source": "masters/exploit.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-exploit"
+  },
+  {
+    "id": "sinbad-toil-and-danger",
+    "kind": "card",
+    "source": "masters/toil-and-danger.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-toil-and-danger"
+  },
+  {
+    "id": "sinbad-voyage-home",
+    "kind": "card",
+    "source": "masters/voyage-home.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-home"
+  },
+  {
+    "id": "sinbad-riches-beyond-compare",
+    "kind": "card",
+    "source": "masters/riches-beyond-compare.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-riches-beyond-compare"
+  },
+  {
+    "id": "sinbad-by-fortune-and-fate",
+    "kind": "card",
+    "source": "masters/by-fortune-and-fate.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-by-fortune-and-fate"
+  },
+  {
+    "id": "sinbad-voyage-to-the-island-that-was-a-whale",
+    "kind": "card",
+    "source": "masters/voyage-to-the-island-that-was-a-whale.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-to-the-island-that-was-a-whale"
+  },
+  {
+    "id": "sinbad-voyage-to-the-valley-of-the-giant-snakes",
+    "kind": "card",
+    "source": "masters/voyage-to-the-valley-of-the-giant-snakes.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-to-the-valley-of-the-giant-snakes"
+  },
+  {
+    "id": "sinbad-voyage-to-the-creature-with-eyes-like-coals-of-fire",
+    "kind": "card",
+    "source": "masters/voyage-to-the-creature-with-eyes-like-coals-of-fire.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-to-the-creature-with-eyes-like-coals-of-fire"
+  },
+  {
+    "id": "sinbad-leap-away",
+    "kind": "card",
+    "source": "masters/leap-away.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-leap-away"
+  },
+  {
+    "id": "sinbad-feint",
+    "kind": "card",
+    "source": "masters/feint.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-feint"
+  },
+  {
+    "id": "sinbad-regroup",
+    "kind": "card",
+    "source": "masters/regroup.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-regroup"
+  },
+  {
+    "id": "sinbad-momentous-shift",
+    "kind": "card",
+    "source": "masters/momentous-shift.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-momentous-shift"
+  },
+  {
+    "id": "sinbad-voyage-to-the-cannibals-with-the-root-of-madness",
+    "kind": "card",
+    "source": "masters/voyage-to-the-cannibals-with-the-root-of-madness.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-to-the-cannibals-with-the-root-of-madness"
+  },
+  {
+    "id": "sinbad-voyage-to-the-city-of-the-man-eating-apes",
+    "kind": "card",
+    "source": "masters/voyage-to-the-city-of-the-man-eating-apes.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-to-the-city-of-the-man-eating-apes"
+  },
+  {
+    "id": "sinbad-voyage-to-the-city-of-the-king-of-serendib",
+    "kind": "card",
+    "source": "masters/voyage-to-the-city-of-the-king-of-serendib.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-voyage-to-the-city-of-the-king-of-serendib"
+  },
+  {
+    "id": "sinbad-commanding-impact",
+    "kind": "card",
+    "source": "masters/commanding-impact.png",
+    "focal": [0.5, 0.5],
+    "card": "sinbad-commanding-impact"
+  }
+]

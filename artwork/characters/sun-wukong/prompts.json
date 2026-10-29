@@ -1,0 +1,97 @@
+[
+  {
+    "id": "portrait",
+    "prompt": "Create one square character portrait for an original board-game illustration of Sun Wukong, the legendary Chinese Monkey King. Cinematic illustrated realism, credible monkey anatomy, textured tawny fur, alert amber eyes, mischievous proud expression, slender golden circlet, weathered bronze lamellar armor, deep crimson scarf, gold-banded iron staff behind shoulder. Waist-up, face clear, three-quarter view, dramatic warm dawn light and cool misty mountain background. Antique mythological atmosphere, detailed natural materials, restrained ochre/crimson/charcoal palette. No text, lettering, frame, watermark, symbols or modern adaptation references.",
+    "transparent": false
+  },
+  {
+    "id": "clone-portrait",
+    "prompt": "Use attached Monkey King portrait as identity reference only. Generate one square portrait of his magical clone for an original board game. Same tawny monkey face, amber eyes, bronze lamellar armor and crimson cloth, but a younger playful expression and smaller simpler shoulder armor, no golden circlet, windblown fur, holding a plain iron fighting staff. Cinematic illustrated realism, detailed tactile materials, cool mountain mist and soft ember rimlight, clear head and shoulders. No text, frame, logos, watermark or numerals.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "sun-wukong-token",
+    "prompt": "Use case: illustration-story. Create one final original board-game transparent figure. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Full-body Monkey King standing in a poised martial stance, holding his gold-banded iron staff diagonally at his side. Complete head, feet, tail, hands and staff fully inside frame, grounded anatomy, no pedestal, no ground plane or shadow. Slender gold circlet, bronze armor and crimson scarf. True transparent background, isolated figure. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": true,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "clone-token",
+    "prompt": "Use case: illustration-story. Create one final original board-game transparent figure. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Full-body magical monkey warrior clone, playful low crouching martial stance, plain iron staff beside his body. No circlet, tawny fur, smaller bronze armor, crimson scarf. Complete head, feet, tail, hands and staff inside frame. No pedestal, ground plane or shadow. True transparent background, isolated figure. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": true,
+    "reference": "references/clone.png"
+  },
+  {
+    "id": "infinite-strikes",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 action scene: the Monkey King and three identical monkey clones surround a stone-armored giant on an ancient mountain courtyard, their iron staffs converging from multiple directions. Dynamic wide camera, sweeping red scarves, readable central action. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "ruyi-jingo-bang",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 scene, dramatic low camera: the Monkey King extends his enormous gold-banded iron staff past a surprised armored warrior's raised shield, a clever unexpected second strike curling around the defense. Cloudy mountain temple, tense comic cunning without cartoon style. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "taunting-laughter",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 close scene: the mischievous Monkey King perches atop an opponent's abandoned helmet, laughing and beckoning with one hand while balancing his staff. Frustrated distant armored figure, shattered ancient courtyard, warm side light, natural detailed monkey face. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "ox-form",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 epic transformation scene: a colossal bronze-black ox with golden horns charges from a swirl of crimson silk and ember-lit mountain cloud, hooves cracking an ancient stone causeway. Monkey King's golden circlet visible on the ox forehead. Massive weight, credible animal anatomy. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "72-transformations",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 mystical scene: Monkey King kneels by a dark mountain pool, one plucked golden hair between fingers. In the water his reflections transform into a bronze ox, a dark tortoise and a fiery phoenix. Subtle magical forms in reflection, portrait identity visible, cool moonlight and amber sparks. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "sly-monkey",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 narrative scene: Monkey King vaults silently to a high ledge while his identical clone remains below in a burst of golden hair, distracting a spear-bearing warrior. Clearly two monkey figures, original King with circlet above, clone without circlet below, weathered temple steps, cinematic depth. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "wily-fighting",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 scene: Monkey King crouches and sweeps his iron staff in a low circle that catches the ankles of several surrounding armored raiders. Tactile bronze and dusty stone, crimson scarf whips through foreground, crisp readable staff action, dramatic sunset. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "bewilderment",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 scene: a spear thrust passes harmlessly through a fading golden afterimage of the Monkey King; the real Monkey King appears on a distant temple roof, grin visible. Misty blue ravine, dissolving hair sparks, elegant cinematic staging. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "golden-chain-mail",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 close combat scene: a raider's heavy sword strikes the Monkey King's exquisite golden chain mail and rebounds in a shower of sparks toward the startled attacker. Armor links resolved individually, confident monkey face, crimson cloth, realistic motivated light. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "tortoise-form",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 scene: a massive mythological tortoise with a dark jade and bronze-patterned shell braces against a raised war hammer on a rain-slick mountain bridge. A thin golden circlet and crimson silk tie echo the Monkey King. Low dense silhouette, detailed animal scales, solemn blue storm light. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "fiery-eyes-that-see",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 intense portrait scene: Monkey King's amber eyes glow like embers as he studies an enemy strategist's hidden silk scroll, fiery light revealing its secret reflections in a bronze mirror. No visible writing, no cards or text. Close face matching reference, dark temple background. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  },
+  {
+    "id": "phoenix-form",
+    "prompt": "Use case: illustration-story. Create one final original board-game card illustration. Use the attached portrait as identity reference for the legendary Chinese Monkey King only. Cinematic illustrated realism, credible anatomy, textured natural materials, dramatic motivated light, restrained crimson/bronze/ochre/charcoal palette. Wide 8:5 mythic scene: a radiant crimson and gold phoenix rises above three monkey clones in a mountain sanctuary; restorative warm sparks fall over the Monkey King kneeling beneath. Feather detail, solemn dawn, believable anatomy, layered depth. No text, letters, numbers, frame, logo, watermark, UI, icons or modern adaptation design.",
+    "transparent": false,
+    "reference": "references/hero.png"
+  }
+]

@@ -6,6 +6,7 @@ import { inAttackRange, sharesZone } from '../targeting';
 import type { Binding, Frame } from './state';
 import type { Condition, PlayerRef, Value } from './vocabulary';
 import { conditionalModifier, fighterCondition } from './fighter-conditions';
+import { availableDiscards, taggedCards } from './discard-pile';
 
 export function reference(
   state: GameState,
@@ -72,10 +73,12 @@ export function movement(
   player: Pick<Fighter, 'character' | 'statuses' | 'player'>,
   defs: Definitions,
   state?: Pick<GameState, 'fighters'> & {
-    players?: Pick<Player, 'id' | 'ongoing'>[];
+    players?: (Pick<Player, 'id' | 'ongoing'> & Partial<Pick<Player, 'discard'>>)[];
   },
 ): number {
-  const active = state?.players?.find((p) => p.id === player.player)?.ongoing;
+  const owner = state?.players?.find((p) => p.id === player.player);
+  const active = owner?.ongoing;
+  const bonus = defs.characters[player.character].maneuverBonus;
   const base =
     active
       ?.map((c) => defs.cards[c.definition].ongoing?.movementValue)
@@ -83,6 +86,7 @@ export function movement(
   return Math.max(
     0,
     base +
+      (bonus ? taggedCards(owner?.discard ?? [], defs, bonus.perDiscardTag).length : 0) +
       modifier(player, 'movement', defs) +
       (state ? conditionalModifier(state, player, 'movement', defs) : 0),
   );
@@ -163,6 +167,15 @@ export function value(state: GameState, defs: Definitions, binding: Binding, v: 
       return state.players.find((owner) => owner.id === p.player)!.hand.length;
     case 'deck':
       return state.players.find((owner) => owner.id === p.player)!.deck.length;
+    case 'discard':
+      return taggedCards(
+        availableDiscards(
+          state,
+          state.players.find((owner) => owner.id === p.player)!,
+        ),
+        defs,
+        v.tag,
+      ).length;
     case 'counter':
       return p.counters[v.name] ?? 0;
     case 'movement':

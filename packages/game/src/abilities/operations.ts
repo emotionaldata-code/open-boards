@@ -93,7 +93,7 @@ export function applyOperation(runtime: Runtime, frameId: number): void {
       if (frame.combat !== undefined) {
         const combat = runtime.data.frames[frame.combat];
         if (combat?.kind === 'combat') {
-          combat.amount = frame.amount;
+          combat.amount = fighter.id === combat.defender ? frame.amount : 0;
           publishCombat(runtime, combat);
         }
       }

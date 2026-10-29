@@ -24,6 +24,7 @@ import { areaResult, chooseAdjacent, damageArea } from './area';
 import { applySwap } from './swap';
 import { commitPrediction, discardNamedValue } from './hand';
 import { orderInspected, resolveSearch, takeInspected, resolveRecovery } from './deck';
+import { resolveSummon } from './summoning';
 import { offerPlacement, revive } from './revival';
 import { selectAttack, replaceAttack } from './attack-replacement';
 import { modifyCombatValue } from './combat-values';
@@ -555,6 +556,9 @@ export class Runtime {
           break;
         case 'fighter-group':
           if (this.data.frames[task.frame]) nextFighter(this, task);
+          break;
+        case 'summon-ally':
+          if (this.data.frames[task.frame]) resolveSummon(this, task);
           break;
         case 'revive-placement':
           if (this.data.frames[task.frame]) offerPlacement(this, task);

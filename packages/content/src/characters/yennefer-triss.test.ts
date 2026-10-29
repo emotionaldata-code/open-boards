@@ -84,7 +84,7 @@ function setup(
     },
     deploy() {
       while (state.phase.type === 'placing-allies') {
-        const f = state.fighters.find((f) => f.position === null)!;
+        const f = state.fighters.find((f) => !f.defeated && f.position === null)!;
         h.apply(
           {
             type: 'place-ally',

@@ -1,0 +1,135 @@
+{
+  "tool": "Integrated Codex Imagegen",
+  "date": "2026-10-29",
+  "source": "Original illustrations inspired by the public-domain Monkey King; no source deck artwork redistributed.",
+  "assets": [
+    {
+      "id": "portrait",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-57fcafed-db74-4d62-884f-cfe01ff5a10b.png",
+      "master": "masters/portrait.png",
+      "sha256": "028093a3f81f36a0811dcfbd1573ca4c443e12e9273124a389d5f0e8ebf29f7b",
+      "bytes": 2719522
+    },
+    {
+      "id": "clone-portrait",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-848383bb-b8ad-4501-9f2d-0a1c1b5e7f51.png",
+      "master": "masters/clone-portrait.png",
+      "sha256": "272bf6ccf8a69c7d2e5c76fcea3b1e830abb566b447234633329f781b075091a",
+      "bytes": 2840912,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "sun-wukong-token",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-4a6aa108-032a-4e89-a155-942d39cc2bf5.png",
+      "master": "masters/sun-wukong-token.png",
+      "sha256": "41206221f51a0a6adb02deb69de79109954dbdae70a401fb3609c53f6f2838fa",
+      "bytes": 2789130,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "clone-token",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-532bf655-9e62-4237-830b-b517d0c4cf55.png",
+      "master": "masters/clone-token.png",
+      "sha256": "e8e7070f6b0c2a563331337ae76f07acefbc6edba3a31e57667ca52a43869bf5",
+      "bytes": 2200289,
+      "reference": "references/clone.png"
+    },
+    {
+      "id": "infinite-strikes",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-1f982852-7fe8-4b9e-86c4-d07456d433cf.png",
+      "master": "masters/infinite-strikes.png",
+      "sha256": "33fc3c64b953758ad15afe0406ac4a15ee690d8800efd09bf63d068cf6b016b5",
+      "bytes": 3284568,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "ruyi-jingo-bang",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-3f1d3dd9-5023-459f-a89b-054a0c916a63.png",
+      "master": "masters/ruyi-jingo-bang.png",
+      "sha256": "0ef73cac51f51e2d418ca01cea22ecb0adc14e8d5a2bb07cced6ed9c12b25a11",
+      "bytes": 2870739,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "taunting-laughter",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-2997b785-fbc8-4cab-99b2-b407a9fb3f31.png",
+      "master": "masters/taunting-laughter.png",
+      "sha256": "da56b5355abd5d67b1a2e1a3a6475cdbe6686405ac299fc5e184a522af47ca12",
+      "bytes": 2870272,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "ox-form",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-bb1f8170-3aa4-4bbc-9421-f07ce4831db3.png",
+      "master": "masters/ox-form.png",
+      "sha256": "f90001a3b9d09c50d5d506bec01a02b87a5ef31ca0ef52dee9f4f0ebedda1e96",
+      "bytes": 3045547,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "72-transformations",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-c44370b0-1be4-4392-9585-871b5cce728f.png",
+      "master": "masters/72-transformations.png",
+      "sha256": "477d2dcbc38d177a0001c2918f70ddf359748e3ff5d8a60e91acb0eff6166ede",
+      "bytes": 2996334,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "sly-monkey",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-a0fd54f0-3cba-412e-99c1-5b824f67e045.png",
+      "master": "masters/sly-monkey.png",
+      "sha256": "00127618545b1975d0dd3f686450b3a210bc8729a709ff3b3f861f0727944438",
+      "bytes": 2957479,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "wily-fighting",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-0911d9e4-5238-45fe-96ae-837eb590f9e7.png",
+      "master": "masters/wily-fighting.png",
+      "sha256": "cd3168175a259078294d8dacc445bab97bb296ed07946e68a13a55b5aad5c1c7",
+      "bytes": 2916138,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "bewilderment",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-450d9cee-b489-42f2-8730-eb390fbb437d.png",
+      "master": "masters/bewilderment.png",
+      "sha256": "15fb44b28bec39fc58a04ee8ab09dcef7b5d7bdd7963366497a9f5c4d96ec99b",
+      "bytes": 2961904,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "golden-chain-mail",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-4154d266-dcaf-4b43-aedd-6dcab44896ea.png",
+      "master": "masters/golden-chain-mail.png",
+      "sha256": "0f5fcaebeb05a679e0efa3c60756836e02de64a0a0a9d238efd3a31d0412ab85",
+      "bytes": 2750009,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "tortoise-form",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-7b7ec3a1-6abf-4665-a1e9-9b307991d8d0.png",
+      "master": "masters/tortoise-form.png",
+      "sha256": "d1987f00910fc8cacd953617bd8149a12530857f10e8db3f25bf3a5a26be246f",
+      "bytes": 3504163,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "fiery-eyes-that-see",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-1764a660-077d-4c41-ba86-aba91f371fa7.png",
+      "master": "masters/fiery-eyes-that-see.png",
+      "sha256": "ca17031228dc67ce529d7e0cf182eab966a522841565574dc3141b75c941740f",
+      "bytes": 2371067,
+      "reference": "references/hero.png"
+    },
+    {
+      "id": "phoenix-form",
+      "generatorPath": "/home/francesco/.codex/generated_images/01a18770-6ca7-7b11-ab36-89d8c02067e4/exec-1ee7443e-9927-4a4d-9c6f-3cea8061cee5.png",
+      "master": "masters/phoenix-form.png",
+      "sha256": "43f46f81d3b686fa7453641ac408bb0fd4d0427a379e2fc801c3d7dc17c12495",
+      "bytes": 3196561,
+      "reference": "references/hero.png"
+    }
+  ],
+  "failures": []
+}

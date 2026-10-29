@@ -61,7 +61,9 @@ export function revealBoost(
 
 /** Shared by authoritative path validation and client highlights. Effect moves use their own distance. */
 export function maneuverMovement(
-  state: Pick<GameState, 'maneuver' | 'fighters'> & { players: Pick<Player, 'id' | 'ongoing'>[] },
+  state: Pick<GameState, 'maneuver' | 'fighters'> & {
+    players: Pick<Player, 'id' | 'ongoing' | 'discard'>[];
+  },
   fighter: Fighter,
   defs: Definitions,
 ): number {

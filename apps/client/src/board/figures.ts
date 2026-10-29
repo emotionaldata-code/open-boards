@@ -1,16 +1,15 @@
 import { Container, Graphics, Sprite } from 'pixi.js';
-import { figureSvg } from '../characters/art';
 import { fighterArtwork, rasterAssets } from '../artwork/assets';
 import { loadFigureTexture } from '../artwork/textures';
 
 export const playerColors = [0xdcc58d, 0x91d9c7, 0xef9c8f, 0xc1c9ec];
 const figureScale = 0.85;
 
-/** Board coordinates, including the vector fallback, token artwork and base label. */
+/** Board coordinates for the token artwork and owner base. */
 export function figureBounds(character: string) {
-  let left = -78 * figureScale;
-  let right = 78 * figureScale;
-  let top = -158 * figureScale;
+  let left = -36 * figureScale;
+  let right = 36 * figureScale;
+  let top = -15 * figureScale;
   let bottom = 32;
   const asset = rasterAssets[fighterArtwork[character]?.token];
   if (asset) {
@@ -37,11 +36,6 @@ export function createFigure(
   base.ellipse(0, 0, 32, 12).fill(0x26362b).stroke({ color, width: 3 });
   base.scale.set(figureScale);
   figure.addChild(base);
-  const art = new Graphics();
-  art.svg(figureSvg(character, `#${color.toString(16).padStart(6, '0')}`));
-  // Match the arena's existing miniature scale while retaining the portrait's crisp vector detail.
-  art.scale.set(figureScale);
-  figure.addChild(art);
   const asset = rasterAssets[fighterArtwork[character]?.token];
   if (asset) {
     void loadFigureTexture(asset.url)
@@ -50,12 +44,11 @@ export function createFigure(
         const sprite = new Sprite(texture);
         sprite.anchor.set(...(asset.anchor ?? [0.5, 1]));
         sprite.scale.set(asset.scale ?? 0.3);
-        figure.addChildAt(sprite, 1);
-        art.destroy();
+        figure.addChild(sprite);
         render();
       })
       .catch(() => {
-        // The existing vector figure remains visible on a failed load.
+        // Keep the owner base visible if the artwork is unavailable.
       });
   }
   return figure;

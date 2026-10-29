@@ -1,0 +1,222 @@
+[
+  {
+    "slug": "sinbad-portrait",
+    "kind": "portrait",
+    "prompt": "Use case: illustration-story. Original board-game character portrait, cinematic illustrated realism with credible anatomy, textured painted materials, dramatic motivated light. Sinbad the legendary Arabian sailor, an original adult olive-brown skinned man with a short black beard, swept black hair under an ivory headwrap, weathered indigo sailor coat, rust-red sash, brass belt and curved steel saber. Clear expressive adventurous face and upper silhouette, three-quarter view, windswept dhow harbor and turquoise sea behind, warm sunset on face. Square portrait, face in central upper half; realistic painted illustration, not photograph or plastic miniature. No text, numbers, frames, logos, watermark. Do not imitate any modern adaptation.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-af001ab3-8295-44b6-988e-d17907e719b6.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "porter-portrait",
+    "kind": "portrait",
+    "prompt": "Use case: illustration-story. Original cinematic realistically painted board game portrait, same restrained indigo, brass and turquoise Arabian Nights world. The Porter: a stocky older olive-brown skinned harbor laborer with gray stubble, kind broad face, burgundy wrapped turban, ochre rough linen tunic, dark brown leather vest and rope harness holding a large woven wicker pack over his shoulders. Distinct from the young sailor; no sword. Bust, clear face and upper silhouette, warm lantern light in a busy medieval Arabian dhow wharf, atmospheric depth. Credible anatomy and cloth, illustrated realism, not a photograph or plastic miniature. Square portrait with face in upper center, no text, numbers, frames, logos or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-d6cacb7a-b099-48c6-abe4-63bf10a40709.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "sinbad-token",
+    "kind": "token",
+    "prompt": "Use case: identity-preserve. Create a full-body transparent board game figure of the young Arabian sailor in the indigo coat, ivory headwrap, rust-red sash and curved saber from this reference portrait. Preserve the same face, clothing, age, equipment and cinematic painted realistic materials. Entire figure including both boots, headwrap and all equipment fully inside image with generous transparent margins. Slight elevated three-quarter board-game camera, standing balanced active pose, readable silhouette, one person only. Hold the saber low out to one side, other hand at belt. Actual transparent alpha background, no scenery, ground, cast shadow, pedestal, owner-color ring, text, numbers, logo, frame or watermark. Painted illustration, not photograph or plastic miniature. Tall composition at least 1024 pixels, figure occupies 85 percent of height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-eee1f9b2-57dd-41ea-b733-6dbb4f5697cf.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "porter-token",
+    "kind": "token",
+    "prompt": "Use case: identity-preserve. Create a full-body transparent board game figure of the older stocky porter with burgundy turban, ochre tunic, brown vest and large wicker pack from this reference portrait. Preserve the same face, clothing, age, equipment and cinematic painted realistic materials. Entire figure including both boots, headwrap and all equipment fully inside image with generous transparent margins. Slight elevated three-quarter board-game camera, standing balanced active pose, readable silhouette, one person only. Hands grip two pack straps; no weapons. Actual transparent alpha background, no scenery, ground, cast shadow, pedestal, owner-color ring, text, numbers, logo, frame or watermark. Painted illustration, not photograph or plastic miniature. Tall composition at least 1024 pixels, figure occupies 85 percent of height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-044caab9-6d2b-48a2-a4ab-615361d7cd83.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "exploit",
+    "kind": "card",
+    "prompt": "Use case: illustration-story. Original fantasy board-game card illustration, 8:5 landscape, at least 1536 by 1024. Close action scene: the indigo-coated sailor traps an opponent's spear under a dock cleat and darts past with saber, wet timber and rope, low camera. Use the attached portraits only as identity references: preserve the young sailor's olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber, and the older porter's gray beard, burgundy turban, ochre tunic and pack when present. Cinematic illustrated realism, credible anatomy and period materials, painted texture and atmospheric depth, dramatic motivated light. Narrative action in central 80 percent with generous crop space. No text, letters, numbers, card borders, icons, logo, watermark or copied modern adaptation.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-350c3f44-2d4b-472b-8b2f-401d25facebb.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "toil-and-danger",
+    "kind": "card",
+    "prompt": "Use case: illustration-story. Original fantasy board-game card illustration, 8:5 landscape, at least 1536 by 1024. Wide dramatic scene: the sailor hauls himself up a fraying ship rope above storm surf while splintered rigging falls, energetic diagonal composition. Use the attached portraits only as identity references: preserve the young sailor's olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber, and the older porter's gray beard, burgundy turban, ochre tunic and pack when present. Cinematic illustrated realism, credible anatomy and period materials, painted texture and atmospheric depth, dramatic motivated light. Narrative action in central 80 percent with generous crop space. No text, letters, numbers, card borders, icons, logo, watermark or copied modern adaptation.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-6d85ada9-b7d4-4873-ad0f-e0cd611fde9b.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-home",
+    "kind": "card",
+    "prompt": "Use case: illustration-story. Original fantasy board-game card illustration, 8:5 landscape, at least 1536 by 1024. A quiet wide view from the returning dhow bow: the sailor and older porter look toward their sunlit Arabian home harbor, turquoise water, seagulls, exhausted relief, dawn. Use the attached portraits only as identity references: preserve the young sailor's olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber, and the older porter's gray beard, burgundy turban, ochre tunic and pack when present. Cinematic illustrated realism, credible anatomy and period materials, painted texture and atmospheric depth, dramatic motivated light. Narrative action in central 80 percent with generous crop space. No text, letters, numbers, card borders, icons, logo, watermark or copied modern adaptation.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-8a909dbd-6ab8-442b-9487-fe7a170c83db.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "riches-beyond-compare",
+    "kind": "card",
+    "prompt": "Use case: illustration-story. Original fantasy board-game card illustration, 8:5 landscape, at least 1536 by 1024. Intimate treasure scene: the sailor opens a sea-worn chest of pearls, gold coins and deep red gemstones in a dim ship cabin, warm lamplight on his delighted face. Use the attached portraits only as identity references: preserve the young sailor's olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber, and the older porter's gray beard, burgundy turban, ochre tunic and pack when present. Cinematic illustrated realism, credible anatomy and period materials, painted texture and atmospheric depth, dramatic motivated light. Narrative action in central 80 percent with generous crop space. No text, letters, numbers, card borders, icons, logo, watermark or copied modern adaptation.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-e32ab625-ee2d-49ed-ae37-858034b93331.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "by-fortune-and-fate",
+    "kind": "card",
+    "prompt": "Create exactly one 8:5 landscape illustration on a 1600 by 1000 canvas. This is a new narrative scene, not an expansion of the portrait. Use case: illustration-story. The older stocky porter, burgundy turban, ochre tunic and wicker pack, swings a thick cargo rope to disarm an assailant on an Arabian quay; younger sailor watches in distance. The attached image is only a face and costume identity reference for the older porter. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash, curved saber. Porter: older stocky man, gray beard, burgundy turban, ochre tunic, large wicker pack. Cinematic illustrated realism, credible anatomy and period materials, rich painted texture, atmospheric depth, dramatic motivated light, varied wide staging. Keep action in central 80 percent with crop space. No writing, letters, numbers, borders, icons, logo or watermark. No panoramic ultrawide canvas.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-da1eeb71-f331-450d-b42e-dbb1d151161d.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-island-that-was-a-whale",
+    "kind": "card",
+    "prompt": "Create exactly one 8:5 landscape illustration on a 1600 by 1000 canvas. This is a new narrative scene, not an expansion of the portrait. Use case: illustration-story. Epic wide seascape: a lush tiny apparent island rises on the back of an enormous ancient whale, seawater pouring from barnacles. A small dhow and the sailor in foreground reveal colossal scale. The attached image is only a face and costume identity reference for the sailor. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash, curved saber. Porter: older stocky man, gray beard, burgundy turban, ochre tunic, large wicker pack. Cinematic illustrated realism, credible anatomy and period materials, rich painted texture, atmospheric depth, dramatic motivated light, varied wide staging. Keep action in central 80 percent with crop space. No writing, letters, numbers, borders, icons, logo or watermark. No panoramic ultrawide canvas.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-15b4efd9-c519-4f49-8d01-f40a844984e6.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-valley-of-the-giant-snakes",
+    "kind": "card",
+    "prompt": "Create exactly one 8:5 landscape illustration on a 1600 by 1000 canvas. This is a new narrative scene, not an expansion of the portrait. Use case: illustration-story. Very wide canyon scene: the sailor and porter dwarfed by two gigantic realistic coiled serpents among gemstone-studded rocks and bleached bones, cold green shadow, dangerous depth. The attached image is only a face and costume identity reference for the sailor. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash, curved saber. Porter: older stocky man, gray beard, burgundy turban, ochre tunic, large wicker pack. Cinematic illustrated realism, credible anatomy and period materials, rich painted texture, atmospheric depth, dramatic motivated light, varied wide staging. Keep action in central 80 percent with crop space. No writing, letters, numbers, borders, icons, logo or watermark. No panoramic ultrawide canvas.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-cf6b6497-962f-4f00-9192-025d9ecf4b98.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-creature-with-eyes-like-coals-of-fire",
+    "kind": "card",
+    "prompt": "Create exactly one 8:5 landscape illustration on a 1600 by 1000 canvas. This is a new narrative scene, not an expansion of the portrait. Use case: illustration-story. The sailor faces a towering original stone-skinned cyclopean cave creature whose two eyes glow like red coals, dramatic cave fire backlight and saber glint; no gore. The attached image is only a face and costume identity reference for the sailor. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash, curved saber. Porter: older stocky man, gray beard, burgundy turban, ochre tunic, large wicker pack. Cinematic illustrated realism, credible anatomy and period materials, rich painted texture, atmospheric depth, dramatic motivated light, varied wide staging. Keep action in central 80 percent with crop space. No writing, letters, numbers, borders, icons, logo or watermark. No panoramic ultrawide canvas.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-344f9a7c-1437-4267-930d-71615ee8168e.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "leap-away",
+    "kind": "card",
+    "prompt": "Generate ONE new original painting. Canvas aspect ratio 8:5 landscape, not panoramic. Wide dynamic harbor action: the sailor and porter leap together from a collapsing timber gangway onto a safe stone quay, turquoise water below, windswept garments, frozen moment. Use the attached portrait as a character identity reference only. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber. Older porter when present: gray beard, burgundy turban, ochre tunic, wicker pack. Cinematic illustrated realism, textured believable fabric and steel, credible anatomy and clear silhouettes, narrative depth, varied camera. Keep action central for card crops. No text, writing, numbers, borders, symbols, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-7a90cce2-b054-40bf-99b4-79deeab1c18d.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "feint",
+    "kind": "card",
+    "prompt": "Generate ONE new original painting. Canvas aspect ratio 8:5 landscape, not panoramic. Close tense duel on a dhow deck: the sailor's low saber blade distracts a rival while his free hand lifts the rival's sword arm aside, subtle clever expression, moonlit ocean. Use the attached portrait as a character identity reference only. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber. Older porter when present: gray beard, burgundy turban, ochre tunic, wicker pack. Cinematic illustrated realism, textured believable fabric and steel, credible anatomy and clear silhouettes, narrative depth, varied camera. Keep action central for card crops. No text, writing, numbers, borders, symbols, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-c95cc949-d107-4954-820b-b5a25e78d7a3.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "regroup",
+    "kind": "card",
+    "prompt": "Generate ONE new original painting. Canvas aspect ratio 8:5 landscape, not panoramic. Quiet medium shot: the sailor and porter share water and review a hand-drawn blank nautical chart on a sheltered shore after a storm, friendship and recovery, brass lantern, no writing. Use the attached portrait as a character identity reference only. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber. Older porter when present: gray beard, burgundy turban, ochre tunic, wicker pack. Cinematic illustrated realism, textured believable fabric and steel, credible anatomy and clear silhouettes, narrative depth, varied camera. Keep action central for card crops. No text, writing, numbers, borders, symbols, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-8e9bccca-156f-4082-b4f7-e7c1a5396105.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "momentous-shift",
+    "kind": "card",
+    "prompt": "Generate ONE new original painting. Canvas aspect ratio 8:5 landscape, not panoramic. Tracking action scene: the sailor changes direction mid-step around a huge terracotta jar in a lantern-lit bazaar and counters a pursuing brigand, believable footwork, indigo and copper palette. Use the attached portrait as a character identity reference only. Young sailor: olive-brown face, short black beard, ivory headwrap, indigo coat, rust-red sash and curved saber. Older porter when present: gray beard, burgundy turban, ochre tunic, wicker pack. Cinematic illustrated realism, textured believable fabric and steel, credible anatomy and clear silhouettes, narrative depth, varied camera. Keep action central for card crops. No text, writing, numbers, borders, symbols, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-323bbfef-5e56-4e48-b2c4-e42fb447a24a.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-cannibals-with-the-root-of-madness",
+    "kind": "card",
+    "prompt": "One new board-game illustration, landscape 8:5 canvas, 1600x1000 pixels. A feverish surreal tropical night scene: the sailor escapes a smoking bowl of twisted glowing toxic roots in an abandoned stone ritual clearing, strange masks hanging in distant vines. No stereotypes, no gore, eerie emerald and purple light. Identity reference attached for the young olive-brown Arabian sailor with short black beard, ivory headwrap, indigo coat, rust-red sash and saber. The older porter when present has gray beard, burgundy turban, ochre tunic, wicker pack. Use case illustration-story. Cinematic painted illustrated realism, credible anatomy, weathered wood and bronze, rich atmospheric depth, varied staging. Keep narrative action within central 80 percent. No text, writing, letters, numbers, frame, icon, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-a0e92e07-55b4-4819-8c1f-24fcb0be8104.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-city-of-the-man-eating-apes",
+    "kind": "card",
+    "prompt": "One new board-game illustration, landscape 8:5 canvas, 1600x1000 pixels. Ruined ancient city at twilight, colossal fierce gray apes leap between carved sandstone rooftops as the sailor parries one huge grasping hand with his saber, dynamic wide action, no gore. Identity reference attached for the young olive-brown Arabian sailor with short black beard, ivory headwrap, indigo coat, rust-red sash and saber. The older porter when present has gray beard, burgundy turban, ochre tunic, wicker pack. Use case illustration-story. Cinematic painted illustrated realism, credible anatomy, weathered wood and bronze, rich atmospheric depth, varied staging. Keep narrative action within central 80 percent. No text, writing, letters, numbers, frame, icon, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-ffb2a11b-6fe4-4aee-82e2-42b655ed4a3e.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-city-of-the-king-of-serendib",
+    "kind": "card",
+    "prompt": "One new board-game illustration, landscape 8:5 canvas, 1600x1000 pixels. Luminous wide scene: the sailor and porter received in a splendid tropical island king's palace courtyard with fountains, ivory stone arches, sapphire textiles and brass gifts. Human scale, calm dignity. Identity reference attached for the young olive-brown Arabian sailor with short black beard, ivory headwrap, indigo coat, rust-red sash and saber. The older porter when present has gray beard, burgundy turban, ochre tunic, wicker pack. Use case illustration-story. Cinematic painted illustrated realism, credible anatomy, weathered wood and bronze, rich atmospheric depth, varied staging. Keep narrative action within central 80 percent. No text, writing, letters, numbers, frame, icon, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-d4f1d817-2bbc-4546-ab3e-df63c5df3144.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "commanding-impact",
+    "kind": "card",
+    "prompt": "One new board-game illustration, landscape 8:5 canvas, 1600x1000 pixels. Close dramatic low angle of the sailor landing a forceful saber strike against a brigand's steel guard, sparks, patterned indigo sleeve and rust red sash, coherent limbs. Identity reference attached for the young olive-brown Arabian sailor with short black beard, ivory headwrap, indigo coat, rust-red sash and saber. The older porter when present has gray beard, burgundy turban, ochre tunic, wicker pack. Use case illustration-story. Cinematic painted illustrated realism, credible anatomy, weathered wood and bronze, rich atmospheric depth, varied staging. Keep narrative action within central 80 percent. No text, writing, letters, numbers, frame, icon, logo or watermark.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-477bfd60-ee22-4400-b3d4-9eb605d320d0.png",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "exploit",
+    "kind": "card",
+    "prompt": "Use case: identity-preserve. Recompose this original illustration from its very wide panorama into an 8:5 landscape canvas (1600 wide by 1000 tall). Extend and repaint above and below to create more vertical scene space, while preserving the characters, faces, period costumes, narrative action, equipment, cinematic painted realism and color palette. The final whole image must be 8:5, not a panorama or a letterboxed image. Keep the subject central with all important anatomy within frame. No text, numbers, frame, icons, logo, watermark or black bars. This is a card illustration which needs at least 800 pixels of actual scene height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-6228244a-a399-4e4d-bd5f-6f46e623440d.png",
+    "replaces": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-350c3f44-2d4b-472b-8b2f-401d25facebb.png",
+    "reason": "Regenerated to provide sufficient native crop height for a 1280×800 derivative; no artificial enlargement.",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "toil-and-danger",
+    "kind": "card",
+    "prompt": "Use case: identity-preserve. Recompose this original illustration from its very wide panorama into an 8:5 landscape canvas (1600 wide by 1000 tall). Extend and repaint above and below to create more vertical scene space, while preserving the characters, faces, period costumes, narrative action, equipment, cinematic painted realism and color palette. The final whole image must be 8:5, not a panorama or a letterboxed image. Keep the subject central with all important anatomy within frame. No text, numbers, frame, icons, logo, watermark or black bars. This is a card illustration which needs at least 800 pixels of actual scene height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-e50cbba9-7714-42ad-ae50-2a7ceae79902.png",
+    "replaces": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-6d85ada9-b7d4-4873-ad0f-e0cd611fde9b.png",
+    "reason": "Regenerated to provide sufficient native crop height for a 1280×800 derivative; no artificial enlargement.",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "riches-beyond-compare",
+    "kind": "card",
+    "prompt": "Use case: identity-preserve. Recompose this original illustration from its very wide panorama into an 8:5 landscape canvas (1600 wide by 1000 tall). Extend and repaint above and below to create more vertical scene space, while preserving the characters, faces, period costumes, narrative action, equipment, cinematic painted realism and color palette. The final whole image must be 8:5, not a panorama or a letterboxed image. Keep the subject central with all important anatomy within frame. No text, numbers, frame, icons, logo, watermark or black bars. This is a card illustration which needs at least 800 pixels of actual scene height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-b9919fde-9ba1-4f14-8f28-9100245c3f33.png",
+    "replaces": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-e32ab625-ee2d-49ed-ae37-858034b93331.png",
+    "reason": "Regenerated to provide sufficient native crop height for a 1280×800 derivative; no artificial enlargement.",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "by-fortune-and-fate",
+    "kind": "card",
+    "prompt": "Use case: identity-preserve. Recompose this original illustration from its very wide panorama into an 8:5 landscape canvas (1600 wide by 1000 tall). Extend and repaint above and below to create more vertical scene space, while preserving the characters, faces, period costumes, narrative action, equipment, cinematic painted realism and color palette. The final whole image must be 8:5, not a panorama or a letterboxed image. Keep the subject central with all important anatomy within frame. No text, numbers, frame, icons, logo, watermark or black bars. This is a card illustration which needs at least 800 pixels of actual scene height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-7af88928-cce6-469e-a3df-d13b1a9ffdb5.png",
+    "replaces": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-da1eeb71-f331-450d-b42e-dbb1d151161d.png",
+    "reason": "Regenerated to provide sufficient native crop height for a 1280×800 derivative; no artificial enlargement.",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-valley-of-the-giant-snakes",
+    "kind": "card",
+    "prompt": "Use case: identity-preserve. Recompose this original illustration from its very wide panorama into an 8:5 landscape canvas (1600 wide by 1000 tall). Extend and repaint above and below to create more vertical scene space, while preserving the characters, faces, period costumes, narrative action, equipment, cinematic painted realism and color palette. The final whole image must be 8:5, not a panorama or a letterboxed image. Keep the subject central with all important anatomy within frame. No text, numbers, frame, icons, logo, watermark or black bars. This is a card illustration which needs at least 800 pixels of actual scene height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-bc188e28-3082-4343-a6b7-b7553f98726b.png",
+    "replaces": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-cf6b6497-962f-4f00-9192-025d9ecf4b98.png",
+    "reason": "Regenerated to provide sufficient native crop height for a 1280×800 derivative; no artificial enlargement.",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  },
+  {
+    "slug": "voyage-to-the-creature-with-eyes-like-coals-of-fire",
+    "kind": "card",
+    "prompt": "Use case: identity-preserve. Recompose this original illustration from its very wide panorama into an 8:5 landscape canvas (1600 wide by 1000 tall). Extend and repaint above and below to create more vertical scene space, while preserving the characters, faces, period costumes, narrative action, equipment, cinematic painted realism and color palette. The final whole image must be 8:5, not a panorama or a letterboxed image. Keep the subject central with all important anatomy within frame. No text, numbers, frame, icons, logo, watermark or black bars. This is a card illustration which needs at least 800 pixels of actual scene height.",
+    "generatorPath": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-3c9aa8fe-284f-4fab-b447-2332c082253f.png",
+    "replaces": "/home/francesco/.codex/generated_images/01a18770-fad5-7421-a717-394869dd66bd/exec-344f9a7c-1437-4267-930d-71615ee8168e.png",
+    "reason": "Regenerated to provide sufficient native crop height for a 1280×800 derivative; no artificial enlargement.",
+    "tool": "integrated Imagegen",
+    "date": "2026-10-29"
+  }
+]

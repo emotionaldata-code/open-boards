@@ -27,8 +27,7 @@
   overflow: hidden;
   background: var(--ground);
 }
-.map-preview-art > img,
-.map-preview-art > svg {
+.map-preview-art > img {
   position: absolute;
   inset: 0;
   display: block;
