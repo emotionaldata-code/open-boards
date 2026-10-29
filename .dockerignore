@@ -1,4 +1,5 @@
 .git
+artwork/
 **/node_modules
 **/dist
 .env

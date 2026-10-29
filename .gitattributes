@@ -1,0 +1,8 @@
+# Source images use LFS; recipes, prompts and provenance stay in regular Git.
+artwork/**/*.png filter=lfs diff=lfs merge=lfs -text
+artwork/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+artwork/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+artwork/**/*.webp filter=lfs diff=lfs merge=lfs -text
+artwork/**/*.psd filter=lfs diff=lfs merge=lfs -text
+artwork/**/*.tif filter=lfs diff=lfs merge=lfs -text
+artwork/**/*.tiff filter=lfs diff=lfs merge=lfs -text

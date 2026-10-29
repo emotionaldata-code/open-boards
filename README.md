@@ -53,6 +53,10 @@ Put a TLS reverse proxy in front of port 2567 and forward WebSocket upgrades. Th
 
 Production uses [`docker-compose.yaml`](docker-compose.yaml). The multi-stage Dockerfile builds the entire pnpm workspace and ships the production server dependencies, bundled server, committed Drizzle migrations and Vite output. The `app` service serves frontend, API and WebSockets on port 2567; `db` runs PostgreSQL 17 on a private Compose network with a persistent `boards-data` volume. No host ports are published. `compose.yaml` remains the local development database; local commands select it explicitly.
 
+Source artwork is excluded from the Docker context. Builds use the committed WebPs in `apps/client/public/artwork/`; they never need source images or an LFS download. [Source artwork storage](docs/artwork-storage.md) describes the LFS workflow. For Git-based deployment, use a shallow clone of the deployment branch and skip LFS downloads (`GIT_LFS_SKIP_SMUDGE=1` in the **Git checkout environment**, not the Compose application's environment). The committed `.lfsconfig` also excludes `artwork/**` from automatic downloads. Shallow cloning avoids the original binaries still present in older commits.
+
+Production serves hashed artwork and Vite JS/CSS with `Cache-Control: public, max-age=31536000, immutable`. HTML and other mutable static files use `no-cache` so clients revalidate them; dynamic responses use `no-store`. Keep the proxy/CDN configured to honor these origin headers, without an edge TTL override or shared caching of API/authentication responses.
+
 The Dokploy project is `open-board`, environment `production`, sourced from `emotionaldata-code/open-boards`, branch `deploy/open-board`, Compose path `./docker-compose.yaml`. Set these variables in the Compose service environment in Dokploy, never in Git:
 
 ```dotenv

@@ -18,6 +18,8 @@ For a deck URL, use the repository-local [import-character skill](../.agents/ski
 
 ## Lightweight artwork
 
+Original raster sources use Git LFS; [source artwork storage](artwork-storage.md) explains how to fetch them for editing. Prompts, recipes and browser-ready derivatives remain in regular Git.
+
 The bundle’s `palette` has three six-digit hex colors: `ground`, `ink`, `accent`. Each card’s `art` selects a reusable scene and optional `variant` (integer 0–6). Scenes: `shield`, `blade`, `bastion`, `lantern`, `trail`, `fire`, `embers`, `ward`, `bolt`, `map`. Original vector scenes live in `apps/client/src/cards/art.ts`. Recipes produce crisp local SVGs without dependencies or network calls.
 
 ```json

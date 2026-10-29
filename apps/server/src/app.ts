@@ -6,6 +6,7 @@ import { Server } from '@colyseus/core';
 import { WebSocketTransport } from '@colyseus/ws-transport';
 import { Sessions } from './auth/session';
 import { authRoutes } from './auth/routes';
+import { clientAssets } from './client';
 import type { Database } from './db/database';
 import { activeSeats, type Match } from './rooms/match';
 import { gameRoom } from './rooms/game-room';
@@ -24,6 +25,7 @@ export function createApp(db: Database, config: ServerConfig) {
   // Production traffic reaches this process through Dokploy's Traefik proxy.
   if (config.production) app.set('trust proxy', 1);
   app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Referrer-Policy', 'same-origin');
     const origin = req.headers.origin;
@@ -69,8 +71,7 @@ export function createApp(db: Database, config: ServerConfig) {
   );
   if (config.production) {
     const client = fileURLToPath(new URL('../../client/dist', import.meta.url));
-    app.use(express.static(client));
-    app.get('/', (_req, res) => res.sendFile(`${client}/index.html`));
+    app.use(clientAssets(client));
   }
   app.use(
     (error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

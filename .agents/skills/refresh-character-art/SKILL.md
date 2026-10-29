@@ -19,6 +19,8 @@ Use integrated Codex Imagegen by default, one call per final asset, without mand
 
 Keep selected originals intact under `artwork/characters/<id>/masters/`, identity references under `references/`, exact prompts in `prompts.json`, and tool/date/source attribution in `provenance.json`. Copy project assets from the generator's output directory into the repository. Record generation failures truthfully; do not substitute unrelated imagery.
 
+Source images use Git LFS and are skipped on clone by default. Follow [source artwork storage](../../../docs/artwork-storage.md): install LFS before adding originals, and explicitly fetch the relevant character's sources before inspecting references or running preparation. Keep prompts/provenance/recipes and generated public WebPs in regular Git. Originals stay out of deployment builds.
+
 ## Preparation and integration
 
 Author `sources.json` following Medusa: `id`, `kind`, `source`, normalized `focal`; cards add `card`, tokens add normalized `anchor` and board `scale`. Focal coordinates control responsive UI crops. Token preprocessing centers the trimmed figure on a transparent 512 canvas; tune anchor/scale against the existing approximately 128px apparent height.

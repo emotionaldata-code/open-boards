@@ -35,6 +35,7 @@ async function account(suffix: string) {
     password: 'correct-password',
   });
   expect(response.status).toBe(201);
+  expect(response.headers.get('cache-control')).toBe('no-store');
   return {
     user: (await response.json()) as { id: string; name: string },
     cookie: response.headers.get('set-cookie')!.split(';')[0],
@@ -123,6 +124,13 @@ afterAll(async () => {
   await db.pool.end();
 });
 describe('Postgres accounts and real Colyseus transport', () => {
+  it('prevents caching of API responses, including authentication failures', async () => {
+    for (const path of ['/api/health', '/api/auth/me', '/api/rooms', '/matchmake']) {
+      const response = await fetch(`${endpoint}${path}`);
+      expect(response.headers.get('cache-control')).toBe('no-store');
+      await response.text();
+    }
+  });
   it('registers Argon2id hashes, persists across database connections, logs in and rejects bad JWTs', async () => {
     const a = await account('auth');
     const stored = await db.findUser(a.user.name);
@@ -152,6 +160,7 @@ describe('Postgres accounts and real Colyseus transport', () => {
       password: 'correct-password',
     });
     expect(login.status).toBe(200);
+    expect(login.headers.get('cache-control')).toBe('no-store');
     expect(login.headers.get('set-cookie')).toContain('HttpOnly');
     expect(login.headers.get('set-cookie')).toContain('SameSite=Strict');
     expect(login.headers.get('set-cookie')).toContain('Max-Age=86400');

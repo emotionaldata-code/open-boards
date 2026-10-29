@@ -5,12 +5,14 @@ import { expect, it } from 'vitest';
 import sharp from 'sharp';
 import { mapArtwork, rasterAssets } from './assets';
 
-it('ships registered map scenery at the board aspect ratio without enlarging or cropping its master', async () => {
+it('ships registered map scenery at the board aspect ratio within its recorded master dimensions', async () => {
   const asset = rasterAssets[mapArtwork['king-solomons-mine']];
-  const master = await sharp(
-    new URL('../../../../artwork/maps/king-solomons-mine/masters/scenery.png', import.meta.url)
-      .pathname,
-  ).metadata();
+  const master = JSON.parse(
+    await readFile(
+      new URL('../../../../artwork/maps/king-solomons-mine/provenance.json', import.meta.url),
+      'utf8',
+    ),
+  ) as { width: number; height: number };
   expect(asset.kind).toBe('map');
   expect(asset.variants.map(({ width }) => width)).toEqual([950, 1900]);
   expect(asset.url).toBe(asset.variants.at(-1)!.url);
