@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-29",
+  "status": "complete",
+  "direction": "User-authorized broader space-fantasy visual adaptation with an original unmasked hooded commander; character naming and game rules retained.",
+  "coverage": {
+    "selectedAssets": 14,
+    "portraits": 1,
+    "tokens": 1,
+    "cardScenes": 12,
+    "variants": 40,
+    "variantBytes": 3838944,
+    "tokenBytes": 61472
+  },
+  "checks": {
+    "originalsMatchGeneratorOutputs": true,
+    "masterHashes": true,
+    "derivativeHashesBytesAndDimensions": true,
+    "realTokenAlpha": true,
+    "preparedTokenEdgesTransparent": true,
+    "allRequestedVariantSizes": true,
+    "preparationIdempotent": true,
+    "rulesSemanticallyUnchanged": true,
+    "gitLfsAttributes": true,
+    "typecheck": "passed",
+    "lint": "passed",
+    "scopedFormatting": "passed",
+    "repositoryFormatting": "failed: unrelated existing apps/client/src/animation/events.test.ts",
+    "build": "passed; upstream Zod annotation and client chunk-size warnings",
+    "focusedUnitTests": "26 passed in 5 files: asset coverage, derivative hashes/sizes/alpha, card/portrait coverage, shared textures, SVG fallback and destruction during loading",
+    "browser": "9 passed: complete desktop/phone galleries and all 12 inspectors; four owner colors; numbered Medusa allies; movement/defeat/revival under both motion preferences; mixed SVG/raster fallback; Vader gameplay and JSON reloads",
+    "browserErrors": "No unexpected console/page errors or missing assets; one test deliberately aborts Vader token loading to verify SVG fallback.",
+    "fullUnitSuite": "Stopped after the first file (37 passed, 104 seconds) because it exercises unrelated exhaustive roster deployment combinations. Focused tests passed afterward.",
+    "fullBrowserSuite": "Not run: shared rendering and rules were unchanged; focused artwork and Vader gameplay suites passed."
+  },
+  "visualReview": {
+    "viewports": [
+      [1440, 1000],
+      [844, 390]
+    ],
+    "all12Scenes": true,
+    "rosterAndRevivalPortraits": true,
+    "allFourOwnerColors": true,
+    "numberedAlliesInMixedMatch": true,
+    "selectionMovementDefeatRevival": true,
+    "normalAndReducedMotion": true,
+    "mixedSvgRasterFallback": true,
+    "sharedVaderTextureRequests": 1,
+    "participatingMixedMatchTextures": 3,
+    "reviewedScreenshots": "test-results/artwork-Darth-Vader-*, test-results/artwork-Medusa-and-Vader-*, test-results/darth-vader-artwork-*",
+    "contactSheet": "/tmp/vader-card-ui-review.png"
+  },
+  "generation": {
+    "tool": "Codex integrated Imagegen",
+    "mode": "built-in",
+    "newCalls": 14,
+    "newSuccesses": 14,
+    "newFailures": 0,
+    "prompts": "prompts.json",
+    "log": "generation-log.json",
+    "earlierRejectedAttempts": "Preserved in provenance.json without attributing an undisclosed reason to copyright."
+  },
+  "remaining": []
+}

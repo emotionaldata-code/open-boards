@@ -8,6 +8,8 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const { name, designs } of [
+  { name: 'Darth Vader', designs: 12 },
+  { name: 'Geralt of Rivia', designs: 15 },
   { name: 'Invisible Man', designs: 14 },
   { name: 'Eredin', designs: 11 },
   { name: 'Bruce Lee', designs: 17 },
@@ -117,7 +119,7 @@ for (const { name, designs } of [
 }
 
 for (const reducedMotion of ['reduce', 'no-preference'] as const) {
-  test(`mixed SVG/raster scene shares two textures across four owner colors (${reducedMotion})`, async ({
+  test(`Medusa and Vader share three textures across four owner colors (${reducedMotion})`, async ({
     page,
   }) => {
     await page.emulateMedia({ reducedMotion });
@@ -128,7 +130,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       if (message.type() === 'error') errors.push(message.text());
     });
     page.on('request', (request) => {
-      if (/\/(medusa|harpy)-token-/.test(request.url())) textures.push(request.url());
+      if (/\/(medusa|harpy|darth-vader)-token-/.test(request.url())) textures.push(request.url());
     });
     const players: GameView['players'] = ['medusa', 'medusa', 'medusa', 'darth-vader'].map(
       (character, i) => ({
@@ -148,7 +150,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         character: player.character,
         definition: player.character,
         role: 'main' as const,
-        hp: player.character === 'darth-vader' ? 18 : 16,
+        hp: player.character === 'darth-vader' ? 20 : 16,
         position: ['n0', 'n7', 'n13', 'n20'][i],
         defeated: false,
         counters: {},
@@ -171,8 +173,8 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     await presentationHarness(page, true, { players, fighters });
     await expect(page.locator('.pixi-surface canvas')).toBeVisible();
     // Pixi fetches images in workers, outside the main window's resource timings.
-    await expect.poll(() => textures.length).toBe(2);
-    expect(new Set(textures).size).toBe(2);
+    await expect.poll(() => textures.length).toBe(3);
+    expect(new Set(textures).size).toBe(3);
     await page.evaluate(async () => {
       const assetsUrl = '/src/artwork/assets.ts';
       const texturesUrl = '/src/artwork/textures.ts';
@@ -183,7 +185,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         texturesUrl
       )) as typeof import('../../apps/client/src/artwork/textures');
       await Promise.all(
-        ['medusa-token', 'harpy-token'].map((id) => loadFigureTexture(rasterAssets[id].url)),
+        ['medusa-token', 'harpy-token', 'darth-vader-token'].map((id) =>
+          loadFigureTexture(rasterAssets[id].url),
+        ),
       );
     });
     await page.screenshot({

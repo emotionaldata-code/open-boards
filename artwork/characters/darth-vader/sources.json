@@ -1,0 +1,100 @@
+[
+  {
+    "id": "darth-vader-portrait",
+    "kind": "portrait",
+    "source": "masters/commander-portrait.png",
+    "focal": [0.5, 0.29]
+  },
+  {
+    "id": "darth-vader-token",
+    "kind": "token",
+    "source": "masters/commander-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "darth-vader-dark-lords-presence",
+    "kind": "card",
+    "card": "darth-vader-dark-lords-presence",
+    "source": "masters/dark-lords-presence.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-inner-conflict",
+    "kind": "card",
+    "card": "darth-vader-inner-conflict",
+    "source": "masters/inner-conflict.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-surrounded-by-fear",
+    "kind": "card",
+    "card": "darth-vader-surrounded-by-fear",
+    "source": "masters/surrounded-by-fear.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-there-is-no-escape",
+    "kind": "card",
+    "card": "darth-vader-there-is-no-escape",
+    "source": "masters/there-is-no-escape.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-all-too-easy",
+    "kind": "card",
+    "card": "darth-vader-all-too-easy",
+    "source": "masters/all-too-easy.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-by-the-emperors-will",
+    "kind": "card",
+    "card": "darth-vader-by-the-emperors-will",
+    "source": "masters/by-the-emperors-will.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-i-have-you-now",
+    "kind": "card",
+    "card": "darth-vader-i-have-you-now",
+    "source": "masters/i-have-you-now.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-form-v-mastery",
+    "kind": "card",
+    "card": "darth-vader-form-v-mastery",
+    "source": "masters/form-v-mastery.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-power-of-the-dark-side",
+    "kind": "card",
+    "card": "darth-vader-power-of-the-dark-side",
+    "source": "masters/power-of-the-dark-side.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-hunt-down-and-destroy",
+    "kind": "card",
+    "card": "darth-vader-hunt-down-and-destroy",
+    "source": "masters/hunt-down-and-destroy.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-meditation-chamber",
+    "kind": "card",
+    "card": "darth-vader-meditation-chamber",
+    "source": "masters/meditation-chamber.png",
+    "focal": [0.5, 0.5]
+  },
+  {
+    "id": "darth-vader-unstoppable",
+    "kind": "card",
+    "card": "darth-vader-unstoppable",
+    "source": "masters/unstoppable.png",
+    "focal": [0.5, 0.5]
+  }
+]

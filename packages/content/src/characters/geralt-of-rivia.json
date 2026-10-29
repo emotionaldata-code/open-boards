@@ -50,7 +50,7 @@
       "art": {
         "scene": "fire",
         "variant": 0,
-        "image": "/cards/geralt-of-rivia/igni.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-igni-1280-5187728716ee.webp"
       },
       "flavor": "A sign traced in flame.",
       "abilities": [
@@ -107,7 +107,7 @@
       "art": {
         "scene": "blade",
         "variant": 1,
-        "image": "/cards/geralt-of-rivia/riposte.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-riposte-1280-c015187eb360.webp"
       },
       "flavor": "A blade finds the opening.",
       "abilities": [
@@ -174,7 +174,7 @@
       "art": {
         "scene": "ward",
         "variant": 2,
-        "image": "/cards/geralt-of-rivia/yrden.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-yrden-1280-cb63ac80584c.webp"
       },
       "flavor": "The circle holds.",
       "abilities": [
@@ -216,7 +216,7 @@
       "art": {
         "scene": "blade",
         "variant": 3,
-        "image": "/cards/geralt-of-rivia/rend.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-rend-1280-ac008810b425.webp"
       },
       "flavor": "Let the edge do its work.",
       "abilities": [
@@ -245,7 +245,7 @@
       "art": {
         "scene": "shield",
         "variant": 4,
-        "image": "/cards/geralt-of-rivia/disciplined-duelist.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-disciplined-duelist-1280-abebfb57fe63.webp"
       },
       "flavor": "Patience wins the exchange.",
       "abilities": [
@@ -346,7 +346,7 @@
       "art": {
         "scene": "bastion",
         "variant": 5,
-        "image": "/cards/geralt-of-rivia/damn-youre-ugly.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-damn-youre-ugly-1280-61a7f1761bf9.webp"
       },
       "flavor": "Some contracts pay too little."
     },
@@ -429,7 +429,7 @@
       "art": {
         "scene": "map",
         "variant": 1,
-        "image": "/cards/geralt-of-rivia/witcher-senses.svg"
+        "image": "/artwork/geralt-of-rivia/geralt-of-rivia-witcher-senses-1280-28ad4d7b3e39.webp"
       },
       "flavor": "The trail has not gone cold.",
       "effects": [

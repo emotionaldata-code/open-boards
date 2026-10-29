@@ -1,5 +1,68 @@
 [
   {
+    "id": "geralt-of-rivia-portrait",
+    "kind": "portrait",
+    "source": "masters/geralt-portrait.png",
+    "focal": [0.5, 0.2]
+  },
+  {
+    "id": "geralt-of-rivia-token",
+    "kind": "token",
+    "source": "masters/geralt-token.png",
+    "focal": [0.5, 0.5],
+    "anchor": [0.5, 0.96875],
+    "scale": 0.27
+  },
+  {
+    "id": "geralt-of-rivia-igni",
+    "kind": "card",
+    "source": "masters/igni.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-igni"
+  },
+  {
+    "id": "geralt-of-rivia-riposte",
+    "kind": "card",
+    "source": "masters/riposte.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-riposte"
+  },
+  {
+    "id": "geralt-of-rivia-yrden",
+    "kind": "card",
+    "source": "masters/yrden.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-yrden"
+  },
+  {
+    "id": "geralt-of-rivia-rend",
+    "kind": "card",
+    "source": "masters/rend.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-rend"
+  },
+  {
+    "id": "geralt-of-rivia-disciplined-duelist",
+    "kind": "card",
+    "source": "masters/disciplined-duelist.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-disciplined-duelist"
+  },
+  {
+    "id": "geralt-of-rivia-damn-youre-ugly",
+    "kind": "card",
+    "source": "masters/damn-youre-ugly.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-damn-youre-ugly"
+  },
+  {
+    "id": "geralt-of-rivia-witcher-senses",
+    "kind": "card",
+    "source": "masters/witcher-senses.png",
+    "focal": [0.5, 0.5],
+    "card": "geralt-of-rivia-witcher-senses"
+  },
+  {
     "id": "geralt-of-rivia-dandelion-portrait",
     "kind": "portrait",
     "source": "masters/dandelion-portrait.png",

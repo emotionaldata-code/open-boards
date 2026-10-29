@@ -3,7 +3,7 @@ import { presentationHarness } from './fixtures/game';
 import type { GameView } from '../../packages/protocol/src/index';
 
 for (const reducedMotion of ['reduce', 'no-preference'] as const) {
-  test(`Dandelion shares one texture with SVG Geralt across four owner colors (${reducedMotion})`, async ({
+  test(`Geralt and Dandelion share two textures across four owner colors (${reducedMotion})`, async ({
     page,
   }) => {
     await page.route('**/api/auth/me', (route) => route.fulfill({ json: null }));
@@ -20,7 +20,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         errors.push(`${response.status()} ${response.url()}`);
     });
     page.on('request', (request) => {
-      if (/\/geralt-of-rivia-dandelion-token-/.test(request.url())) textures.push(request.url());
+      if (/\/geralt-of-rivia-(dandelion-)?token-/.test(request.url())) textures.push(request.url());
     });
     const players: GameView['players'] = ['a', 'b', 'c', 'd'].map((id, i) => ({
       id,
@@ -58,7 +58,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       },
     ]);
     await presentationHarness(page, true, { players, fighters });
-    await expect.poll(() => textures.length).toBe(1);
+    await expect.poll(() => textures.length).toBe(2);
     await page.evaluate(async () => {
       const assetsUrl = '/src/artwork/assets.ts';
       const texturesUrl = '/src/artwork/textures.ts';
@@ -69,7 +69,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         texturesUrl
       )) as typeof import('../../apps/client/src/artwork/textures');
       await Promise.all(
-        ['geralt-of-rivia-dandelion-token'].map((id) => loadFigureTexture(rasterAssets[id].url)),
+        ['geralt-of-rivia-token', 'geralt-of-rivia-dandelion-token'].map((id) =>
+          loadFigureTexture(rasterAssets[id].url),
+        ),
       );
     });
     const dandelion = page.locator('[data-fighter="a:ally-1"]');
@@ -95,8 +97,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     const transition = async (
       fighter: Partial<GameView['fighters'][number]>,
       outcome: import('../../packages/game/src/index').Outcome,
+      target = 'a:ally-1',
     ) => {
-      fighters = fighters.map((f) => (f.id === 'a:ally-1' ? { ...f, ...fighter } : f));
+      fighters = fighters.map((f) => (f.id === target ? { ...f, ...fighter } : f));
       await page.evaluate(
         ({ fighters, outcome }) => {
           const harness = window as unknown as {
@@ -117,7 +120,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         );
         await page.screenshot({
           animations: 'disabled',
-          path: test.info().outputPath('dandelion-revival-portrait.png'),
+          path: test.info().outputPath(`${target}-revival-portrait.png`),
         });
         await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
@@ -163,9 +166,41 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       animations: 'disabled',
       path: test.info().outputPath('dandelion-returned.png'),
     });
-    // Geralt intentionally retains SVG art while Dandelion uses one shared raster texture.
-    expect(new Set(textures).size).toBe(1);
-    expect(textures).toHaveLength(1);
+    const geralt = page.locator('[data-fighter="a:main"]');
+    await transition(
+      { position: 'n3' },
+      {
+        type: 'move',
+        fighter: 'a:main',
+        path: ['n0', 'n3'],
+        sequence: 4,
+        revision: 4,
+        audience: 'all',
+      },
+      'a:main',
+    );
+    await transition(
+      { defeated: true, hp: 0, position: null },
+      { type: 'defeated', fighter: 'a:main', sequence: 5, revision: 5, audience: 'all' },
+      'a:main',
+    );
+    await expect(geralt).toHaveCount(0);
+    await transition(
+      { defeated: false, hp: 16, position: 'n3' },
+      {
+        type: 'revived',
+        fighter: 'a:main',
+        position: 'n3',
+        sequence: 6,
+        revision: 6,
+        audience: 'all',
+      },
+      'a:main',
+    );
+    await expect(geralt).toBeVisible();
+    // Each fighter identity shares one raster texture across all four owners.
+    expect(new Set(textures).size).toBe(2);
+    expect(textures).toHaveLength(2);
     expect(errors).toEqual([]);
     await test.info().attach('geralt-of-rivia-token-requests', {
       body: JSON.stringify(textures, null, 2),

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "darth-vader-portrait",
+    "key": "broad-portrait",
+    "prompt": "Use case: illustration-story. Square board-game portrait, original cinematic painted realism. A stern middle-aged human space commander wearing a charcoal hooded cloak over simple weathered graphite armor, his face partly shaded by the hood, strong cheekbones, short dark hair, no beard. Chest-up three-quarter view aboard a vast orbital station. Subtle amber instrument light and cool blue rim light, deep atmospheric background with distant stars. Readable face and upper silhouette, detailed cloth and metal, solemn restrained mood, credible anatomy, rich painterly brushwork. At least 1024px square. No text, writing, logos, insignia, frames or watermark.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-09881de9-eb1e-4655-a39d-ea581bd15881.png",
+    "master": "commander-portrait.png",
+    "kind": "portrait"
+  },
+  {
+    "id": "darth-vader-token",
+    "key": "broad-token",
+    "prompt": "Use case: illustration-story. Asset type: transparent full-body board-game figure. Reference image defines the original hooded space commander's face, graphite armor and charcoal cloak; preserve this identity. Show him standing in a calm commanding three-quarter pose, complete head, cloak, both arms, hands and both boots visible with comfortable margins. He holds a plain weathered steel sword lowered beside one leg. Simple readable silhouette and realistic painted materials, subtle cool rim light and warm amber highlights. No scenery, floor, pedestal, shadow patch, lettering, symbols or UI. Actual transparent background with clean alpha around the entire silhouette. Square image at least 1024px.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-fca19f84-55f9-4f50-8aaf-be49148168ab.png",
+    "master": "commander-token.png",
+    "kind": "token"
+  },
+  {
+    "id": "darth-vader-dark-lords-presence",
+    "key": "broad-dark-lords-presence",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Low-angle wide view of the cloaked commander standing alone in the enormous open doorway of an orbital fortress. His long shadow falls toward the viewer over worn metal flooring; distant sentries are small and motionless. Architectural scale and his quiet presence convey overwhelming authority. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-649fa1e0-069f-4f20-81f3-0f3a4a2151a8.png",
+    "master": "dark-lords-presence.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-inner-conflict",
+    "key": "broad-inner-conflict",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Intimate quiet scene of the commander seated beside a starship observation window, looking down at his open bare hand while his reflection in the glass faces a distant blue planet. Warm amber interior light and cold starlight divide the composition, suggesting a divided conscience. No weapon. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-129b95d0-7d03-4e3a-bcd9-022d1132563e.png",
+    "master": "inner-conflict.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-surrounded-by-fear",
+    "key": "broad-surrounded-by-fear",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: High three-quarter view of the commander standing calmly at the center of a spacious circular hangar, his steel sword lowered. Several distant armored silhouettes hesitate at the edge of the pool of light around him. Tense encirclement, strong circular staging, no injuries. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-5ebc6770-51e7-495b-9a0b-67886eececf1.png",
+    "master": "surrounded-by-fear.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-there-is-no-escape",
+    "key": "broad-there-is-no-escape",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Wide symmetrical view along a space-station corridor ending at a massive sealed blast door. The commander stands between the viewer and the closed exit, backlit by thin amber seams in the door, cape draped over graphite armor. Oppressive perspective and no other close figures. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-2f6a9f51-5953-4e34-8b45-bb7ccfb5d7dc.png",
+    "master": "there-is-no-escape.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-all-too-easy",
+    "key": "broad-all-too-easy",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Close cinematic view of the commander's armored glove held open above a hovering ring of small metal fragments in a quiet spacecraft workshop, his hooded face in soft focus behind the hand. The floating objects suggest effortless telekinetic control. Delicate amber highlights against deep blue shadows. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-2ca30a3d-3b96-4766-8817-b3126f2ab54b.png",
+    "master": "all-too-easy.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-by-the-emperors-will",
+    "key": "broad-by-the-emperors-will",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Very wide throne-room scene inside an orbital citadel: the commander seen from behind kneels on one knee before a distant empty angular command throne raised on broad steps, with a giant star window and a fleet of small ships beyond it. The scale suggests obedience to a remote authority. No emblems. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-47c188e6-16d2-45b2-9c39-4255f23c0205.png",
+    "master": "by-the-emperors-will.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-i-have-you-now",
+    "key": "broad-i-have-you-now",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Dynamic wide side view of the commander committing to a powerful two-handed steel-sword strike against an opposing faceless training automaton in a starship sparring hall. Clear blade arc and cloth motion, poised decisive action, no blood or wounds. Main figures completely readable within center of frame. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-7f28726e-d17f-47f8-b270-d57d4571930f.png",
+    "master": "i-have-you-now.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-form-v-mastery",
+    "key": "broad-form-v-mastery",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Medium wide action scene of the commander redirecting the metal staff of a sparring automaton with his plain steel sword, weapons crossing in a clear diagonal at the center. His stance is grounded and controlled; tiny sparks at the contact. Orbital training room, calm defensive skill, no injury. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-a0e79d2b-4efd-4a1b-ab9b-f429679a2ce0.png",
+    "master": "form-v-mastery.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-power-of-the-dark-side",
+    "key": "broad-power-of-the-dark-side",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Wide symbolic scene of the commander standing on a maintenance bridge above a vast amber-lit starship reactor, heat haze and glowing machinery far below, his cloak caught in a rising draft. One hand rests against his armored chest as he gathers his resolve. No lightning and no injuries. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-ef387347-6e89-400c-b311-e9dbb422ea77.png",
+    "master": "power-of-the-dark-side.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-hunt-down-and-destroy",
+    "key": "broad-hunt-down-and-destroy",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Long atmospheric corridor with the commander striding toward the viewer through drifting steam, cape sweeping behind, steel sword sheathed at his hip. Strong repeated pools of cold light and a warm doorway far behind convey relentless pursuit. No victims, no gore. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-a26eb745-d795-4d13-873a-6be15d6b5717.png",
+    "master": "hunt-down-and-destroy.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-meditation-chamber",
+    "key": "broad-meditation-chamber",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Quiet wide scene in a circular spacecraft sanctuary: the commander sits in meditation on a low stone-colored platform, hood lowered enough to reveal his short dark hair, armored hands resting on knees. Rings of suspended architecture frame a blue planet outside the window. Balanced calm composition, soft cool light and a few amber floor lamps. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-36150169-b9df-4637-b23d-18eb0e9ef0dc.png",
+    "master": "meditation-chamber.png",
+    "kind": "card"
+  },
+  {
+    "id": "darth-vader-unstoppable",
+    "key": "broad-unstoppable",
+    "prompt": "Use case: illustration-story. Asset type: landscape board-game card illustration, 1600x1000 pixels, 8:5 aspect ratio. Original cinematic painted realism, credible anatomy, rich fabric and weathered metal, deep atmospheric space-fantasy architecture, restrained charcoal, steel-blue and amber palette. The reference image defines the recurring original hooded human commander's face, short dark hair, charcoal cloak and simple graphite armor; preserve that visual identity when visible. Scene: Wide low-angle scene of the commander rising to his feet amid the harmless rubble of a collapsed metal doorway, bracing one gauntlet on a fallen beam. Weathered graphite armor, charcoal cape and a determined face, shafts of dawn-like amber light cut through cool drifting dust. Recovery and endurance, no wounds. Keep essential action and faces inside central 80% for responsive crops. Full-bleed artwork only. No text, letters, numbers, emblems, logos, card borders, UI, watermark, graphic injury or gore.",
+    "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-b9a53cbf-ada8-4479-b94f-7732917c261b.png",
+    "master": "unstoppable.png",
+    "kind": "card"
+  }
+]

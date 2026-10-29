@@ -62,7 +62,7 @@
       "art": {
         "scene": "ward",
         "variant": 0,
-        "image": "/cards/darth-vader/dark-lords-presence.svg"
+        "image": "/artwork/darth-vader/darth-vader-dark-lords-presence-1280-749a7e480fb8.webp"
       },
       "flavor": "A shadow fills the doorway.",
       "abilities": [
@@ -107,7 +107,7 @@
       "art": {
         "scene": "embers",
         "variant": 1,
-        "image": "/cards/darth-vader/inner-conflict.svg"
+        "image": "/artwork/darth-vader/darth-vader-inner-conflict-1280-182206e8cd58.webp"
       },
       "flavor": "One name remains beneath the armor.",
       "abilities": [
@@ -127,7 +127,7 @@
                 {
                   "type": "choose-option",
                   "chooser": "opponent",
-                  "prompt": "Inner Conflict \u00b7 choose for both players",
+                  "prompt": "Inner Conflict · choose for both players",
                   "options": [
                     {
                       "id": "draw",
@@ -165,7 +165,7 @@
               "else": [
                 {
                   "type": "choose-option",
-                  "prompt": "Inner Conflict \u00b7 choose for both players",
+                  "prompt": "Inner Conflict · choose for both players",
                   "options": [
                     {
                       "id": "draw",
@@ -217,7 +217,7 @@
       "art": {
         "scene": "blade",
         "variant": 2,
-        "image": "/cards/darth-vader/surrounded-by-fear.svg"
+        "image": "/artwork/darth-vader/darth-vader-surrounded-by-fear-1280-0ed6b9a999d1.webp"
       },
       "flavor": "The circle tightens. The blade answers.",
       "abilities": [
@@ -259,7 +259,7 @@
       "art": {
         "scene": "bastion",
         "variant": 3,
-        "image": "/cards/darth-vader/there-is-no-escape.svg"
+        "image": "/artwork/darth-vader/darth-vader-there-is-no-escape-1280-46dda8e1b0af.webp"
       },
       "flavor": "Every exit falls silent.",
       "abilities": [
@@ -295,7 +295,7 @@
       "art": {
         "scene": "bolt",
         "variant": 4,
-        "image": "/cards/darth-vader/all-too-easy.svg"
+        "image": "/artwork/darth-vader/darth-vader-all-too-easy-1280-e5e54e2fe178.webp"
       },
       "flavor": "A closed fist. An empty hand.",
       "abilities": [
@@ -335,7 +335,7 @@
       "art": {
         "scene": "map",
         "variant": 5,
-        "image": "/cards/darth-vader/by-the-emperors-will.svg"
+        "image": "/artwork/darth-vader/darth-vader-by-the-emperors-will-1280-040c064ee113.webp"
       },
       "flavor": "The Emperor's word crosses the stars.",
       "abilities": [
@@ -370,7 +370,7 @@
       "art": {
         "scene": "blade",
         "variant": 6,
-        "image": "/cards/darth-vader/i-have-you-now.svg"
+        "image": "/artwork/darth-vader/darth-vader-i-have-you-now-1280-a6b9f332d3d8.webp"
       },
       "flavor": "The final stroke demands everything.",
       "abilities": [
@@ -386,7 +386,7 @@
               "options": [
                 {
                   "id": "spend",
-                  "label": "Spend 1 action \u00b7 value 9",
+                  "label": "Spend 1 action · value 9",
                   "effects": [
                     {
                       "type": "actions",
@@ -429,7 +429,7 @@
       "art": {
         "scene": "shield",
         "variant": 0,
-        "image": "/cards/darth-vader/form-v-mastery.svg"
+        "image": "/artwork/darth-vader/darth-vader-form-v-mastery-1280-f2380060b39f.webp"
       },
       "flavor": "Turn their strength aside.",
       "abilities": [
@@ -478,7 +478,7 @@
       "art": {
         "scene": "fire",
         "variant": 1,
-        "image": "/cards/darth-vader/power-of-the-dark-side.svg"
+        "image": "/artwork/darth-vader/darth-vader-power-of-the-dark-side-1280-eb83b7ff2e36.webp"
       },
       "flavor": "Pain feeds the furnace.",
       "abilities": [
@@ -510,7 +510,7 @@
       "art": {
         "scene": "trail",
         "variant": 2,
-        "image": "/cards/darth-vader/hunt-down-and-destroy.svg"
+        "image": "/artwork/darth-vader/darth-vader-hunt-down-and-destroy-1280-f43db8155717.webp"
       },
       "flavor": "Bootsteps echo down the corridor.",
       "effects": [
@@ -551,7 +551,7 @@
       "art": {
         "scene": "lantern",
         "variant": 3,
-        "image": "/cards/darth-vader/meditation-chamber.svg"
+        "image": "/artwork/darth-vader/darth-vader-meditation-chamber-1280-898193126cdc.webp"
       },
       "flavor": "The mask lifts in silence.",
       "effects": [
@@ -583,7 +583,7 @@
       "art": {
         "scene": "ward",
         "variant": 4,
-        "image": "/cards/darth-vader/unstoppable.svg"
+        "image": "/artwork/darth-vader/darth-vader-unstoppable-1280-da98a9da476f.webp"
       },
       "flavor": "Steel holds. The darkness rises.",
       "effects": [

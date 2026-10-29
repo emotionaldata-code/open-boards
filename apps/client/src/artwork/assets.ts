@@ -13,6 +13,8 @@ export const mapArtwork: Record<string, string> = {
 };
 
 export const fighterArtwork: Record<string, { portrait: string; token: string }> = {
+  'darth-vader': { portrait: 'darth-vader-portrait', token: 'darth-vader-token' },
+  'geralt-of-rivia': { portrait: 'geralt-of-rivia-portrait', token: 'geralt-of-rivia-token' },
   'geralt-of-rivia-dandelion': {
     portrait: 'geralt-of-rivia-dandelion-portrait',
     token: 'geralt-of-rivia-dandelion-token',

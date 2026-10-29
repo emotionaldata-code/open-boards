@@ -1,8 +1,8 @@
 {
   "generator": "Codex integrated Imagegen",
   "mode": "built-in",
-  "date": "2026-10-28",
-  "status": "partial",
+  "date": "2026-10-29",
+  "status": "complete",
   "authorship": "Original generated illustrations; no third-party artwork copied, traced or hotlinked.",
   "prompts": "prompts.json",
   "generationLog": "generation-log.json",
@@ -16,23 +16,39 @@
       "path": "references/dandelion-token-initial.png",
       "role": "Initial figure, subsequently corrected for canvas margin",
       "sha256": "444a71378d3fa3d86129c3c1588bd0d39592c6e43e9e34a3e6a0d340954e64c2"
+    },
+    {
+      "path": "references/geralt.png",
+      "role": "Original generated hero portrait identity reference",
+      "sha256": "d298562a14e2ba357f0de4b17cff33cbf021333a9a98576b658f27421fce5d0d"
+    },
+    {
+      "path": "references/igni-initial.png",
+      "role": "Superseded scene retained as reframe reference",
+      "sha256": "d7c8e7cfb9ffcec2697a43d1ab546df6b6af0083e9dea5808f3e39d454b573fe"
+    },
+    {
+      "path": "references/witcher-senses-initial.png",
+      "role": "Superseded scene retained as reframe reference",
+      "sha256": "cc2321914ed1a10325e429a752aa1bf3d472da4712108584d8f95757a753fb3f"
+    },
+    {
+      "path": "references/witcher-senses-reframe.png",
+      "role": "Superseded panorama; regenerated taller without enlarging pixels",
+      "sha256": "713ea6dc0feca869255c903e06a23414886c1620dfaab39e3627e2716d87fa99"
     }
   ],
   "failures": [
     "Geralt portrait rejected three times with http 400 moderation_blocked at output stage, category other. Request IDs and exact prompts are in prompts.json.",
-    "A fourth Geralt portrait attempt on 2026-10-29 failed with http 400 moderation_blocked at output stage, category other. Request ID: df25b076-38b3-431a-bcd7-56774553b829. Exact prompt retained in prompts.json."
+    "A fourth Geralt portrait attempt on 2026-10-29 failed with http 400 moderation_blocked at output stage, category other. Request ID: df25b076-38b3-431a-bcd7-56774553b829. Exact prompt retained in prompts.json.",
+    "geralt-token-attempt-2-2026-10-29: image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 3d348fab-3220-49fb-bcef-278175663362.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "igni-attempt-3-2026-10-29: image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID ddcc3676-339b-467b-a81c-7171977c8dbe. safety_violations=[violence].\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"violence\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "disciplined-duelist-attempt-7-2026-10-29: image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 8c341fec-6f4a-450f-aa1c-0a290c975dff. safety_violations=[violence].\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"violence\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "witcher-senses-attempt-9-2026-10-29: image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 970ce8cc-6f4a-4e4f-9d28-d40f16cf9dfe.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "geralt-token-attempt-10-2026-10-29: image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 6c6d9844-9b79-4ead-9b89-d80c51c75b0f.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "geralt-token-attempt-14-2026-10-29: image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 9fea305e-b88e-4607-ab8f-c8ace06a1e0d.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
   ],
-  "remaining": [
-    "Geralt portrait",
-    "Geralt transparent figure",
-    "Igni",
-    "Riposte",
-    "Yrden",
-    "Rend",
-    "Disciplined Duelist",
-    "Damn, You're Ugly",
-    "Witcher Senses"
-  ],
+  "remaining": [],
   "notes": [
     "Selected generator originals preserved unchanged.",
     "Initial Annoying Tune scene was rejected for insufficient height; regenerated to retain all requested derivative sizes.",
@@ -41,7 +57,9 @@
     "CLI fallback was not used.",
     "12 generation calls succeeded; 10 selected assets and two superseded variants. Three Geralt portrait calls failed. All 15 calls are recorded in generation-log.json.",
     "2026-10-29 retry: no image was generated and no assets were replaced. The set remains partial with nine assets outstanding. CLI fallback was not used; OPENAI_API_KEY is absent. The log now contains 16 calls: 12 successes (10 selected assets) and four failed Geralt portrait attempts.",
-    "2026-10-29 original-alternative concept generation succeeded: master preserved for review, not added to sources.json or the client. The log now contains 17 calls: 13 successes (10 selected integrated assets and three unselected outputs), four failed Geralt portrait attempts."
+    "2026-10-29 original-alternative concept generation succeeded: master preserved for review, not added to sources.json or the client. The log now contains 17 calls: 13 successes (10 selected integrated assets and three unselected outputs), four failed Geralt portrait attempts.",
+    "2026-10-29 completed refresh: nine newly integrated assets, 19 total (two portraits, two transparent figures, fifteen card scenes). Prompts use visual descriptions without character names as requested. Earlier failures are preserved; their categories do not establish copyright as their cause. The hero figure was extracted by integrated Imagegen from the successful solo training scene after three full-body generation failures. Three undersized successful card outputs were superseded; selected originals remain intact. No CLI fallback or rule changes.",
+    "Final generation log: 35 calls, 25 successes, 10 failures and 19 selected integrated assets."
   ],
   "assets": [
     {
@@ -142,6 +160,96 @@
       "sha256": "ae2b1f0476a052f84a53b1280f5b016f27362ad6ff7af1e19b120cb3c9e91735",
       "width": 1586,
       "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-portrait",
+      "master": "masters/geralt-portrait.png",
+      "prompt": "prompts.json#geralt-portrait-descriptive-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-8755aa59-c62e-4264-a33b-6944c504b3ae.png",
+      "sha256": "d298562a14e2ba357f0de4b17cff33cbf021333a9a98576b658f27421fce5d0d",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-riposte",
+      "master": "masters/riposte.png",
+      "prompt": "prompts.json#riposte-descriptive-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-900144fb-a0a7-4d8e-9fc6-43226b38cb77.png",
+      "sha256": "137f1a1c42a0985bd4f8fae5301d077d662910fb988b43201c531ee7691556b6",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-yrden",
+      "master": "masters/yrden.png",
+      "prompt": "prompts.json#yrden-descriptive-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-a0ec114f-f38f-432a-953e-391c8a8f8ea9.png",
+      "sha256": "4a26f00fc69d915fcd6c035ee783e4c5b06368931efe231746871cebdd1ee07e",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-rend",
+      "master": "masters/rend.png",
+      "prompt": "prompts.json#rend-descriptive-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-3b4adef7-4ea1-42c9-837d-10dd820807d3.png",
+      "sha256": "9f99b83ab0fad9397f35644137d8ab0c227a975804a47c8479b4c3f135087be2",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-damn-youre-ugly",
+      "master": "masters/damn-youre-ugly.png",
+      "prompt": "prompts.json#damn-youre-ugly-descriptive-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-e9f64162-a0ab-4fac-83ce-184fcb4ee789.png",
+      "sha256": "2d4b3d7a23554a025c7a610f99ddb7f42b713e2a43b1135a9c80f00e59971cb4",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-disciplined-duelist",
+      "master": "masters/disciplined-duelist.png",
+      "prompt": "prompts.json#disciplined-duelist-calm-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-541c7d44-123a-4283-97e7-85856268ee2f.png",
+      "sha256": "5f212f97189dc2dd76bdea567ed421cb5aba06e31690c73db3e9fd0eb9dd1f4b",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-igni",
+      "master": "masters/igni.png",
+      "prompt": "prompts.json#igni-reframe-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-129a730d-8a12-4c18-a0de-079aae406cce.png",
+      "sha256": "4a0cb2ac75cb66961215dce5a423ec2fdd807a5d2833be2d1c7bbcd7bf6de7ae",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false
+    },
+    {
+      "id": "geralt-of-rivia-token",
+      "master": "masters/geralt-token.png",
+      "prompt": "prompts.json#geralt-token-extraction-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-464a8316-96e3-45ab-929d-b45e34bf70e1.png",
+      "sha256": "9d066389ce8d99edc728ab9774c3af5011b8ff2ce9f4d503f9dbdfe214d413ec",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true
+    },
+    {
+      "id": "geralt-of-rivia-witcher-senses",
+      "master": "masters/witcher-senses.png",
+      "prompt": "prompts.json#witcher-senses-tall-2026-10-29",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-f43edd71-3b7f-4fd7-99a0-093b06fc4c40.png",
+      "sha256": "fbbff487794e4a669a35c84a30f49acee1d5b154717eaa7d58689ea06f8b41cf",
+      "width": 1448,
+      "height": 1086,
       "hasAlpha": false
     }
   ],

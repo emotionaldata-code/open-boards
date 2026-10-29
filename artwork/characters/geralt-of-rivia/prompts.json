@@ -112,5 +112,164 @@
     "status": "succeeded",
     "generatorSource": "/home/francesco/.codex/generated_images/01a1851c-e13e-7db2-91f4-d081ec11bc75/exec-a6e1e9c2-f2be-466a-9e0b-10a1a0278ad7.png",
     "transparent": false
+  },
+  {
+    "id": "geralt-portrait-descriptive-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-8755aa59-c62e-4264-a33b-6944c504b3ae.png",
+    "prompt": "Use case: stylized-concept.\nAsset type: square hero portrait for a fantasy tabletop game, at least 1024 by 1024 pixels.\nPrimary request: original painted illustration of a veteran white-haired monster hunter. Mature pale angular weathered face, short white beard, amber catlike eyes and a healed thin scar over his left eyebrow; long white hair tied loosely half back. Dark brown leather brigandine and chainmail with worn steel shoulder plates, a small silver wolf-head pendant on his chest, two sheathed sword hilts visible behind his shoulders. Calm alert expression, credible human anatomy and practical equipment.\nScene/backdrop: a misty medieval woodland at dawn, distant ruined stone arch, cool blue-green shadows and restrained warm reflected light on his face.\nStyle/medium: cinematic illustrated realism, richly painted brushwork, convincing leather, steel, hair and cloth, atmospheric depth. Original illustrated facial design without an actor likeness.\nComposition/framing: three-quarter bust with face and upper silhouette clearly readable, entire head and shoulders comfortably inside square frame, eyes near upper third.\nConstraints: one image, no text, numbers, frames, icons, logos or watermark."
+  },
+  {
+    "id": "geralt-token-attempt-2-2026-10-29",
+    "date": "2026-10-29",
+    "status": "failed",
+    "transparent": true,
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 3d348fab-3220-49fb-bcef-278175663362.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "requestId": "3d348fab-3220-49fb-bcef-278175663362",
+    "prompt": "Use case: stylized-concept. Asset type: genuinely transparent full-body board-game figure on a square canvas at least 1024 by 1024 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Paint the white-haired hunter standing in a stable alert three-quarter pose, one drawn longsword held naturally in his right hand with the blade pointing diagonally down beside him, left hand relaxed, second sword sheathed on his back. Complete head, hair, both hands, sword tip and both leather boots fully inside the frame with at least 8 percent clear margin on every side. Believable lean strong anatomy, practical dark trousers and knee-high brown boots, cinematic painted realism and tactile material detail, subtle warm highlights and cool shadows. Isolated entire figure on actual transparent alpha background. No ground, floor, contact shadow, glow, pedestal, owner color, background scenery, lettering, numbers, frame, icons, logos or watermark."
+  },
+  {
+    "id": "igni-attempt-3-2026-10-29",
+    "date": "2026-10-29",
+    "status": "failed",
+    "transparent": false,
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID ddcc3676-339b-467b-a81c-7171977c8dbe. safety_violations=[violence].\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"violence\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "requestId": "ddcc3676-339b-467b-a81c-7171977c8dbe",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Medium wide action: the white-haired hunter stands on the left of a rain-dark ruined courtyard, left hand extended with five natural fingers sending a short sweeping fan of orange magical flame toward a shadowy feral creature on the right, sword held low in his right hand. Fire illuminates face and wet stones against cool blue twilight. Non-graphic combat, no wounds."
+  },
+  {
+    "id": "riposte-descriptive-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/geralt.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-900144fb-a0a7-4d8e-9fc6-43226b38cb77.png",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Tight dynamic side-on composition: the white-haired hunter pivots in a measured counterattack against an anonymous hooded swordsman on a narrow medieval stone bridge. Their two blades meet in a clear single X near center with tiny sparks; hunter on the right in three-quarter view, opponent left. Natural arms and grips, no extra swords. Warm late afternoon rim light over cold misty river. Non-graphic."
+  },
+  {
+    "id": "yrden-descriptive-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/geralt.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-a0ec114f-f38f-432a-953e-391c8a8f8ea9.png",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Wide low view of the white-haired hunter placing his left palm toward the ground within a broken stone circle at dusk. A restrained violet magical ring of light spreads along ground cracks, surrounding and slowing a translucent shadow creature on the right, no readable symbols. Hunter fully balanced and clearly visible on the left, sheathed twin swords, purple light on weathered armor, fog and old roots."
+  },
+  {
+    "id": "rend-descriptive-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/geralt.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-3b4adef7-4ea1-42c9-837d-10dd820807d3.png",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Dynamic low-angle full-body view: the white-haired hunter strides forward through a ruined medieval hall, holding one longsword in both hands mid powerful diagonal downward strike, blade fully visible angled across open space. A large dark nonhuman armored silhouette recoils on the right. Strong readable anatomy, split cloak and flying dust, cool window light with warm embers. No gore."
+  },
+  {
+    "id": "disciplined-duelist-attempt-7-2026-10-29",
+    "date": "2026-10-29",
+    "status": "failed",
+    "transparent": false,
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 8c341fec-6f4a-450f-aa1c-0a290c975dff. safety_violations=[violence].\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"violence\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "requestId": "8c341fec-6f4a-450f-aa1c-0a290c975dff",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Restrained medium wide composition: the white-haired hunter in a precise balanced fencing stance, sword in right hand pointed across center toward a wary armored human opponent at the right edge, left hand open for balance. A quiet fortress training yard in soft dawn light, geometry of worn flagstones and hanging mist, expression focused and controlled. Credible blade, hands and footwork. Non-graphic."
+  },
+  {
+    "id": "damn-youre-ugly-descriptive-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/geralt.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-e9f64162-a0ab-4fac-83ce-184fcb4ee789.png",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Over-the-shoulder environmental encounter: white-haired hunter in the left foreground, recognizable profile, two sheathed swords behind his back, looks with a dry unimpressed expression at a huge moss-covered horned swamp monster emerging from reeds on the right. Monster has a craggy asymmetrical face and heavy antler-like horns, believable anatomy. Green marsh dusk, shafts of warm light through trees, cinematic depth, no wounds."
+  },
+  {
+    "id": "witcher-senses-attempt-9-2026-10-29",
+    "date": "2026-10-29",
+    "status": "failed",
+    "transparent": false,
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 970ce8cc-6f4a-4e4f-9d28-d40f16cf9dfe.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "requestId": "970ce8cc-6f4a-4e4f-9d28-d40f16cf9dfe",
+    "prompt": "Use case: illustration-story. Asset type: landscape card illustration for a fantasy tabletop game, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input image 1 is an identity reference, not an edit target. Preserve the same mature angular pale face, amber eyes, thin left eyebrow scar, long half-tied white hair, short white beard, weathered dark brown leather brigandine, chainmail, steel shoulder plates and small silver wolf-head pendant. Maintain coherent equipment and face. Cinematic painted realism, tactile brushwork, credible anatomy and materials, dramatic motivated lighting, atmospheric depth, restrained medieval dark-fantasy palette. Keep crucial action and faces within the central 80% for responsive crops. One complete illustration, no lettering, numbers, readable glyphs, frames, borders, logos or watermarks. Intimate investigative scene: the white-haired hunter kneels on a forest path examining a fresh three-toed track with one gloved hand near the earth, sword sheathed. His amber eyes catch subtle reflected golden light, face in clear three-quarter profile at upper left, faint disturbed leaves and a broken twig lead toward a misty ruined doorway at right. Natural five-finger hand, believable investigative pose, cool forest dawn, restrained supernatural atmosphere, no interface overlays."
+  },
+  {
+    "id": "geralt-token-attempt-10-2026-10-29",
+    "date": "2026-10-29",
+    "status": "failed",
+    "transparent": true,
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 6c6d9844-9b79-4ead-9b89-d80c51c75b0f.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "requestId": "6c6d9844-9b79-4ead-9b89-d80c51c75b0f",
+    "prompt": "Use case: stylized-concept. Create a single full-body painted fantasy traveler figure with actual transparent alpha background on a square canvas at least 1024px. Input image is the face and clothing identity reference: preserve the mature angular face, long white hair tied half back, short white beard, amber eyes, dark leather and chainmail with weathered steel shoulder plates and small pendant. Show this same man calmly standing with both hands resting naturally at his sides. Both swords remain completely sheathed on his back. Dark fitted trousers and brown leather boots, strong clear silhouette, cinematic painted realism. Entire head, both hands, both feet and sheathed equipment fully visible, at least 10 percent transparent margin on all four sides. Neutral relaxed pose. No environment, ground, shadow, base, pedestal, glow, text, frame, logo or watermark."
+  },
+  {
+    "id": "disciplined-duelist-calm-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/geralt.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-541c7d44-123a-4283-97e7-85856268ee2f.png",
+    "prompt": "Use case: illustration-story. Single landscape 8:5 painted fantasy tabletop card illustration, at least 1600 by 1000 pixels. Reference image establishes the white-haired man's exact face, hair, beard, amber eyes and weathered leather, chainmail and steel armor. Show the same man alone in a quiet empty fortress training courtyard at dawn, standing in a precise balanced practice stance with one longsword held vertically in front of his chest in a ceremonial salute, both hands naturally gripping the hilt. No opponent and no fighting. Medium wide composition, entire head, hands, sword and boots visible within central 80 percent. Worn flagstones, low mist, subtle golden window light over cool stone, thoughtful focused expression, cinematic painted realism, tactile brushwork, credible anatomy. No wounds, text, readable glyphs, frames, numbers, logos or watermark."
+  },
+  {
+    "id": "igni-calm-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/geralt.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-001654c2-ba4b-4908-a049-efc07df789da.png",
+    "prompt": "Use case: illustration-story. Single landscape fantasy tabletop card illustration, 8:5 aspect ratio, at least 1600 by 1000 pixels. Input portrait is the identity reference for the same mature white-haired man: preserve face, amber eyes, short white beard, hair, leather armor, chainmail and pendant. In a quiet ruined courtyard at blue twilight, he calmly demonstrates fire magic alone: one small sculptural orange flame floats above his open left palm, warming his thoughtful face. Both swords sheathed on his back. No opponents or combat. Medium close composition with his face on left and the open palm with flame at center, natural five fingers, fully clothed, warm firelight reflecting on cool wet stones. Cinematic painted realism, rich tactile brushwork and credible anatomy and materials, atmospheric depth. Keep important details within central 80 percent. No wounds, text, frames, readable symbols, numbers, logos or watermark."
+  },
+  {
+    "id": "witcher-senses-trail-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-59209fca-9787-442b-b54c-8512271fea1b.png",
+    "prompt": "Use case: illustration-story. Asset type: landscape 8:5 fantasy tabletop card scene, at least 1600 by 1000 pixels. An atmospheric close study of a fresh three-toed creature footprint pressed into damp forest earth beside a snapped twig and disturbed fern leaves. At the left edge, one naturally posed leather-gloved hand of a traveler gently parts the leaves to reveal the track. Soft amber magical reflections reveal fine details in mud and leaves. In the softly receding upper background, a misty medieval stone doorway suggests where the trail leads. Rich tactile painted realism, believable leather, mud and bark, cool dawn forest tones with restrained amber highlights, cinematic depth and quiet investigative mood. Focus on tracking and heightened perception. Hand and footprint comfortably within central 80 percent, natural five-finger anatomy. No weapons, violence, full person, text, frames, numbers, icons, readable symbols, logos or watermark."
+  },
+  {
+    "id": "geralt-token-attempt-14-2026-10-29",
+    "date": "2026-10-29",
+    "status": "failed",
+    "transparent": true,
+    "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 9fea305e-b88e-4607-ab8f-c8ace06a1e0d.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+    "requestId": "9fea305e-b88e-4607-ab8f-c8ace06a1e0d",
+    "prompt": "Use case: stylized-concept. Paint a full-body miniature character illustration for a fantasy board game, on a genuinely transparent background, square 1024px or larger. A mature pale man with an angular weathered face, amber eyes, long white hair half tied back and a short white beard. Worn dark brown leather travel armor over fine chainmail, steel shoulder guards, small silver wolf-shaped pendant, a leather belt, dark trousers and sturdy brown boots. Two sheathed swords are strapped on his back. He stands calmly in three-quarter view, hands relaxed and empty, facing slightly right. Rich painterly brushwork, illustrated fantasy proportions, believable anatomy, soft warm highlights with cool shadows. One complete person, full head and both boots, at least ten percent clear transparent margin on every side. No ground, pedestal, base, shadow, scene, text, border, logo or watermark."
+  },
+  {
+    "id": "igni-reframe-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/igni-initial.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-129a730d-8a12-4c18-a0de-079aae406cce.png",
+    "prompt": "Use case: identity-preserve. Edit target: the attached card scene. Reframe and expand the composition to a taller landscape canvas with an exact 8:5 width-to-height ratio, 1600 pixels wide and 1000 pixels tall or larger at the same ratio. Keep the same painted scene, colors, character or objects, materials and central action. Add painted environmental space above and below rather than cropping into the subjects. This is a single card illustration with enough vertical room for an 8:5 crop. Keep all important content within central 80 percent. No text, frames, numbers, logos or watermarks."
+  },
+  {
+    "id": "witcher-senses-reframe-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "references": ["references/witcher-senses-initial.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-64f8ec90-ce4e-4d9d-b93c-8ad637e5d5bd.png",
+    "prompt": "Use case: identity-preserve. Edit target: the attached card scene. Reframe and expand the composition to a taller landscape canvas with an exact 8:5 width-to-height ratio, 1600 pixels wide and 1000 pixels tall or larger at the same ratio. Keep the same painted scene, colors, character or objects, materials and central action. Add painted environmental space above and below rather than cropping into the subjects. This is a single card illustration with enough vertical room for an 8:5 crop. Keep all important content within central 80 percent. No text, frames, numbers, logos or watermarks."
+  },
+  {
+    "id": "geralt-token-extraction-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": true,
+    "references": ["masters/disciplined-duelist.png"],
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-464a8316-96e3-45ab-929d-b45e34bf70e1.png",
+    "prompt": "Use case: background-extraction. Edit target: the attached illustration. Extract the single central standing man and the vertical sword that he is resting on. Remove the entire courtyard, flags, buildings, sky, fires, fog, ground and all shadows. Preserve the man's face, hair, armor, both hands, complete sword, both legs and boots exactly as shown. Place that complete intact painted figure centered on a square genuinely transparent alpha canvas, at least 1024 by 1024 pixels, with ten percent clear transparent margin on every side. No added objects, background, shadow, pedestal, base, text, frame or watermark."
+  },
+  {
+    "id": "witcher-senses-tall-2026-10-29",
+    "date": "2026-10-29",
+    "status": "succeeded",
+    "transparent": false,
+    "generatorSource": "/home/francesco/.codex/generated_images/01a186db-e0cf-7a52-8b76-6992697d9d2a/exec-f43edd71-3b7f-4fd7-99a0-093b06fc4c40.png",
+    "prompt": "Create a single painted fantasy book illustration. Image format: a moderately wide 4:3 landscape composition, at least 1440 pixels wide by 1080 pixels tall. Close study looking downward at a large three-toed footprint in wet forest mud, framed by fern leaves, roots and a snapped twig. One leather-gloved hand enters from the upper left and gently parts the ferns to inspect the track. In the upper part of the scene the forest path recedes between ancient trees toward a small ruined stone doorway. The fresh footprint, natural five-finger gloved hand and doorway form a clear triangular composition clustered near the center. Cool morning mist with subtle golden glints revealing the track, cinematic realistic painted brushwork, tactile leather, bark and damp leaves. Used as a fantasy tabletop card image; allow cropping at top and bottom to 8:5 without losing the footprint or hand. No weapons, combat, lettering, frames, numbers, logos or watermark."
   }
 ]

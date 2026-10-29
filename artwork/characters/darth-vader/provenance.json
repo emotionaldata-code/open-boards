@@ -2,7 +2,7 @@
   "generator": "Codex integrated Imagegen",
   "mode": "built-in",
   "date": "2026-10-29",
-  "status": "original-character-candidate-generated",
+  "status": "broader-artwork-integrated",
   "character": "darth-vader",
   "expected": {
     "portraits": 1,
@@ -25,6 +25,188 @@
       "hasAlpha": false,
       "generatorOutput": "/home/francesco/.codex/generated_images/01a1851c-88ce-7d92-b698-7ecc31390af3/exec-2a4a3ab6-903c-4d50-b284-cc199ca0f904.png",
       "runtimeIntegrated": false
+    },
+    {
+      "id": "darth-vader-portrait",
+      "master": "masters/commander-portrait.png",
+      "prompt": "prompts.json#broad-portrait",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-09881de9-eb1e-4655-a39d-ea581bd15881.png",
+      "sha256": "819c9aa7fca0462bcba2463859fd79731ea9b40bba217fbd3140f9c949b418c9",
+      "bytes": 2697656,
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-token",
+      "master": "masters/commander-token.png",
+      "prompt": "prompts.json#broad-token",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-fca19f84-55f9-4f50-8aaf-be49148168ab.png",
+      "sha256": "3ca5608f436b5de4e00fcaaeae48c96b51907b9a9a58ded431bb18d6f0cca104",
+      "bytes": 1646066,
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-dark-lords-presence",
+      "master": "masters/dark-lords-presence.png",
+      "prompt": "prompts.json#broad-dark-lords-presence",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-649fa1e0-069f-4f20-81f3-0f3a4a2151a8.png",
+      "sha256": "1573e51ab016eb4ba8b8d9b87f9466972d26ba33cfb67a54e701e32981945510",
+      "bytes": 2712609,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-inner-conflict",
+      "master": "masters/inner-conflict.png",
+      "prompt": "prompts.json#broad-inner-conflict",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-129b95d0-7d03-4e3a-bcd9-022d1132563e.png",
+      "sha256": "c8183e7baf3b38b21061ca421fe207fed4d16073c9688419f9a174a95e80b3c5",
+      "bytes": 2500800,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-surrounded-by-fear",
+      "master": "masters/surrounded-by-fear.png",
+      "prompt": "prompts.json#broad-surrounded-by-fear",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-5ebc6770-51e7-495b-9a0b-67886eececf1.png",
+      "sha256": "884e3a7c3c042a46f680aca93c9bdca5d51f212b346dd2e78aaa9fd08ebcf91a",
+      "bytes": 2762778,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-there-is-no-escape",
+      "master": "masters/there-is-no-escape.png",
+      "prompt": "prompts.json#broad-there-is-no-escape",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-2f6a9f51-5953-4e34-8b45-bb7ccfb5d7dc.png",
+      "sha256": "4bb5e8998da237d53324361607dae17fe1bccab7a114d3f581605b5a5916a6de",
+      "bytes": 2671806,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-all-too-easy",
+      "master": "masters/all-too-easy.png",
+      "prompt": "prompts.json#broad-all-too-easy",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-2ca30a3d-3b96-4766-8817-b3126f2ab54b.png",
+      "sha256": "cb910e5a603545ed706c01844c8635f35a1da46456fcc510a3a49b9ed18ec509",
+      "bytes": 2231776,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-by-the-emperors-will",
+      "master": "masters/by-the-emperors-will.png",
+      "prompt": "prompts.json#broad-by-the-emperors-will",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-47c188e6-16d2-45b2-9c39-4255f23c0205.png",
+      "sha256": "91c13d13917e13ba5ba6020ee772a5e9336dfe653d1b74ee6fd2386b1999d077",
+      "bytes": 2711640,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-i-have-you-now",
+      "master": "masters/i-have-you-now.png",
+      "prompt": "prompts.json#broad-i-have-you-now",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-7f28726e-d17f-47f8-b270-d57d4571930f.png",
+      "sha256": "813e172f91943cc2ba27eb04722fe8ad9e4d7ae3243568150f3572d8a3dcb40c",
+      "bytes": 2741498,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-form-v-mastery",
+      "master": "masters/form-v-mastery.png",
+      "prompt": "prompts.json#broad-form-v-mastery",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-a0e79d2b-4efd-4a1b-ab9b-f429679a2ce0.png",
+      "sha256": "a73b981ff90045af20bdcc6bea68bd157873a21d5f8108a03e1e5232c3f90a9a",
+      "bytes": 2691106,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-power-of-the-dark-side",
+      "master": "masters/power-of-the-dark-side.png",
+      "prompt": "prompts.json#broad-power-of-the-dark-side",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-ef387347-6e89-400c-b311-e9dbb422ea77.png",
+      "sha256": "cd3bd6f68fbc7df2daa98cc51d24d44441b15d246197855448e049dd3ae939a1",
+      "bytes": 2576264,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-hunt-down-and-destroy",
+      "master": "masters/hunt-down-and-destroy.png",
+      "prompt": "prompts.json#broad-hunt-down-and-destroy",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-a26eb745-d795-4d13-873a-6be15d6b5717.png",
+      "sha256": "508e146c56295ce03850ba33e9ecf6b8c1a7b7fbd4c530e0d37d1cd513221658",
+      "bytes": 2670073,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-meditation-chamber",
+      "master": "masters/meditation-chamber.png",
+      "prompt": "prompts.json#broad-meditation-chamber",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-36150169-b9df-4637-b23d-18eb0e9ef0dc.png",
+      "sha256": "fa7d22cff38e2ad6361d891e455860e7b89935af2f29f382f13b3fb42fe267d0",
+      "bytes": 2628195,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
+    },
+    {
+      "id": "darth-vader-unstoppable",
+      "master": "masters/unstoppable.png",
+      "prompt": "prompts.json#broad-unstoppable",
+      "generatorSource": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-b9a53cbf-ada8-4479-b94f-7732917c261b.png",
+      "sha256": "98d2fd93f452965fe9ef94f624242c5fd83ab32b1b6d54716698caf0c0f10ca2",
+      "bytes": 2717204,
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "runtimeIntegrated": true,
+      "status": "selected"
     }
   ],
   "attempts": [
@@ -65,8 +247,181 @@
       "outputProduced": true,
       "source": "/home/francesco/.codex/generated_images/01a1851c-88ce-7d92-b698-7ecc31390af3/exec-2a4a3ab6-903c-4d50-b284-cc199ca0f904.png",
       "master": "masters/obsidian-warden-portrait.png"
+    },
+    {
+      "id": "darth-vader-portrait",
+      "prompt": "prompts.json#portrait-attempt-2026-10-29-refresh",
+      "date": "2026-10-29",
+      "status": "failed",
+      "outputProduced": false,
+      "error": {
+        "httpStatus": 400,
+        "type": "image_generation_user_error",
+        "code": "moderation_blocked",
+        "moderationStage": "output",
+        "categories": ["other"],
+        "requestId": "7c660550-9f42-40e2-a3ca-266d7959b379"
+      }
+    },
+    {
+      "id": "darth-vader-portrait",
+      "prompt": "prompts.json#portrait-without-name-2026-10-29",
+      "date": "2026-10-29",
+      "status": "failed",
+      "outputProduced": false,
+      "error": {
+        "httpStatus": 400,
+        "type": "image_generation_user_error",
+        "code": "moderation_blocked",
+        "moderationStage": "output",
+        "categories": ["other"],
+        "requestId": "35c12203-1ed9-4098-a2e5-4f329e8ce0cc"
+      }
+    },
+    {
+      "id": "darth-vader-portrait",
+      "prompt": "prompts.json#portrait-simplified-description-2026-10-29",
+      "date": "2026-10-29",
+      "status": "failed",
+      "outputProduced": false,
+      "error": {
+        "httpStatus": 400,
+        "type": "image_generation_user_error",
+        "code": "moderation_blocked",
+        "moderationStage": "output",
+        "categories": ["other"],
+        "requestId": "c164d801-f8c9-4f1e-9cb7-acbe8859d691"
+      }
+    },
+    {
+      "id": "darth-vader-portrait",
+      "prompt": "prompts.json#broad-portrait",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-09881de9-eb1e-4655-a39d-ea581bd15881.png",
+      "master": "masters/commander-portrait.png"
+    },
+    {
+      "id": "darth-vader-token",
+      "prompt": "prompts.json#broad-token",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-fca19f84-55f9-4f50-8aaf-be49148168ab.png",
+      "master": "masters/commander-token.png"
+    },
+    {
+      "id": "darth-vader-dark-lords-presence",
+      "prompt": "prompts.json#broad-dark-lords-presence",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-649fa1e0-069f-4f20-81f3-0f3a4a2151a8.png",
+      "master": "masters/dark-lords-presence.png"
+    },
+    {
+      "id": "darth-vader-inner-conflict",
+      "prompt": "prompts.json#broad-inner-conflict",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-129b95d0-7d03-4e3a-bcd9-022d1132563e.png",
+      "master": "masters/inner-conflict.png"
+    },
+    {
+      "id": "darth-vader-surrounded-by-fear",
+      "prompt": "prompts.json#broad-surrounded-by-fear",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-5ebc6770-51e7-495b-9a0b-67886eececf1.png",
+      "master": "masters/surrounded-by-fear.png"
+    },
+    {
+      "id": "darth-vader-there-is-no-escape",
+      "prompt": "prompts.json#broad-there-is-no-escape",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-2f6a9f51-5953-4e34-8b45-bb7ccfb5d7dc.png",
+      "master": "masters/there-is-no-escape.png"
+    },
+    {
+      "id": "darth-vader-all-too-easy",
+      "prompt": "prompts.json#broad-all-too-easy",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-2ca30a3d-3b96-4766-8817-b3126f2ab54b.png",
+      "master": "masters/all-too-easy.png"
+    },
+    {
+      "id": "darth-vader-by-the-emperors-will",
+      "prompt": "prompts.json#broad-by-the-emperors-will",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-47c188e6-16d2-45b2-9c39-4255f23c0205.png",
+      "master": "masters/by-the-emperors-will.png"
+    },
+    {
+      "id": "darth-vader-i-have-you-now",
+      "prompt": "prompts.json#broad-i-have-you-now",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-7f28726e-d17f-47f8-b270-d57d4571930f.png",
+      "master": "masters/i-have-you-now.png"
+    },
+    {
+      "id": "darth-vader-form-v-mastery",
+      "prompt": "prompts.json#broad-form-v-mastery",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-a0e79d2b-4efd-4a1b-ab9b-f429679a2ce0.png",
+      "master": "masters/form-v-mastery.png"
+    },
+    {
+      "id": "darth-vader-power-of-the-dark-side",
+      "prompt": "prompts.json#broad-power-of-the-dark-side",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-ef387347-6e89-400c-b311-e9dbb422ea77.png",
+      "master": "masters/power-of-the-dark-side.png"
+    },
+    {
+      "id": "darth-vader-hunt-down-and-destroy",
+      "prompt": "prompts.json#broad-hunt-down-and-destroy",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-a26eb745-d795-4d13-873a-6be15d6b5717.png",
+      "master": "masters/hunt-down-and-destroy.png"
+    },
+    {
+      "id": "darth-vader-meditation-chamber",
+      "prompt": "prompts.json#broad-meditation-chamber",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-36150169-b9df-4637-b23d-18eb0e9ef0dc.png",
+      "master": "masters/meditation-chamber.png"
+    },
+    {
+      "id": "darth-vader-unstoppable",
+      "prompt": "prompts.json#broad-unstoppable",
+      "date": "2026-10-29",
+      "status": "succeeded",
+      "outputProduced": true,
+      "source": "/home/francesco/.codex/generated_images/01a186db-d73a-7481-932d-2d48b162da03/exec-b9a53cbf-ada8-4479-b94f-7732917c261b.png",
+      "master": "masters/unstoppable.png"
     }
   ],
-  "notes": "After two rejected Darth Vader portrait requests, the user requested a similar original design. Integrated Imagegen generated an original Obsidian Warden portrait candidate with faceted armor, amber visor, burgundy mantle and plasma spear. The output was visually inspected and copied intact into masters and references. This candidate does not establish the cause of earlier rejections. Existing Darth Vader SVG assets, runtime references and rules remain unchanged; a full deck refresh has not been completed.",
-  "references": ["references/obsidian-warden.png"]
+  "notes": "After two rejected Darth Vader portrait requests, the user requested a similar original design. Integrated Imagegen generated an original Obsidian Warden portrait candidate with faceted armor, amber visor, burgundy mantle and plasma spear. The output was visually inspected and copied intact into masters and references. This candidate does not establish the cause of earlier rejections. Existing Darth Vader SVG assets, runtime references and rules remain unchanged; a full deck refresh has not been completed. A later refresh on 2026-10-29 attempted a named portrait and then a visual-description-only portrait at the user’s request. Both failed with moderation_blocked at output stage, category other. Neither produced an image. The response does not identify copyright as the cause. No new assets were integrated; the unrelated Obsidian Warden candidate remains unintegrated. The 14-asset refresh remains incomplete. At the user’s request, a further nameless portrait attempt simplified the helmet to a dark helmet with a concealed face and omitted the breathing apparatus and chest controls. It was also blocked at output stage with category other; no image was returned. The user subsequently requested a full refresh using broader imagery. All fourteen new assets succeeded with an original unmasked, hooded space commander in graphite armor, a steel sword and charcoal cloak, blue and amber orbital environments. This deliberately broader visual adaptation is user-authorized; it does not reproduce Darth Vader’s helmeted identity. The character name, card titles, rules and gameplay identity are preserved. The earlier Obsidian Warden candidate remains unintegrated.",
+  "references": ["references/obsidian-warden.png", "references/commander.png"],
+  "authorship": "Original illustrations produced with Codex integrated Imagegen; no source-deck imagery reused.",
+  "verification": "verification.json"
 }
