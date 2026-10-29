@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import { useState } from 'react';
 import { basic } from '@open-boards/content';
 import { Dialog } from '../ui/Dialog';
@@ -8,9 +9,9 @@ export function DeckExplorer({ character, onClose }: { character: string; onClos
   const [inspected, setInspected] = useState<string | null>(null);
   const fighter = basic.characters[character];
   return (
-    <Dialog title={`${fighter.name}’s deck`} className="deck-dialog" onClose={onClose}>
+    <Dialog title={`Mazzo di ${contentText(fighter.name)}`} className="deck-dialog" onClose={onClose}>
       <p className="muted">
-        {fighter.deck.reduce((n, c) => n + c.count, 0)} cards · {fighter.deck.length} designs.
+        {fighter.deck.reduce((n, c) => n + c.count, 0)} carte · {fighter.deck.length} carte diverse.
       </p>
       <div className="deck-gallery">
         {fighter.deck.map(({ card, count }) => (
@@ -18,11 +19,11 @@ export function DeckExplorer({ character, onClose }: { character: string; onClos
             type="button"
             className="printed-card"
             key={card}
-            aria-label={`About ${basic.cards[card].name}, ${count} copies`}
+            aria-label={`Dettagli di ${contentText(basic.cards[card].name)}, ${count} copie`}
             onClick={() => setInspected(card)}
           >
             <CardPrint definition={card} />
-            <span className="card-copies">{count} copies</span>
+            <span className="card-copies">{count} copie</span>
           </button>
         ))}
       </div>

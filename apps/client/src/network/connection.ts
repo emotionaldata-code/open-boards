@@ -33,7 +33,7 @@ export class Connection {
       return true;
     } catch {
       sessionStorage.removeItem(storageKey);
-      this.error('The saved seat has expired. Join or create a new room.');
+      this.error('Il posto salvato è scaduto. Entra in una stanza o creane una nuova.');
       return false;
     }
   }
@@ -43,7 +43,7 @@ export class Connection {
     this.status('Connected');
     room.onMessage('snapshot', (snapshot: Snapshot) => this.snapshot(snapshot));
     room.onMessage('error', (error: CommandError) => this.error(error.message));
-    room.onError((_code, message) => this.error(message ?? 'Connection error.'));
+    room.onError((_code, message) => this.error(message ?? 'Errore di connessione.'));
     room.onDrop(() => this.status('Reconnecting…'));
     room.onReconnect(() => {
       sessionStorage.setItem(storageKey, room.reconnectionToken);
@@ -53,7 +53,7 @@ export class Connection {
     room.onLeave(() => {
       if (!this.intentional) {
         this.status('Disconnected');
-        this.error('Your connection ended. Return to the lobby to play again.');
+        this.error('Connessione interrotta. Torna alla lobby per giocare di nuovo.');
       }
       sessionStorage.removeItem(storageKey);
     });

@@ -179,34 +179,34 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountAchilles(page, 'recovery');
       await expect(page.locator('.fighter-hit[data-fighter="p0:ally-1"]')).toBeVisible();
-      await page.locator('.game-card').filter({ hasText: 'Battle Hardened' }).click();
-      await page.getByRole('button', { name: /^Target .*\(Hector\)$/ }).click();
+      await page.locator('.game-card').filter({ hasText: 'Temprato dalla battaglia' }).click();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Hector\)$/ }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Return a discarded card to your hand');
-      await expect(choice().getByRole('button', { name: 'Feint', exact: true })).toContainText(
-        'Cancel all effects',
+      await expect(choice()).toContainText('Riprendi in mano una carta scartata');
+      await expect(choice().getByRole('button', { name: 'Finta', exact: true })).toContainText(
+        'annulla tutti gli effetti',
       );
       await page.screenshot({
         path: test.info().outputPath('achilles-recovery-desktop.png'),
         animations: 'disabled',
       });
       await mountAchilles(page, 'recovery');
-      await choice().getByRole('button', { name: 'Feint', exact: true }).focus();
+      await choice().getByRole('button', { name: 'Finta', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       expect((await currentState(page)).players[0].hand.some((c) => c.id === 'prior')).toBe(true);
       await page.setViewportSize({ width: 844, height: 390 });
-      await page.locator('.game-card').filter({ hasText: 'Test For Weakness' }).click();
-      await page.getByRole('button', { name: /^Target .*\(Hector\)$/ }).click();
+      await page.locator('.game-card').filter({ hasText: 'Sondare le debolezze' }).click();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Hector\)$/ }).click();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       await mountAchilles(page, 'recovery', 'p1');
-      await expect(page.getByRole('status')).toContainText('Relentless Assault · Attack 3');
+      await expect(page.getByRole('status')).toContainText('Assalto implacabile · Attack 3');
       await page.screenshot({
         path: test.info().outputPath('achilles-bonus-phone.png'),
         animations: 'disabled',
       });
-      await page.getByRole('button', { name: 'Take the hit', exact: true }).tap();
+      await page.getByRole('button', { name: 'Subisci il colpo', exact: true }).tap();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       const state = await currentState(page);
       expect(state.revealed).toMatchObject({
@@ -241,9 +241,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('pageerror', (e) => errors.push(e.message));
     try {
       await mountAchilles(page, 'helm');
-      await page.locator('.game-card').filter({ hasText: "Under Achilles' Helm" }).click();
+      await page.locator('.game-card').filter({ hasText: 'Sotto l’elmo di Achille' }).click();
       await expect(page.locator('.hand-panel:has(.ability-options)')).toContainText(
-        "Under Achilles' Helm",
+        'Sotto l’elmo di Achille',
       );
       await page.screenshot({
         path: test.info().outputPath('achilles-helm-desktop.png'),
@@ -251,17 +251,17 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       });
       await page.setViewportSize({ width: 844, height: 390 });
       await mountAchilles(page, 'helm');
-      await page.getByRole('button', { name: /^Use / }).focus();
+      await page.getByRole('button', { name: /^Usa / }).focus();
       await page.keyboard.press('Enter');
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
-      await expect(page.getByRole('status')).toContainText('Relentless Assault · Attack 3');
+      await expect(page.getByRole('status')).toContainText('Assalto implacabile · Attack 3');
       await expect(page.locator('.fighter-hit[data-fighter="p0:ally-1"]')).toBeVisible();
       let state = await currentState(page);
       expect(state.phase).toMatchObject({ type: 'awaiting-defense', defender: 'p0:ally-1' });
       expect(state.fighters.find((f) => f.id === 'p0:main')?.position).toBe('n5');
       expect(state.fighters.find((f) => f.id === 'p0:ally-1')?.position).toBe('n0');
       await mountAchilles(page, 'helm');
-      await page.getByRole('button', { name: 'Take the hit', exact: true }).tap();
+      await page.getByRole('button', { name: 'Subisci il colpo', exact: true }).tap();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       state = await currentState(page);
       expect(state.fighters.find((f) => f.id === 'p0:ally-1')?.hp).toBe(3);

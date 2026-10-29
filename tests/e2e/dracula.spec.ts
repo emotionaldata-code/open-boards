@@ -192,12 +192,12 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountDracula(page, 'beast');
       for (let i = 1; i <= 3; i++)
-        await expect(page.getByRole('button', { name: `Sister ${i}`, exact: true })).toBeVisible();
-      await page.locator('.game-card').filter({ hasText: 'Beastform' }).click();
-      await page.getByRole('button', { name: /^Target .*\(Hector\)$/ }).click();
+        await expect(page.getByRole('button', { name: `Sorella ${i}`, exact: true })).toBeVisible();
+      await page.locator('.game-card').filter({ hasText: 'Forma bestiale' }).click();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Hector\)$/ }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Discard up to 4 cards');
-      await expect(choice().getByRole('button', { name: 'Pass', exact: true })).toBeEnabled();
+      await expect(choice()).toContainText('Scarta fino a 4 carte');
+      await expect(choice().getByRole('button', { name: 'Passa', exact: true })).toBeEnabled();
       await page.screenshot({
         path: test.info().outputPath('dracula-beast-desktop.png'),
         animations: 'disabled',
@@ -205,11 +205,11 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountDracula(page, 'beast');
-      await choice().getByRole('button', { name: 'Baptism of Blood', exact: true }).focus();
+      await choice().getByRole('button', { name: 'Battesimo di sangue', exact: true }).focus();
       await page.keyboard.press('Enter');
-      await choice().getByRole('button', { name: 'Mistform', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Forma di nebbia', exact: true }).tap();
       await choice()
-        .getByRole('button', { name: /^Confirm choice ·/ })
+        .getByRole('button', { name: /^Conferma scelta ·/ })
         .tap();
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
@@ -244,10 +244,10 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('pageerror', (e) => errors.push(e.message));
     try {
       await mountDracula(page, 'bidding');
-      await page.locator('.game-card').filter({ hasText: 'Do My Bidding' }).click();
+      await page.locator('.game-card').filter({ hasText: 'Obbediscimi' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Look at Hector');
-      const prey = choice().getByRole('button', { name: 'Prey Upon', exact: true });
+      await expect(choice()).toContainText('Mano rivelata di Hector');
+      const prey = choice().getByRole('button', { name: 'Predare', exact: true });
       await expect(prey).toContainText('Deal 1 damage');
       await expect(prey.locator('img')).toHaveJSProperty('complete', true);
       await page.screenshot({
@@ -256,8 +256,8 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       });
       await page.reload();
       await mountDracula(page, 'bidding');
-      await choice().getByRole('button', { name: 'Feint', exact: true }).click();
-      await expect(choice()).toContainText('Choose the replacement attack');
+      await choice().getByRole('button', { name: 'Finta', exact: true }).click();
+      await expect(choice()).toContainText('Scegli l’attacco sostitutivo');
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountDracula(page, 'bidding');
@@ -265,7 +265,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         path: test.info().outputPath('dracula-replacement-phone.png'),
         animations: 'disabled',
       });
-      await choice().getByRole('button', { name: 'Feint', exact: true }).focus();
+      await choice().getByRole('button', { name: 'Finta', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
@@ -299,14 +299,14 @@ test('Dracula restores a numbered Sister and directs Ravening Seduction on a lan
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await mountDracula(page, 'ritual');
-    await page.locator('.game-card').filter({ hasText: 'Baptism of Blood' }).tap();
+    await page.locator('.game-card').filter({ hasText: 'Battesimo di sangue' }).tap();
     const choice = () => page.locator('.hand-panel:has(.ability-options)');
-    await expect(page.getByRole('button', { name: 'Sister 2', exact: true })).toBeVisible();
-    await page.getByRole('button', { name: 'Sister 2', exact: true }).tap();
+    await expect(page.getByRole('button', { name: 'Sorella 2', exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Sorella 2', exact: true }).tap();
     await page.reload();
     await mountDracula(page, 'ritual');
     await page
-      .getByRole('button', { name: /^Choose space / })
+      .getByRole('button', { name: /^Scegli casella / })
       .first()
       .tap();
     await expect(choice()).toHaveCount(0);
@@ -322,14 +322,14 @@ test('Dracula restores a numbered Sister and directs Ravening Seduction on a lan
       animations: 'disabled',
     });
     await page
-      .getByRole('group', { name: 'Your fighters', exact: true })
-      .getByRole('button', { name: 'Sister 1', exact: true })
+      .getByRole('group', { name: 'I tuoi combattenti', exact: true })
+      .getByRole('button', { name: 'Sorella 1', exact: true })
       .tap();
-    await page.locator('.game-card').filter({ hasText: 'Ravening Seduction' }).tap();
+    await page.locator('.game-card').filter({ hasText: 'Seduzione famelica' }).tap();
     await page.getByRole('button', { name: /^Dracula · Hector$/ }).tap();
     await page.reload();
     await mountDracula(page, 'ritual');
-    await choice().getByRole('button', { name: 'Stay in place', exact: true }).tap();
+    await choice().getByRole('button', { name: 'Resta fermo', exact: true }).tap();
     await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
     expect(
       await page.evaluate(

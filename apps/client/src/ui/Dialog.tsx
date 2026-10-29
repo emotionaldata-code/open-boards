@@ -45,7 +45,7 @@ export function Dialog({
         <header className="dialog-heading">
           <h2 id={titleId}>{title}</h2>
           {dismissible && (
-            <button className="icon-button" onClick={onClose} aria-label="Close dialog">
+            <button className="icon-button" onClick={onClose} aria-label="Chiudi finestra">
               <Icon name="close" />
             </button>
           )}

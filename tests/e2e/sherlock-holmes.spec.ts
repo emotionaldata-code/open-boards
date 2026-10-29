@@ -172,47 +172,47 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     });
     try {
       await mountHolmes(page);
-      await expect(page.getByRole('button', { name: 'Dr. Watson 1', exact: true })).toBeVisible();
-      await page.locator('.game-card').filter({ hasText: 'Eliminate the Impossible' }).click();
+      await expect(page.getByRole('button', { name: 'Dott. Watson 1', exact: true })).toBeVisible();
+      await page.locator('.game-card').filter({ hasText: 'Eliminare l’impossibile' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await page.getByRole('button', { name: 'Briar', exact: true }).click();
-      await expect(choice()).toContainText('Discard 1 card from Briar');
+      await expect(choice()).toContainText('Scarta 1 carta dalla mano di Briar');
       await mountHolmes(page);
       await expect(
-        choice().getByRole('button', { name: 'Service Revolver', exact: true }),
-      ).toContainText('Service Revolver');
+        choice().getByRole('button', { name: 'Revolver d’ordinanza', exact: true }),
+      ).toContainText('Revolver d’ordinanza');
       await page.screenshot({
         path: test.info().outputPath('holmes-private-hand-desktop.png'),
         animations: 'disabled',
       });
       await page.setViewportSize({ width: 844, height: 390 });
       await mountHolmes(page);
-      await choice().getByRole('button', { name: 'Service Revolver', exact: true }).focus();
+      await choice().getByRole('button', { name: 'Revolver d’ordinanza', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
-      await page.locator('.game-card').filter({ hasText: 'Confirm Suspicion' }).click();
+      await page.locator('.game-card').filter({ hasText: 'Confermare i sospetti' }).click();
       await page.getByRole('button', { name: 'Briar', exact: true }).click();
       await choice()
-        .getByRole('combobox', { name: 'Value', exact: true })
+        .getByRole('combobox', { name: 'Valore', exact: true })
         .selectOption('value-100');
       await mountHolmes(page);
       // The selection has not been submitted; reload restores the full domain and commitment.
       await choice()
-        .getByRole('combobox', { name: 'Value', exact: true })
+        .getByRole('combobox', { name: 'Valore', exact: true })
         .selectOption('value-100');
-      await choice().getByRole('button', { name: 'Confirm value', exact: true }).tap();
-      await expect(choice()).toContainText('Revealed Briar');
+      await choice().getByRole('button', { name: 'Conferma valore', exact: true }).tap();
+      await expect(choice()).toContainText('Mano rivelata di Briar');
       for (const img of await choice().locator('img').all())
         await expect(img).toHaveJSProperty('complete', true);
       await page.screenshot({
         path: test.info().outputPath('holmes-revealed-hand-phone.png'),
         animations: 'disabled',
       });
-      await choice().getByRole('button', { name: 'Feint', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Finta', exact: true }).tap();
       await page.setViewportSize({ width: 1440, height: 1000 });
       await mountHolmes(page, 'defense');
-      await page.locator('.game-card').filter({ hasText: 'Elementary' }).click();
-      await expect(choice()).toContainText('Predict the printed attack value');
+      await page.locator('.game-card').filter({ hasText: 'Elementare' }).click();
+      await expect(choice()).toContainText('Prevedi il valore di attacco stampato');
       const observation = await page.evaluate(async (rootPath) => {
         const url = `/@fs${rootPath}/apps/server/src/transport/projection.ts`;
         const { projectGame } = (await import(
@@ -228,8 +228,8 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       expect(observation.observation?.cards[0].definition).toBe('sherlock-holmes-elementary');
       await page.setViewportSize({ width: 844, height: 390 });
       await mountHolmes(page, 'defense');
-      await choice().getByRole('combobox', { name: 'Value', exact: true }).selectOption('value-3');
-      await choice().getByRole('button', { name: 'Confirm value', exact: true }).focus();
+      await choice().getByRole('combobox', { name: 'Valore', exact: true }).selectOption('value-3');
+      await choice().getByRole('button', { name: 'Conferma valore', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       const final = await page.evaluate(

@@ -195,14 +195,14 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountVader(page, 'force');
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Discard up to 1');
+      await expect(choice()).toContainText('Scarta fino a 1');
       await choice()
-        .getByRole('button', { name: /I Have You Now/ })
+        .getByRole('button', { name: /Ora sei mio/ })
         .click();
       await choice()
-        .getByRole('button', { name: /Confirm/ })
+        .getByRole('button', { name: /Conferma/ })
         .click();
-      await expect(choice()).toContainText('Choose a fighter');
+      await expect(choice()).toContainText('Scegli un combattente');
       await page.screenshot({
         path: test.info().outputPath('force-desktop.png'),
         animations: 'disabled',
@@ -223,11 +223,11 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.evaluate(() => sessionStorage.clear());
       await page.reload();
       await mountVader(page, 'recovery');
-      await page.getByRole('button', { name: /Use/ }).tap();
-      await expect(choice()).toContainText('Shuffle a discarded card');
+      await page.getByRole('button', { name: /Usa/ }).tap();
+      await expect(choice()).toContainText('Rimescola una carta scartata');
       await page.reload();
       await mountVader(page, 'recovery');
-      await choice().getByRole('button', { name: 'Unstoppable', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Inarrestabile', exact: true }).tap();
       await expect(choice()).toHaveCount(0);
       expect((await currentState(page)).players[0].deck.some((c) => c.id === 'recycle')).toBe(true);
       expect(errors).toEqual([]);
@@ -259,12 +259,12 @@ test('Darth Vader chooses a starting space and defends with Form V Mastery on ph
     ).observe(document, { subtree: true, childList: true, attributes: true });
   });
   await mountVader(page, 'meditation');
-  await page.locator('.game-card').filter({ hasText: 'Meditation Chamber' }).click();
+  await page.locator('.game-card').filter({ hasText: 'Camera di meditazione' }).click();
   const choice = () => page.locator('.hand-panel:has(.ability-options)');
-  await expect(choice()).toContainText('Choose where to teleport');
+  await expect(choice()).toContainText('Scegli dove teletrasportare');
   await page.reload();
   await mountVader(page, 'meditation');
-  await page.getByRole('button', { name: 'Choose space 15', exact: true }).click();
+  await page.getByRole('button', { name: 'Scegli casella 15', exact: true }).click();
   expect((await currentState(page)).fighters.find((f) => f.id === 'p0:main')?.position).toBe('n13');
   await page.screenshot({
     path: test.info().outputPath('meditation-phone.png'),
@@ -273,7 +273,7 @@ test('Darth Vader chooses a starting space and defends with Form V Mastery on ph
   await page.evaluate(() => sessionStorage.clear());
   await page.reload();
   await mountVader(page, 'mastery');
-  await page.locator('.game-card').filter({ hasText: 'Form V Mastery' }).click();
+  await page.locator('.game-card').filter({ hasText: 'Maestria della Forma V' }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
   const state = await currentState(page);
   expect(state.players[1].discard.some((c) => c.definition === 'medusa-second-shot-3')).toBe(true);

@@ -7,9 +7,22 @@ export type SymbolName =
   | 'close'
   | 'rotate'
   | 'sound'
-  | 'muted';
+  | 'muted'
+  | 'health'
+  | 'move'
+  | 'cards'
+  | 'boost'
+  | 'confirm'
+  | 'notification';
 const paths: Record<SymbolName, string> = {
-  attack: 'M5 19 17 7m-9 9-3-3m3 3 3 3M14 4h6v6l-6-6Z',
+  attack: 'm5 19 3-3m-3-3 6 6m-3-3 11-11 1-4-4 1L5 13',
+  health:
+    'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z',
+  move: 'm4 17 4-4 4 4 8-10m-6 0h6v6',
+  cards: 'M7 7h13v14H7V7ZM4 17H2V2h13v2',
+  boost: 'm13 2-9 12h7l-1 8 10-13h-8l1-7Z',
+  confirm: 'm5 12 4 4L19 6',
+  notification: 'M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4',
   defense: 'M12 3 4 6v6c0 4 8 9 8 9s8-5 8-9V6l-8-3Zm0 4v10',
   versatile: 'm12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z',
   action: 'M12 3v18M3 12h18M6 6l12 12M6 18 18 6',

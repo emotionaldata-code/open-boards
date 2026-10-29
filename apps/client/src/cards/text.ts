@@ -1,4 +1,5 @@
 import { basic, cardPresentation } from '@open-boards/content';
+import { contentText } from '../localization/text';
 
 // Display copy only. Authored rules and their executable effects stay in the content bundle.
 const concise: Record<string, string> = {
@@ -59,20 +60,22 @@ export function cardText(id: string): string {
   const triggers = [...new Set(card.abilities?.map((ability) => ability.trigger) ?? [])];
   const prefix = triggers.length === 1 ? timing[triggers[0]] : undefined;
   return prefix && !/immediately:|combat:|attack:|defen[cs]e:/i.test(text)
-    ? `${prefix}: ${text}`
-    : text;
+    ? `${contentText(prefix)}: ${contentText(text)}`
+    : contentText(text);
 }
 
 export function cardFighter(id: string): string {
   const card = basic.cards[id];
   const character = basic.characters[cardPresentation[id].character];
   if (card.fighter)
-    return card.fighter === character.ally?.id
-      ? character.ally.name
-      : (character.heroSelection?.mainName ?? character.name);
+    return contentText(
+      card.fighter === character.ally?.id
+        ? character.ally.name
+        : (character.heroSelection?.mainName ?? character.name),
+    );
   return card.usableBy === 'BOTH'
-    ? 'Any fighter'
+    ? 'Qualsiasi combattente'
     : card.usableBy === 'ALLY'
-      ? (character.ally?.name ?? 'Ally')
-      : character.name;
+      ? contentText(character.ally?.name ?? 'Alleato')
+      : contentText(character.name);
 }

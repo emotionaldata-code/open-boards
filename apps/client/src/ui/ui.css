@@ -98,6 +98,9 @@
 .rules-grid h3 {
   margin-top: 18px;
 }
+.rules-trigger {
+  white-space: nowrap;
+}
 .rules-grid p {
   margin-bottom: 18px;
 }

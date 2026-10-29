@@ -106,7 +106,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           animations: 'disabled',
           path: test.info().outputPath('invisible-revival.png'),
         });
-        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+        await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
       await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
       await page.screenshot({

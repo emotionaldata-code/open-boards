@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import { basic } from '@open-boards/content';
 import { ArtworkImage } from '../artwork/ArtworkImage';
 import { mapArtwork, rasterAssets } from '../artwork/assets';
@@ -22,8 +23,8 @@ export function MapPreview() {
         />
       </div>
       <figcaption>
-        <strong>{basic.map.name}</strong>
-        <span>29 spaces · 7 zones · Secret passages</span>
+        <strong>{contentText(basic.map.name)}</strong>
+        <span>29 caselle · 7 zone · Passaggi segreti</span>
       </figcaption>
     </figure>
   );

@@ -163,8 +163,8 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await mountBruceLee(page, 'recovery');
       await page.locator('.game-card').filter({ hasText: 'HOO!' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Return a discarded card');
-      await expect(choice().getByRole('button', { name: 'Feint', exact: true })).toHaveCount(0);
+      await expect(choice()).toContainText('Riprendi in mano una carta scartata');
+      await expect(choice().getByRole('button', { name: 'Finta', exact: true })).toHaveCount(0);
       await page.screenshot({
         path: test.info().outputPath('bruce-lee-recovery-desktop.png'),
         animations: 'disabled',
@@ -172,7 +172,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountBruceLee(page, 'recovery');
-      await choice().getByRole('button', { name: 'Jeet Kune Do: Wrist Lock', exact: true }).focus();
+      await choice()
+        .getByRole('button', { name: 'Jeet Kune Do: leva al polso', exact: true })
+        .focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
@@ -180,17 +182,17 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         true,
       );
       expect((await currentState(page)).actions).toBe(2);
-      await page.locator('.game-card').filter({ hasText: 'Bring It On' }).tap();
-      await expect(choice()).toContainText('Choose a fighter');
+      await page.locator('.game-card').filter({ hasText: 'Fatti sotto' }).tap();
+      await expect(choice()).toContainText('Scegli un combattente');
       await page.getByRole('button', { name: 'Medusa · Hector', exact: true }).tap();
       await page.reload();
       await mountBruceLee(page, 'recovery');
-      await expect(choice()).toContainText('Choose where to teleport');
+      await expect(choice()).toContainText('Scegli dove teletrasportare');
       await page.screenshot({
         path: test.info().outputPath('bruce-lee-placement-phone.png'),
         animations: 'disabled',
       });
-      await page.getByRole('button', { name: 'Choose space 02', exact: true }).tap();
+      await page.getByRole('button', { name: 'Scegli casella 02', exact: true }).tap();
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       expect((await currentState(page)).fighters.find((f) => f.id === 'p1:main')?.position).toBe(
@@ -228,12 +230,12 @@ test('Bruce Lee returns One-Inch Punch after defeating the exact numbered ally o
   page.on('pageerror', (e) => errors.push(e.message));
   try {
     await mountBruceLee(page, 'punch');
-    await page.locator('.game-card').filter({ hasText: 'One-Inch Punch' }).tap();
+    await page.locator('.game-card').filter({ hasText: 'Pugno da un pollice' }).tap();
     const choice = () => page.locator('.hand-panel:has(.ability-options)');
-    await expect(page.getByRole('button', { name: 'Harpy 2 · Hector', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Arpia 2 · Hector', exact: true })).toBeVisible();
     await page.reload();
     await mountBruceLee(page, 'punch');
-    await page.getByRole('button', { name: 'Harpy 2 · Hector', exact: true }).tap();
+    await page.getByRole('button', { name: 'Arpia 2 · Hector', exact: true }).tap();
     await expect(choice()).toHaveCount(0);
     await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
     const state = await currentState(page);
@@ -258,11 +260,11 @@ test('Bruce Lee restores the optional end step before ending his turn', async ({
   await page.setViewportSize({ width: 1440, height: 1000 });
   await mountBruceLee(page, 'end-step');
   const choice = () => page.locator('.hand-panel:has(.ability-options)');
-  await expect(choice()).toContainText('Choose a destination');
+  await expect(choice()).toContainText('Scegli una destinazione');
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();
   await mountBruceLee(page, 'end-step');
-  await page.getByRole('button', { name: 'Choose space 02', exact: true }).focus();
+  await page.getByRole('button', { name: 'Scegli casella 02', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect(choice()).toHaveCount(0);
   expect((await currentState(page)).fighters.find((f) => f.id === 'p0:main')?.position).toBe('n1');

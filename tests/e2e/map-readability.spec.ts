@@ -47,7 +47,7 @@ for (const viewport of [
         const arena = (await page.locator('.arena').boundingBox())!;
         expect(alert.y).toBeGreaterThanOrEqual(arena.y + arena.height);
         const controls = (await page
-          .getByRole('button', { name: 'Finish Maneuver', exact: true })
+          .getByRole('button', { name: 'Termina manovra', exact: true })
           .boundingBox())!;
         expect(
           controls.y >= alert.y + alert.height || controls.y + controls.height <= alert.y,
@@ -137,7 +137,7 @@ for (const viewport of [
       expect(
         rings.every(({ inner, zoneOuter, fill }) => inner > zoneOuter && fill === 'none'),
       ).toBe(true);
-      const portalTarget = page.getByRole('button', { name: 'Move to 08', exact: true });
+      const portalTarget = page.getByRole('button', { name: 'Muovi in 08', exact: true });
       await expect(portalTarget).toHaveAttribute(
         'aria-description',
         /passage arrows.*one movement point/,
@@ -178,7 +178,7 @@ test('failed map artwork reveals vector scenery while spaces remain playable', a
   await expect(page.locator('.map-scenery > svg')).toBeVisible();
   await expect(page.locator('.map-scenery > svg path').first()).toHaveAttribute('fill', '#344438');
   await expect(page.locator('.map-terrain [data-space]')).toHaveCount(map.nodes.length);
-  await page.getByRole('button', { name: 'Move to 02', exact: true }).click();
+  await page.getByRole('button', { name: 'Muovi in 02', exact: true }).click();
   expect(
     await page.evaluate(() =>
       (window as unknown as { presentationCommands: unknown[] }).presentationCommands.at(-1),

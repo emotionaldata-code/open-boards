@@ -31,7 +31,7 @@
   align-items: center;
   gap: 18px;
   min-height: 44px;
-  padding-right: 48px;
+  padding-right: 116px;
   flex-shrink: 0;
 }
 .game-title h1 {
@@ -255,7 +255,7 @@
     flex-wrap: nowrap;
     gap: 4px 8px;
     min-height: 44px;
-    padding-right: 48px;
+    padding-right: 116px;
   }
   .in-match .topbar {
     right: max(8px, env(safe-area-inset-right));
@@ -302,7 +302,7 @@
   }
   .game-title {
     min-height: 40px;
-    padding-right: 48px;
+    padding-right: 116px;
     gap: 10px;
   }
   .in-match .game-title h1 {
@@ -370,6 +370,12 @@
   }
 }
 
+@media (max-height: 450px) and (orientation: landscape) {
+  .play-surface {
+    grid-template-columns: minmax(0, 1fr) min(62vw, 440px);
+  }
+}
+
 .game-title .turn-label {
   color: var(--text);
 }
@@ -392,5 +398,29 @@
 @media (max-height: 700px) and (orientation: landscape) {
   .hand-panel {
     padding: 0;
+  }
+}
+
+.action-notice.is-visible > div {
+  animation: notice-arrive 180ms ease-out;
+}
+.action-notice strong .icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+@keyframes notice-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .action-notice.is-visible > div {
+    animation: none;
   }
 }

@@ -4,6 +4,7 @@ import type { VisualEffect } from './events';
 import { markSvg } from '../characters/marks';
 import { createAttack } from './combat';
 import { createTravel } from './travel';
+import { createSpriteEffect } from './sprites';
 
 export const effectColors = { gold: 0xf1ce8a, mint: 0x99e6d1, ember: 0xffae8c };
 export interface EffectFrame {
@@ -16,7 +17,12 @@ export function createEffect(
   actors: Map<string, Container>,
   color: number,
   reduced: boolean,
+  duration = 1400,
 ): EffectFrame {
+  if (effect.type === 'sprite') {
+    if (reduced) return { update: () => {}, destroy: () => {} };
+    return createSpriteEffect(effect.clip, effect.node, layer, duration);
+  }
   if (effect.type === 'attack') return createAttack(effect, layer, actors, color, reduced);
   if (effect.type === 'sigil') {
     const point = spaces[effect.node];
@@ -60,8 +66,18 @@ export function createEffect(
   }
   const g = new Graphics();
   layer.addChild(g);
+  const sprite =
+    !reduced && (effect.type === 'burst' || effect.type === 'shield' || effect.type === 'ring')
+      ? createSpriteEffect(
+          effect.type === 'burst' ? 'impact' : effect.type === 'shield' ? 'parry' : 'select',
+          effect.node,
+          layer,
+          duration,
+        )
+      : undefined;
   return {
     update: (t) => {
+      sprite?.update(t);
       g.clear();
       const fade = Math.min(1, (1 - t) * 3);
       const point = spaces[effect.node];
@@ -116,6 +132,7 @@ export function createEffect(
       }
     },
     destroy: () => {
+      sprite?.destroy();
       if (!g.destroyed) g.destroy();
     },
   };

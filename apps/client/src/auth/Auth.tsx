@@ -1,8 +1,8 @@
+import { messageText } from '../ui/messages';
 import { useState, type FormEvent } from 'react';
 import type { User } from '@open-boards/protocol';
 import { http } from '../network/http';
 import { CharacterRoster } from '../characters/CharacterRoster';
-import { HowToPlay } from './HowToPlay';
 export function Auth({ onUser }: { onUser: (user: User) => void }) {
   const [register, setRegister] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -28,12 +28,12 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
   return (
     <main className="entry-grid">
       <section className="entry-copy">
-        <h1>Play Open Boards</h1>
-        <p>A tactical card game for 2 or 4 players.</p>
+        <h1>Gioca a Open Boards</h1>
+        <p>Un gioco tattico di carte per 2 o 4 giocatori.</p>
         <form aria-busy={busy} onSubmit={(e) => void submit(e)}>
-          <h2>{register ? 'Create your account' : 'Sign in to play'}</h2>
+          <h2>{register ? 'Crea il tuo account' : 'Accedi per giocare'}</h2>
           <label>
-            Username
+            Nome utente
             <input
               name="username"
               autoComplete="username"
@@ -41,7 +41,7 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
               minLength={3}
               maxLength={24}
               required
-              placeholder="Your table name"
+              placeholder="Il tuo nome al tavolo"
             />
           </label>
           <label>
@@ -53,16 +53,16 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
               minLength={8}
               maxLength={128}
               required
-              placeholder="At least 8 characters"
+              placeholder="Almeno 8 caratteri"
             />
           </label>
           {error && (
             <p className="error" role="alert">
-              {error}
+              {messageText(error)}
             </p>
           )}
           <button className="primary" disabled={busy}>
-            {busy ? 'Connecting…' : register ? 'Create account' : 'Sign in'}
+            {busy ? 'Connessione…' : register ? 'Crea account' : 'Accedi'}
           </button>
           <button
             type="button"
@@ -73,15 +73,14 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
               setError('');
             }}
           >
-            {register ? 'Already have an account? Sign in' : 'New to the table? Create an account'}
+            {register ? 'Hai già un account? Accedi' : 'Prima partita? Crea un account'}
           </button>
         </form>
         <div className="entry-bottom">
-          <span className="muted">2 or 4 players · One survivor</span>
-          <HowToPlay />
+          <span className="muted">2 o 4 giocatori · Un solo vincitore</span>
         </div>
       </section>
-      <section className="entry-roster" aria-label="Meet the fighters">
+      <section className="entry-roster" aria-label="Scopri i combattenti">
         <CharacterRoster featured selected="medusa" />
       </section>
     </main>

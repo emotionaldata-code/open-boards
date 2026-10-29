@@ -1,6 +1,9 @@
+import { contentText } from '../localization/text';
+import { cardCategoryLabel } from '../ui/labels';
 import { basic } from '@open-boards/content';
 import { CardArtwork } from './CardArtwork';
 import { cardFighter, cardText } from './text';
+import { Icon } from '../ui/Icon';
 
 export function CardPrint({
   definition: id,
@@ -14,17 +17,22 @@ export function CardPrint({
   return (
     <>
       <span className="card-top" data-kind={card.category}>
-        <span>
-          <span className="card-boost">BOOST {card.boost}</span>
-          <span className="card-kind">
-            {card.category === 'versatile' ? 'Attack / Defense' : card.category}
-          </span>{' '}
-          · {cardFighter(id)}
+        <span className="card-type">
+          <Icon name={card.category} />
+          <span className="card-kind">{cardCategoryLabel[card.category]}</span>
         </span>
-        {card.category !== 'action' && <strong>{card.value}</strong>}
+        <span
+          className="card-boost"
+          aria-label={`BOOST ${card.boost}`}
+          title={`BOOST ${card.boost}`}
+        >
+          <Icon name="boost" /> {card.boost}
+        </span>
+        {card.category !== 'action' && <strong className="card-value">{card.value}</strong>}
       </span>
       <CardArtwork definition={id} inspector={inspector} />
-      <strong className="card-name">{card.name}</strong>
+      <strong className="card-name">{contentText(card.name)}</strong>
+      <span className="card-fighter">{cardFighter(id)}</span>
       {text && <span className="card-description">{text}</span>}
     </>
   );

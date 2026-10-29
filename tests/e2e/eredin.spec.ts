@@ -1,3 +1,4 @@
+import { contentText } from '../../apps/client/src/localization/text';
 import { expect, test, type Page } from '@playwright/test';
 
 async function mountEredin(
@@ -191,7 +192,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     await page.emulateMedia({ reducedMotion });
     await page.setViewportSize({ width: 1440, height: 1000 });
     await mountEredin(page, 'sacrifice');
-    await expect(page.getByRole('button', { name: 'Use Foul Purpose', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Usa Intento malvagio', exact: true }),
+    ).toBeVisible();
     await page.screenshot({
       path: test.info().outputPath('sacrifice-desktop.png'),
       animations: 'disabled',
@@ -199,12 +202,12 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     await page.setViewportSize({ width: 844, height: 390 });
     await page.reload();
     await mountEredin(page, 'sacrifice');
-    await page.getByRole('button', { name: 'Use Foul Purpose', exact: true }).focus();
+    await page.getByRole('button', { name: 'Usa Intento malvagio', exact: true }).focus();
     await page.keyboard.press('Enter');
-    await expect(page.locator('.hand-panel')).toContainText('Choose a fighter');
+    await expect(page.locator('.hand-panel')).toContainText('Scegli un combattente');
     await page.reload();
     await mountEredin(page, 'sacrifice');
-    await page.getByRole('button', { name: 'Red Rider 2 · Eredin', exact: true }).click();
+    await page.getByRole('button', { name: 'Cavaliere Rosso 2 · Eredin', exact: true }).click();
     await expect
       .poll(async () => (await state(page)).fighters.find((f) => f.id === 'p0:ally-2')?.defeated)
       .toBe(true);
@@ -222,28 +225,33 @@ test('Eredin declares a distant face-up attack while the defender can inspect an
 }) => {
   await page.setViewportSize({ width: 844, height: 390 });
   await mountEredin(page, 'faceup');
-  await page.getByRole('button', { name: 'Prepare attack · Foul Purpose', exact: true }).click();
-  const toggle = page.getByRole('button', { name: 'Play face-up · target any space', exact: true });
+  await page
+    .getByRole('button', { name: 'Prepara attacco · Intento malvagio', exact: true })
+    .click();
+  const toggle = page.getByRole('button', {
+    name: 'Gioca scoperta · colpisci qualsiasi casella',
+    exact: true,
+  });
   await expect(toggle).toHaveAttribute('aria-pressed', 'false');
   await toggle.click();
   await expect(toggle).toHaveAttribute('aria-pressed', 'true');
-  await page.getByRole('button', { name: 'Target Bigfoot (Briar)', exact: true }).click();
+  await page.getByRole('button', { name: 'Bersaglio Bigfoot (Briar)', exact: true }).click();
   await expect.poll(async () => (await state(page)).phase.type).toBe('awaiting-defense');
   await page.reload();
   await mountEredin(page, 'faceup', 'p1');
   await page
-    .getByRole('button', { name: 'Inspect face-up attack · Foul Purpose', exact: true })
+    .getByRole('button', { name: 'Esamina attacco scoperto · Intento malvagio', exact: true })
     .click();
-  await expect(page.getByRole('dialog', { name: 'Foul Purpose', exact: true })).toContainText(
-    'Foul Purpose',
+  await expect(page.getByRole('dialog', { name: 'Intento malvagio', exact: true })).toContainText(
+    'Intento malvagio',
   );
   await page.screenshot({
     path: test.info().outputPath('face-up-inspector-phone.png'),
     animations: 'disabled',
   });
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: 'Take the hit', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Take the hit', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Subisci il colpo', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Subisci il colpo', exact: true }).click();
   await expect.poll(async () => (await state(page)).revealed?.damage).toBe(4);
 });
 test('Portal Defense restores an adjacent numbered Rider choice and transfers the defense', async ({
@@ -253,7 +261,7 @@ test('Portal Defense restores an adjacent numbered Rider choice and transfers th
   await mountEredin(page, 'defense');
   await page.reload();
   await mountEredin(page, 'defense');
-  await page.getByRole('button', { name: 'Red Rider 1 · Eredin', exact: true }).click();
+  await page.getByRole('button', { name: 'Cavaliere Rosso 1 · Eredin', exact: true }).click();
   await expect.poll(async () => (await state(page)).revealed?.defender).toBe('p0:ally-1');
   expect((await state(page)).fighters.find((f) => f.id === 'p0:main')?.position).toBe('n9');
 });
@@ -265,12 +273,12 @@ test('Eredin and Holmes retain both face-up inspectors during a private predicti
   await mountEredin(page, 'prediction', 'p1');
   await page.reload();
   await mountEredin(page, 'prediction', 'p1');
-  await expect(page.locator('.hand-panel')).toContainText('Predict the printed attack value');
+  await expect(page.locator('.hand-panel')).toContainText('Prevedi il valore di attacco stampato');
   for (const name of ['Foul Purpose', 'Elementary']) {
     await page
-      .getByRole('button', { name: `Inspect revealed card · ${name}`, exact: true })
+      .getByRole('button', { name: `Esamina carta rivelata · ${contentText(name)}`, exact: true })
       .click();
-    const inspector = page.getByRole('dialog', { name, exact: true });
+    const inspector = page.getByRole('dialog', { name: contentText(name), exact: true });
     await expect(inspector).toBeVisible();
     await expect(inspector.locator('.dialog-heading h2')).toBeVisible();
     await expect(inspector.locator('img[data-raster]')).toBeVisible();

@@ -1,3 +1,5 @@
+import { contentText } from '../localization/text';
+import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
 import { characters, defaultCharacter } from '@open-boards/content';
 import { CharacterPicker } from '../characters/CharacterPicker';
@@ -38,18 +40,18 @@ export function WaitingRoom({
     <main className="waiting-page">
       <div className="page-title">
         <div>
-          <h1>Your table is open</h1>
+          <h1>Il tuo tavolo è aperto</h1>
           <p className="muted">
-            {room.capacity === 2 ? 'Head to head' : 'Four-player free-for-all'} · Everyone readies
-            up before the host starts.
+            {room.capacity === 2 ? 'Duello' : 'Tutti contro tutti a quattro'} · Tutti devono essere
+            pronti prima che l’organizzatore avvii la partita.
           </p>
         </div>
-        <button onClick={onLeave}>Leave table</button>
+        <button onClick={onLeave}>Lascia il tavolo</button>
       </div>
       <div className="waiting-grid">
         <section className="panel">
           <div className="section-heading">
-            <h2>Seats at the table</h2>
+            <h2>Posti al tavolo</h2>
             <span className="muted">
               {room.seats.length} / {room.capacity}
             </span>
@@ -62,23 +64,23 @@ export function WaitingRoom({
                   {seat ? (
                     <CharacterPortrait character={seat.character} />
                   ) : (
-                    <span className="open-seat" aria-label={`Seat ${i + 1}`}>
+                    <span className="open-seat" aria-label={`Posto ${i + 1}`}>
                       +
                     </span>
                   )}
                   <div className="grow">
                     <strong>
-                      {seat?.name ?? 'Open seat'}
-                      {seat?.id === user.id ? ' (you)' : ''}
+                      {seat?.name ?? 'Posto libero'}
+                      {seat?.id === user.id ? ' (tu)' : ''}
                     </strong>
                     <small className="muted">
                       {seat
-                        ? `${seat.id === room.host ? 'Host · ' : ''}${characters[seat.character].name} · ${characters[seat.character].attackType}`
-                        : 'Invite a friend to join'}
+                        ? `${seat.id === room.host ? 'Organizzatore · ' : ''}${contentText(characters[seat.character].name)} · ${attackTypeLabel[characters[seat.character].attackType]}`
+                        : 'Invita un amico'}
                     </small>
                   </div>
                   <span className={seat?.ready ? 'ready' : 'muted'}>
-                    {seat ? (seat.ready ? 'Ready' : 'Not ready') : 'Waiting'}
+                    {seat ? (seat.ready ? 'Pronto' : 'Non pronto') : 'In attesa'}
                   </span>
                 </li>
               );
@@ -88,50 +90,50 @@ export function WaitingRoom({
         </section>
         <section className="panel invite">
           <MapPreview />
-          <h2>Invite players</h2>
-          <p className="muted">Share the invite link to join this table.</p>
+          <h2>Invita giocatori</h2>
+          <p className="muted">Condividi il link di invito a questo tavolo.</p>
           <label>
-            Room ID
+            Codice stanza
             <input readOnly value={room.id} onFocus={(e) => e.target.select()} />
           </label>
           <button onClick={() => void copyInvite()}>
-            {copied ? 'Link copied' : 'Copy invite link'}
+            {copied ? 'Link copiato' : 'Copia link di invito'}
           </button>
           <span className={copyError ? 'error' : 'muted'} role="status">
             {copyError
-              ? 'Could not copy. Share the Room ID above.'
+              ? 'Copia non riuscita. Condividi il codice stanza qui sopra.'
               : copied
-                ? 'Invite link copied to clipboard.'
-                : `${room.seats.filter((seat) => seat.ready).length} / ${room.capacity} players ready`}
+                ? 'Link di invito copiato negli appunti.'
+                : `${room.seats.filter((seat) => seat.ready).length} / ${room.capacity} giocatori pronti`}
           </span>
           <div className="match-controls">
             <div className="button-row">
               <button className="primary" onClick={onReady}>
-                {own?.ready ? 'Not ready' : 'Ready up'}
+                {own?.ready ? 'Non pronto' : 'Sono pronto'}
               </button>
               {room.host === user.id && (
                 <button onClick={onStart} disabled={!canStart}>
-                  Start match
+                  Avvia partita
                 </button>
               )}
             </div>
             <p className="muted">
               {canStart
-                ? 'Everyone is ready. The host can start the match.'
-                : 'Fill every seat and ready up to begin.'}
+                ? 'Tutti pronti. L’organizzatore può avviare la partita.'
+                : 'Per iniziare, tutti i posti devono essere occupati e i giocatori pronti.'}
             </p>
           </div>
           <p className="muted">
-            {character.hp} health · movement {character.movement} ·{' '}
-            {character.deck.reduce((sum, entry) => sum + entry.count, 0)} cards.{' '}
+            {character.hp} vita · movimento {character.movement} ·{' '}
+            {character.deck.reduce((sum, entry) => sum + entry.count, 0)} carte.{' '}
             {character.attackType === 'ranged'
-              ? 'Attack adjacent rivals or rivals sharing any space color.'
-              : 'Attack adjacent rivals.'}{' '}
-            Changing character clears your ready status.
+              ? 'Attacca nemici adiacenti o in una zona dello stesso colore.'
+              : 'Attacca nemici adiacenti.'}{' '}
+            Cambiare personaggio annulla il tuo stato di pronto.
           </p>
           {(character.abilities ?? []).map((ability) => (
             <p className="muted" key={ability.id}>
-              <strong>{ability.name}</strong> · {ability.description}
+              <strong>{contentText(ability.name)}</strong> · {contentText(ability.description)}
             </p>
           ))}
         </section>

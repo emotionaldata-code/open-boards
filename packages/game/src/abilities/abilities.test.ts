@@ -63,6 +63,34 @@ function attack(state: GameState, defs: Definitions) {
 }
 
 describe('declarative abilities', () => {
+  it.each(['turn-start', 'turn-end'] as const)(
+    'keeps optional %s activation separate from selecting a fighter',
+    (hook) => {
+      const { state, defs } = setup([
+        ability(hook, [{ type: 'counter', name: 'energy', amount: 1 }], { optional: true }),
+      ]);
+      const pending = hook === 'turn-start' ? state : finishActions(state, defs).state;
+      expect(pending.resolution.choice).toMatchObject({
+        source: { fighter: 'p0:main', name: hook, description: 'Test ability' },
+        options: [
+          { id: 'use', label: `Use ${hook}` },
+          { id: 'skip', decline: true },
+        ],
+      });
+      expect(pending.resolution.choice!.options[0].object).toBeUndefined();
+      expect(pending.fighters[0].counters.energy).toBe(0);
+      expect(run(pending, defs, 'p0', { type: 'maneuver' }).ok).toBe(false);
+      for (const option of ['use', 'skip']) {
+        const resumed = respond(JSON.parse(JSON.stringify(pending)), defs, [option]).state;
+        expect(resumed.fighters[0].counters.energy).toBe(option === 'use' ? 1 : 0);
+        expect(resumed.turn).toBe(hook === 'turn-start' ? 0 : 1);
+        expect(resumed.actions).toBe(2);
+        expect(resumed.phase.type).toBe('taking-actions');
+        expect(resumed.resolution.frames).toEqual({});
+        expect(resumed.resolution.queue).toEqual([]);
+      }
+    },
+  );
   it('runs first turn-start, turn-end and the next turn-start with self/any scopes', () => {
     const { state, defs } = setup([
       ability('turn-start', [{ type: 'counter', name: 'energy', amount: 1 }], { scope: 'any' }),

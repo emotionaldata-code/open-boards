@@ -1,3 +1,5 @@
+import { contentText } from '../localization/text';
+import { attackTypeLabel } from '../ui/labels';
 import { useId, useRef, useState } from 'react';
 import { characters, defaultCharacter } from '@open-boards/content';
 import { CharacterPortrait } from './CharacterPortrait';
@@ -23,13 +25,13 @@ export function CharacterRoster({
   return (
     <section
       className={`character-roster ${featured ? 'roster-featured' : ''}`}
-      aria-label="Character roster"
+      aria-label="Personaggi disponibili"
     >
       <div className="roster-heading">
-        <h2>Find your fighter</h2>
+        <h2>Scegli il tuo combattente</h2>
         <span>
           {Object.keys(characters).length}{' '}
-          {Object.keys(characters).length === 1 ? 'character' : 'characters'}
+          {Object.keys(characters).length === 1 ? 'personaggio' : 'personaggi'}
         </span>
       </div>
       <div className="roster-detail" id={id} ref={detail}>
@@ -44,31 +46,31 @@ export function CharacterRoster({
         />
         <div className="roster-description" aria-live="polite" aria-atomic="true">
           <p className="character-role">
-            {profile.role} · {character.attackType}
+            {profile.role} · {attackTypeLabel[character.attackType]}
           </p>
-          <h3>{character.name}</h3>
+          <h3>{contentText(character.name)}</h3>
           <dl className="character-stats">
             <div>
-              <dt>Health</dt>
+              <dt>Vita</dt>
               <dd>{character.hp}</dd>
             </div>
             <div>
-              <dt>Movement</dt>
+              <dt>Movimento</dt>
               <dd>{character.movement}</dd>
             </div>
             <div>
-              <dt>{character.deckSelection ? 'Card pool' : 'Deck'}</dt>
+              <dt>{character.deckSelection ? 'Carte disponibili' : 'Mazzo'}</dt>
               <dd>{character.deck.reduce((sum, entry) => sum + entry.count, 0)}</dd>
             </div>
           </dl>
         </div>
       </div>
-      <div className="roster-list" role="group" aria-label="Explore characters">
+      <div className="roster-list" role="group" aria-label="Esplora i personaggi">
         {Object.values(characters).map((candidate) => (
           <button
             type="button"
             key={candidate.id}
-            aria-label={`Inspect ${candidate.name}`}
+            aria-label={`Esamina ${contentText(candidate.name)}`}
             aria-pressed={candidate.id === inspected}
             aria-controls={id}
             onClick={(event) => {
@@ -77,62 +79,62 @@ export function CharacterRoster({
             }}
           >
             <CharacterPortrait character={candidate.id} />
-            <span>{candidate.name}</span>
+            <span>{contentText(candidate.name)}</span>
           </button>
         ))}
       </div>
       <details className="roster-more" open={featured ? undefined : true} key={inspected}>
-        <summary>Abilities & tactics</summary>
+        <summary>Abilità e tattiche</summary>
         <div className="roster-rules">
           <p className="character-range">
             {character.attackType === 'ranged'
-              ? 'Reach: adjacent or any shared color.'
-              : 'Reach: adjacent spaces only.'}
+              ? 'Portata: caselle adiacenti o zone dello stesso colore.'
+              : 'Portata: solo caselle adiacenti.'}
           </p>
           {character.cardEffectProtection && (
             <p>
-              <strong>{character.cardEffectProtection.name}</strong>{' '}
-              {character.cardEffectProtection.description}
+              <strong>{contentText(character.cardEffectProtection.name)}</strong>{' '}
+              {contentText(character.cardEffectProtection.description)}
             </p>
           )}
           {character.deckSelection && (
             <p>
-              <strong>{character.deckSelection.name}</strong> ·{' '}
-              {character.deckSelection.description}
+              <strong>{contentText(character.deckSelection.name)}</strong> ·{' '}
+              {contentText(character.deckSelection.description)}
             </p>
           )}
           {character.heroSelection && (
             <p>
-              <strong>{character.heroSelection.name}</strong> ·{' '}
-              {character.heroSelection.description}
+              <strong>{contentText(character.heroSelection.name)}</strong> ·{' '}
+              {contentText(character.heroSelection.description)}
             </p>
           )}
           {character.conditionalModifiers?.map((rule) => (
             <p key={rule.name}>
-              <strong>{rule.name}</strong> {rule.description}
+              <strong>{contentText(rule.name)}</strong> {contentText(rule.description)}
             </p>
           ))}
           {(character.abilities ?? []).length
             ? character.abilities!.map((ability) => (
                 <p key={ability.id}>
-                  <strong>{ability.name}</strong> {ability.description}
+                  <strong>{contentText(ability.name)}</strong> {contentText(ability.description)}
                 </p>
               ))
             : !character.cardEffectProtection &&
               !character.conditionalModifiers?.length &&
-              !character.deckSelection && <p>No special abilities.</p>}
+              !character.deckSelection && <p>Nessuna abilità speciale.</p>}
           {character.ally && (
             <div className="ally-rules">
               <p>
                 <strong>
-                  {character.ally.count} × {character.ally.name}
+                  {character.ally.count} × {contentText(character.ally.name)}
                 </strong>{' '}
-                · {character.ally.hp} HP each · {character.ally.attackType} · use the hero’s
-                movement.
+                · {character.ally.hp} PV ciascuno · {attackTypeLabel[character.ally.attackType]} ·
+                usa il movimento dell’eroe.
               </p>
               {character.ally.abilities?.map((ability) => (
                 <p key={ability.id}>
-                  <strong>{ability.name}</strong> {ability.description}
+                  <strong>{contentText(ability.name)}</strong> {contentText(ability.description)}
                 </p>
               ))}
             </div>
@@ -141,14 +143,14 @@ export function CharacterRoster({
         </div>
       </details>
       <button type="button" className="roster-deck" onClick={() => setDeckOpen(true)}>
-        Explore {character.name}’s deck · {character.deck.length} designs
+        Mazzo di {contentText(character.name)} · {character.deck.length} carte diverse
       </button>
       {deckOpen && <DeckExplorer character={inspected} onClose={() => setDeckOpen(false)} />}
       {onChoose && (
         <div className="roster-confirm">
-          <p>Changing character clears your ready status.</p>
+          <p>Cambiare personaggio annulla il tuo stato di pronto.</p>
           <button type="button" className="primary" onClick={() => onChoose(inspected)}>
-            Choose {character.name}
+            Scegli {contentText(character.name)}
           </button>
         </div>
       )}

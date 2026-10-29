@@ -16,10 +16,12 @@ export function FullscreenButton() {
         await document.documentElement.requestFullscreen();
       else
         setError(
-          'This browser does not support fullscreen. Use Add to Home Screen for an immersive view.',
+          'Questo browser non supporta lo schermo intero. Usa Aggiungi alla schermata Home per una vista immersiva.',
         );
     } catch {
-      setError('Fullscreen is unavailable in this browser. You can keep playing here.');
+      setError(
+        'Lo schermo intero non è disponibile in questo browser. Puoi continuare a giocare qui.',
+      );
     }
   }
   return (
@@ -27,15 +29,15 @@ export function FullscreenButton() {
       <button
         className="icon-button"
         onClick={() => void toggle()}
-        aria-label={active ? 'Exit fullscreen' : 'Enter fullscreen'}
-        title={active ? 'Exit fullscreen' : 'Enter fullscreen'}
+        aria-label={active ? 'Esci da schermo intero' : 'Schermo intero'}
+        title={active ? 'Esci da schermo intero' : 'Schermo intero'}
       >
         <Icon name="fullscreen" />
       </button>
       {error && (
         <div className="display-message" role="alert">
           {error}
-          <button onClick={() => setError('')}>Dismiss</button>
+          <button onClick={() => setError('')}>Chiudi</button>
         </div>
       )}
     </div>

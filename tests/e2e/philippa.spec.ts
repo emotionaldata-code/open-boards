@@ -206,27 +206,27 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       for (let i = 0; i < 4; i++) {
         await page.reload();
         await mountPhilippa(page, 'ruse', 'p1');
-        await expect(choice()).toContainText(`Choose cards to reveal (${i}/4)`);
+        await expect(choice()).toContainText(`Scegli carte da rivelare (${i}/4)`);
         await choice().locator('button.game-card').first().click();
       }
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountPhilippa(page, 'ruse');
-      await expect(choice()).toContainText('Discard 2 revealed cards');
-      await choice().getByRole('button', { name: 'Regicide', exact: true }).focus();
+      await expect(choice()).toContainText('Scarta 2 carte rivelate');
+      await choice().getByRole('button', { name: 'Regicidio', exact: true }).focus();
       await page.keyboard.press('Enter');
-      await choice().getByRole('button', { name: 'Cunning', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Astuzia', exact: true }).tap();
       await page.screenshot({
         path: test.info().outputPath('philippa-ruse-phone.png'),
         animations: 'disabled',
       });
       await choice()
-        .getByRole('button', { name: /^Confirm choice/ })
+        .getByRole('button', { name: /^Conferma scelta/ })
         .tap();
       await expect.poll(async () => (await currentState(page)).players[1].discard.length).toBe(2);
       await reset();
       await mountPhilippa(page, 'zone');
-      await expect(choice()).toContainText('Choose a zone');
+      await expect(choice()).toContainText('Scegli una zona');
       await page.reload();
       await mountPhilippa(page, 'zone');
       await choice().getByRole('button', { name: 'gold', exact: true }).tap();
@@ -235,12 +235,12 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await reset();
       await mountPhilippa(page, 'polymorphy');
       await page
-        .getByRole('button', { name: /^Choose space / })
+        .getByRole('button', { name: /^Scegli casella / })
         .first()
         .tap();
       await expect.poll(async () => (await currentState(page)).players[0].ongoing?.length).toBe(1);
       await expect(
-        page.getByRole('button', { name: /Philippa \(you\): 12 health, 5 movement/ }),
+        page.getByRole('button', { name: /Philippa \(tu\): 12 vita, 5 movimento/ }),
       ).toBeVisible();
       await page.screenshot({
         path: test.info().outputPath('philippa-polymorphy-phone.png'),
@@ -248,10 +248,10 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       });
       await reset();
       await mountPhilippa(page, 'end');
-      await expect(choice()).toContainText('Two Steps Ahead');
+      await expect(choice()).toContainText('Due passi avanti');
       await page.reload();
       await mountPhilippa(page, 'end');
-      await page.getByRole('button', { name: 'Use Two Steps Ahead', exact: true }).tap();
+      await page.getByRole('button', { name: 'Usa Due passi avanti', exact: true }).tap();
       await expect.poll(async () => (await currentState(page)).players[0].hand.length).toBe(4);
       expect(errors).toEqual([]);
     } finally {

@@ -1,3 +1,4 @@
+import { contentText } from '../../apps/client/src/localization/text';
 import { expect, test } from '@playwright/test';
 import { presentationHarness } from './fixtures/game';
 import type { GameView } from '../../packages/protocol/src/index';
@@ -32,11 +33,14 @@ for (const { name, designs } of [
     });
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/');
-    const roster = page.getByRole('region', { name: 'Character roster' });
-    await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).click();
+    const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
+    await roster.getByRole('button', { name: `Esamina ${contentText(name)}`, exact: true }).click();
     await expect(roster.locator('.roster-detail img[data-raster]')).toBeVisible();
     await roster
-      .getByRole('button', { name: `Explore ${name}’s deck · ${designs} designs`, exact: true })
+      .getByRole('button', {
+        name: `Mazzo di ${contentText(name)} · ${designs} carte diverse`,
+        exact: true,
+      })
       .click();
     for (const viewport of [
       { width: 1440, height: 1000 },
@@ -45,12 +49,17 @@ for (const { name, designs } of [
       if (viewport.width === 844) {
         await page.keyboard.press('Escape');
         await page.setViewportSize(viewport);
-        await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).click();
         await roster
-          .getByRole('button', { name: `Explore ${name}’s deck · ${designs} designs`, exact: true })
+          .getByRole('button', { name: `Esamina ${contentText(name)}`, exact: true })
+          .click();
+        await roster
+          .getByRole('button', {
+            name: `Mazzo di ${contentText(name)} · ${designs} carte diverse`,
+            exact: true,
+          })
           .click();
       }
-      const deck = page.getByRole('dialog', { name: `${name}’s deck`, exact: true });
+      const deck = page.getByRole('dialog', { name: `Mazzo di ${contentText(name)}`, exact: true });
       const cards = deck.locator('.deck-gallery > button');
       await expect(cards).toHaveCount(designs);
       for (const card of await cards.all()) {
@@ -194,17 +203,17 @@ test('React artwork falls back to local SVG when raster requests fail', async ({
   await page.route('**/artwork/medusa/**', (route) => route.abort());
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/');
-  const roster = page.getByRole('region', { name: 'Character roster' });
-  await roster.getByRole('button', { name: 'Inspect Medusa', exact: true }).click();
+  const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
+  await roster.getByRole('button', { name: 'Esamina Medusa', exact: true }).click();
   await expect(roster.locator('.roster-detail img')).toHaveAttribute(
     'src',
     /^data:image\/svg\+xml/,
   );
   await roster
-    .getByRole('button', { name: 'Explore Medusa’s deck · 11 designs', exact: true })
+    .getByRole('button', { name: 'Mazzo di Medusa · 11 carte diverse', exact: true })
     .click();
   const card = page
-    .getByRole('dialog', { name: 'Medusa’s deck', exact: true })
+    .getByRole('dialog', { name: 'Mazzo di Medusa', exact: true })
     .locator('.deck-gallery > button')
     .first();
   await card.click();
@@ -282,7 +291,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         ),
       );
     });
-    const merlin = page.getByRole('button', { name: 'Merlin 1', exact: true });
+    const merlin = page.getByRole('button', { name: 'Merlino 1', exact: true });
     await merlin.click();
     await expect(merlin).toHaveAttribute('aria-pressed', 'true');
     await page.screenshot({
@@ -321,7 +330,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           animations: 'disabled',
           path: test.info().outputPath('arthur-merlin-revival-review.png'),
         });
-        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+        await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
       await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
     };

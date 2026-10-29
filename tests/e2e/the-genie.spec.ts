@@ -111,19 +111,19 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountGenie(page);
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await page.locator('.game-card').filter({ hasText: 'Three Wishes' }).click();
-      await expect(choice()).toContainText('Choose a wish');
+      await page.locator('.game-card').filter({ hasText: 'Tre desideri' }).click();
+      await expect(choice()).toContainText('Scegli un desiderio');
       await mountGenie(page);
       await choice()
         .getByRole('button', {
-          name: 'Your cards have value 4 for the rest of this turn',
+          name: 'Le tue carte hanno valore 4 per il resto del turno',
           exact: true,
         })
         .focus();
       await page.keyboard.press('Enter');
-      await page.locator('.game-card').filter({ hasText: "I've Made Sultans Out of Less" }).click();
-      await page.getByRole('button', { name: /^Target .*\(Rival\)$/ }).click();
-      await expect(choice()).toContainText('from Rival’s hand');
+      await page.locator('.game-card').filter({ hasText: 'Ho fatto sultani con meno' }).click();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Rival\)$/ }).click();
+      await expect(choice()).toContainText('dalla mano di Rival');
       await mountGenie(page);
       const option = choice().locator('button.game-card').first();
       await expect(option).toContainText('BOOST');
@@ -143,20 +143,20 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         timeout: 30000,
       });
       await choice().locator('button.game-card').first().tap();
-      await page.locator('.game-card').filter({ hasText: 'I Am Freed' }).tap();
-      await page.getByRole('button', { name: /^Target .*\(Rival\)$/ }).tap();
-      await expect(choice()).toContainText('Choose where to teleport');
-      await expect(
-        choice().getByRole('button', { name: 'Stay in place', exact: true }),
-      ).toHaveCount(0);
-      await expect(page.getByRole('button', { name: 'Choose space 02', exact: true })).toHaveCount(
+      await page.locator('.game-card').filter({ hasText: 'Sono libero' }).tap();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Rival\)$/ }).tap();
+      await expect(choice()).toContainText('Scegli dove teletrasportare');
+      await expect(choice().getByRole('button', { name: 'Resta fermo', exact: true })).toHaveCount(
         0,
       );
+      await expect(
+        page.getByRole('button', { name: 'Scegli casella 02', exact: true }),
+      ).toHaveCount(0);
       await mountGenie(page);
-      await page.getByRole('button', { name: 'Choose space 03', exact: true }).focus();
+      await page.getByRole('button', { name: 'Scegli casella 03', exact: true }).focus();
       await page.keyboard.press('Enter');
       while (await choice().count())
-        await page.getByRole('button', { name: 'The Genie', exact: true }).first().tap();
+        await page.getByRole('button', { name: 'Il Genio', exact: true }).first().tap();
       await page.screenshot({
         path: test.info().outputPath('genie-match-phone.png'),
         animations: 'disabled',
@@ -212,40 +212,42 @@ test('selects The Genie over real sockets and restores Infinite Power after relo
       pages.push(page);
       page.on('pageerror', (e) => errors.push(e.message));
       await page.goto('/');
-      await page.getByRole('button', { name: 'New to the table? Create an account' }).click();
+      await page.getByRole('button', { name: 'Prima partita? Crea un account' }).click();
       await page
-        .getByLabel('Username', { exact: true })
+        .getByLabel('Nome utente', { exact: true })
         .fill(`genie_${Date.now().toString(36)}_${i}`);
       await page.getByLabel('Password', { exact: true }).fill('a-secure-genie-test-password');
-      await page.getByRole('button', { name: 'Create account', exact: true }).click();
-      await expect(page.getByRole('heading', { name: 'Find your table' })).toBeVisible();
+      await page.getByRole('button', { name: 'Crea account', exact: true }).click();
+      await expect(page.getByRole('heading', { name: 'Trova il tuo tavolo' })).toBeVisible();
     }
     const [host, guest] = pages;
-    await host.getByRole('button', { name: '2 Head to head', exact: true }).click();
-    await expect(host.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
-    await guest.getByLabel('Room ID').fill(await host.getByLabel('Room ID').inputValue());
-    await guest.getByRole('button', { name: 'Join table', exact: true }).click();
+    await host.getByRole('button', { name: '2 Duello', exact: true }).click();
+    await expect(host.getByRole('heading', { name: 'Il tuo tavolo è aperto' })).toBeVisible();
+    await guest
+      .getByLabel('Codice stanza')
+      .fill(await host.getByLabel('Codice stanza').inputValue());
+    await guest.getByRole('button', { name: 'Entra al tavolo', exact: true }).click();
     for (const page of pages) {
-      await page.getByRole('button', { name: 'Choose character', exact: true }).click();
-      await page.getByRole('button', { name: 'Inspect The Genie', exact: true }).click();
-      await page.getByRole('button', { name: 'Choose The Genie', exact: true }).click();
-      await page.getByRole('button', { name: 'Ready up', exact: true }).click();
+      await page.getByRole('button', { name: 'Scegli personaggio', exact: true }).click();
+      await page.getByRole('button', { name: 'Esamina Il Genio', exact: true }).click();
+      await page.getByRole('button', { name: 'Scegli Il Genio', exact: true }).click();
+      await page.getByRole('button', { name: 'Sono pronto', exact: true }).click();
     }
-    await host.getByRole('button', { name: 'Start match', exact: true }).click();
+    await host.getByRole('button', { name: 'Avvia partita', exact: true }).click();
     const choice = () => host.locator('.hand-panel:has(.ability-options)');
-    await expect(choice()).toContainText('Infinite Power');
+    await expect(choice()).toContainText('Potere infinito');
     await expect(guest.locator('.hand-panel:has(.ability-options)')).toHaveCount(0);
     await host.reload();
-    await expect(choice()).toContainText('Infinite Power');
-    await host.getByRole('button', { name: /^Use / }).click();
-    await expect(choice()).toContainText('Discard 1 card');
+    await expect(choice()).toContainText('Potere infinito');
+    await host.getByRole('button', { name: /^Usa / }).click();
+    await expect(choice()).toContainText('Scarta 1 carta');
     await host.setViewportSize({ width: 844, height: 390 });
     await host.reload();
-    await expect(choice()).toContainText('Discard 1 card');
+    await expect(choice()).toContainText('Scarta 1 carta');
     await choice().getByRole('button').first().focus();
     await host.keyboard.press('Enter');
     await expect(host.locator('.action-count')).toContainText('3 actions');
-    await expect(host.getByRole('region', { name: 'Your hand' })).toContainText('4 cards');
+    await expect(host.getByRole('region', { name: 'La tua mano' })).toContainText('4 carte');
     await expect(host.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
     await host.screenshot({
       path: test.info().outputPath('genie-socket-phone.png'),
@@ -283,20 +285,20 @@ test('explores all twelve Genie illustrations and inspectors on desktop and land
   });
   try {
     await page.goto('/');
-    const roster = page.getByRole('region', { name: 'Character roster' });
-    await roster.getByRole('button', { name: 'Inspect The Genie', exact: true }).click();
-    await expect(roster).toContainText('Infinite Power');
+    const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
+    await roster.getByRole('button', { name: 'Esamina Il Genio', exact: true }).click();
+    await expect(roster).toContainText('Potere infinito');
     await expect(roster.locator('.roster-detail img')).toHaveJSProperty('complete', true);
     await roster
-      .getByRole('button', { name: 'Explore The Genie’s deck · 12 designs', exact: true })
+      .getByRole('button', { name: 'Mazzo di Il Genio · 12 carte diverse', exact: true })
       .click();
-    const deck = page.getByRole('dialog', { name: 'The Genie’s deck', exact: true });
+    const deck = page.getByRole('dialog', { name: 'Mazzo di Il Genio', exact: true });
     await expect(deck.locator('.deck-gallery > button')).toHaveCount(12);
     for (const card of await deck.locator('.deck-gallery > button').all()) {
       await card.click();
       const detail = page.getByRole('dialog').last();
       await expect(detail.locator('.printed-card')).toBeVisible();
-      await expect(detail).not.toContainText('How to play');
+      await expect(detail).not.toContainText('Guida');
       await expect(detail.locator('img')).toHaveJSProperty('complete', true);
       await page.keyboard.press('Escape');
       await expect(card).toBeFocused();
@@ -308,13 +310,13 @@ test('explores all twelve Genie illustrations and inspectors on desktop and land
     });
     await page.keyboard.press('Escape');
     await page.setViewportSize({ width: 844, height: 390 });
-    await roster.getByRole('button', { name: 'Inspect The Genie', exact: true }).tap();
+    await roster.getByRole('button', { name: 'Esamina Il Genio', exact: true }).tap();
     await roster
-      .getByRole('button', { name: 'Explore The Genie’s deck · 12 designs', exact: true })
+      .getByRole('button', { name: 'Mazzo di Il Genio · 12 carte diverse', exact: true })
       .tap();
     await page
-      .getByRole('dialog', { name: 'The Genie’s deck', exact: true })
-      .getByRole('button', { name: 'About Feint, 3 copies', exact: true })
+      .getByRole('dialog', { name: 'Mazzo di Il Genio', exact: true })
+      .getByRole('button', { name: 'Dettagli di Finta, 3 copie', exact: true })
       .tap();
     await expect(page.getByRole('dialog').last()).toContainText('BOOST 1');
     await page.screenshot({

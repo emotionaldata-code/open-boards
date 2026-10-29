@@ -74,9 +74,11 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         ),
       );
     });
-    const outlaw = page.getByRole('button', { name: 'Outlaw 1', exact: true });
+    const outlaw = page.getByRole('button', { name: 'Fuorilegge 1', exact: true });
     for (let i = 1; i <= 4; i++)
-      await expect(page.getByRole('button', { name: `Outlaw ${i}`, exact: true })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: `Fuorilegge ${i}`, exact: true }),
+      ).toBeVisible();
     await outlaw.click();
     await page.mouse.move(0, 0);
     await expect(outlaw).toHaveAttribute('aria-pressed', 'true');
@@ -123,7 +125,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           animations: 'disabled',
           path: test.info().outputPath('outlaw-revival-portrait.png'),
         });
-        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+        await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
       await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
     };

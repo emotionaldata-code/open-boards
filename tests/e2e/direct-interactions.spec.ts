@@ -82,18 +82,18 @@ for (const viewport of [
     await page.setViewportSize(viewport);
     await presentationHarness(page, true, { hand, fighters });
     const attack = page.getByRole('button', {
-      name: 'Prepare attack · Gaze of Stone',
+      name: 'Prepara attacco · Sguardo di pietra',
       exact: true,
     });
     await attack.click();
-    await expect(page.getByRole('button', { name: /^Target / })).toHaveCount(1);
+    await expect(page.getByRole('button', { name: /^Bersaglio / })).toHaveCount(1);
     await attack.click();
-    await expect(page.getByRole('button', { name: /^Target / })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: /^Bersaglio / })).toHaveCount(0);
     await attack.click();
     await page.keyboard.press('Escape');
     await expect(attack).toHaveAttribute('aria-pressed', 'false');
     await attack.click();
-    const target = page.getByRole('button', { name: /^Target / });
+    const target = page.getByRole('button', { name: /^Bersaglio / });
     await target.focus();
     await page.keyboard.press('Enter');
     await page.keyboard.press('Enter');
@@ -111,7 +111,7 @@ test('action and defense cards send immediately, errors and disconnects release 
   page,
 }) => {
   await presentationHarness(page, true, { hand, fighters });
-  const action = page.getByRole('button', { name: 'Play Winged Frenzy', exact: true });
+  const action = page.getByRole('button', { name: 'Gioca Frenesia alata', exact: true });
   await action.dblclick();
   expect(await commands(page)).toEqual([
     { type: 'play-action', fighter: 'a:main', card: 'scheme' },
@@ -126,10 +126,12 @@ test('action and defense cards send immediately, errors and disconnects release 
   await update(page, {
     phase: { type: 'awaiting-defense', attacker: 'b:main', defender: 'a:main' },
   });
-  await page.getByRole('button', { name: 'Defend with Hiss and Slither', exact: true }).click();
+  await page
+    .getByRole('button', { name: 'Difendi con Sibilare e strisciare', exact: true })
+    .click();
   expect((await commands(page)).at(-1)).toEqual({ type: 'defend', card: 'guard' });
   await update(page, { hand: [] });
-  await page.getByRole('button', { name: 'Take the hit', exact: true }).click();
+  await page.getByRole('button', { name: 'Subisci il colpo', exact: true }).click();
   expect((await commands(page)).at(-1)).toEqual({ type: 'defend', card: null });
 });
 
@@ -137,7 +139,7 @@ test('deck starts maneuver, a miniature selects the fighter and its current spac
   page,
 }) => {
   await presentationHarness(page, true, { hand, fighters });
-  await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+  await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
   expect(await commands(page)).toEqual([{ type: 'maneuver' }]);
   await update(page, {
     phase: { type: 'choosing-movement', player: 'a' },
@@ -155,7 +157,7 @@ test('deck starts maneuver, a miniature selects the fighter and its current spac
   await update(page, {
     maneuver: { player: 'a', remaining: ['a:main'], finishing: false, boost: 0, boostable: true },
   });
-  await page.getByRole('button', { name: /^Boost movement \+3 ·/ }).click();
+  await page.getByRole('button', { name: /^Potenzia movimento \+3 ·/ }).click();
   expect((await commands(page)).at(-1)).toEqual({ type: 'boost-maneuver', card: 'guard' });
 });
 
@@ -184,7 +186,7 @@ for (const [min, max] of [
       await page.getByRole('button', { name: 'Discard strike', exact: true }).click();
       if (min === 2)
         await page.getByRole('button', { name: 'Discard scheme', exact: true }).click();
-      await page.getByRole('button', { name: /^Confirm choice ·/ }).click();
+      await page.getByRole('button', { name: /^Conferma scelta ·/ }).click();
     }
     expect((await commands(page)).at(-1)).toEqual({
       type: 'choose',
@@ -216,7 +218,7 @@ test('typed references target players, spaces, defeated miniatures and piles ind
       { id: 'opaque-space', label: 'Destination', object: { type: 'space', id: 'n2' } },
     ]),
   });
-  await page.getByRole('button', { name: 'Choose space 03', exact: true }).click();
+  await page.getByRole('button', { name: 'Scegli casella 03', exact: true }).click();
   expect((await commands(page)).at(-1)).toMatchObject({ options: ['opaque-space'] });
   await update(page, {
     fighters: fighters.map((f) =>
@@ -237,7 +239,7 @@ test('typed references target players, spaces, defeated miniatures and piles ind
       },
     ]),
   });
-  await page.getByRole('button', { name: 'Search discard first', exact: true }).click();
+  await page.getByRole('button', { name: 'Cerca prima negli scarti', exact: true }).click();
   expect((await commands(page)).at(-1)).toMatchObject({ options: ['opaque-pile'] });
 });
 
@@ -285,21 +287,21 @@ test('numeric values keep all 101 values and illustrated external cards retain s
       })),
     ),
   });
-  await expect(page.getByRole('combobox', { name: 'Value' }).locator('option')).toHaveCount(101);
-  await page.getByRole('combobox', { name: 'Value' }).selectOption('opaque-100');
+  await expect(page.getByRole('combobox', { name: 'Valore' }).locator('option')).toHaveCount(101);
+  await page.getByRole('combobox', { name: 'Valore' }).selectOption('opaque-100');
   expect(await commands(page)).toEqual([]);
-  await page.getByRole('button', { name: 'Confirm value' }).click();
+  await page.getByRole('button', { name: 'Conferma valore' }).click();
   expect((await commands(page)).at(-1)).toMatchObject({ options: ['opaque-100'] });
   await update(page, {
     choice: choice([
       {
         id: 'next',
-        label: 'Next top card',
+        label: 'Successiva top card',
         card: { id: 'external', definition: 'king-arthur-excalibur' },
       },
     ]),
   });
-  await page.getByRole('button', { name: 'Next top card', exact: true }).click();
+  await page.getByRole('button', { name: 'Successiva top card', exact: true }).click();
   expect((await commands(page)).at(-1)).toMatchObject({ options: ['next'] });
 });
 
@@ -310,7 +312,7 @@ test('the deck remains clickable after scrolling cards on a landscape phone', as
     fighters,
   });
   await page.locator('.game-card').last().scrollIntoViewIfNeeded();
-  await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+  await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
   expect(await commands(page)).toEqual([{ type: 'maneuver' }]);
 });
 
@@ -336,6 +338,6 @@ test('one required hand-limit discard plays on click, optional discard can pass 
       2,
     ),
   });
-  await page.getByRole('button', { name: 'Pass', exact: true }).click();
+  await page.getByRole('button', { name: 'Passa', exact: true }).click();
   expect((await commands(page)).at(-1)).toMatchObject({ type: 'choose', options: [] });
 });

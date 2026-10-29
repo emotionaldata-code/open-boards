@@ -6,8 +6,8 @@ export async function http<T>(path: string, body?: unknown): Promise<T> {
     credentials: 'same-origin',
   });
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ message: 'The server is unavailable.' }));
-    throw new Error(error.message ?? 'Request failed.');
+    const error = await response.json().catch(() => ({ message: 'Il server non è disponibile.' }));
+    throw new Error(error.message ?? 'Richiesta non riuscita.');
   }
   return response.status === 204 ? (undefined as T) : (response.json() as Promise<T>);
 }

@@ -187,3 +187,15 @@
 .eliminated {
   opacity: 0.45;
 }
+
+:is(.badge-movement, .badge-health, .badge-counts) small .icon {
+  width: 11px;
+  height: 11px;
+}
+
+/* Keep both duellists visible even on a 320px phone. */
+@media (max-width: 360px) and (orientation: portrait) {
+  .player-badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

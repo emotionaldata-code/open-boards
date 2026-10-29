@@ -1,3 +1,5 @@
+import { contentText } from '../localization/text';
+import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
 import { characters } from '@open-boards/content';
 import { Dialog } from '../ui/Dialog';
@@ -18,16 +20,17 @@ export function CharacterPicker({
     <div className="character-picker">
       <CharacterPortrait character={selected} />
       <div className="grow">
-        <span className="muted">Your character · {profiles[selected].role}</span>
-        <strong>{character.name}</strong>
+        <span className="muted">Il tuo personaggio · {profiles[selected].role}</span>
+        <strong>{contentText(character.name)}</strong>
         <span>
-          {character.hp} HP · Move {character.movement} · {character.attackType}
+          {character.hp} PV · Movimento {character.movement} ·{' '}
+          {attackTypeLabel[character.attackType]}
         </span>
       </div>
-      <button onClick={() => setOpen(true)}>Choose character</button>
+      <button onClick={() => setOpen(true)}>Scegli personaggio</button>
       {open && (
         <Dialog
-          title="Choose your fighter"
+          title="Scegli il tuo combattente"
           className="roster-dialog"
           onClose={() => setOpen(false)}
         >

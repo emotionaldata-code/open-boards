@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import { basic, zoneStyles } from '@open-boards/content';
 import { arenaSize, spaces } from './layout';
 
@@ -39,7 +40,7 @@ export function Terrain({
         return (
           <g key={id} data-space={id} transform={`translate(${x} ${y})`}>
             <title>
-              {`Space ${label} · ${zones.map((zone) => zoneStyles[zone].name).join(', ')}${portal ? ' · Portal (passage arrows): one movement point to another unoccupied portal' : ''}`}
+              {`Casella ${label} · ${zones.map((zone) => contentText(zoneStyles[zone].name)).join(', ')}${portal ? ' · Portale (frecce) · Un punto movimento per raggiungere un altro portale libero' : ''}`}
             </title>
             <circle r="45" fill="#13221b" />
             <circle r="32" fill="#25362f" />

@@ -1,3 +1,5 @@
+import { contentText } from '../localization/text';
+import { cardCategoryLabel } from '../ui/labels';
 import { useState } from 'react';
 import { basic } from '@open-boards/content';
 import type { GameView } from '@open-boards/protocol';
@@ -15,13 +17,13 @@ export function DiscardPile({
   const [inspected, setInspected] = useState<string | null>(null);
   return (
     <>
-      <Dialog title={`${player.name}’s discards`} onClose={onClose}>
+      <Dialog title={`Scarti di ${player.name}`} onClose={onClose}>
         <p className="muted">
-          {player.discard.length} {player.discard.length === 1 ? 'card' : 'cards'} · Most recent
-          first
+          {player.discard.length} {player.discard.length === 1 ? 'carta' : 'carte'} · Dalla più
+          recente
         </p>
         {player.discard.length ? (
-          <ol className="discard-list" aria-label="Discarded cards, most recent first">
+          <ol className="discard-list" aria-label="Carte scartate, dalla più recente">
             {player.discard.toReversed().map((card) => {
               const definition = basic.cards[card.definition];
               return (
@@ -29,17 +31,17 @@ export function DiscardPile({
                   <button onClick={() => setInspected(card.definition)}>
                     <Icon name={definition.category} />
                     <span>
-                      {definition.name}
-                      <small>{definition.category}</small>
+                      {contentText(definition.name)}
+                      <small>{cardCategoryLabel[definition.category]}</small>
                     </span>
-                    <strong>Value {definition.value}</strong>
+                    <strong>Valore {definition.value}</strong>
                   </button>
                 </li>
               );
             })}
           </ol>
         ) : (
-          <p>No cards discarded yet.</p>
+          <p>Nessuna carta scartata.</p>
         )}
       </Dialog>
       {inspected && <CardDetails definition={inspected} onClose={() => setInspected(null)} />}

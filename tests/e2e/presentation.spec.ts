@@ -7,10 +7,12 @@ test('sound controls unlock audio and every synthesized cue renders an audible, 
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
-  const enable = page.getByRole('button', { name: 'Enable sound', exact: true });
+  const initiallyEnabled = page.getByRole('button', { name: 'Disattiva audio', exact: true });
+  if (await initiallyEnabled.isVisible()) await initiallyEnabled.click();
+  const enable = page.getByRole('button', { name: 'Attiva audio', exact: true });
   await expect(enable).toHaveAttribute('aria-pressed', 'false');
   await enable.click();
-  const mute = page.getByRole('button', { name: 'Mute sound', exact: true });
+  const mute = page.getByRole('button', { name: 'Disattiva audio', exact: true });
   await expect(mute).toHaveAttribute('aria-pressed', 'true');
 
   const signals = await page.evaluate(async () => {
@@ -107,9 +109,9 @@ for (const viewport of [
     await present(page, [combat]);
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
-    await expect(dialog).toContainText('Second Shot');
-    await expect(dialog).toContainText('Hiss and Slither');
-    await expect(dialog).toContainText('Medusa takes 2 damage.');
+    await expect(dialog).toContainText('Secondo colpo');
+    await expect(dialog).toContainText('Sibilare e strisciare');
+    await expect(dialog).toContainText('Medusa subisce 2 danni.');
     await expect(dialog.locator('.character-portrait img')).toHaveCount(2);
     await expect(dialog.locator('.card-art img')).toHaveCount(2);
     expect(
@@ -121,7 +123,7 @@ for (const viewport of [
           ),
         ),
     ).toBe(true);
-    const button = dialog.getByRole('button', { name: 'Acknowledge', exact: true });
+    const button = dialog.getByRole('button', { name: 'Conferma', exact: true });
     await expect(button).toBeFocused();
     await page.keyboard.press('Escape');
     await expect(dialog).toBeVisible();
@@ -156,8 +158,8 @@ test('action and special effects append in order, block commands, and reset clea
     },
   ]);
   const dialog = page.getByRole('dialog');
-  await expect(dialog).toContainText('Winged Frenzy');
-  await expect(dialog).toContainText('Move each of your fighters');
+  await expect(dialog).toContainText('Frenesia alata');
+  await expect(dialog).toContainText('Muovi ogni tuo combattente');
   await expect(dialog.locator('.character-portrait img')).toHaveCount(1);
   await expect(dialog.locator('.card-art img')).toHaveCount(1);
   await present(page, [
@@ -179,28 +181,30 @@ test('action and special effects append in order, block commands, and reset clea
       audience: 'all',
     },
   ]);
-  await expect(dialog).toContainText('Winged Frenzy');
+  await expect(dialog).toContainText('Frenesia alata');
   await expect(
-    page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+    page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
   ).toHaveCount(0);
   await page.screenshot({
     path: test.info().outputPath('action-review.png'),
     animations: 'disabled',
   });
-  await dialog.getByRole('button', { name: 'Acknowledge', exact: true }).click();
-  await expect(dialog.getByRole('heading', { name: 'Petrifying gaze', exact: true })).toBeVisible();
-  await expect(dialog).toContainText('At turn start, may deal 1 damage');
+  await dialog.getByRole('button', { name: 'Conferma', exact: true }).click();
+  await expect(
+    dialog.getByRole('heading', { name: 'Sguardo pietrificante', exact: true }),
+  ).toBeVisible();
+  await expect(dialog).toContainText('All’inizio del turno, puoi infliggere 1 danno');
   await page.screenshot({
     path: test.info().outputPath('ability-review.png'),
     animations: 'disabled',
   });
-  await dialog.getByRole('button', { name: 'Acknowledge', exact: true }).click();
-  await expect(dialog.getByRole('heading', { name: 'Burn', exact: true })).toBeVisible();
-  await expect(dialog).toContainText('take 1 damage');
+  await dialog.getByRole('button', { name: 'Conferma', exact: true }).click();
+  await expect(dialog.getByRole('heading', { name: 'Bruciatura', exact: true })).toBeVisible();
+  await expect(dialog).toContainText('subisci 1 danno');
   await present(page, [], true);
   await expect(dialog).toHaveCount(0);
   await expect(
-    page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+    page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
   ).toBeVisible();
   expect(
     await page.evaluate(
@@ -232,9 +236,14 @@ for (const viewport of [
     });
     const dialog = page.getByRole('dialog');
     await expect(dialog).toContainText('BOOST +4');
-    await expect(dialog).toContainText('A Momentary Glance');
-    await expect(dialog).toContainText('Medusa takes 2 damage.');
-    await expect(dialog.locator('.card-boost')).toHaveText(['BOOST 3', 'BOOST 3', 'BOOST 4']);
+    await expect(dialog).toContainText('Uno sguardo fugace');
+    await expect(dialog).toContainText('Medusa subisce 2 danni.');
+    await expect(dialog.locator('.card-boost')).toHaveText(['3', '3', '4']);
+    for (const [index, value] of [3, 3, 4].entries())
+      await expect(dialog.locator('.card-boost').nth(index)).toHaveAttribute(
+        'aria-label',
+        `BOOST ${value}`,
+      );
     expect(await dialog.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
     for (const card of await dialog.locator('.printed-card').all()) {
       expect(await card.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
@@ -243,7 +252,7 @@ for (const viewport of [
       path: test.info().outputPath(`boosted-combat-${viewport.width}.png`),
       animations: 'disabled',
     });
-    await dialog.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+    await dialog.getByRole('button', { name: 'Conferma', exact: true }).click();
     await expect(dialog).toHaveCount(0);
   });
 }
@@ -279,7 +288,7 @@ test('two attack BOOST payments remain readable on tablet and landscape phone', 
       path: test.info().outputPath(`two-boosts-${viewport.width}.png`),
       animations: 'disabled',
     });
-    await dialog.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+    await dialog.getByRole('button', { name: 'Conferma', exact: true }).click();
     await expect(dialog).toHaveCount(0);
   }
 });

@@ -219,9 +219,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await mountInvisible(page, 'setup');
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
       for (let i = 1; i <= 3; i++) {
-        await expect(choice()).toContainText(`Place Fog ${i}`);
+        await expect(choice()).toContainText(`Place Nebbia ${i}`);
         await page
-          .getByRole('button', { name: /^Choose space/ })
+          .getByRole('button', { name: /^Scegli casella/ })
           .first()
           .click();
       }
@@ -234,20 +234,20 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.evaluate(() => sessionStorage.removeItem('invisible-man-test-state'));
       await page.reload();
       await mountInvisible(page, 'rolling');
-      await page.locator('.game-card').filter({ hasText: 'Rolling Fog' }).click();
-      await page.getByRole('button', { name: /Fog 2/ }).click();
+      await page.locator('.game-card').filter({ hasText: 'Nebbia in movimento' }).click();
+      await page.getByRole('button', { name: /Nebbia 2/ }).click();
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountInvisible(page, 'rolling');
-      await expect(choice()).toContainText('Move Fog 2');
-      await page.getByRole('button', { name: 'Choose space 29', exact: true }).focus();
+      await expect(choice()).toContainText('Muovi Nebbia 2');
+      await page.getByRole('button', { name: 'Scegli casella 29', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect(choice()).toHaveCount(0);
       expect((await state(page)).boardTokens?.[1].position).toBe('n27');
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
-      await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
-      await expect(page.getByRole('button', { name: 'Move to 26', exact: true })).toBeVisible();
-      await page.getByRole('button', { name: 'Move to 26', exact: true }).focus();
+      await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+      await expect(page.getByRole('button', { name: 'Muovi in 26', exact: true })).toBeVisible();
+      await page.getByRole('button', { name: 'Muovi in 26', exact: true }).focus();
       await page.keyboard.press('Enter');
       expect((await state(page)).fighters[0].position).toBe('n24');
       await expect(page.locator('.arena canvas')).toBeVisible();
@@ -275,7 +275,7 @@ test('Invisible Man restores Vanish from an empty board position across a phone 
   await observe(page);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await mountInvisible(page, 'vanish');
-  await page.locator('.game-card').filter({ hasText: 'Vanish' }).click();
+  await page.locator('.game-card').filter({ hasText: 'Svanire' }).click();
   await expect.poll(async () => (await state(page)).fighters[0].position).toBeNull();
   await page.evaluate(() => {
     const apply = (
@@ -295,8 +295,8 @@ test('Invisible Man restores Vanish from an empty board position across a phone 
   await page.reload();
   await mountInvisible(page, 'vanish');
   const choice = page.locator('.hand-panel:has(.ability-options)');
-  await expect(choice).toContainText('teleport Invisible Man');
-  await page.getByRole('button', { name: 'Choose space 26', exact: true }).focus();
+  await expect(choice).toContainText('teletrasportare Uomo Invisibile');
+  await page.getByRole('button', { name: 'Scegli casella 26', exact: true }).focus();
   await page.keyboard.press('Enter');
   expect((await state(page)).fighters[0].position).toBe('n24');
   expect((await state(page)).fighters[0].defeated).toBe(false);
@@ -313,18 +313,18 @@ test('Invisible Man keeps opponent fog control private and resumes it after reco
   await observe(page);
   await mountInvisible(page, 'covert');
   const choice = () => page.locator('.hand-panel:has(.ability-options)');
-  await page.getByRole('button', { name: /Fog 1/ }).click();
-  await choice().getByRole('button', { name: 'Leave token in place', exact: true }).click();
+  await page.getByRole('button', { name: /Nebbia 1/ }).click();
+  await choice().getByRole('button', { name: 'Lascia il segnalino dov’è', exact: true }).click();
   await expect(choice()).toHaveCount(0);
   await page.reload();
   await mountInvisible(page, 'covert', 'p1');
-  await expect(page.getByRole('button', { name: /Fog 1/ })).toHaveCount(0);
-  await page.getByRole('button', { name: /Fog 2/ }).click();
+  await expect(page.getByRole('button', { name: /Nebbia 1/ })).toHaveCount(0);
+  await page.getByRole('button', { name: /Nebbia 2/ }).click();
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();
   await mountInvisible(page, 'covert', 'p1');
-  await expect(choice()).toContainText('Move Fog 2');
-  await choice().getByRole('button', { name: 'Leave token in place', exact: true }).click();
+  await expect(choice()).toContainText('Muovi Nebbia 2');
+  await choice().getByRole('button', { name: 'Lascia il segnalino dov’è', exact: true }).click();
   await expect(choice()).toHaveCount(0);
 });
 
@@ -332,13 +332,13 @@ test('Invisible Man orders Coded Notes privately across reconnect', async ({ pag
   await observe(page);
   await mountInvisible(page, 'notes');
   const choice = () => page.locator('.hand-panel:has(.ability-options)');
-  await expect(choice()).toContainText('top of your deck');
+  await expect(choice()).toContainText('cima al mazzo');
   const first = (await state(page)).resolution.choice!.options[0].id;
   await choice().locator('button.game-card').first().click();
   await page.setViewportSize({ width: 844, height: 390 });
   await page.reload();
   await mountInvisible(page, 'notes');
-  await expect(choice()).toContainText('top of your deck');
+  await expect(choice()).toContainText('cima al mazzo');
   const second = (await state(page)).resolution.choice!.options[0].id;
   await choice().locator('button.game-card').first().focus();
   await page.keyboard.press('Enter');

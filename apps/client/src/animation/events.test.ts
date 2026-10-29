@@ -65,7 +65,7 @@ describe('viewer-safe presentation recipes', () => {
     const owner = presentationEvents(before, game, [draw]);
     const rival = presentationEvents(before, game, []);
     expect(owner).toEqual(rival);
-    expect(owner[0].title).toBe('Maneuver');
+    expect(owner[0].title).toBe('Manovra');
     expect(JSON.stringify(owner)).not.toMatch(/secret-card-id|medusa-snipe|Snipe/);
   });
   it('announces committed attacks without exposing the attack card, then reveals the confirmed combat', () => {
@@ -79,7 +79,7 @@ describe('viewer-safe presentation recipes', () => {
       committedCard: { id: 'secret', definition: 'medusa-snipe' },
     };
     const hidden = presentationEvents(before, game, []);
-    expect(hidden[0].title).toBe('Attack incoming');
+    expect(hidden[0].title).toBe('Attacco in arrivo');
     expect(JSON.stringify(hidden)).not.toMatch(/medusa-snipe|secret|Snipe/);
     game.phase = { type: 'taking-actions' };
     game.revision = 2;
@@ -98,10 +98,10 @@ describe('viewer-safe presentation recipes', () => {
       },
     };
     const revealed = presentationEvents(before, game, [combat]);
-    expect(revealed[0].detail).toContain('Snipe 3');
-    expect(revealed[0].review?.participants[1]).toMatchObject({ role: 'No defense' });
+    expect(revealed[0].detail).toContain("Tiro preciso 3");
+    expect(revealed[0].review?.participants[1]).toMatchObject({ role: 'Nessuna difesa' });
     expect(revealed[0].review?.participants[1].card).toBeUndefined();
-    expect(revealed[0].review?.result).toBe('Medusa takes 4 damage.');
+    expect(revealed[0].review?.result).toBe('Medusa subisce 4 danni.');
     expect(revealed[0].effects).toContainEqual({
       type: 'attack',
       player: 'a:main',
@@ -208,16 +208,16 @@ describe('viewer-safe presentation recipes', () => {
       },
     ];
     const events = presentationEvents(null, game, data);
-    expect(events.map((e) => e.title)).toEqual(['Restored', 'Iron will', 'fortified']);
+    expect(events.map((e) => e.title)).toEqual(['Curato', 'Iron will', 'fortified']);
     expect(events[0].effects).toContainEqual({ type: 'text', node: 'n0', text: '+3' });
-    expect(events[2].detail).toContain('2 stacks');
+    expect(events[2].detail).toContain('2 accumuli');
   });
   it('announces pause/resume even when the authoritative revision is unchanged', () => {
     const before = initial(),
       game = initial();
     game.paused = true;
-    expect(presentationEvents(before, game, [])[0].title).toBe('Arena paused');
-    expect(presentationEvents(game, before, [])[0].title).toBe('Back in the fight');
+    expect(presentationEvents(before, game, [])[0].title).toBe('Arena in pausa');
+    expect(presentationEvents(game, before, [])[0].title).toBe('Di nuovo in battaglia');
     expect(presentationEvents(before, before, [])).toEqual([]);
   });
 });
@@ -284,7 +284,7 @@ it('announces portal travel with a rift cue at the confirmed portal step', () =>
       audience: 'all',
     },
   ]);
-  expect(event.title).toBe('Through the rift');
+  expect(event.title).toBe('Attraverso il portale');
   expect(event.sounds).toEqual([
     { name: 'move', delay: 0 },
     { name: 'portal', delay: timing.step },
@@ -312,16 +312,16 @@ it('presents combat artwork for both fighters and confirmed damage rather than r
   expect(event.review?.participants).toMatchObject([
     {
       fighter: { name: 'Medusa', player: 'Arden', artwork: 'medusa' },
-      role: 'Attack',
+      role: 'Attacco',
       card: 'medusa-snipe',
     },
     {
       fighter: { name: 'Medusa', player: 'Briar', artwork: 'medusa' },
-      role: 'Defense',
+      role: 'Difesa',
       card: 'medusa-feint',
     },
   ]);
-  expect(event.review?.result).toBe('Medusa takes 2 damage.');
+  expect(event.review?.result).toBe('Medusa subisce 2 danni.');
 });
 
 it('keeps action, card ability, status and direct effect readouts in confirmed sequence order', () => {
@@ -367,10 +367,10 @@ it('keeps action, card ability, status and direct effect readouts in confirmed s
   expect(events.map((event) => event.id)).toEqual([1, 2, 3, 4, 5].map((id) => `outcome:${id}`));
   expect(events.every((event) => event.review)).toBe(true);
   expect(events[1].review?.participants[0].card).toBe('medusa-dash');
-  expect(events[1].review?.explanation).toContain('Move your fighter');
-  expect(events[2].review?.result).toContain('take 1 damage');
-  expect(events[3].review?.explanation).toBe('1 damage is dealt.');
-  expect(events[4].review?.explanation).toBe('2 health is restored.');
+  expect(events[1].review?.explanation).toContain('muovi il tuo combattente');
+  expect(events[2].review?.result).toContain('subisci 1 danno');
+  expect(events[3].review?.explanation).toBe('1 danni inflitti.');
+  expect(events[4].review?.explanation).toBe('2 punti vita recuperati.');
 });
 
 it.each(['discarding', 'ability-choice'] as const)(
@@ -392,7 +392,7 @@ it.each(['discarding', 'ability-choice'] as const)(
       },
     ]);
     expect(event.review).toBeUndefined();
-    expect(event.detail).toContain('Card discarded');
+    expect(event.detail).toContain('Carta scartata');
   },
 );
 
@@ -426,16 +426,16 @@ it('presents public boost payments with their purpose and bonus, and includes th
     },
   ]);
   expect(events[0]).toMatchObject({
-    title: 'Attack boosted',
-    detail: 'Arden · Gaze of Stone · +4',
+    title: 'Attacco potenziato',
+    detail: 'Arden · Sguardo di pietra · +4',
   });
-  expect(events[0].review?.explanation).toContain('Its own effects do not resolve');
+  expect(events[0].review?.explanation).toContain('I suoi effetti non si risolvono');
   expect(events[1].detail).toContain('+4 BOOST');
   expect(events[1].review?.participants.at(-1)).toMatchObject({
     role: 'BOOST +4',
     card: 'medusa-gaze-of-stone',
   });
-  expect(events[1].review?.result).toBe('Medusa takes 7 damage.');
+  expect(events[1].review?.result).toBe('Medusa subisce 7 danni.');
 });
 
 it('presents revival at its confirmed destination without movement from the defeated position', () => {
@@ -464,7 +464,7 @@ it('presents revival at its confirmed destination without movement from the defe
     },
   ]);
   expect(events).toHaveLength(1);
-  expect(events[0].detail).toContain('Harpy 2');
+  expect(events[0].detail).toContain("Arpia 2");
   expect(
     events[0].effects.every(
       (effect) => effect.type !== 'move' && 'node' in effect && effect.node === 'center',
@@ -502,9 +502,9 @@ it.each([false, true])('distinguishes a zero BOOST from a cancelled payment (%s)
       audience: 'all',
     },
   ]);
-  expect(events[0].title).toBe(cancelled ? 'BOOST cancelled' : 'Attack boosted');
+  expect(events[0].title).toBe(cancelled ? 'BOOST annullato' : 'Attacco potenziato');
   expect(events[1].review?.participants.at(-1)?.role).toBe(
-    cancelled ? 'BOOST cancelled' : 'BOOST +0',
+    cancelled ? 'BOOST annullato' : 'BOOST +0',
   );
 });
 
@@ -516,7 +516,7 @@ it('keeps an explicit public hand reveal readable after subsequent snapshots wit
     { type: 'hand-revealed', player: 'b', cards, sequence: 1, revision: 1, audience: 'all' },
   ]);
   expect(events).toHaveLength(1);
-  expect(events[0].title).toBe('Cards revealed');
+  expect(events[0].title).toBe('Carte rivelate');
   expect(events[0].review?.cards).toEqual(['sherlock-holmes-elementary']);
   expect(events[0].review?.explanation).toContain('Briar');
   expect(JSON.stringify(events)).not.toContain('medusa-gaze-of-stone');
@@ -553,9 +553,9 @@ it('attributes a defense BOOST to the defender in the notice, combat values and 
       audience: 'all',
     },
   ]);
-  expect(events[0].title).toBe('Defense boosted');
-  expect(events[0].review?.explanation).toContain('this defense');
-  expect(events[1].detail).toContain('· Rend 3 +4 BOOST');
+  expect(events[0].title).toBe('Difesa potenziata');
+  expect(events[0].review?.explanation).toContain('questa difesa');
+  expect(events[1].detail).toContain("· Lacerazione 3 +4 BOOST");
   expect(events[1].review?.participants.at(-1)?.fighter.player).toBe('Briar');
-  expect(events[1].review?.explanation).toContain('adds 4 to the defense');
+  expect(events[1].review?.explanation).toContain('aggiunge 4 al valore di difesa');
 });

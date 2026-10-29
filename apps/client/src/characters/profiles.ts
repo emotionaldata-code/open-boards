@@ -8,130 +8,130 @@ export interface CharacterProfile {
 }
 export const profiles: Record<string, CharacterProfile> = {
   'yennefer-triss': {
-    role: 'Rival sorceresses',
-    summary: 'Two sorceresses. One fateful choice.',
+    role: 'Maghe rivali',
+    summary: 'Due maghe. Una scelta decisiva.',
     tactic:
-      'Choose Yennefer for immediate attack BOOSTs or Triss for damage after schemes. Portal across the battlefield and pressure your rival’s hand.',
+      'Scegli Yennefer per potenziare subito gli attacchi o Triss per infliggere danni dopo gli stratagemmi. Usa i portali e metti sotto pressione la mano avversaria.',
     accent: '#bb9fd7',
     ground: '#30283e',
   },
   eredin: {
-    role: 'King of the Wild Hunt',
-    summary: 'Four riders. A king whose fury outlives them.',
+    role: 'Re della Caccia Selvaggia',
+    summary: 'Quattro cavalieri. Un re la cui furia sopravvive loro.',
     tactic:
-      'Surround rivals with the Red Riders, trade their lives for decisive effects, then strike across the battlefield when Eredin becomes enraged.',
+      'Circonda i nemici con i Cavalieri Rossi, sacrificandoli per effetti decisivi. Quando Eredin si infuria, colpisci attraverso il campo di battaglia.',
     accent: '#b46d75',
     ground: '#26343e',
   },
   philippa: {
-    role: 'Sorceress and spymaster',
-    summary: 'An owl in the shadows. A hand in every plot.',
+    role: 'Maga e maestra di spie',
+    summary: 'Un gufo nell’ombra. Una mano in ogni complotto.',
     tactic:
-      'Spend your hand on powerful magic, then refill with Two Steps Ahead. Send Dijkstra to dismantle your rival’s plans and use Polymorphy to stay close.',
+      'Usa la mano per magie potenti, poi recupera carte con Due passi avanti. Invia Dijkstra a sventare i piani avversari e usa Polimorfismo per restare vicino.',
     accent: '#c6a267',
     ground: '#352c40',
   },
   alice: {
-    role: 'Adventurer in Wonderland',
-    summary: 'A vorpal blade. A world of changing proportions.',
+    role: 'Avventuriera nel Paese delle Meraviglie',
+    summary: 'Una lama vorpale. Un mondo che cambia dimensioni.',
     tactic:
-      'Grow BIG to strike harder, turn SMALL to defend, and let the Jabberwock punish anyone who comes too close.',
+      'Diventa GRANDE per colpire più forte e PICCOLA per difenderti. Il Ciciarampa punirà chi si avvicina troppo.',
     accent: '#cba76c',
     ground: '#263e4a',
   },
   'darth-vader': {
-    role: 'Dark Lord of the Sith',
-    summary: 'An iron will. A galaxy held in his grip.',
+    role: 'Signore Oscuro dei Sith',
+    summary: 'Una volontà di ferro. Una galassia nella sua morsa.',
     tactic:
-      'Trade a card for Force Grip damage. Corner your rival, turn their strength aside, and spend an extra action on a decisive strike.',
+      'Scarta una carta per infliggere danni con Stretta della Forza. Metti all’angolo il nemico, neutralizza la sua forza e usa un’azione aggiuntiva per il colpo decisivo.',
     accent: '#c47c73',
     ground: '#302c35',
   },
   'geralt-of-rivia': {
-    role: 'Witcher of the Wolf School',
-    summary: 'Two swords. A sign in the dark.',
+    role: 'Witcher della Scuola del Lupo',
+    summary: 'Due spade. Un segno nell’oscurità.',
     tactic:
-      'Choose your gear before the hunt. Control the fight with signs and potions while Dandelion disrupts your rival’s hand.',
+      'Scegli l’equipaggiamento prima della caccia. Controlla lo scontro con segni e pozioni mentre Ranuncolo disturba la mano avversaria.',
     accent: '#bba469',
     ground: '#303b3b',
   },
   'invisible-man': {
-    role: 'Terror in the fog',
-    summary: 'An empty coat. A street full of secrets.',
+    role: 'Terrore nella nebbia',
+    summary: 'Un cappotto vuoto. Una strada piena di segreti.',
     tactic:
-      'Slip between fog tokens and defend from their cover. Move the mist, strike unexpectedly, then vanish until your next turn.',
+      'Spostati tra i segnalini nebbia e sfruttali per difenderti. Muovi la nebbia, colpisci a sorpresa e svanisci fino al prossimo turno.',
     accent: '#b8a47c',
     ground: '#293b41',
   },
   'bruce-lee': {
-    role: 'The Little Dragon',
-    summary: 'Flow like water. Strike without pause.',
+    role: 'Il Piccolo Drago',
+    summary: 'Scorri come l’acqua. Colpisci senza sosta.',
     tactic:
-      'Chain Jeet Kune Do attacks into extra actions, recover your techniques, and take one final step at turn end.',
+      'Concatena gli attacchi Jeet Kune Do per ottenere azioni aggiuntive, recupera le tecniche e muovi ancora a fine turno.',
     accent: '#d8af55',
     ground: '#39372c',
   },
   'robin-hood': {
-    role: 'Outlaw of Sherwood',
-    summary: 'An arrow from the trees. A band at your side.',
+    role: 'Fuorilegge di Sherwood',
+    summary: 'Una freccia tra gli alberi. Una banda al tuo fianco.',
     tactic:
-      'Strike and retreat with Robin and his four Outlaws. Steal cards, deny defenses, and bring fallen friends back to Sherwood.',
+      'Colpisci e ritirati con Robin e i suoi quattro Fuorilegge. Ruba carte, impedisci le difese e riporta a Sherwood gli alleati sconfitti.',
     accent: '#d6ad68',
     ground: '#293c30',
   },
   bigfoot: {
-    role: 'Elusive forest giant',
-    summary: 'Heavy footsteps. A flicker of antlers.',
+    role: 'Gigante sfuggente della foresta',
+    summary: 'Passi pesanti. Un lampo di corna.',
     tactic:
-      'Hit hard, then disappear through the trees. Keep enemies outside Bigfoot’s zone to draw an extra card.',
+      'Colpisci forte e sparisci tra gli alberi. Tieni i nemici fuori dalla zona di Bigfoot per pescare una carta aggiuntiva.',
     accent: '#c59e66',
     ground: '#2c3c32',
   },
   dracula: {
-    role: 'Lord of the night',
-    summary: 'A patient hunger. Three faithful shadows.',
+    role: 'Signore della notte',
+    summary: 'Una fame paziente. Tre ombre fedeli.',
     tactic:
-      'Surround your prey with Sisters. Feed to sustain Dracula, then spend your hand on a devastating Beastform.',
+      'Circonda la preda con le Sorelle. Nutri Dracula per mantenerlo in vita, poi usa le carte per una Forma bestiale devastante.',
     accent: '#ba716f',
     ground: '#302535',
   },
   achilles: {
-    role: 'Hero of the Trojan War',
-    summary: 'Brothers in battle. Fury in loss.',
+    role: 'Eroe della guerra di Troia',
+    summary: 'Fratelli in battaglia. Furia nella perdita.',
     tactic:
-      'Fight beside Patroclus for extra actions. His fall costs cards, but fuels Achilles’ attacks and rewards each victory.',
+      'Combatti al fianco di Patroclo per ottenere azioni aggiuntive. La sua caduta costa carte, ma potenzia gli attacchi di Achille e premia ogni vittoria.',
     accent: '#c98958',
     ground: '#44332f',
   },
   'the-genie': {
-    role: 'Unbound wishmaker',
-    summary: 'Limitless power. Every wish has a price.',
+    role: 'Signore dei desideri senza catene',
+    summary: 'Potere illimitato. Ogni desiderio ha un prezzo.',
     tactic:
-      'Trade cards for extra actions. Choose your wishes carefully and strike before your power runs dry.',
+      'Scarta carte per ottenere azioni aggiuntive. Scegli con cura i desideri e colpisci prima di esaurire il tuo potere.',
     accent: '#d8b77d',
     ground: '#293b46',
   },
   'king-arthur': {
-    role: 'King of Camelot',
-    summary: 'Excalibur raised. Merlin at his side.',
+    role: 'Re di Camelot',
+    summary: 'Excalibur levata. Merlino al suo fianco.',
     tactic:
-      'Commit powerful BOOSTs with Arthur. Use Merlin’s foresight and magic to shape the next clash.',
+      'Potenzia gli attacchi di Artù con i BOOST. Usa la preveggenza e la magia di Merlino per preparare il prossimo scontro.',
     accent: '#d6b775',
     ground: '#283746',
   },
   'sherlock-holmes': {
-    role: 'Consulting detective',
-    summary: 'Read the hand. Solve the fight.',
+    role: 'Investigatore consulente',
+    summary: 'Leggi la mano. Risolvi lo scontro.',
     tactic:
-      'Predict attacks and dismantle your rival’s hand. Keep Watson close for healing and ranged support.',
+      'Prevedi gli attacchi e smonta la mano avversaria. Tieni Watson vicino per curarti e avere supporto a distanza.',
     accent: '#b79c67',
     ground: '#283a3b',
   },
   medusa: {
-    role: 'Gorgon archer',
-    summary: 'A deadly gaze. A sky full of wings.',
+    role: 'Gorgone arciera',
+    summary: 'Uno sguardo letale. Un cielo pieno di ali.',
     tactic:
-      'Threaten with Gaze of Stone. Send Harpies ahead, then use Winged Frenzy to reposition and bring one back.',
+      'Minaccia con Sguardo di pietra. Manda avanti le Arpie, poi usa Frenesia alata per riposizionarti e riportarne una in gioco.',
     accent: '#d7bb75',
     ground: '#253d39',
   },

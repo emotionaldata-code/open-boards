@@ -1,4 +1,6 @@
 import type { PresentationEvent } from './events';
+import { Icon } from '../ui/Icon';
+import { eventSymbol } from './symbols';
 // Only the active confirmed event is announced. No permanent combat/history panel.
 export function ActionNotice({ event }: { event: PresentationEvent | null }) {
   return (
@@ -12,7 +14,9 @@ export function ActionNotice({ event }: { event: PresentationEvent | null }) {
     >
       {event && (
         <div key={event.id}>
-          <strong>{event.title}</strong>
+          <strong>
+            <Icon name={eventSymbol(event)} /> {event.title}
+          </strong>
           <span>{event.detail}</span>
         </div>
       )}

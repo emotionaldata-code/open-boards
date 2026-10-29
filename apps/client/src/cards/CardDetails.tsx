@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import { basic, cardPresentation } from '@open-boards/content';
 import { Dialog } from '../ui/Dialog';
 import { CardPrint } from './CardPrint';
@@ -13,12 +14,12 @@ export function CardDetails({
   const character = basic.characters[cardPresentation[id].character];
   const copies = character.deck.find((entry) => entry.card === id)!.count;
   return (
-    <Dialog title={card.name} className="card-dialog" onClose={onClose}>
+    <Dialog title={contentText(card.name)} className="card-dialog" onClose={onClose}>
       <div className="printed-card">
         <CardPrint definition={id} inspector />
       </div>
       <p className="card-copies">
-        {character.name} · {copies} {copies === 1 ? 'copy' : 'copies'}
+        {contentText(character.name)} · {copies} {copies === 1 ? 'copia' : 'copie'}
       </p>
     </Dialog>
   );

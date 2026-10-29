@@ -6,7 +6,10 @@ const pending = new Map<string, Promise<Texture>>();
 export function loadFigureTexture(url: string): Promise<Texture> {
   let texture = pending.get(url);
   if (!texture) {
-    texture = Assets.load<Texture>(url).catch((error: unknown) => {
+    texture = Assets.load<Texture>({
+      src: url,
+      data: { autoGenerateMipmaps: true, scaleMode: 'linear' },
+    }).catch((error: unknown) => {
       pending.delete(url);
       throw error;
     });

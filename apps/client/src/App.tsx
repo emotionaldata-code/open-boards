@@ -1,3 +1,4 @@
+import { messageText } from './ui/messages';
 import { useEffect, useRef, useState } from 'react';
 import type { Command } from '@open-boards/game';
 import type { GameView, RoomView, Snapshot, User } from '@open-boards/protocol';
@@ -8,8 +9,10 @@ import { Game } from './game/Game';
 import { presentationEvents, type PresentationEvent } from './animation/events';
 import { FullscreenButton } from './ui/DisplayControls';
 import { SoundButton } from './ui/SoundButton';
+import { HowToPlay } from './ui/HowToPlay';
 import { http } from './network/http';
 import { Connection } from './network/connection';
+import { sound } from './audio/player';
 export function App() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,6 +26,9 @@ export function App() {
   const [busy, setBusy] = useState(false);
   const connection = useRef<Connection | null>(null);
   const receipt = useRef(0);
+  useEffect(() => {
+    if (error) sound.play('alert');
+  }, [error]);
   function install(snapshot: Snapshot) {
     setCommandReset((x) => x + 1);
     setRoom(snapshot.room);
@@ -86,7 +92,7 @@ export function App() {
   return (
     <div className={`shell ${room?.game ? 'in-match' : ''}`}>
       <header className="topbar">
-        <a className="wordmark" href="/" aria-label="Open Boards home">
+        <a className="wordmark" href="/" aria-label="Pagina iniziale di Open Boards">
           <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
             <path
               d="M14 2 26 14 14 26 2 14Z M14 2v24 M2 14h24"
@@ -96,20 +102,21 @@ export function App() {
             />
             <circle cx="14" cy="14" r="3" fill="currentColor" />
           </svg>
-          Open Boards
+          <span>Open Boards</span>
         </a>
         <div className="topbar-right">
+          <HowToPlay />
           <SoundButton />
           {!room?.game && <FullscreenButton />}
           {user && !room?.game ? (
             <>
               <span className="muted">{user.name}</span>
-              <span className="connection-status">{status}</span>
+              <span className="connection-status">{messageText(status)}</span>
               <button
                 className="text-button"
                 onClick={() => void logout().catch((e) => setError(e.message))}
               >
-                Sign out
+                Esci
               </button>
             </>
           ) : null}
@@ -117,18 +124,18 @@ export function App() {
       </header>
       {error && (
         <div className="notice" role="alert">
-          <span>{error}</span>
-          <button onClick={() => setError('')} aria-label="Dismiss error">
-            Dismiss
+          <span>{messageText(error)}</span>
+          <button onClick={() => setError('')} aria-label="Chiudi errore">
+            Chiudi
           </button>
           {status === 'Disconnected' && (
-            <button onClick={() => void leave()}>Return to lobby</button>
+            <button onClick={() => void leave()}>Torna alla lobby</button>
           )}
         </div>
       )}
       {loading ? (
         <main>
-          <p role="status">Opening the table…</p>
+          <p role="status">Apertura del tavolo…</p>
         </main>
       ) : !user ? (
         <Auth onUser={setUser} />

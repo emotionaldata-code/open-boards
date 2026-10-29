@@ -69,7 +69,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     );
     await presentationHarness(page, true, { players, fighters });
     await expect.poll(() => new Set(textures).size).toBe(2);
-    const rider = page.getByRole('button', { name: 'Red Rider 2', exact: true }).first();
+    const rider = page.getByRole('button', { name: 'Cavaliere Rosso 2', exact: true }).first();
     await rider.click();
     await expect(rider).toHaveAttribute('aria-pressed', 'true');
     await page.mouse.move(0, 0);

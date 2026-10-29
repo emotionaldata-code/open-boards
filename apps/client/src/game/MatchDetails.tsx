@@ -1,3 +1,5 @@
+import { contentText } from '../localization/text';
+import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
 import { basic } from '@open-boards/content';
 import { mainFighter, fighterDefinition, fighterLabel, movement } from '@open-boards/game';
@@ -5,6 +7,7 @@ import type { RoomView } from '@open-boards/protocol';
 import { Dialog } from '../ui/Dialog';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
 import { DiscardPile } from './DiscardPile';
+import { Icon } from '../ui/Icon';
 export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string }) {
   const game = room.game!;
   const [detail, setDetail] = useState<string | null>(null);
@@ -15,7 +18,7 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
   const seat = room.seats.find((s) => s.id === detail);
   return (
     <>
-      <aside className="match-hud" aria-label="Players">
+      <aside className="match-hud" aria-label="Giocatori">
         <div className="player-badges">
           {game.players.map((p, i) => {
             const f = mainFighter(game, p.id);
@@ -35,7 +38,7 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                     game.turn === i && game.phase.type !== 'finished' ? 'step' : undefined
                   }
                   onClick={() => setDetail(p.id)}
-                  aria-label={`${p.name}${p.id === selfId ? ' (you)' : ''}: ${f.hp} health, ${movement(f, basic, game)} movement, ${p.handCount} cards. Player details`}
+                  aria-label={`${p.name}${p.id === selfId ? ' (tu)' : ''}: ${f.hp} vita, ${movement(f, basic, game)} movimento, ${p.handCount} carte. Dettagli giocatore`}
                   aria-describedby={allies.length ? `allies-${p.id}` : undefined}
                 >
                   <span className={`player-sigil seat-${i}`}>
@@ -44,42 +47,48 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                   <span className="badge-name">
                     {p.name}
                     <small>
-                      {p.id === selfId ? 'You · ' : ''}
-                      {fighterDefinition(f, basic).name} ·{' '}
+                      {p.id === selfId ? 'Tu · ' : ''}
+                      {contentText(fighterDefinition(f, basic).name)} ·{' '}
                       {f.position === null && !f.defeated
-                        ? 'away'
-                        : basic.characters[p.character].attackType}
+                        ? 'fuori plancia'
+                        : attackTypeLabel[basic.characters[p.character].attackType]}
                     </small>
                   </span>
                   <span className="badge-movement">
                     {movement(f, basic, game)}
-                    <small>Move</small>
+                    <small>
+                      <Icon name="move" /> Movimento
+                    </small>
                   </span>
                   <span className="badge-counts">
                     {p.handCount}
-                    <small>cards</small>
+                    <small>
+                      <Icon name="cards" /> carte
+                    </small>
                   </span>
                   <strong className="badge-health">
                     {f.hp}
-                    <small>HP</small>
+                    <small>
+                      <Icon name="health" /> PV
+                    </small>
                   </strong>
                   {allies.length > 0 && (
                     <span className="badge-allies" id={`allies-${p.id}`}>
                       {allies.map((ally) => {
                         const definition = fighterDefinition(ally, basic);
-                        const label = fighterLabel(ally, basic);
+                        const label = contentText(fighterLabel(ally, basic));
                         return (
                           <span
                             key={ally.id}
                             className={`badge-ally ${ally.defeated ? 'defeated-ally' : ''}`}
-                            aria-label={`${label}: ${ally.defeated ? 'Defeated' : `${ally.hp} / ${definition.hp} HP · ${definition.attackType}`}`}
-                            title={`${label} · ${definition.attackType}`}
+                            aria-label={`${label}: ${ally.defeated ? 'Sconfitto' : `${ally.hp} / ${definition.hp} PV · ${attackTypeLabel[definition.attackType]}`}`}
+                            title={`${label} · ${attackTypeLabel[definition.attackType]}`}
                           >
                             <CharacterPortrait character={ally.definition} />
                             <span>{label}</span>
                             <strong>
-                              {ally.defeated ? 'Out' : `${ally.hp}/${definition.hp}`}
-                              {!ally.defeated && <small> HP</small>}
+                              {ally.defeated ? 'Fuori' : `${ally.hp}/${definition.hp}`}
+                              {!ally.defeated && <small> PV</small>}
                             </strong>
                           </span>
                         );
@@ -89,11 +98,11 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                 </button>
                 <button
                   className="discard-trigger"
-                  aria-label={`${p.name}: Discards · ${p.discard.length}`}
+                  aria-label={`${p.name}: Scarti · ${p.discard.length}`}
                   onClick={() => setDiscardId(p.id)}
                 >
                   <span>
-                    Discards<span className="discard-separator"> · </span>
+                    Scarti<span className="discard-separator"> · </span>
                   </span>
                   <span className="discard-count">{p.discard.length}</span>
                 </button>
@@ -104,61 +113,61 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
       </aside>
       {player && (
         <Dialog
-          title={`${player.name}${player.id === selfId ? ' · You' : ''}`}
+          title={`${player.name}${player.id === selfId ? ' · Tu' : ''}`}
           onClose={() => setDetail(null)}
         >
           <p className="muted">
             {player.eliminated
-              ? 'Eliminated'
+              ? 'Eliminato'
               : !seat?.connected
-                ? 'Disconnected · seat reserved for up to 120 seconds'
-                : `${basic.characters[player.character].name} · ${basic.characters[player.character].attackType} · Connected`}
+                ? 'Disconnesso · posto riservato fino a 120 secondi'
+                : `${contentText(basic.characters[player.character].name)} · ${attackTypeLabel[basic.characters[player.character].attackType]} · Connesso`}
           </p>
           {main!.position === null && !main!.defeated && (
-            <p>Off the board · returns at the start of the next turn.</p>
+            <p>Fuori plancia · ritorna all’inizio del prossimo turno.</p>
           )}
           <div className="player-stats">
             <div>
               <strong>{movement(main!, basic, game)}</strong>
-              <span>Movement</span>
+              <span>Movimento</span>
             </div>
             <div>
               <strong>
                 {main!.hp}
                 <small> / {basic.characters[player.character].hp}</small>
               </strong>
-              <span>Health</span>
+              <span>Vita</span>
             </div>
             <div>
               <strong>{player.handCount}</strong>
-              <span>In hand</span>
+              <span>In mano</span>
             </div>
             <div>
               <strong>{player.deckCount}</strong>
-              <span>In deck</span>
+              <span>Nel mazzo</span>
             </div>
           </div>
           {basic.characters[player.character].deckSelection && (
             <p>
-              <strong>{basic.characters[player.character].deckSelection!.name}</strong> ·{' '}
-              {basic.characters[player.character].deckSelection!.description}
+              <strong>{contentText(basic.characters[player.character].deckSelection!.name)}</strong> ·{' '}
+              {contentText(basic.characters[player.character].deckSelection!.description)}
             </p>
           )}
           {(player.ongoing ?? []).map((card) => (
             <p key={card.id}>
-              <strong>{basic.cards[card.definition].name} · Active</strong>
+              <strong>{contentText(basic.cards[card.definition].name)} · Attiva</strong>
               <br />
-              {basic.cards[card.definition].description}
+              {contentText(basic.cards[card.definition].description)}
             </p>
           ))}
           {(basic.characters[player.character].abilities ?? []).map((ability) => (
             <p key={ability.id}>
-              <strong>{ability.name}</strong> · {ability.description}
+              <strong>{contentText(ability.name)}</strong> · {contentText(ability.description)}
             </p>
           ))}
           {(basic.characters[player.character].conditionalModifiers ?? []).map((rule) => (
             <p key={rule.name}>
-              <strong>{rule.name}</strong> · {rule.description}
+              <strong>{contentText(rule.name)}</strong> · {contentText(rule.description)}
             </p>
           ))}
           {Object.entries(main!.counters).map(([name, count]) => (
@@ -168,8 +177,8 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
           ))}
           {main!.statuses.map((status) => (
             <p key={status.id}>
-              {basic.statuses?.[status.id]?.name ?? status.id} · {status.stacks} stacks
-              {status.turns ? ` · ${status.turns} turns` : ''}
+              {contentText(basic.statuses?.[status.id]?.name) ?? status.id} · {status.stacks} accumuli
+              {status.turns ? ` · ${status.turns} turni` : ''}
             </p>
           ))}
           {game.fighters
@@ -177,14 +186,14 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
             .map((f) => (
               <div key={f.id}>
                 <p>
-                  <strong>{fighterLabel(f, basic)}</strong> ·{' '}
+                  <strong>{contentText(fighterLabel(f, basic))}</strong> ·{' '}
                   {f.defeated
-                    ? 'Defeated'
-                    : `${f.hp} / ${fighterDefinition(f, basic).hp} HP · ${fighterDefinition(f, basic).attackType}`}
+                    ? 'Sconfitto'
+                    : `${f.hp} / ${fighterDefinition(f, basic).hp} PV · ${attackTypeLabel[fighterDefinition(f, basic).attackType]}`}
                 </p>
                 {fighterDefinition(f, basic).abilities?.map((ability) => (
                   <p key={ability.id}>
-                    <strong>{ability.name}</strong> · {ability.description}
+                    <strong>{contentText(ability.name)}</strong> · {contentText(ability.description)}
                   </p>
                 ))}
                 {Object.entries(f.counters).map(([name, count]) => (
@@ -194,15 +203,13 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                 ))}
                 {f.statuses.map((s) => (
                   <p key={s.id}>
-                    {basic.statuses?.[s.id]?.name ?? s.id} · {s.stacks} stacks
-                    {s.turns ? ` · ${s.turns} turns` : ''}
+                    {contentText(basic.statuses?.[s.id]?.name) ?? s.id} · {s.stacks} accumuli
+                    {s.turns ? ` · ${s.turns} turni` : ''}
                   </p>
                 ))}
               </div>
             ))}
-          <button onClick={() => setDiscardId(player.id)}>
-            Discards · {player.discard.length}
-          </button>
+          <button onClick={() => setDiscardId(player.id)}>Scarti · {player.discard.length}</button>
         </Dialog>
       )}
       {discards && <DiscardPile player={discards} onClose={() => setDiscardId(null)} />}

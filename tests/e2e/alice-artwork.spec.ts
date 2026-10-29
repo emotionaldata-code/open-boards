@@ -74,7 +74,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         ),
       );
     });
-    const jabberwock = page.getByRole('button', { name: 'The Jabberwock 1', exact: true });
+    const jabberwock = page.getByRole('button', { name: 'Il Ciciarampa 1', exact: true });
     await jabberwock.click();
     await page.mouse.move(0, 0);
     await expect(jabberwock).toHaveAttribute('aria-pressed', 'true');

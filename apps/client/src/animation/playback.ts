@@ -38,7 +38,14 @@ export function playPresentation(
       for (const entry of effects) {
         const delay = entry.effect.delay ?? 0;
         if (elapsed < delay) continue;
-        entry.view ??= createEffect(entry.effect, layer, actors, effectColors[event.tone], reduced);
+        entry.view ??= createEffect(
+          entry.effect,
+          layer,
+          actors,
+          effectColors[event.tone],
+          reduced,
+          entry.effect.duration ?? duration - delay,
+        );
         entry.view.update(
           Math.min(1, (elapsed - delay) / Math.max(1, entry.effect.duration ?? duration - delay)),
         );

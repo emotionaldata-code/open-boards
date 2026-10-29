@@ -9,6 +9,22 @@ interface Voice {
 
 // Layered, short voices: no downloads or audio dependency, and no gameplay knowledge.
 export const cues = {
+  click: [
+    { wave: 'noise', frequency: 1800, to: 600, duration: 0.035, volume: 0.1 },
+    { wave: 'sine', frequency: 620, to: 430, duration: 0.045, volume: 0.11 },
+  ],
+  select: [
+    { wave: 'triangle', frequency: 440, to: 660, duration: 0.09, volume: 0.15 },
+    { wave: 'noise', frequency: 2800, to: 1200, duration: 0.055, volume: 0.08 },
+  ],
+  confirm: [
+    { wave: 'sine', frequency: 523, duration: 0.12, volume: 0.16 },
+    { wave: 'sine', frequency: 784, duration: 0.18, at: 0.06, volume: 0.14 },
+  ],
+  notification: [
+    { wave: 'sine', frequency: 880, duration: 0.16, volume: 0.14 },
+    { wave: 'sine', frequency: 1175, duration: 0.2, at: 0.08, volume: 0.1 },
+  ],
   alert: [{ wave: 'triangle', frequency: 220, to: 330, duration: 0.3, volume: 0.3 }],
   arrow: [
     { wave: 'triangle', frequency: 420, to: 120, duration: 0.18, volume: 0.3 },

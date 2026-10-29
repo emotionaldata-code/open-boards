@@ -61,6 +61,11 @@
     width: calc(100vw - 32px);
   }
 }
+@media (max-width: 360px) {
+  .wordmark span {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

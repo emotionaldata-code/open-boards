@@ -152,45 +152,47 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('pageerror', (error) => errors.push(error.message));
     try {
       await mountArthur(page);
-      await expect(page.getByRole('button', { name: 'Merlin 1', exact: true })).toBeVisible();
-      await page.getByRole('button', { name: 'Merlin 1', exact: true }).click();
-      await page.locator('.game-card').filter({ hasText: 'Prophecy' }).click();
+      await expect(page.getByRole('button', { name: 'Merlino 1', exact: true })).toBeVisible();
+      await page.getByRole('button', { name: 'Merlino 1', exact: true }).click();
+      await page.locator('.game-card').filter({ hasText: 'Profezia' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Choose a card for your hand (2 remaining)');
+      await expect(choice()).toContainText(
+        'Scegli una carta da aggiungere alla mano (2 rimanenti)',
+      );
       for (const img of await choice().locator('img').all())
         await expect(img).toHaveJSProperty('complete', true);
-      await expect(choice().getByRole('button', { name: 'Feint', exact: true })).toContainText(
-        'Cancel all effects',
+      await expect(choice().getByRole('button', { name: 'Finta', exact: true })).toContainText(
+        'annulla tutti gli effetti',
       );
       await page.screenshot({
         path: test.info().outputPath('arthur-prophecy-desktop.png'),
         animations: 'disabled',
       });
       await mountArthur(page);
-      await choice().getByRole('button', { name: 'Feint', exact: true }).focus();
+      await choice().getByRole('button', { name: 'Finta', exact: true }).focus();
       await page.keyboard.press('Enter');
-      await expect(choice()).toContainText('(1 remaining)');
+      await expect(choice()).toContainText('(1 rimanente)');
       await page.setViewportSize({ width: 844, height: 390 });
       await mountArthur(page);
-      await choice().getByRole('button', { name: 'Swift Strike', exact: true }).tap();
-      await expect(choice()).toContainText('Order the remaining cards');
+      await choice().getByRole('button', { name: 'Colpo rapido', exact: true }).tap();
+      await expect(choice()).toContainText('Ordina le carte rimanenti');
       await mountArthur(page);
-      await choice().getByRole('button', { name: 'Bewilderment', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Smarrimento', exact: true }).tap();
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       await page.screenshot({
         path: test.info().outputPath('arthur-merlin-phone.png'),
         animations: 'disabled',
       });
-      await page.getByRole('button', { name: 'King Arthur', exact: true }).tap();
-      await page.locator('.game-card').filter({ hasText: 'Noble Sacrifice' }).click();
-      await page.getByRole('button', { name: /^Target .*\(Briar\)$/ }).click();
-      await expect(choice()).toContainText('Boost attack');
+      await page.getByRole('button', { name: 'Re Artù', exact: true }).tap();
+      await page.locator('.game-card').filter({ hasText: 'Nobile sacrificio' }).click();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Briar\)$/ }).click();
+      await expect(choice()).toContainText('Potenzia attacco');
       await mountArthur(page);
       await page.getByRole('button', { name: 'Excalibur · BOOST +3', exact: true }).tap();
-      await expect(choice()).toContainText('Boost attack');
+      await expect(choice()).toContainText('Potenzia attacco');
       await mountArthur(page);
-      await page.getByRole('button', { name: 'The Holy Grail · BOOST +2', exact: true }).tap();
+      await page.getByRole('button', { name: 'Il Santo Graal · BOOST +2', exact: true }).tap();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       const state = await page.evaluate(
         () =>

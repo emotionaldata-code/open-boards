@@ -185,11 +185,13 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.evaluate(() => sessionStorage.clear());
       await page.reload();
       await mountSorceresses(page, 'lodge');
-      await expect(page.locator('.hand-panel')).toContainText('Secretly choose a card to reveal');
+      await expect(page.locator('.hand-panel')).toContainText(
+        'Scegli in segreto una carta da rivelare',
+      );
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountSorceresses(page, 'lodge');
-      const card = page.getByRole('button', { name: 'Incinerate', exact: true });
+      const card = page.getByRole('button', { name: 'Incenerire', exact: true });
       await card.click();
       await expect
         .poll(async () => (await currentState(page)).resolution.choice?.player)
@@ -197,14 +199,16 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       expect((await currentState(page)).players[1].hand).toHaveLength(1);
       await page.reload();
       await mountSorceresses(page, 'lodge', 'p1');
-      await expect(page.locator('.hand-panel')).toContainText('Secretly choose a card to reveal');
-      await page.getByRole('button', { name: 'Feint', exact: true }).click();
+      await expect(page.locator('.hand-panel')).toContainText(
+        'Scegli in segreto una carta da rivelare',
+      );
+      await page.getByRole('button', { name: 'Finta', exact: true }).click();
       await expect
         .poll(async () => (await currentState(page)).resolution.choice?.player)
         .toBe('p0');
       await page.reload();
       await mountSorceresses(page, 'lodge', 'p0');
-      await expect(page.locator('.hand-panel')).toContainText('Choose a fighter');
+      await expect(page.locator('.hand-panel')).toContainText('Scegli un combattente');
       await page.getByRole('button', { name: 'Yennefer 1 · Sorceresses', exact: true }).click();
       await expect.poll(async () => (await currentState(page)).resolution.choice).toBeNull();
       expect((await currentState(page)).fighters.find((f) => f.id === 'p0:ally-1')!.hp).toBe(4);

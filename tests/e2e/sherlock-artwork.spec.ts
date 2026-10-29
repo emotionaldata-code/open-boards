@@ -74,7 +74,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         ),
       );
     });
-    const watson = page.getByRole('button', { name: 'Dr. Watson 1', exact: true });
+    const watson = page.getByRole('button', { name: 'Dott. Watson 1', exact: true });
     await watson.click();
     await page.mouse.move(0, 0);
     await expect(watson).toHaveAttribute('aria-pressed', 'true');
@@ -117,7 +117,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           'complete',
           true,
         );
-        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+        await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
       await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
     };

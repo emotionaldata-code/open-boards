@@ -3,6 +3,8 @@ import type { PresentationEvent } from '../animation/events';
 import { CardPrint } from '../cards/CardPrint';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
 import { Dialog } from '../ui/Dialog';
+import { Icon } from '../ui/Icon';
+import { eventSymbol } from '../animation/symbols';
 
 export function EventDialog({
   event,
@@ -53,7 +55,11 @@ export function EventDialog({
               ))}
             </div>
           )}
-          {review.result && <p className="event-result">{review.result}</p>}
+          {review.result && (
+            <p className="event-result">
+              <Icon name={eventSymbol(event)} /> {review.result}
+            </p>
+          )}
         </div>
         <footer className="event-acknowledgement">
           <button
@@ -65,7 +71,7 @@ export function EventDialog({
               onAcknowledge();
             }}
           >
-            {acknowledged ? 'Continuing…' : 'Acknowledge'}
+            {acknowledged ? 'Proseguimento…' : 'Conferma'}
           </button>
         </footer>
       </div>

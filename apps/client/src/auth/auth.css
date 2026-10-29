@@ -51,11 +51,6 @@
   margin-top: var(--space-3);
   font-size: 12px;
 }
-.rules-trigger {
-  background: transparent;
-  color: var(--text);
-  white-space: nowrap;
-}
 .entry-roster {
   min-width: 0;
 }

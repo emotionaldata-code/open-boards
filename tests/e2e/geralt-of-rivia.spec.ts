@@ -166,24 +166,28 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountGeralt(page, 'gear');
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Choose a sword');
+      await expect(choice()).toContainText('Scegli una spada');
       await page.screenshot({
         path: test.info().outputPath('geralt-gear-desktop.png'),
         animations: 'disabled',
       });
-      await choice().getByRole('button', { name: 'GEAR: Sword of Steel', exact: true }).focus();
+      await choice()
+        .getByRole('button', { name: 'EQUIPAGGIAMENTO: spada d’acciaio', exact: true })
+        .focus();
       await page.keyboard.press('Enter');
-      await expect(choice()).toContainText('Choose armor');
+      await expect(choice()).toContainText('Scegli un’armatura');
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountGeralt(page, 'gear');
-      await choice().getByRole('button', { name: 'GEAR: Wolf Medallion', exact: true }).tap();
-      await expect(choice()).toContainText('Choose a potion');
+      await choice()
+        .getByRole('button', { name: 'EQUIPAGGIAMENTO: medaglione del Lupo', exact: true })
+        .tap();
+      await expect(choice()).toContainText('Scegli una pozione');
       await page.screenshot({
         path: test.info().outputPath('geralt-gear-phone.png'),
         animations: 'disabled',
       });
-      await choice().getByRole('button', { name: 'GEAR: Blizzard', exact: true }).tap();
+      await choice().getByRole('button', { name: 'EQUIPAGGIAMENTO: Tormenta', exact: true }).tap();
       const state = await currentState(page);
       expect(state.players[0].hand).toHaveLength(5);
       expect(state.players[0].deck).toHaveLength(25);
@@ -222,20 +226,20 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     });
     try {
       await mountGeralt(page, 'potion');
-      await expect(page.locator('.badge-ally').filter({ hasText: 'Dandelion' })).toBeVisible();
-      await page.locator('.game-card').filter({ hasText: 'GEAR: Blizzard' }).click();
+      await expect(page.locator('.badge-ally').filter({ hasText: 'Ranuncolo' })).toBeVisible();
+      await page.locator('.game-card').filter({ hasText: 'EQUIPAGGIAMENTO: Tormenta' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Choose a destination');
+      await expect(choice()).toContainText('Scegli una destinazione');
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountGeralt(page, 'potion');
-      await choice().getByRole('button', { name: 'Stay in place', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Resta fermo', exact: true }).tap();
       await expect(choice()).toHaveCount(0);
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       expect((await currentState(page)).players[0].ongoing).toHaveLength(1);
-      await page.getByRole('button', { name: /Geralt \(you\).*Player details/ }).tap();
-      await expect(page.getByRole('dialog')).toContainText('GEAR: Blizzard · Active');
-      await expect(page.getByRole('dialog')).toContainText('Dandelion');
+      await page.getByRole('button', { name: /Geralt \(tu\).*Dettagli giocatore/ }).tap();
+      await expect(page.getByRole('dialog')).toContainText('EQUIPAGGIAMENTO: Tormenta · Attiva');
+      await expect(page.getByRole('dialog')).toContainText('Ranuncolo');
       await page.screenshot({
         path: test.info().outputPath('geralt-potion-phone.png'),
         animations: 'disabled',
@@ -275,14 +279,14 @@ test('Geralt restores a private Rend BOOST and pays the exact hand instance on p
   try {
     await mountGeralt(page, 'rend');
     const choice = () => page.locator('.hand-panel:has(.ability-options)');
-    await expect(choice()).toContainText('Boost attack');
+    await expect(choice()).toContainText('Potenzia attacco');
     await page.reload();
     await mountGeralt(page, 'rend');
     const before = await currentState(page);
     const payment = before.players[0].hand.find(
       (c) => c.definition === 'geralt-of-rivia-damn-youre-ugly',
     )!;
-    await page.getByRole('button', { name: /Damn, You're Ugly · BOOST \+4/ }).tap();
+    await page.getByRole('button', { name: /Accidenti, quanto sei brutto · BOOST \+4/ }).tap();
     await expect(choice()).toHaveCount(0);
     expect((await currentState(page)).players[0].discard.some((c) => c.id === payment.id)).toBe(
       true,
@@ -313,17 +317,19 @@ test('Geralt’s complete gear pool has fifteen loaded illustrations and keyboar
       route.fulfill({ status: 200, contentType: 'application/json', body: 'null' }),
     );
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Sign in to play', exact: true })).toBeVisible();
-    const explorer = page.getByRole('button', { name: /^Explore \d+ characters$/ });
+    await expect(
+      page.getByRole('heading', { name: 'Accedi per giocare', exact: true }),
+    ).toBeVisible();
+    const explorer = page.getByRole('button', { name: /^Esplora \d+ personaggi$/ });
     if (await explorer.isVisible()) await explorer.click();
-    const roster = page.getByRole('region', { name: 'Character roster' });
-    await roster.getByRole('button', { name: 'Inspect Geralt of Rivia', exact: true }).click();
-    await expect(roster).toContainText('Always Prepared');
-    await expect(roster).toContainText('Dandelion');
+    const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
+    await roster.getByRole('button', { name: 'Esamina Geralt di Rivia', exact: true }).click();
+    await expect(roster).toContainText('Sempre pronto');
+    await expect(roster).toContainText('Ranuncolo');
     await roster
-      .getByRole('button', { name: 'Explore Geralt of Rivia’s deck · 15 designs', exact: true })
+      .getByRole('button', { name: 'Mazzo di Geralt di Rivia · 15 carte diverse', exact: true })
       .click();
-    const gallery = page.getByRole('dialog', { name: 'Geralt of Rivia’s deck', exact: true });
+    const gallery = page.getByRole('dialog', { name: 'Mazzo di Geralt di Rivia', exact: true });
     await expect(gallery.locator('.deck-gallery > button')).toHaveCount(15);
     await page.screenshot({
       path: test.info().outputPath('geralt-gallery-desktop.png'),
@@ -342,13 +348,13 @@ test('Geralt’s complete gear pool has fifteen loaded illustrations and keyboar
       await page
         .getByRole('dialog')
         .last()
-        .getByRole('button', { name: 'Close dialog', exact: true })
+        .getByRole('button', { name: 'Chiudi finestra', exact: true })
         .click();
     await page.setViewportSize({ width: 844, height: 390 });
     if (await explorer.isVisible()) await explorer.click();
-    await roster.getByRole('button', { name: 'Inspect Geralt of Rivia', exact: true }).click();
+    await roster.getByRole('button', { name: 'Esamina Geralt di Rivia', exact: true }).click();
     await roster
-      .getByRole('button', { name: 'Explore Geralt of Rivia’s deck · 15 designs', exact: true })
+      .getByRole('button', { name: 'Mazzo di Geralt di Rivia · 15 carte diverse', exact: true })
       .click();
     await gallery.locator('.deck-gallery > button').last().click();
     await page.screenshot({
@@ -356,11 +362,18 @@ test('Geralt’s complete gear pool has fifteen loaded illustrations and keyboar
       animations: 'disabled',
     });
     expect(
-      await page.evaluate(
-        () =>
-          document.documentElement.scrollWidth <= innerWidth &&
-          document.documentElement.scrollHeight <= innerHeight,
-      ),
+      await page
+        .getByRole('dialog')
+        .last()
+        .evaluate((dialog) => {
+          const bounds = dialog.getBoundingClientRect();
+          return (
+            bounds.left >= 0 &&
+            bounds.right <= innerWidth &&
+            bounds.top >= 0 &&
+            bounds.bottom <= innerHeight
+          );
+        }),
     ).toBe(true);
     expect(errors).toEqual([]);
   } finally {

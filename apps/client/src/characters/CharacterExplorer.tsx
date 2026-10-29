@@ -8,11 +8,15 @@ export function CharacterExplorer() {
   return (
     <>
       <button className="roster-trigger" onClick={() => setOpen(true)}>
-        Explore {Object.keys(characters).length}{' '}
-        {Object.keys(characters).length === 1 ? 'character' : 'characters'}
+        Esplora {Object.keys(characters).length}{' '}
+        {Object.keys(characters).length === 1 ? 'personaggio' : 'personaggi'}
       </button>
       {open && (
-        <Dialog title="Meet the fighters" className="roster-dialog" onClose={() => setOpen(false)}>
+        <Dialog
+          title="Scopri i combattenti"
+          className="roster-dialog"
+          onClose={() => setOpen(false)}
+        >
           <CharacterRoster />
         </Dialog>
       )}

@@ -1,3 +1,4 @@
+import { contentText } from '../../apps/client/src/localization/text';
 import { expect, test } from '@playwright/test';
 import type { GameView } from '../../packages/protocol/src/index';
 import { presentationHarness } from './fixtures/game';
@@ -30,7 +31,7 @@ for (const viewport of [
     await expect(page.locator('.player-summary button button')).toHaveCount(0);
     for (const [i, player] of players.entries()) {
       const trigger = page.getByRole('button', {
-        name: `${player.name}: Discards · 4`,
+        name: `${contentText(player.name)}: Scarti · 4`,
         exact: true,
       });
       await expect(trigger).toBeInViewport({ ratio: 1 });
@@ -38,25 +39,28 @@ for (const viewport of [
       expect(bounds.width).toBeGreaterThanOrEqual(44);
       expect(bounds.height).toBeGreaterThanOrEqual(44);
       await trigger.click();
-      const pile = page.getByRole('dialog', { name: `${player.name}’s discards`, exact: true });
-      await expect(pile).toContainText('4 cards · Most recent first');
+      const pile = page.getByRole('dialog', {
+        name: `Scarti di ${contentText(player.name)}`,
+        exact: true,
+      });
+      await expect(pile).toContainText('4 carte · Dalla più recente');
       const rows = pile.getByRole('listitem');
       await expect(rows).toHaveCount(4);
-      await expect(rows.nth(0)).toContainText('Winged Frenzy');
-      await expect(rows.nth(0)).toContainText('action');
-      await expect(rows.nth(0)).toContainText('Value 0');
-      await expect(rows.nth(1)).toContainText('Dash');
-      await expect(rows.nth(2)).toContainText('Gaze of Stone');
-      await expect(rows.nth(3)).toContainText('Dash');
-      await expect(rows.nth(1)).toContainText('versatile');
-      await expect(rows.nth(1)).toContainText('Value 3');
-      await expect(rows.nth(2)).toContainText('attack');
-      await expect(rows.nth(2)).toContainText('Value 2');
+      await expect(rows.nth(0)).toContainText('Frenesia alata');
+      await expect(rows.nth(0)).toContainText('Stratagemma');
+      await expect(rows.nth(0)).toContainText('Valore 0');
+      await expect(rows.nth(1)).toContainText('Scatto');
+      await expect(rows.nth(2)).toContainText('Sguardo di pietra');
+      await expect(rows.nth(3)).toContainText('Scatto');
+      await expect(rows.nth(1)).toContainText('Attacco / Difesa');
+      await expect(rows.nth(1)).toContainText('Valore 3');
+      await expect(rows.nth(2)).toContainText('Attacco');
+      await expect(rows.nth(2)).toContainText('Valore 2');
       const card = rows.nth(1).getByRole('button');
       await card.click();
-      const detail = page.getByRole('dialog', { name: 'Dash', exact: true });
+      const detail = page.getByRole('dialog', { name: 'Scatto', exact: true });
       await expect(detail.locator('.card-art')).toBeVisible();
-      await expect(detail).toContainText('After combat');
+      await expect(detail).toContainText('Dopo il combattimento');
       await page.keyboard.press('Escape');
       await expect(detail).toHaveCount(0);
       await expect(pile).toBeVisible();
@@ -77,19 +81,22 @@ for (const viewport of [
           window as unknown as { updatePresentationGame: (game: Partial<GameView>) => void }
         ).updatePresentationGame({ players });
       }, current);
-      const pile = page.getByRole('dialog', { name: `${player.name}’s discards`, exact: true });
-      await expect(pile).toContainText('0 cards');
-      await expect(pile).toContainText('No cards discarded yet.');
+      const pile = page.getByRole('dialog', {
+        name: `Scarti di ${contentText(player.name)}`,
+        exact: true,
+      });
+      await expect(pile).toContainText('0 carte');
+      await expect(pile).toContainText('Nessuna carta scartata.');
       await expect(pile.getByRole('listitem')).toHaveCount(0);
-      await expect(trigger).toHaveText('Discards · 0');
+      await expect(trigger).toHaveText('Scarti · 0');
       await page.keyboard.press('Escape');
       await expect(trigger).toBeFocused();
-      // Player details opens the same empty pile, then returns focus to its own trigger.
+      // Dettagli giocatore opens the same empty pile, then returns focus to its own trigger.
       await page.locator('.player-badge').nth(i).click();
       const details = page.getByRole('dialog');
-      const access = details.getByRole('button', { name: 'Discards · 0', exact: true });
+      const access = details.getByRole('button', { name: 'Scarti · 0', exact: true });
       await access.click();
-      await expect(pile).toContainText('No cards discarded yet.');
+      await expect(pile).toContainText('Nessuna carta scartata.');
       await page.keyboard.press('Escape');
       await expect(access).toBeFocused();
       await page.keyboard.press('Escape');

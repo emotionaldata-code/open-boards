@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import { basic } from '@open-boards/content';
 import { fighterById, fighterDefinition, fighterLabel, type Outcome } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
@@ -26,7 +27,7 @@ function participant(game: GameView, id: string, role: string, card?: string): R
     role,
     card,
     fighter: {
-      name: fighterLabel(fighter, basic),
+      name: contentText(fighterLabel(fighter, basic)),
       player: game.players.find((p) => p.id === fighter.player)!.name,
       artwork: fighter.definition,
     },
@@ -56,13 +57,15 @@ export function outcomeReview(
       return {
         participants: [],
         cards: outcome.cards.map((c) => c.definition),
-        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} reveals ${outcome.cards.length} card${outcome.cards.length === 1 ? '' : 's'} from their hand.`,
+        explanation: `${game.players.find((p) => p.id === outcome.player)!.name} rivela ${outcome.cards.length} ${outcome.cards.length === 1 ? 'carta' : 'carte'} dalla propria mano.`,
       };
     case 'played':
       if (!isActionPlay(outcome, previous)) return;
       return {
-        participants: [participant(game, outcome.fighter, 'Card played', outcome.card.definition)],
-        explanation: 'The card is played. Its effects resolve next, in order.',
+        participants: [
+          participant(game, outcome.fighter, 'Carta giocata', outcome.card.definition),
+        ],
+        explanation: 'La carta è stata giocata. I suoi effetti si risolvono in ordine.',
       };
     case 'boost':
       return {
@@ -70,13 +73,13 @@ export function outcomeReview(
           participant(
             game,
             outcome.fighter,
-            outcome.cancelled ? 'BOOST cancelled' : `Boost ${outcome.purpose} +${outcome.amount}`,
+            outcome.cancelled ? 'BOOST annullato' : `BOOST +${outcome.amount}`,
             outcome.card.definition,
           ),
         ],
         explanation: outcome.cancelled
-          ? 'The BOOST is discarded without effect because the attack card’s effects were cancelled.'
-          : `The card is discarded to add ${outcome.amount} to ${outcome.purpose === 'maneuver' ? 'each owned fighter’s movement for this Maneuver' : outcome.purpose === 'defense' ? 'this defense' : 'this attack'}. Its own effects do not resolve.`,
+          ? 'Il BOOST viene scartato senza effetto perché gli effetti della carta attacco sono stati annullati.'
+          : `La carta viene scartata per aggiungere ${outcome.amount} a ${outcome.purpose === 'maneuver' ? 'il movimento di ogni tuo combattente per questa manovra' : outcome.purpose === 'defense' ? 'questa difesa' : 'questo attacco'}. I suoi effetti non si risolvono.`,
       };
     case 'combat': {
       const { attacker, defender, attack, defense, boosts, damage, bonus, prediction } =
@@ -86,37 +89,37 @@ export function outcomeReview(
           participant(
             game,
             attacker,
-            bonus ? `${bonus.name} · Attack ${bonus.value}` : 'Attack',
+            bonus ? `${contentText(bonus.name)} · Attacco ${bonus.value}` : 'Attacco',
             attack.definition,
           ),
-          participant(game, defender, defense ? 'Defense' : 'No defense', defense?.definition),
+          participant(game, defender, defense ? 'Difesa' : 'Nessuna difesa', defense?.definition),
           ...boosts.map(({ card, amount, cancelled, field }) =>
             participant(
               game,
               field === 'defense' ? defender : attacker,
-              cancelled ? 'BOOST cancelled' : `BOOST +${amount}`,
+              cancelled ? 'BOOST annullato' : `BOOST +${amount}`,
               card.definition,
             ),
           ),
         ],
         explanation:
-          (prediction !== undefined ? `Predicted printed attack value: ${prediction}. ` : '') +
+          (prediction !== undefined ? `Valore di attacco stampato previsto: ${prediction}. ` : '') +
           (bonus
-            ? `${bonus.name} is a separate attack with printed value ${bonus.value}. The original attack effects do not repeat. `
+            ? `${contentText(bonus.name)} è un attacco separato con valore stampato ${bonus.value}. Gli effetti dell’attacco originale non si ripetono. `
             : '') +
           (defense
-            ? 'Both cards are revealed. Card values are printed below; abilities can modify the result.'
-            : 'The attack card is revealed. No defense card was played.') +
+            ? 'Entrambe le carte sono rivelate. I valori sono indicati sotto; le abilità possono modificare l’esito.'
+            : 'La carta attacco è rivelata. Non è stata giocata alcuna carta difesa.') +
           boosts
             .map(({ amount, cancelled, field }) =>
               !cancelled
-                ? ` BOOST adds ${amount} to the ${field === 'defense' ? 'defense' : 'attack'}. The boosting card’s effects are ignored.`
-                : ' The BOOST was discarded without effect.',
+                ? ` Il BOOST aggiunge ${amount} al valore di ${field === 'defense' ? 'difesa' : 'attacco'}. Gli effetti della carta usata per il BOOST vengono ignorati.`
+                : ' Il BOOST è stato scartato senza effetto.',
             )
             .join(''),
         result: damage
-          ? `${fighterDefinition(fighterById(game, defender)!, basic).name} takes ${damage} damage.`
-          : 'No combat damage is dealt.',
+          ? `${contentText(fighterDefinition(fighterById(game, defender)!, basic).name)} subisce ${damage} danni.`
+          : 'Nessun danno da combattimento.',
       };
     }
     case 'ability': {
@@ -132,20 +135,23 @@ export function outcomeReview(
         ...(card?.abilities ?? []),
       ].find((a) => a.name === outcome.name);
       return {
-        participants: [participant(game, outcome.fighter, 'Ability triggered', card?.id)],
+        participants: [participant(game, outcome.fighter, 'Abilità attivata', card?.id)],
         explanation:
-          ability?.description ?? `${outcome.name} triggers. Its confirmed effects follow.`,
+          contentText(ability?.description) ??
+          `${contentText(outcome.name)} si attiva. Seguono i suoi effetti confermati.`,
         result: ability ? hookDescriptions[ability.trigger] : undefined,
       };
     }
     case 'status': {
       const status = basic.statuses?.[outcome.status];
       return {
-        participants: [participant(game, outcome.fighter, 'Status effect')],
+        participants: [participant(game, outcome.fighter, 'Effetto di stato')],
         explanation: outcome.stacks
-          ? `${status?.name ?? outcome.status} is active with ${outcome.stacks} ${outcome.stacks === 1 ? 'stack' : 'stacks'}.`
-          : `${status?.name ?? outcome.status} is removed.`,
-        result: outcome.stacks ? status?.abilities?.map((a) => a.description).join(' ') : undefined,
+          ? `${contentText(status?.name) ?? outcome.status} è attivo con ${outcome.stacks} ${outcome.stacks === 1 ? 'accumulo' : 'accumuli'}.`
+          : `${contentText(status?.name) ?? outcome.status} viene rimosso.`,
+        result: outcome.stacks
+          ? status?.abilities?.map((a) => contentText(a.description)).join(' ')
+          : undefined,
       };
     }
     case 'damage':
@@ -156,21 +162,21 @@ export function outcomeReview(
           participant(
             game,
             outcome.fighter,
-            outcome.reason === 'exhaustion' ? 'Exhaustion' : 'Damage effect',
+            outcome.reason === 'exhaustion' ? 'Esaurimento' : 'Effetto di danno',
           ),
         ],
-        explanation: `${outcome.amount} damage is dealt.`,
+        explanation: `${outcome.amount} danni inflitti.`,
       };
     case 'revived':
       return {
-        participants: [participant(game, outcome.fighter, 'Ally returned')],
+        participants: [participant(game, outcome.fighter, 'Alleato ritornato')],
         explanation:
-          'The same ally returns at full printed health with cleared statuses and initial counters.',
+          'Lo stesso alleato ritorna con tutta la vita iniziale, senza stati e con i contatori iniziali.',
       };
     case 'heal':
       return {
-        participants: [participant(game, outcome.fighter, 'Healing effect')],
-        explanation: `${outcome.amount} health is restored.`,
+        participants: [participant(game, outcome.fighter, 'Effetto di cura')],
+        explanation: `${outcome.amount} punti vita recuperati.`,
       };
     default:
       return;

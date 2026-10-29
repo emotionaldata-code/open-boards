@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import {
   useEffect,
   useImperativeHandle,
@@ -12,6 +13,7 @@ import { fighterLabel } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
 import type { PresentationEvent } from '../animation/events';
 import { ArenaScene } from './scene';
+import { preloadEffects } from '../animation/sprites';
 import { Terrain } from './Terrain';
 import { MapScenery } from './MapScenery';
 import { playerColors } from './figures';
@@ -61,7 +63,7 @@ export function Board(props: Props) {
         antialias: true,
         autoStart: false,
         preference: 'webgl',
-        resolution: Math.min(devicePixelRatio || 1, 3),
+        resolution: Math.min(Math.max(devicePixelRatio || 1, 2), 3),
         autoDensity: true,
       })
       .then(() => {
@@ -87,9 +89,12 @@ export function Board(props: Props) {
           render();
         });
         resize.observe(host.current!);
+        void preloadEffects().catch(() => {});
         setReady(true);
       })
-      .catch(() => setError('Map graphics unavailable. Use the numbered spaces to play.'));
+      .catch(() =>
+        setError('Grafica della mappa non disponibile. Usa le caselle numerate per giocare.'),
+      );
     return () => {
       disposed = true;
       resize?.disconnect();
@@ -104,12 +109,12 @@ export function Board(props: Props) {
     scene.current?.update(props.game, props.events ?? [], props.reset ?? 0);
   }, [ready, props.game, props.events, props.reset]);
   return (
-    <div className="board-viewport" role="region" aria-label="Map">
+    <div className="board-viewport" role="region" aria-label="Mappa">
       <div
         className={`arena ${!ready || error ? 'native-figures' : ''}`}
         style={{ '--board-aspect': arenaSize.width / arenaSize.height } as CSSProperties}
         role="group"
-        aria-label={`${basic.map.name}: ${basic.map.nodes.length} connected spaces, ${Object.keys(zoneStyles).length} colored zones and ${basic.map.portals?.length ?? 0} portals.`}
+        aria-label={`${contentText(basic.map.name)}: ${basic.map.nodes.length} caselle collegate, ${Object.keys(zoneStyles).length} zone colorate e ${basic.map.portals?.length ?? 0} portali.`}
       >
         <MapScenery id={basic.map.id} />
         <Terrain
@@ -119,7 +124,7 @@ export function Board(props: Props) {
             undefined
           }
         />
-        <div className="board-tokens" aria-label="Board tokens">
+        <div className="board-tokens" aria-label="Segnalini sulla plancia">
           {(props.game?.boardTokens ?? [])
             .filter((t) => t.position !== null)
             .map((token, index, tokens) => {
@@ -135,7 +140,7 @@ export function Board(props: Props) {
                     t.position === token.position &&
                     (!interactive || props.interactiveTokens?.includes(t.id)),
                 ).length;
-              const label = `${token.name} · ${props.game!.players[player]?.name} · Space ${point.label}`;
+              const label = `${contentText(token.name)} · ${props.game!.players[player]?.name} · Casella ${point.label}`;
               const Token = interactive ? 'button' : 'span';
               return (
                 <Token
@@ -169,7 +174,7 @@ export function Board(props: Props) {
                       strokeWidth="3"
                     />
                   </svg>
-                  <b>{token.name.split(' ').at(-1)}</b>
+                  <b>{contentText(token.name).split(' ').at(-1)}</b>
                 </Token>
               );
             })}
@@ -179,7 +184,7 @@ export function Board(props: Props) {
           <div
             className="board-fighters"
             role={props.interactiveFighters?.length ? 'group' : undefined}
-            aria-label={props.interactiveFighters?.length ? 'Your fighters' : undefined}
+            aria-label={props.interactiveFighters?.length ? 'I tuoi combattenti' : undefined}
           >
             {(props.game?.fighters ?? [])
               .filter((f) => f.position !== null && !f.defeated)
@@ -187,7 +192,7 @@ export function Board(props: Props) {
                 const point = spaces[fighter.position!];
                 const interactive = props.interactiveFighters?.includes(fighter.id);
                 const target = props.targetFighters?.includes(fighter.id);
-                const label = `${fighterLabel(fighter, basic)} (${props.game?.players.find((p) => p.id === fighter.player)?.name})`;
+                const label = `${contentText(fighterLabel(fighter, basic))} (${props.game?.players.find((p) => p.id === fighter.player)?.name})`;
                 const Figure = interactive ? 'button' : 'span';
                 return (
                   <Figure
@@ -195,22 +200,22 @@ export function Board(props: Props) {
                     className={`fighter-hit ${interactive ? 'is-interactive' : ''} ${target ? 'is-target' : ''}`}
                     aria-label={
                       props.fighterLabels?.[fighter.id] ??
-                      (target ? `Target ${label}` : fighterLabel(fighter, basic))
+                      (target ? `Bersaglio ${label}` : contentText(fighterLabel(fighter, basic)))
                     }
                     role={interactive ? undefined : 'img'}
                     aria-pressed={interactive ? props.selected === fighter.id : undefined}
                     aria-description={
                       target
-                        ? `Zones: ${basic.map.zones[fighter.position!].map((zone) => zoneStyles[zone].name).join(', ')}`
+                        ? `Zone: ${basic.map.zones[fighter.position!].map((zone) => contentText(zoneStyles[zone].name)).join(', ')}`
                         : props.game?.phase.type === 'choosing-movement' &&
                             props.selected === fighter.id
-                          ? 'Click this fighter’s current space to stay.'
-                          : 'Choose this fighter.'
+                          ? 'Tocca la casella attuale del combattente per restare fermo.'
+                          : 'Scegli questo combattente.'
                     }
                     title={
                       props.game?.phase.type === 'choosing-movement' &&
                       props.selected === fighter.id
-                        ? `${label} · Stay here`
+                        ? `${label} · Resta qui`
                         : label
                     }
                     data-fighter={fighter.id}
@@ -221,7 +226,7 @@ export function Board(props: Props) {
                     onClick={interactive ? () => props.onFighter?.(fighter.id) : undefined}
                   >
                     <CharacterPortrait character={fighter.definition} />
-                    <span className="fighter-label">{fighterLabel(fighter, basic)}</span>
+                    <span className="fighter-label">{contentText(fighterLabel(fighter, basic))}</span>
                   </Figure>
                 );
               })}
@@ -236,13 +241,13 @@ export function Board(props: Props) {
               }}
               aria-label={
                 props.game?.phase.type === 'placing-allies'
-                  ? `Place ally at ${spaces[id].label}`
+                  ? `Colloca alleato in ${spaces[id].label}`
                   : props.game?.phase.type === 'choosing-movement'
-                    ? `Move to ${spaces[id].label}`
-                    : `Choose space ${spaces[id].label}`
+                    ? `Muovi in ${spaces[id].label}`
+                    : `Scegli casella ${spaces[id].label}`
               }
-              aria-description={`Zones: ${basic.map.zones[id].map((zone) => zoneStyles[zone].name).join(', ')}${basic.map.portals?.includes(id) ? '. Portal (passage arrows below the space): move to any other unoccupied portal for one movement point.' : ''}`}
-              title={`Space ${spaces[id].label}${basic.map.portals?.includes(id) ? ' · Portal (passage arrows) · One movement point to another unoccupied portal' : ''}`}
+              aria-description={`Zone: ${basic.map.zones[id].map((zone) => contentText(zoneStyles[zone].name)).join(', ')}${basic.map.portals?.includes(id) ? '. Portale (frecce sotto la casella): raggiungi un altro portale libero spendendo un punto movimento.' : ''}`}
+              title={`Casella ${spaces[id].label}${basic.map.portals?.includes(id) ? ' · Portale (frecce) · Un punto movimento per raggiungere un altro portale libero' : ''}`}
               onClick={(event) => {
                 if (!event.detail) {
                   props.onNode?.(id);

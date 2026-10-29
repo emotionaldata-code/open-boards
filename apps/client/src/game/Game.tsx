@@ -1,3 +1,7 @@
+import { contentText } from '../localization/text';
+import { messageText } from '../ui/messages';
+import { choiceLabel } from './choice-label';
+import { sound } from '../audio/player';
 import { useEffect, useRef, useState } from 'react';
 import { basic } from '@open-boards/content';
 import {
@@ -28,35 +32,38 @@ function instruction(game: GameView, user: User): string {
   if (game.phase.type === 'finished') {
     const winner = game.phase.winner;
     return winner
-      ? `${game.players.find((p) => p.id === winner)?.name} wins the match.`
-      : 'The match is a draw.';
+      ? `${game.players.find((p) => p.id === winner)?.name} vince la partita.`
+      : 'La partita termina in pareggio.';
   }
-  if (game.paused) return 'Match paused. Waiting for players to reconnect.';
+  if (game.paused) return 'Partita in pausa. In attesa della riconnessione dei giocatori.';
   if (game.phase.type === 'ability-choice')
-    return game.choice?.prompt ?? 'A rival is resolving an ability.';
+    return (
+      (game.choice ? messageText(game.choice.prompt) : undefined) ??
+      'Un avversario sta risolvendo un’abilità.'
+    );
   if (game.phase.type === 'awaiting-defense')
     return fighterById(game, game.phase.defender)?.player === user.id
       ? game.phase.bonus
-        ? `${game.phase.bonus.name} · Attack ${game.phase.bonus.value}. Choose a defense card or take the hit.`
-        : 'Choose a defense or take the hit.'
-      : `${game.players.find((p) => p.id === fighterById(game, (game.phase as { defender: string }).defender)?.player)?.name} is choosing a defense.`;
+        ? `${contentText(game.phase.bonus.name)} · Attacco ${game.phase.bonus.value}. Scegli una carta difesa o subisci il colpo.`
+        : 'Scegli una difesa o subisci il colpo.'
+      : `${game.players.find((p) => p.id === fighterById(game, (game.phase as { defender: string }).defender)?.player)?.name} sta scegliendo una difesa.`;
   if (game.phase.type === 'placing-allies')
     return game.phase.player === user.id
-      ? 'Place your allies in your hero’s zone.'
-      : 'Your rival is deploying allies.';
+      ? 'Colloca gli alleati nella zona del tuo eroe.'
+      : 'L’avversario sta collocando gli alleati.';
   if (game.phase.type === 'choosing-movement')
     return game.phase.player === user.id
       ? game.maneuver?.boostable
-        ? 'Choose a fighter, then a space. Click a card to boost movement.'
-        : 'Choose a fighter, then a space or its current space to stay.'
-      : 'Your rival is choosing a move.';
+        ? 'Scegli un combattente, poi una casella. Tocca una carta per potenziare il movimento.'
+        : 'Scegli un combattente, poi una casella o la sua casella attuale per restare fermo.'
+      : 'L’avversario sta scegliendo un movimento.';
   if (game.phase.type === 'discarding')
     return game.phase.player === user.id
-      ? `Choose ${game.hand.length - 7} cards to discard.`
-      : 'Your rival is discarding to seven cards.';
+      ? `Scegli ${game.hand.length - 7} carte da scartare.`
+      : 'L’avversario sta scartando fino a sette carte.';
   return game.players[game.turn].id === user.id
-    ? 'Click a card to play it, or prepare an attack and choose a rival.'
-    : `${game.players[game.turn].name} is taking their turn.`;
+    ? 'Tocca una carta per giocarla, oppure prepara un attacco e scegli un avversario.'
+    : `${game.players[game.turn].name} sta giocando il suo turno.`;
 }
 export function Game({
   room,
@@ -160,6 +167,13 @@ export function Game({
         )
       : [];
   const choice = game.choice;
+  const announcedChoice = useRef<string | null>(null);
+  useEffect(() => {
+    if (choice && !locked && announcedChoice.current !== choice.id) {
+      announcedChoice.current = choice.id;
+      sound.play('notification');
+    }
+  }, [choice?.id, locked]);
   const highlights = locked
     ? []
     : choice
@@ -255,13 +269,13 @@ export function Game({
           ...targets.map((f) => f.id),
         ];
   const prompt = choice
-    ? choice.prompt
+    ? messageText(choice.prompt)
     : chosen && myTurn
       ? targets.length
-        ? 'Click a highlighted rival to attack. Click the card again or press Esc to cancel.'
-        : 'No rivals in range. Maneuver to get closer.'
+        ? 'Tocca un nemico evidenziato per attaccare. Tocca di nuovo la carta o premi Esc per annullare.'
+        : 'Nessun nemico a portata. Manovra per avvicinarti.'
       : moving
-        ? `${game.maneuver?.remaining.length} left · Move ${maneuverMovement(game, fighter, basic)}${game.maneuver?.boostable ? ' · Click card to boost' : ' · Choose a space'}`
+        ? `${game.maneuver?.remaining.length} da muovere · Movimento ${maneuverMovement(game, fighter, basic)}${game.maneuver?.boostable ? ' · Tocca una carta per potenziare' : ' · Scegli una casella'}`
         : instruction(game, user);
   const ended = phase.type === 'finished';
   return (
@@ -273,24 +287,24 @@ export function Game({
         data-turn={game.players[game.turn].name}
       >
         <div className="game-title">
-          <h1>{ended ? 'Match complete' : basic.map.name}</h1>
+          <h1>{ended ? 'Partita conclusa' : contentText(basic.map.name)}</h1>
           <span className="turn-label">
-            {ended ? 'Final board' : `${game.players[game.turn].name}’s turn`}
+            {ended ? 'Plancia finale' : `Turno di ${game.players[game.turn].name}`}
           </span>
           <span
             className="action-count"
-            aria-label={ended ? undefined : `${game.actions} actions remaining`}
+            aria-label={ended ? undefined : `${game.actions} azioni rimanenti`}
           >
             {!ended && (
               <>
                 <i aria-hidden="true" className={game.actions > 0 ? 'filled' : ''} />
                 <i aria-hidden="true" className={game.actions > 1 ? 'filled' : ''} />
-                <span>{game.actions} actions</span>
+                <span>{game.actions} azioni</span>
               </>
             )}
           </span>
           <button onClick={() => (ended ? onLeave() : setConfirmLeave(true))}>
-            {ended ? 'Return to lobby' : 'Leave match'}
+            {ended ? 'Torna alla lobby' : 'Lascia partita'}
           </button>
         </div>
         <MatchDetails room={room} selfId={user.id} />
@@ -308,7 +322,9 @@ export function Game({
               interactiveFighters={interactiveFighters}
               fighterLabels={Object.fromEntries(
                 choice?.options.flatMap((o) =>
-                  o.object?.type === 'fighter' ? [[o.object.id, o.label]] : [],
+                  o.object?.type === 'fighter'
+                    ? [[o.object.id, choiceLabel(o, game.fighters)]]
+                    : [],
                 ) ?? [],
               )}
               targetFighters={targets.map((f) => f.id)}
@@ -339,8 +355,8 @@ export function Game({
             )}
           </section>
           {game.observation && !choice && !defending ? (
-            <section className="hand-panel" aria-label="Revealed cards">
-              <h2>{game.observation.prompt}</h2>
+            <section className="hand-panel" aria-label="Carte rivelate">
+              <h2>{messageText(game.observation.prompt)}</h2>
               <div className="ability-options">
                 {game.observation.cards.map((card) => (
                   <div className="printed-card" key={card.id}>
@@ -355,7 +371,7 @@ export function Game({
               fighter={fighter}
               eliminated={self.eliminated}
               ended={ended}
-              prompt={`${prompt}${presentation.reviewing ? ' Review recent events to continue.' : ''}`}
+              prompt={`${prompt}${presentation.reviewing ? ' Conferma gli eventi recenti per continuare.' : ''}`}
               myTurn={myTurn}
               moving={moving}
               defending={defending}
@@ -387,12 +403,12 @@ export function Game({
         />
       )}
       {confirmLeave && (
-        <Dialog title="Leave the arena?" onClose={() => setConfirmLeave(false)}>
-          <p>Leaving forfeits your seat in this match.</p>
+        <Dialog title="Lasciare l’arena?" onClose={() => setConfirmLeave(false)}>
+          <p>Abbandonare questa partita equivale alla resa.</p>
           <div className="button-row">
-            <button onClick={() => setConfirmLeave(false)}>Keep playing</button>
+            <button onClick={() => setConfirmLeave(false)}>Continua a giocare</button>
             <button className="primary" onClick={onLeave}>
-              Forfeit and leave
+              Arrenditi ed esci
             </button>
           </div>
         </Dialog>

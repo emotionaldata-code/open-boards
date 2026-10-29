@@ -1,3 +1,6 @@
+import { contentText } from '../localization/text';
+import { messageText } from '../ui/messages';
+import { choiceLabel } from './choice-label';
 import { boostValue } from '@open-boards/game';
 import { basic } from '@open-boards/content';
 import {
@@ -13,6 +16,7 @@ import type { GameView } from '@open-boards/protocol';
 import { CardFace } from './CardFace';
 import { InactiveCards } from './InactiveCards';
 import { AbilityChoice } from './AbilityChoice';
+import { Icon } from '../ui/Icon';
 interface Props {
   game: GameView;
   fighter: Fighter;
@@ -68,34 +72,38 @@ export function Hand({
     );
   }
   function label(card: Card) {
-    const name = basic.cards[card.definition].name;
-    if (choice) return choice.options.find((o) => o.card?.id === card.id)!.label;
-    if (discarding) return `Discard ${name}`;
+    const name = contentText(basic.cards[card.definition].name);
+    if (choice)
+      return choiceLabel(
+        choice.options.find((o) => o.card?.id === card.id)!,
+        game.fighters,
+      );
+    if (discarding) return `Scarta ${name}`;
     if (boosting)
-      return `Boost movement +${boostValue(
+      return `Potenzia movimento +${boostValue(
         game.players.find((p) => p.id === fighter.player)!,
         card,
         basic,
       )} · ${name}`;
-    if (defending) return `Defend with ${name}`;
+    if (defending) return `Difendi con ${name}`;
     return basic.cards[card.definition].category === 'action'
-      ? `Play ${name}`
-      : `Prepare attack · ${name}`;
+      ? `Gioca ${name}`
+      : `Prepara attacco · ${name}`;
   }
   const playable = game.hand.filter(usable);
   const inactive = game.hand.filter((card) => !usable(card));
   return (
     <>
-      <section className="hand-panel" aria-label="Your hand">
+      <section className="hand-panel" aria-label="La tua mano">
         <div className="section-heading">
           <h2>
-            {choice?.prompt ??
+            {(choice ? messageText(choice.prompt) : undefined) ??
               (eliminated
-                ? 'You have been eliminated'
+                ? 'Sei stato eliminato'
                 : ended
-                  ? 'The battle is over'
-                  : 'Your hand')}{' '}
-            <span className="muted">{game.hand.length} cards</span>
+                  ? 'La battaglia è finita'
+                  : 'La tua mano')}{' '}
+            <span className="muted">{game.hand.length} carte</span>
           </h2>
           <div className="button-row">
             {faceUpAttack && myTurn && (
@@ -104,18 +112,19 @@ export function Hand({
                 disabled={disabled}
                 onClick={faceUpAttack.toggle}
               >
-                Play face-up · target any space
+                Gioca scoperta · colpisci qualsiasi casella
               </button>
             )}
             {defending && committedAttack && (
               <button onClick={() => setInspected(committedAttack.definition)}>
-                Inspect face-up attack · {basic.cards[committedAttack.definition].name}
+                Esamina attacco scoperto ·{' '}
+                {contentText(basic.cards[committedAttack.definition].name)}
               </button>
             )}
             {choice &&
               game.observation?.cards.map((card) => (
                 <button key={card.id} onClick={() => setInspected(card.definition)}>
-                  Inspect revealed card · {basic.cards[card.definition].name}
+                  Esamina carta rivelata · {contentText(basic.cards[card.definition].name)}
                 </button>
               ))}
             {discarding && game.hand.length - 7 > 1 && (
@@ -124,7 +133,7 @@ export function Hand({
                 disabled={disabled || selected.length !== game.hand.length - 7}
                 onClick={() => onCommand({ type: 'discard', cards: selected })}
               >
-                Discard {selected.length} / {game.hand.length - 7}
+                Scarta {selected.length} / {game.hand.length - 7}
               </button>
             )}
             {choice && (choice.min !== 1 || choice.max !== 1) && (
@@ -134,18 +143,18 @@ export function Hand({
                 onClick={() => onChoose(selected)}
               >
                 {choice.min === 0 && !selected.length
-                  ? 'Pass'
-                  : `Confirm choice · ${selected.length} / ${choice.max}`}
+                  ? 'Passa'
+                  : `Conferma scelta · ${selected.length} / ${choice.max}`}
               </button>
             )}
             {defending && (
               <button disabled={disabled} onClick={() => onCommand({ type: 'defend', card: null })}>
-                Take the hit
+                <Icon name="attack" /> Subisci il colpo
               </button>
             )}
             {moving && (
               <button disabled={disabled} onClick={() => onCommand({ type: 'finish-maneuver' })}>
-                Finish Maneuver
+                <Icon name="move" /> Termina manovra
               </button>
             )}
           </div>
@@ -154,9 +163,9 @@ export function Hand({
           </p>
           {choice?.source?.name && (
             <p className="prompt choice-source">
-              <strong>{choice.source.name}</strong>
+              <strong>{contentText(choice.source.name)}</strong>
               {' · '}
-              {choice.source.description}
+              {contentText(choice.source.description)}
             </p>
           )}
         </div>
@@ -164,14 +173,16 @@ export function Hand({
           {myTurn && (
             <button
               className="draw-pile"
-              aria-label="Maneuver · draw a card"
+              aria-label="Manovra · pesca una carta"
               disabled={disabled}
               onClick={() => onCommand({ type: 'maneuver' })}
             >
               <span className="pile-back" aria-hidden="true">
                 Open Boards
               </span>
-              <span>Draw & maneuver</span>
+              <span>
+                <Icon name="cards" /> Pesca e manovra
+              </span>
             </button>
           )}
           {playable.map((card) => (
@@ -202,15 +213,15 @@ export function Hand({
           {!playable.length && (myTurn || defending) && game.hand.length > 0 && (
             <p className="empty">
               {defending
-                ? 'No defense cards for this fighter.'
-                : 'No playable cards for this fighter.'}
+                ? 'Nessuna carta difesa per questo combattente.'
+                : 'Nessuna carta giocabile per questo combattente.'}
             </p>
           )}
           {inactive.length > 0 && (
             <InactiveCards key={`${game.revision}:${fighter.id}`} cards={inactive} />
           )}
           {!game.hand.length && !choice && (
-            <p className="empty">Your hand is empty. Maneuver to draw a card.</p>
+            <p className="empty">La tua mano è vuota. Manovra per pescare una carta.</p>
           )}
         </div>
       </section>

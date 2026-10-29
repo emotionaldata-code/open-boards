@@ -1,3 +1,5 @@
+import { contentText } from '../localization/text';
+import { choiceLabel } from './choice-label';
 import { basic } from '@open-boards/content';
 import type { Fighter } from '@open-boards/game';
 import type { ChoiceView } from '@open-boards/protocol';
@@ -34,9 +36,9 @@ export function AbilityChoice({
             }}
           >
             <label>
-              Value{' '}
+              Valore{' '}
               <select
-                aria-label="Value"
+                aria-label="Valore"
                 disabled={disabled}
                 value={selected[0] ?? choice.options[0].id}
                 onChange={(e) => onSelect(e.target.value)}
@@ -49,7 +51,7 @@ export function AbilityChoice({
               </select>
             </label>{' '}
             <button className="primary" disabled={disabled}>
-              Confirm value
+              Conferma valore
             </button>
           </form>
         ) : (
@@ -61,7 +63,8 @@ export function AbilityChoice({
             if (
               object?.type === 'space' ||
               object?.type === 'token' ||
-              (fighter && fighter.position !== null && !fighter.defeated)
+              // Older saved matches also attach a fighter object to the Use action.
+              (fighter && fighter.position !== null && !fighter.defeated && !choice.source?.name)
             )
               return null;
             if (option.card)
@@ -69,7 +72,7 @@ export function AbilityChoice({
                 <CardFace
                   key={option.id}
                   card={option.card}
-                  label={option.label}
+                  label={choiceLabel(option, fighters)}
                   selected={selected.includes(option.id)}
                   disabled={disabled}
                   onClick={() => onSelect(option.id)}
@@ -92,14 +95,14 @@ export function AbilityChoice({
                 {fighter && <CharacterPortrait character={fighter.definition} />}
                 {object?.type === 'pile' && (
                   <span className="pile-back" aria-hidden="true">
-                    {
+                    {contentText(
                       basic.characters[
                         fighters.find((f) => f.player === object.player)?.character ?? 'medusa'
-                      ]?.name
-                    }
+                      ]?.name,
+                    )}
                   </span>
                 )}
-                <span>{option.label}</span>
+                <span>{choiceLabel(option, fighters)}</span>
               </button>
             );
           })

@@ -181,7 +181,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountAlice(page, 'setup');
       expect((await currentState(page)).players.every((p) => p.hand.length === 0)).toBe(true);
-      await page.getByRole('button', { name: 'SMALL · Defense cards +1', exact: true }).focus();
+      await page.getByRole('button', { name: 'PICCOLA · Carte difesa +1', exact: true }).focus();
       await page.keyboard.press('Enter');
       await expect.poll(async () => (await currentState(page)).phase.type).toBe('placing-allies');
       expect(
@@ -195,21 +195,23 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.reload();
       await mountAlice(page, 'looking');
       const panel = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(panel()).toContainText('Choose 2 different effects');
+      await expect(panel()).toContainText('Scegli 2 effetti diversi');
       await panel()
-        .getByRole('button', { name: 'Place Alice in any other space', exact: true })
+        .getByRole('button', { name: 'Colloca Alice in qualsiasi altra casella', exact: true })
         .click();
-      await expect(panel().getByRole('button', { name: /Confirm/ })).toBeDisabled();
-      await panel().getByRole('button', { name: 'Alice recovers 3 health', exact: true }).click();
+      await expect(panel().getByRole('button', { name: /Conferma/ })).toBeDisabled();
       await panel()
-        .getByRole('button', { name: /Confirm/ })
+        .getByRole('button', { name: 'Alice recupera 3 punti vita', exact: true })
         .click();
-      await expect(panel()).toContainText('Choose where to teleport');
+      await panel()
+        .getByRole('button', { name: /Conferma/ })
+        .click();
+      await expect(panel()).toContainText('Scegli dove teletrasportare');
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountAlice(page, 'looking');
-      await expect(panel()).toContainText('Choose where to teleport');
-      const destination = page.getByRole('button', { name: 'Choose space 15', exact: true });
+      await expect(panel()).toContainText('Scegli dove teletrasportare');
+      const destination = page.getByRole('button', { name: 'Scegli casella 15', exact: true });
       await destination.focus();
       await page.keyboard.press('Enter');
       await expect
@@ -226,12 +228,12 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.evaluate(() => sessionStorage.clear());
       await page.reload();
       await mountAlice(page, 'hatter');
-      await expect(panel()).toContainText('Choose');
-      await page.getByRole('button', { name: 'The Jabberwock 1', exact: true }).tap();
-      await expect(panel()).toContainText('Choose a destination');
-      await page.getByRole('button', { name: 'Stay in place', exact: true }).tap();
+      await expect(panel()).toContainText('Scegli');
+      await page.getByRole('button', { name: 'Il Ciciarampa 1', exact: true }).tap();
+      await expect(panel()).toContainText('Scegli una destinazione');
+      await page.getByRole('button', { name: 'Resta fermo', exact: true }).tap();
       await page.getByRole('button', { name: 'Alice', exact: true }).tap();
-      await page.getByRole('button', { name: 'Stay in place', exact: true }).tap();
+      await page.getByRole('button', { name: 'Resta fermo', exact: true }).tap();
       await expect
         .poll(
           async () =>

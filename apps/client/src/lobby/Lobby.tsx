@@ -1,3 +1,4 @@
+import { messageText } from '../ui/messages';
 import { useEffect, useState } from 'react';
 import type { RoomListing } from '@open-boards/protocol';
 import { http } from '../network/http';
@@ -55,25 +56,25 @@ export function Lobby({
     <main className="lobby-page">
       <div className="page-title">
         <div>
-          <h1>Find your table</h1>
+          <h1>Trova il tuo tavolo</h1>
         </div>
-        <span className="muted">2 or 4 players · Basic rules</span>
+        <span className="muted">2 o 4 giocatori · Regole base</span>
       </div>
       <MapPreview />
       <div className="lobby-grid">
         <section className="panel">
-          <h2>Open a table</h2>
+          <h2>Apri un tavolo</h2>
           <div className="create-options">
             <button onClick={() => onCreate(2)} disabled={busy}>
               <strong>2</strong>
-              <span>Head to head</span>
+              <span>Duello</span>
             </button>
             <button onClick={() => onCreate(4)} disabled={busy}>
               <strong>4</strong>
-              <span>Free-for-all</span>
+              <span>Tutti contro tutti</span>
             </button>
           </div>
-          <h2>Join your friends</h2>
+          <h2>Gioca con gli amici</h2>
           <form
             className="inline-form"
             onSubmit={(e) => {
@@ -82,38 +83,38 @@ export function Lobby({
             }}
           >
             <label className="grow">
-              Room ID
+              Codice stanza
               <input
                 value={id}
                 onChange={(e) => setId(e.target.value)}
                 required
-                placeholder="Paste a room ID"
+                placeholder="Incolla il codice stanza"
                 maxLength={40}
               />
             </label>
             <button disabled={busy || !id.trim()} className="primary">
-              Join table
+              Entra al tavolo
             </button>
           </form>
         </section>
         <section className="panel room-list">
           <div className="section-heading">
-            <h2>Waiting for players</h2>
+            <h2>In attesa di giocatori</h2>
             <span className="muted">
-              {rooms.length} open {rooms.length === 1 ? 'table' : 'tables'}
+              {rooms.length} {rooms.length === 1 ? 'tavolo aperto' : 'tavoli aperti'}
             </span>
           </div>
           <div className="room-list-content" aria-busy={loading}>
             {loading ? (
               <p className="empty" role="status">
-                Finding open tables…
+                Ricerca dei tavoli aperti…
               </p>
             ) : error ? (
               <p className="error" role="alert">
-                {error}
+                {messageText(error)}
               </p>
             ) : rooms.length === 0 ? (
-              <p className="empty">No open tables yet. Create one and invite a friend.</p>
+              <p className="empty">Nessun tavolo aperto. Creane uno e invita un amico.</p>
             ) : (
               <ul>
                 {rooms
@@ -121,16 +122,16 @@ export function Lobby({
                   .map((room) => (
                     <li key={room.id}>
                       <div>
-                        <strong>{room.host}’s table</strong>
+                        <strong>Tavolo di {room.host}</strong>
                         <small className="muted">
-                          {room.id} · {room.capacity === 2 ? 'Duel' : 'Free-for-all'}
+                          {room.id} · {room.capacity === 2 ? 'Duello' : 'Tutti contro tutti'}
                         </small>
                       </div>
                       <span>
-                        {room.seats} / {room.capacity} seated
+                        {room.seats} / {room.capacity} giocatori
                       </span>
                       <button disabled={busy} onClick={() => onJoin(room.id)}>
-                        Join
+                        Entra
                       </button>
                     </li>
                   ))}
@@ -138,15 +139,15 @@ export function Lobby({
             )}
           </div>
           {pages > 1 && (
-            <nav className="pagination" aria-label="Room pages">
+            <nav className="pagination" aria-label="Pagine delle stanze">
               <button disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)}>
-                Previous
+                Precedente
               </button>
               <span>
                 {currentPage + 1} / {pages}
               </span>
               <button disabled={currentPage + 1 === pages} onClick={() => setPage(currentPage + 1)}>
-                Next
+                Successiva
               </button>
             </nav>
           )}

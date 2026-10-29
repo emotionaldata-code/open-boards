@@ -283,7 +283,6 @@ export class Runtime {
           {
             id: 'use',
             label: `Use ${ability.name}`,
-            object: { type: 'fighter', id: owner },
             tasks: effects,
           },
           { id: 'skip', decline: true, label: 'Skip', tasks: [] },
@@ -306,10 +305,7 @@ export class Runtime {
         },
       );
       const choice = this.data.choice;
-      if (choice?.source?.card) {
-        choice.options[0].card = choice.source.card;
-        delete choice.options[0].object;
-      }
+      if (choice?.source?.card) choice.options[0].card = choice.source.card;
     } else this.prepend(...effects);
     this.emit(
       { type: 'ability', fighter: owner, name: ability.name },

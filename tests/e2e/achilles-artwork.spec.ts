@@ -74,7 +74,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         ),
       );
     });
-    const patroclus = page.getByRole('button', { name: 'Patroclus 1', exact: true });
+    const patroclus = page.getByRole('button', { name: 'Patroclo 1', exact: true });
     await patroclus.click();
     await page.mouse.move(0, 0);
     await expect(patroclus).toHaveAttribute('aria-pressed', 'true');
@@ -121,7 +121,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           animations: 'disabled',
           path: test.info().outputPath('patroclus-revival.png'),
         });
-        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+        await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
       await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
     };

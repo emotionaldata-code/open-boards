@@ -1,3 +1,4 @@
+import { contentText } from '../localization/text';
 import { basic } from '@open-boards/content';
 import { fighterLabel, type Fighter } from '@open-boards/game';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
@@ -14,7 +15,7 @@ export function FighterPicker({
   onSelect: (id: string) => void;
 }) {
   return (
-    <div className="fighter-controls" role="group" aria-label="Your fighters">
+    <div className="fighter-controls" role="group" aria-label="I tuoi combattenti">
       <div className="fighter-picker">
         {fighters.map((fighter) => (
           <button
@@ -25,7 +26,7 @@ export function FighterPicker({
             onClick={() => onSelect(fighter.id)}
           >
             <CharacterPortrait character={fighter.definition} />
-            <span>{fighterLabel(fighter, basic)}</span>
+            <span>{contentText(fighterLabel(fighter, basic))}</span>
           </button>
         ))}
       </div>

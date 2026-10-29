@@ -76,9 +76,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     });
     for (const number of [1, 2, 3])
       await expect(
-        page.getByRole('button', { name: `Sister ${number}`, exact: true }),
+        page.getByRole('button', { name: `Sorella ${number}`, exact: true }),
       ).toBeVisible();
-    const sister = page.getByRole('button', { name: 'Sister 1', exact: true });
+    const sister = page.getByRole('button', { name: 'Sorella 1', exact: true });
     await sister.click();
     await page.mouse.move(0, 0);
     await expect(sister).toHaveAttribute('aria-pressed', 'true');
@@ -121,7 +121,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
           'complete',
           true,
         );
-        await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+        await page.getByRole('button', { name: 'Conferma', exact: true }).click();
       }
       await expect(notice).not.toHaveClass(/is-visible/, { timeout: 15000 });
     };

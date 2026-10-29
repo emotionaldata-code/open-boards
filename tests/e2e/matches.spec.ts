@@ -1,3 +1,4 @@
+import { contentText } from '../../apps/client/src/localization/text';
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 const characterSetup: Record<string, { name: string; allies: number }> = {
   eredin: { name: 'Eredin', allies: 4 },
@@ -67,7 +68,7 @@ async function register(
       const acknowledgement = document.querySelector<HTMLButtonElement>(
         '.event-acknowledgement button',
       );
-      if (acknowledgement?.textContent === 'Acknowledge') acknowledgement.click();
+      if (acknowledgement?.textContent === 'Conferma') acknowledgement.click();
       const notice = document.querySelector('.action-notice[data-event]');
       if (notice) {
         const value = `${notice.getAttribute('data-event')}:${notice.textContent}`;
@@ -87,14 +88,14 @@ async function register(
   const name = `e2e_${Date.now().toString(36)}_${index}`;
   await page.goto('/');
   await fitsViewport(page);
-  await expect(page.getByRole('button', { name: 'How to play', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'New to the table? Create an account' }).click();
-  await page.getByLabel('Username', { exact: true }).fill(name);
+  await expect(page.getByRole('button', { name: 'Guida', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Prima partita? Crea un account' }).click();
+  await page.getByLabel('Nome utente', { exact: true }).fill(name);
   await page.getByLabel('Password', { exact: true }).fill('a-secure-test-password');
-  await page.getByRole('button', { name: 'Create account', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Find your table' })).toBeVisible();
+  await page.getByRole('button', { name: 'Crea account', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Trova il tuo tavolo' })).toBeVisible();
   await fitsViewport(page);
-  await expect(page.getByRole('button', { name: 'How to play', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Guida', exact: true })).toBeVisible();
   return { context, page, name, errors };
 }
 async function createMatch(
@@ -110,34 +111,40 @@ async function createMatch(
   const host = rivals[0].page;
   await host
     .getByRole('button', {
-      name: count === 2 ? '2 Head to head' : '4 Free-for-all',
+      name: count === 2 ? '2 Duello' : '4 Tutti contro tutti',
       exact: true,
     })
     .click();
-  await expect(host.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
+  await expect(host.getByRole('heading', { name: 'Il tuo tavolo è aperto' })).toBeVisible();
   await fitsViewport(host);
-  const id = await host.getByLabel('Room ID').inputValue();
+  const id = await host.getByLabel('Codice stanza').inputValue();
   for (const rival of rivals.slice(1)) {
-    await rival.page.getByLabel('Room ID').fill(id);
-    await rival.page.getByRole('button', { name: 'Join table', exact: true }).click();
-    await expect(rival.page.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
+    await rival.page.getByLabel('Codice stanza').fill(id);
+    await rival.page.getByRole('button', { name: 'Entra al tavolo', exact: true }).click();
+    await expect(rival.page.getByRole('heading', { name: 'Il tuo tavolo è aperto' })).toBeVisible();
   }
   for (const rival of rivals) {
     if (character !== 'medusa') {
-      await rival.page.getByRole('button', { name: 'Choose character', exact: true }).click();
+      await rival.page.getByRole('button', { name: 'Scegli personaggio', exact: true }).click();
       await rival.page
-        .getByRole('button', { name: `Inspect ${characterSetup[character].name}`, exact: true })
+        .getByRole('button', {
+          name: `Esamina ${contentText(characterSetup[character].name)}`,
+          exact: true,
+        })
         .click();
       await rival.page
-        .getByRole('button', { name: `Choose ${characterSetup[character].name}`, exact: true })
+        .getByRole('button', {
+          name: `Scegli ${contentText(characterSetup[character].name)}`,
+          exact: true,
+        })
         .click();
     }
-    const ready = rival.page.getByRole('button', { name: 'Ready up', exact: true });
+    const ready = rival.page.getByRole('button', { name: 'Sono pronto', exact: true });
     if (mobile) await ready.tap();
     else await ready.click();
   }
-  await expect(host.getByRole('button', { name: 'Start match', exact: true })).toBeEnabled();
-  await host.getByRole('button', { name: 'Start match', exact: true }).click();
+  await expect(host.getByRole('button', { name: 'Avvia partita', exact: true })).toBeEnabled();
+  await host.getByRole('button', { name: 'Avvia partita', exact: true }).click();
   for (const rival of rivals) {
     if (mobile) {
       await expect(
@@ -150,7 +157,7 @@ async function createMatch(
       ).toHaveCount(0);
     }
     await expect(
-      rival.page.getByRole('heading', { name: "King Solomon's Mine", exact: true }),
+      rival.page.getByRole('heading', { name: 'Le miniere di re Salomone', exact: true }),
     ).toBeVisible();
     await fitsViewport(rival.page);
   }
@@ -158,7 +165,7 @@ async function createMatch(
     for (const { page } of rivals) {
       for (let i = 0; i < characterSetup[character].allies; i++)
         await page
-          .getByRole('button', { name: /^Place ally at/ })
+          .getByRole('button', { name: /^Colloca alleato in/ })
           .first()
           .click();
     }
@@ -177,15 +184,15 @@ async function createMatch(
 async function skipGaze(page: Page) {
   const skip = page
     .locator('.hand-panel:has(.ability-options)')
-    .getByRole('button', { name: 'Skip', exact: true });
+    .getByRole('button', { name: 'Salta', exact: true });
   if (await skip.isVisible()) {
     const before = await revision(page);
     await skip.click({ timeout: 30_000 });
     await changed(page, before);
   }
 }
-async function finishManeuver(page: Page) {
-  const finish = page.getByRole('button', { name: 'Finish Maneuver', exact: true });
+async function finishManovra(page: Page) {
+  const finish = page.getByRole('button', { name: 'Termina manovra', exact: true });
   if (await finish.isVisible()) {
     const before = await revision(page);
     await finish.click();
@@ -197,7 +204,7 @@ async function discardToLimit(page: Page) {
   const before = await revision(page);
   const count = await page.locator('.game-card').count();
   for (let i = 0; i < count - 7; i++) await page.locator('.game-card').nth(i).click();
-  if (count - 7 > 1) await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
+  if (count - 7 > 1) await page.getByRole('button', { name: /^Scarta \d+ \/ \d+$/ }).click();
   await changed(page, before);
 }
 async function endTurn(page: Page, next: Page) {
@@ -218,18 +225,18 @@ async function changed(page: Page, before: number) {
 }
 async function maneuver(page: Page, destination?: string) {
   let before = await revision(page);
-  await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+  await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
   await changed(page, before);
   if (await page.locator('button.fighter-hit[aria-pressed="true"]').isVisible()) {
     before = await revision(page);
     if (destination)
-      await page.getByRole('button', { name: `Move to ${destination}`, exact: true }).click();
+      await page.getByRole('button', { name: `Muovi in ${destination}`, exact: true }).click();
     else await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await changed(page, before);
-    await finishManeuver(page);
+    await finishManovra(page);
   }
 }
-async function finishByExhaustion(rivals: Rival[]) {
+async function finishByEsaurimento(rivals: Rival[]) {
   // Advance playback between automated decisions; explicit reader interaction is tested separately.
   await Promise.all(rivals.map(({ page }) => page.clock.install()));
   async function readEvents() {
@@ -239,7 +246,7 @@ async function finishByExhaustion(rivals: Rival[]) {
   await readEvents();
   const observer = rivals[0].page;
   for (let step = 0; step < 400; step++) {
-    if (await observer.getByRole('heading', { name: 'Match complete', exact: true }).isVisible())
+    if (await observer.getByRole('heading', { name: 'Partita conclusa', exact: true }).isVisible())
       return;
     const phase = await observer.locator('main').getAttribute('data-phase');
     const turn = await observer.locator('main').getAttribute('data-turn');
@@ -252,17 +259,17 @@ async function finishByExhaustion(rivals: Rival[]) {
       await expect(page.locator('main')).toHaveAttribute('data-phase', 'discarding');
       const count = await page.locator('.game-card').count();
       for (let i = 0; i < count - 7; i++) await page.locator('.game-card').nth(i).click();
-      if (count - 7 > 1) await page.getByRole('button', { name: /^Discard \d+ \/ \d+$/ }).click();
+      if (count - 7 > 1) await page.getByRole('button', { name: /^Scarta \d+ \/ \d+$/ }).click();
     } else if (phase === 'taking-actions') {
       await expect(
-        page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+        page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
       ).toBeVisible();
-      await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+      await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
     } else if (phase === 'ability-choice') {
       await skipGaze(page);
     } else if (phase === 'choosing-movement') {
       await expect(page.locator('button.fighter-hit[aria-pressed="true"]')).toBeVisible();
-      await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
+      await page.getByRole('button', { name: 'Termina manovra', exact: true }).click();
     } else throw new Error(`Unexpected phase ${phase}`);
     await changed(observer, before);
     await readEvents();
@@ -301,14 +308,14 @@ for (const count of [2, 4] as const)
         path: test.info().outputPath(`arena-${count}-initial.png`),
         fullPage: true,
       });
-      const firstBadge = rivals[0].page.getByRole('button', { name: /Player details/ }).first();
+      const firstBadge = rivals[0].page.getByRole('button', { name: /Dettagli giocatore/ }).first();
       await firstBadge.click();
-      await expect(rivals[0].page.getByRole('dialog')).toContainText('Discards');
+      await expect(rivals[0].page.getByRole('dialog')).toContainText('Scarti');
       await rivals[0].page.keyboard.press('Escape');
       await expect(firstBadge).toBeFocused();
       if (count === 2) {
         await rivals[0].page
-          .getByRole('button', { name: 'Maneuver · draw a card', exact: true })
+          .getByRole('button', { name: 'Manovra · pesca una carta', exact: true })
           .click();
         await expect(rivals[0].page.locator('main')).toHaveAttribute(
           'data-phase',
@@ -316,7 +323,7 @@ for (const count of [2, 4] as const)
         );
         await rivals[0].page.reload();
         await expect(
-          rivals[0].page.getByRole('heading', { name: "King Solomon's Mine", exact: true }),
+          rivals[0].page.getByRole('heading', { name: 'Le miniere di re Salomone', exact: true }),
         ).toBeVisible();
         await expect(rivals[0].page.locator('main')).toHaveAttribute(
           'data-phase',
@@ -326,8 +333,8 @@ for (const count of [2, 4] as const)
           'data-event',
           /./,
         );
-        await rivals[0].page.getByRole('button', { name: 'Move to 11', exact: true }).click();
-        await finishManeuver(rivals[0].page);
+        await rivals[0].page.getByRole('button', { name: 'Muovi in 11', exact: true }).click();
+        await finishManovra(rivals[0].page);
         await expect(rivals[0].page.locator('main')).toHaveAttribute('data-turn', rivals[0].name);
         await expect(rivals[0].page.locator('.action-count')).toHaveText('1 actions');
       }
@@ -338,16 +345,16 @@ for (const count of [2, 4] as const)
             .poll(() => seenEvents(page))
             .toEqual(
               expect.arrayContaining([
-                expect.stringContaining('Maneuver'),
-                expect.stringContaining('On the move'),
+                expect.stringContaining('Manovra'),
+                expect.stringContaining('In movimento'),
               ]),
             );
         }
       }
-      await finishByExhaustion(rivals);
+      await finishByEsaurimento(rivals);
       for (const { page } of rivals) {
         await expect(
-          page.getByRole('heading', { name: 'Match complete', exact: true }),
+          page.getByRole('heading', { name: 'Partita conclusa', exact: true }),
         ).toBeVisible();
         await expect(page.locator('.prompt')).toContainText('wins the match');
       }
@@ -366,8 +373,10 @@ for (const count of [2, 4] as const)
         await expect(rivals[0].page.getByLabel('Landscape required')).toHaveCount(0);
         await expect(rivals[0].page.locator('canvas')).toBeVisible();
       }
-      await rivals[0].page.getByRole('button', { name: 'Return to lobby', exact: true }).click();
-      await expect(rivals[0].page.getByRole('heading', { name: 'Find your table' })).toBeVisible();
+      await rivals[0].page.getByRole('button', { name: 'Torna alla lobby', exact: true }).click();
+      await expect(
+        rivals[0].page.getByRole('heading', { name: 'Trova il tuo tavolo' }),
+      ).toBeVisible();
     } catch (error) {
       for (const { page, name } of rivals) {
         await page
@@ -395,17 +404,17 @@ test('plays a hidden attack and free defense through the interface', async ({ br
   try {
     const attacker = rivals[0].page;
     const defender = rivals[1].page;
-    await attacker.getByRole('button', { name: 'Enable sound', exact: true }).click();
+    await attacker.getByRole('button', { name: 'Attiva audio', exact: true }).click();
     await maneuver(attacker, '18');
     await endTurn(attacker, defender);
     await expect(
-      defender.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+      defender.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
     ).toBeVisible();
     await endTurn(defender, attacker);
     await maneuver(attacker, '19');
     await expect(attacker.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
     await expect(
-      attacker.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+      attacker.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
     ).toBeVisible();
     // A shuffled opening may contain no attack card; draw on subsequent turns until one is available.
     for (let i = 0; i < 12; i++) {
@@ -420,20 +429,24 @@ test('plays a hidden attack and free defense through the interface', async ({ br
       }
       await endTurn(attacker, defender);
       await expect(
-        defender.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+        defender.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
       ).toBeVisible();
       await endTurn(defender, attacker);
       await maneuver(attacker);
     }
     await attacker
-      .getByRole('button', { name: new RegExp(`^Target .*\\(${rivals[1].name}\\)$`) })
+      .getByRole('button', {
+        name: new RegExp(`^Bersaglio .*\\(${contentText(rivals[1].name)}\\)$`),
+      })
       .first()
       .click();
-    await expect(defender.getByRole('button', { name: 'Take the hit', exact: true })).toBeVisible();
+    await expect(
+      defender.getByRole('button', { name: 'Subisci il colpo', exact: true }),
+    ).toBeVisible();
     for (const { page } of rivals) {
       await expect
         .poll(() => seenEvents(page), { timeout: 30_000 })
-        .toEqual(expect.arrayContaining([expect.stringContaining('Attack incoming')]));
+        .toEqual(expect.arrayContaining([expect.stringContaining('Attacco in arrivo')]));
       await expect(page.getByRole('button', { name: /Last combat|Match summary/ })).toHaveCount(0);
     }
     const beforeDefense = await revision(defender);
@@ -444,18 +457,18 @@ test('plays a hidden attack and free defense through the interface', async ({ br
       .filter({ hasText: /Snipe|Regroup|Feint/ });
     if (await defense.count()) {
       await defense.first().click();
-    } else await defender.getByRole('button', { name: 'Take the hit', exact: true }).click();
+    } else await defender.getByRole('button', { name: 'Subisci il colpo', exact: true }).click();
     await changed(defender, beforeDefense);
     if ((await defender.locator('main').getAttribute('data-phase')) === 'ability-choice')
       await skipGaze(defender);
     await expect
       .poll(() => seenEvents(attacker), { timeout: 30_000 })
-      .toEqual(expect.arrayContaining([expect.stringMatching(/Clash!|Blocked!/)]));
+      .toEqual(expect.arrayContaining([expect.stringMatching(/Scontro!|Parato!/)]));
     await attacker.screenshot({ path: test.info().outputPath('combat-effects.png') });
     for (const { page } of rivals) {
       await expect
         .poll(() => seenEvents(page))
-        .toEqual(expect.arrayContaining([expect.stringMatching(/Clash!|Blocked!/)]));
+        .toEqual(expect.arrayContaining([expect.stringMatching(/Scontro!|Parato!/)]));
     }
     await discardToLimit(attacker);
     await skipGaze(defender);
@@ -479,22 +492,20 @@ test('login prioritizes access, supports fullscreen and scrolls outside matches'
   try {
     await page.goto('/');
     await fitsViewport(page);
-    await page.getByRole('button', { name: 'How to play', exact: true }).click();
-    await expect(page.getByRole('dialog')).toContainText(
-      'Each turn requires two actions; you cannot pass or end it early.',
-    );
-    await page.getByRole('button', { name: 'Close dialog' }).click();
-    await expect(page.getByRole('button', { name: 'How to play', exact: true })).toBeFocused();
-    await page.getByRole('button', { name: 'Enter fullscreen' }).click();
+    await page.getByRole('button', { name: 'Guida', exact: true }).click();
+    await expect(page.getByRole('dialog')).toContainText('Hai due azioni da usare');
+    await page.getByRole('button', { name: 'Chiudi finestra' }).click();
+    await expect(page.getByRole('button', { name: 'Guida', exact: true })).toBeFocused();
+    await page.getByRole('button', { name: 'Schermo intero' }).click();
     await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(true);
-    await page.getByRole('button', { name: 'Exit fullscreen' }).click();
+    await page.getByRole('button', { name: 'Esci da schermo intero' }).click();
     await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
     await page.setViewportSize({ width: 320, height: 568 });
     await fitsViewport(page);
     await page.setViewportSize({ width: 667, height: 375 });
     await fitsViewport(page);
-    await page.getByRole('button', { name: 'Sign in', exact: true }).scrollIntoViewIfNeeded();
-    await expect(page.getByRole('button', { name: 'Sign in', exact: true })).toBeInViewport();
+    await page.getByRole('button', { name: 'Accedi', exact: true }).scrollIntoViewIfNeeded();
+    await expect(page.getByRole('button', { name: 'Accedi', exact: true })).toBeInViewport();
     await page.screenshot({ path: test.info().outputPath('login-landscape.png') });
   } finally {
     await context.close();
@@ -509,17 +520,21 @@ test('populated room lists paginate and four waiting seats remain accessible on 
     for (let index = 0; index < 4; index++) {
       const rival = await register(browser, index + 10, true);
       hosts.push(rival);
-      await rival.page.getByRole('button', { name: '4 Free-for-all', exact: true }).click();
-      await expect(rival.page.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
+      await rival.page.getByRole('button', { name: '4 Tutti contro tutti', exact: true }).click();
+      await expect(
+        rival.page.getByRole('heading', { name: 'Il tuo tavolo è aperto' }),
+      ).toBeVisible();
       await fitsViewport(rival.page);
       if (index === 0)
         await rival.page.screenshot({ path: test.info().outputPath('waiting-phone.png') });
     }
     const visitor = await register(browser, 20, true);
     hosts.push(visitor);
-    await expect(visitor.page.getByRole('navigation', { name: 'Room pages' })).toBeVisible();
+    await expect(
+      visitor.page.getByRole('navigation', { name: 'Pagine delle stanze' }),
+    ).toBeVisible();
     await fitsViewport(visitor.page);
-    await visitor.page.getByRole('button', { name: 'Next', exact: true }).click();
+    await visitor.page.getByRole('button', { name: 'Successiva', exact: true }).click();
     await fitsViewport(visitor.page);
     await visitor.page.screenshot({ path: test.info().outputPath('lobby-phone.png') });
     await visitor.page.setViewportSize({ width: 667, height: 375 });
@@ -538,7 +553,7 @@ test('Medusa selects and attacks a distant rival through a multicolor space', as
     const attacker = rivals[0].page;
     const defender = rivals[1].page;
     await expect(
-      attacker.getByRole('group', { name: /29 connected spaces, 7 colored zones and 6 portals/ }),
+      attacker.getByRole('group', { name: /29 caselle collegate, 7 zone colorate e 6 portali/ }),
     ).toBeVisible();
     await attacker.setViewportSize({ width: 667, height: 375 });
     await fitsViewport(attacker);
@@ -561,24 +576,30 @@ test('Medusa selects and attacks a distant rival through a multicolor space', as
       }
       await endTurn(attacker, defender);
       await expect(
-        defender.getByRole('button', { name: 'Maneuver · draw a card', exact: true }),
+        defender.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }),
       ).toBeVisible();
       await endTurn(defender, attacker);
       await maneuver(attacker);
     }
     await expect(
       attacker
-        .getByRole('button', { name: new RegExp(`^Target .*\\(${rivals[1].name}\\)$`) })
+        .getByRole('button', {
+          name: new RegExp(`^Bersaglio .*\\(${contentText(rivals[1].name)}\\)$`),
+        })
         .first(),
-    ).toHaveAttribute('aria-description', 'Zones: Gray, Green');
+    ).toHaveAttribute('aria-description', 'Zone: Gray, Green');
     await attacker.screenshot({ path: test.info().outputPath('medusa-range-desktop.png') });
     await attacker
-      .getByRole('button', { name: new RegExp(`^Target .*\\(${rivals[1].name}\\)$`) })
+      .getByRole('button', {
+        name: new RegExp(`^Bersaglio .*\\(${contentText(rivals[1].name)}\\)$`),
+      })
       .first()
       .click();
-    await expect(defender.getByRole('button', { name: 'Take the hit', exact: true })).toBeVisible();
-    await defender.getByRole('button', { name: 'Take the hit', exact: true }).click();
-    await expect(attacker.locator('.action-notice')).toContainText(/Clash!|Blocked!/, {
+    await expect(
+      defender.getByRole('button', { name: 'Subisci il colpo', exact: true }),
+    ).toBeVisible();
+    await defender.getByRole('button', { name: 'Subisci il colpo', exact: true }).click();
+    await expect(attacker.locator('.action-notice')).toContainText(/Scontro!|Parato!/, {
       timeout: 30_000,
     });
     await attacker.waitForTimeout(500); // The arrow is in flight, before the impact at 850ms.
@@ -586,10 +607,12 @@ test('Medusa selects and attacks a distant rival through a multicolor space', as
     for (const { page } of rivals) {
       await expect
         .poll(() => seenEvents(page))
-        .toEqual(expect.arrayContaining([expect.stringMatching(/Clash!|Blocked!/)]));
+        .toEqual(expect.arrayContaining([expect.stringMatching(/Scontro!|Parato!/)]));
     }
     await attacker.reload();
-    await expect(attacker.getByRole('group', { name: 'Your fighters' })).toContainText('Medusa');
+    await expect(attacker.getByRole('group', { name: 'I tuoi combattenti' })).toContainText(
+      'Medusa',
+    );
     await attacker.setViewportSize({ width: 768, height: 900 });
     await fitsViewport(attacker);
     await attacker.screenshot({ path: test.info().outputPath('medusa-range-tablet.png') });
@@ -612,7 +635,7 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
   page.on('pageerror', (error) => errors.push(error.message));
   try {
     await page.goto('/');
-    const roster = page.getByRole('region', { name: 'Character roster' });
+    const roster = page.getByRole('region', { name: 'Personaggi disponibili' });
     const fighters = await rosterEntries(page);
     expect(fighters).toEqual(
       expect.arrayContaining([
@@ -633,23 +656,27 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
       ]),
     );
     for (const [name, designs] of fighters) {
-      await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).click();
-      await expect(roster.getByRole('heading', { name, exact: true })).toBeVisible();
+      await roster
+        .getByRole('button', { name: `Esamina ${contentText(name)}`, exact: true })
+        .click();
+      await expect(
+        roster.getByRole('heading', { name: contentText(name), exact: true }),
+      ).toBeVisible();
       await expect(roster.locator('.roster-detail img')).toBeVisible();
       await expect(roster.locator('.roster-detail img')).toHaveJSProperty('complete', true);
       await roster
         .getByRole('button', {
-          name: `Explore ${name}’s deck · ${designs} designs`,
+          name: `Mazzo di ${contentText(name)} · ${designs} carte diverse`,
           exact: true,
         })
         .click();
-      const deck = page.getByRole('dialog', { name: `${name}’s deck`, exact: true });
+      const deck = page.getByRole('dialog', { name: `Mazzo di ${contentText(name)}`, exact: true });
       await expect(deck.locator('.deck-gallery > button')).toHaveCount(designs);
       for (const card of await deck.locator('.deck-gallery > button').all()) {
         await card.click();
         const detail = page.getByRole('dialog').last();
         await expect(detail.locator('.printed-card')).toBeVisible();
-        await expect(detail).not.toContainText('How to play');
+        await expect(detail).not.toContainText('Guida');
         await expect(detail.locator('img')).toHaveJSProperty('complete', true);
         await page.keyboard.press('Escape');
         await expect(card).toBeFocused();
@@ -663,9 +690,9 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
 
       await fitsViewport(page);
     }
-    await roster.getByRole('button', { name: 'Inspect Medusa', exact: true }).click();
-    await roster.getByRole('button', { name: 'Inspect Medusa', exact: true }).click();
-    await expect(roster).toContainText('Petrifying gaze');
+    await roster.getByRole('button', { name: 'Esamina Medusa', exact: true }).click();
+    await roster.getByRole('button', { name: 'Esamina Medusa', exact: true }).click();
+    await expect(roster).toContainText('Sguardo pietrificante');
     await page.screenshot({
       path: test.info().outputPath('roster-desktop.png'),
       animations: 'disabled',
@@ -686,20 +713,24 @@ test('explores the illustrated roster on login at desktop and phone sizes', asyn
       await page.setViewportSize(viewport);
       await page.evaluate(() => scrollTo(0, 0));
       if (viewport.height > 600)
-        await expect(page.getByRole('button', { name: 'Sign in', exact: true })).toBeInViewport();
+        await expect(page.getByRole('button', { name: 'Accedi', exact: true })).toBeInViewport();
       for (const [name] of fighters) {
-        await roster.getByRole('button', { name: `Inspect ${name}`, exact: true }).tap();
-        await expect(roster.getByRole('heading', { name, exact: true })).toBeInViewport();
+        await roster
+          .getByRole('button', { name: `Esamina ${contentText(name)}`, exact: true })
+          .tap();
+        await expect(
+          roster.getByRole('heading', { name: contentText(name), exact: true }),
+        ).toBeInViewport();
       }
-      await roster.getByRole('button', { name: 'Inspect Medusa', exact: true }).tap();
+      await roster.getByRole('button', { name: 'Esamina Medusa', exact: true }).tap();
       await roster.locator('summary').click();
-      await expect(roster).toContainText('Petrifying gaze');
+      await expect(roster).toContainText('Sguardo pietrificante');
       await roster
-        .getByRole('button', { name: 'Explore Medusa’s deck · 11 designs', exact: true })
+        .getByRole('button', { name: 'Mazzo di Medusa · 11 carte diverse', exact: true })
         .tap();
-      const deck = page.getByRole('dialog', { name: 'Medusa’s deck', exact: true });
-      await deck.getByRole('button', { name: 'About Dash, 3 copies', exact: true }).tap();
-      await expect(page.getByRole('dialog').last()).toContainText('After combat');
+      const deck = page.getByRole('dialog', { name: 'Mazzo di Medusa', exact: true });
+      await deck.getByRole('button', { name: 'Dettagli di Scatto, 3 copie', exact: true }).tap();
+      await expect(page.getByRole('dialog').last()).toContainText('Dopo il combattimento');
       await page.screenshot({
         path: test.info().outputPath(`card-inspector-${viewport.width}.png`),
         animations: 'disabled',
@@ -725,18 +756,18 @@ test('selecting Medusa preserves readiness and syncs the remaining roster', asyn
   const host = rivals[0].page,
     guest = rivals[1].page;
   try {
-    await host.getByRole('button', { name: '2 Head to head', exact: true }).tap();
-    await expect(host.getByRole('heading', { name: 'Your table is open' })).toBeVisible();
-    const id = await host.getByLabel('Room ID').inputValue();
-    await guest.getByLabel('Room ID').fill(id);
-    await guest.getByRole('button', { name: 'Join table', exact: true }).tap();
-    await host.getByRole('button', { name: 'Ready up', exact: true }).tap();
-    await host.getByRole('button', { name: 'Choose character', exact: true }).tap();
-    await expect(host.getByRole('button', { name: /^Inspect / })).toHaveCount(
+    await host.getByRole('button', { name: '2 Duello', exact: true }).tap();
+    await expect(host.getByRole('heading', { name: 'Il tuo tavolo è aperto' })).toBeVisible();
+    const id = await host.getByLabel('Codice stanza').inputValue();
+    await guest.getByLabel('Codice stanza').fill(id);
+    await guest.getByRole('button', { name: 'Entra al tavolo', exact: true }).tap();
+    await host.getByRole('button', { name: 'Sono pronto', exact: true }).tap();
+    await host.getByRole('button', { name: 'Scegli personaggio', exact: true }).tap();
+    await expect(host.getByRole('button', { name: /^Esamina / })).toHaveCount(
       (await rosterEntries(host)).length,
     );
-    await host.getByRole('button', { name: 'Choose Medusa', exact: true }).tap();
-    await expect(host.getByRole('button', { name: 'Not ready', exact: true })).toBeVisible();
+    await host.getByRole('button', { name: 'Scegli Medusa', exact: true }).tap();
+    await expect(host.getByRole('button', { name: 'Non pronto', exact: true })).toBeVisible();
     await expect(guest.locator('.seats')).toContainText('Medusa');
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
@@ -785,19 +816,19 @@ test('crosses a portal, preserves its destination on reconnect and explores the 
   try {
     await expect(page.getByLabel('Map zones')).toHaveCount(0);
     await expect(page.getByRole('button', { name: /Zoom into map|Fit entire map/ })).toHaveCount(0);
-    await expect(page.locator('.badge-movement')).toHaveText(['3Move', '3Move']);
+    await expect(page.locator('.badge-movement')).toHaveText(['3Movimento', '3Movimento']);
     await page.locator('.player-badge').first().click();
-    await expect(page.getByRole('dialog').locator('.player-stats')).toContainText('3Movement');
+    await expect(page.getByRole('dialog').locator('.player-stats')).toContainText('3Movimento');
     await page.keyboard.press('Escape');
     await page.screenshot({ path: test.info().outputPath('map-desktop.png') });
     await maneuver(page, '11');
-    await expect(page.locator('.action-notice')).toContainText('On the move', { timeout: 30_000 });
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    const portal = page.getByRole('button', { name: 'Move to 18', exact: true });
+    await expect(page.locator('.action-notice')).toContainText('In movimento', { timeout: 30_000 });
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    const portal = page.getByRole('button', { name: 'Muovi in 18', exact: true });
     await expect(portal).toHaveAttribute('aria-description', /Portal: move to any other portal/);
     await portal.click();
-    await finishManeuver(page);
-    await expect(page.locator('.action-notice')).toContainText('Through the rift', {
+    await finishManovra(page);
+    await expect(page.locator('.action-notice')).toContainText('Attraverso il portale', {
       timeout: 30_000,
     });
     await page.waitForTimeout(200);
@@ -805,10 +836,10 @@ test('crosses a portal, preserves its destination on reconnect and explores the 
     await page.reload();
     await skipGaze(rivals[1].page);
     await endTurn(rivals[1].page, page);
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    await expect(page.getByRole('button', { name: 'Move to 20', exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Muovi in 20', exact: true })).toBeVisible();
     await page.locator('button.fighter-hit[aria-pressed="true"]').click();
-    await finishManeuver(page);
+    await finishManovra(page);
     for (const [width, height, label] of [
       [768, 900, 'tablet'],
       [844, 390, 'phone'],
@@ -829,15 +860,15 @@ test('crosses a portal, preserves its destination on reconnect and explores the 
   }
 });
 
-test('boosts a Maneuver once for the hero and all allies, updates ranges and reconnects', async ({
+test('boosts a Manovra once for the hero and all allies, updates ranges and reconnects', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 2, false, 'medusa');
   const page = rivals[0].page;
   try {
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(6);
-    const picker = page.getByRole('group', { name: 'Your fighters' });
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti' });
     await expect(picker.getByRole('button')).toHaveCount(4);
     const fighters = await picker.getByRole('button').allTextContents();
     expect(fighters).toHaveLength(4);
@@ -850,13 +881,13 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
       )
         await picker.getByRole('button', { name: fighter, exact: true }).click();
       before[fighter] = await page
-        .getByRole('button', { name: /^Move to / })
+        .getByRole('button', { name: /^Muovi in / })
         .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label')!));
     }
     const card = page.locator('.game-card').first();
     const amount = Number((await card.locator('.card-boost').innerText()).replace('BOOST ', ''));
     await expect(
-      page.getByRole('button', { name: new RegExp(`^Boost movement \\+${amount} ·`) }).first(),
+      page.getByRole('button', { name: new RegExp(`^Potenzia movimento \\+${amount} ·`) }).first(),
     ).toBeVisible();
     for (const [width, height, label] of [
       [1440, 1000, 'desktop'],
@@ -865,12 +896,14 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     ] as const) {
       await page.setViewportSize({ width, height });
       await expect(
-        page.getByRole('button', { name: new RegExp(`^Boost movement \\+${amount} ·`) }).first(),
+        page
+          .getByRole('button', { name: new RegExp(`^Potenzia movimento \\+${amount} ·`) })
+          .first(),
       ).toBeInViewport();
       const value = await card.locator('.card-boost').boundingBox();
       const bounds = await card.boundingBox();
       const finish = await page
-        .getByRole('button', { name: 'Finish Maneuver', exact: true })
+        .getByRole('button', { name: 'Termina manovra', exact: true })
         .boundingBox();
       expect(finish!.y + finish!.height).toBeLessThanOrEqual(bounds!.y);
       expect(value!.y + value!.height).toBeLessThanOrEqual(bounds!.y + bounds!.height);
@@ -894,9 +927,11 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
           .getAttribute('aria-pressed')) !== 'true'
       )
         await picker.getByRole('button', { name: fighter, exact: true }).click();
-      await expect(page.locator('.hand-panel .prompt').first()).toContainText(`Move ${3 + amount}`);
+      await expect(page.locator('.hand-panel .prompt').first()).toContainText(
+        `Movimento ${3 + amount}`,
+      );
       const after = await page
-        .getByRole('button', { name: /^Move to / })
+        .getByRole('button', { name: /^Muovi in / })
         .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label')!));
       expect(after.length).toBeGreaterThan(before[fighter].length);
     }
@@ -914,16 +949,18 @@ test('boosts a Maneuver once for the hero and all allies, updates ranges and rec
     }
     const fighter = fighters.at(-1)!;
     const expanded = await page
-      .getByRole('button', { name: /^Move to / })
+      .getByRole('button', { name: /^Muovi in / })
       .evaluateAll((buttons) => buttons.map((b) => b.getAttribute('aria-label')!));
     const newSpace = expanded.find((label) => !before[fighter].includes(label))!;
     expect(newSpace).toBeTruthy();
     await page.getByRole('button', { name: newSpace, exact: true }).click();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('3 left');
-    await expect(page.locator('.hand-panel .prompt').first()).toContainText(`Move ${3 + amount}`);
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    await expect(page.locator('.hand-panel .prompt').first()).toContainText('Move 3');
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText(
+      `Movimento ${3 + amount}`,
+    );
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).click();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    await expect(page.locator('.hand-panel .prompt').first()).toContainText('Movimento 3');
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(6);
     await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await expect(page.locator('.game-card:not(:disabled)')).toHaveCount(0);
@@ -940,49 +977,49 @@ test('selects Medusa over real sockets, deploys three Harpies and reconnects sha
   const page = rivals[0].page,
     opponent = rivals[1].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
-    await expect(picker.getByRole('button')).toHaveText(['Harpy 1', 'Harpy 2', 'Harpy 3']);
-    await picker.getByRole('button', { name: 'Harpy 3', exact: true }).focus();
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Arpia 1', 'Arpia 2', 'Arpia 3']);
+    await picker.getByRole('button', { name: 'Arpia 3', exact: true }).focus();
     await page.keyboard.press('Enter');
     await page
-      .getByRole('button', { name: /^Place ally at/ })
+      .getByRole('button', { name: /^Colloca alleato in/ })
       .first()
       .click();
     await page.reload();
-    await expect(picker.getByRole('button')).toHaveText(['Harpy 1', 'Harpy 2']);
+    await expect(picker.getByRole('button')).toHaveText(['Arpia 1', 'Arpia 2']);
     for (let i = 0; i < 2; i++)
       await page
-        .getByRole('button', { name: /^Place ally at/ })
+        .getByRole('button', { name: /^Colloca alleato in/ })
         .first()
         .click();
     for (let i = 0; i < 3; i++)
       await opponent
-        .getByRole('button', { name: /^Place ally at/ })
+        .getByRole('button', { name: /^Colloca alleato in/ })
         .first()
         .click();
     const choice = page.locator('.hand-panel:has(.ability-options)');
-    await expect(choice).toContainText('Petrifying gaze');
+    await expect(choice).toContainText('Sguardo pietrificante');
     await expect(opponent.locator('.hand-panel:has(.ability-options)')).toHaveCount(0);
     await page.reload();
-    await choice.getByRole('button', { name: 'Skip', exact: true }).click();
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    await picker.getByRole('button', { name: 'Harpy 3', exact: true }).click();
+    await choice.getByRole('button', { name: 'Salta', exact: true }).click();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    await picker.getByRole('button', { name: 'Arpia 3', exact: true }).click();
     await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('3 left');
-    await expect(picker.getByRole('button', { name: 'Harpy 3', exact: true })).toHaveCount(0);
+    await expect(picker.getByRole('button', { name: 'Arpia 3', exact: true })).toHaveCount(0);
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
     await page.screenshot({
       path: test.info().outputPath('medusa-socket-phone.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).click();
     await expect(picker.getByRole('button')).toHaveText([
       'Medusa',
-      'Harpy 1',
-      'Harpy 2',
-      'Harpy 3',
+      'Arpia 1',
+      'Arpia 2',
+      'Arpia 3',
     ]);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
@@ -996,10 +1033,10 @@ test('selects Arthur over sockets, deploys Merlin and reconnects on a landscape 
   const rivals = await createMatch(browser, 2, false, 'king-arthur');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
-    await expect(picker.getByRole('button')).toHaveText(['King Arthur', 'Merlin 1']);
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    await picker.getByRole('button', { name: 'Merlin 1', exact: true }).click();
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Re Artù', 'Merlino 1']);
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    await picker.getByRole('button', { name: 'Merlino 1', exact: true }).click();
     await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
@@ -1009,41 +1046,41 @@ test('selects Arthur over sockets, deploys Merlin and reconnects on a landscape 
       path: test.info().outputPath('arthur-socket-phone.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
-    await expect(picker.getByRole('button')).toHaveText(['King Arthur', 'Merlin 1']);
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).click();
+    await expect(picker.getByRole('button')).toHaveText(['Re Artù', 'Merlino 1']);
     await expect(
-      rivals[1].page.getByRole('complementary', { name: 'Players', exact: true }),
-    ).toContainText('Merlin 1');
+      rivals[1].page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+    ).toContainText('Merlino 1');
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));
   }
 });
 
-test('selects Achilles over sockets, deploys Patroclus and restores his shared Maneuver on phone', async ({
+test('selects Achilles over sockets, deploys Patroclus and restores his shared Manovra on phone', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 2, false, 'achilles');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
-    await expect(picker.getByRole('button')).toHaveText(['Achilles', 'Patroclus 1']);
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Achille', 'Patroclo 1']);
     await page.screenshot({
       path: test.info().outputPath('achilles-socket-desktop.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    await picker.getByRole('button', { name: 'Patroclus 1', exact: true }).click();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    await picker.getByRole('button', { name: 'Patroclo 1', exact: true }).click();
     await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
-    await expect(picker.getByRole('button')).toHaveText(['Achilles', 'Patroclus 1']);
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).click();
+    await expect(picker.getByRole('button')).toHaveText(['Achille', 'Patroclo 1']);
     await expect(
-      rivals[1].page.getByRole('complementary', { name: 'Players', exact: true }),
-    ).toContainText('Patroclus 1');
+      rivals[1].page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+    ).toContainText('Patroclo 1');
     await page.screenshot({
       path: test.info().outputPath('achilles-socket-phone.png'),
       animations: 'disabled',
@@ -1054,22 +1091,22 @@ test('selects Achilles over sockets, deploys Patroclus and restores his shared M
   }
 });
 
-test('selects four Holmes over sockets, deploys numbered Watsons and restores a phone Maneuver', async ({
+test('selects four Holmes over sockets, deploys numbered Watsons and restores a phone Manovra', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 4, true, 'sherlock-holmes');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
-    await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dr. Watson 1']);
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dott. Watson 1']);
     for (const rival of rivals) {
       await expect(
-        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
-      ).toContainText('Dr. Watson 1');
+        rival.page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+      ).toContainText('Dott. Watson 1');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
-    await picker.getByRole('button', { name: 'Dr. Watson 1', exact: true }).tap();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Dott. Watson 1', exact: true }).tap();
     await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
@@ -1077,35 +1114,35 @@ test('selects four Holmes over sockets, deploys numbered Watsons and restores a 
       path: test.info().outputPath('holmes-four-seats-phone.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
-    await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dr. Watson 1']);
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).tap();
+    await expect(picker.getByRole('button')).toHaveText(['Sherlock Holmes', 'Dott. Watson 1']);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
     await Promise.allSettled(rivals.map(({ context }) => context.close()));
   }
 });
 
-test('selects four Draculas over sockets, deploys numbered Sisters and restores a phone Maneuver', async ({
+test('selects four Draculas over sockets, deploys numbered Sisters and restores a phone Manovra', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 4, true, 'dracula');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
     await expect(picker.getByRole('button')).toHaveText([
       'Dracula',
-      'Sister 1',
-      'Sister 2',
-      'Sister 3',
+      'Sorella 1',
+      'Sorella 2',
+      'Sorella 3',
     ]);
     for (const rival of rivals) {
       await expect(
-        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
-      ).toContainText('Sister 1');
+        rival.page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+      ).toContainText('Sorella 1');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
-    await picker.getByRole('button', { name: 'Sister 1', exact: true }).tap();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Sorella 1', exact: true }).tap();
     await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('3 left');
@@ -1113,12 +1150,12 @@ test('selects four Draculas over sockets, deploys numbered Sisters and restores 
       path: test.info().outputPath('dracula-four-seats-phone.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).tap();
     await expect(picker.getByRole('button')).toHaveText([
       'Dracula',
-      'Sister 1',
-      'Sister 2',
-      'Sister 3',
+      'Sorella 1',
+      'Sorella 2',
+      'Sorella 3',
     ]);
     expect(rivals.flatMap((r) => r.errors)).toEqual([]);
   } finally {
@@ -1126,30 +1163,30 @@ test('selects four Draculas over sockets, deploys numbered Sisters and restores 
   }
 });
 
-test('selects Bigfoot over sockets, deploys The Jackalope and restores his shared Maneuver on phone', async ({
+test('selects Bigfoot over sockets, deploys The Jackalope and restores his shared Manovra on phone', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 2, false, 'bigfoot');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
-    await expect(picker.getByRole('button')).toHaveText(['Bigfoot', 'The Jackalope 1']);
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
+    await expect(picker.getByRole('button')).toHaveText(['Bigfoot', 'Il Jackalope 1']);
     await page.screenshot({
       path: test.info().outputPath('bigfoot-socket-desktop.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
-    await picker.getByRole('button', { name: 'The Jackalope 1', exact: true }).click();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
+    await picker.getByRole('button', { name: 'Il Jackalope 1', exact: true }).click();
     await page.locator('button.fighter-hit[aria-pressed="true"]').click();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('1 left');
     await page.setViewportSize({ width: 844, height: 390 });
     await fitsViewport(page);
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).click();
-    await expect(picker.getByRole('button')).toHaveText(['Bigfoot', 'The Jackalope 1']);
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).click();
+    await expect(picker.getByRole('button')).toHaveText(['Bigfoot', 'Il Jackalope 1']);
     await expect(
-      rivals[1].page.getByRole('complementary', { name: 'Players', exact: true }),
-    ).toContainText('The Jackalope 1');
+      rivals[1].page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+    ).toContainText('Il Jackalope 1');
     await page.screenshot({
       path: test.info().outputPath('bigfoot-socket-phone.png'),
       animations: 'disabled',
@@ -1166,17 +1203,17 @@ test('selects Robin Hood over sockets, deploys all sixteen Outlaws and reconnect
   const rivals = await createMatch(browser, 4, true, 'robin-hood');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
     const labels = ['Robin Hood', 'Outlaw 1', 'Outlaw 2', 'Outlaw 3', 'Outlaw 4'];
     await expect(picker.getByRole('button')).toHaveText(labels);
     for (const rival of rivals) {
       await expect(
-        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
-      ).toContainText('Outlaw 4');
+        rival.page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+      ).toContainText('Fuorilegge 4');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
-    await picker.getByRole('button', { name: 'Outlaw 4', exact: true }).tap();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Fuorilegge 4', exact: true }).tap();
     await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('4 left');
@@ -1191,7 +1228,7 @@ test('selects Robin Hood over sockets, deploys all sixteen Outlaws and reconnect
       path: test.info().outputPath('robin-sixteen-outlaws-phone.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).tap();
     await expect(picker.getByRole('button')).toHaveText(labels);
     await page.setViewportSize({ width: 1440, height: 1000 });
     await fitsViewport(page);
@@ -1205,17 +1242,17 @@ test('selects Robin Hood over sockets, deploys all sixteen Outlaws and reconnect
   }
 });
 
-test('Bruce Lee starts a solo four-seat match and resumes Maneuver after socket reconnect', async ({
+test('Bruce Lee starts a solo four-seat match and resumes Manovra after socket reconnect', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 4, true, 'bruce-lee');
   try {
     const host = rivals[0].page;
-    await host.getByRole('button', { name: /^Maneuver/ }).click();
+    await host.getByRole('button', { name: /^Manovra/ }).click();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
     await host.reload();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
-    await finishManeuver(host);
+    await finishManovra(host);
     for (const { page } of rivals) {
       await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
       await fitsViewport(page);
@@ -1238,10 +1275,10 @@ test('Invisible Man deploys twelve fog tokens over real sockets and reconnects m
     for (const [seat, { page }] of rivals.entries()) {
       const choice = page.locator('.hand-panel:has(.ability-options)');
       for (let i = 1; i <= 3; i++) {
-        await expect(choice).toContainText(`Place Fog ${i}`);
+        await expect(choice).toContainText(`Place Nebbia ${i}`);
         if (i === 2) await page.reload();
         await page
-          .getByRole('button', { name: /^Choose space/ })
+          .getByRole('button', { name: /^Scegli casella/ })
           .first()
           .tap();
       }
@@ -1258,33 +1295,33 @@ test('Invisible Man deploys twelve fog tokens over real sockets and reconnects m
       await expect(page.locator('.board-token')).toHaveCount(12);
     }
     const host = rivals[0].page;
-    await host.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
-    await expect(host.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
+    await host.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+    await expect(host.getByRole('button', { name: 'Termina manovra', exact: true })).toBeVisible();
     await host.reload();
-    await expect(host.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
+    await expect(host.getByRole('button', { name: 'Termina manovra', exact: true })).toBeVisible();
     await expect(host.locator('.board-token')).toHaveCount(12);
     await expect(host.locator('.arena canvas')).toBeVisible();
     await host.screenshot({
       path: test.info().outputPath('invisible-four-seats-phone.png'),
       animations: 'disabled',
     });
-    await host.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await host.getByRole('button', { name: 'Termina manovra', exact: true }).tap();
     for (const rival of rivals) expect(rival.errors).toEqual([]);
   } finally {
     for (const rival of rivals) await rival.context.close();
   }
 });
 
-test('Darth Vader selects without allies and reconnects during Maneuver', async ({ browser }) => {
+test('Darth Vader selects without allies and reconnects during Manovra', async ({ browser }) => {
   const rivals = await createMatch(browser, 2, true, 'darth-vader', false, false);
   try {
     const page = rivals[0].page;
     await page.setViewportSize({ width: 844, height: 390 });
     const choice = page.locator('.hand-panel:has(.ability-options)');
-    if (await choice.isVisible()) await choice.getByRole('button', { name: /Confirm/ }).click();
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).click();
+    if (await choice.isVisible()) await choice.getByRole('button', { name: /Conferma/ }).click();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).click();
     await page.reload();
-    await expect(page.getByRole('button', { name: 'Finish Maneuver', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Termina manovra', exact: true })).toBeVisible();
     await expect(page.locator('.arena canvas')).toBeVisible();
     await page.screenshot({
       path: test.info().outputPath('darth-vader-socket-phone.png'),
@@ -1296,36 +1333,40 @@ test('Darth Vader selects without allies and reconnects during Maneuver', async 
   }
 });
 
-test('Geralt selects gear before Dandelion deployment and resumes a four-seat Maneuver over real sockets', async ({
+test('Geralt selects gear before Dandelion deployment and resumes a four-seat Manovra over real sockets', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 4, true, 'geralt-of-rivia', false, false);
   try {
     for (const [i, { page }] of rivals.entries()) {
       const choice = page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice).toContainText('Choose a sword');
-      await choice.getByRole('button', { name: 'Gear: Sword of Silver', exact: true }).tap();
-      await expect(choice).toContainText('Choose armor');
+      await expect(choice).toContainText('Scegli una spada');
+      await choice
+        .getByRole('button', { name: 'Equipaggiamento: spada d’argento', exact: true })
+        .tap();
+      await expect(choice).toContainText('Scegli un’armatura');
       await page.reload();
-      await expect(choice).toContainText('Choose armor');
+      await expect(choice).toContainText('Scegli un’armatura');
       for (const rival of rivals.filter((_, j) => j !== i))
         await expect(rival.page.locator('.hand-panel:has(.ability-options)')).toHaveCount(0);
-      await choice.getByRole('button', { name: 'GEAR: Wolf Medallion', exact: true }).tap();
-      await choice.getByRole('button', { name: 'GEAR: Tawny Owl', exact: true }).tap();
+      await choice
+        .getByRole('button', { name: 'EQUIPAGGIAMENTO: medaglione del Lupo', exact: true })
+        .tap();
+      await choice.getByRole('button', { name: 'EQUIPAGGIAMENTO: Allocchi', exact: true }).tap();
     }
     for (const { page } of rivals) {
       await page
-        .getByRole('button', { name: /^Place ally at/ })
+        .getByRole('button', { name: /^Colloca alleato in/ })
         .first()
         .tap();
-      await expect(page.locator('.badge-ally').filter({ hasText: 'Dandelion' })).toHaveCount(4);
+      await expect(page.locator('.badge-ally').filter({ hasText: 'Ranuncolo' })).toHaveCount(4);
     }
     const host = rivals[0].page;
-    await host.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
+    await host.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
     await host.reload();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
-    await finishManeuver(host);
+    await finishManovra(host);
     for (const { page, errors } of rivals) {
       await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
       await fitsViewport(page);
@@ -1340,18 +1381,18 @@ test('Geralt selects gear before Dandelion deployment and resumes a four-seat Ma
   }
 });
 
-test('Philippa and Dijkstra deploy over real sockets and reconnect during shared Maneuver', async ({
+test('Philippa and Dijkstra deploy over real sockets and reconnect during shared Manovra', async ({
   browser,
 }) => {
   const rivals = await createMatch(browser, 2, true, 'philippa');
   try {
     const host = rivals[0].page;
     await expect(host.locator('.badge-ally').filter({ hasText: 'Dijkstra' })).toHaveCount(2);
-    await host.getByRole('button', { name: /^Maneuver/ }).click();
+    await host.getByRole('button', { name: /^Manovra/ }).click();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
     await host.reload();
     await expect(host.locator('main')).toHaveAttribute('data-phase', 'choosing-movement');
-    await finishManeuver(host);
+    await finishManovra(host);
     for (const { page, errors } of rivals) {
       await expect(page.locator('main')).toHaveAttribute('data-phase', 'taking-actions');
       await fitsViewport(page);
@@ -1372,17 +1413,17 @@ test('selects Eredin over sockets, deploys all sixteen Red Riders and reconnects
   const rivals = await createMatch(browser, 4, true, 'eredin');
   const page = rivals[0].page;
   try {
-    const picker = page.getByRole('group', { name: 'Your fighters', exact: true });
+    const picker = page.getByRole('group', { name: 'I tuoi combattenti', exact: true });
     const labels = ['Eredin', 'Red Rider 1', 'Red Rider 2', 'Red Rider 3', 'Red Rider 4'];
     await expect(picker.getByRole('button')).toHaveText(labels);
     for (const rival of rivals) {
       await expect(
-        rival.page.getByRole('complementary', { name: 'Players', exact: true }),
-      ).toContainText('Red Rider 4');
+        rival.page.getByRole('complementary', { name: 'Giocatori', exact: true }),
+      ).toContainText('Cavaliere Rosso 4');
       await fitsViewport(rival.page);
     }
-    await page.getByRole('button', { name: 'Maneuver · draw a card', exact: true }).tap();
-    await picker.getByRole('button', { name: 'Red Rider 4', exact: true }).tap();
+    await page.getByRole('button', { name: 'Manovra · pesca una carta', exact: true }).tap();
+    await picker.getByRole('button', { name: 'Cavaliere Rosso 4', exact: true }).tap();
     await page.locator('button.fighter-hit[aria-pressed="true"]').tap();
     await page.reload();
     await expect(page.locator('.hand-panel .prompt').first()).toContainText('4 left');
@@ -1397,7 +1438,7 @@ test('selects Eredin over sockets, deploys all sixteen Red Riders and reconnects
       path: test.info().outputPath('eredin-sixteen-riders-phone.png'),
       animations: 'disabled',
     });
-    await page.getByRole('button', { name: 'Finish Maneuver', exact: true }).tap();
+    await page.getByRole('button', { name: 'Termina manovra', exact: true }).tap();
     await expect(picker.getByRole('button')).toHaveText(labels);
     await page.setViewportSize({ width: 1440, height: 1000 });
     await fitsViewport(page);

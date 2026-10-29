@@ -1,7 +1,10 @@
+import { contentText } from '../localization/text';
+import { messageText } from '../ui/messages';
 import type { Outcome } from '@open-boards/game';
 import { fighterById, fighterDefinition, mainFighter, portalStep } from '@open-boards/game';
 import type { GameView } from '@open-boards/protocol';
 import { basic } from '@open-boards/content';
+import type { SpriteClip } from './sprites';
 import type { SoundEffect } from '../audio/cues';
 import { timing } from './timing';
 import { abilityVisuals, statusVisuals, type AbilityMark } from '../characters/marks';
@@ -10,6 +13,7 @@ import { isActionPlay, outcomeReview, type EventReview } from '../presentation/r
 export type Tone = 'gold' | 'mint' | 'ember';
 export type VisualEffect = (
   | { type: 'move'; player: string; path: string[] }
+  | { type: 'sprite'; clip: SpriteClip; node: string }
   | { type: 'ring'; node: string }
   | { type: 'burst'; node: string }
   | { type: 'text'; node: string; text: string }
@@ -52,8 +56,8 @@ const cue = (
 const recipes: Recipes = {
   'hand-revealed': (o, c) =>
     cue(
-      'Cards revealed',
-      `${c.name(o.player)} reveals ${o.cards.length} cards`,
+      'Carte rivelate',
+      `${c.name(o.player)} rivela ${o.cards.length} carte`,
       [],
       'gold',
       timing.notice,
@@ -62,13 +66,13 @@ const recipes: Recipes = {
   boost: (o, c) =>
     cue(
       o.cancelled
-        ? 'BOOST cancelled'
+        ? 'BOOST annullato'
         : o.purpose === 'maneuver'
-          ? 'Movement boosted'
+          ? 'Movimento potenziato'
           : o.purpose === 'defense'
-            ? 'Defense boosted'
-            : 'Attack boosted',
-      `${c.name(o.fighter)} · ${basic.cards[o.card.definition].name} · +${o.amount}`,
+            ? 'Difesa potenziata'
+            : 'Attacco potenziato',
+      `${c.name(o.fighter)} · ${contentText(basic.cards[o.card.definition].name)} · +${o.amount}`,
       [{ type: 'text', node: c.node(o.fighter), text: `+${o.amount}` }],
       'mint',
       timing.notice,
@@ -80,10 +84,10 @@ const recipes: Recipes = {
     const portals = o.path.slice(1).map((node, i) => portalStep(basic.map, o.path[i], node));
     return cue(
       portals.some(Boolean)
-        ? 'Through the rift'
+        ? 'Attraverso il portale'
         : o.path.length > 1
-          ? 'On the move'
-          : 'Holding ground',
+          ? 'In movimento'
+          : 'Posizione mantenuta',
       c.name(o.fighter),
       [
         { type: 'move', player: o.fighter, path: o.path, duration: travel },
@@ -101,17 +105,17 @@ const recipes: Recipes = {
     const { attacker, defender, attack, defense, boosts, damage, bonus } = o.combat;
     const ranged = fighterDefinition(fighterById(c.game, attacker)!, basic).attackType === 'ranged';
     return cue(
-      damage === 0 ? 'Blocked!' : 'Clash!',
-      `${bonus?.name ?? basic.cards[attack.definition].name} ${bonus?.value ?? basic.cards[attack.definition].value}${boosts
+      damage === 0 ? 'Parato!' : 'Scontro!',
+      `${contentText(bonus?.name) ?? contentText(basic.cards[attack.definition].name)} ${bonus?.value ?? basic.cards[attack.definition].value}${boosts
         .filter((b) => b.field !== 'defense')
         .map((b) => ` +${b.amount} BOOST`)
         .join('')} · ${
         defense
-          ? `${basic.cards[defense.definition].name} ${basic.cards[defense.definition].value}${boosts
+          ? `${contentText(basic.cards[defense.definition].name)} ${basic.cards[defense.definition].value}${boosts
               .filter((b) => b.field === 'defense')
               .map((b) => ` +${b.amount} BOOST`)
               .join('')}`
-          : 'No defense'
+          : 'Nessuna difesa'
       }`,
       [
         {
@@ -138,10 +142,10 @@ const recipes: Recipes = {
   },
   damage: (o, c) =>
     cue(
-      o.reason === 'exhaustion' ? 'Exhaustion' : o.amount ? 'Direct hit' : 'Guard holds',
-      `${c.name(o.fighter)} · ${o.amount} damage`,
+      o.reason === 'exhaustion' ? 'Esaurimento' : o.amount ? 'Colpo diretto' : 'La difesa regge',
+      `${c.name(o.fighter)} · ${o.amount} danni`,
       [
-        { type: 'text', node: c.node(o.fighter), text: o.amount ? `−${o.amount}` : 'Blocked' },
+        { type: 'text', node: c.node(o.fighter), text: o.amount ? `−${o.amount}` : 'Parato' },
         { type: o.amount ? 'burst' : 'shield', node: c.node(o.fighter) },
       ],
       o.amount ? 'ember' : 'mint',
@@ -150,11 +154,11 @@ const recipes: Recipes = {
     ),
   placed: (o, c) =>
     cue(
-      'Back on the board',
+      'Di nuovo in plancia',
       c.name(o.fighter),
       [
         { type: 'ring', node: o.position },
-        { type: 'text', node: o.position, text: 'Returned' },
+        { type: 'text', node: o.position, text: 'Ritornato' },
       ],
       'mint',
       timing.notice,
@@ -162,11 +166,11 @@ const recipes: Recipes = {
     ),
   revived: (o, c) =>
     cue(
-      'Returned',
-      `${c.name(o.fighter)} returns to the arena`,
+      'Ritornato',
+      `${c.name(o.fighter)} ritorna nell’arena`,
       [
         { type: 'ring', node: o.position },
-        { type: 'text', node: o.position, text: 'Returned' },
+        { type: 'text', node: o.position, text: 'Ritornato' },
       ],
       'mint',
       timing.notice,
@@ -174,20 +178,20 @@ const recipes: Recipes = {
     ),
   defeated: (o, c) =>
     cue(
-      'Fallen',
-      `${c.name(o.fighter)} is defeated`,
-      [{ type: 'text', node: c.node(o.fighter), text: 'Fallen' }],
+      'Sconfitto',
+      `${c.name(o.fighter)} è sconfitto`,
+      [{ type: 'text', node: c.node(o.fighter), text: 'Sconfitto' }],
       'ember',
       timing.notice,
       [{ name: 'fallen' }],
     ),
   eliminated: (o, c) =>
     cue(
-      'Fallen',
-      `${c.name(o.player)} is eliminated`,
+      'Sconfitto',
+      `${c.name(o.player)} è eliminato`,
       [
         { type: 'ring', node: c.node(o.player) },
-        { type: 'text', node: c.node(o.player), text: 'Fallen' },
+        { type: 'text', node: c.node(o.player), text: 'Sconfitto' },
       ],
       'ember',
       timing.notice,
@@ -195,8 +199,8 @@ const recipes: Recipes = {
     ),
   turn: (o, c) =>
     cue(
-      'Your move, ' + c.name(o.player),
-      '2 actions',
+      'Tocca a te, ' + c.name(o.player),
+      '2 azioni',
       [{ type: 'ring', node: c.node(o.player) }],
       'gold',
       timing.brief,
@@ -204,12 +208,12 @@ const recipes: Recipes = {
     ),
   finished: (o, c) =>
     cue(
-      o.winner ? 'Victory' : 'A draw',
-      o.winner ? `${c.name(o.winner)} claims the arena` : 'No survivors',
+      o.winner ? 'Vittoria' : 'Pareggio',
+      o.winner ? `${c.name(o.winner)} conquista l’arena` : 'Nessun sopravvissuto',
       o.winner
         ? [
             { type: 'ring', node: c.node(o.winner) },
-            { type: 'text', node: c.node(o.winner), text: 'Victory' },
+            { type: 'text', node: c.node(o.winner), text: 'Vittoria' },
           ]
         : [],
       'gold',
@@ -220,11 +224,11 @@ const recipes: Recipes = {
     const definition = basic.cards[o.card.definition];
     const action = isActionPlay(o, c.previous);
     return cue(
-      definition.name,
-      `${c.name(o.player)} · ${action ? 'Card played' : 'Card discarded'}`,
+      contentText(definition.name),
+      `${c.name(o.player)} · ${action ? 'Carta giocata' : 'Carta scartata'}`,
       [
         { type: action ? 'cards' : 'ring', node: c.node(o.fighter) },
-        { type: 'text', node: c.node(o.fighter), text: action ? 'Play' : 'Discard' },
+        { type: 'text', node: c.node(o.fighter), text: action ? 'Gioca' : 'Scarta' },
       ],
       'gold',
       timing.notice,
@@ -233,10 +237,11 @@ const recipes: Recipes = {
   },
   heal: (o, c) =>
     cue(
-      'Restored',
-      `${c.name(o.fighter)} · +${o.amount} health`,
+      'Curato',
+      `${c.name(o.fighter)} · +${o.amount} vita`,
       [
         { type: 'ring', node: c.node(o.fighter) },
+        { type: 'sprite', clip: 'heal', node: c.node(o.fighter) },
         { type: 'text', node: c.node(o.fighter), text: `+${o.amount}` },
       ],
       'mint',
@@ -250,7 +255,7 @@ const recipes: Recipes = {
     );
     const visual = (status && statusVisuals[status.id]) || abilityVisuals[character];
     return cue(
-      o.name,
+      messageText(o.name),
       c.name(o.fighter),
       [
         { type: 'ring', node: c.node(o.fighter) },
@@ -266,14 +271,14 @@ const recipes: Recipes = {
   status: (o, c) => {
     const visual = statusVisuals[o.status];
     return cue(
-      basic.statuses?.[o.status]?.name ?? o.status,
-      `${c.name(o.fighter)} · ${o.stacks ? `${o.stacks} stacks` : 'Status removed'}`,
+      contentText(basic.statuses?.[o.status]?.name) ?? o.status,
+      `${c.name(o.fighter)} · ${o.stacks ? `${o.stacks} accumuli` : 'Stato rimosso'}`,
       [
         { type: 'ring', node: c.node(o.fighter) },
         ...(visual && o.stacks
           ? [{ type: 'sigil' as const, node: c.node(o.fighter), mark: visual.mark }]
           : []),
-        { type: 'text', node: c.node(o.fighter), text: o.stacks ? `×${o.stacks}` : 'Cleared' },
+        { type: 'text', node: c.node(o.fighter), text: o.stacks ? `×${o.stacks}` : 'Rimosso' },
       ],
       visual?.tone ?? 'mint',
       timing.notice,
@@ -298,9 +303,9 @@ export function presentationEvents(
       const f = fighterById(game, id);
       return f
         ? f.role === 'ally'
-          ? `${fighterDefinition(f, basic).name} ${f.id.split('-').at(-1)}`
+          ? `${contentText(fighterDefinition(f, basic).name)} ${f.id.split('-').at(-1)}`
           : game.players.find((p) => p.id === f.player)!.name
-        : (game.players.find((p) => p.id === id)?.name ?? 'A rival');
+        : (game.players.find((p) => p.id === id)?.name ?? 'Un avversario');
     },
     node: (id) =>
       fighterById(game, id)?.position ??
@@ -315,10 +320,10 @@ export function presentationEvents(
       add(
         `connection:${receipt}:${game.paused}`,
         cue(
-          game.paused ? 'Arena paused' : 'Back in the fight',
+          game.paused ? 'Arena in pausa' : 'Di nuovo in battaglia',
           game.paused
-            ? 'Waiting for your rivals to reconnect.'
-            : 'All remaining rivals are connected.',
+            ? 'In attesa della riconnessione degli avversari.'
+            : 'Tutti gli avversari rimasti sono connessi.',
           [],
           'gold',
           timing.notice,
@@ -330,11 +335,11 @@ export function presentationEvents(
         add(
           `attack:${game.revision}`,
           cue(
-            'Attack incoming',
-            `${context.name(attacker)} challenges ${context.name(defender)}`,
+            'Attacco in arrivo',
+            `${context.name(attacker)} attacca ${context.name(defender)}`,
             [
               { type: 'ring', node: context.node(defender) },
-              { type: 'text', node: context.node(attacker), text: 'Attack!' },
+              { type: 'text', node: context.node(attacker), text: 'Attacco!' },
             ],
             'ember',
             timing.notice,
@@ -346,8 +351,8 @@ export function presentationEvents(
         add(
           `choice:${game.revision}`,
           cue(
-            'A choice awaits',
-            `${context.name(game.phase.player)} is choosing an ability`,
+            'Scelta in attesa',
+            `${context.name(game.phase.player)} sta scegliendo un’abilità`,
             [{ type: 'ring', node: context.node(game.phase.player) }],
             'gold',
             timing.brief,
@@ -357,8 +362,8 @@ export function presentationEvents(
         add(
           `discard:${game.revision}`,
           cue(
-            'Make room',
-            `${context.name(game.phase.player)} must discard to seven cards`,
+            'Fai spazio',
+            `${context.name(game.phase.player)} deve scartare fino a sette carte`,
             [{ type: 'ring', node: context.node(game.phase.player) }],
             'gold',
             timing.brief,
@@ -398,8 +403,8 @@ export function presentationEvents(
         add(
           `draw:${game.revision}:${player.id}`,
           cue(
-            maneuver ? 'Maneuver' : 'Cards drawn',
-            `${player.name} · ${drawn ? `+${drawn} ${drawn === 1 ? 'card' : 'cards'}` : 'Choose your path'}`,
+            maneuver ? 'Manovra' : 'Carte pescate',
+            `${player.name} · ${drawn ? `+${drawn} ${drawn === 1 ? 'carta' : 'carte'}` : 'Scegli il percorso'}`,
             [
               { type: 'cards', node: context.node(player.id) },
               ...(drawn

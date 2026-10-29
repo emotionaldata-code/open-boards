@@ -141,10 +141,10 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('pageerror', (e) => errors.push(e.message));
     try {
       await mountBigfoot(page, 'horns');
-      await page.getByRole('button', { name: 'The Jackalope 1', exact: true }).click();
-      await page.locator('.game-card').filter({ hasText: 'Jackalope Horns' }).click();
+      await page.getByRole('button', { name: 'Il Jackalope 1', exact: true }).click();
+      await page.locator('.game-card').filter({ hasText: 'Corna del Jackalope' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Choose a destination');
+      await expect(choice()).toContainText('Scegli una destinazione');
       await page.screenshot({
         path: test.info().outputPath('bigfoot-horns-desktop.png'),
         animations: 'disabled',
@@ -152,9 +152,9 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountBigfoot(page, 'horns');
-      await page.getByRole('button', { name: 'Choose space 02', exact: true }).focus();
+      await page.getByRole('button', { name: 'Scegli casella 02', exact: true }).focus();
       await page.keyboard.press('Enter');
-      await expect(choice()).toContainText('Choose a fighter');
+      await expect(choice()).toContainText('Scegli un combattente');
       await page.reload();
       await mountBigfoot(page, 'horns');
       await page.getByRole('button', { name: /Bigfoot · Hector/ }).tap();
@@ -201,10 +201,10 @@ test('Bigfoot offers Loner by Nature only to its owner and restores the draw on 
   try {
     await mountBigfoot(page, 'loner');
     const choice = () => page.locator('.hand-panel:has(.ability-options)');
-    await expect(choice()).toContainText('Loner by Nature');
+    await expect(choice()).toContainText('Solitario per natura');
     await page.reload();
     await mountBigfoot(page, 'loner');
-    await page.getByRole('button', { name: /^Use / }).tap();
+    await page.getByRole('button', { name: /^Usa / }).tap();
     await expect(choice()).toHaveCount(0);
     expect(
       await page.evaluate(

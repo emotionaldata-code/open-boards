@@ -130,44 +130,44 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     page.on('pageerror', (error) => errors.push(error.message));
     try {
       await mountMedusa(page);
-      await page.getByRole('button', { name: 'Harpy 1', exact: true }).click();
-      const card = page.locator('.game-card').filter({ hasText: 'Winged Frenzy' });
+      await page.getByRole('button', { name: 'Arpia 1', exact: true }).click();
+      const card = page.locator('.game-card').filter({ hasText: 'Frenesia alata' });
       await expect(card.locator('img')).toHaveJSProperty('complete', true);
       await card.click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Choose the next fighter');
+      await expect(choice()).toContainText('Scegli il prossimo combattente');
       await mountMedusa(page);
       await page.getByRole('button', { name: 'Medusa', exact: true }).focus();
       await page.keyboard.press('Enter');
-      await expect(choice()).toContainText('Choose a destination');
-      await expect(page.getByRole('button', { name: 'Choose space 02', exact: true })).toHaveCount(
-        0,
-      ); // Enemy occupies n1.
+      await expect(choice()).toContainText('Scegli una destinazione');
+      await expect(
+        page.getByRole('button', { name: 'Scegli casella 02', exact: true }),
+      ).toHaveCount(0); // Enemy occupies n1.
       await mountMedusa(page);
-      await page.getByRole('button', { name: 'Choose space 03', exact: true }).click(); // Cross enemy n1 to n2.
-      await expect(choice()).toContainText('Choose the next fighter');
-      await page.getByRole('button', { name: 'Harpy 2', exact: true }).click();
-      await choice().getByRole('button', { name: 'Stay in place', exact: true }).click();
-      await expect(page.getByRole('button', { name: 'Harpy 2', exact: true })).toHaveCount(0);
+      await page.getByRole('button', { name: 'Scegli casella 03', exact: true }).click(); // Cross enemy n1 to n2.
+      await expect(choice()).toContainText('Scegli il prossimo combattente');
+      await page.getByRole('button', { name: 'Arpia 2', exact: true }).click();
+      await choice().getByRole('button', { name: 'Resta fermo', exact: true }).click();
+      await expect(page.getByRole('button', { name: 'Arpia 2', exact: true })).toHaveCount(0);
       await expect(page.locator('.action-notice.is-visible')).toHaveCount(0, { timeout: 30000 });
       await page.screenshot({
         path: test.info().outputPath('medusa-desktop.png'),
         animations: 'disabled',
       });
       await page.setViewportSize({ width: 844, height: 390 });
-      await page.getByRole('button', { name: 'Harpy 1', exact: true }).tap();
-      await choice().getByRole('button', { name: 'Stay in place', exact: true }).tap();
-      await expect(choice()).toContainText('Return a defeated ally');
+      await page.getByRole('button', { name: 'Arpia 1', exact: true }).tap();
+      await choice().getByRole('button', { name: 'Resta fermo', exact: true }).tap();
+      await expect(choice()).toContainText('Riporta in gioco un alleato sconfitto');
       await mountMedusa(page);
-      await page.getByRole('button', { name: 'Harpy 3', exact: true }).tap();
-      await expect(choice()).toContainText('Choose where to return the ally');
+      await page.getByRole('button', { name: 'Arpia 3', exact: true }).tap();
+      await expect(choice()).toContainText('Scegli dove riportare l’alleato');
       await mountMedusa(page);
-      await page.getByRole('button', { name: 'Choose space 04', exact: true }).focus();
+      await page.getByRole('button', { name: 'Scegli casella 04', exact: true }).focus();
       await page.keyboard.press('Enter'); // n3 shares moved Medusa's gold zone.
       await expect(
-        page.locator('.player-badge').first().locator('.badge-ally').filter({ hasText: 'Harpy 3' }),
-      ).toContainText('1/1 HP');
-      await expect(page.getByRole('button', { name: 'Harpy 3', exact: true })).toBeVisible();
+        page.locator('.player-badge').first().locator('.badge-ally').filter({ hasText: 'Arpia 3' }),
+      ).toContainText('1/1 PV');
+      await expect(page.getByRole('button', { name: 'Arpia 3', exact: true })).toBeVisible();
       await expect(page.getByRole('dialog')).toHaveCount(0, { timeout: 30000 });
       await expect(page.locator('.action-notice.is-visible')).toHaveCount(0, { timeout: 30000 });
       await page.screenshot({

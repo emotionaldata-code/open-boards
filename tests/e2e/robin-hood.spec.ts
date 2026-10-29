@@ -201,10 +201,10 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
       for (let i = 1; i <= 4; i++)
         await expect(
           page
-            .getByRole('group', { name: 'Your fighters' })
-            .getByRole('button', { name: `Outlaw ${i}`, exact: true }),
+            .getByRole('group', { name: 'I tuoi combattenti' })
+            .getByRole('button', { name: `Fuorilegge ${i}`, exact: true }),
         ).toBeVisible();
-      await page.locator('.game-card').filter({ hasText: 'Steal From the Rich' }).click();
+      await page.locator('.game-card').filter({ hasText: 'Rubare ai ricchi' }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
       await page.getByRole('button', { name: 'Hector', exact: true }).click();
       await expect(choice()).toHaveCount(0);
@@ -213,20 +213,23 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         animations: 'disabled',
       });
       await mountRobin(page, 'rich', 'p1');
-      await expect(choice()).toContainText('Steal From the Rich');
+      await expect(choice()).toContainText('Rubare ai ricchi');
       await page.setViewportSize({ width: 844, height: 390 });
       await page.reload();
       await mountRobin(page, 'rich', 'p1');
-      await choice().getByRole('button', { name: 'Discard 1 card', exact: true }).focus();
+      await choice().getByRole('button', { name: 'Scarta 1 carta', exact: true }).focus();
       await page.keyboard.press('Enter');
-      await expect(choice()).toContainText('Discard 1 card');
+      await expect(choice()).toContainText('Scarta 1 carta');
       await page.reload();
       await mountRobin(page, 'rich', 'p1');
       await page.screenshot({
         path: test.info().outputPath('robin-rich-phone.png'),
         animations: 'disabled',
       });
-      await choice().getByRole('button', { name: "A Hunter's Eye", exact: true }).first().tap();
+      await choice()
+        .getByRole('button', { name: 'Occhio del cacciatore', exact: true })
+        .first()
+        .tap();
       await expect(choice()).toHaveCount(0);
       const state = await currentState(page);
       expect(state.players.map((p) => p.hand.length)).toEqual([5, 4]);
@@ -264,13 +267,13 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
     try {
       await mountRobin(page, 'skirmish');
       await page
-        .getByRole('group', { name: 'Your fighters' })
-        .getByRole('button', { name: 'Outlaw 4', exact: true })
+        .getByRole('group', { name: 'I tuoi combattenti' })
+        .getByRole('button', { name: 'Fuorilegge 4', exact: true })
         .click();
-      await page.locator('.game-card').filter({ hasText: 'Highway Robbery' }).click();
-      await page.getByRole('button', { name: /^Target .*\(Hector\)$/ }).click();
+      await page.locator('.game-card').filter({ hasText: 'Rapina sulla strada' }).click();
+      await page.getByRole('button', { name: /^Bersaglio .*\(Hector\)$/ }).click();
       const choice = () => page.locator('.hand-panel:has(.ability-options)');
-      await expect(choice()).toContainText('Choose a destination');
+      await expect(choice()).toContainText('Scegli una destinazione');
       await page.screenshot({
         path: test.info().outputPath('outlaw-retreat-desktop.png'),
         animations: 'disabled',
@@ -283,7 +286,7 @@ for (const reducedMotion of ['reduce', 'no-preference'] as const) {
         animations: 'disabled',
       });
       await page
-        .getByRole('button', { name: /^Choose space / })
+        .getByRole('button', { name: /^Scegli casella / })
         .first()
         .tap();
       await expect(choice()).toHaveCount(0);
@@ -324,14 +327,14 @@ test('Defenders of Sherwood returns numbered Outlaw 4 after reload on a landscap
   });
   try {
     await mountRobin(page, 'defenders');
-    await page.locator('.game-card').filter({ hasText: 'Defenders of Sherwood' }).tap();
+    await page.locator('.game-card').filter({ hasText: 'Difensori di Sherwood' }).tap();
     const choice = () => page.locator('.hand-panel:has(.ability-options)');
-    await expect(choice()).toContainText('Outlaw 4');
-    await page.getByRole('button', { name: 'Outlaw 4', exact: true }).tap();
+    await expect(choice()).toContainText('Fuorilegge 4');
+    await page.getByRole('button', { name: 'Fuorilegge 4', exact: true }).tap();
     await page.reload();
     await mountRobin(page, 'defenders');
     await page
-      .getByRole('button', { name: /^Choose space / })
+      .getByRole('button', { name: /^Scegli casella / })
       .first()
       .tap();
     await expect(choice()).toHaveCount(0);
