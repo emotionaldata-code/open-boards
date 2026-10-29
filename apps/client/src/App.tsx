@@ -1,3 +1,4 @@
+import { GameButton } from './ui/GameButton';
 import { messageText } from './ui/messages';
 import { useEffect, useRef, useState } from 'react';
 import type { Command } from '@open-boards/game';
@@ -112,12 +113,12 @@ export function App() {
             <>
               <span className="muted">{user.name}</span>
               <span className="connection-status">{messageText(status)}</span>
-              <button
+              <GameButton
                 className="text-button"
                 onClick={() => void logout().catch((e) => setError(e.message))}
               >
                 Esci
-              </button>
+              </GameButton>
             </>
           ) : null}
         </div>
@@ -125,11 +126,11 @@ export function App() {
       {error && (
         <div className="notice" role="alert">
           <span>{messageText(error)}</span>
-          <button onClick={() => setError('')} aria-label="Chiudi errore">
+          <GameButton onClick={() => setError('')} aria-label="Chiudi errore">
             Chiudi
-          </button>
+          </GameButton>
           {status === 'Disconnected' && (
-            <button onClick={() => void leave()}>Torna alla lobby</button>
+            <GameButton onClick={() => void leave()}>Torna alla lobby</GameButton>
           )}
         </div>
       )}

@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
@@ -27,7 +28,7 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
             );
             return (
               <div className="player-summary" key={p.id}>
-                <button
+                <GameButton
                   style={
                     {
                       '--health': `${(f.hp / basic.characters[p.character].hp) * 100}%`,
@@ -95,8 +96,8 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                       })}
                     </span>
                   )}
-                </button>
-                <button
+                </GameButton>
+                <GameButton
                   className="discard-trigger"
                   aria-label={`${p.name}: Scarti · ${p.discard.length}`}
                   onClick={() => setDiscardId(p.id)}
@@ -105,7 +106,7 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                     Scarti<span className="discard-separator"> · </span>
                   </span>
                   <span className="discard-count">{p.discard.length}</span>
-                </button>
+                </GameButton>
               </div>
             );
           })}
@@ -149,8 +150,8 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
           </div>
           {basic.characters[player.character].deckSelection && (
             <p>
-              <strong>{contentText(basic.characters[player.character].deckSelection!.name)}</strong> ·{' '}
-              {contentText(basic.characters[player.character].deckSelection!.description)}
+              <strong>{contentText(basic.characters[player.character].deckSelection!.name)}</strong>{' '}
+              · {contentText(basic.characters[player.character].deckSelection!.description)}
             </p>
           )}
           {(player.ongoing ?? []).map((card) => (
@@ -177,7 +178,8 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
           ))}
           {main!.statuses.map((status) => (
             <p key={status.id}>
-              {contentText(basic.statuses?.[status.id]?.name) ?? status.id} · {status.stacks} accumuli
+              {contentText(basic.statuses?.[status.id]?.name) ?? status.id} · {status.stacks}{' '}
+              accumuli
               {status.turns ? ` · ${status.turns} turni` : ''}
             </p>
           ))}
@@ -193,7 +195,8 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                 </p>
                 {fighterDefinition(f, basic).abilities?.map((ability) => (
                   <p key={ability.id}>
-                    <strong>{contentText(ability.name)}</strong> · {contentText(ability.description)}
+                    <strong>{contentText(ability.name)}</strong> ·{' '}
+                    {contentText(ability.description)}
                   </p>
                 ))}
                 {Object.entries(f.counters).map(([name, count]) => (
@@ -209,7 +212,9 @@ export function MatchDetails({ room, selfId }: { room: RoomView; selfId: string 
                 ))}
               </div>
             ))}
-          <button onClick={() => setDiscardId(player.id)}>Scarti · {player.discard.length}</button>
+          <GameButton onClick={() => setDiscardId(player.id)}>
+            Scarti · {player.discard.length}
+          </GameButton>
         </Dialog>
       )}
       {discards && <DiscardPile player={discards} onClose={() => setDiscardId(null)} />}

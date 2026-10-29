@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { basic } from '@open-boards/content';
 import { fighterLabel, type Fighter } from '@open-boards/game';
@@ -18,7 +19,7 @@ export function FighterPicker({
     <div className="fighter-controls" role="group" aria-label="I tuoi combattenti">
       <div className="fighter-picker">
         {fighters.map((fighter) => (
-          <button
+          <GameButton
             key={fighter.id}
             type="button"
             aria-pressed={fighter.id === selected}
@@ -27,7 +28,7 @@ export function FighterPicker({
           >
             <CharacterPortrait character={fighter.definition} />
             <span>{contentText(fighterLabel(fighter, basic))}</span>
-          </button>
+          </GameButton>
         ))}
       </div>
     </div>

@@ -1,3 +1,5 @@
+import { GameButton } from '../ui/GameButton';
+import { ActionGems } from '../ui/ActionGems';
 import { contentText } from '../localization/text';
 import { messageText } from '../ui/messages';
 import { choiceLabel } from './choice-label';
@@ -297,15 +299,14 @@ export function Game({
           >
             {!ended && (
               <>
-                <i aria-hidden="true" className={game.actions > 0 ? 'filled' : ''} />
-                <i aria-hidden="true" className={game.actions > 1 ? 'filled' : ''} />
+                <ActionGems value={game.actions} />
                 <span>{game.actions} azioni</span>
               </>
             )}
           </span>
-          <button onClick={() => (ended ? onLeave() : setConfirmLeave(true))}>
+          <GameButton onClick={() => (ended ? onLeave() : setConfirmLeave(true))}>
             {ended ? 'Torna alla lobby' : 'Lascia partita'}
-          </button>
+          </GameButton>
         </div>
         <MatchDetails room={room} selfId={user.id} />
         <div className="play-surface">
@@ -406,10 +407,10 @@ export function Game({
         <Dialog title="Lasciare l’arena?" onClose={() => setConfirmLeave(false)}>
           <p>Abbandonare questa partita equivale alla resa.</p>
           <div className="button-row">
-            <button onClick={() => setConfirmLeave(false)}>Continua a giocare</button>
-            <button className="primary" onClick={onLeave}>
+            <GameButton onClick={() => setConfirmLeave(false)}>Continua a giocare</GameButton>
+            <GameButton className="primary" onClick={onLeave}>
               Arrenditi ed esci
-            </button>
+            </GameButton>
           </div>
         </Dialog>
       )}

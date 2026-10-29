@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { useRef, useState } from 'react';
 import type { PresentationEvent } from '../animation/events';
 import { CardPrint } from '../cards/CardPrint';
@@ -62,7 +63,7 @@ export function EventDialog({
           )}
         </div>
         <footer className="event-acknowledgement">
-          <button
+          <GameButton
             className="primary"
             ref={acknowledgement}
             disabled={acknowledged}
@@ -72,7 +73,7 @@ export function EventDialog({
             }}
           >
             {acknowledged ? 'Proseguimento…' : 'Conferma'}
-          </button>
+          </GameButton>
         </footer>
       </div>
     </Dialog>

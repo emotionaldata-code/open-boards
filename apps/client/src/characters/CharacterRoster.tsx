@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { attackTypeLabel } from '../ui/labels';
 import { useId, useRef, useState } from 'react';
@@ -67,8 +68,9 @@ export function CharacterRoster({
       </div>
       <div className="roster-list" role="group" aria-label="Esplora i personaggi">
         {Object.values(characters).map((candidate) => (
-          <button
+          <GameButton
             type="button"
+            className="roster-portrait"
             key={candidate.id}
             aria-label={`Esamina ${contentText(candidate.name)}`}
             aria-pressed={candidate.id === inspected}
@@ -80,7 +82,7 @@ export function CharacterRoster({
           >
             <CharacterPortrait character={candidate.id} />
             <span>{contentText(candidate.name)}</span>
-          </button>
+          </GameButton>
         ))}
       </div>
       <details className="roster-more" open={featured ? undefined : true} key={inspected}>
@@ -142,16 +144,16 @@ export function CharacterRoster({
           <p className="character-tactic">{profile.tactic}</p>
         </div>
       </details>
-      <button type="button" className="roster-deck" onClick={() => setDeckOpen(true)}>
+      <GameButton type="button" className="roster-deck" onClick={() => setDeckOpen(true)}>
         Mazzo di {contentText(character.name)} · {character.deck.length} carte diverse
-      </button>
+      </GameButton>
       {deckOpen && <DeckExplorer character={inspected} onClose={() => setDeckOpen(false)} />}
       {onChoose && (
         <div className="roster-confirm">
           <p>Cambiare personaggio annulla il tuo stato di pronto.</p>
-          <button type="button" className="primary" onClick={() => onChoose(inspected)}>
+          <GameButton type="button" className="primary" onClick={() => onChoose(inspected)}>
             Scegli {contentText(character.name)}
-          </button>
+          </GameButton>
         </div>
       )}
     </section>

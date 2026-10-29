@@ -287,12 +287,12 @@ for (const count of [2, 4] as const)
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
           true,
         );
-        await expect(page.locator('canvas')).toBeVisible();
+        await expect(page.locator('.arena canvas')).toBeVisible();
         await expect(page.getByRole('button', { name: 'End turn', exact: true })).toHaveCount(0);
         await expect
           .poll(() =>
             page
-              .locator('canvas')
+              .locator('.arena canvas')
               .evaluate(
                 (canvas) =>
                   canvas instanceof HTMLCanvasElement &&
@@ -367,11 +367,11 @@ for (const count of [2, 4] as const)
         expect(
           await rivals[0].page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         ).toBe(true);
-        await expect(rivals[0].page.locator('canvas')).toBeVisible();
+        await expect(rivals[0].page.locator('.arena canvas')).toBeVisible();
         await rivals[0].page.setViewportSize({ width: 390, height: 667 });
         await fitsViewport(rivals[0].page);
         await expect(rivals[0].page.getByLabel('Landscape required')).toHaveCount(0);
-        await expect(rivals[0].page.locator('canvas')).toBeVisible();
+        await expect(rivals[0].page.locator('.arena canvas')).toBeVisible();
       }
       await rivals[0].page.getByRole('button', { name: 'Torna alla lobby', exact: true }).click();
       await expect(

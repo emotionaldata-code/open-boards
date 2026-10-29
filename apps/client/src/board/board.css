@@ -121,11 +121,10 @@
   overflow: hidden;
   position: absolute;
   z-index: 2;
-  width: max(44px, 4.5%);
+  min-width: 44px;
   min-height: 44px;
-  aspect-ratio: 1;
   padding: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(var(--figure-x), var(--figure-y));
   border: 0;
   border-radius: 50%;
   background: transparent;
@@ -180,6 +179,7 @@
 .board-fighters {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
 }
 .fighter-label {
@@ -191,14 +191,14 @@
   white-space: nowrap;
 }
 .fighter-hit:active:not(:disabled) {
-  transform: translate(-50%, -50%) scale(0.97);
+  transform: translate(var(--figure-x), var(--figure-y)) scale(0.97);
 }
 .token-choice:active:not(:disabled) {
   transform: translate(-50%, -50%) scale(0.97);
 }
 @media (prefers-reduced-motion: reduce) {
   .fighter-hit:active:not(:disabled) {
-    transform: translate(-50%, -50%);
+    transform: translate(var(--figure-x), var(--figure-y));
   }
   .token-choice:active:not(:disabled) {
     transform: translate(-50%, -50%);

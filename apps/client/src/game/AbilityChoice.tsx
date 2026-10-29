@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { choiceLabel } from './choice-label';
 import { basic } from '@open-boards/content';
@@ -50,9 +51,9 @@ export function AbilityChoice({
                 ))}
               </select>
             </label>{' '}
-            <button className="primary" disabled={disabled}>
+            <GameButton className="primary" disabled={disabled}>
               Conferma valore
-            </button>
+            </GameButton>
           </form>
         ) : (
           choice.options.map((option) => {
@@ -73,7 +74,7 @@ export function AbilityChoice({
                 />
               );
             return (
-              <button
+              <GameButton
                 key={option.id}
                 className={
                   option.decline
@@ -101,7 +102,7 @@ export function AbilityChoice({
                     ? `Scegli ${choiceLabel(option, fighters)}`
                     : choiceLabel(option, fighters)}
                 </span>
-              </button>
+              </GameButton>
             );
           })
         )}

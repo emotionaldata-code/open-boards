@@ -16,7 +16,7 @@ import { ArenaScene } from './scene';
 import { preloadEffects } from '../animation/sprites';
 import { Terrain } from './Terrain';
 import { MapScenery } from './MapScenery';
-import { playerColors } from './figures';
+import { figureBounds, playerColors } from './figures';
 import { CharacterPortrait } from '../characters/CharacterPortrait';
 import { arenaSize, spaces } from './layout';
 import type { Present } from '../presentation/sequence';
@@ -190,6 +190,7 @@ export function Board(props: Props) {
               .filter((f) => f.position !== null && !f.defeated)
               .map((fighter) => {
                 const point = spaces[fighter.position!];
+                const bounds = figureBounds(fighter.definition);
                 const interactive = props.interactiveFighters?.includes(fighter.id);
                 const target = props.targetFighters?.includes(fighter.id);
                 const label = `${contentText(fighterLabel(fighter, basic))} (${props.game?.players.find((p) => p.id === fighter.player)?.name})`;
@@ -219,14 +220,23 @@ export function Board(props: Props) {
                         : label
                     }
                     data-fighter={fighter.id}
-                    style={{
-                      left: `${(point.x / arenaSize.width) * 100}%`,
-                      top: `${(point.y / arenaSize.height) * 100}%`,
-                    }}
+                    style={
+                      {
+                        left: `${(point.x / arenaSize.width) * 100}%`,
+                        top: `${(point.y / arenaSize.height) * 100}%`,
+                        width: `${(bounds.width / arenaSize.width) * 100}%`,
+                        height: `${(bounds.height / arenaSize.height) * 100}%`,
+                        zIndex: point.y,
+                        '--figure-x': `${(bounds.left / bounds.width) * 100}%`,
+                        '--figure-y': `${(bounds.top / bounds.height) * 100}%`,
+                      } as CSSProperties
+                    }
                     onClick={interactive ? () => props.onFighter?.(fighter.id) : undefined}
                   >
                     <CharacterPortrait character={fighter.definition} />
-                    <span className="fighter-label">{contentText(fighterLabel(fighter, basic))}</span>
+                    <span className="fighter-label">
+                      {contentText(fighterLabel(fighter, basic))}
+                    </span>
                   </Figure>
                 );
               })}

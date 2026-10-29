@@ -1,8 +1,10 @@
+import { GameButton } from '../ui/GameButton';
 import { messageText } from '../ui/messages';
 import { useState, type FormEvent } from 'react';
 import type { User } from '@open-boards/protocol';
 import { http } from '../network/http';
 import { CharacterRoster } from '../characters/CharacterRoster';
+import { GameFrame } from '../ui/GameFrame';
 export function Auth({ onUser }: { onUser: (user: User) => void }) {
   const [register, setRegister] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -31,6 +33,7 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
         <h1>Gioca a Open Boards</h1>
         <p>Un gioco tattico di carte per 2 o 4 giocatori.</p>
         <form aria-busy={busy} onSubmit={(e) => void submit(e)}>
+          <GameFrame />
           <h2>{register ? 'Crea il tuo account' : 'Accedi per giocare'}</h2>
           <label>
             Nome utente
@@ -61,10 +64,10 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
               {messageText(error)}
             </p>
           )}
-          <button className="primary" disabled={busy}>
+          <GameButton className="primary" disabled={busy}>
             {busy ? 'Connessione…' : register ? 'Crea account' : 'Accedi'}
-          </button>
-          <button
+          </GameButton>
+          <GameButton
             type="button"
             className="text-button"
             disabled={busy}
@@ -74,7 +77,7 @@ export function Auth({ onUser }: { onUser: (user: User) => void }) {
             }}
           >
             {register ? 'Hai già un account? Accedi' : 'Prima partita? Crea un account'}
-          </button>
+          </GameButton>
         </form>
         <div className="entry-bottom">
           <span className="muted">2 o 4 giocatori · Un solo vincitore</span>

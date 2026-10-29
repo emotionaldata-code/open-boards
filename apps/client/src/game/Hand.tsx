@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { messageText } from '../ui/messages';
 import { choiceLabel } from './choice-label';
@@ -17,6 +18,7 @@ import { CardFace } from './CardFace';
 import { InactiveCards } from './InactiveCards';
 import { AbilityChoice } from './AbilityChoice';
 import { Icon } from '../ui/Icon';
+import { GameFrame } from '../ui/GameFrame';
 interface Props {
   game: GameView;
   fighter: Fighter;
@@ -95,6 +97,7 @@ export function Hand({
   return (
     <>
       <section className="hand-panel" aria-label="La tua mano">
+        <GameFrame />
         <div className="section-heading">
           <h2>
             {(choice ? messageText(choice.prompt) : undefined) ??
@@ -107,37 +110,37 @@ export function Hand({
           </h2>
           <div className="button-row">
             {faceUpAttack && myTurn && (
-              <button
+              <GameButton
                 aria-pressed={faceUpAttack.active}
                 disabled={disabled}
                 onClick={faceUpAttack.toggle}
               >
                 Gioca scoperta · colpisci qualsiasi casella
-              </button>
+              </GameButton>
             )}
             {defending && committedAttack && (
-              <button onClick={() => setInspected(committedAttack.definition)}>
+              <GameButton onClick={() => setInspected(committedAttack.definition)}>
                 Esamina attacco scoperto ·{' '}
                 {contentText(basic.cards[committedAttack.definition].name)}
-              </button>
+              </GameButton>
             )}
             {choice &&
               game.observation?.cards.map((card) => (
-                <button key={card.id} onClick={() => setInspected(card.definition)}>
+                <GameButton key={card.id} onClick={() => setInspected(card.definition)}>
                   Esamina carta rivelata · {contentText(basic.cards[card.definition].name)}
-                </button>
+                </GameButton>
               ))}
             {discarding && game.hand.length - 7 > 1 && (
-              <button
+              <GameButton
                 className="primary"
                 disabled={disabled || selected.length !== game.hand.length - 7}
                 onClick={() => onCommand({ type: 'discard', cards: selected })}
               >
                 Scarta {selected.length} / {game.hand.length - 7}
-              </button>
+              </GameButton>
             )}
             {choice && (choice.min !== 1 || choice.max !== 1) && (
-              <button
+              <GameButton
                 className="primary"
                 disabled={disabled || selected.length < choice.min || selected.length > choice.max}
                 onClick={() => onChoose(selected)}
@@ -145,17 +148,23 @@ export function Hand({
                 {choice.min === 0 && !selected.length
                   ? 'Passa'
                   : `Conferma scelta · ${selected.length} / ${choice.max}`}
-              </button>
+              </GameButton>
             )}
             {defending && (
-              <button disabled={disabled} onClick={() => onCommand({ type: 'defend', card: null })}>
+              <GameButton
+                disabled={disabled}
+                onClick={() => onCommand({ type: 'defend', card: null })}
+              >
                 <Icon name="attack" /> Subisci il colpo
-              </button>
+              </GameButton>
             )}
             {moving && (
-              <button disabled={disabled} onClick={() => onCommand({ type: 'finish-maneuver' })}>
+              <GameButton
+                disabled={disabled}
+                onClick={() => onCommand({ type: 'finish-maneuver' })}
+              >
                 <Icon name="move" /> Termina manovra
-              </button>
+              </GameButton>
             )}
           </div>
           <p className="prompt" role="status">
@@ -171,7 +180,7 @@ export function Hand({
         </div>
         <div className="hand">
           {myTurn && (
-            <button
+            <GameButton
               className="draw-pile"
               aria-label="Manovra · pesca una carta"
               disabled={disabled}
@@ -183,7 +192,7 @@ export function Hand({
               <span>
                 <Icon name="cards" /> Pesca e manovra
               </span>
-            </button>
+            </GameButton>
           )}
           {playable.map((card) => (
             <CardFace

@@ -1,3 +1,5 @@
+import { GameButton } from '../ui/GameButton';
+import { GameFrame } from '../ui/GameFrame';
 import { messageText } from '../ui/messages';
 import { useEffect, useState } from 'react';
 import type { RoomListing } from '@open-boards/protocol';
@@ -63,16 +65,17 @@ export function Lobby({
       <MapPreview />
       <div className="lobby-grid">
         <section className="panel">
+          <GameFrame />
           <h2>Apri un tavolo</h2>
           <div className="create-options">
-            <button onClick={() => onCreate(2)} disabled={busy}>
+            <GameButton onClick={() => onCreate(2)} disabled={busy}>
               <strong>2</strong>
               <span>Duello</span>
-            </button>
-            <button onClick={() => onCreate(4)} disabled={busy}>
+            </GameButton>
+            <GameButton onClick={() => onCreate(4)} disabled={busy}>
               <strong>4</strong>
               <span>Tutti contro tutti</span>
-            </button>
+            </GameButton>
           </div>
           <h2>Gioca con gli amici</h2>
           <form
@@ -92,12 +95,13 @@ export function Lobby({
                 maxLength={40}
               />
             </label>
-            <button disabled={busy || !id.trim()} className="primary">
+            <GameButton disabled={busy || !id.trim()} className="primary">
               Entra al tavolo
-            </button>
+            </GameButton>
           </form>
         </section>
         <section className="panel room-list">
+          <GameFrame />
           <div className="section-heading">
             <h2>In attesa di giocatori</h2>
             <span className="muted">
@@ -130,9 +134,9 @@ export function Lobby({
                       <span>
                         {room.seats} / {room.capacity} giocatori
                       </span>
-                      <button disabled={busy} onClick={() => onJoin(room.id)}>
+                      <GameButton disabled={busy} onClick={() => onJoin(room.id)}>
                         Entra
-                      </button>
+                      </GameButton>
                     </li>
                   ))}
               </ul>
@@ -140,15 +144,18 @@ export function Lobby({
           </div>
           {pages > 1 && (
             <nav className="pagination" aria-label="Pagine delle stanze">
-              <button disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)}>
+              <GameButton disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)}>
                 Precedente
-              </button>
+              </GameButton>
               <span>
                 {currentPage + 1} / {pages}
               </span>
-              <button disabled={currentPage + 1 === pages} onClick={() => setPage(currentPage + 1)}>
+              <GameButton
+                disabled={currentPage + 1 === pages}
+                onClick={() => setPage(currentPage + 1)}
+              >
                 Successiva
-              </button>
+              </GameButton>
             </nav>
           )}
         </section>

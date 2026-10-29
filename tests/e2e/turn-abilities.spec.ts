@@ -1,5 +1,6 @@
 import { contentText } from '../../apps/client/src/localization/text';
 import { expect, test, type Page } from '@playwright/test';
+import { boardLayout, boardSize } from '../../packages/content/src/layout';
 import type { GameState } from '../../packages/game/src';
 
 test.use({ actionTimeout: 10_000, navigationTimeout: 15_000, hasTouch: true });
@@ -210,15 +211,53 @@ for (const viewport of [
           });
           await use.click();
         }
-        if (character === 'medusa' || character === 'dracula') {
-          expect((await state(page)).resolution.choice?.prompt).toBe('Choose a fighter');
+        async function chooseTarget() {
           const target = panel.getByRole('button', { name: 'Scegli Re Artù · Rival', exact: true });
           await expect(target).toBeVisible();
-          await expect(page.locator('button[data-fighter="p1:main"]')).toHaveClass(/is-target/);
+          const miniature = page.locator('button[data-fighter="p1:main"]');
+          await expect(miniature).toHaveClass(/is-target/);
+          const legalTargets = (await state(page)).resolution.choice!.options.flatMap((option) =>
+            option.object?.type === 'fighter' ? [option.object.id] : [],
+          );
+          expect(
+            await page
+              .locator('.fighter-hit.is-target')
+              .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('data-fighter'))),
+          ).toEqual(legalTargets);
+          if (character === 'medusa' && targetInput === 'panel')
+            await page.screenshot({
+              path: test.info().outputPath('medusa-target-selection.png'),
+              animations: 'disabled',
+            });
           if (targetInput === 'panel') await target.click();
-          else if (viewport.width === 844)
-            await page.locator('button[data-fighter="p1:main"]').tap();
-          else await page.locator('button[data-fighter="p1:main"]').click();
+          else {
+            const arena = await page.locator('.arena').boundingBox();
+            const point = boardLayout.n1;
+            const x = arena!.x + (point.x / boardSize.width) * arena!.width;
+            const y = arena!.y + ((point.y - 80) / boardSize.height) * arena!.height;
+            await expect
+              .poll(() =>
+                page.evaluate(
+                  ({ x, y }) =>
+                    document
+                      .elementFromPoint(x, y)
+                      ?.closest('[data-fighter]')
+                      ?.getAttribute('data-fighter'),
+                  { x, y },
+                ),
+              )
+              .toBe('p1:main');
+            // Click the visible torso, not the empty center of the miniature's base.
+            if (viewport.width === 844) await page.touchscreen.tap(x, y);
+            else await page.mouse.click(x, y);
+          }
+          await expect
+            .poll(async () => (await state(page)).revision)
+            .toBeGreaterThan(before.revision);
+        }
+        if (character === 'medusa' || character === 'dracula') {
+          expect((await state(page)).resolution.choice?.prompt).toBe('Choose a fighter');
+          await chooseTarget();
           const after = await state(page);
           expect(after.fighters.find((f) => f.id === 'p1:main')!.hp).toBe(
             before.fighters.find((f) => f.id === 'p1:main')!.hp - 1,
@@ -257,13 +296,7 @@ for (const viewport of [
             .getByRole('button', { name: /^(Confirm choice|Conferma scelta) · 1 \/ 1$/ })
             .click();
           expect((await state(page)).resolution.choice?.prompt).toBe('Choose a fighter');
-          const target = panel.getByRole('button', { name: 'Scegli Re Artù · Rival', exact: true });
-          await expect(target).toBeVisible();
-          await expect(page.locator('button[data-fighter="p1:main"]')).toHaveClass(/is-target/);
-          if (targetInput === 'panel') await target.click();
-          else if (viewport.width === 844)
-            await page.locator('button[data-fighter="p1:main"]').tap();
-          else await page.locator('button[data-fighter="p1:main"]').click();
+          await chooseTarget();
           const after = await state(page);
           expect(after.players[0].discard).toHaveLength(1);
           expect(after.fighters.find((f) => f.id === 'p1:main')!.hp).toBeLessThan(
@@ -275,6 +308,7 @@ for (const viewport of [
         expect(after.resolution.choice).toBeNull();
         expect(after.resolution.queue).toEqual([]);
         expect(after.resolution.frames).toEqual({});
+        await expect(page.locator('.event-dialog')).toHaveCount(0, { timeout: 15_000 });
         expect(errors).toEqual([]);
       });
     }

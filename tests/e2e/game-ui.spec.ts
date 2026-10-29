@@ -55,7 +55,7 @@ for (const viewport of [
     page.on('pageerror', (error) => errors.push(error.message));
     try {
       await presentationHarness(page, true, { hand });
-      await expect(page.locator('canvas')).toBeVisible();
+      await expect(page.locator('.arena canvas')).toBeVisible();
       await expect(page.getByText('Turn your phone to play', { exact: true })).toHaveCount(0);
       await expect(page.locator('.card-info')).toHaveCount(0);
       const size = await page.evaluate(() => ({
@@ -63,7 +63,7 @@ for (const viewport of [
         h: document.documentElement.scrollHeight,
       }));
       expect(size).toEqual({ w: viewport.width, h: viewport.height });
-      const canvas = await page.locator('canvas').evaluate((node) => ({
+      const canvas = await page.locator('.arena canvas').evaluate((node) => ({
         width: (node as HTMLCanvasElement).width,
         rendered: node.getBoundingClientRect().width,
       }));
@@ -426,7 +426,7 @@ test('portrait shows both sides of the map when your fighter starts on the far s
       statuses: [],
     })),
   });
-  await expect(page.locator('canvas')).toBeVisible();
+  await expect(page.locator('.arena canvas')).toBeVisible();
   await expectWholeMap(page);
 });
 

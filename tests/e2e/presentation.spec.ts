@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { presentationHarness } from './fixtures/game';
 
-test('sound controls unlock audio and every synthesized cue renders an audible, unclipped signal', async ({
+test('sound controls unlock recordings and every mixed cue is audible and unclipped', async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -17,9 +17,13 @@ test('sound controls unlock audio and every synthesized cue renders an audible, 
 
   const signals = await page.evaluate(async () => {
     const url = '/src/audio/cues.ts';
-    const { cues, synthesize } = (await import(
+    const { cues, loadSamples, playCue } = (await import(
       url
     )) as typeof import('../../apps/client/src/audio/cues');
+    const mixUrl = '/src/audio/mix.ts';
+    const { createMix } = (await import(
+      mixUrl
+    )) as typeof import('../../apps/client/src/audio/mix');
     const playerUrl = '/src/audio/player.ts';
     const { sound } = (await import(
       playerUrl
@@ -28,11 +32,11 @@ test('sound controls unlock audio and every synthesized cue renders an audible, 
     stop(); // Cancellation must also work with a real AudioContext.
     const signals = [];
     for (const name of Object.keys(cues) as (keyof typeof cues)[]) {
-      const context = new OfflineAudioContext(1, 96000, 48000);
-      const master = context.createGain();
-      master.gain.value = 0.35;
-      master.connect(context.destination);
-      synthesize(context, master, name);
+      const context = new OfflineAudioContext(2, 144000, 48000);
+      const mix = createMix(context);
+      mix.master.gain.value = 0.75;
+      const bank = await loadSamples(context);
+      playCue(context, mix.input, name, bank);
       const buffer = await context.startRendering();
       const samples = buffer.getChannelData(0);
       let peak = 0,
@@ -45,6 +49,15 @@ test('sound controls unlock audio and every synthesized cue renders an audible, 
       });
       signals.push({ name, peak, rms: Math.sqrt(energy / samples.length), tail });
     }
+    const burst = new OfflineAudioContext(2, 144000, 48000);
+    const mix = createMix(burst);
+    mix.master.gain.value = 1;
+    const bank = await loadSamples(burst);
+    for (let i = 0; i < 16; i++) playCue(burst, mix.input, 'impact', bank);
+    const combined = (await burst.startRendering()).getChannelData(0);
+    let burstPeak = 0;
+    for (const sample of combined) burstPeak = Math.max(burstPeak, Math.abs(sample));
+    if (burstPeak >= 1) throw new Error(`Overlapping impacts clip: ${burstPeak}`);
     return signals;
   });
   for (const signal of signals) {

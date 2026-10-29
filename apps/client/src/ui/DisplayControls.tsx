@@ -1,3 +1,4 @@
+import { GameButton } from './GameButton';
 import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 export function FullscreenButton() {
@@ -26,18 +27,18 @@ export function FullscreenButton() {
   }
   return (
     <div className="display-control">
-      <button
+      <GameButton
         className="icon-button"
         onClick={() => void toggle()}
         aria-label={active ? 'Esci da schermo intero' : 'Schermo intero'}
         title={active ? 'Esci da schermo intero' : 'Schermo intero'}
       >
         <Icon name="fullscreen" />
-      </button>
+      </GameButton>
       {error && (
         <div className="display-message" role="alert">
           {error}
-          <button onClick={() => setError('')}>Chiudi</button>
+          <GameButton onClick={() => setError('')}>Chiudi</GameButton>
         </div>
       )}
     </div>

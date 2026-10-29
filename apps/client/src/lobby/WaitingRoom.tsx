@@ -1,3 +1,5 @@
+import { GameButton } from '../ui/GameButton';
+import { GameFrame } from '../ui/GameFrame';
 import { contentText } from '../localization/text';
 import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
@@ -46,10 +48,11 @@ export function WaitingRoom({
             pronti prima che l’organizzatore avvii la partita.
           </p>
         </div>
-        <button onClick={onLeave}>Lascia il tavolo</button>
+        <GameButton onClick={onLeave}>Lascia il tavolo</GameButton>
       </div>
       <div className="waiting-grid">
         <section className="panel">
+          <GameFrame />
           <div className="section-heading">
             <h2>Posti al tavolo</h2>
             <span className="muted">
@@ -89,6 +92,7 @@ export function WaitingRoom({
           <CharacterPicker selected={own?.character ?? defaultCharacter} onChoose={onCharacter} />
         </section>
         <section className="panel invite">
+          <GameFrame />
           <MapPreview />
           <h2>Invita giocatori</h2>
           <p className="muted">Condividi il link di invito a questo tavolo.</p>
@@ -96,9 +100,9 @@ export function WaitingRoom({
             Codice stanza
             <input readOnly value={room.id} onFocus={(e) => e.target.select()} />
           </label>
-          <button onClick={() => void copyInvite()}>
+          <GameButton onClick={() => void copyInvite()}>
             {copied ? 'Link copiato' : 'Copia link di invito'}
-          </button>
+          </GameButton>
           <span className={copyError ? 'error' : 'muted'} role="status">
             {copyError
               ? 'Copia non riuscita. Condividi il codice stanza qui sopra.'
@@ -108,13 +112,13 @@ export function WaitingRoom({
           </span>
           <div className="match-controls">
             <div className="button-row">
-              <button className="primary" onClick={onReady}>
+              <GameButton className="primary" onClick={onReady}>
                 {own?.ready ? 'Non pronto' : 'Sono pronto'}
-              </button>
+              </GameButton>
               {room.host === user.id && (
-                <button onClick={onStart} disabled={!canStart}>
+                <GameButton onClick={onStart} disabled={!canStart}>
                   Avvia partita
-                </button>
+                </GameButton>
               )}
             </div>
             <p className="muted">

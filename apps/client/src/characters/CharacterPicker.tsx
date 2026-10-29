@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { attackTypeLabel } from '../ui/labels';
 import { useState } from 'react';
@@ -27,7 +28,7 @@ export function CharacterPicker({
           {attackTypeLabel[character.attackType]}
         </span>
       </div>
-      <button onClick={() => setOpen(true)}>Scegli personaggio</button>
+      <GameButton onClick={() => setOpen(true)}>Scegli personaggio</GameButton>
       {open && (
         <Dialog
           title="Scegli il tuo combattente"

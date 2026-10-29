@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { cardCategoryLabel } from '../ui/labels';
 import { useState } from 'react';
@@ -28,14 +29,14 @@ export function DiscardPile({
               const definition = basic.cards[card.definition];
               return (
                 <li key={card.id}>
-                  <button onClick={() => setInspected(card.definition)}>
+                  <GameButton onClick={() => setInspected(card.definition)}>
                     <Icon name={definition.category} />
                     <span>
                       {contentText(definition.name)}
                       <small>{cardCategoryLabel[definition.category]}</small>
                     </span>
                     <strong>Valore {definition.value}</strong>
-                  </button>
+                  </GameButton>
                 </li>
               );
             })}

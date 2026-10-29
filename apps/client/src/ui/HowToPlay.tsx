@@ -1,15 +1,18 @@
+import { GameButton } from './GameButton';
 import { useState } from 'react';
 import { Dialog } from './Dialog';
+import { AudioSettings } from './AudioSettings';
 export function HowToPlay() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button className="text-button rules-trigger" onClick={() => setOpen(true)}>
+      <GameButton className="text-button rules-trigger" onClick={() => setOpen(true)}>
         Guida
-      </button>
+      </GameButton>
       {open && (
         <Dialog title="Come si gioca" onClose={() => setOpen(false)}>
           <div className="rules-grid">
+            <AudioSettings />
             <p>
               Scegli un eroe e sconfiggi gli avversari: vince l’ultimo eroe rimasto in gioco. Open
               Boards permette duelli a 2 giocatori e partite tutti contro tutti a 4.

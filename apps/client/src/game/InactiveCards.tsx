@@ -1,3 +1,4 @@
+import { GameButton } from '../ui/GameButton';
 import { contentText } from '../localization/text';
 import { useState, type CSSProperties } from 'react';
 import { basic } from '@open-boards/content';
@@ -16,7 +17,7 @@ export function InactiveCards({ cards }: { cards: Card[] }) {
         style={{ '--inactive-rows': Math.min(4, cards.length) } as CSSProperties}
       >
         {cards.map((card) => (
-          <button
+          <GameButton
             key={card.id}
             className="compact-card"
             data-card={basic.cards[card.definition].category}
@@ -25,7 +26,7 @@ export function InactiveCards({ cards }: { cards: Card[] }) {
           >
             <CardArtwork definition={card.definition} />
             <span>{contentText(basic.cards[card.definition].name)}</span>
-          </button>
+          </GameButton>
         ))}
       </div>
       {inspected && (

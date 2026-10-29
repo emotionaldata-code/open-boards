@@ -1,5 +1,7 @@
+import { GameButton } from './GameButton';
 import { useEffect, useId, useRef, type ReactNode, type RefObject } from 'react';
 import { Icon } from './Icon';
+import { GameFrame } from './GameFrame';
 export function Dialog({
   title,
   children,
@@ -42,12 +44,13 @@ export function Dialog({
       }}
     >
       <div className="dialog-frame">
+        <GameFrame />
         <header className="dialog-heading">
           <h2 id={titleId}>{title}</h2>
           {dismissible && (
-            <button className="icon-button" onClick={onClose} aria-label="Chiudi finestra">
+            <GameButton className="icon-button" onClick={onClose} aria-label="Chiudi finestra">
               <Icon name="close" />
-            </button>
+            </GameButton>
           )}
         </header>
         <div className="dialog-body">{children}</div>

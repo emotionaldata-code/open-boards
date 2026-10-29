@@ -4,6 +4,27 @@ import { fighterArtwork, rasterAssets } from '../artwork/assets';
 import { loadFigureTexture } from '../artwork/textures';
 
 export const playerColors = [0xdcc58d, 0x91d9c7, 0xef9c8f, 0xc1c9ec];
+const figureScale = 0.85;
+
+/** Board coordinates, including the vector fallback, token artwork and base label. */
+export function figureBounds(character: string) {
+  let left = -78 * figureScale;
+  let right = 78 * figureScale;
+  let top = -158 * figureScale;
+  let bottom = 32;
+  const asset = rasterAssets[fighterArtwork[character]?.token];
+  if (asset) {
+    const [anchorX, anchorY] = asset.anchor ?? [0.5, 1];
+    const width = asset.width * (asset.scale ?? 0.3);
+    const height = asset.height * (asset.scale ?? 0.3);
+    left = Math.min(left, -width * anchorX);
+    right = Math.max(right, width * (1 - anchorX));
+    top = Math.min(top, -height * anchorY);
+    bottom = Math.max(bottom, height * (1 - anchorY));
+  }
+  return { left, top, width: right - left, height: bottom - top };
+}
+
 export function createFigure(
   character: string,
   color: number,
@@ -14,12 +35,12 @@ export function createFigure(
   const base = new Graphics();
   base.ellipse(0, 4, 36, 15).fill({ color: 0x070e0c, alpha: 0.55 });
   base.ellipse(0, 0, 32, 12).fill(0x26362b).stroke({ color, width: 3 });
-  base.scale.set(0.85);
+  base.scale.set(figureScale);
   figure.addChild(base);
   const art = new Graphics();
   art.svg(figureSvg(character, `#${color.toString(16).padStart(6, '0')}`));
   // Match the arena's existing miniature scale while retaining the portrait's crisp vector detail.
-  art.scale.set(0.85);
+  art.scale.set(figureScale);
   figure.addChild(art);
   const asset = rasterAssets[fighterArtwork[character]?.token];
   if (asset) {
